@@ -16,8 +16,8 @@ Sistema de VFX (brillos, splashes, chispas, anillos, destellos de pantalla y ban
 
 | Nombre | Asset ID |
 |---|---|
-| Sparkle (estrella de 4 puntas) | `__SPARKLE__` |
-| Glow (orbe suave) | `__GLOW__` |
+| Sparkle (estrella de 4 puntas) | `84408672280834` |
+| Glow (orbe suave) | `140554714981336` |
 | Splash (salpicadura) | `124800911923236` |
 | Spark (chispa alargada) | `__SPARK__` |
 | Ring (onda expansiva) | `__RING__` |

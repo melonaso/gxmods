@@ -9,8 +9,8 @@ local Config = {}
 -- any ParticleEmitter.Texture field in Studio once: Studio converts a Decal id into
 -- its Image id. Replace the number here with the converted one.
 Config.Textures = {
-	Sparkle = "rbxassetid://__SPARKLE__",
-	Glow = "rbxassetid://__GLOW__",
+	Sparkle = "rbxassetid://84408672280834",
+	Glow = "rbxassetid://140554714981336",
 	Splash = "rbxassetid://124800911923236",
 	Spark = "rbxassetid://__SPARK__",
 	Ring = "rbxassetid://__RING__",
