@@ -12,8 +12,8 @@ Config.Textures = {
 	Sparkle = "rbxassetid://84408672280834",
 	Glow = "rbxassetid://140554714981336",
 	Splash = "rbxassetid://124800911923236",
-	Spark = "rbxassetid://__SPARK__",
-	Ring = "rbxassetid://__RING__",
+	Spark = "rbxassetid://134074808117970",
+	Ring = "rbxassetid://85856607052166",
 }
 
 -- Sound ids (optional). Leave "" to play no sound for that event.

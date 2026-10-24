@@ -19,8 +19,8 @@ Sistema de VFX (brillos, splashes, chispas, anillos, destellos de pantalla y ban
 | Sparkle (estrella de 4 puntas) | `84408672280834` |
 | Glow (orbe suave) | `140554714981336` |
 | Splash (salpicadura) | `124800911923236` |
-| Spark (chispa alargada) | `__SPARK__` |
-| Ring (onda expansiva) | `__RING__` |
+| Spark (chispa alargada) | `134074808117970` |
+| Ring (onda expansiva) | `85856607052166` |
 
 Las texturas son blancas para teñirlas desde `Config.Colors`.
 
