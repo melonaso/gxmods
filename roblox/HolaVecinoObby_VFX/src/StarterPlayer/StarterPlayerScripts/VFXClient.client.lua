@@ -14,16 +14,23 @@ local remote = VFX:WaitForChild("VFXEvent") :: RemoteEvent
 
 local localPlayer = Players.LocalPlayer
 
--- Preload textures so the first effect doesn't pop in blank.
-task.spawn(function()
+-- Preload textures so the first effect doesn't pop in blank. Runs again whenever
+-- the server shares a converted texture id.
+local function preload()
 	local assets = {}
-	for _, id in Config.Textures do
+	for textureName, id in Config.Textures do
 		local decal = Instance.new("Decal")
-		decal.Texture = id
+		decal.Texture = VFX:GetAttribute("Texture_" .. textureName) or id
 		table.insert(assets, decal)
 	end
 	ContentProvider:PreloadAsync(assets)
+end
+task.spawn(preload)
+VFX.AttributeChanged:Connect(function()
+	task.spawn(preload)
 end)
+
+print("[VFX] Cliente listo.")
 
 local function personal(eventName: string, color: Color3, strength: number)
 	Effects.ScreenFlash(color, strength)

@@ -170,23 +170,32 @@ function Effects.Banner(text: string, color: Color3)
 	Debris:AddItem(gui, 2.2)
 end
 
-local T = Config.Textures
+local VFX = script.Parent
+
+-- Prefer the Image id the server converted from the uploaded Decal id.
+local function tex(name: string): string
+	local converted = VFX:GetAttribute("Texture_" .. name)
+	if typeof(converted) == "string" and converted ~= "" then
+		return converted
+	end
+	return Config.Textures[name]
+end
 
 function Effects.Checkpoint(position: Vector3)
 	local colors = Config.Colors.Checkpoint
 	local a = anchorAt(position, 3)
 	burst(a, {
-		texture = T.Ring, colors = colors, count = 3, spread = 0,
+		texture = tex("Ring"), colors = colors, count = 3, spread = 0,
 		size = NumberRange.new(1, 10), speed = NumberRange.new(0), lifetime = NumberRange.new(0.6, 0.8),
 		rotSpeed = NumberRange.new(0), growTo = 14,
 	})
 	burst(a, {
-		texture = T.Sparkle, colors = colors, count = 30, spread = 35,
+		texture = tex("Sparkle"), colors = colors, count = 30, spread = 35,
 		size = NumberRange.new(0.4, 1.2), speed = NumberRange.new(12, 22), lifetime = NumberRange.new(0.8, 1.4),
 		acceleration = Vector3.new(0, -12, 0),
 	})
 	burst(a, {
-		texture = T.Glow, colors = colors, count = 2, spread = 0,
+		texture = tex("Glow"), colors = colors, count = 2, spread = 0,
 		size = NumberRange.new(4, 8), speed = NumberRange.new(0), lifetime = NumberRange.new(0.5),
 	})
 	flashLight(a, colors[1], 18, 0.8)
@@ -197,16 +206,16 @@ function Effects.LobbyEnd(position: Vector3)
 	local colors = Config.Colors.LobbyEnd
 	local a = anchorAt(position, 4)
 	burst(a, {
-		texture = T.Glow, colors = colors, count = 3, spread = 0,
+		texture = tex("Glow"), colors = colors, count = 3, spread = 0,
 		size = NumberRange.new(6, 12), speed = NumberRange.new(0), lifetime = NumberRange.new(0.7),
 	})
 	burst(a, {
-		texture = T.Sparkle, colors = colors, count = 50,
+		texture = tex("Sparkle"), colors = colors, count = 50,
 		size = NumberRange.new(0.5, 1.5), speed = NumberRange.new(10, 25), lifetime = NumberRange.new(1, 2),
 		acceleration = Vector3.new(0, -8, 0),
 	})
 	burst(a, {
-		texture = T.Ring, colors = colors, count = 2, spread = 0,
+		texture = tex("Ring"), colors = colors, count = 2, spread = 0,
 		size = NumberRange.new(2, 12), speed = NumberRange.new(0), lifetime = NumberRange.new(0.8),
 		rotSpeed = NumberRange.new(0), growTo = 20,
 	})
@@ -223,17 +232,17 @@ function Effects.Finish(position: Vector3)
 			local offset = Vector3.new(math.random(-8, 8), 10 + math.random(0, 6), math.random(-8, 8))
 			local a = anchorAt(position + offset, 4)
 			burst(a, {
-				texture = T.Spark, colors = colors, count = 60,
+				texture = tex("Spark"), colors = colors, count = 60,
 				size = NumberRange.new(0.6, 1.6), speed = NumberRange.new(25, 40), lifetime = NumberRange.new(1, 1.8),
 				acceleration = Vector3.new(0, -20, 0), rotSpeed = NumberRange.new(0),
 			})
 			burst(a, {
-				texture = T.Sparkle, colors = colors, count = 25,
+				texture = tex("Sparkle"), colors = colors, count = 25,
 				size = NumberRange.new(0.5, 1.2), speed = NumberRange.new(5, 12), lifetime = NumberRange.new(1.5, 2.5),
 				acceleration = Vector3.new(0, -4, 0),
 			})
 			burst(a, {
-				texture = T.Glow, colors = colors, count = 1, spread = 0,
+				texture = tex("Glow"), colors = colors, count = 1, spread = 0,
 				size = NumberRange.new(10, 16), speed = NumberRange.new(0), lifetime = NumberRange.new(0.5),
 			})
 			flashLight(a, colors[i] or colors[1], 40, 1)
@@ -245,17 +254,17 @@ function Effects.Death(position: Vector3)
 	local colors = Config.Colors.Death
 	local a = anchorAt(position, 3)
 	burst(a, {
-		texture = T.Splash, colors = colors, count = 6, spread = 60,
+		texture = tex("Splash"), colors = colors, count = 6, spread = 60,
 		size = NumberRange.new(2, 5), speed = NumberRange.new(4, 10), lifetime = NumberRange.new(0.5, 0.9),
 		acceleration = Vector3.new(0, -30, 0),
 	})
 	burst(a, {
-		texture = T.Spark, colors = colors, count = 20,
+		texture = tex("Spark"), colors = colors, count = 20,
 		size = NumberRange.new(0.3, 0.8), speed = NumberRange.new(15, 30), lifetime = NumberRange.new(0.4, 0.8),
 		acceleration = Vector3.new(0, -25, 0), rotSpeed = NumberRange.new(0),
 	})
 	burst(a, {
-		texture = T.Glow, colors = colors, count = 2, spread = 0,
+		texture = tex("Glow"), colors = colors, count = 2, spread = 0,
 		size = NumberRange.new(5, 9), speed = NumberRange.new(0), lifetime = NumberRange.new(0.4),
 	})
 	flashLight(a, colors[1], 16, 0.6)
@@ -275,17 +284,17 @@ function Effects.GamePass(character: Model)
 	Debris:AddItem(a, 5)
 
 	burst(a, {
-		texture = T.Ring, colors = colors, count = 3, spread = 0,
+		texture = tex("Ring"), colors = colors, count = 3, spread = 0,
 		size = NumberRange.new(2, 8), speed = NumberRange.new(0), lifetime = NumberRange.new(0.8),
 		rotSpeed = NumberRange.new(0), growTo = 16,
 	})
 	burst(a, {
-		texture = T.Glow, colors = colors, count = 3, spread = 0,
+		texture = tex("Glow"), colors = colors, count = 3, spread = 0,
 		size = NumberRange.new(4, 9), speed = NumberRange.new(0), lifetime = NumberRange.new(0.8),
 	})
 	-- Rising sparkle column that keeps emitting for a moment.
 	local column = Instance.new("ParticleEmitter")
-	column.Texture = T.Sparkle
+	column.Texture = tex("Sparkle")
 	column.Color = colorSequence(colors)
 	column.LightEmission = 1
 	column.Brightness = 3

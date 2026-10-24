@@ -24,19 +24,34 @@ Sistema de VFX (brillos, splashes, chispas, anillos, destellos de pantalla y ban
 
 Las texturas son blancas para teñirlas desde `Config.Colors`.
 
-## Instalación en Studio
+## Instalación en Studio (automática, recomendada)
 
-1. En **ReplicatedStorage** crea un `Folder` llamado `VFX`.
-2. Dentro de `VFX` crea dos **ModuleScript**: `Config` y `Effects`, y pega `src/ReplicatedStorage/VFX/Config.lua` y `Effects.lua`.
-3. En **ServerScriptService** crea un **Script** `VFXServer` y pega `VFXServer.server.lua`.
-4. En **StarterPlayer > StarterPlayerScripts** crea un **LocalScript** `VFXClient` y pega `VFXClient.client.lua`.
-5. Marca las partes:
-   - Checkpoints: si ya están en una carpeta `Workspace.Checkpoints`, no hay que hacer nada. Si no, agrégales el tag `Checkpoint` (pestaña *Tags* en Propiedades).
-   - Final del lobby: tag `LobbyEnd` a la parte del final del lobby.
-   - Meta: tag `Finish`.
-6. Prueba con **Play**.
+1. Abre el place en Studio (modo edición, **sin** darle a Play).
+2. Menú **View → Command Bar** (aparece una barra abajo).
+3. Abre [`Installer.lua`](Installer.lua) en GitHub, botón **Raw**, selecciona todo (Ctrl+A), copia (Ctrl+C).
+4. Pega en la Command Bar y pulsa **Enter**. En **View → Output** debe salir `[VFX] Instalado.`
+5. **File → Save** (o publica) para que los scripts queden guardados en el place.
+6. Dale a **Play**. En el Output deben salir:
+   - `[VFX] Listo. Checkpoints: N | Final del lobby: N | Meta: N`
+   - `[VFX] Cliente listo.`
 
-> Si una textura sale en blanco/cuadrada: pega su ID en el campo `Texture` de cualquier ParticleEmitter en Studio. Si Studio la cambia por otro número (conversión Decal → Image), usa ese número nuevo en `Config.Textures`.
+Prueba rápida: dentro del Play, pulsa **Esc → Reset Character**. Debe salir el efecto de muerte (splash y destello rojo).
+
+### Detección automática de partes
+
+- **Checkpoints:** toda `SpawnLocation`, toda parte cuyo nombre empiece por `Checkpoint`, las partes con el tag `Checkpoint` y lo que esté dentro de `Workspace.Checkpoints`.
+- **Final del lobby:** parte llamada `LobbyEnd…` o `FinLobby…`, con el tag `LobbyEnd` o dentro de `Workspace.LobbyEnd`.
+- **Meta:** parte llamada `Finish…`, `Meta` o `Win`, con el tag `Finish` o dentro de `Workspace.Finish`.
+
+Si el Output muestra un aviso amarillo de que no encontró el final del lobby o la meta, renombra esa parte o ponle el tag (pestaña *Tags* en Propiedades).
+
+> Las imágenes subidas a Roblox llegan como IDs de **Decal**; el servidor las convierte solas al ID de **Image** que necesitan las partículas.
+
+### Instalación manual (alternativa)
+
+Crea a mano: `ReplicatedStorage/VFX` (Folder) con los ModuleScripts `Config` y `Effects`, el Script `ServerScriptService/VFXServer` y el LocalScript `StarterPlayer/StarterPlayerScripts/VFXClient`, pegando en cada uno el archivo de `src/` con el mismo nombre.
+
+Si cambias algo en `src/`, regenera el instalador con `python3 build_installer.py`.
 
 ## Sonidos
 

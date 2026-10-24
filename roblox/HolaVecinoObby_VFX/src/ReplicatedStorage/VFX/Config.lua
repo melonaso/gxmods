@@ -5,9 +5,8 @@
 
 local Config = {}
 
--- Particle textures (ForgeGUI). If a texture shows blank in-game, paste the id into
--- any ParticleEmitter.Texture field in Studio once: Studio converts a Decal id into
--- its Image id. Replace the number here with the converted one.
+-- Particle textures (ForgeGUI). These are the uploaded Decal ids; VFXServer converts
+-- them to Image ids at runtime, so you can also put plain Image ids here.
 Config.Textures = {
 	Sparkle = "rbxassetid://84408672280834",
 	Glow = "rbxassetid://140554714981336",
@@ -35,12 +34,15 @@ Config.Colors = {
 }
 
 -- How the server finds trigger parts. A part counts when it carries the
--- CollectionService tag OR lives inside the folder of the same name in Workspace.
+-- CollectionService tag, OR lives inside the folder of the same name in Workspace,
+-- OR its lowercase name matches one of the Names patterns.
+-- Every SpawnLocation also counts as a checkpoint (most obby kits use them).
 Config.Triggers = {
-	Checkpoint = { Tag = "Checkpoint", Folder = "Checkpoints" },
-	LobbyEnd = { Tag = "LobbyEnd", Folder = "LobbyEnd" },
-	Finish = { Tag = "Finish", Folder = "Finish" },
+	Checkpoint = { Tag = "Checkpoint", Folder = "Checkpoints", Names = { "^checkpoint" } },
+	LobbyEnd = { Tag = "LobbyEnd", Folder = "LobbyEnd", Names = { "^lobbyend", "^finlobby" } },
+	Finish = { Tag = "Finish", Folder = "Finish", Names = { "^finish", "^meta$", "^win$" } },
 }
+Config.SpawnLocationsAreCheckpoints = true
 
 -- Show a text banner on screen for the player who triggered the event.
 Config.Banners = {
