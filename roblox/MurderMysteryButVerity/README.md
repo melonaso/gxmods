@@ -21,7 +21,7 @@ Encontrados con ForgeGUI (`toolbox_search`). El juego quita todos los scripts de
 | 90398340255135 | verity | Cessybee |
 | 72873880902024 | verity | pro123game123start |
 
-Si no importas ninguno, se usa `ServerStorage/VerityFallback`: un modelo esbelto hecho con elipsoides, con costillas, clavículas, tendones y una cabeza de calavera sonriente (sin ojos: cuencas vacías, cavidad nasal y una sonrisa enorme de 30 dientes). Antes de eso, el juego intenta `InsertService:LoadAsset` (solo funciona si el creador del juego posee el modelo).
+Si no importas ninguno, se usa `ServerStorage/VerityFallback`: un modelo orgánico de ~190 piezas basado en la imagen de referencia (cuerpo esquelético con costillas, cintura de avispa, cuello con tendones, clavículas, brazos larguísimos hasta las rodillas, dedos largos, rodillas y gemelos marcados, y cabeza de huevo calva con cuencas hundidas y una sonrisa enorme de dientes grandes). Antes de eso, el juego intenta `InsertService:LoadAsset` (solo funciona si el creador del juego posee el modelo).
 
 ## Modo prueba (activado)
 `Config.Testing.Enabled = true` en [`src/shared/Config.luau`](src/shared/Config.luau):
@@ -35,19 +35,21 @@ Ponlo en `false` antes de publicar y pon **10 jugadores máximo** en Game Settin
 
 ## Ronda
 1. **Intermedio de 23 s** en el lobby.
-2. Cinemática de inicio: barras de cine, nombre del mapa y la cámara rodea a tu personaje.
+2. Cinemática de inicio: barras de cine, nombre del mapa (5 s) y la cámara rodea a tu personaje.
 3. Verity empieza como una **bola sonriente** (su diseño original) durante **20 s**.
 4. Al liberarse, la bola **se retuerce con crujidos de huesos** y se transforma en el monstruo (2,6 s); si eres Verity, la cámara orbita la transformación.
-5. Verity atrapa con `Q`: la víctima **grita** mientras la levanta y el grito se corta en seco con la explosión.
-6. **Anti-campeo:** cada **60 s** (desde que Verity despierta) todos los supervivientes se **resaltan en rojo para Verity durante 5 s**, a través de las paredes (si estás en un escondite, se resalta el escondite). Los supervivientes reciben un pulso rojo en pantalla, tres latidos y el aviso "¡Verity puede verte! Cambia de sitio". El HUD muestra la cuenta atrás ("Revelación en 42s").
+5. **Verity tiene visión nocturna** (solo en su pantalla: tinte verde, más luz alrededor y menos niebla); los supervivientes ven la noche oscura y tienen su linterna (`F`).
+6. Verity atrapa con `Q`: la víctima **grita** mientras la levanta y el grito se corta en seco con la explosión.
+7. **Anti-campeo:** cada **60 s** (desde que Verity despierta) todos los supervivientes se **resaltan en rojo para Verity durante 5 s**, a través de las paredes (si estás en un escondite, se resalta el escondite). Los supervivientes reciben un pulso rojo en pantalla, tres latidos y el aviso "¡Verity puede verte! Cambia de sitio". El HUD muestra la cuenta atrás ("Revelación en 42s").
 
 ## Controles
 | Tecla | Verity | Superviviente |
 | --- | --- | --- |
 | `Q` | Atrapar: levanta a la víctima y la aplasta | — |
 | `Shift` | Correr (40, sin límite; camina a 26) | Correr (24, gasta estamina) |
+| `F` | — | **Linterna** sin batería (la ven todos, también Verity) |
 | `C` | Agacharse (alterna) | — |
-| `E` / `F` | — | Recoger / depositar oro · Craftear tótem |
+| `E` | — | Recoger / depositar oro · Craftear tótem |
 | `R` | — | Esconderse en armarios, taquillas, ataúdes, confesionarios y arbustos (Verity puede sacarte con `Q` si te encuentra) |
 | `1`–`2` | — | Objetos de la tienda (solo en la ronda) |
 
@@ -63,7 +65,7 @@ Ponlo en `false` antes de publicar y pon **10 jugadores máximo** en Game Settin
 | Bobina de fusión | 650 | Las dos anteriores |
 | Botiquín | 150 | Cura 50 (recarga 20 s) |
 | Bebida energética | 200 | Estamina infinita 6 s |
-| Linterna | 100 | Foco que se enciende y apaga |
+| Bengala | 100 | Bengala roja en el suelo que ilumina la zona 20 s |
 | Capa fantasma | 500 | Casi invisible 6 s; los NPCs solo te notan muy de cerca |
 | Radar de almas | 450 | Ves a Verity a través de las paredes 6 s |
 | Cepo | 350 | Trampa que inmoviliza 3 s a Verity (máx. 2) |
@@ -107,7 +109,7 @@ Mientras sea `0`, el juego usa un sustituto con sonidos internos de Roblox.
 ## Puzzle: oro y tótems
 1. Recoge **bloques de oro** (máx. 2 encima).
 2. Llévalos a una de las **3 mesas de crafteo**.
-3. Con **3 de oro**, mantén `F` 3 s para **craftear un tótem**: **−30 s** al reloj (máx. 5 por ronda).
+3. Con **3 de oro**, mantén `E` 3 s para **craftear un tótem**: **−30 s** al reloj (máx. 5 por ronda).
 
 ## Probabilidad de ser Verity (fuera del modo prueba)
 Cada ronda que no eres Verity sumas +1 de suerte (máx. 10).

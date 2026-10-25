@@ -1,5 +1,6 @@
 --!strict
--- Controles: Shift correr, C agacharse (Verity), Q atrapar (Verity).
+-- Controles: Shift correr, C agacharse (Verity), Q atrapar (Verity),
+-- F linterna (supervivientes).
 -- Solo envía intenciones; el servidor valida rol, estamina y distancia.
 
 local ContextActionService = game:GetService("ContextActionService")
@@ -49,11 +50,20 @@ local function onKill(_, state: Enum.UserInputState)
 	return Enum.ContextActionResult.Sink
 end
 
+local function onFlashlight(_, state: Enum.UserInputState)
+	if state ~= Enum.UserInputState.Begin or player:GetAttribute("Role") ~= "Survivor" then
+		return Enum.ContextActionResult.Pass
+	end
+	action:FireServer("Flashlight")
+	return Enum.ContextActionResult.Sink
+end
+
 function Input.start()
 	action = Net.get("Action")
 	ContextActionService:BindAction("Sprint", onSprint, false, Enum.KeyCode.LeftShift, Enum.KeyCode.RightShift, Enum.KeyCode.ButtonL3)
 	ContextActionService:BindAction("Crouch", onCrouch, false, Enum.KeyCode.C, Enum.KeyCode.ButtonB)
 	ContextActionService:BindAction("Kill", onKill, false, Enum.KeyCode.Q, Enum.KeyCode.ButtonX)
+	ContextActionService:BindAction("Flashlight", onFlashlight, false, Enum.KeyCode.F, Enum.KeyCode.ButtonY)
 	player:GetAttributeChangedSignal("Role"):Connect(function()
 		crouching = false
 	end)

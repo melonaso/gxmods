@@ -11,7 +11,9 @@ Atrapar,Atrapar,,src/client/Controllers/HUD.luau,Grab
 atrapar,atrapar,,src/server/Systems/Round.luau,grab
 Banco,Banco,,map,Bank
 Bebida energética,Bebida energética,,src/shared/Config.luau,Energy Drink
+Bengala,Bengala,,src/shared/Config.luau,Flare
 Bloque de oro,Bloque de oro,,src/server/Systems/Crafting.luau,Gold block
+BNG,BNG,,src/shared/Config.luau,FLR
 Bobina de fusión,Bobina de fusión,,src/shared/Config.luau,Fusion Coil
 Bobina de gravedad,Bobina de gravedad,,src/shared/Config.luau,Gravity Coil
 Bobina de velocidad,Bobina de velocidad,,src/shared/Config.luau,Speed Coil
@@ -25,8 +27,8 @@ Cepo colocado.,Cepo colocado.,,src/server/Systems/Items.luau,Trap placed.
 Clic: casi invisible durante 6 s. Recarga 40 s.,Clic: casi invisible durante 6 s. Recarga 40 s.,,src/shared/Config.luau,Click: nearly invisible for 6 s. Cooldown 40 s.
 Clic: coloca un cepo (máx. 2) que inmoviliza 3 s a Verity si lo pisa.,Clic: coloca un cepo (máx. 2) que inmoviliza 3 s a Verity si lo pisa.,,src/shared/Config.luau,Click: place a trap (max 2) that holds Verity for 3 s if she steps on it.
 Clic: cura 50 de vida. Recarga 20 s.,Clic: cura 50 de vida. Recarga 20 s.,,src/shared/Config.luau,Click: heals 50 health. Cooldown 20 s.
+Clic: deja en el suelo una bengala roja que ilumina la zona 20 s. Recarga 30 s.,Clic: deja en el suelo una bengala roja que ilumina la zona 20 s. Recarga 30 s.,,src/shared/Config.luau,Click: drop a red flare that lights up the area for 20 s. Cooldown 30 s.
 Clic: empuja con fuerza a Verity si la tienes delante. Recarga 8 s.,Clic: empuja con fuerza a Verity si la tienes delante. Recarga 8 s.,,src/shared/Config.luau,Click: shove Verity hard if she is in front of you. Cooldown 8 s.
-Clic: enciende o apaga un foco potente.,Clic: enciende o apaga un foco potente.,,src/shared/Config.luau,Click: turn a powerful light on or off.
 Clic: estamina llena e infinita durante 6 s. Recarga 30 s.,Clic: estamina llena e infinita durante 6 s. Recarga 30 s.,,src/shared/Config.luau,"Click: full, unlimited stamina for 6 s. Cooldown 30 s."
 Clic: ves a Verity a través de las paredes 6 s. Recarga 30 s.,Clic: ves a Verity a través de las paredes 6 s. Recarga 30 s.,,src/shared/Config.luau,Click: see Verity through walls for 6 s. Cooldown 30 s.
 Clásica,Clásica,,src/shared/Config.luau,Classic
@@ -35,7 +37,6 @@ Comprar · {price},Comprar · {price},,src/client/Controllers/Shop.luau,Buy · {
 Compraste {item}.,Compraste {item}.,,src/server/Systems/Shop.luau,You bought {item}.
 Correr,Correr,,src/client/Controllers/HUD.luau,Sprint
 CPO,CPO,,src/shared/Config.luau,TRP
-Craftear,Craftear,,src/client/Controllers/HUD.luau,Craft
 Craftear tótem,Craftear tótem,,src/server/Systems/Crafting.luau,Craft totem
 Depositar oro,Depositar oro,,src/server/Systems/Crafting.luau,Deposit gold
 Despierta y atrápalos a todos,Despierta y atrápalos a todos,,src/client/Controllers/Cinematics.luau,Wake up and catch them all
@@ -46,7 +47,7 @@ El reloj ya no puede acelerarse más esta ronda.,El reloj ya no puede acelerarse
 Equipada,Equipada,,src/client/Controllers/Shop.luau,Equipped
 Equipado (quitar),Equipado (quitar),,src/client/Controllers/Shop.luau,Equipped (remove)
 Equipar,Equipar,,src/client/Controllers/Shop.luau,Equip
-Eres una bola sonriente... por ahora. Al despertar: Q atrapar · Shift correr · C agacharse,Eres una bola sonriente... por ahora. Al despertar: Q atrapar · Shift correr · C agacharse,,src/client/Controllers/HUD.luau,You are a smiling ball... for now. Once awake: Q grab · Shift sprint · C crouch
+Eres una bola sonriente... por ahora. Ves en la oscuridad. Al despertar: Q atrapar · Shift correr · C agacharse,Eres una bola sonriente... por ahora. Ves en la oscuridad. Al despertar: Q atrapar · Shift correr · C agacharse,,src/client/Controllers/HUD.luau,You are a smiling ball... for now. You can see in the dark. Once awake: Q grab · Shift sprint · C crouch
 ERES VERITY,ERES VERITY,,src/client/Controllers/HUD.luau,YOU ARE VERITY
 Esconderse,Esconderse,,src/client/Controllers/HUD.luau,Hide
 Escondido,Escondido,,src/server/Systems/Hiding.luau,Hidden
@@ -67,10 +68,9 @@ Imán de monedas,Imán de monedas,,src/shared/Config.luau,Coin Magnet
 INTERMEDIO,INTERMEDIO,,src/client/Controllers/HUD.luau,INTERMISSION
 INV,INV,,src/shared/Config.luau,INV
 La Verity de siempre.,La Verity de siempre.,,src/shared/Config.luau,The Verity you know.
-Linterna,Linterna,,src/shared/Config.luau,Flashlight
+Linterna,Linterna,,src/client/Controllers/HUD.luau,Flashlight
 Los cepos solo funcionan durante la ronda.,Los cepos solo funcionan durante la ronda.,,src/server/Systems/Items.luau,Traps only work during the round.
 Los supervivientes están marcados en rojo.,Los supervivientes están marcados en rojo.,,src/server/Systems/Round.luau,The survivors are marked in red.
-LUZ,LUZ,,src/shared/Config.luau,LGT
 Mansión,Mansión,,map,Mansion
 Mapa: {map},Mapa: {map},,src/server/Systems/Round.luau,Map: {map}
 Martillo de empuje,Martillo de empuje,,src/shared/Config.luau,Push Hammer
@@ -85,7 +85,7 @@ obby completado,obby completado,,src/server/Systems/Lobby.luau,obby completed
 Objetos,Objetos,,src/client/Controllers/Shop.luau,Items
 Objetos equipados: {count}/{max} · solo los usan los supervivientes durante la ronda,Objetos equipados: {count}/{max} · solo los usan los supervivientes durante la ronda,,src/client/Controllers/Shop.luau,"Equipped items: {count}/{max} · only survivors use them, during the round"
 Oficina,Oficina,,map,Office
-Oro / mesa,Oro / mesa,,src/client/Controllers/HUD.luau,Gold / table
+Oro / tótem,Oro / tótem,,src/client/Controllers/HUD.luau,Gold / totem
 Oro {gold}/{max},Oro {gold}/{max},,src/client/Controllers/HUD.luau,Gold {gold}/{max}
 Pases,Pases,,src/client/Controllers/Shop.luau,Passes
 Piel blanca como la cera.,Piel blanca como la cera.,,src/shared/Config.luau,Skin as white as wax.
@@ -136,7 +136,7 @@ Verity,Verity,,src/client/Controllers/HUD.luau,Verity
 Verity abandonó la partida.,Verity abandonó la partida.,,src/server/Systems/Round.luau,Verity left the game.
 Verity atrapó a {name},Verity atrapó a {name},,src/server/Systems/Round.luau,Verity caught {name}
 Verity despierta en {seconds},Verity despierta en {seconds},,src/client/Controllers/HUD.luau,Verity wakes up in {seconds}
-"Verity es {name}. Escóndete (R), busca oro y craftea tótems. Cada minuto Verity te verá en rojo: ¡muévete!","Verity es {name}. Escóndete (R), busca oro y craftea tótems. Cada minuto Verity te verá en rojo: ¡muévete!",,src/client/Controllers/HUD.luau,"Verity is {name}. Hide (R), find gold and craft totems. Every minute Verity sees you in red: keep moving!"
+"Verity es {name}. F linterna, R esconderse, E oro y tótems. Cada minuto Verity te verá en rojo: ¡muévete!","Verity es {name}. F linterna, R esconderse, E oro y tótems. Cada minuto Verity te verá en rojo: ¡muévete!",,src/client/Controllers/HUD.luau,"Verity is {name}. F flashlight, R hide, E gold and totems. Every minute Verity sees you in red: keep moving!"
 VERITY GANA,VERITY GANA,,src/client/Controllers/HUD.luau,VERITY WINS
 Verity ha caído.,Verity ha caído.,,src/server/Systems/Round.luau,Verity has fallen.
 victoria,victoria,,src/server/Systems/Round.luau,victory

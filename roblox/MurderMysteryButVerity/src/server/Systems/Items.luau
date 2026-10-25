@@ -113,20 +113,11 @@ local function makeHandle(def: ItemDef): Part
 		handle.Shape = Enum.PartType.Cylinder
 		handle.Size = Vector3.new(1.2, 0.6, 0.6)
 		handle.Material = Enum.Material.Foil
-	elseif key == "Flashlight" then
-		handle.Size = Vector3.new(0.45, 0.45, 1.8)
-		handle.Color = Color3.fromRGB(40, 40, 45)
-		decor(Vector3.new(0.6, 0.6, 0.2), CFrame.new(0, 0, -0.9), def.Color, Enum.Material.Neon)
-		local light = Instance.new("SpotLight")
-		light.Name = "Beam"
-		light.Face = Enum.NormalId.Front
-		light.Range = 50
-		light.Angle = 50
-		light.Brightness = 3
-		light.Color = Color3.fromRGB(255, 240, 210)
-		light.Enabled = false
-		light.Shadows = true
-		light.Parent = handle
+	elseif key == "Flare" then
+		handle.Shape = Enum.PartType.Cylinder
+		handle.Size = Vector3.new(1.4, 0.35, 0.35)
+		handle.Color = Color3.fromRGB(170, 30, 30)
+		decor(Vector3.new(0.3, 0.38, 0.38), CFrame.new(0.75, 0, 0), def.Color, Enum.Material.Neon)
 	elseif key == "BearTrap" then
 		handle.Size = Vector3.new(1.4, 0.3, 1.4)
 		decor(Vector3.new(1.4, 0.4, 0.15), CFrame.new(0, 0.3, 0.55), Color3.fromRGB(180, 180, 190), Enum.Material.Metal)
@@ -279,6 +270,58 @@ local function placeTrap(player: Player, character: Model)
 	notify(player, T("Cepo colocado."), "good")
 end
 
+-- Bengala: luz roja en el suelo durante 20 s (alumbra un pasillo oscuro,
+-- pero también avisa a Verity de que alguien pasó por ahí).
+local function dropFlare(character: Model)
+	local root = character:FindFirstChild("HumanoidRootPart") :: BasePart?
+	if not root then
+		return
+	end
+	local params = RaycastParams.new()
+	params.FilterDescendantsInstances = { character }
+	local hit = Workspace:Raycast(root.Position, Vector3.new(0, -40, 0), params)
+	if not hit then
+		return
+	end
+	local folder = trapFolder
+	if not folder then
+		local f = Instance.new("Folder")
+		f.Name = "Traps"
+		f.Parent = Workspace
+		trapFolder = f
+		folder = f
+	end
+	local flare = Instance.new("Part")
+	flare.Name = "Flare"
+	flare.Anchored = true
+	flare.CanCollide = false
+	flare.CanQuery = false
+	flare.Shape = Enum.PartType.Cylinder
+	flare.Size = Vector3.new(1.2, 0.3, 0.3)
+	flare.Color = Color3.fromRGB(255, 60, 40)
+	flare.Material = Enum.Material.Neon
+	flare.CFrame = CFrame.new(hit.Position + Vector3.new(0, 0.15, 0)) * CFrame.Angles(0, math.random() * math.pi, 0)
+	local light = Instance.new("PointLight")
+	light.Color = Color3.fromRGB(255, 70, 40)
+	light.Range = 36
+	light.Brightness = 2.6
+	light.Shadows = true
+	light.Parent = flare
+	local sparks = Instance.new("ParticleEmitter")
+	sparks.Color = ColorSequence.new(Color3.fromRGB(255, 200, 120), Color3.fromRGB(255, 60, 30))
+	sparks.LightEmission = 1
+	sparks.Size = NumberSequence.new(0.25, 0)
+	sparks.Lifetime = NumberRange.new(0.3, 0.7)
+	sparks.Rate = 40
+	sparks.Speed = NumberRange.new(3, 7)
+	sparks.SpreadAngle = Vector2.new(30, 30)
+	sparks.Acceleration = Vector3.new(0, -12, 0)
+	sparks.EmissionDirection = Enum.NormalId.Top
+	sparks.Parent = flare
+	flare.Parent = folder
+	game:GetService("Debris"):AddItem(flare, 20)
+end
+
 local function push(player: Player, character: Model)
 	local root = character:FindFirstChild("HumanoidRootPart") :: BasePart?
 	if not root then
@@ -367,12 +410,6 @@ local function build(player: Player, key: string): Tool?
 		if key == "CoinMagnet" then
 			c:SetAttribute("CoinMagnet", nil)
 		end
-		if key == "Flashlight" then
-			local beam = tool.Handle:FindFirstChild("Beam")
-			if beam and beam:IsA("SpotLight") then
-				beam.Enabled = false
-			end
-		end
 	end)
 	tool.Activated:Connect(function()
 		local c = character()
@@ -387,11 +424,8 @@ local function build(player: Player, key: string): Tool?
 			Movement.energize(player, 6)
 			Net.get("Effect"):FireClient(player, "Heal", (c:GetPivot()).Position)
 			notify(player, T("¡Estamina infinita durante {seconds} s!"), "good", { seconds = 6 })
-		elseif key == "Flashlight" then
-			local beam = tool.Handle:FindFirstChild("Beam")
-			if beam and beam:IsA("SpotLight") then
-				beam.Enabled = not beam.Enabled
-			end
+		elseif key == "Flare" and ready(player, key, 30) then
+			dropFlare(c)
 		elseif key == "GhostCloak" and ready(player, key, 40) then
 			ghost(c, 6)
 		elseif key == "SoulRadar" and ready(player, key, 30) then

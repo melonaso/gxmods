@@ -3,6 +3,7 @@
 --   Shift: correr (supervivientes con estamina; Verity sin límite y más rápida)
 --   C:     agacharse (solo Verity)
 --   Q:     atrapar (solo Verity, lo resuelve Killer)
+--   F:     linterna de los supervivientes (sin batería; la ven todos)
 --   TestRole: en modo prueba, elegir ser Verity o superviviente en la próxima ronda
 
 local Players = game:GetService("Players")
@@ -39,6 +40,33 @@ local function state(player: Player): State
 	return s
 end
 
+-- Linterna en la cabeza del superviviente: la crea el servidor para que
+-- todos (también Verity) vean el haz.
+local function setFlashlight(player: Player, on: boolean)
+	local character = player.Character
+	local head = character and character:FindFirstChild("Head")
+	if not (character and head and head:IsA("BasePart")) then
+		return
+	end
+	local light = head:FindFirstChild("Flashlight")
+	if on and not light then
+		local spot = Instance.new("SpotLight")
+		spot.Name = "Flashlight"
+		spot.Face = Enum.NormalId.Front
+		spot.Range = 55
+		spot.Angle = 50
+		spot.Brightness = 4
+		spot.Color = Color3.fromRGB(255, 238, 205)
+		spot.Shadows = true
+		spot.Parent = head
+		light = spot
+	end
+	if light and light:IsA("SpotLight") then
+		light.Enabled = on
+	end
+	character:SetAttribute("Flashlight", on or nil)
+end
+
 local function onAction(player: Player, action: unknown, value: unknown)
 	local s = state(player)
 	local clock = os.clock()
@@ -58,6 +86,10 @@ local function onAction(player: Player, action: unknown, value: unknown)
 		s.crouch = value and role == "Verity"
 	elseif action == "Kill" and role == "Verity" then
 		Killer.tryKill(player)
+	elseif action == "Flashlight" then
+		local character = player.Character
+		local on = not (character and character:GetAttribute("Flashlight"))
+		setFlashlight(player, on and role == "Survivor")
 	elseif action == "TestRole" and Config.Testing.Enabled and (value == "Verity" or value == "Survivor") then
 		-- botón del lobby (modo prueba): rol en la próxima ronda
 		player:SetAttribute("TestRole", value)
@@ -141,6 +173,18 @@ end
 
 function Movement.init()
 	Net.get("Action").OnServerEvent:Connect(onAction)
+	-- la linterna solo es de los supervivientes en la ronda
+	local function watch(player: Player)
+		player:GetAttributeChangedSignal("Role"):Connect(function()
+			if player:GetAttribute("Role") ~= "Survivor" then
+				setFlashlight(player, false)
+			end
+		end)
+	end
+	Players.PlayerAdded:Connect(watch)
+	for _, player in Players:GetPlayers() do
+		watch(player)
+	end
 	Players.PlayerRemoving:Connect(function(player)
 		states[player] = nil
 	end)

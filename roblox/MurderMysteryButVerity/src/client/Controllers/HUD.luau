@@ -364,10 +364,10 @@ end
 
 local function onRoleReveal(role: string, killerName: string)
 	if role == "Verity" then
-		showCard(roleCard, T("TU ROL"), T("ERES VERITY"), C.Verity, T("Eres una bola sonriente... por ahora. Al despertar: Q atrapar · Shift correr · C agacharse"), 4.5)
+		showCard(roleCard, T("TU ROL"), T("ERES VERITY"), C.Verity, T("Eres una bola sonriente... por ahora. Ves en la oscuridad. Al despertar: Q atrapar · Shift correr · C agacharse"), 4.5)
 	elseif role == "Survivor" then
 		showCard(roleCard, T("TU ROL"), T("SUPERVIVIENTE"), C.Survivor,
-			T("Verity es {name}. Escóndete (R), busca oro y craftea tótems. Cada minuto Verity te verá en rojo: ¡muévete!", { name = killerName }), 5)
+			T("Verity es {name}. F linterna, R esconderse, E oro y tótems. Cada minuto Verity te verá en rojo: ¡muévete!", { name = killerName }), 5)
 	end
 end
 
@@ -446,7 +446,7 @@ local function update()
 	if inRound and role == "Verity" then
 		controlsLabel.Text = `{key("Q", T("Atrapar"))}   {key("Shift", T("Correr"))}   {key("C", T("Agacharse"))}`
 	elseif inRound and role == "Survivor" then
-		controlsLabel.Text = `{key("Shift", T("Correr"))}   {key("E", T("Oro / mesa"))}   {key("F", T("Craftear"))}   {key("R", T("Esconderse"))}`
+		controlsLabel.Text = `{key("Shift", T("Correr"))}   {key("F", T("Linterna"))}   {key("E", T("Oro / tótem"))}   {key("R", T("Esconderse"))}`
 	else
 		controlsLabel.Text = ""
 	end

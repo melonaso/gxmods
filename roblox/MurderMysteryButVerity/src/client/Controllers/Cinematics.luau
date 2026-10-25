@@ -34,7 +34,8 @@ local title: CanvasGroup
 local titleLabel: TextLabel
 local subtitleLabel: TextLabel
 local busy = false
-local introToken = 0
+local TITLE_TIME = 5 -- segundos que el nombre del mapa queda en pantalla
+local titleShownAt: number? = nil
 
 local function tween(inst: Instance, time: number, goal: { [string]: any })
 	local t = TweenService:Create(inst, TweenInfo.new(time, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), goal)
@@ -186,16 +187,16 @@ end
 
 -- Oculta el título del mapa (también al volver al lobby, pase lo que pase).
 local function hideTitle()
-	introToken += 1
+	titleShownAt = nil
 	tween(title, 0.6, { GroupTransparency = 1 })
 	letterbox(Workspace:GetAttribute("Phase") == "Results")
 end
 
 -- Mayúsculas que respetan tildes y eñes (string.upper solo cambia ASCII).
 local function upper(text: string): string
-	return (string.gsub(string.upper(text), "\195([\160-\190])", function(c: string)
+	return (string.gsub(string.upper(text), "\195([\160-\190])", function(c: string): string
 		local b = string.byte(c)
-		return if b == 183 then nil else "\195" .. string.char(b - 32)
+		return "\195" .. (if b == 183 then c else string.char(b - 32)) -- 183 = ÷
 	end))
 end
 
@@ -210,14 +211,8 @@ local function facingAngle(): number
 end
 
 local function roundIntro(mapName: string)
-	introToken += 1
-	local token = introToken
-	-- el título se oculta solo, aunque la cámara falle
-	task.delay(4.2, function()
-		if introToken == token then
-			hideTitle()
-		end
-	end)
+	-- el título se oculta solo a los TITLE_TIME segundos (lo vigila start())
+	titleShownAt = os.clock()
 	titleLabel.Text = upper(T(mapName))
 	local role = player:GetAttribute("Role")
 	subtitleLabel.Text = if role == "Verity" then T("Despierta y atrápalos a todos") else T("Sobrevive hasta el amanecer")
@@ -292,6 +287,12 @@ function Cinematics.start()
 		end
 	end
 	Workspace:GetAttributeChangedSignal("Phase"):Connect(onPhase)
+	RunService.Heartbeat:Connect(function()
+		local shownAt = titleShownAt
+		if shownAt and os.clock() - shownAt >= TITLE_TIME then
+			hideTitle()
+		end
+	end)
 	vignetteGui.Enabled = Workspace:GetAttribute("Phase") == "Playing"
 	Net.get("Effect").OnClientEvent:Connect(function(kind)
 		if kind == "Transform" then

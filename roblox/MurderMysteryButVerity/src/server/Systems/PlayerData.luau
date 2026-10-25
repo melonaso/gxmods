@@ -135,6 +135,16 @@ local function sanitize(raw: any): Data
 		data.coins = math.max(0, math.floor(tonumber(raw.coins) or 0))
 		data.items = stringList(raw.items)
 		data.equipped = stringList(raw.equipped)
+		-- solo objetos que siguen existiendo en la tienda (la Linterna pasó a ser de todos)
+		for i = #data.equipped, 1, -1 do
+			local known = false
+			for _, item in Config.Items do
+				known = known or item.Key == data.equipped[i]
+			end
+			if not known then
+				table.remove(data.equipped, i)
+			end
+		end
 		while #data.equipped > Config.MaxEquipped do
 			table.remove(data.equipped) -- antes se podían equipar más
 		end

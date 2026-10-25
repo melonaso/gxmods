@@ -84,7 +84,8 @@ local function run(model: Model, ctx: Context)
 		if distance < NOTICE then
 			return true
 		end
-		if distance > SIGHT then
+		-- con la linterna encendida se le ve desde mucho más lejos
+		if distance > (if character:GetAttribute("Flashlight") then SIGHT * 1.5 else SIGHT) then
 			return false
 		end
 		-- campo de visión amplio (unos 220°): no ve lo que tiene justo detrás

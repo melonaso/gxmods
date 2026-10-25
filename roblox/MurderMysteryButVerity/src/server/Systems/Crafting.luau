@@ -254,7 +254,7 @@ local function buildTable(spot: CFrame, parent: Instance): TableState
 	craft.HoldDuration = CFG.CraftHoldDuration
 	craft.MaxActivationDistance = 10
 	craft.RequiresLineOfSight = false
-	craft.KeyboardKeyCode = Enum.KeyCode.F
+	craft.KeyboardKeyCode = Enum.KeyCode.E -- F es la linterna; depositar y craftear nunca se activan a la vez
 	craft.Parent = top
 
 	model.Parent = parent

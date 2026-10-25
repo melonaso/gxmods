@@ -113,7 +113,7 @@ Config.Items = {
 	{ Key = "FusionCoil", Title = "Bobina de fusión", Price = 650, Badge = "FUS", Color = Color3.fromRGB(255, 120, 200), Description = "Velocidad y gravedad baja a la vez." },
 	{ Key = "Medkit", Title = "Botiquín", Price = 150, Badge = "+HP", Color = Color3.fromRGB(230, 60, 70), Description = "Clic: cura 50 de vida. Recarga 20 s." },
 	{ Key = "EnergyDrink", Title = "Bebida energética", Price = 200, Badge = "NRG", Color = Color3.fromRGB(120, 230, 80), Description = "Clic: estamina llena e infinita durante 6 s. Recarga 30 s." },
-	{ Key = "Flashlight", Title = "Linterna", Price = 100, Badge = "LUZ", Color = Color3.fromRGB(255, 220, 120), Description = "Clic: enciende o apaga un foco potente." },
+	{ Key = "Flare", Title = "Bengala", Price = 100, Badge = "BNG", Color = Color3.fromRGB(255, 70, 50), Description = "Clic: deja en el suelo una bengala roja que ilumina la zona 20 s. Recarga 30 s." },
 	{ Key = "GhostCloak", Title = "Capa fantasma", Price = 500, Badge = "INV", Color = Color3.fromRGB(150, 220, 255), Description = "Clic: casi invisible durante 6 s. Recarga 40 s." },
 	{ Key = "SoulRadar", Title = "Radar de almas", Price = 450, Badge = "RAD", Color = Color3.fromRGB(255, 80, 120), Description = "Clic: ves a Verity a través de las paredes 6 s. Recarga 30 s." },
 	{ Key = "BearTrap", Title = "Cepo", Price = 350, Badge = "CPO", Color = Color3.fromRGB(150, 150, 160), Description = "Clic: coloca un cepo (máx. 2) que inmoviliza 3 s a Verity si lo pisa." },
