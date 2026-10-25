@@ -81,7 +81,7 @@ Config.Chance = {
 -- Monedas repartidas por el mapa en cada ronda (las recogen los jugadores,
 -- también Verity, con solo acercarse).
 Config.Coins = {
-	PerMap = 60,
+	PerMap = 80,
 	MaxPerRound = 40, -- bolsa llena
 	PickupRadius = 4.5,
 	VerityPickupRadius = 8, -- Verity es enorme

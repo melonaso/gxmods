@@ -2660,8 +2660,8 @@
        "CFrame": {
         "position": [
          0,
-         311.65,
-         -18
+         311.92,
+         -18.05
         ],
         "orientation": [
          [
@@ -2683,279 +2683,20 @@
        }
       },
       "Size": [
-       1.5,
-       1.1,
-       0.8
+       1.2,
+       0.86,
+       0.7
       ],
       "Color": [
-       0.8392,
-       0.7608,
+       0.8078,
+       0.7373,
        0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "UpperTorso",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         0,
-         314.8,
-         -18
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       2.0,
-       2.4,
-       1.1
-      ],
-      "Color": [
-       0.8392,
-       0.7608,
-       0.3608
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "Abdomen",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         0,
-         312.95,
-         -18
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.1,
-       1.7,
-       0.72
-      ],
-      "Color": [
-       0.8392,
-       0.7608,
-       0.3608
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "Clavicle",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         0,
-         315.8,
-         -18
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       2.9,
-       0.45,
-       0.8
-      ],
-      "Color": [
-       0.8392,
-       0.7608,
-       0.3608
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "NeckPart",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         0,
-         316.9,
-         -18
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.5,
-       1.9,
-       0.5
-      ],
-      "Color": [
-       0.8392,
-       0.7608,
-       0.3608
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "Head",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         0,
-         319.0,
-         -18
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       2.0,
-       2.7,
-       2.1
-      ],
-      "Color": [
-       0.8392,
-       0.7608,
-       0.3608
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
@@ -2972,102 +2713,51 @@
      ]
     },
     {
-     "name": "Mouth",
+     "name": "HipCrest",
      "className": "Part",
      "properties": {
       "Anchored": true,
       "CFrame": {
        "CFrame": {
         "position": [
-         0,
-         318.45,
-         -17.05
+         0.47,
+         312.18,
+         -17.9
         ],
         "orientation": [
          [
-          -1,
-          0,
+          -0.882947592858927,
+          -0.4694715627858908,
           0
          ],
          [
-          0,
-          1,
+          -0.4694715627858908,
+          0.882947592858927,
           0
          ],
          [
-          0,
-          0,
+          0.0,
+          0.0,
           -1
          ]
         ]
        }
       },
       "Size": [
-       1.6,
-       0.62,
-       0.16
+       0.2,
+       0.5,
+       0.3
       ],
       "Color": [
-       0.3137,
-       0.0706,
-       0.0863
+       0.8078,
+       0.7373,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "Teeth",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         0,
-         318.45,
-         -17.0
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.42,
-       0.42,
-       0.12
-      ],
-      "Color": [
-       0.9608,
-       0.9412,
-       0.8824
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
@@ -3076,439 +2766,320 @@
      },
      "children": [
       {
-       "className": "SurfaceGui",
+       "className": "SpecialMesh",
        "properties": {
-        "Face": "Front",
-        "SizingMode": "PixelsPerStud",
-        "PixelsPerStud": 60
-       },
-       "children": [
-        {
-         "className": "Frame",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             3
-            ],
-            [
-             1,
-             0
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0.08333333333333333,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "BackgroundColor3": [
-           0.35,
-           0.3,
-           0.25
-          ],
-          "BorderSizePixel": 0
-         }
-        },
-        {
-         "className": "Frame",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             3
-            ],
-            [
-             1,
-             0
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0.16666666666666666,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "BackgroundColor3": [
-           0.35,
-           0.3,
-           0.25
-          ],
-          "BorderSizePixel": 0
-         }
-        },
-        {
-         "className": "Frame",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             3
-            ],
-            [
-             1,
-             0
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0.25,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "BackgroundColor3": [
-           0.35,
-           0.3,
-           0.25
-          ],
-          "BorderSizePixel": 0
-         }
-        },
-        {
-         "className": "Frame",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             3
-            ],
-            [
-             1,
-             0
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0.3333333333333333,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "BackgroundColor3": [
-           0.35,
-           0.3,
-           0.25
-          ],
-          "BorderSizePixel": 0
-         }
-        },
-        {
-         "className": "Frame",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             3
-            ],
-            [
-             1,
-             0
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0.4166666666666667,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "BackgroundColor3": [
-           0.35,
-           0.3,
-           0.25
-          ],
-          "BorderSizePixel": 0
-         }
-        },
-        {
-         "className": "Frame",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             3
-            ],
-            [
-             1,
-             0
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0.5,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "BackgroundColor3": [
-           0.35,
-           0.3,
-           0.25
-          ],
-          "BorderSizePixel": 0
-         }
-        },
-        {
-         "className": "Frame",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             3
-            ],
-            [
-             1,
-             0
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0.5833333333333334,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "BackgroundColor3": [
-           0.35,
-           0.3,
-           0.25
-          ],
-          "BorderSizePixel": 0
-         }
-        },
-        {
-         "className": "Frame",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             3
-            ],
-            [
-             1,
-             0
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0.6666666666666666,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "BackgroundColor3": [
-           0.35,
-           0.3,
-           0.25
-          ],
-          "BorderSizePixel": 0
-         }
-        },
-        {
-         "className": "Frame",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             3
-            ],
-            [
-             1,
-             0
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0.75,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "BackgroundColor3": [
-           0.35,
-           0.3,
-           0.25
-          ],
-          "BorderSizePixel": 0
-         }
-        },
-        {
-         "className": "Frame",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             3
-            ],
-            [
-             1,
-             0
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0.8333333333333334,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "BackgroundColor3": [
-           0.35,
-           0.3,
-           0.25
-          ],
-          "BorderSizePixel": 0
-         }
-        },
-        {
-         "className": "Frame",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             0,
-             3
-            ],
-            [
-             1,
-             0
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0.9166666666666666,
-             0
-            ],
-            [
-             0,
-             0
-            ]
-           ]
-          },
-          "BackgroundColor3": [
-           0.35,
-           0.3,
-           0.25
-          ],
-          "BorderSizePixel": 0
-         }
-        },
-        {
-         "className": "Frame",
-         "properties": {
-          "Size": {
-           "UDim2": [
-            [
-             1,
-             0
-            ],
-            [
-             0,
-             3
-            ]
-           ]
-          },
-          "Position": {
-           "UDim2": [
-            [
-             0,
-             0
-            ],
-            [
-             0.5,
-             -1
-            ]
-           ]
-          },
-          "BackgroundColor3": [
-           0.35,
-           0.3,
-           0.25
-          ],
-          "BorderSizePixel": 0
-         }
-        }
-       ]
+        "MeshType": "Sphere"
+       }
       }
      ]
     },
     {
-     "name": "LeftEye",
+     "name": "HipCrest",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.47,
+         312.18,
+         -17.9
+        ],
+        "orientation": [
+         [
+          -0.882947592858927,
+          0.4694715627858908,
+          0
+         ],
+         [
+          0.4694715627858908,
+          0.882947592858927,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.2,
+       0.5,
+       0.3
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "UpperTorso",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         315.0,
+         -18.06
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.62,
+       2.44,
+       0.98
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Chest",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         315.62,
+         -18.06
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.98,
+       1.22,
+       0.96
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Abdomen",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         313.15,
+         -18.14
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.82,
+       2.0,
+       0.6
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Sternum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         315.15,
+         -17.604
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.16,
+       1.5,
+       0.12
+      ],
+      "Color": [
+       0.8627,
+       0.8,
+       0.4392
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Rib",
      "className": "Part",
      "properties": {
       "Anchored": true,
@@ -3516,52 +3087,60 @@
        "CFrame": {
         "position": [
          0.42,
-         319.45,
-         -17.14
+         314.15,
+         -17.847
         ],
         "orientation": [
          [
-          -1,
-          0,
-          0
+          -0.7325256529144666,
+          0.4800861208578484,
+          -0.4826214711157155
          ],
          [
-          0,
-          1,
-          0
+          0.27890801054846986,
+          0.8583905924513276,
+          0.4305530309299349
          ],
          [
-          0,
-          0,
-          -1
+          0.620980264963492,
+          0.1807841457393931,
+          -0.7626929940514393
          ]
         ]
        }
       },
       "Size": [
-       0.3,
-       0.3,
-       0.3
+       0.66,
+       0.1,
+       0.14
       ],
       "Color": [
-       0.0471,
-       0.0314,
-       0.0235
+       0.698,
+       0.6275,
+       0.2902
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
-      "Transparency": 0,
-      "Shape": "Ball"
+      "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
-     "name": "RightEye",
+     "name": "Rib",
      "className": "Part",
      "properties": {
       "Anchored": true,
@@ -3569,113 +3148,679 @@
        "CFrame": {
         "position": [
          -0.42,
-         319.45,
-         -17.14
+         314.15,
+         -17.847
         ],
         "orientation": [
          [
-          -1,
-          0,
-          0
+          -0.7325256529144666,
+          -0.4800861208578484,
+          0.4826214711157155
          ],
          [
-          0,
-          1,
-          0
+          -0.27890801054846986,
+          0.8583905924513276,
+          0.4305530309299349
          ],
          [
-          0,
-          0,
-          -1
+          -0.620980264963492,
+          0.1807841457393931,
+          -0.7626929940514393
          ]
         ]
        }
       },
       "Size": [
-       0.3,
-       0.3,
-       0.3
+       0.66,
+       0.1,
+       0.14
       ],
       "Color": [
-       0.0471,
-       0.0314,
-       0.0235
+       0.698,
+       0.6275,
+       0.2902
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0,
-      "Shape": "Ball"
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "Rib1",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         0,
-         313.95,
-         -17.43
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.75,
-       0.13,
-       0.08
-      ],
-      "Color": [
-       0.549,
-       0.4863,
-       0.2039
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
-     "name": "Rib2",
+     "name": "Rib",
      "className": "Part",
      "properties": {
       "Anchored": true,
       "CFrame": {
        "CFrame": {
         "position": [
-         0,
-         314.4,
-         -17.43
+         0.42,
+         314.49,
+         -17.725
+        ],
+        "orientation": [
+         [
+          -0.8523577253980291,
+          0.3597551903399428,
+          -0.37955567572856724
+         ],
+         [
+          0.3025723595225192,
+          0.9312219697067295,
+          0.20316399875099506
+         ],
+         [
+          0.42653988700621326,
+          0.0583253474828094,
+          -0.9025862167315298
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.63,
+       0.1,
+       0.14
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Rib",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.42,
+         314.49,
+         -17.725
+        ],
+        "orientation": [
+         [
+          -0.8523577253980291,
+          -0.3597551903399428,
+          0.37955567572856724
+         ],
+         [
+          -0.3025723595225192,
+          0.9312219697067295,
+          0.20316399875099506
+         ],
+         [
+          -0.42653988700621326,
+          0.0583253474828094,
+          -0.9025862167315298
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.63,
+       0.1,
+       0.14
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Rib",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.42,
+         314.83,
+         -17.677
+        ],
+        "orientation": [
+         [
+          -0.8847501500597832,
+          0.3102138521589045,
+          -0.34782831669938025
+         ],
+         [
+          0.30842133081901396,
+          0.949223252375362,
+          0.06206045315471259
+         ],
+         [
+          0.34941873828548375,
+          -0.052369677091550215,
+          -0.9355019841006791
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.6,
+       0.1,
+       0.14
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Rib",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.42,
+         314.83,
+         -17.677
+        ],
+        "orientation": [
+         [
+          -0.8847501500597832,
+          -0.3102138521589045,
+          0.34782831669938025
+         ],
+         [
+          -0.30842133081901396,
+          0.949223252375362,
+          0.06206045315471259
+         ],
+         [
+          -0.34941873828548375,
+          -0.052369677091550215,
+          -0.9355019841006791
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.6,
+       0.1,
+       0.14
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Rib",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.42,
+         315.17,
+         -17.677
+        ],
+        "orientation": [
+         [
+          -0.8981170345299911,
+          0.26907481188162236,
+          -0.3478283166993802
+         ],
+         [
+          0.30842133081901396,
+          0.949223252375362,
+          -0.06206045315471128
+         ],
+         [
+          0.313467821287741,
+          -0.16301522248185704,
+          -0.9355019841006793
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.57,
+       0.1,
+       0.14
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Rib",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.42,
+         315.17,
+         -17.677
+        ],
+        "orientation": [
+         [
+          -0.8981170345299911,
+          -0.26907481188162236,
+          0.3478283166993802
+         ],
+         [
+          -0.30842133081901396,
+          0.949223252375362,
+          -0.06206045315471128
+         ],
+         [
+          -0.313467821287741,
+          -0.16301522248185704,
+          -0.9355019841006793
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.57,
+       0.1,
+       0.14
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Rib",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.42,
+         315.51,
+         -17.725
+        ],
+        "orientation": [
+         [
+          -0.9010306804512704,
+          0.20995523786691228,
+          -0.37955567572856674
+         ],
+         [
+          0.3025723595225193,
+          0.9312219697067298,
+          -0.20316399875099336
+         ],
+         [
+          0.31079523828156685,
+          -0.29790005241316525,
+          -0.9025862167315305
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.54,
+       0.1,
+       0.14
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Rib",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.42,
+         315.51,
+         -17.725
+        ],
+        "orientation": [
+         [
+          -0.9010306804512704,
+          -0.20995523786691228,
+          0.37955567572856674
+         ],
+         [
+          -0.3025723595225193,
+          0.9312219697067298,
+          -0.20316399875099336
+         ],
+         [
+          -0.31079523828156685,
+          -0.29790005241316525,
+          -0.9025862167315305
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.54,
+       0.1,
+       0.14
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Trapezius",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.55,
+         316.1,
+         -18.08
+        ],
+        "orientation": [
+         [
+          -0.9563047559630354,
+          0.29237170472273677,
+          0
+         ],
+         [
+          0.29237170472273677,
+          0.9563047559630354,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.15,
+       0.42,
+       0.62
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Clavicle",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.55,
+         316.02,
+         -17.64
+        ],
+        "orientation": [
+         [
+          -0.984807753012208,
+          0.17364817766693033,
+          0
+         ],
+         [
+          0.17364817766693033,
+          0.984807753012208,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.0,
+       0.13,
+       0.16
+      ],
+      "Color": [
+       0.8627,
+       0.8,
+       0.4392
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Deltoid",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         1.12,
+         315.65,
+         -18.04
         ],
         "orientation": [
          [
@@ -3697,37 +3842,168 @@
        }
       },
       "Size": [
-       1.7,
-       0.13,
-       0.08
+       0.44,
+       0.95,
+       0.5
       ],
       "Color": [
-       0.549,
-       0.4863,
-       0.2039
+       0.8078,
+       0.7373,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
-     "name": "Rib3",
+     "name": "Trapezius",
      "className": "Part",
      "properties": {
       "Anchored": true,
       "CFrame": {
        "CFrame": {
         "position": [
-         0,
-         314.85,
-         -17.43
+         -0.55,
+         316.1,
+         -18.08
+        ],
+        "orientation": [
+         [
+          -0.9563047559630354,
+          -0.29237170472273677,
+          0
+         ],
+         [
+          -0.29237170472273677,
+          0.9563047559630354,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.15,
+       0.42,
+       0.62
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Clavicle",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.55,
+         316.02,
+         -17.64
+        ],
+        "orientation": [
+         [
+          -0.984807753012208,
+          -0.17364817766693033,
+          0
+         ],
+         [
+          -0.17364817766693033,
+          0.984807753012208,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.0,
+       0.13,
+       0.16
+      ],
+      "Color": [
+       0.8627,
+       0.8,
+       0.4392
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Deltoid",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1.12,
+         315.65,
+         -18.04
         ],
         "orientation": [
          [
@@ -3749,28 +4025,37 @@
        }
       },
       "Size": [
-       1.65,
-       0.13,
-       0.08
+       0.44,
+       0.95,
+       0.5
       ],
       "Color": [
-       0.549,
-       0.4863,
-       0.2039
+       0.8078,
+       0.7373,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
-     "name": "Rib4",
+     "name": "NeckPart",
      "className": "Part",
      "properties": {
       "Anchored": true,
@@ -3778,8 +4063,252 @@
        "CFrame": {
         "position": [
          0,
-         315.3,
-         -17.43
+         317.2,
+         -18.0
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.4,
+       2.4,
+       0.42
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Tendon",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.15,
+         317.15,
+         -17.9
+        ],
+        "orientation": [
+         [
+          -0.9902680687415704,
+          -0.13917310096006544,
+          0
+         ],
+         [
+          -0.13917310096006544,
+          0.9902680687415704,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       2.1,
+       0.12
+      ],
+      "Color": [
+       0.8627,
+       0.8,
+       0.4392
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Tendon",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.15,
+         317.15,
+         -17.9
+        ],
+        "orientation": [
+         [
+          -0.9902680687415704,
+          0.13917310096006544,
+          0
+         ],
+         [
+          0.13917310096006544,
+          0.9902680687415704,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       2.1,
+       0.12
+      ],
+      "Color": [
+       0.8627,
+       0.8,
+       0.4392
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Head",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         319.1,
+         -17.98
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.48,
+       2.1,
+       1.76
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Cranium",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         319.55,
+         -18.3
         ],
         "orientation": [
          [
@@ -3802,24 +4331,4002 @@
       },
       "Size": [
        1.6,
-       0.13,
-       0.08
+       1.56,
+       1.64
       ],
       "Color": [
-       0.549,
-       0.4863,
-       0.2039
+       0.8078,
+       0.7373,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "EyeSocket",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.3,
+         319.38,
+         -17.281
+        ],
+        "orientation": [
+         [
+          -0.8525092187448642,
+          -0.22631412647073304,
+          -0.4711793163062343
+         ],
+         [
+          -0.13581250486808225,
+          0.9663561850595104,
+          -0.21842776178564513
+         ],
+         [
+          0.5047603346901165,
+          -0.12221963736248954,
+          -0.8545638447573728
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.56,
+       0.5,
+       0.2
+      ],
+      "Color": [
+       0.3765,
+       0.3059,
+       0.1569
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "EyeHollow",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.3,
+         319.37,
+         -17.243
+        ],
+        "orientation": [
+         [
+          -0.8537347659814437,
+          -0.22235418831384673,
+          -0.4708455843415121
+         ],
+         [
+          -0.13605544028484473,
+          0.968084760368437,
+          -0.21047758529421356
+         ],
+         [
+          0.5026190073241428,
+          -0.11563092874173538,
+          -0.8567401133335693
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.44,
+       0.4,
+       0.2
+      ],
+      "Color": [
+       0.102,
+       0.0706,
+       0.0392
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Cheekbone",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.56,
+         319.1,
+         -17.495
+        ],
+        "orientation": [
+         [
+          -0.567678157658,
+          0.15210890390524864,
+          -0.8090762576363013
+         ],
+         [
+          0.25881904510252074,
+          0.9659258262890683,
+          0.0
+         ],
+         [
+          0.7815076526882114,
+          -0.20940434441654857,
+          -0.5877036747624071
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.34,
+       0.18,
+       0.2
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Nostril",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.045,
+         319.0,
+         -17.116
+        ],
+        "orientation": [
+         [
+          -0.9269095817704455,
+          -0.3682430902225438,
+          -0.0723578173073901
+         ],
+         [
+          -0.3734099763661291,
+          0.9242221234382959,
+          0.0798652371025985
+         ],
+         [
+          0.03746487384717932,
+          0.10104698437142426,
+          -0.9941759855161743
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.26,
+       0.06
+      ],
+      "Color": [
+       0.102,
+       0.0706,
+       0.0392
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "EyeSocket",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.3,
+         319.38,
+         -17.281
+        ],
+        "orientation": [
+         [
+          -0.8525092187448642,
+          0.22631412647073304,
+          0.4711793163062343
+         ],
+         [
+          0.13581250486808225,
+          0.9663561850595104,
+          -0.21842776178564513
+         ],
+         [
+          -0.5047603346901165,
+          -0.12221963736248954,
+          -0.8545638447573728
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.56,
+       0.5,
+       0.2
+      ],
+      "Color": [
+       0.3765,
+       0.3059,
+       0.1569
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "EyeHollow",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.3,
+         319.37,
+         -17.243
+        ],
+        "orientation": [
+         [
+          -0.8537347659814437,
+          0.22235418831384673,
+          0.4708455843415121
+         ],
+         [
+          0.13605544028484473,
+          0.968084760368437,
+          -0.21047758529421356
+         ],
+         [
+          -0.5026190073241428,
+          -0.11563092874173538,
+          -0.8567401133335693
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.44,
+       0.4,
+       0.2
+      ],
+      "Color": [
+       0.102,
+       0.0706,
+       0.0392
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Cheekbone",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.56,
+         319.1,
+         -17.495
+        ],
+        "orientation": [
+         [
+          -0.567678157658,
+          -0.15210890390524864,
+          0.8090762576363013
+         ],
+         [
+          -0.25881904510252074,
+          0.9659258262890683,
+          0.0
+         ],
+         [
+          -0.7815076526882114,
+          -0.20940434441654857,
+          -0.5877036747624071
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.34,
+       0.18,
+       0.2
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Nostril",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.045,
+         319.0,
+         -17.116
+        ],
+        "orientation": [
+         [
+          -0.9269095817704455,
+          0.3682430902225438,
+          0.0723578173073901
+         ],
+         [
+          0.3734099763661291,
+          0.9242221234382959,
+          0.0798652371025985
+         ],
+         [
+          -0.03746487384717932,
+          0.10104698437142426,
+          -0.9941759855161743
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.26,
+       0.06
+      ],
+      "Color": [
+       0.102,
+       0.0706,
+       0.0392
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.63,
+         318.795,
+         -17.671
+        ],
+        "orientation": [
+         [
+          -0.3961716509250538,
+          0.19795261797453223,
+          -0.8965839525891294
+         ],
+         [
+          1.3877787807814457e-17,
+          0.9764832639878188,
+          0.21559321684991822
+         ],
+         [
+          0.9181764661563252,
+          0.08541192064767524,
+          -0.3868549867947393
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.402,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.63,
+         318.795,
+         -17.646
+        ],
+        "orientation": [
+         [
+          -0.3961716509250538,
+          0.19795261797453223,
+          -0.8965839525891294
+         ],
+         [
+          1.3877787807814457e-17,
+          0.9764832639878188,
+          0.21559321684991822
+         ],
+         [
+          0.9181764661563252,
+          0.08541192064767524,
+          -0.3868549867947393
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.332,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.63,
+         318.861,
+         -17.549
+        ],
+        "orientation": [
+         [
+          -0.4231778775031401,
+          0.15218264336883422,
+          -0.8931746341277339
+         ],
+         [
+          0.0,
+          0.9857932372815119,
+          0.167963369012522
+         ],
+         [
+          0.9060466235199693,
+          0.07107838199699576,
+          -0.4171658898097396
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.124,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
      }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.63,
+         318.729,
+         -17.624
+        ],
+        "orientation": [
+         [
+          -0.357334308890467,
+          0.24642109680491078,
+          -0.9008822535377401
+         ],
+         [
+          1.3877787807814457e-17,
+          0.9645662471264074,
+          0.2638407756668375
+         ],
+         [
+          0.9339765477193591,
+          0.09427936123003412,
+          -0.3446726132959862
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.124,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.54,
+         318.713,
+         -17.548
+        ],
+        "orientation": [
+         [
+          -0.5528483947616637,
+          0.23709794533016232,
+          -0.7988386675228404
+         ],
+         [
+          0.0,
+          0.9586656198860206,
+          0.2845351107483077
+         ],
+         [
+          0.8332818565224204,
+          0.1573047792305341,
+          -0.5299967490671819
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.444,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.54,
+         318.713,
+         -17.523
+        ],
+        "orientation": [
+         [
+          -0.5528483947616637,
+          0.23709794533016232,
+          -0.7988386675228404
+         ],
+         [
+          0.0,
+          0.9586656198860206,
+          0.2845351107483077
+         ],
+         [
+          0.8332818565224204,
+          0.1573047792305341,
+          -0.5299967490671819
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.374,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.54,
+         318.791,
+         -17.422
+        ],
+        "orientation": [
+         [
+          -0.5795876630798817,
+          0.18383488935011474,
+          -0.7939035673576686
+         ],
+         [
+          -1.3877787807814457e-17,
+          0.9742225121272977,
+          0.22558922151640415
+         ],
+         [
+          0.8149098973540579,
+          0.1307487297147025,
+          -0.5646473491236723
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.133,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.54,
+         318.634,
+         -17.507
+        ],
+        "orientation": [
+         [
+          -0.5143560796374247,
+          0.2956255367501175,
+          -0.8050114069758416
+         ],
+         [
+          0.0,
+          0.9387048321417586,
+          0.3447219721945683
+         ],
+         [
+          0.8575767157170366,
+          0.17730984218287946,
+          -0.48282853739714177
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.133,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.45,
+         318.643,
+         -17.471
+        ],
+        "orientation": [
+         [
+          -0.6763421710132811,
+          0.25646075747893027,
+          -0.6904992017246472
+         ],
+         [
+          2.7755575615628914e-17,
+          0.9374298691469322,
+          0.34817415244553374
+         ],
+         [
+          0.7365875831895633,
+          0.2354848621557214,
+          -0.6340233528715321
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.482,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.45,
+         318.643,
+         -17.446
+        ],
+        "orientation": [
+         [
+          -0.6763421710132811,
+          0.25646075747893027,
+          -0.6904992017246472
+         ],
+         [
+          2.7755575615628914e-17,
+          0.9374298691469322,
+          0.34817415244553374
+         ],
+         [
+          0.7365875831895633,
+          0.2354848621557214,
+          -0.6340233528715321
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.412,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.45,
+         318.731,
+         -17.338
+        ],
+        "orientation": [
+         [
+          -0.7015696991316293,
+          0.19848503603474865,
+          -0.6844002102064549
+         ],
+         [
+          -2.7755575615628914e-17,
+          0.9604257695580227,
+          0.2785360679856019
+         ],
+         [
+          0.7126008400643064,
+          0.19541246541396576,
+          -0.6738056181870855
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.143,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.45,
+         318.555,
+         -17.436
+        ],
+        "orientation": [
+         [
+          -0.6389730323892145,
+          0.3230117916433605,
+          -0.698123804449238
+         ],
+         [
+          0.0,
+          0.9075628725619677,
+          0.41991622062867473
+         ],
+         [
+          0.7692291361352168,
+          0.26831514084452274,
+          -0.5799082007647867
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.143,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.36,
+         318.586,
+         -17.418
+        ],
+        "orientation": [
+         [
+          -0.781145998395346,
+          0.2526783106931188,
+          -0.5709330963398515
+         ],
+         [
+          0.0,
+          0.9144463138930785,
+          0.40470722628507805
+         ],
+         [
+          0.6243484036905503,
+          0.3161354303342685,
+          -0.7143160788449527
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.516,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.36,
+         318.586,
+         -17.393
+        ],
+        "orientation": [
+         [
+          -0.781145998395346,
+          0.2526783106931188,
+          -0.5709330963398515
+         ],
+         [
+          0.0,
+          0.9144463138930785,
+          0.40470722628507805
+         ],
+         [
+          0.6243484036905503,
+          0.3161354303342685,
+          -0.7143160788449527
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.446,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.36,
+         318.682,
+         -17.281
+        ],
+        "orientation": [
+         [
+          -0.8023719000451739,
+          0.19419964941487183,
+          -0.5643454883181385
+         ],
+         [
+          0.0,
+          0.9455804963974952,
+          0.32538826781656766
+         ],
+         [
+          0.596824374517242,
+          0.2610824027003873,
+          -0.7587072195401171
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.152,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.36,
+         318.49,
+         -17.39
+        ],
+        "orientation": [
+         [
+          -0.7484256447176394,
+          0.3231033461339053,
+          -0.5791919215994465
+         ],
+         [
+          0.0,
+          0.8733045597456159,
+          0.48717465649140224
+         ],
+         [
+          0.6632187077646299,
+          0.36461400637467223,
+          -0.6536035281624669
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.152,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.27,
+         318.542,
+         -17.382
+        ],
+        "orientation": [
+         [
+          -0.8696800313572631,
+          0.2231255018415544,
+          -0.44030858893097274
+         ],
+         [
+          0.0,
+          0.892006520224258,
+          0.4520225302763242
+         ],
+         [
+          0.4936158861487643,
+          0.3931149683049031,
+          -0.7757602584795159
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.545,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.27,
+         318.542,
+         -17.357
+        ],
+        "orientation": [
+         [
+          -0.8696800313572631,
+          0.2231255018415544,
+          -0.44030858893097274
+         ],
+         [
+          0.0,
+          0.892006520224258,
+          0.4520225302763242
+         ],
+         [
+          0.4936158861487643,
+          0.3931149683049031,
+          -0.7757602584795159
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.475,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.27,
+         318.644,
+         -17.24
+        ],
+        "orientation": [
+         [
+          -0.8846704978338499,
+          0.16995915389931474,
+          -0.43413361568558295
+         ],
+         [
+          -2.7755575615628914e-17,
+          0.9311839685592631,
+          0.3645496080072248
+         ],
+         [
+          0.46621680607031785,
+          0.3225062832008864,
+          -0.8237909850402233
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.162,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.27,
+         318.44,
+         -17.36
+        ],
+        "orientation": [
+         [
+          -0.8455454515459752,
+          0.29030514974641564,
+          -0.44808013725295187
+         ],
+         [
+          0.0,
+          0.8392531286895261,
+          0.543740918071136
+         ],
+         [
+          0.5339034457370667,
+          0.45975766009448177,
+          -0.7096266656591577
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.162,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.18,
+         318.51,
+         -17.359
+        ],
+        "orientation": [
+         [
+          -0.9391490630380281,
+          0.16760188970596124,
+          -0.2998477012781396
+         ],
+         [
+          0.0,
+          0.872893966287278,
+          0.4879099544170671
+         ],
+         [
+          0.343509879617448,
+          0.4582201765377156,
+          -0.8197775505702453
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.571,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.18,
+         318.51,
+         -17.334
+        ],
+        "orientation": [
+         [
+          -0.9391490630380281,
+          0.16760188970596124,
+          -0.2998477012781396
+         ],
+         [
+          0.0,
+          0.872893966287278,
+          0.4879099544170671
+         ],
+         [
+          0.343509879617448,
+          0.4582201765377156,
+          -0.8197775505702453
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.501,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.18,
+         318.616,
+         -17.214
+        ],
+        "orientation": [
+         [
+          -0.9470538595205095,
+          0.12663069268301347,
+          -0.2950485635245951
+         ],
+         [
+          1.3877787807814457e-17,
+          0.9189404487857844,
+          0.3943963128445563
+         ],
+         [
+          0.321074737666025,
+          0.37351455026009533,
+          -0.8702860986920863
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.171,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.18,
+         318.405,
+         -17.341
+        ],
+        "orientation": [
+         [
+          -0.9259156821715308,
+          0.22158735540199756,
+          -0.30590716473266455
+         ],
+         [
+          2.7755575615628914e-17,
+          0.8098561246585942,
+          0.5866285514300881
+         ],
+         [
+          0.3777302602503918,
+          0.5431685753786869,
+          -0.7498584861240545
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.171,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.09,
+         318.491,
+         -17.346
+        ],
+        "orientation": [
+         [
+          -0.9842677065629668,
+          0.09017604854148745,
+          -0.15193867870532732
+         ],
+         [
+          1.3877787807814457e-17,
+          0.859948006445301,
+          0.5103816476037834
+         ],
+         [
+          0.17668356408358243,
+          0.502352173758804,
+          -0.8464190520673118
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.593,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.09,
+         318.491,
+         -17.321
+        ],
+        "orientation": [
+         [
+          -0.9842677065629668,
+          0.09017604854148745,
+          -0.15193867870532732
+         ],
+         [
+          1.3877787807814457e-17,
+          0.859948006445301,
+          0.5103816476037834
+         ],
+         [
+          0.17668356408358243,
+          0.502352173758804,
+          -0.8464190520673118
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.523,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.09,
+         318.598,
+         -17.199
+        ],
+        "orientation": [
+         [
+          -0.9864606768613322,
+          0.06781198325061293,
+          -0.14932135792947018
+         ],
+         [
+          0.0,
+          0.9105073748388288,
+          0.41349282988233854
+         ],
+         [
+          0.1639979664699607,
+          0.4078944168430394,
+          -0.8981797212707457
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.18,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.09,
+         318.384,
+         -17.33
+        ],
+        "orientation": [
+         [
+          -0.9805013090703456,
+          0.1204798261789782,
+          -0.15524752621288893
+         ],
+         [
+          0.0,
+          0.790013284134414,
+          0.6130897249923192
+         ],
+         [
+          0.19651255153638006,
+          0.6011352779325472,
+          -0.7746090592767559
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.18,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.0,
+         318.485,
+         -17.342
+        ],
+        "orientation": [
+         [
+          -1.0,
+          0.0,
+          0.0
+         ],
+         [
+          0.0,
+          0.8553561007328313,
+          0.5180404819501335
+         ],
+         [
+          0.0,
+          0.5180404819501335,
+          -0.8553561007328313
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.61,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.0,
+         318.485,
+         -17.317
+        ],
+        "orientation": [
+         [
+          -1.0,
+          0.0,
+          0.0
+         ],
+         [
+          0.0,
+          0.8553561007328313,
+          0.5180404819501335
+         ],
+         [
+          0.0,
+          0.5180404819501335,
+          -0.8553561007328313
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.54,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.0,
+         318.591,
+         -17.195
+        ],
+        "orientation": [
+         [
+          -1.0,
+          0.0,
+          0.0
+         ],
+         [
+          0.0,
+          0.9071398569255025,
+          0.42082927652098895
+         ],
+         [
+          0.0,
+          0.4208292765209889,
+          -0.9071398569255024
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.19,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.0,
+         318.378,
+         -17.326
+        ],
+        "orientation": [
+         [
+          -1.0,
+          0.0,
+          0.0
+         ],
+         [
+          0.0,
+          0.7836637085314431,
+          0.62118531206939
+         ],
+         [
+          0.0,
+          0.62118531206939,
+          -0.7836637085314432
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.19,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.09,
+         318.491,
+         -17.346
+        ],
+        "orientation": [
+         [
+          -0.9842677065629668,
+          -0.09017604854148745,
+          0.15193867870532732
+         ],
+         [
+          -1.3877787807814457e-17,
+          0.859948006445301,
+          0.5103816476037834
+         ],
+         [
+          -0.17668356408358243,
+          0.502352173758804,
+          -0.8464190520673118
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.593,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.09,
+         318.491,
+         -17.321
+        ],
+        "orientation": [
+         [
+          -0.9842677065629668,
+          -0.09017604854148745,
+          0.15193867870532732
+         ],
+         [
+          -1.3877787807814457e-17,
+          0.859948006445301,
+          0.5103816476037834
+         ],
+         [
+          -0.17668356408358243,
+          0.502352173758804,
+          -0.8464190520673118
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.523,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.09,
+         318.598,
+         -17.199
+        ],
+        "orientation": [
+         [
+          -0.9864606768613322,
+          -0.06781198325061293,
+          0.14932135792947018
+         ],
+         [
+          0.0,
+          0.9105073748388288,
+          0.41349282988233854
+         ],
+         [
+          -0.1639979664699607,
+          0.4078944168430394,
+          -0.8981797212707457
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.18,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.09,
+         318.384,
+         -17.33
+        ],
+        "orientation": [
+         [
+          -0.9805013090703456,
+          -0.1204798261789782,
+          0.15524752621288893
+         ],
+         [
+          0.0,
+          0.790013284134414,
+          0.6130897249923192
+         ],
+         [
+          -0.19651255153638006,
+          0.6011352779325472,
+          -0.7746090592767559
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.18,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.18,
+         318.51,
+         -17.359
+        ],
+        "orientation": [
+         [
+          -0.9391490630380281,
+          -0.16760188970596124,
+          0.2998477012781396
+         ],
+         [
+          0.0,
+          0.872893966287278,
+          0.4879099544170671
+         ],
+         [
+          -0.343509879617448,
+          0.4582201765377156,
+          -0.8197775505702453
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.571,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.18,
+         318.51,
+         -17.334
+        ],
+        "orientation": [
+         [
+          -0.9391490630380281,
+          -0.16760188970596124,
+          0.2998477012781396
+         ],
+         [
+          0.0,
+          0.872893966287278,
+          0.4879099544170671
+         ],
+         [
+          -0.343509879617448,
+          0.4582201765377156,
+          -0.8197775505702453
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.501,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.18,
+         318.616,
+         -17.214
+        ],
+        "orientation": [
+         [
+          -0.9470538595205095,
+          -0.12663069268301347,
+          0.2950485635245951
+         ],
+         [
+          -1.3877787807814457e-17,
+          0.9189404487857844,
+          0.3943963128445563
+         ],
+         [
+          -0.321074737666025,
+          0.37351455026009533,
+          -0.8702860986920863
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.171,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.18,
+         318.405,
+         -17.341
+        ],
+        "orientation": [
+         [
+          -0.9259156821715308,
+          -0.22158735540199756,
+          0.30590716473266455
+         ],
+         [
+          -2.7755575615628914e-17,
+          0.8098561246585942,
+          0.5866285514300881
+         ],
+         [
+          -0.3777302602503918,
+          0.5431685753786869,
+          -0.7498584861240545
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.171,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.27,
+         318.542,
+         -17.382
+        ],
+        "orientation": [
+         [
+          -0.8696800313572631,
+          -0.2231255018415544,
+          0.44030858893097274
+         ],
+         [
+          0.0,
+          0.892006520224258,
+          0.4520225302763242
+         ],
+         [
+          -0.4936158861487643,
+          0.3931149683049031,
+          -0.7757602584795159
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.545,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.27,
+         318.542,
+         -17.357
+        ],
+        "orientation": [
+         [
+          -0.8696800313572631,
+          -0.2231255018415544,
+          0.44030858893097274
+         ],
+         [
+          0.0,
+          0.892006520224258,
+          0.4520225302763242
+         ],
+         [
+          -0.4936158861487643,
+          0.3931149683049031,
+          -0.7757602584795159
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.475,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.27,
+         318.644,
+         -17.24
+        ],
+        "orientation": [
+         [
+          -0.8846704978338499,
+          -0.16995915389931474,
+          0.43413361568558295
+         ],
+         [
+          2.7755575615628914e-17,
+          0.9311839685592631,
+          0.3645496080072248
+         ],
+         [
+          -0.46621680607031785,
+          0.3225062832008864,
+          -0.8237909850402233
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.162,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.27,
+         318.44,
+         -17.36
+        ],
+        "orientation": [
+         [
+          -0.8455454515459752,
+          -0.29030514974641564,
+          0.44808013725295187
+         ],
+         [
+          0.0,
+          0.8392531286895261,
+          0.543740918071136
+         ],
+         [
+          -0.5339034457370667,
+          0.45975766009448177,
+          -0.7096266656591577
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.162,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.36,
+         318.586,
+         -17.418
+        ],
+        "orientation": [
+         [
+          -0.781145998395346,
+          -0.2526783106931188,
+          0.5709330963398515
+         ],
+         [
+          0.0,
+          0.9144463138930785,
+          0.40470722628507805
+         ],
+         [
+          -0.6243484036905503,
+          0.3161354303342685,
+          -0.7143160788449527
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.516,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.36,
+         318.586,
+         -17.393
+        ],
+        "orientation": [
+         [
+          -0.781145998395346,
+          -0.2526783106931188,
+          0.5709330963398515
+         ],
+         [
+          0.0,
+          0.9144463138930785,
+          0.40470722628507805
+         ],
+         [
+          -0.6243484036905503,
+          0.3161354303342685,
+          -0.7143160788449527
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.446,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.36,
+         318.682,
+         -17.281
+        ],
+        "orientation": [
+         [
+          -0.8023719000451739,
+          -0.19419964941487183,
+          0.5643454883181385
+         ],
+         [
+          0.0,
+          0.9455804963974952,
+          0.32538826781656766
+         ],
+         [
+          -0.596824374517242,
+          0.2610824027003873,
+          -0.7587072195401171
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.152,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.36,
+         318.49,
+         -17.39
+        ],
+        "orientation": [
+         [
+          -0.7484256447176394,
+          -0.3231033461339053,
+          0.5791919215994465
+         ],
+         [
+          0.0,
+          0.8733045597456159,
+          0.48717465649140224
+         ],
+         [
+          -0.6632187077646299,
+          0.36461400637467223,
+          -0.6536035281624669
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.152,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.45,
+         318.643,
+         -17.471
+        ],
+        "orientation": [
+         [
+          -0.6763421710132811,
+          -0.25646075747893027,
+          0.6904992017246472
+         ],
+         [
+          -2.7755575615628914e-17,
+          0.9374298691469322,
+          0.34817415244553374
+         ],
+         [
+          -0.7365875831895633,
+          0.2354848621557214,
+          -0.6340233528715321
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.482,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.45,
+         318.643,
+         -17.446
+        ],
+        "orientation": [
+         [
+          -0.6763421710132811,
+          -0.25646075747893027,
+          0.6904992017246472
+         ],
+         [
+          -2.7755575615628914e-17,
+          0.9374298691469322,
+          0.34817415244553374
+         ],
+         [
+          -0.7365875831895633,
+          0.2354848621557214,
+          -0.6340233528715321
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.412,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.45,
+         318.731,
+         -17.338
+        ],
+        "orientation": [
+         [
+          -0.7015696991316293,
+          -0.19848503603474865,
+          0.6844002102064549
+         ],
+         [
+          2.7755575615628914e-17,
+          0.9604257695580227,
+          0.2785360679856019
+         ],
+         [
+          -0.7126008400643064,
+          0.19541246541396576,
+          -0.6738056181870855
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.143,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.45,
+         318.555,
+         -17.436
+        ],
+        "orientation": [
+         [
+          -0.6389730323892145,
+          -0.3230117916433605,
+          0.698123804449238
+         ],
+         [
+          0.0,
+          0.9075628725619677,
+          0.41991622062867473
+         ],
+         [
+          -0.7692291361352168,
+          0.26831514084452274,
+          -0.5799082007647867
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.143,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.54,
+         318.713,
+         -17.548
+        ],
+        "orientation": [
+         [
+          -0.5528483947616637,
+          -0.23709794533016232,
+          0.7988386675228404
+         ],
+         [
+          0.0,
+          0.9586656198860206,
+          0.2845351107483077
+         ],
+         [
+          -0.8332818565224204,
+          0.1573047792305341,
+          -0.5299967490671819
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.444,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.54,
+         318.713,
+         -17.523
+        ],
+        "orientation": [
+         [
+          -0.5528483947616637,
+          -0.23709794533016232,
+          0.7988386675228404
+         ],
+         [
+          0.0,
+          0.9586656198860206,
+          0.2845351107483077
+         ],
+         [
+          -0.8332818565224204,
+          0.1573047792305341,
+          -0.5299967490671819
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.374,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.54,
+         318.791,
+         -17.422
+        ],
+        "orientation": [
+         [
+          -0.5795876630798817,
+          -0.18383488935011474,
+          0.7939035673576686
+         ],
+         [
+          1.3877787807814457e-17,
+          0.9742225121272977,
+          0.22558922151640415
+         ],
+         [
+          -0.8149098973540579,
+          0.1307487297147025,
+          -0.5646473491236723
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.133,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.54,
+         318.634,
+         -17.507
+        ],
+        "orientation": [
+         [
+          -0.5143560796374247,
+          -0.2956255367501175,
+          0.8050114069758416
+         ],
+         [
+          0.0,
+          0.9387048321417586,
+          0.3447219721945683
+         ],
+         [
+          -0.8575767157170366,
+          0.17730984218287946,
+          -0.48282853739714177
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.133,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Lip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.63,
+         318.795,
+         -17.671
+        ],
+        "orientation": [
+         [
+          -0.3961716509250538,
+          -0.19795261797453223,
+          0.8965839525891294
+         ],
+         [
+          -1.3877787807814457e-17,
+          0.9764832639878188,
+          0.21559321684991822
+         ],
+         [
+          -0.9181764661563252,
+          0.08541192064767524,
+          -0.3868549867947393
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.11,
+       0.402,
+       0.16
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "MouthDark",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.63,
+         318.795,
+         -17.646
+        ],
+        "orientation": [
+         [
+          -0.3961716509250538,
+          -0.19795261797453223,
+          0.8965839525891294
+         ],
+         [
+          -1.3877787807814457e-17,
+          0.9764832639878188,
+          0.21559321684991822
+         ],
+         [
+          -0.9181764661563252,
+          0.08541192064767524,
+          -0.3868549867947393
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.1,
+       0.332,
+       0.12
+      ],
+      "Color": [
+       0.1882,
+       0.0471,
+       0.0471
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "ToothUpper",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.63,
+         318.861,
+         -17.549
+        ],
+        "orientation": [
+         [
+          -0.4231778775031401,
+          -0.15218264336883422,
+          0.8931746341277339
+         ],
+         [
+          0.0,
+          0.9857932372815119,
+          0.167963369012522
+         ],
+         [
+          -0.9060466235199693,
+          0.07107838199699576,
+          -0.4171658898097396
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.124,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "ToothLower",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.63,
+         318.729,
+         -17.624
+        ],
+        "orientation": [
+         [
+          -0.357334308890467,
+          -0.24642109680491078,
+          0.9008822535377401
+         ],
+         [
+          -1.3877787807814457e-17,
+          0.9645662471264074,
+          0.2638407756668375
+         ],
+         [
+          -0.9339765477193591,
+          0.09427936123003412,
+          -0.3446726132959862
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.124,
+       0.05
+      ],
+      "Color": [
+       0.9412,
+       0.9176,
+       0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Chin",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         318.18,
+         -17.696
+        ],
+        "orientation": [
+         [
+          -1.0,
+          0.0,
+          0.0
+         ],
+         [
+          0.0,
+          0.5487043662653196,
+          0.8360164582359452
+         ],
+         [
+          0.0,
+          0.8360164582359452,
+          -0.5487043662653198
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.5,
+       0.3,
+       0.32
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
      "name": "LeftUpperArm",
@@ -3829,9 +8336,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         1.35,
-         313.9,
-         -18
+         1.25,
+         314.0,
+         -18.02
         ],
         "orientation": [
          [
@@ -3853,25 +8360,34 @@
        }
       },
       "Size": [
-       0.42,
-       3.6,
-       0.42
+       0.34,
+       3.95,
+       0.36
       ],
       "Color": [
-       0.8392,
-       0.7608,
+       0.8078,
+       0.7373,
        0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
      "name": "LeftLowerArm",
@@ -3881,9 +8397,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         1.35,
-         310.4,
-         -18
+         1.25,
+         310.58,
+         -18.02
         ],
         "orientation": [
          [
@@ -3905,25 +8421,34 @@
        }
       },
       "Size": [
-       0.36,
-       3.4,
-       0.36
+       0.29,
+       3.75,
+       0.3
       ],
       "Color": [
-       0.8392,
-       0.7608,
+       0.8078,
+       0.7373,
        0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
      "name": "LeftHand",
@@ -3933,8 +8458,8 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         1.35,
-         308.15,
+         1.25,
+         308.42,
          -18
         ],
         "orientation": [
@@ -3957,25 +8482,583 @@
        }
       },
       "Size": [
-       0.5,
-       1.1,
-       0.3
+       0.17,
+       0.95,
+       0.4
       ],
       "Color": [
-       0.6588,
-       0.5882,
-       0.2431
+       0.698,
+       0.6275,
+       0.2902
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Finger",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         1.25,
+         307.7,
+         -17.85
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.525,
+       0.07
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "FingerTip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         1.215,
+         307.188,
+         -17.85
+        ],
+        "orientation": [
+         [
+          -0.9876883405951378,
+          0.15643446504023087,
+          0
+         ],
+         [
+          0.15643446504023087,
+          0.9876883405951378,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.06,
+       0.55,
+       0.06
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Finger",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         1.25,
+         307.7,
+         -17.95
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.575,
+       0.07
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "FingerTip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         1.215,
+         307.162,
+         -17.95
+        ],
+        "orientation": [
+         [
+          -0.9876883405951378,
+          0.15643446504023087,
+          0
+         ],
+         [
+          0.15643446504023087,
+          0.9876883405951378,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.06,
+       0.55,
+       0.06
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Finger",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         1.25,
+         307.7,
+         -18.05
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.575,
+       0.07
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "FingerTip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         1.215,
+         307.162,
+         -18.05
+        ],
+        "orientation": [
+         [
+          -0.9876883405951378,
+          0.15643446504023087,
+          0
+         ],
+         [
+          0.15643446504023087,
+          0.9876883405951378,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.06,
+       0.55,
+       0.06
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Finger",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         1.25,
+         307.7,
+         -18.15
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.525,
+       0.07
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "FingerTip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         1.215,
+         307.188,
+         -18.15
+        ],
+        "orientation": [
+         [
+          -0.9876883405951378,
+          0.15643446504023087,
+          0
+         ],
+         [
+          0.15643446504023087,
+          0.9876883405951378,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.06,
+       0.55,
+       0.06
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Thumb",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         1.22,
+         308.05,
+         -17.76
+        ],
+        "orientation": [
+         [
+          -1,
+          0.0,
+          0.0
+         ],
+         [
+          0,
+          0.9271838545667874,
+          0.374606593415912
+         ],
+         [
+          0,
+          0.374606593415912,
+          -0.9271838545667874
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.5,
+       0.07
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
      "name": "LeftUpperLeg",
@@ -3985,9 +9068,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.55,
-         309.45,
-         -18
+         0.44,
+         309.7,
+         -18.02
         ],
         "orientation": [
          [
@@ -4009,25 +9092,95 @@
        }
       },
       "Size": [
-       0.5,
-       3.5,
-       0.5
+       0.44,
+       4.1,
+       0.46
       ],
       "Color": [
-       0.8392,
-       0.7608,
+       0.8078,
+       0.7373,
        0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Kneecap",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.44,
+         307.92,
+         -17.87
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.3,
+       0.38,
+       0.22
+      ],
+      "Color": [
+       0.8627,
+       0.8,
+       0.4392
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
      "name": "LeftLowerLeg",
@@ -4037,9 +9190,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.55,
-         306.15,
-         -18
+         0.44,
+         306.25,
+         -18.02
         ],
         "orientation": [
          [
@@ -4061,25 +9214,95 @@
        }
       },
       "Size": [
-       0.42,
-       3.1,
-       0.42
+       0.33,
+       3.7,
+       0.35
       ],
       "Color": [
-       0.8392,
-       0.7608,
+       0.8078,
+       0.7373,
        0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Calf",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.44,
+         306.9,
+         -18.08
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.3,
+       1.3,
+       0.3
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
      "name": "LeftFoot",
@@ -4089,322 +9312,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.55,
-         304.4,
-         -17.65
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.55,
-       0.4,
-       1.4
-      ],
-      "Color": [
-       0.6588,
-       0.5882,
-       0.2431
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "LeftKnee",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         0.55,
-         307.7,
-         -18
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.55,
-       0.55,
-       0.55
-      ],
-      "Color": [
-       0.6588,
-       0.5882,
-       0.2431
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0,
-      "Shape": "Ball"
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "LeftFinger1",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         1.51,
-         307.15,
-         -18
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.1,
-       0.79,
-       0.1
-      ],
-      "Color": [
-       0.6588,
-       0.5882,
-       0.2431
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "LeftFinger2",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         1.35,
-         307.15,
-         -18
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.1,
-       0.95,
-       0.1
-      ],
-      "Color": [
-       0.6588,
-       0.5882,
-       0.2431
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "LeftFinger3",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         1.19,
-         307.15,
-         -18
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.1,
-       0.79,
-       0.1
-      ],
-      "Color": [
-       0.6588,
-       0.5882,
-       0.2431
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "RightUpperArm",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         -1.35,
-         313.9,
-         -18
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.42,
-       3.6,
-       0.42
-      ],
-      "Color": [
-       0.8392,
-       0.7608,
-       0.3608
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     }
-    },
-    {
-     "name": "RightLowerArm",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         -1.35,
-         310.4,
-         -18
+         0.44,
+         304.35,
+         -17.64
         ],
         "orientation": [
          [
@@ -4427,24 +9337,338 @@
       },
       "Size": [
        0.36,
-       3.4,
+       0.3,
+       1.25
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Toe",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.54,
+         304.28,
+         -17.02
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.09,
+       0.11,
+       0.24
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Toe",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.44,
+         304.28,
+         -17.02
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.09,
+       0.11,
+       0.24
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Toe",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.34,
+         304.28,
+         -17.02
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.09,
+       0.11,
+       0.24
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "RightUpperArm",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1.25,
+         314.0,
+         -18.02
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.34,
+       3.95,
        0.36
       ],
       "Color": [
-       0.8392,
-       0.7608,
+       0.8078,
+       0.7373,
        0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "RightLowerArm",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1.25,
+         310.58,
+         -18.02
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.29,
+       3.75,
+       0.3
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
      "name": "RightHand",
@@ -4454,8 +9678,8 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1.35,
-         308.15,
+         -1.25,
+         308.42,
          -18
         ],
         "orientation": [
@@ -4478,25 +9702,583 @@
        }
       },
       "Size": [
-       0.5,
-       1.1,
-       0.3
+       0.17,
+       0.95,
+       0.4
       ],
       "Color": [
-       0.6588,
-       0.5882,
-       0.2431
+       0.698,
+       0.6275,
+       0.2902
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Finger",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1.25,
+         307.7,
+         -17.85
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.525,
+       0.07
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "FingerTip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1.215,
+         307.188,
+         -17.85
+        ],
+        "orientation": [
+         [
+          -0.9876883405951378,
+          -0.15643446504023087,
+          0
+         ],
+         [
+          -0.15643446504023087,
+          0.9876883405951378,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.06,
+       0.55,
+       0.06
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Finger",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1.25,
+         307.7,
+         -17.95
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.575,
+       0.07
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "FingerTip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1.215,
+         307.162,
+         -17.95
+        ],
+        "orientation": [
+         [
+          -0.9876883405951378,
+          -0.15643446504023087,
+          0
+         ],
+         [
+          -0.15643446504023087,
+          0.9876883405951378,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.06,
+       0.55,
+       0.06
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Finger",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1.25,
+         307.7,
+         -18.05
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.575,
+       0.07
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "FingerTip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1.215,
+         307.162,
+         -18.05
+        ],
+        "orientation": [
+         [
+          -0.9876883405951378,
+          -0.15643446504023087,
+          0
+         ],
+         [
+          -0.15643446504023087,
+          0.9876883405951378,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.06,
+       0.55,
+       0.06
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Finger",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1.25,
+         307.7,
+         -18.15
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.525,
+       0.07
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "FingerTip",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1.215,
+         307.188,
+         -18.15
+        ],
+        "orientation": [
+         [
+          -0.9876883405951378,
+          -0.15643446504023087,
+          0
+         ],
+         [
+          -0.15643446504023087,
+          0.9876883405951378,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.06,
+       0.55,
+       0.06
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Thumb",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1.22,
+         308.05,
+         -17.76
+        ],
+        "orientation": [
+         [
+          -1,
+          0.0,
+          0.0
+         ],
+         [
+          0,
+          0.9271838545667874,
+          0.374606593415912
+         ],
+         [
+          0,
+          0.374606593415912,
+          -0.9271838545667874
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.5,
+       0.07
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
      "name": "RightUpperLeg",
@@ -4506,9 +10288,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.55,
-         309.45,
-         -18
+         -0.44,
+         309.7,
+         -18.02
         ],
         "orientation": [
          [
@@ -4530,25 +10312,95 @@
        }
       },
       "Size": [
-       0.5,
-       3.5,
-       0.5
+       0.44,
+       4.1,
+       0.46
       ],
       "Color": [
-       0.8392,
-       0.7608,
+       0.8078,
+       0.7373,
        0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Kneecap",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.44,
+         307.92,
+         -17.87
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.3,
+       0.38,
+       0.22
+      ],
+      "Color": [
+       0.8627,
+       0.8,
+       0.4392
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
      "name": "RightLowerLeg",
@@ -4558,9 +10410,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.55,
-         306.15,
-         -18
+         -0.44,
+         306.25,
+         -18.02
         ],
         "orientation": [
          [
@@ -4582,25 +10434,95 @@
        }
       },
       "Size": [
-       0.42,
-       3.1,
-       0.42
+       0.33,
+       3.7,
+       0.35
       ],
       "Color": [
-       0.8392,
-       0.7608,
+       0.8078,
+       0.7373,
        0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Calf",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.44,
+         306.9,
+         -18.08
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.3,
+       1.3,
+       0.3
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
      "name": "RightFoot",
@@ -4610,9 +10532,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.55,
-         304.4,
-         -17.65
+         -0.44,
+         304.35,
+         -17.64
         ],
         "orientation": [
          [
@@ -4634,37 +10556,46 @@
        }
       },
       "Size": [
-       0.55,
-       0.4,
-       1.4
+       0.36,
+       0.3,
+       1.25
       ],
       "Color": [
-       0.6588,
-       0.5882,
-       0.2431
+       0.698,
+       0.6275,
+       0.2902
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
-     "name": "RightKnee",
+     "name": "Toe",
      "className": "Part",
      "properties": {
       "Anchored": true,
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.55,
-         307.7,
-         -18
+         -0.34,
+         304.28,
+         -17.02
         ],
         "orientation": [
          [
@@ -4686,38 +10617,46 @@
        }
       },
       "Size": [
-       0.55,
-       0.55,
-       0.55
+       0.09,
+       0.11,
+       0.24
       ],
       "Color": [
-       0.6588,
        0.5882,
-       0.2431
+       0.5176,
+       0.2353
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
-      "Transparency": 0,
-      "Shape": "Ball"
+      "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
-     "name": "RightFinger1",
+     "name": "Toe",
      "className": "Part",
      "properties": {
       "Anchored": true,
       "CFrame": {
        "CFrame": {
         "position": [
-         -1.19,
-         307.15,
-         -18
+         -0.44,
+         304.28,
+         -17.02
         ],
         "orientation": [
          [
@@ -4739,37 +10678,46 @@
        }
       },
       "Size": [
-       0.1,
-       0.79,
-       0.1
+       0.09,
+       0.11,
+       0.24
       ],
       "Color": [
-       0.6588,
        0.5882,
-       0.2431
+       0.5176,
+       0.2353
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
     },
     {
-     "name": "RightFinger2",
+     "name": "Toe",
      "className": "Part",
      "properties": {
       "Anchored": true,
       "CFrame": {
        "CFrame": {
         "position": [
-         -1.35,
-         307.15,
-         -18
+         -0.54,
+         304.28,
+         -17.02
         ],
         "orientation": [
          [
@@ -4791,77 +10739,34 @@
        }
       },
       "Size": [
-       0.1,
-       0.95,
-       0.1
+       0.09,
+       0.11,
+       0.24
       ],
       "Color": [
-       0.6588,
        0.5882,
-       0.2431
+       0.5176,
+       0.2353
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
       "BottomSurface": "Smooth",
       "CanCollide": false,
+      "CanQuery": false,
       "Massless": true,
       "Transparency": 0
      },
      "attributes": {
       "StatueBody": true
-     }
-    },
-    {
-     "name": "RightFinger3",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         -1.51,
-         307.15,
-         -18
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
        }
-      },
-      "Size": [
-       0.1,
-       0.79,
-       0.1
-      ],
-      "Color": [
-       0.6588,
-       0.5882,
-       0.2431
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     }
+      }
+     ]
     }
    ]
   },

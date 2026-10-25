@@ -118,7 +118,24 @@ HIDE_STYLES = {
     "locker": {"body": (4.2, 8.4, 3), "color": (58, 86, 124), "mat": "Metal", "door": (70, 100, 140), "knob": (25, 25, 30)},
     "coffin": {"body": (4.2, 8.4, 2.6), "color": (42, 28, 22), "mat": "Wood", "door": (58, 38, 28), "knob": (170, 140, 80)},
     "confessional": {"body": (5.2, 9, 3.6), "color": (70, 40, 28), "mat": "WoodPlanks", "door": (110, 25, 35), "knob": (200, 170, 90)},
+    "bush": {"body": (8, 7, 8), "color": (28, 52, 26), "mat": "Grass", "door": (28, 52, 26), "knob": (28, 52, 26)},
 }
+
+
+def bush_hide(cx, cz, idx):
+    """Arbusto denso en el que cabe un superviviente."""
+    hidden = dict(Transparency=1, CanCollide=False, CanQuery=False, CanTouch=False)
+    nodes = [
+        part("Body", (cx, 3.2, cz), (8, 8, 8), (28, 52, 26), "Grass", Shape="Ball"),
+        part("Leaves", (cx + 2.2, 4.4, cz + 1.4), (5, 5, 5), (34, 60, 30), "Grass", Shape="Ball", CanCollide=False),
+        part("Leaves", (cx - 2.0, 4.0, cz - 1.6), (4.6, 4.6, 4.6), (24, 46, 22), "Grass", Shape="Ball", CanCollide=False),
+        part("Door", (cx, 2.5, cz - 4.1), (3, 4, 0.3), (28, 52, 26), "Grass", **hidden),
+        part("HidePoint", (cx, 2.9, cz), (1, 1, 1), (255, 0, 0), **hidden),
+        part("ExitPoint", (cx, 3, cz - 6.5), (1, 1, 1), (0, 255, 0), **hidden),
+    ]
+    node = container("Model", f"HideSpot{idx}", nodes)
+    node["attributes"] = {"HideSpot": True, "Style": "bush"}
+    return node
 
 
 def hide_spot(style, cx, cz, quarter, idx, base_y=0.0):
@@ -437,7 +454,7 @@ def shelf_rack():
 
 THEMES = {
     "Mansión": {
-        "seed": 7, "cols": 5, "rows": 5, "cell": 44, "height": 24, "hide": "wardrobe",
+        "seed": 7, "cols": 5, "rows": 5, "cell": 56, "height": 26, "hide": "wardrobe",
         "floor": ((78, 54, 44), "WoodPlanks"), "wall": ((70, 58, 72), "Plaster"),
         "outer": ((52, 40, 50), "Brick"), "ceiling": ((30, 24, 32), "Plaster"),
         "trim": (40, 28, 26), "rug": [(110, 22, 32), (40, 34, 70), (70, 50, 30)],
@@ -445,7 +462,7 @@ THEMES = {
         "props": [dresser, bookshelf, sofa, grandfather_clock, dining_table, piano],
     },
     "Hospital": {
-        "seed": 21, "cols": 6, "rows": 4, "cell": 42, "height": 22, "hide": "locker",
+        "seed": 21, "cols": 6, "rows": 4, "cell": 52, "height": 24, "hide": "locker",
         "floor": ((170, 182, 176), "Marble"), "wall": ((150, 176, 168), "Plaster"),
         "outer": ((110, 120, 118), "Concrete"), "ceiling": ((120, 130, 128), "Concrete"),
         "trim": (90, 110, 104), "rug": [],
@@ -453,7 +470,7 @@ THEMES = {
         "props": [bed, bed, med_cabinet, curtain, med_cart, wheelchair],
     },
     "Oficina": {
-        "seed": 33, "cols": 5, "rows": 5, "cell": 42, "height": 22, "hide": "locker",
+        "seed": 33, "cols": 5, "rows": 5, "cell": 52, "height": 24, "hide": "locker",
         "floor": ((95, 104, 118), "Fabric"), "wall": ((215, 212, 200), "Plaster"),
         "outer": ((90, 95, 105), "Concrete"), "ceiling": ((200, 200, 195), "Plaster"),
         "trim": (80, 85, 95), "rug": [],
@@ -461,7 +478,7 @@ THEMES = {
         "props": [cubicle, cubicle, cubicle, water_cooler, printer, filing, plant],
     },
     "Banco": {
-        "seed": 55, "cols": 5, "rows": 4, "cell": 44, "height": 24, "hide": "locker",
+        "seed": 55, "cols": 5, "rows": 4, "cell": 56, "height": 26, "hide": "locker",
         "floor": ((225, 220, 210), "Marble"), "wall": ((180, 160, 120), "Plaster"),
         "outer": ((150, 130, 100), "Sandstone"), "ceiling": ((200, 190, 170), "Plaster"),
         "trim": (120, 90, 50), "rug": [(130, 20, 30)],
@@ -469,7 +486,7 @@ THEMES = {
         "props": [teller, vault_door, gold_stack, money_bags, rope_posts, column, plant],
     },
     "Hotel": {
-        "seed": 77, "cols": 6, "rows": 4, "cell": 40, "height": 22, "hide": "wardrobe",
+        "seed": 77, "cols": 6, "rows": 4, "cell": 50, "height": 24, "hide": "wardrobe",
         "floor": ((110, 25, 35), "Fabric"), "wall": ((210, 190, 150), "Plaster"),
         "outer": ((120, 80, 60), "Brick"), "ceiling": ((230, 220, 200), "Plaster"),
         "trim": (70, 45, 30), "rug": [(200, 160, 80)],
@@ -477,7 +494,7 @@ THEMES = {
         "props": [double_bed, double_bed, nightstand, luggage_cart, reception, armchair, plant],
     },
     "Fábrica": {
-        "seed": 91, "cols": 5, "rows": 5, "cell": 46, "height": 24, "hide": "locker",
+        "seed": 91, "cols": 5, "rows": 5, "cell": 56, "height": 26, "hide": "locker",
         "floor": ((110, 110, 105), "Concrete"), "wall": ((120, 110, 100), "CorrodedMetal"),
         "outer": ((100, 95, 90), "DiamondPlate"), "ceiling": ((70, 70, 72), "Metal"),
         "trim": (200, 170, 40), "rug": [],
@@ -485,7 +502,7 @@ THEMES = {
         "props": [crate_stack, barrels, conveyor, pipes, machine, shelf_rack],
     },
     "Escuela Nocturna": {
-        "seed": 42, "cols": 5, "rows": 5, "cell": 40, "height": 22, "hide": "locker",
+        "seed": 42, "cols": 5, "rows": 5, "cell": 50, "height": 24, "hide": "locker",
         "floor": ((120, 112, 100), "Concrete"), "wall": ((200, 190, 160), "Plaster"),
         "outer": ((150, 80, 60), "Brick"), "ceiling": ((160, 158, 150), "Concrete"),
         "trim": (60, 90, 130), "rug": [(60, 90, 130)],
@@ -494,7 +511,7 @@ THEMES = {
     },
 }
 
-DOOR = 12
+DOOR = 16
 DOOR_TOP = 18  # Verity mide ~16 studs
 
 
@@ -530,7 +547,7 @@ def build_map(name, t, origin):
         structure.append(part("Lintel", pos, size, *t["wall"]))
 
     def wall_line(axis, fixed, start, length):
-        if rng.random() < 0.15:  # habitación abierta
+        if rng.random() < 0.3:  # habitación abierta: mapas más espaciosos
             return
         walls.add((axis, round(fixed, 2), round(start, 2)))
         if rng.random() < 0.3:
@@ -602,7 +619,7 @@ def build_map(name, t, origin):
         if rng.random() > 0.06:
             lamp = part("Lamp", (cx, h - 0.4, cz), (2.4, 0.6, 2.4), t["lamp"], "Neon", CanCollide=False,
                         Tags=["MansionLamp"], attributes={"Flicker": rng.random() < 0.45},
-                        children=[point_light(t["lamp"], 30, t["lamp_brightness"] * 1.2, True)])
+                        children=[point_light(t["lamp"], 40, t["lamp_brightness"] * 1.3, True)])
             lights.append(lamp)
         if t["rug"] and rng.random() < 0.7:
             decor.append(part("Rug", (cx, 0.05, cz), (rng.choice([12, 14, 16]), 0.1, rng.choice([10, 12])), rng.choice(t["rug"]), "Fabric", CanCollide=False))
@@ -664,8 +681,8 @@ def build_map(name, t, origin):
 # ---------------------------------------------------------------------------
 
 OUTDOOR = {
-    "Bosque Nocturno": {"seed": 101, "size": 300, "kind": "forest"},
-    "Cementerio": {"seed": 202, "size": 280, "kind": "cemetery"},
+    "Bosque Nocturno": {"seed": 101, "size": 470, "kind": "forest"},
+    "Cementerio": {"seed": 202, "size": 430, "kind": "cemetery"},
 }
 
 HIDDEN = dict(Transparency=1, CanCollide=False, CanQuery=False, CanTouch=False)
@@ -821,7 +838,7 @@ def build_outdoor(name, t, origin):
             lights.append(lamp_post(lx + 5, lz + 5))
             blocked.append((lx + 5, lz + 5, 3))
         # arbustos (cobertura) y rocas
-        for _ in range(45):
+        for _ in range(65):
             pt = random_point(4)
             if pt:
                 r = rng.uniform(4, 7)
@@ -833,7 +850,7 @@ def build_outdoor(name, t, origin):
                 r = rng.uniform(2.5, 5)
                 decor.append(part("Rock", (pt[0], r * 0.3, pt[1]), (r, r * 0.7, r * 1.2), (80, 80, 84), "Slate"))
                 blocked.append((pt[0], pt[1], r / 2))
-        tree_count, dead = 95, False
+        tree_count, dead = 190, False
     else:
         # capilla al fondo, criptas y lápidas
         cx, cz = ox, oz - half + 50
@@ -875,10 +892,10 @@ def build_outdoor(name, t, origin):
             for y in (2.5, 7.5):
                 decor.append(part("FenceRail", (px, y, pz), (sx, 0.3, sz), (28, 28, 32), "Metal"))
         # lápidas en hileras
-        for gx in range(-6, 7):
-            for gz in range(-5, 6):
+        for gx in range(-11, 12):
+            for gz in range(-10, 11):
                 x, z = ox + gx * 17 + rng.uniform(-2, 2), oz + gz * 19 + rng.uniform(-2, 2)
-                if not free(x, z, 3) or rng.random() < 0.25:
+                if not free(x, z, 3) or rng.random() < 0.5:
                     continue
                 yaw = math.radians(rng.uniform(-8, 8))
                 if rng.random() < 0.3:
@@ -895,7 +912,62 @@ def build_outdoor(name, t, origin):
             if free(lx, lz, 2):
                 lights.append(lamp_post(lx, lz, (190, 210, 255)))
                 blocked.append((lx, lz, 2))
-        tree_count, dead = 30, True
+        tree_count, dead = 70, True
+
+    # Muros que cortan la línea de visión: setos en el bosque, piedra en el
+    # cementerio. Tramos sobre una rejilla, con huecos, sin tapar los caminos.
+    wall_color, wall_mat, wall_h = ((30, 56, 28), "Grass", 14) if forest else ((84, 82, 80), "Cobblestone", 12)
+    step = 44
+    for gx in range(-int(half / step), int(half / step) + 1):
+        for gz in range(-int(half / step), int(half / step) + 1):
+            for horizontal in (True, False):
+                if rng.random() > 0.38:
+                    continue
+                length = rng.uniform(18, step)
+                x = ox + gx * step + (length / 2 if horizontal else 0)
+                z = oz + gz * step + (0 if horizontal else length / 2)
+                if abs(x - ox) > half - 20 or abs(z - oz) > half - 20:
+                    continue
+                if (horizontal and abs(z - oz) < 9) or (not horizontal and abs(x - ox) < 9):
+                    continue  # no cortar los caminos principales
+                samples = [(x + (k / 4 - 0.5) * length, z) if horizontal else (x, z + (k / 4 - 0.5) * length) for k in range(5)]
+                if not all(free(px, pz, 4) for px, pz in samples):
+                    continue
+                size3 = (length, wall_h, 3) if horizontal else (3, wall_h, length)
+                decor.append(part("Hedge" if forest else "StoneWall", (x, wall_h / 2, z), size3, wall_color, wall_mat))
+                if not forest and rng.random() < 0.5:
+                    cap = (length + 0.6, 0.6, 3.6) if horizontal else (3.6, 0.6, length + 0.6)
+                    decor.append(part("WallCap", (x, wall_h + 0.3, z), cap, (70, 68, 66), "Slate"))
+                for px, pz in samples:
+                    blocked.append((px, pz, 3))
+
+    # Cobertizos / mausoleos extra con un escondite dentro
+    extra_buildings = 5 if forest else 5
+    for k in range(extra_buildings):
+        pt = random_point(14, margin=35)
+        if not pt or math.dist(pt, (ox, oz)) < 50:
+            continue
+        bx, bz = pt
+        quarter = rng.randint(0, 3)
+        if forest:
+            nodes, rot = building(bx, bz, quarter, 20, 16, 21, (80, 56, 40), "WoodPlanks", (44, 34, 28))
+        else:
+            nodes, rot = building(bx, bz, quarter, 18, 16, 21, (120, 118, 112), "Slate", (55, 55, 60))
+        lx, lz = rot(0, 3)
+        nodes.append(part("Lantern", (bx + lx, 14, bz + lz), (0.8, 1, 0.8), (255, 180, 100), "Neon", CanCollide=False,
+                          Tags=["MansionLamp"], attributes={"Flicker": True}, children=[point_light((255, 180, 110), 18, 0.8, True)]))
+        decor.append(container("Model", f"Shed{k + 1}", nodes))
+        hx, hz = rot(0, 5.5)
+        add_hide("wardrobe" if forest else "coffin", bx + hx, bz + hz, quarter)
+        blocked.append((bx, bz, 14))
+
+    # Arbustos densos para esconderse
+    for _ in range(18 if forest else 10):
+        pt = random_point(6, margin=20)
+        if pt:
+            hide_count += 1
+            hides.append(bush_hide(pt[0], pt[1], hide_count))
+            blocked.append((pt[0], pt[1], 6))
 
     # árboles interiores y anillo exterior que cierra el mapa
     for _ in range(tree_count):
@@ -1140,7 +1212,7 @@ def main():
         old.unlink()
     names = list(THEMES) + list(OUTDOOR)
     for i, name in enumerate(names):
-        origin = ((i - (len(names) - 1) / 2) * 400, 0)
+        origin = ((i - (len(names) - 1) / 2) * 620, 0)
         if name in THEMES:
             data = build_map(name, THEMES[name], origin)
         else:

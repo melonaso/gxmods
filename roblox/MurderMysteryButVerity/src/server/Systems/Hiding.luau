@@ -55,10 +55,11 @@ local function setVisible(character: Model, who: Instance, visible: boolean)
 		end
 		saved[who] = list
 	end
-	-- la etiqueta con el nombre también delataría al escondido
+	-- durante la ronda nadie lleva etiqueta de nombre (ver Round), así que
+	-- tampoco se restaura al salir del escondite
 	local humanoid = character:FindFirstChildOfClass("Humanoid")
 	if humanoid then
-		humanoid.DisplayDistanceType = if visible then Enum.HumanoidDisplayDistanceType.Viewer else Enum.HumanoidDisplayDistanceType.None
+		humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
 	end
 end
 

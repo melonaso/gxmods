@@ -21,7 +21,7 @@ Encontrados con ForgeGUI (`toolbox_search`). El juego quita todos los scripts de
 | 90398340255135 | verity | Cessybee |
 | 72873880902024 | verity | pro123game123start |
 
-Sin importar nada, el juego intenta `InsertService:LoadAsset` (solo funciona si el creador del juego posee el modelo) y, si falla, usa `ServerStorage/VerityFallback`, un modelo de respaldo hecho con piezas.
+Si no importas ninguno, se usa `ServerStorage/VerityFallback`: un modelo esbelto hecho con elipsoides, con costillas, clavículas, tendones y una cabeza de calavera sonriente (sin ojos: cuencas vacías, cavidad nasal y una sonrisa enorme de 30 dientes). Antes de eso, el juego intenta `InsertService:LoadAsset` (solo funciona si el creador del juego posee el modelo).
 
 ## Modo prueba (activado)
 `Config.Testing.Enabled = true` en [`src/shared/Config.luau`](src/shared/Config.luau):
@@ -71,7 +71,7 @@ Ponlo en `false` antes de publicar.
 - **Pases (Robux):** 2x/3x de probabilidad de ser Verity y la Poción de Verity. Pon los IDs en `Config.luau`.
 
 ## Mapas y lobby
-Mapas **inspirados** en los clásicos de MM2 (construcciones propias, no copias de los originales), más grandes y oscuros para poder esconderse: **Mansión, Hospital, Oficina, Banco, Hotel, Fábrica** y **Escuela Nocturna** (20–25 habitaciones cada uno, con 10–17 escondites). Al aire libre y de noche: **Bosque Nocturno** (cabañas, fogata, tiendas de campaña) y **Cementerio** (capilla, criptas, tumbas y verja). Están en `Workspace/Maps` para verlos en Studio; al iniciar se mueven a `ServerStorage/Maps` y cada ronda usa uno al azar.
+Mapas **inspirados** en los clásicos de MM2 (construcciones propias, no copias de los originales), amplios y con escondites: **Mansión, Hospital, Oficina, Banco, Hotel, Fábrica** y **Escuela Nocturna** (habitaciones de 50–56 studs, puertas anchas y algunas paredes abiertas). Al aire libre y de noche, con setos o muros de piedra que cortan la visión, cabañas, cobertizos y arbustos donde esconderse: **Bosque Nocturno** (~470 studs, 31 escondites) y **Cementerio** (~430 studs, 24 escondites). Durante la ronda nadie muestra la etiqueta de nombre, así que no delata a quien se esconde. Están en `Workspace/Maps` para verlos en Studio; al iniciar se mueven a `ServerStorage/Maps` y cada ronda usa uno al azar.
 
 El **lobby** tiene la estatua de Verity mirando al spawn, el puesto de la **tienda** y un **obby** sobre lava con un cofre de monedas al final.
 

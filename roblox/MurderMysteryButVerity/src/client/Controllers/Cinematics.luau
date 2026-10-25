@@ -7,6 +7,7 @@
 --     la bola se convierte en el monstruo
 --   - ataque: pequeño zoom (campo de visión) mientras Verity levanta a la víctima
 
+local CollectionService = game:GetService("CollectionService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
@@ -29,6 +30,7 @@ local title: CanvasGroup
 local titleLabel: TextLabel
 local subtitleLabel: TextLabel
 local busy = false
+local introToken = 0
 
 local function tween(inst: Instance, time: number, goal: { [string]: any })
 	local t = TweenService:Create(inst, TweenInfo.new(time, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), goal)
@@ -138,12 +140,19 @@ local function rootPosition(): Vector3?
 end
 
 local function ballPosition(): Vector3?
-	for _, inst in Workspace:GetDescendants() do
-		if inst:IsA("Model") and inst.Name == "VerityBall" and inst:GetAttribute("Owner") == player.Name then
+	for _, inst in CollectionService:GetTagged("VerityBall") do
+		if inst:IsA("Model") and inst:GetAttribute("Owner") == player.Name then
 			return inst:GetPivot().Position
 		end
 	end
 	return nil
+end
+
+-- Oculta el título del mapa (también al volver al lobby, pase lo que pase).
+local function hideTitle()
+	introToken += 1
+	tween(title, 0.6, { GroupTransparency = 1 })
+	letterbox(Workspace:GetAttribute("Phase") == "Results")
 end
 
 local function facingAngle(): number
@@ -157,6 +166,14 @@ local function facingAngle(): number
 end
 
 local function roundIntro(mapName: string)
+	introToken += 1
+	local token = introToken
+	-- el título se oculta solo, aunque la cámara falle
+	task.delay(4.2, function()
+		if introToken == token then
+			hideTitle()
+		end
+	end)
 	titleLabel.Text = string.upper(mapName)
 	local role = player:GetAttribute("Role")
 	subtitleLabel.Text = if role == "Verity" then "Despierta y atrápalos a todos" else "Sobrevive hasta el amanecer"
@@ -167,10 +184,10 @@ local function roundIntro(mapName: string)
 	local focus = if isVerity then function()
 		return ballPosition() or rootPosition()
 	end else rootPosition
-	orbit(focus, 3.6, if isVerity then { 18, 12 } else { 13, 9 }, { 6, 3 }, math.rad(110), facingAngle() + math.rad(130))
-	task.wait(3.4)
-	tween(title, 0.8, { GroupTransparency = 1 })
-	letterbox(false)
+	local ok, err = pcall(orbit, focus, 3.6, if isVerity then { 18, 12 } else { 13, 9 }, { 6, 3 }, math.rad(110), facingAngle() + math.rad(130))
+	if not ok then
+		warn(`[Cinematics] cámara de introducción: {err}`)
+	end
 end
 
 local function transformShot()
@@ -219,11 +236,15 @@ function Cinematics.start()
 		if typeof(name) == "string" then
 			task.wait(0.6) -- deja que el personaje llegue al mapa
 			roundIntro(name)
+		else
+			hideTitle()
 		end
 	end)
 	Workspace:GetAttributeChangedSignal("Phase"):Connect(function()
 		local phase = Workspace:GetAttribute("Phase")
-		letterbox(phase == "Results")
+		if phase ~= "Starting" and phase ~= "Playing" then
+			hideTitle()
+		end
 	end)
 	Net.get("Effect").OnClientEvent:Connect(function(kind)
 		if kind == "Transform" then

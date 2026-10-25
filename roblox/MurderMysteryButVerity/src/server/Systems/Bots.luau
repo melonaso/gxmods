@@ -271,6 +271,7 @@ function Bots.spawn(count: number, spawns: { CFrame }, ctx: Context): { Model }
 		bot:SetAttribute("Gold", 0)
 		local humanoid = bot:FindFirstChildOfClass("Humanoid") :: Humanoid
 		humanoid.DisplayName = `{name} (NPC)`
+		humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None -- Verity no ve etiquetas
 		humanoid.WalkSpeed = M.BotWalk
 		humanoid.BreakJointsOnDeath = false
 		bot:PivotTo(spawns[(i - 1) % #spawns + 1] + Vector3.new(rng:NextNumber(-2, 2), 0, rng:NextNumber(-2, 2)))

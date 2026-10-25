@@ -180,6 +180,8 @@ local function playRound()
 			local humanoid = character and character:FindFirstChildOfClass("Humanoid")
 			if character and humanoid and humanoid.Health > 0 then
 				character:PivotTo(nextSpawn())
+				-- sin etiqueta de nombre: delataría a quien se esconde (vuelve al reaparecer en el lobby)
+				humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
 				watchDeath(player, humanoid, character)
 			else
 				survivors[player] = false
