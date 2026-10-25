@@ -390,25 +390,26 @@ local PRESETS: { [string]: Preset } = {
 		dof = { FarIntensity = 0.12, FocusDistance = 45, InFocusRadius = 50, NearIntensity = 0 },
 		rays = 0.06,
 	},
-	-- Filtro nocturno de invierno (subtono azul) en todos los mapas: luz ambiente
-	-- y niebla azuladas, desaturado y tinte frío. Las lámparas siguen cálidas,
-	-- así contrastan con el frío.
+	-- Noche de invierno cinematográfica: sombras azul marino (se distinguen
+	-- las formas, no los detalles), niebla oscura que se traga lo lejano y
+	-- lámparas cálidas que dejan "charcos" de luz anaranjada con mucho
+	-- contraste. Los bordes de la pantalla se oscurecen (Cinematics).
 	Indoor = {
-		lighting = { ClockTime = 0, Brightness = 0.9, ExposureCompensation = 0.3, Ambient = Color3.fromRGB(70, 78, 108), OutdoorAmbient = Color3.fromRGB(64, 74, 104),
-			ColorShift_Top = Color3.fromRGB(90, 120, 170), ColorShift_Bottom = Color3.fromRGB(40, 55, 90) },
-		atmosphere = { Density = 0.3, Offset = 0, Color = Color3.fromRGB(110, 128, 165), Decay = Color3.fromRGB(60, 74, 108), Glare = 0, Haze = 1.3 },
-		color = { Brightness = 0.03, Contrast = 0.12, Saturation = -0.25, TintColor = Color3.fromRGB(205, 222, 255) },
-		bloom = { Intensity = 0.7, Size = 28, Threshold = 1.3 },
-		dof = { FarIntensity = 0.12, FocusDistance = 40, InFocusRadius = 60, NearIntensity = 0 },
+		lighting = { ClockTime = 0, Brightness = 0.4, ExposureCompensation = 0.1, Ambient = Color3.fromRGB(40, 50, 88), OutdoorAmbient = Color3.fromRGB(34, 44, 78),
+			ColorShift_Top = Color3.fromRGB(40, 60, 110), ColorShift_Bottom = Color3.fromRGB(10, 14, 30) },
+		atmosphere = { Density = 0.36, Offset = 0, Color = Color3.fromRGB(38, 48, 84), Decay = Color3.fromRGB(12, 16, 34), Glare = 0, Haze = 1.5 },
+		color = { Brightness = -0.03, Contrast = 0.28, Saturation = -0.05, TintColor = Color3.fromRGB(190, 205, 255) },
+		bloom = { Intensity = 1, Size = 32, Threshold = 1 },
+		dof = { FarIntensity = 0.2, FocusDistance = 34, InFocusRadius = 46, NearIntensity = 0 },
 		rays = 0,
 	},
 	Outdoor = {
-		lighting = { ClockTime = 0.3, Brightness = 1.8, ExposureCompensation = 0.35, Ambient = Color3.fromRGB(66, 76, 108), OutdoorAmbient = Color3.fromRGB(104, 120, 165),
-			ColorShift_Top = Color3.fromRGB(120, 150, 210), ColorShift_Bottom = Color3.fromRGB(50, 65, 100) },
-		atmosphere = { Density = 0.3, Offset = 0.05, Color = Color3.fromRGB(130, 150, 190), Decay = Color3.fromRGB(70, 86, 125), Glare = 0.15, Haze = 1.6 },
-		color = { Brightness = 0.03, Contrast = 0.12, Saturation = -0.28, TintColor = Color3.fromRGB(200, 218, 255) },
-		bloom = { Intensity = 0.8, Size = 30, Threshold = 1.2 },
-		dof = { FarIntensity = 0.12, FocusDistance = 45, InFocusRadius = 70, NearIntensity = 0 },
+		lighting = { ClockTime = 0.3, Brightness = 0.8, ExposureCompensation = 0.1, Ambient = Color3.fromRGB(36, 46, 84), OutdoorAmbient = Color3.fromRGB(52, 66, 114),
+			ColorShift_Top = Color3.fromRGB(60, 90, 160), ColorShift_Bottom = Color3.fromRGB(14, 18, 40) },
+		atmosphere = { Density = 0.38, Offset = 0.05, Color = Color3.fromRGB(44, 58, 100), Decay = Color3.fromRGB(14, 18, 40), Glare = 0.1, Haze = 1.8 },
+		color = { Brightness = -0.03, Contrast = 0.28, Saturation = -0.05, TintColor = Color3.fromRGB(185, 200, 255) },
+		bloom = { Intensity = 1, Size = 32, Threshold = 1 },
+		dof = { FarIntensity = 0.2, FocusDistance = 40, InFocusRadius = 56, NearIntensity = 0 },
 		rays = 0,
 	},
 }

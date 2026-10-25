@@ -587,8 +587,24 @@ def slab_pieces(x_lo, x_hi, z_lo, z_hi, holes):
     return pieces
 
 
+def night_color(color, factor=0.62):
+    """Oscurece las superficies claras (mármol, yeso...) para que no queden
+    lavadas de noche; los colores ya oscuros se dejan casi igual."""
+    lum = 0.3 * color[0] + 0.59 * color[1] + 0.11 * color[2]
+    k = 1 - (1 - factor) * min(1, max(0, (lum - 70) / 130))
+    return tuple(round(c * k) for c in color)
+
+
+def warm_light(color, amount=0.35):
+    """Luz de lámpara algo más anaranjada (contraste cálido con la noche azul)."""
+    return tuple(round(c + (o - c) * amount) for c, o in zip(color, (255, 130, 70)))
+
+
 def build_map(name, t, origin):
     rng = random.Random(t["seed"])
+    t = dict(t)
+    for key in ("floor", "wall", "outer", "ceiling"):
+        t[key] = (night_color(t[key][0]), t[key][1])
     cols, rows, cell, h = t["cols"], t["rows"], t["cell"], t["height"]
     floors = t.get("floors", 2)
     story = h + SLAB
@@ -755,11 +771,12 @@ def build_map(name, t, origin):
             cx, cz = center(i, j)
             stairs = (i, j) in stair_here
             # cada habitación con su lámpara; unas pocas sin luz para esconderse
-            if rng.random() > 0.08:
+            if rng.random() > 0.1:
                 lx = cx + cell / 4 if stairs else cx
+                # charco de luz cálida: intenso cerca, se apaga rápido
                 lamp = part("Lamp", (lx, base + h - 0.4, cz), (2.4, 0.6, 2.4), t["lamp"], "Neon", CanCollide=False,
                             Tags=["MansionLamp"], attributes={"Flicker": rng.random() < 0.45},
-                            children=[point_light(t["lamp"], 38, t["lamp_brightness"] * 1.2, True)])
+                            children=[point_light(warm_light(t["lamp"]), 32, t["lamp_brightness"] * 1.6, True)])
                 lights.append(lamp)
             if t["rug"] and not stairs and rng.random() < 0.7:
                 decor.append(part("Rug", (cx, base + 0.05, cz), (rng.choice([12, 14, 16]), 0.1, rng.choice([10, 12])), rng.choice(t["rug"]), "Fabric", CanCollide=False))

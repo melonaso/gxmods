@@ -86,7 +86,7 @@ Para regenerarlos: `python3 tools/generate_world.py`. Para un mapa propio, copia
 
 ## Aspecto cinematográfico
 - Iluminación **Future** (sombras reales de cada lámpara), corrección de color, bloom, profundidad de campo y niebla atmosférica.
-- Tres ambientes: lobby al atardecer y, en los mapas, un **filtro nocturno de invierno** con subtono azul (luz ambiente y niebla azuladas, colores fríos y algo desaturados) que deja ver bien a media distancia. Las lámparas siguen cálidas y parpadean; un 8 % de habitaciones queda sin luz.
+- Lobby al atardecer y, en los mapas, una **noche de invierno cinematográfica**: sombras azul marino (se distinguen las formas, no los detalles), niebla oscura que se traga lo lejano, superficies claras atenuadas y lámparas cálidas que dejan charcos de luz anaranjada con mucho contraste y bloom. Los bordes de la pantalla se oscurecen durante la ronda. Un 10 % de habitaciones queda sin luz.
 
 ## Animaciones de Verity
 Procedurales, en `VerityAnimator.luau`: reposo con tics de cabeza, caminar, correr encorvada con los brazos atrás, agacharse, la pose de transformación y el ataque. Se aplican modificando `C0` localmente, por lo que ningún Animator de Roblox las pisa y funcionan con cualquier rig.

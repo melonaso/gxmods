@@ -6,6 +6,7 @@
 --   - transformación: si eres Verity, la cámara orbita a tu alrededor mientras
 --     la bola se convierte en el monstruo
 --   - ataque: pequeño zoom (campo de visión) mientras Verity levanta a la víctima
+--   - viñeta: los bordes de la pantalla se oscurecen durante la ronda
 
 local CollectionService = game:GetService("CollectionService")
 local Players = game:GetService("Players")
@@ -26,6 +27,7 @@ local T = Locale.t
 local Cinematics = {}
 
 local gui: ScreenGui
+local vignetteGui: ScreenGui
 local topBar: Frame
 local bottomBar: Frame
 local title: CanvasGroup
@@ -46,7 +48,39 @@ local function letterbox(show: boolean)
 	tween(bottomBar, 0.6, { Size = UDim2.fromScale(1, h) })
 end
 
+local function buildVignette()
+	-- debajo del HUD y de la viñeta roja de terror
+	vignetteGui = UI.new("ScreenGui", {
+		Name = "CinematicVignette",
+		IgnoreGuiInset = true,
+		ResetOnSpawn = false,
+		DisplayOrder = -2,
+		Enabled = false,
+		Parent = player:WaitForChild("PlayerGui"),
+	})
+	-- dos degradados cruzados: bordes oscuros, esquinas aún más
+	for _, rotation in { 0, 90 } do
+		UI.new("Frame", {
+			Size = UDim2.fromScale(1, 1),
+			BackgroundColor3 = Color3.fromRGB(2, 4, 12),
+			BorderSizePixel = 0,
+			Parent = vignetteGui,
+		}, {
+			UI.new("UIGradient", {
+				Rotation = rotation,
+				Transparency = NumberSequence.new({
+					NumberSequenceKeypoint.new(0, 0.25),
+					NumberSequenceKeypoint.new(0.3, 1),
+					NumberSequenceKeypoint.new(0.7, 1),
+					NumberSequenceKeypoint.new(1, 0.25),
+				}),
+			}),
+		})
+	end
+end
+
 local function build()
+	buildVignette()
 	gui = UI.new("ScreenGui", {
 		Name = "Cinematics",
 		IgnoreGuiInset = true,
@@ -250,12 +284,15 @@ function Cinematics.start()
 			hideTitle()
 		end
 	end)
-	Workspace:GetAttributeChangedSignal("Phase"):Connect(function()
+	local function onPhase()
 		local phase = Workspace:GetAttribute("Phase")
+		vignetteGui.Enabled = phase == "Starting" or phase == "Playing" or phase == "Results"
 		if phase ~= "Starting" and phase ~= "Playing" then
 			hideTitle()
 		end
-	end)
+	end
+	Workspace:GetAttributeChangedSignal("Phase"):Connect(onPhase)
+	vignetteGui.Enabled = Workspace:GetAttribute("Phase") == "Playing"
 	Net.get("Effect").OnClientEvent:Connect(function(kind)
 		if kind == "Transform" then
 			transformShot()
