@@ -1,6 +1,11 @@
 --!strict
 -- Único LocalScript: carga los controladores en dos fases.
 
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+-- el traductor del jugador debe estar listo antes de construir la interfaz
+require(ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Locale")).init(3)
+
 local Controllers = script.Controllers
 
 local loaded: { any } = {}

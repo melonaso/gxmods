@@ -11,11 +11,13 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 
 local Config = require(ReplicatedStorage.Shared.Config)
+local Locale = require(ReplicatedStorage.Shared.Locale)
 local Net = require(ReplicatedStorage.Shared.Net)
 local UI = require(script.Parent.Parent.Lib.UI)
 
 local player = Players.LocalPlayer
 local C = UI.Colors
+local T = Locale.t
 
 local Shop = {}
 
@@ -108,9 +110,9 @@ end
 
 local function texts(frame: Frame, title: string, description: string)
 	UI.label({ Position = UDim2.fromOffset(62, 12), Size = UDim2.new(1, -70, 0, 34), TextXAlignment = Enum.TextXAlignment.Left,
-		TextWrapped = true, FontFace = UI.FontBold, TextSize = 14, Text = title, Parent = frame })
+		TextWrapped = true, FontFace = UI.FontBold, TextSize = 14, Text = T(title), Parent = frame })
 	UI.label({ Position = UDim2.fromOffset(10, 58), Size = UDim2.new(1, -20, 0, 44), TextXAlignment = Enum.TextXAlignment.Left,
-		TextYAlignment = Enum.TextYAlignment.Top, TextWrapped = true, TextSize = 11, TextColor3 = C.Muted, Text = description, Parent = frame })
+		TextYAlignment = Enum.TextYAlignment.Top, TextWrapped = true, TextSize = 11, TextColor3 = C.Muted, Text = T(description), Parent = frame })
 end
 
 local function buildItems(page: ScrollingFrame)
@@ -123,7 +125,7 @@ local function buildItems(page: ScrollingFrame)
 			FontFace = UI.FontHeavy,
 			TextSize = 13,
 			TextColor3 = Color3.new(1, 1, 1),
-			Text = item.Badge,
+			Text = T(item.Badge),
 			Parent = frame,
 		}, { UI.corner(10), UI.new("UIGradient", { Transparency = NumberSequence.new(0, 0.35), Rotation = 90 }) })
 		texts(frame, item.Title, item.Description)
@@ -131,14 +133,14 @@ local function buildItems(page: ScrollingFrame)
 			local owned = table.find(decode("OwnedItems"), item.Key) ~= nil
 			local equipped = table.find(decode("EquippedItems"), item.Key) ~= nil
 			if not owned then
-				styleButton(button, `Comprar · {item.Price}`, "buy")
+				styleButton(button, T("Comprar · {price}", { price = item.Price }), "buy")
 				button.AutoButtonColor = coins() >= item.Price
 				button.BackgroundTransparency = if coins() >= item.Price then 0 else 0.5
 			elseif equipped then
-				styleButton(button, "Equipado (quitar)", "done")
+				styleButton(button, T("Equipado (quitar)"), "done")
 				button.BackgroundTransparency = 0
 			else
-				styleButton(button, "Equipar", "neutral")
+				styleButton(button, T("Equipar"), "neutral")
 				button.BackgroundTransparency = 0
 			end
 		end
@@ -168,13 +170,13 @@ local function buildSkins(page: ScrollingFrame)
 			local owned = table.find(decode("OwnedSkins"), s.Key) ~= nil or s.Price == 0
 			local equipped = player:GetAttribute("Skin") == s.Key
 			if equipped then
-				styleButton(button, "Equipada", "done")
+				styleButton(button, T("Equipada"), "done")
 				button.BackgroundTransparency = 0
 			elseif owned then
-				styleButton(button, "Equipar", "neutral")
+				styleButton(button, T("Equipar"), "neutral")
 				button.BackgroundTransparency = 0
 			else
-				styleButton(button, `Comprar · {s.Price}`, "buy")
+				styleButton(button, T("Comprar · {price}", { price = s.Price }), "buy")
 				button.BackgroundTransparency = if coins() >= s.Price then 0 else 0.5
 			end
 		end
@@ -208,7 +210,7 @@ local function buildPasses(page: ScrollingFrame)
 		}, { UI.corner(10) })
 		texts(frame, entry.title, entry.description)
 		if entry.id == 0 then
-			styleButton(button, "Pronto", "done")
+			styleButton(button, T("Pronto"), "done")
 			button.TextColor3 = C.Muted
 			button.AutoButtonColor = false
 			continue
@@ -217,11 +219,11 @@ local function buildPasses(page: ScrollingFrame)
 		task.spawn(function()
 			local infoType = if entry.kind == "pass" then Enum.InfoType.GamePass else Enum.InfoType.Product
 			local ok, info = pcall(MarketplaceService.GetProductInfo, MarketplaceService, entry.id, infoType)
-			button.Text = if ok and info and info.PriceInRobux then `R$ {info.PriceInRobux}` else "Comprar"
+			button.Text = if ok and info and info.PriceInRobux then `R$ {info.PriceInRobux}` else T("Comprar")
 		end)
 		local function refresh()
 			if entry.kind == "pass" and player:GetAttribute("Pass_" .. entry.key) then
-				styleButton(button, "Adquirido", "done")
+				styleButton(button, T("Adquirido"), "done")
 			end
 		end
 		table.insert(refreshers, refresh)
@@ -257,7 +259,7 @@ local function build()
 		AutoButtonColor = true,
 		Parent = gui,
 	}, { UI.corner(12), UI.stroke(0.6, C.Gold) })
-	UI.label({ Size = UDim2.new(1, -24, 0, 18), Position = UDim2.fromOffset(12, 6), TextXAlignment = Enum.TextXAlignment.Left, FontFace = UI.FontBold, TextSize = 15, Text = "Tienda", Parent = openButton })
+	UI.label({ Size = UDim2.new(1, -24, 0, 18), Position = UDim2.fromOffset(12, 6), TextXAlignment = Enum.TextXAlignment.Left, FontFace = UI.FontBold, TextSize = 15, Text = T("Tienda"), Parent = openButton })
 	openChance = UI.label({ Size = UDim2.new(1, -24, 0, 14), Position = UDim2.fromOffset(12, 25), TextXAlignment = Enum.TextXAlignment.Left, TextSize = 11, TextColor3 = C.Muted, Parent = openButton })
 
 	panel = UI.new("CanvasGroup", {
@@ -286,7 +288,7 @@ local function build()
 
 	-- cabecera
 	UI.label({ Position = UDim2.fromOffset(18, 14), Size = UDim2.fromOffset(200, 26), TextXAlignment = Enum.TextXAlignment.Left,
-		FontFace = UI.FontHeavy, TextSize = 22, Text = "TIENDA", Parent = panel })
+		FontFace = UI.FontHeavy, TextSize = 22, Text = T("TIENDA"), Parent = panel })
 	local coinPill = UI.new("Frame", {
 		Position = UDim2.fromOffset(130, 14),
 		Size = UDim2.fromOffset(0, 26),
@@ -319,9 +321,9 @@ local function build()
 		Parent = panel,
 	}, { UI.new("UIListLayout", { FillDirection = Enum.FillDirection.Horizontal, Padding = UDim.new(0, 8), SortOrder = Enum.SortOrder.LayoutOrder }) })
 	local tabDefs: { { name: Tab, label: string } } = {
-		{ name = "Items", label = "Objetos" },
-		{ name = "Skins", label = "Skins de Verity" },
-		{ name = "Passes", label = "Pases" },
+		{ name = "Items", label = T("Objetos") },
+		{ name = "Skins", label = T("Skins de Verity") },
+		{ name = "Passes", label = T("Pases") },
 	}
 	for i, def in tabDefs do
 		local name, label = def.name, def.label
@@ -373,9 +375,10 @@ end
 
 local function refresh()
 	local chance = (player:GetAttribute("VerityChance") :: number?) or 0
-	openChance.Text = `{coins()} monedas · Verity {chance}%`
+	openChance.Text = T("{coins} monedas · Verity {chance}%", { coins = coins(), chance = chance })
 	coinsLabel.Text = tostring(coins())
-	footer.Text = `Objetos equipados: {#decode("EquippedItems")}/{Config.MaxEquipped} · se llevan a las rondas`
+	footer.Text = T("Objetos equipados: {count}/{max} · solo los usan los supervivientes durante la ronda",
+		{ count = #decode("EquippedItems"), max = Config.MaxEquipped })
 	for _, fn in refreshers do
 		fn()
 	end
@@ -391,8 +394,38 @@ function Shop.init()
 	build()
 end
 
+-- Los Tools los crea el servidor con el nombre en español: en mi mochila se
+-- muestran traducidos (el cambio es solo local).
+local function translateTool(tool: Instance)
+	if not tool:IsA("Tool") then
+		return
+	end
+	local key = tool:GetAttribute("ShopItem")
+	for _, item in Config.Items do
+		if item.Key == key then
+			tool.Name = T(item.Title)
+			tool.ToolTip = T(item.Description)
+			return
+		end
+	end
+end
+
+local function watchBackpack()
+	local backpack = player:WaitForChild("Backpack", 10)
+	if backpack then
+		for _, tool in backpack:GetChildren() do
+			translateTool(tool)
+		end
+		backpack.ChildAdded:Connect(translateTool)
+	end
+end
+
 function Shop.start()
 	request = Net.get("ShopRequest")
+	task.spawn(watchBackpack)
+	player.CharacterAdded:Connect(function()
+		task.spawn(watchBackpack)
+	end)
 	for _, attr in { "VerityChance", "Coins", "OwnedItems", "EquippedItems", "OwnedSkins", "Skin", "Role", "Pass_Chance2x", "Pass_Chance3x" } do
 		player:GetAttributeChangedSignal(attr):Connect(refresh)
 	end

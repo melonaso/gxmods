@@ -2,9 +2,13 @@
 -- Verity: transforma al asesino en la criatura (modelo preparado por
 -- VerityModel, con la skin equipada) y resuelve el ataque de la tecla Q: agarra a la víctima, la levanta sobre
 -- la cabeza y la aplasta contra el suelo, que la hace volar en pedazos.
+-- Verity puede ser un jugador o un NPC (modo prueba, cuando el jugador elige
+-- ser superviviente): en ese caso el "dueño" es el propio modelo y lo maneja
+-- VerityBot. El personaje lleva la etiqueta "VerityCharacter" en ambos casos.
 -- La animación la reproducen los clientes con VerityPose; el servidor usa la
 -- misma línea de tiempo para mover a la víctima entre las manos.
 
+local CollectionService = game:GetService("CollectionService")
 local Debris = game:GetService("Debris")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -31,7 +35,7 @@ local BLOOD = Color3.fromRGB(120, 4, 12)
 
 local Killer = {}
 
-local current: Player? = nil
+local current: Instance? = nil -- Player o Model (Verity NPC)
 local context: Context? = nil
 local released = false
 local killing = false
@@ -45,21 +49,23 @@ local function now(): number
 	return Workspace:GetServerTimeNow()
 end
 
-local function rootOf(player: Player): BasePart?
-	return Entity.root(player)
+local function rootOf(owner: Instance): BasePart?
+	return Entity.root(owner)
 end
 
--- Crea a Verity en `spawn` (CFrame a 3 studs sobre el suelo) y la asigna
--- como personaje del jugador. Queda anclada hasta release().
-local function morph(player: Player, spawn: CFrame): Model?
-	local skin = player:GetAttribute("Skin")
+-- Crea a Verity en `spawn` (CFrame a 3 studs sobre el suelo). Con un jugador,
+-- pasa a ser su personaje; sin él, es un NPC dentro de `parent`. Queda
+-- anclada hasta release().
+local function morph(player: Player?, spawn: CFrame, parent: Instance): Model?
+	local skin = if player then player:GetAttribute("Skin") else nil
 	local model, data = VerityModel.create(if typeof(skin) == "string" then skin else nil)
 	if not (model and data) then
 		warn("[Killer] no hay modelo de Verity disponible")
 		return nil
 	end
 	rig = data
-	model.Name = player.Name
+	model.Name = if player then player.Name else "Verity"
+	CollectionService:AddTag(model, "VerityCharacter")
 	local root = model.PrimaryPart :: BasePart
 	local floorY = spawn.Position.Y - 3
 	local look = spawn.LookVector * Vector3.new(1, 0, 1)
@@ -74,6 +80,14 @@ local function morph(player: Player, spawn: CFrame): Model?
 	humanoid.WalkSpeed = Config.Movement.VerityWalk
 	humanoid.HipHeight = data.hipHeight
 
+	if not player then
+		humanoid.DisplayName = "Verity"
+		humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+		model:SetAttribute("IsVerityBot", true)
+		model.Parent = parent
+		pcall(root.SetNetworkOwner, root, nil)
+		return model
+	end
 	local old = player.Character
 	player.Character = model
 	model.Parent = Workspace
@@ -184,16 +198,17 @@ local function findVictim(root: BasePart, ctx: Context): Instance?
 	return best
 end
 
-function Killer.tryKill(player: Player)
+-- `who`: el jugador que es Verity o el modelo de la Verity NPC.
+function Killer.tryKill(who: Instance)
 	local ctx = context
-	if player ~= current or not ctx or not released or killing then
+	if who ~= current or not ctx or not released or killing then
 		return
 	end
 	if os.clock() - lastKill < K.KillCooldown then
 		return
 	end
-	local character = player.Character
-	local root = rootOf(player)
+	local character = Entity.character(who)
+	local root = rootOf(who)
 	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
 	local data = rig
 	if not (character and root and humanoid and data) then
@@ -286,7 +301,7 @@ local function spawnBall(character: Model, spawn: CFrame, parent: Instance)
 	model:PivotTo(CFrame.lookAt(center, center + facing))
 	model.Name = "VerityBall"
 	model:SetAttribute("Owner", character.Name)
-	game:GetService("CollectionService"):AddTag(model, "VerityBall")
+	CollectionService:AddTag(model, "VerityBall")
 	model.Parent = parent
 	ball = model
 
@@ -314,27 +329,30 @@ local function spawnBall(character: Model, spawn: CFrame, parent: Instance)
 	end
 end
 
-function Killer.setup(player: Player, spawn: CFrame, ctx: Context)
-	current = player
+-- player = nil: Verity es un NPC. Devuelve el "dueño" de Verity (el jugador
+-- o el modelo del NPC).
+function Killer.setup(player: Player?, spawn: CFrame, ctx: Context): Instance?
 	context = ctx
 	released = false
 	killing = false
-	local character = morph(player, spawn)
+	local character = morph(player, spawn, ctx.goreParent)
+	current = if player then player else character
 	if character then
 		spawnBall(character, spawn, ctx.goreParent)
 	end
+	return current
 end
 
 -- La bola se retuerce (huesos crujiendo) y se convierte en el monstruo.
 -- Los clientes animan la bola con TransformStart; aquí se revela el
 -- monstruo poco a poco y se libera al terminar.
 function Killer.release()
-	local player = current
-	if not player then
+	local owner = current
+	if not owner then
 		return
 	end
-	local character = player.Character
-	local root = rootOf(player)
+	local character = Entity.character(owner)
+	local root = rootOf(owner)
 	local duration = Config.Round.TransformTime
 	local start = now()
 	local ballModel = ball
@@ -386,8 +404,12 @@ function Killer.release()
 	end)
 end
 
-function Killer.current(): Player?
+function Killer.current(): Instance?
 	return current
+end
+
+function Killer.isReleased(): boolean
+	return released
 end
 
 function Killer.isKilling(): boolean

@@ -15,11 +15,13 @@ local TweenService = game:GetService("TweenService")
 local Workspace = game:GetService("Workspace")
 
 local Config = require(ReplicatedStorage.Shared.Config)
+local Locale = require(ReplicatedStorage.Shared.Locale)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Pose = require(ReplicatedStorage.Shared.VerityPose)
 local UI = require(script.Parent.Parent.Lib.UI)
 
 local player = Players.LocalPlayer
+local T = Locale.t
 
 local Cinematics = {}
 
@@ -155,6 +157,14 @@ local function hideTitle()
 	letterbox(Workspace:GetAttribute("Phase") == "Results")
 end
 
+-- Mayúsculas que respetan tildes y eñes (string.upper solo cambia ASCII).
+local function upper(text: string): string
+	return (string.gsub(string.upper(text), "\195([\160-\190])", function(c: string)
+		local b = string.byte(c)
+		return if b == 183 then nil else "\195" .. string.char(b - 32)
+	end))
+end
+
 local function facingAngle(): number
 	local character = player.Character
 	local root = character and character:FindFirstChild("HumanoidRootPart")
@@ -174,9 +184,9 @@ local function roundIntro(mapName: string)
 			hideTitle()
 		end
 	end)
-	titleLabel.Text = string.upper(mapName)
+	titleLabel.Text = upper(T(mapName))
 	local role = player:GetAttribute("Role")
-	subtitleLabel.Text = if role == "Verity" then "Despierta y atrápalos a todos" else "Sobrevive hasta el amanecer"
+	subtitleLabel.Text = if role == "Verity" then T("Despierta y atrápalos a todos") else T("Sobrevive hasta el amanecer")
 	letterbox(true)
 	tween(title, 0.8, { GroupTransparency = 0 })
 	task.wait(0.4)

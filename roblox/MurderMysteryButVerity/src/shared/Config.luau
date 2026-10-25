@@ -6,20 +6,28 @@ local Config = {}
 
 Config.Round = {
 	MinPlayers = 2,
+	MaxPlayers = 10, -- jugadores por servidor (pon lo mismo en Game Settings > Places)
 	IntermissionTime = 23,
 	Duration = 270, -- segundos de una partida si nadie craftea tótems
 	KillerReleaseDelay = 20, -- Verity es una bola sonriente durante este tiempo
 	TransformTime = 2.6, -- la bola se retuerce y se convierte en el monstruo
 	ResultsTime = 7,
 	MinRemainingAfterTotem = 15, -- un tótem nunca deja el reloj por debajo de esto
+	-- Anti-campeo: cada RevealInterval segundos (desde que Verity despierta)
+	-- todos los supervivientes se resaltan en rojo para Verity durante
+	-- RevealDuration segundos; ellos reciben un aviso para cambiar de sitio.
+	RevealInterval = 60,
+	RevealDuration = 5,
 }
 
--- MODO PRUEBA: permite jugar solo. El primer jugador del servidor es
--- Verity en todas las rondas y NPCs ocupan el lugar de los supervivientes.
+-- MODO PRUEBA: permite jugar solo. El primer jugador del servidor elige en
+-- el lobby si en la próxima ronda es Verity o superviviente (botón "Rol de
+-- prueba"); si elige superviviente, Verity la maneja la IA. NPCs completan
+-- la partida hasta Config.Round.MaxPlayers participantes.
 -- Ponlo en false antes de publicar el juego.
 Config.Testing = {
 	Enabled = true,
-	Bots = 6,
+	FillWithBots = true, -- NPCs hasta completar MaxPlayers
 	IntermissionTime = 23,
 	StartingCoins = 0, -- todos empiezan sin monedas
 }
@@ -54,6 +62,8 @@ Config.Movement = {
 	VerityCrouch = 12, -- tecla C
 	BotWalk = 15,
 	BotFlee = 22,
+	VerityBotPatrol = 17, -- Verity NPC buscando
+	VerityBotChase = 25, -- Verity NPC persiguiendo (un poco más que el sprint)
 }
 
 Config.Crafting = {
@@ -86,16 +96,17 @@ Config.Coins = {
 	PickupRadius = 4.5,
 	VerityPickupRadius = 8, -- Verity es enorme
 	MagnetMultiplier = 3,
-	RewardWin = 100, -- al ganar, sea Verity o superviviente
+	RewardWin = 150, -- al ganar, sea Verity o superviviente
 	RewardSurvive = 0,
 	RewardKill = 6,
 	ObbyReward = 15,
 	ObbyCooldown = 120,
 }
 
--- Objetos de la tienda del lobby (se pagan con monedas). Se llevan a las
--- rondas los equipados (máx. MaxEquipped).
-Config.MaxEquipped = 4
+-- Objetos de la tienda del lobby (se pagan con monedas). Solo los usan los
+-- supervivientes, y solo durante la ronda: se reciben al empezar los
+-- equipados (máx. MaxEquipped).
+Config.MaxEquipped = 2
 Config.Items = {
 	{ Key = "SpeedCoil", Title = "Bobina de velocidad", Price = 250, Badge = "VEL", Color = Color3.fromRGB(70, 160, 255), Description = "+35% de velocidad mientras la sostienes." },
 	{ Key = "GravityCoil", Title = "Bobina de gravedad", Price = 250, Badge = "GRV", Color = Color3.fromRGB(170, 90, 255), Description = "Saltos enormes: la gravedad te afecta mucho menos." },
@@ -104,10 +115,10 @@ Config.Items = {
 	{ Key = "EnergyDrink", Title = "Bebida energética", Price = 200, Badge = "NRG", Color = Color3.fromRGB(120, 230, 80), Description = "Clic: estamina llena e infinita durante 6 s. Recarga 30 s." },
 	{ Key = "Flashlight", Title = "Linterna", Price = 100, Badge = "LUZ", Color = Color3.fromRGB(255, 220, 120), Description = "Clic: enciende o apaga un foco potente." },
 	{ Key = "GhostCloak", Title = "Capa fantasma", Price = 500, Badge = "INV", Color = Color3.fromRGB(150, 220, 255), Description = "Clic: casi invisible durante 6 s. Recarga 40 s." },
-	{ Key = "SoulRadar", Title = "Radar de almas", Price = 450, Badge = "RAD", Color = Color3.fromRGB(255, 80, 120), Description = "Clic: ves a tus objetivos a través de las paredes 6 s. Recarga 30 s." },
-	{ Key = "BearTrap", Title = "Cepo", Price = 350, Badge = "CPO", Color = Color3.fromRGB(150, 150, 160), Description = "Clic: coloca un cepo (máx. 2) que atrapa 3 s a quien lo pise." },
+	{ Key = "SoulRadar", Title = "Radar de almas", Price = 450, Badge = "RAD", Color = Color3.fromRGB(255, 80, 120), Description = "Clic: ves a Verity a través de las paredes 6 s. Recarga 30 s." },
+	{ Key = "BearTrap", Title = "Cepo", Price = 350, Badge = "CPO", Color = Color3.fromRGB(150, 150, 160), Description = "Clic: coloca un cepo (máx. 2) que inmoviliza 3 s a Verity si lo pisa." },
 	{ Key = "CoinMagnet", Title = "Imán de monedas", Price = 300, Badge = "IMN", Color = Color3.fromRGB(255, 200, 60), Description = "Sostenlo para recoger monedas desde el triple de distancia." },
-	{ Key = "PushHammer", Title = "Martillo de empuje", Price = 400, Badge = "MRT", Color = Color3.fromRGB(200, 140, 80), Description = "Clic: empuja con fuerza a quien tengas delante. Recarga 8 s." },
+	{ Key = "PushHammer", Title = "Martillo de empuje", Price = 400, Badge = "MRT", Color = Color3.fromRGB(200, 140, 80), Description = "Clic: empuja con fuerza a Verity si la tienes delante. Recarga 8 s." },
 }
 
 -- Skins de Verity: tinte (Highlight) y aura opcional sobre el modelo.

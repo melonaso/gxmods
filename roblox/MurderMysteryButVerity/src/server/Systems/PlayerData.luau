@@ -135,6 +135,9 @@ local function sanitize(raw: any): Data
 		data.coins = math.max(0, math.floor(tonumber(raw.coins) or 0))
 		data.items = stringList(raw.items)
 		data.equipped = stringList(raw.equipped)
+		while #data.equipped > Config.MaxEquipped do
+			table.remove(data.equipped) -- antes se podían equipar más
+		end
 		data.skins = stringList(raw.skins)
 		if not table.find(data.skins, "Classic") then
 			table.insert(data.skins, 1, "Classic")
@@ -270,7 +273,7 @@ end
 
 -- Se llama al empezar una ronda: el elegido pierde su suerte, el resto gana,
 -- y todos los participantes consumen una ronda de poción.
-function PlayerData.applyRoundRoles(killer: Player, participants: { Player })
+function PlayerData.applyRoundRoles(killer: Player?, participants: { Player })
 	for _, player in participants do
 		local data = sessions[player]
 		if data then

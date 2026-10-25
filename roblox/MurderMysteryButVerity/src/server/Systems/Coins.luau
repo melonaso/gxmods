@@ -10,10 +10,12 @@ local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
 
 local Config = require(ReplicatedStorage.Shared.Config)
+local Locale = require(ReplicatedStorage.Shared.Locale)
 local Net = require(ReplicatedStorage.Shared.Net)
 local PlayerData = require(script.Parent.PlayerData)
 
 local C = Config.Coins
+local T = Locale.t
 
 local Coins = {}
 
@@ -107,7 +109,7 @@ function Coins.start(map: Instance, points: { Vector3 })
 					if collected >= C.MaxPerRound then
 						if not fullWarned[player] then
 							fullWarned[player] = true
-							Net.get("Notify"):FireClient(player, "¡Bolsa de monedas llena!", "warn")
+							Net.get("Notify"):FireClient(player, T("¡Bolsa de monedas llena!"), "warn")
 						end
 						break
 					end
@@ -122,12 +124,13 @@ function Coins.start(map: Instance, points: { Vector3 })
 	end)
 end
 
+-- `reason`: texto traducible (márcalo con Locale.t al llamar).
 function Coins.award(player: Player, amount: number, reason: string)
 	if amount <= 0 or not player.Parent then
 		return
 	end
 	PlayerData.addCoins(player, amount)
-	Net.get("Notify"):FireClient(player, `+{amount} monedas ({reason})`, "good")
+	Net.get("Notify"):FireClient(player, T("+{amount} monedas ({reason})"), "good", { amount = amount, reason = Locale.ref(reason) })
 end
 
 function Coins.stop()

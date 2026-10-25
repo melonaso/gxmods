@@ -22,8 +22,15 @@ UI.Font = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.M
 UI.FontBold = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold)
 UI.FontHeavy = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy)
 
+local TEXT_CLASSES = { TextLabel = true, TextButton = true, TextBox = true }
+
 function UI.new(className: string, props: { [string]: any }, children: { Instance }?): any
 	local inst = Instance.new(className)
+	if TEXT_CLASSES[className] then
+		-- los textos ya llegan traducidos por Locale.t: Roblox no debe volver a
+		-- traducirlos ni capturarlos (evita entradas duplicadas en la tabla)
+		(inst :: any).AutoLocalize = false
+	end
 	local parent = props.Parent
 	for k, v in props do
 		if k ~= "Parent" then

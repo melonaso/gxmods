@@ -25,7 +25,8 @@
     "Players": {
       "$properties": {
         "CharacterAutoLoads": true,
-        "RespawnTime": 4
+        "RespawnTime": 4,
+        "MaxPlayers": 10
       }
     },
     "Workspace": {
@@ -54,6 +55,14 @@
         "ShadowSoftness": 0.15,
         "EnvironmentDiffuseScale": 0.5,
         "EnvironmentSpecularScale": 1
+      }
+    },
+    "LocalizationService": {
+      "GameStrings": {
+        "$path": "src/localization/GameStrings.csv",
+        "$properties": {
+          "SourceLocaleId": "es-es"
+        }
       }
     }
   }

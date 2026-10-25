@@ -11,6 +11,8 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Assets = require(ReplicatedStorage.Shared.Assets)
 local Config = require(ReplicatedStorage.Shared.Config)
 local Net = require(ReplicatedStorage.Shared.Net)
+local Locale = require(ReplicatedStorage.Shared.Locale)
+local T = Locale.t
 
 export type Context = {
 	parent: Instance,
@@ -53,9 +55,9 @@ local function getGold(who: Instance): number
 	return (who:GetAttribute("Gold") :: number?) or 0
 end
 
-local function notify(who: Instance, text: string, kind: string?)
+local function notify(who: Instance, text: string, kind: string?, args: { [string]: any }?)
 	if who:IsA("Player") then
-		Net.get("Notify"):FireClient(who, text, kind or "info")
+		Net.get("Notify"):FireClient(who, text, kind or "info", args)
 	end
 end
 
@@ -128,8 +130,8 @@ spawnGoldAt = function(index: number?, position: Vector3?)
 	sparkles.Parent = block
 
 	local prompt = Instance.new("ProximityPrompt")
-	prompt.ActionText = "Recoger oro"
-	prompt.ObjectText = "Bloque de oro"
+	prompt.ActionText = T("Recoger oro")
+	prompt.ObjectText = T("Bloque de oro")
 	prompt.HoldDuration = CFG.PickupHoldDuration
 	prompt.MaxActivationDistance = 9
 	prompt.RequiresLineOfSight = false
@@ -154,7 +156,7 @@ function Crafting.pickup(who: Instance, block: BasePart): boolean
 	end
 	local carried = getGold(who)
 	if carried >= CFG.MaxGoldCarried then
-		notify(who, `Solo puedes llevar {CFG.MaxGoldCarried} bloques. ¡Llévalos a una mesa!`, "warn")
+		notify(who, T("Solo puedes llevar {count} bloques. ¡Llévalos a una mesa!"), "warn", { count = CFG.MaxGoldCarried })
 		return false
 	end
 	setGold(who, carried + 1)
@@ -173,7 +175,11 @@ end
 
 local function refreshTable(state: TableState)
 	local full = state.gold >= CFG.GoldPerTotem
-	state.label.Text = if full then "¡Listo para craftear!" else `Oro {state.gold}/{CFG.GoldPerTotem}`
+	if full then
+		Locale.setWorldText(state.label, T("¡Listo para craftear!"))
+	else
+		Locale.setWorldText(state.label, T("Oro {gold}/{max}"), { gold = state.gold, max = CFG.GoldPerTotem })
+	end
 	state.label.TextColor3 = if full then Color3.fromRGB(120, 255, 200) else Color3.fromRGB(255, 220, 120)
 	state.deposit.Enabled = not full
 	state.craft.Enabled = full
@@ -235,16 +241,16 @@ local function buildTable(spot: CFrame, parent: Instance): TableState
 	padding.Parent = label
 
 	local deposit = Instance.new("ProximityPrompt")
-	deposit.ActionText = "Depositar oro"
-	deposit.ObjectText = "Mesa de crafteo"
+	deposit.ActionText = T("Depositar oro")
+	deposit.ObjectText = T("Mesa de crafteo")
 	deposit.HoldDuration = 0.4
 	deposit.MaxActivationDistance = 10
 	deposit.RequiresLineOfSight = false
 	deposit.Parent = top
 
 	local craft = Instance.new("ProximityPrompt")
-	craft.ActionText = "Craftear tótem"
-	craft.ObjectText = "Mesa de crafteo"
+	craft.ActionText = T("Craftear tótem")
+	craft.ObjectText = T("Mesa de crafteo")
 	craft.HoldDuration = CFG.CraftHoldDuration
 	craft.MaxActivationDistance = 10
 	craft.RequiresLineOfSight = false
@@ -284,7 +290,7 @@ function Crafting.deposit(who: Instance, state: TableState): boolean
 	end
 	local carried = getGold(who)
 	if carried <= 0 then
-		notify(who, "Necesitas bloques de oro. ¡Búscalos por el mapa!", "warn")
+		notify(who, T("Necesitas bloques de oro. ¡Búscalos por el mapa!"), "warn")
 		return false
 	end
 	local moved = math.min(carried, CFG.GoldPerTotem - state.gold)
@@ -303,11 +309,11 @@ function Crafting.craft(who: Instance, state: TableState): boolean
 		return false
 	end
 	if context.totemsCrafted() >= CFG.MaxTotemsPerRound then
-		notify(who, "El reloj ya no puede acelerarse más esta ronda.", "warn")
+		notify(who, T("El reloj ya no puede acelerarse más esta ronda."), "warn")
 		return false
 	end
 	if not context.onTotem(who) then
-		notify(who, "¡Ya casi amanece! El tótem no tendría efecto.", "warn")
+		notify(who, T("¡Ya casi amanece! El tótem no tendría efecto."), "warn")
 		return false
 	end
 	state.gold = 0

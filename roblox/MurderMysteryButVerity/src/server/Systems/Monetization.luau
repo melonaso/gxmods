@@ -7,8 +7,11 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Config = require(ReplicatedStorage.Shared.Config)
+local Locale = require(ReplicatedStorage.Shared.Locale)
 local Net = require(ReplicatedStorage.Shared.Net)
 local PlayerData = require(script.Parent.PlayerData)
+
+local T = Locale.t
 
 local Monetization = {}
 
@@ -48,7 +51,8 @@ local function processReceipt(receipt): Enum.ProductPurchaseDecision
 		return Enum.ProductPurchaseDecision.NotProcessedYet
 	end
 	if PlayerData.grantProduct(player, receipt.PurchaseId, product.Multiplier, product.Rounds) then
-		Net.get("Notify"):FireClient(player, `{product.Title} activada: x{product.Multiplier} en tus próximas {product.Rounds} ronda(s).`, "good")
+		Net.get("Notify"):FireClient(player, T("{product} activada: x{multiplier} en tus próximas {rounds} ronda(s)."), "good",
+			{ product = Locale.ref(product.Title), multiplier = product.Multiplier, rounds = product.Rounds })
 		return Enum.ProductPurchaseDecision.PurchaseGranted
 	end
 	return Enum.ProductPurchaseDecision.NotProcessedYet
@@ -64,7 +68,7 @@ function Monetization.init()
 		for _, pass in Config.GamePasses do
 			if pass.Id == passId then
 				refreshPasses(player)
-				Net.get("Notify"):FireClient(player, `¡{pass.Title} activado!`, "good")
+				Net.get("Notify"):FireClient(player, T("¡{pass} activado!"), "good", { pass = Locale.ref(pass.Title) })
 				return
 			end
 		end

@@ -1,14 +1,17 @@
 --!strict
--- Objetos de la tienda (Tools). Cada jugador recibe los objetos que tiene
--- equipados al aparecer (lobby y rondas, también como Verity). Todo el
--- efecto ocurre en el servidor; el cliente solo dibuja efectos.
+-- Objetos de la tienda (Tools). Solo los supervivientes los usan, y solo en
+-- la ronda: Round llama a Items.give al empezar, con los equipados (máx.
+-- Config.MaxEquipped). Todo el efecto ocurre en el servidor; el cliente solo
+-- dibuja efectos (y traduce el nombre del Tool en su mochila).
 
+local CollectionService = game:GetService("CollectionService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 
 local Config = require(ReplicatedStorage.Shared.Config)
 local Net = require(ReplicatedStorage.Shared.Net)
+local T = require(ReplicatedStorage.Shared.Locale).t
 local Movement = require(script.Parent.Movement)
 local PlayerData = require(script.Parent.PlayerData)
 
@@ -25,8 +28,8 @@ local cooldowns: { [Player]: { [string]: number } } = {}
 local traps: { [Player]: { BasePart } } = {}
 local trapFolder: Folder? = nil
 
-local function notify(player: Player, text: string, kind: string?)
-	Net.get("Notify"):FireClient(player, text, kind or "info")
+local function notify(player: Player, text: string, kind: string?, args: { [string]: any }?)
+	Net.get("Notify"):FireClient(player, text, kind or "info", args)
 end
 
 local function ready(player: Player, key: string, seconds: number): boolean
@@ -38,7 +41,7 @@ local function ready(player: Player, key: string, seconds: number): boolean
 	local now = os.clock()
 	local readyAt = list[key] or 0
 	if now < readyAt then
-		notify(player, `Recargando... {math.ceil(readyAt - now)} s`, "warn")
+		notify(player, T("Recargando... {seconds} s"), "warn", { seconds = math.ceil(readyAt - now) })
 		return false
 	end
 	list[key] = now + seconds
@@ -59,28 +62,11 @@ local function inRound(): boolean
 	return Workspace:GetAttribute("Phase") == "Playing"
 end
 
--- ¿Es `model` un superviviente vivo (jugador o NPC)?
-local function isSurvivorCharacter(model: Model): boolean
-	local humanoid = model:FindFirstChildOfClass("Humanoid")
-	if not humanoid or humanoid.Health <= 0 then
-		return false
-	end
-	if model:GetAttribute("IsBot") then
-		return true
-	end
-	local player = Players:GetPlayerFromCharacter(model)
-	return player ~= nil and player:GetAttribute("Role") == "Survivor"
-end
-
-local function survivorCharacters(): { Model }
+-- Personajes de Verity (jugador o NPC): los objetos de los supervivientes actúan sobre ella.
+local function verityCharacters(): { Model }
 	local list = {}
-	for _, player in Players:GetPlayers() do
-		if player:GetAttribute("Role") == "Survivor" and player.Character then
-			table.insert(list, player.Character)
-		end
-	end
-	for _, inst in Workspace:GetDescendants() do
-		if inst:IsA("Model") and inst:GetAttribute("IsBot") and isSurvivorCharacter(inst) then
+	for _, inst in CollectionService:GetTagged("VerityCharacter") do
+		if inst:IsA("Model") and inst:IsDescendantOf(Workspace) then
 			table.insert(list, inst)
 		end
 	end
@@ -213,7 +199,7 @@ local function placeTrap(player: Player, character: Model)
 		return
 	end
 	if not inRound() then
-		notify(player, "Los cepos solo funcionan durante la ronda.", "warn")
+		notify(player, T("Los cepos solo funcionan durante la ronda."), "warn")
 		return
 	end
 	local list = traps[player] or {}
@@ -224,7 +210,7 @@ local function placeTrap(player: Player, character: Model)
 		end
 	end
 	if #list >= 2 then
-		notify(player, "Ya tienes 2 cepos colocados.", "warn")
+		notify(player, T("Ya tienes 2 cepos colocados."), "warn")
 		return
 	end
 	local params = RaycastParams.new()
@@ -268,8 +254,12 @@ local function placeTrap(player: Player, character: Model)
 		if sprung then
 			return
 		end
+		-- solo atrapa a Verity
 		local model = other:FindFirstAncestorOfClass("Model")
-		if not model or model == character or not isSurvivorCharacter(model) then
+		while model and not CollectionService:HasTag(model, "VerityCharacter") do
+			model = model:FindFirstAncestorOfClass("Model")
+		end
+		if not model or model:GetAttribute("Released") ~= true then
 			return
 		end
 		local victimRoot = model:FindFirstChild("HumanoidRootPart") :: BasePart?
@@ -286,7 +276,7 @@ local function placeTrap(player: Player, character: Model)
 			trap:Destroy()
 		end)
 	end)
-	notify(player, "Cepo colocado.", "good")
+	notify(player, T("Cepo colocado."), "good")
 end
 
 local function push(player: Player, character: Model)
@@ -314,32 +304,17 @@ local function push(player: Player, character: Model)
 			targetRoot.AssemblyLinearVelocity = velocity
 		end
 	end
-	for _, other in Players:GetPlayers() do
-		if other ~= player and other.Character then
-			hit(other.Character)
-		end
-	end
-	for _, inst in Workspace:GetDescendants() do
-		if inst:IsA("Model") and inst:GetAttribute("IsBot") then
-			hit(inst)
-		end
+	-- solo empuja a Verity (no sirve para tirar a otros supervivientes hacia ella)
+	for _, verity in verityCharacters() do
+		hit(verity)
 	end
 	Net.get("Effect"):FireAllClients("Push", root.Position + forward * 4)
 end
 
-local function radar(player: Player, character: Model)
-	local targets: { Model } = {}
-	if player:GetAttribute("Role") == "Verity" then
-		targets = survivorCharacters()
-	else
-		for _, other in Players:GetPlayers() do
-			if other:GetAttribute("Role") == "Verity" and other.Character then
-				table.insert(targets, other.Character)
-			end
-		end
-	end
+local function radar(player: Player, _character: Model)
+	local targets = verityCharacters()
 	if #targets == 0 then
-		notify(player, "El radar no detecta a nadie.", "info")
+		notify(player, T("El radar no detecta a nadie."), "info")
 		return
 	end
 	Net.get("Effect"):FireClient(player, "Radar", targets)
@@ -411,7 +386,7 @@ local function build(player: Player, key: string): Tool?
 		elseif key == "EnergyDrink" and ready(player, key, 30) then
 			Movement.energize(player, 6)
 			Net.get("Effect"):FireClient(player, "Heal", (c:GetPivot()).Position)
-			notify(player, "¡Estamina infinita durante 6 s!", "good")
+			notify(player, T("¡Estamina infinita durante {seconds} s!"), "good", { seconds = 6 })
 		elseif key == "Flashlight" then
 			local beam = tool.Handle:FindFirstChild("Beam")
 			if beam and beam:IsA("SpotLight") then
@@ -430,8 +405,25 @@ local function build(player: Player, key: string): Tool?
 	return tool
 end
 
--- Da al jugador los objetos que tiene equipados (sin duplicar).
+-- Quita los objetos de la tienda de la mochila y del personaje.
+local function strip(player: Player)
+	for _, container in { player:FindFirstChildOfClass("Backpack"), player.Character } do
+		if container then
+			for _, child in container:GetChildren() do
+				if child:IsA("Tool") and child:GetAttribute("ShopItem") then
+					child:Destroy()
+				end
+			end
+		end
+	end
+end
+
+-- Da al superviviente los objetos equipados (sin duplicar, máx. MaxEquipped).
 function Items.give(player: Player)
+	if player:GetAttribute("Role") ~= "Survivor" then
+		strip(player)
+		return
+	end
 	local data = PlayerData.get(player)
 	local character = player.Character
 	local backpack = player:FindFirstChildOfClass("Backpack")
@@ -448,11 +440,16 @@ function Items.give(player: Player)
 	character:SetAttribute("SpeedMult", nil)
 	character:SetAttribute("CoinMagnet", nil)
 	setGravity(character, nil)
+	local given = 0
 	for _, key in data.equipped do
+		if given >= Config.MaxEquipped then
+			break
+		end
 		if table.find(data.items, key) then
 			local tool = build(player, key)
 			if tool then
 				tool.Parent = backpack
+				given += 1
 			end
 		end
 	end
@@ -467,15 +464,12 @@ function Items.cleanup()
 end
 
 function Items.init()
+	-- al morir (o volver al lobby) se pierden: solo se usan en la ronda
 	local function watch(player: Player)
-		player.CharacterAdded:Connect(function()
-			-- espera a que la mochila exista y a que los datos estén cargados
-			task.wait(0.5)
-			local deadline = os.clock() + 20
-			while player.Parent and not PlayerData.isLoaded(player) and os.clock() < deadline do
-				task.wait(0.5)
+		player:GetAttributeChangedSignal("Role"):Connect(function()
+			if player:GetAttribute("Role") ~= "Survivor" then
+				strip(player)
 			end
-			Items.give(player)
 		end)
 	end
 	Players.PlayerAdded:Connect(watch)

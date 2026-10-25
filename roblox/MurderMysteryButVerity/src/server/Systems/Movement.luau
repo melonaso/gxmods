@@ -3,6 +3,7 @@
 --   Shift: correr (supervivientes con estamina; Verity sin límite y más rápida)
 --   C:     agacharse (solo Verity)
 --   Q:     atrapar (solo Verity, lo resuelve Killer)
+--   TestRole: en modo prueba, elegir ser Verity o superviviente en la próxima ronda
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -57,6 +58,9 @@ local function onAction(player: Player, action: unknown, value: unknown)
 		s.crouch = value and role == "Verity"
 	elseif action == "Kill" and role == "Verity" then
 		Killer.tryKill(player)
+	elseif action == "TestRole" and Config.Testing.Enabled and (value == "Verity" or value == "Survivor") then
+		-- botón del lobby (modo prueba): rol en la próxima ronda
+		player:SetAttribute("TestRole", value)
 	end
 end
 

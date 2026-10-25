@@ -6,8 +6,10 @@
 -- esté dentro (Killer lo encuentra porque su raíz está ahí).
 
 local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Entity = require(script.Parent.Parent.Lib.Entity)
+local T = require(ReplicatedStorage.Shared.Locale).t
 
 export type Spot = {
 	model: Model,
@@ -64,8 +66,8 @@ local function setVisible(character: Model, who: Instance, visible: boolean)
 end
 
 local function refreshPrompt(spot: Spot)
-	spot.prompt.ActionText = if spot.occupant then "Salir" else "Esconderse"
-	spot.prompt.ObjectText = if spot.occupant then "Escondido" else "Escondite"
+	spot.prompt.ActionText = if spot.occupant then T("Salir") else T("Esconderse")
+	spot.prompt.ObjectText = if spot.occupant then T("Escondido") else T("Escondite")
 end
 
 function Hiding.isHidden(who: Instance): boolean
@@ -113,6 +115,16 @@ function Hiding.unhide(who: Instance, keepAnchored: boolean?)
 			end
 		end
 	end
+end
+
+-- Todos los escondites del mapa (para la Verity NPC, que los registra).
+function Hiding.allSpots(): { Spot }
+	return spots
+end
+
+-- Quién está escondido en el escondite (para la revelación de cada minuto).
+function Hiding.spotOf(who: Instance): Spot?
+	return byOccupant[who]
 end
 
 -- Escondites libres (para la IA de los NPCs).

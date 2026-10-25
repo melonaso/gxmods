@@ -8,6 +8,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 
 local Config = require(ReplicatedStorage.Shared.Config)
+local T = require(ReplicatedStorage.Shared.Locale).t
 local Coins = require(script.Parent.Coins)
 local VerityModel = require(script.Parent.VerityModel)
 
@@ -83,7 +84,7 @@ local function setupObby(lobby: Instance)
 					return
 				end
 				lastReward[player] = now
-				Coins.award(player, Config.Coins.ObbyReward, "obby completado")
+				Coins.award(player, Config.Coins.ObbyReward, T("obby completado"))
 				if spawnPoint then
 					character:PivotTo(spawnPoint.CFrame + Vector3.new(0, 4, 0))
 				end

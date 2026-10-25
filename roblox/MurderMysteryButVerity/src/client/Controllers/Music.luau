@@ -121,9 +121,10 @@ local function threatDistance(): number
 			end
 		end
 	elseif role == "Survivor" then
-		for _, other in Players:GetPlayers() do
-			if other:GetAttribute("Role") == "Verity" and other.Character and other.Character:GetAttribute("Released") then
-				consider(other.Character)
+		-- Verity puede ser otro jugador o un NPC (modo prueba)
+		for _, verity in CollectionService:GetTagged("VerityCharacter") do
+			if verity:GetAttribute("Released") then
+				consider(verity)
 			end
 		end
 	end

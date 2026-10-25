@@ -5,10 +5,13 @@
 --   3. si lleva oro, lo deposita en la mesa más cercana,
 --   4. si hay una mesa llena, craftea el tótem (se queda quieto 3 s),
 --   5. si no, deambula.
+-- Cuando llega la revelación de cada minuto, sale del escondite y se va
+-- lejos (como debería hacer un jugador).
 
 local PathfindingService = game:GetService("PathfindingService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
 
 local Config = require(ReplicatedStorage.Shared.Config)
 local Crafting = require(script.Parent.Crafting)
@@ -134,12 +137,45 @@ local function think(bot: Model, ctx: Context)
 		return (killer.Position - root.Position).Magnitude < radius
 	end
 
+	local lastReveal = 0
+	local function newReveal(): boolean
+		local revealedUntil = (bot:GetAttribute("RevealedUntil") :: number?) or 0
+		return revealedUntil > Workspace:GetServerTimeNow() and revealedUntil ~= lastReveal
+	end
+
 	while running and bot.Parent and ctx.isAlive(bot) and humanoid.Health > 0 do
 		local killer = ctx.killerRoot()
+		-- tras anclarlo (escondite, cepo) Roblox puede darle la física a un jugador
+		if not root.Anchored and root:GetNetworkOwnershipAuto() then
+			pcall(root.SetNetworkOwner, root, nil)
+		end
+		-- revelado: cambia de sitio, lo más lejos posible de donde estaba
+		if newReveal() then
+			lastReveal = (bot:GetAttribute("RevealedUntil") :: number?) or 0
+			if Hiding.isHidden(bot) then
+				Hiding.unhide(bot)
+			end
+			if #ctx.points > 0 and not root.Anchored then
+				local from = root.Position
+				local best, bestDistance = nil, 0
+				for _ = 1, 8 do
+					local p = ctx.points[rng:NextInteger(1, #ctx.points)]
+					local d = (p - from).Magnitude
+					if d > bestDistance then
+						best, bestDistance = p, d
+					end
+				end
+				if best then
+					humanoid.WalkSpeed = M.BotFlee
+					walkTo(humanoid, root, best, threatened)
+				end
+			end
+			continue
+		end
 		-- escondido: espera hasta que Verity lleve un rato lejos
 		if Hiding.isHidden(bot) then
 			local calm = 0
-			while running and bot.Parent and Hiding.isHidden(bot) and ctx.isAlive(bot) do
+			while running and bot.Parent and Hiding.isHidden(bot) and ctx.isAlive(bot) and not newReveal() do
 				local k = ctx.killerRoot()
 				local far = not k or (k.Position - root.Position).Magnitude > 50
 				calm = if far then calm + 0.5 else 0

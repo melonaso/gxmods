@@ -390,19 +390,21 @@ local PRESETS: { [string]: Preset } = {
 		rays = 0.06,
 	},
 	Indoor = {
-		lighting = { ClockTime = 0, Brightness = 1, ExposureCompensation = 0.35, Ambient = Color3.fromRGB(78, 74, 96), OutdoorAmbient = Color3.fromRGB(70, 68, 92) },
-		atmosphere = { Density = 0.28, Offset = 0, Color = Color3.fromRGB(96, 92, 120), Decay = Color3.fromRGB(56, 52, 74), Glare = 0, Haze = 1 },
-		color = { Brightness = 0.04, Contrast = 0.1, Saturation = -0.1, TintColor = Color3.fromRGB(232, 236, 255) },
+		-- penumbra: se ve el camino, pero no a alguien quieto en una esquina oscura
+		lighting = { ClockTime = 0, Brightness = 0.5, ExposureCompensation = 0, Ambient = Color3.fromRGB(44, 40, 58), OutdoorAmbient = Color3.fromRGB(38, 36, 52) },
+		atmosphere = { Density = 0.38, Offset = 0, Color = Color3.fromRGB(62, 56, 80), Decay = Color3.fromRGB(30, 26, 42), Glare = 0, Haze = 1.7 },
+		color = { Brightness = 0, Contrast = 0.16, Saturation = -0.18, TintColor = Color3.fromRGB(228, 232, 255) },
 		bloom = { Intensity = 0.7, Size = 28, Threshold = 1.3 },
-		dof = { FarIntensity = 0.12, FocusDistance = 40, InFocusRadius = 60, NearIntensity = 0 },
+		dof = { FarIntensity = 0.16, FocusDistance = 36, InFocusRadius = 50, NearIntensity = 0 },
 		rays = 0,
 	},
 	Outdoor = {
-		lighting = { ClockTime = 0.3, Brightness = 2, ExposureCompensation = 0.45, Ambient = Color3.fromRGB(70, 76, 102), OutdoorAmbient = Color3.fromRGB(110, 122, 160) },
-		atmosphere = { Density = 0.26, Offset = 0.05, Color = Color3.fromRGB(120, 132, 165), Decay = Color3.fromRGB(70, 78, 110), Glare = 0.2, Haze = 1.2 },
-		color = { Brightness = 0.04, Contrast = 0.1, Saturation = -0.15, TintColor = Color3.fromRGB(220, 230, 255) },
+		-- noche con luna: siluetas cercanas visibles, la niebla oculta lo lejano
+		lighting = { ClockTime = 0.3, Brightness = 1.1, ExposureCompensation = 0.1, Ambient = Color3.fromRGB(40, 44, 64), OutdoorAmbient = Color3.fromRGB(68, 76, 106) },
+		atmosphere = { Density = 0.36, Offset = 0.05, Color = Color3.fromRGB(92, 104, 138), Decay = Color3.fromRGB(42, 48, 76), Glare = 0.2, Haze = 2.1 },
+		color = { Brightness = 0, Contrast = 0.14, Saturation = -0.22, TintColor = Color3.fromRGB(215, 226, 255) },
 		bloom = { Intensity = 0.8, Size = 30, Threshold = 1.2 },
-		dof = { FarIntensity = 0.12, FocusDistance = 45, InFocusRadius = 70, NearIntensity = 0 },
+		dof = { FarIntensity = 0.16, FocusDistance = 40, InFocusRadius = 60, NearIntensity = 0 },
 		rays = 0,
 	},
 }

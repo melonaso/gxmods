@@ -1,6 +1,8 @@
 --!strict
 -- HUD discreto: píldora superior con fase y reloj, chip de oro, avisos
--- pequeños, tarjeta de rol y banner de resultados.
+-- pequeños, tarjeta de rol, banner de resultados y (en modo prueba) el botón
+-- para elegir si en la próxima ronda eres Verity o superviviente.
+-- Todos los textos pasan por Locale.t (traducibles a cualquier idioma).
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -8,21 +10,23 @@ local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
 
 local Config = require(ReplicatedStorage.Shared.Config)
+local Locale = require(ReplicatedStorage.Shared.Locale)
 local Net = require(ReplicatedStorage.Shared.Net)
 local UI = require(script.Parent.Parent.Lib.UI)
 local Music = require(script.Parent.Music)
 
 local player = Players.LocalPlayer
 local C = UI.Colors
+local T = Locale.t
 
 local HUD = {}
 
 local PHASE_TEXT = {
-	Waiting = "ESPERANDO JUGADORES",
-	Intermission = "INTERMEDIO",
-	Starting = "PREPARANDO",
-	Playing = "SOBREVIVE",
-	Results = "RESULTADOS",
+	Waiting = Locale.mark("ESPERANDO JUGADORES"),
+	Intermission = Locale.mark("INTERMEDIO"),
+	Starting = Locale.mark("PREPARANDO"),
+	Playing = Locale.mark("SOBREVIVE"),
+	Results = Locale.mark("RESULTADOS"),
 }
 
 local gui: ScreenGui
@@ -39,6 +43,7 @@ local coinLabel: TextLabel
 local staminaBar: Frame
 local staminaFill: Frame
 local toastList: Frame
+local testRoleButton: TextButton
 local roleCard: CanvasGroup
 local resultCard: CanvasGroup
 
@@ -183,6 +188,27 @@ local function build()
 		musicButton.BackgroundTransparency = if Music.isEnabled() then 0.3 else 0.6
 	end)
 
+	-- Modo prueba: elegir el rol de la próxima ronda (ver los dos lados)
+	testRoleButton = UI.new("TextButton", {
+		Name = "TestRole",
+		AnchorPoint = Vector2.new(0, 0.5),
+		Position = UDim2.new(0, 14, 0.5, 74),
+		Size = UDim2.fromOffset(0, 32),
+		AutomaticSize = Enum.AutomaticSize.X,
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.2,
+		FontFace = UI.FontBold,
+		TextSize = 13,
+		TextColor3 = C.Text,
+		RichText = true,
+		Visible = false,
+		Parent = gui,
+	}, { UI.corner(10), UI.stroke(0.6), UI.new("UIPadding", { PaddingLeft = UDim.new(0, 12), PaddingRight = UDim.new(0, 12) }) })
+	testRoleButton.Activated:Connect(function()
+		local nextRole = if player:GetAttribute("TestRole") == "Survivor" then "Verity" else "Survivor"
+		Net.get("Action"):FireServer("TestRole", nextRole)
+	end)
+
 	-- Controles y estamina (abajo al centro, discretos)
 	controls = UI.new("Frame", {
 		Name = "Controls",
@@ -265,7 +291,8 @@ end
 local toastOrder = 0
 local TOAST_COLORS = { info = C.Muted, good = C.Good, warn = C.Warn, bad = C.Verity }
 
-local function toast(text: string, kind: string?)
+local function toast(text: string, kind: string?, args: { [string]: any }?)
+	text = T(text, args)
 	toastOrder += 1
 	local color = TOAST_COLORS[kind or "info"] or C.Muted
 	local frame = UI.new("CanvasGroup", {
@@ -337,21 +364,22 @@ end
 
 local function onRoleReveal(role: string, killerName: string)
 	if role == "Verity" then
-		showCard(roleCard, "TU ROL", "ERES VERITY", C.Verity, "Eres una bola sonriente... por ahora. Al despertar: Q atrapar · Shift correr · C agacharse", 4.5)
+		showCard(roleCard, T("TU ROL"), T("ERES VERITY"), C.Verity, T("Eres una bola sonriente... por ahora. Al despertar: Q atrapar · Shift correr · C agacharse"), 4.5)
 	elseif role == "Survivor" then
-		showCard(roleCard, "TU ROL", "SUPERVIVIENTE", C.Survivor, `Verity es {killerName}. Escóndete en armarios (R), busca oro y craftea tótems.`, 4.5)
+		showCard(roleCard, T("TU ROL"), T("SUPERVIVIENTE"), C.Survivor,
+			T("Verity es {name}. Escóndete (R), busca oro y craftea tótems. Cada minuto Verity te verá en rojo: ¡muévete!", { name = killerName }), 5)
 	end
 end
 
 local function onRoundResult(winner: string, killerName: string, survivors: { string }, totems: number)
 	if winner == "Verity" then
-		showCard(resultCard, "FIN DE LA RONDA", "VERITY GANA", C.Verity, `{killerName} atrapó a todos. Tótems crafteados: {totems}`, Config.Round.ResultsTime - 0.5)
+		showCard(resultCard, T("FIN DE LA RONDA"), T("VERITY GANA"), C.Verity, T("{name} atrapó a todos. Tótems crafteados: {totems}", { name = killerName, totems = totems }), Config.Round.ResultsTime - 0.5)
 	else
-		local names = if #survivors > 0 then table.concat(survivors, ", ") else "nadie"
+		local names = if #survivors > 0 then table.concat(survivors, ", ") else T("nadie")
 		if #names > 70 then
-			names = `{#survivors} supervivientes`
+			names = T("{count} supervivientes", { count = #survivors })
 		end
-		showCard(resultCard, "FIN DE LA RONDA", "SUPERVIVIENTES GANAN", C.Survivor, `Sobrevivieron: {names}. Tótems: {totems}`, Config.Round.ResultsTime - 0.5)
+		showCard(resultCard, T("FIN DE LA RONDA"), T("SUPERVIVIENTES GANAN"), C.Survivor, T("Sobrevivieron: {names}. Tótems: {totems}", { names = names, totems = totems }), Config.Round.ResultsTime - 0.5)
 	end
 end
 
@@ -362,7 +390,7 @@ local function update()
 	local remaining = endsAt - now
 	local role = (player:GetAttribute("Role") :: string?) or "Lobby"
 
-	phaseLabel.Text = PHASE_TEXT[phase] or phase
+	phaseLabel.Text = T(PHASE_TEXT[phase] or phase)
 	if phase == "Waiting" then
 		local needed = if Workspace:GetAttribute("TestMode") then 1 else Config.Round.MinPlayers
 		timerLabel.Text = `{#Players:GetPlayers()}/{needed}`
@@ -376,21 +404,36 @@ local function update()
 
 	-- Línea de información contextual
 	local info = ""
+	local testMode = Workspace:GetAttribute("TestMode") == true
 	if phase == "Waiting" or phase == "Intermission" or role == "Lobby" then
-		local chance = (player:GetAttribute("VerityChance") :: number?) or 0
-		info = `Probabilidad de Verity: <font color="#ff3b4e"><b>{chance}%</b></font>`
+		if testMode then
+			local nextRole = if player:GetAttribute("TestRole") == "Survivor" then T("Superviviente") else T("Verity")
+			info = T("Próxima ronda: {role}", { role = `<font color="#ff3b4e"><b>{nextRole}</b></font>` })
+		else
+			local chance = (player:GetAttribute("VerityChance") :: number?) or 0
+			info = T("Probabilidad de Verity: {chance}", { chance = `<font color="#ff3b4e"><b>{chance}%</b></font>` })
+		end
 		if phase == "Playing" then
-			info ..= "  ·  ronda en curso"
+			info ..= "  ·  " .. T("ronda en curso")
 		end
 	elseif phase == "Playing" then
 		local releaseAt = (Workspace:GetAttribute("KillerReleaseAt") :: number?) or 0
 		local totems = Workspace:GetAttribute("Totems") or 0
 		local maxTotems = Workspace:GetAttribute("MaxTotems") or 0
 		local alive = Workspace:GetAttribute("SurvivorsAlive") or 0
+		local revealUntil = (Workspace:GetAttribute("RevealUntil") :: number?) or 0
+		local nextReveal = (Workspace:GetAttribute("NextRevealAt") :: number?) or 0
 		if releaseAt > now then
-			info = `Verity despierta en <font color="#ff3b4e"><b>{math.ceil(releaseAt - now)}s</b></font>`
+			info = T("Verity despierta en {seconds}", { seconds = `<font color="#ff3b4e"><b>{math.ceil(releaseAt - now)}s</b></font>` })
 		else
-			info = `Tótems <font color="#ffc83c"><b>{totems}/{maxTotems}</b></font>  ·  Vivos <b>{alive}</b>`
+			info = T("Tótems {totems}  ·  Vivos {alive}", { totems = `<font color="#ffc83c"><b>{totems}/{maxTotems}</b></font>`, alive = `<b>{alive}</b>` })
+			if revealUntil > now then
+				info ..= "  ·  " .. `<font color="#ff3b4e"><b>{T("¡Revelados!")}</b></font>`
+			elseif nextReveal > now then
+				local seconds = math.ceil(nextReveal - now)
+				local color = if seconds <= 10 then "#ff3b4e" else "#a59cb2"
+				info ..= "  ·  " .. T("Revelación en {seconds}", { seconds = `<font color="{color}"><b>{seconds}s</b></font>` })
+			end
 		end
 	end
 	infoLabel.Text = info
@@ -401,9 +444,9 @@ local function update()
 		return `<font color="#f0ecf5"><b>{k}</b></font> {text}`
 	end
 	if inRound and role == "Verity" then
-		controlsLabel.Text = `{key("Q", "Atrapar")}   {key("Shift", "Correr")}   {key("C", "Agacharse")}`
+		controlsLabel.Text = `{key("Q", T("Atrapar"))}   {key("Shift", T("Correr"))}   {key("C", T("Agacharse"))}`
 	elseif inRound and role == "Survivor" then
-		controlsLabel.Text = `{key("Shift", "Correr")}   {key("E", "Oro / mesa")}   {key("F", "Craftear")}   {key("R", "Esconderse")}`
+		controlsLabel.Text = `{key("Shift", T("Correr"))}   {key("E", T("Oro / mesa"))}   {key("F", T("Craftear"))}   {key("R", T("Esconderse"))}`
 	else
 		controlsLabel.Text = ""
 	end
@@ -424,7 +467,15 @@ local function update()
 	goldChip.Visible = showGold
 	if showGold then
 		local gold = (player:GetAttribute("Gold") :: number?) or 0
-		goldLabel.Text = `Oro {gold}/{Config.Crafting.MaxGoldCarried}`
+		goldLabel.Text = T("Oro {gold}/{max}", { gold = gold, max = Config.Crafting.MaxGoldCarried })
+	end
+
+	testRoleButton.Visible = testMode and not inRound and role ~= "Dead"
+	if testRoleButton.Visible then
+		local isSurvivor = player:GetAttribute("TestRole") == "Survivor"
+		local label = if isSurvivor then T("Superviviente") else T("Verity")
+		local color = if isSurvivor then "#46dcbe" else "#ff3b4e"
+		testRoleButton.Text = T("Rol de prueba: {role}", { role = `<font color="{color}">{label}</font>` }) .. `  <font color="#a59cb2">⇄</font>`
 	end
 end
 

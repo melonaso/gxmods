@@ -2644,7 +2644,8 @@
            0.06,
            0.04
           ],
-          "Text": "VERITY"
+          "Text": "VERITY",
+          "AutoLocalize": false
          }
         }
        ]
@@ -10848,7 +10849,8 @@
          1,
          1
         ],
-        "Text": "MURDER MYSTERY\nbut <font color=\"#ff3b4e\">VERITY</font>"
+        "Text": "MURDER MYSTERY\nbut <font color=\"#ff3b4e\">VERITY</font>",
+        "AutoLocalize": false
        }
       }
      ]
@@ -12286,7 +12288,15 @@
            1,
            1
           ],
-          "Text": "<font color=\"#ffc83c\">TIENDA</font>"
+          "Text": "<font color=\"#ffc83c\">TIENDA</font>",
+          "AutoLocalize": false,
+          "Tags": [
+           "WorldText"
+          ]
+         },
+         "attributes": {
+          "LocaleSource": "TIENDA",
+          "LocaleFormat": "<font color=\"#ffc83c\">{text}</font>"
          }
         }
        ]
@@ -12739,7 +12749,15 @@
            1,
            1
           ],
-          "Text": "OBBY\n<font color=\"#ffc83c\">premio al final</font>"
+          "Text": "OBBY\n<font color=\"#ffc83c\">premio al final</font>",
+          "AutoLocalize": false,
+          "Tags": [
+           "WorldText"
+          ]
+         },
+         "attributes": {
+          "LocaleSource": "premio al final",
+          "LocaleFormat": "OBBY\n<font color=\"#ffc83c\">{text}</font>"
          }
         }
        ]

@@ -1,6 +1,8 @@
 --!strict
 -- Efectos locales: oro girando, lámparas parpadeantes, golpes, tótems,
--- viñeta de "radio de terror" y bloqueo de prompts para Verity.
+-- viñeta de "radio de terror", bloqueo de prompts para Verity y la
+-- revelación de cada minuto (Verity ve a los supervivientes en rojo; quien
+-- es revelado recibe un pulso rojo en pantalla para que cambie de sitio).
 
 local CollectionService = game:GetService("CollectionService")
 local Players = game:GetService("Players")
@@ -11,6 +13,7 @@ local Workspace = game:GetService("Workspace")
 
 local Assets = require(ReplicatedStorage.Shared.Assets)
 local Config = require(ReplicatedStorage.Shared.Config)
+local Locale = require(ReplicatedStorage.Shared.Locale)
 local Net = require(ReplicatedStorage.Shared.Net)
 local UI = require(script.Parent.Parent.Lib.UI)
 
@@ -24,6 +27,7 @@ local goldBlocks: { [BasePart]: CFrame } = {}
 local coins: { [BasePart]: CFrame } = {}
 local vignette: Frame
 local flash: Frame
+local revealedUntil = 0 -- os.clock() hasta el que dura mi aviso de revelación
 
 local function playSound(id: string, position: Vector3, volume: number?)
 	local holder = Instance.new("Part")
@@ -260,6 +264,24 @@ local function onEffect(kind: string, position: any)
 		playSound("rbxasset://sounds/collide.wav", position, 0.8)
 		shockRing(position)
 		return
+	elseif kind == "Revealed" then
+		-- me han revelado: pulso rojo y tres latidos graves
+		local duration = if typeof(position) == "number" then position else 5
+		revealedUntil = os.clock() + duration
+		local camera = Workspace.CurrentCamera
+		local at = if camera then camera.CFrame.Position else Vector3.zero
+		for i = 0, 2 do
+			task.delay(i * 0.55, function()
+				local holder = playSound("rbxasset://sounds/electronicpingshort.wav", at, 1)
+				local sound = holder:FindFirstChildOfClass("Sound")
+				if sound then
+					sound.PlaybackSpeed = 0.35
+				end
+			end)
+		end
+		flash.BackgroundTransparency = 0.55
+		UI.tween(flash, 0.9, { BackgroundTransparency = 1 })
+		return
 	end
 	if kind == "Gore" then
 		cutScreams()
@@ -317,16 +339,38 @@ local function buildVignette()
 end
 
 local function killerRoot(): BasePart?
-	for _, other in Players:GetPlayers() do
-		if other ~= player and other:GetAttribute("Role") == "Verity" then
-			local character = other.Character
-			local root = character and character:FindFirstChild("HumanoidRootPart")
+	for _, character in CollectionService:GetTagged("VerityCharacter") do
+		if character ~= player.Character then
+			local root = character:FindFirstChild("HumanoidRootPart")
 			if root and root:IsA("BasePart") then
 				return root
 			end
 		end
 	end
 	return nil
+end
+
+-- Verity ve en rojo, a través de las paredes, a quien está revelado (o el
+-- escondite donde está metido).
+local function showReveal(inst: Instance)
+	if player:GetAttribute("Role") ~= "Verity" or inst:FindFirstChild("RevealHighlight") then
+		return
+	end
+	local highlight = Instance.new("Highlight")
+	highlight.Name = "RevealHighlight"
+	highlight.FillColor = Color3.fromRGB(255, 30, 50)
+	highlight.FillTransparency = 0.45
+	highlight.OutlineColor = Color3.fromRGB(255, 90, 100)
+	highlight.OutlineTransparency = 0
+	highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+	highlight.Parent = inst
+end
+
+local function hideReveal(inst: Instance)
+	local highlight = inst:FindFirstChild("RevealHighlight")
+	if highlight then
+		highlight:Destroy()
+	end
 end
 
 local function updateTerror()
@@ -340,6 +384,9 @@ local function updateTerror()
 			local distance = (myRoot.Position - theirRoot.Position).Magnitude
 			intensity = math.clamp(1 - distance / TERROR_RADIUS, 0, 1)
 		end
+	end
+	if os.clock() < revealedUntil then
+		intensity = math.max(intensity, 0.75) -- revelado: Verity sabe dónde estoy
 	end
 	vignette.Visible = intensity > 0
 	if intensity > 0 then
@@ -387,9 +434,56 @@ function WorldFX.start()
 		coins[inst :: BasePart] = nil
 	end)
 
+	-- textos de los ProximityPrompt (esconderse, oro, tienda...) en mi idioma;
+	-- si el servidor los cambia, se vuelven a traducir
+	local hooked: { [ProximityPrompt]: boolean } = setmetatable({}, { __mode = "k" }) :: any
+	ProximityPromptService.PromptShown:Connect(function(prompt)
+		if hooked[prompt] then
+			return
+		end
+		hooked[prompt] = true
+		local function apply()
+			local action, object = Locale.t(prompt.ActionText), Locale.t(prompt.ObjectText)
+			if prompt.ActionText ~= action then
+				prompt.ActionText = action
+			end
+			if prompt.ObjectText ~= object then
+				prompt.ObjectText = object
+			end
+		end
+		apply()
+		prompt:GetPropertyChangedSignal("ActionText"):Connect(apply)
+		prompt:GetPropertyChangedSignal("ObjectText"):Connect(apply)
+	end)
+
+	-- textos del mundo creados en el servidor (mesas de crafteo...), traducidos
+	local function trackWorldText(inst: Instance)
+		if inst:IsA("TextLabel") then
+			Locale.renderWorldText(inst)
+			inst.AttributeChanged:Connect(function()
+				Locale.renderWorldText(inst)
+			end)
+		end
+	end
+	for _, inst in CollectionService:GetTagged("WorldText") do
+		trackWorldText(inst)
+	end
+	CollectionService:GetInstanceAddedSignal("WorldText"):Connect(trackWorldText)
+
+	for _, inst in CollectionService:GetTagged("Revealed") do
+		showReveal(inst)
+	end
+	CollectionService:GetInstanceAddedSignal("Revealed"):Connect(showReveal)
+	CollectionService:GetInstanceRemovedSignal("Revealed"):Connect(hideReveal)
+
 	local function applyRole()
 		-- Verity no puede recoger oro ni craftear.
 		ProximityPromptService.Enabled = player:GetAttribute("Role") ~= "Verity"
+		if player:GetAttribute("Role") ~= "Verity" then
+			for _, inst in CollectionService:GetTagged("Revealed") do
+				hideReveal(inst)
+			end
+		end
 	end
 	player:GetAttributeChangedSignal("Role"):Connect(applyRole)
 	applyRole()
@@ -420,7 +514,13 @@ function WorldFX.start()
 				if lamp:GetAttribute("Flicker") then
 					local light = lamp:FindFirstChildOfClass("PointLight")
 					if light then
-						light.Brightness = if math.random() < 0.12 then 0.1 else 0.9
+						-- parpadeo relativo al brillo original de cada lámpara
+						local base = light:GetAttribute("BaseBrightness") :: number?
+						if not base then
+							base = light.Brightness
+							light:SetAttribute("BaseBrightness", base)
+						end
+						light.Brightness = if math.random() < 0.12 then (base :: number) * 0.12 else base :: number
 					end
 				end
 			end

@@ -88,17 +88,25 @@ def point_light(color, rng, brightness, shadows=False):
     }
 
 
-def surface_text(face, text, ppstud=30, color=(1, 1, 1), font="GothamBlack"):
+def surface_text(face, text, ppstud=30, color=(1, 1, 1), font="GothamBlack", translate=None, wrap=None):
+    """Cartel. `translate`: texto traducible (cada cliente lo muestra en su idioma,
+    ver Locale.renderWorldText); `wrap`: formato alrededor ("{text}")."""
+    label = {
+        "className": "TextLabel",
+        "properties": {
+            "Size": {"UDim2": [[1, 0], [1, 0]]}, "BackgroundTransparency": 1, "RichText": True,
+            "TextScaled": True, "Font": font, "TextColor3": list(color), "Text": text, "AutoLocalize": False,
+        },
+    }
+    if translate:
+        label["attributes"] = {"LocaleSource": translate}
+        if wrap:
+            label["attributes"]["LocaleFormat"] = wrap
+        label["properties"]["Tags"] = ["WorldText"]
     return {
         "className": "SurfaceGui",
         "properties": {"Face": face, "SizingMode": "PixelsPerStud", "PixelsPerStud": ppstud},
-        "children": [{
-            "className": "TextLabel",
-            "properties": {
-                "Size": {"UDim2": [[1, 0], [1, 0]]}, "BackgroundTransparency": 1, "RichText": True,
-                "TextScaled": True, "Font": font, "TextColor3": list(color), "Text": text,
-            },
-        }],
+        "children": [label],
     }
 
 
@@ -454,7 +462,7 @@ def shelf_rack():
 
 THEMES = {
     "Mansión": {
-        "seed": 7, "cols": 5, "rows": 5, "cell": 56, "height": 26, "hide": "wardrobe",
+        "seed": 7, "cols": 6, "rows": 5, "cell": 56, "height": 26, "hide": "wardrobe",
         "floor": ((78, 54, 44), "WoodPlanks"), "wall": ((70, 58, 72), "Plaster"),
         "outer": ((52, 40, 50), "Brick"), "ceiling": ((30, 24, 32), "Plaster"),
         "trim": (40, 28, 26), "rug": [(110, 22, 32), (40, 34, 70), (70, 50, 30)],
@@ -462,7 +470,7 @@ THEMES = {
         "props": [dresser, bookshelf, sofa, grandfather_clock, dining_table, piano],
     },
     "Hospital": {
-        "seed": 21, "cols": 6, "rows": 4, "cell": 52, "height": 24, "hide": "locker",
+        "seed": 21, "cols": 7, "rows": 4, "cell": 52, "height": 24, "hide": "locker",
         "floor": ((170, 182, 176), "Marble"), "wall": ((150, 176, 168), "Plaster"),
         "outer": ((110, 120, 118), "Concrete"), "ceiling": ((120, 130, 128), "Concrete"),
         "trim": (90, 110, 104), "rug": [],
@@ -470,7 +478,7 @@ THEMES = {
         "props": [bed, bed, med_cabinet, curtain, med_cart, wheelchair],
     },
     "Oficina": {
-        "seed": 33, "cols": 5, "rows": 5, "cell": 52, "height": 24, "hide": "locker",
+        "seed": 33, "cols": 6, "rows": 5, "cell": 52, "height": 24, "hide": "locker",
         "floor": ((95, 104, 118), "Fabric"), "wall": ((215, 212, 200), "Plaster"),
         "outer": ((90, 95, 105), "Concrete"), "ceiling": ((200, 200, 195), "Plaster"),
         "trim": (80, 85, 95), "rug": [],
@@ -478,7 +486,7 @@ THEMES = {
         "props": [cubicle, cubicle, cubicle, water_cooler, printer, filing, plant],
     },
     "Banco": {
-        "seed": 55, "cols": 5, "rows": 4, "cell": 56, "height": 26, "hide": "locker",
+        "seed": 55, "cols": 6, "rows": 4, "cell": 56, "height": 26, "hide": "locker",
         "floor": ((225, 220, 210), "Marble"), "wall": ((180, 160, 120), "Plaster"),
         "outer": ((150, 130, 100), "Sandstone"), "ceiling": ((200, 190, 170), "Plaster"),
         "trim": (120, 90, 50), "rug": [(130, 20, 30)],
@@ -486,7 +494,7 @@ THEMES = {
         "props": [teller, vault_door, gold_stack, money_bags, rope_posts, column, plant],
     },
     "Hotel": {
-        "seed": 77, "cols": 6, "rows": 4, "cell": 50, "height": 24, "hide": "wardrobe",
+        "seed": 77, "cols": 7, "rows": 4, "cell": 50, "height": 24, "hide": "wardrobe",
         "floor": ((110, 25, 35), "Fabric"), "wall": ((210, 190, 150), "Plaster"),
         "outer": ((120, 80, 60), "Brick"), "ceiling": ((230, 220, 200), "Plaster"),
         "trim": (70, 45, 30), "rug": [(200, 160, 80)],
@@ -494,7 +502,7 @@ THEMES = {
         "props": [double_bed, double_bed, nightstand, luggage_cart, reception, armchair, plant],
     },
     "Fábrica": {
-        "seed": 91, "cols": 5, "rows": 5, "cell": 56, "height": 26, "hide": "locker",
+        "seed": 91, "cols": 6, "rows": 5, "cell": 56, "height": 26, "hide": "locker",
         "floor": ((110, 110, 105), "Concrete"), "wall": ((120, 110, 100), "CorrodedMetal"),
         "outer": ((100, 95, 90), "DiamondPlate"), "ceiling": ((70, 70, 72), "Metal"),
         "trim": (200, 170, 40), "rug": [],
@@ -502,7 +510,7 @@ THEMES = {
         "props": [crate_stack, barrels, conveyor, pipes, machine, shelf_rack],
     },
     "Escuela Nocturna": {
-        "seed": 42, "cols": 5, "rows": 5, "cell": 50, "height": 24, "hide": "locker",
+        "seed": 42, "cols": 6, "rows": 5, "cell": 50, "height": 24, "hide": "locker",
         "floor": ((120, 112, 100), "Concrete"), "wall": ((200, 190, 160), "Plaster"),
         "outer": ((150, 80, 60), "Brick"), "ceiling": ((160, 158, 150), "Concrete"),
         "trim": (60, 90, 130), "rug": [(60, 90, 130)],
@@ -513,163 +521,300 @@ THEMES = {
 
 DOOR = 16
 DOOR_TOP = 18  # Verity mide ~16 studs
+SLAB = 1.0  # grosor del forjado entre pisos
+
+
+def frame(cx, base_y, cz, quarter):
+    """Marco local girado `quarter` cuartos de vuelta (la misma convención que
+    building()): devuelve (a_mundo(lx, ly, lz), orientación)."""
+    def rot(lx, lz):
+        for _ in range(quarter):
+            lx, lz = -lz, lx
+        return lx, lz
+
+    xx, xz = rot(1, 0)
+    zx, zz = rot(0, 1)
+    orientation = [[xx, 0, zx], [0, 1, 0], [xz, 0, zz]]
+
+    def world(lx, ly, lz):
+        wx, wz = rot(lx, lz)
+        return (cx + wx, base_y + ly, cz + wz)
+
+    return world, orientation
+
+
+def stair_flight(cx, cz, base_y, quarter, length, rise, width, color, mat, rail=(40, 28, 26)):
+    """Tramo recto de escalera centrado en (cx, cz) que sube `rise` hacia el +Z
+    local. Colisión: rampa invisible (los NPCs y Verity suben sin tropezar);
+    los peldaños son decorado."""
+    world, orient = frame(cx, base_y, cz, quarter)
+    nodes = [part("Ramp", world(0, rise / 2, 0), (width, rise, length), color, mat, class_name="WedgePart",
+                  orientation=orient, Transparency=1)]
+    steps = max(8, round(rise))
+    run = length / steps
+    for k in range(steps):
+        top = (k + 0.5) * rise / steps  # la rampa invisible pasa por la mitad de cada peldaño
+        z = -length / 2 + (k + 0.5) * run
+        nodes.append(part("Step", world(0, top / 2, z), (width, top, run), color, mat, orientation=orient,
+                          CanCollide=False, CanQuery=False))
+    angle = math.atan2(rise, length)
+    slope = math.hypot(rise, length)
+    for side in (-1, 1):
+        x = side * (width / 2 + 0.3)
+        nodes.append(part("Stringer", world(x, rise / 2, 0), (0.6, rise, length), rail, "Wood", class_name="WedgePart",
+                          orientation=orient))
+        nodes.append(part("Handrail", world(x, rise / 2 + 3.4, 0), (0.35, 0.35, slope), rail, "Wood",
+                          orientation=matmul(orient, [[1, 0, 0], [0, math.cos(angle), math.sin(angle)], [0, -math.sin(angle), math.cos(angle)]]),
+                          CanCollide=False))
+        for z, y in ((-length / 2 + 0.3, 0), (length / 2 - 0.3, rise)):
+            nodes.append(part("RailPost", world(x, y + 1.8, z), (0.5, 3.6, 0.5), rail, "Wood", orientation=orient, CanCollide=False))
+    return container("Model", "Stairs", nodes)
+
+
+def slab_pieces(x_lo, x_hi, z_lo, z_hi, holes):
+    """Rectángulos que cubren [x_lo, x_hi] x [z_lo, z_hi] menos los huecos."""
+    xs = sorted({x_lo, x_hi, *[v for hx0, hx1, _, _ in holes for v in (hx0, hx1) if x_lo < v < x_hi]})
+    pieces = []
+    for a, b in zip(xs, xs[1:]):
+        cuts = sorted((hz0, hz1) for hx0, hx1, hz0, hz1 in holes if hx0 < b and hx1 > a)
+        cursor = z_lo
+        for hz0, hz1 in cuts:
+            if hz0 > cursor:
+                pieces.append((a, b, cursor, hz0))
+            cursor = max(cursor, hz1)
+        if cursor < z_hi:
+            pieces.append((a, b, cursor, z_hi))
+    return pieces
 
 
 def build_map(name, t, origin):
     rng = random.Random(t["seed"])
     cols, rows, cell, h = t["cols"], t["rows"], t["cell"], t["height"]
+    floors = t.get("floors", 2)
+    story = h + SLAB
+    top = floors * story - SLAB  # altura del techo del último piso
     ox, oz = origin
     w, d = cols * cell, rows * cell
     x0, z0 = ox - w / 2, oz - d / 2
     structure, decor, lights, hides = [], [], [], []
-    walls = set()  # (eje, posición fija, inicio) de cada tramo de pared que existe
-    doors = []  # (eje, posición fija, desde, hasta) de cada hueco de puerta
-
-    structure.append(part("Floor", (ox, -1, oz), (w, 2, d), *t["floor"]))
-    structure.append(part("Ceiling", (ox, h + 0.5, oz), (w, 1, d), *t["ceiling"]))
-    for (px, pz, sx, sz) in [(ox, z0 - 1, w + 4, 2), (ox, z0 + d + 1, w + 4, 2), (x0 - 1, oz, 2, d), (x0 + w + 1, oz, 2, d)]:
-        structure.append(part("OuterWall", (px, h / 2, pz), (sx, h, sz), *t["outer"]))
-
-    def wall_segment(axis, fixed, a, b):
-        if b - a < 0.5:
-            return
-        mid, length = (a + b) / 2, b - a
-        if axis == "x":  # pared que corre a lo largo de Z en x = fixed
-            structure.append(part("Wall", (fixed, h / 2, mid), (1.5, h, length), *t["wall"]))
-            structure.append(part("Baseboard", (fixed, 0.4, mid), (1.9, 0.8, length), t["trim"], "Wood"))
-        else:
-            structure.append(part("Wall", (mid, h / 2, fixed), (length, h, 1.5), *t["wall"]))
-            structure.append(part("Baseboard", (mid, 0.4, fixed), (length, 0.8, 1.9), t["trim"], "Wood"))
-
-    def lintel(axis, fixed, center):
-        size = (1.5, h - DOOR_TOP, DOOR) if axis == "x" else (DOOR, h - DOOR_TOP, 1.5)
-        pos = (fixed, DOOR_TOP + (h - DOOR_TOP) / 2, center) if axis == "x" else (center, DOOR_TOP + (h - DOOR_TOP) / 2, fixed)
-        structure.append(part("Lintel", pos, size, *t["wall"]))
-
-    def wall_line(axis, fixed, start, length):
-        if rng.random() < 0.3:  # habitación abierta: mapas más espaciosos
-            return
-        walls.add((axis, round(fixed, 2), round(start, 2)))
-        if rng.random() < 0.3:
-            gaps = [rng.uniform(DOOR * 0.75, length / 2 - DOOR * 0.75), rng.uniform(length / 2 + DOOR * 0.75, length - DOOR * 0.75)]
-        else:
-            gaps = [rng.uniform(DOOR, length - DOOR)]
-        cursor = 0
-        for g in gaps:
-            doors.append((axis, round(fixed, 2), start + g - DOOR / 2 - 1.5, start + g + DOOR / 2 + 1.5))
-            wall_segment(axis, fixed, start + cursor, start + g - DOOR / 2)
-            lintel(axis, fixed, start + g)
-            cursor = g + DOOR / 2
-        wall_segment(axis, fixed, start + cursor, start + length)
-
-    for i in range(1, cols):
-        for j in range(rows):
-            wall_line("x", x0 + i * cell, z0 + j * cell, cell)
-    for j in range(1, rows):
-        for i in range(cols):
-            wall_line("z", z0 + j * cell, x0 + i * cell, cell)
-
-    centers = [(x0 + (i + 0.5) * cell, z0 + (j + 0.5) * cell) for i in range(cols) for j in range(rows)]
-    blocked = []
     half = cell / 2 - 5
 
-    def free_spot(cx, cz, clearance=6.0):
-        for _ in range(30):
-            p = (cx + rng.uniform(-half, half), cz + rng.uniform(-half, half))
-            if all(math.dist(p, b) >= clearance for b in blocked):
-                return p
-        return (cx, cz)
+    structure.append(part("Floor", (ox, -1, oz), (w, 2, d), *t["floor"]))
+    structure.append(part("Ceiling", (ox, top + 0.5, oz), (w, 1, d), *t["ceiling"]))
+    for (px, pz, sx, sz) in [(ox, z0 - 1, w + 4, 2), (ox, z0 + d + 1, w + 4, 2), (x0 - 1, oz, 2, d), (x0 + w + 1, oz, 2, d)]:
+        structure.append(part("OuterWall", (px, top / 2, pz), (sx, top, sz), *t["outer"]))
 
-    # Escondites contra las paredes, lejos de los huecos de las puertas.
-    style = t.get("hide", "wardrobe")
-    body_depth = HIDE_STYLES[style]["body"][2]
-    for i in range(cols):
-        for j in range(rows):
-            if rng.random() > 0.6:
-                continue
-            cx0, cz0 = x0 + i * cell, z0 + j * cell
-            sides = []
-            # (eje de la pared, posición fija, inicio del tramo, existe, cuarto de giro, signo hacia dentro)
-            sides.append(("z", z0 + j * cell, cx0, j == 0, 2, 1))
-            sides.append(("z", z0 + (j + 1) * cell, cx0, j == rows - 1, 0, -1))
-            sides.append(("x", x0 + i * cell, cz0, i == 0, 1, 1))
-            sides.append(("x", x0 + (i + 1) * cell, cz0, i == cols - 1, 3, -1))
-            rng.shuffle(sides)
-            for axis, fixed, start, outer, quarter, inward in sides:
-                if not outer and (axis, round(fixed, 2), round(start, 2)) not in walls:
+    cells = [(i, j) for i in range(cols) for j in range(rows)]
+
+    def center(i, j):
+        return (x0 + (i + 0.5) * cell, z0 + (j + 0.5) * cell)
+
+    killer_cell = min(cells, key=lambda c: math.dist(center(*c), (ox, oz)))
+
+    # Escaleras: dos tramos por planta, en habitaciones alejadas entre sí y
+    # del centro (donde aparece Verity), para que haya rutas de huida.
+    flights = []  # (planta de abajo, i, j, quarter)
+    for level in range(floors - 1):
+        options = [c for c in cells if c != killer_cell]
+        rng.shuffle(options)
+        chosen = []
+        for c in options:
+            if all(abs(c[0] - o[0]) + abs(c[1] - o[1]) >= 3 for o in chosen) and all(
+                    (f[1], f[2]) != c for f in flights):
+                chosen.append(c)
+            if len(chosen) == 2:
+                break
+        for i, j in chosen:
+            flights.append((level, i, j, rng.choice((0, 2))))
+
+    flight_w = 12
+    flight_len = cell - 12
+
+    def flight_box(i, j, q):
+        """Hueco del forjado sobre un tramo: a ras del extremo alto (sin escalón al llegar)."""
+        cx, cz = center(i, j)
+        lo, hi = cz - flight_len / 2, cz + flight_len / 2
+        return (cx - flight_w / 2 - 1, cx + flight_w / 2 + 1, lo - 1 if q == 0 else lo, hi if q == 0 else hi + 1)
+
+    all_spawns, gold, table_options = [], [], []
+    killer_marker = None
+
+    for level in range(floors):
+        base = level * story
+        walls = set()  # (eje, posición fija, inicio) de cada tramo de pared que existe
+        doors = []  # (eje, posición fija, desde, hasta) de cada hueco de puerta
+        blocked = []
+        stair_here = {(i, j) for lv, i, j, _ in flights if lv == level or lv == level - 1}
+
+        # forjado (suelo de esta planta / techo de la de abajo) con el hueco de la escalera
+        if level > 0:
+            below = [(flight_box(i, j, q), q) for lv, i, j, q in flights if lv == level - 1]
+            for a, b, c, e in slab_pieces(x0, x0 + w, z0, z0 + d, [box for box, _ in below]):
+                mx, mz, sx, sz = (a + b) / 2, (c + e) / 2, b - a, e - c
+                structure.append(part("UpperFloor", (mx, base - 0.15, mz), (sx, 0.3, sz), *t["floor"]))
+                structure.append(part("CeilingBelow", (mx, base - 0.65, mz), (sx, 0.7, sz), *t["ceiling"]))
+            for (hx0, hx1, hz0, hz1), q in below:
+                # barandilla alrededor del hueco; el extremo alto queda abierto: ahí llega la escalera
+                for x in (hx0 - 0.25, hx1 + 0.25):
+                    structure.append(part("Railing", (x, base + 1.8, (hz0 + hz1) / 2), (0.5, 3.6, hz1 - hz0), t["trim"], "Wood"))
+                low_z = hz0 - 0.25 if q == 0 else hz1 + 0.25
+                structure.append(part("Railing", ((hx0 + hx1) / 2, base + 1.8, low_z), (hx1 - hx0 + 1, 3.6, 0.5), t["trim"], "Wood"))
+
+        for lv, i, j, q in flights:
+            if lv == level:
+                cx, cz = center(i, j)
+                decor.append(stair_flight(cx, cz, base, q, flight_len, story, flight_w, t["trim"], "Wood"))
+        for i, j in stair_here:
+            cx, cz = center(i, j)
+            for k in range(-3, 4):
+                for dx in (-4, 0, 4):
+                    blocked.append((cx + dx, cz + k * flight_len / 6))
+
+        def wall_segment(axis, fixed, a, b):
+            if b - a < 0.5:
+                return
+            mid, length = (a + b) / 2, b - a
+            if axis == "x":  # pared que corre a lo largo de Z en x = fixed
+                structure.append(part("Wall", (fixed, base + h / 2, mid), (1.5, h, length), *t["wall"]))
+                structure.append(part("Baseboard", (fixed, base + 0.4, mid), (1.9, 0.8, length), t["trim"], "Wood"))
+            else:
+                structure.append(part("Wall", (mid, base + h / 2, fixed), (length, h, 1.5), *t["wall"]))
+                structure.append(part("Baseboard", (mid, base + 0.4, fixed), (length, 0.8, 1.9), t["trim"], "Wood"))
+
+        def lintel(axis, fixed, at):
+            size = (1.5, h - DOOR_TOP, DOOR) if axis == "x" else (DOOR, h - DOOR_TOP, 1.5)
+            y = base + DOOR_TOP + (h - DOOR_TOP) / 2
+            structure.append(part("Lintel", (fixed, y, at) if axis == "x" else (at, y, fixed), size, *t["wall"]))
+
+        def wall_line(axis, fixed, start, length):
+            if rng.random() < 0.3:  # habitación abierta: mapas más espaciosos
+                return
+            walls.add((axis, round(fixed, 2), round(start, 2)))
+            if rng.random() < 0.3:
+                gaps = [rng.uniform(DOOR * 0.75, length / 2 - DOOR * 0.75), rng.uniform(length / 2 + DOOR * 0.75, length - DOOR * 0.75)]
+            else:
+                gaps = [rng.uniform(DOOR, length - DOOR)]
+            cursor = 0
+            for g in gaps:
+                doors.append((axis, round(fixed, 2), start + g - DOOR / 2 - 1.5, start + g + DOOR / 2 + 1.5))
+                wall_segment(axis, fixed, start + cursor, start + g - DOOR / 2)
+                lintel(axis, fixed, start + g)
+                cursor = g + DOOR / 2
+            wall_segment(axis, fixed, start + cursor, start + length)
+
+        for i in range(1, cols):
+            for j in range(rows):
+                wall_line("x", x0 + i * cell, z0 + j * cell, cell)
+        for j in range(1, rows):
+            for i in range(cols):
+                wall_line("z", z0 + j * cell, x0 + i * cell, cell)
+
+        def free_spot(i, j, clearance=6.0):
+            cx, cz = center(i, j)
+            for _ in range(40):
+                p = (cx + rng.uniform(-half, half), cz + rng.uniform(-half, half))
+                if all(math.dist(p, b) >= clearance for b in blocked):
+                    return p
+            return (cx + cell / 4, cz)  # a un lado (en el centro puede estar la escalera)
+
+        # Escondites contra las paredes, lejos de los huecos de las puertas.
+        style = t.get("hide", "wardrobe")
+        body_depth = HIDE_STYLES[style]["body"][2]
+        for i in range(cols):
+            for j in range(rows):
+                if rng.random() > 0.6:
                     continue
-                placed = False
-                for along in rng.sample([4.5, cell - 4.5, cell / 2], 3):
-                    a = start + along
-                    if any(dx == axis and abs(df - round(fixed, 2)) < 0.01 and lo - 3 < a < hi + 3 for dx, df, lo, hi in doors):
+                cx0, cz0 = x0 + i * cell, z0 + j * cell
+                sides = []
+                # (eje de la pared, posición fija, inicio del tramo, exterior, cuarto de giro, signo hacia dentro)
+                sides.append(("z", z0 + j * cell, cx0, j == 0, 2, 1))
+                sides.append(("z", z0 + (j + 1) * cell, cx0, j == rows - 1, 0, -1))
+                sides.append(("x", x0 + i * cell, cz0, i == 0, 1, 1))
+                sides.append(("x", x0 + (i + 1) * cell, cz0, i == cols - 1, 3, -1))
+                rng.shuffle(sides)
+                for axis, fixed, start, outer, quarter, inward in sides:
+                    if not outer and (axis, round(fixed, 2), round(start, 2)) not in walls:
                         continue
-                    offset = fixed + inward * (1.0 + body_depth / 2)
-                    hx, hz = (a, offset) if axis == "z" else (offset, a)
-                    if any(math.dist((hx, hz), b) < 6 for b in blocked):
-                        continue
-                    hides.append(hide_spot(style, hx, hz, quarter, len(hides) + 1))
-                    blocked.append((hx, hz))
-                    placed = True
-                    break
-                if placed:
-                    break
+                    placed = False
+                    for along in rng.sample([4.5, cell - 4.5, cell / 2], 3):
+                        a = start + along
+                        if any(dx == axis and abs(df - round(fixed, 2)) < 0.01 and lo - 3 < a < hi + 3 for dx, df, lo, hi in doors):
+                            continue
+                        offset = fixed + inward * (1.0 + body_depth / 2)
+                        hx, hz = (a, offset) if axis == "z" else (offset, a)
+                        if any(math.dist((hx, hz), b) < 6 for b in blocked):
+                            continue
+                        hides.append(hide_spot(style, hx, hz, quarter, len(hides) + 1, base_y=base))
+                        blocked.append((hx, hz))
+                        placed = True
+                        break
+                    if placed:
+                        break
 
-    for cx, cz in centers:
-        # habitaciones más oscuras; algunas sin luz para esconderse
-        if rng.random() > 0.06:
-            lamp = part("Lamp", (cx, h - 0.4, cz), (2.4, 0.6, 2.4), t["lamp"], "Neon", CanCollide=False,
-                        Tags=["MansionLamp"], attributes={"Flicker": rng.random() < 0.45},
-                        children=[point_light(t["lamp"], 40, t["lamp_brightness"] * 1.3, True)])
-            lights.append(lamp)
-        if t["rug"] and rng.random() < 0.7:
-            decor.append(part("Rug", (cx, 0.05, cz), (rng.choice([12, 14, 16]), 0.1, rng.choice([10, 12])), rng.choice(t["rug"]), "Fabric", CanCollide=False))
-        for _ in range(rng.randint(3, 5)):
-            spot = (cx + rng.uniform(-half + 2, half - 2), cz + rng.uniform(-half + 2, half - 2))
-            if math.dist(spot, (cx, cz)) < 7 or any(math.dist(spot, b) < 9 for b in blocked):
+        for i, j in cells:
+            cx, cz = center(i, j)
+            stairs = (i, j) in stair_here
+            # habitaciones en penumbra; algunas sin luz para esconderse
+            if rng.random() > 0.12:
+                lx = cx + cell / 4 if stairs else cx
+                lamp = part("Lamp", (lx, base + h - 0.4, cz), (2.4, 0.6, 2.4), t["lamp"], "Neon", CanCollide=False,
+                            Tags=["MansionLamp"], attributes={"Flicker": rng.random() < 0.45},
+                            children=[point_light(t["lamp"], 34, t["lamp_brightness"], True)])
+                lights.append(lamp)
+            if t["rug"] and not stairs and rng.random() < 0.7:
+                decor.append(part("Rug", (cx, base + 0.05, cz), (rng.choice([12, 14, 16]), 0.1, rng.choice([10, 12])), rng.choice(t["rug"]), "Fabric", CanCollide=False))
+            for _ in range(rng.randint(3, 5)):
+                spot = (cx + rng.uniform(-half + 2, half - 2), cz + rng.uniform(-half + 2, half - 2))
+                if math.dist(spot, (cx, cz)) < 7 or any(math.dist(spot, b) < 9 for b in blocked):
+                    continue
+                builder = rng.choice(t["props"])
+                decor.append(place(builder.__name__, builder(), spot[0], spot[1], rng.randint(0, 3), base_y=base))
+                blocked.append(spot)
+
+        if level == 0:
+            # Verity aparece en la habitación más céntrica de la planta baja
+            kx, kz = free_spot(*killer_cell)
+            blocked.append((kx, kz))
+            killer_marker = marker("KillerSpawn", kx, kz)
+
+        killer_c = center(*killer_cell)
+        for i, j in cells:
+            if level == 0 and (i, j) == killer_cell:
                 continue
-            builder = rng.choice(t["props"])
-            decor.append(place(builder.__name__, builder(), spot[0], spot[1], rng.randint(0, 3)))
-            blocked.append(spot)
+            sx, sz = free_spot(i, j)
+            blocked.append((sx, sz))
+            all_spawns.append((sx, sz, base))
+            for _ in range(2):
+                gx, gz = free_spot(i, j, clearance=5)
+                gold.append(marker(f"Gold{len(gold) + 1}", gx, gz, (1, 1, 1), y0=base))
+            tx, tz = free_spot(i, j, clearance=8)
+            table_options.append((math.dist(center(i, j), killer_c) + level * cell, (i, j, level), tx, tz, base))
 
-    # Verity aparece en la habitación más céntrica
-    killer_center = min(centers, key=lambda c: math.dist(c, (ox, oz)))
-    kx, kz = free_spot(*killer_center)
-    blocked.append((kx, kz))
-
-    others = [c for c in centers if c != killer_center]
-    rng.shuffle(others)
-    far = sorted(others, key=lambda c: -math.dist(c, killer_center))
+    # Mesas de crafteo: lejos de Verity y entre sí (pueden quedar en el piso de arriba)
     tables, used = [], []
-    for c in far:
+    for _, (i, j, level), tx, tz, base in sorted(table_options, key=lambda o: -o[0]):
         if len(tables) >= 3:
             break
-        if any(math.dist(c, u) < cell * 1.2 for u in used):
+        if sum(1 for u in used if u[2] == level) >= 2:
             continue
-        sx, sz = free_spot(*c, clearance=8)
-        blocked.append((sx, sz))
-        used.append(c)
-        tables.append(marker(f"Table{len(tables) + 1}", sx, sz, (6, 1, 4)))
+        if any(math.dist(center(i, j), center(u[0], u[1])) < cell * 1.2 and u[2] == level for u in used):
+            continue
+        used.append((i, j, level))
+        tables.append(marker(f"Table{len(tables) + 1}", tx, tz, (6, 1, 4), y0=base))
 
-    survivor_spawns = []
-    for i, c in enumerate(others):
-        sx, sz = free_spot(*c)
-        survivor_spawns.append(marker(f"Spawn{i + 1}", sx, sz))
-
-    gold = []
-    for c in centers:
-        for _ in range(2):
-            gx, gz = free_spot(*c, clearance=5)
-            gold.append(marker(f"Gold{len(gold) + 1}", gx, gz, (1, 1, 1)))
+    rng.shuffle(all_spawns)
+    survivor_spawns = [marker(f"Spawn{k + 1}", x, z, y0=y) for k, (x, z, y) in enumerate(all_spawns)]
 
     return {
         "className": "Model",
+        "attributes": {"Floors": floors},
         "children": [
             container("Folder", "Structure", structure),
             container("Folder", "Decor", decor),
             container("Folder", "Lights", lights),
             container("Folder", "HideSpots", hides),
             container("Folder", "SurvivorSpawns", survivor_spawns),
-            marker("KillerSpawn", kx, kz),
+            killer_marker,
             container("Folder", "GoldSpawns", gold),
             container("Folder", "CraftingTables", tables),
         ],
@@ -681,8 +826,8 @@ def build_map(name, t, origin):
 # ---------------------------------------------------------------------------
 
 OUTDOOR = {
-    "Bosque Nocturno": {"seed": 101, "size": 470, "kind": "forest"},
-    "Cementerio": {"seed": 202, "size": 430, "kind": "cemetery"},
+    "Bosque Nocturno": {"seed": 101, "size": 600, "kind": "forest"},
+    "Cementerio": {"seed": 202, "size": 540, "kind": "cemetery"},
 }
 
 HIDDEN = dict(Transparency=1, CanCollide=False, CanQuery=False, CanTouch=False)
@@ -750,6 +895,66 @@ def building(cx, cz, quarter, w, d, h, wall, wall_mat, roof, door_w=12, door_h=1
     for e in extras:
         add(*e)
     return nodes, rot
+
+
+def two_story(cx, cz, quarter, w, d, wall, wall_mat, roof, floor_color, trim, story=21, upper_h=18, style="wardrobe"):
+    """Edificio de dos plantas: puerta en el -Z local, escalera interior que sube
+    hacia la fachada y planta alta con un gran ventanal. Devuelve (nodos,
+    escondites, puntos de la planta alta para oro / aparición)."""
+    world, orient = frame(cx, 0, cz, quarter)
+    nodes, hides_out = [], []
+
+    def add(name, lx, y, lz, sx, sy, sz, color, mat, **props):
+        nodes.append(part(name, world(lx, y, lz), (sx, sy, sz), color, mat, orientation=orient, **props))
+
+    h1 = story - SLAB
+    door_w, door_h = 12, 18
+    side = (w - door_w) / 2
+    add("Floor", 0, 0.1, 0, w, 0.2, d, floor_color, "WoodPlanks")
+    # planta baja
+    add("WallBack", 0, h1 / 2, d / 2, w, h1, 1.2, wall, wall_mat)
+    add("WallLeft", -w / 2, h1 / 2, 0, 1.2, h1, d, wall, wall_mat)
+    add("WallRight", w / 2, h1 / 2, 0, 1.2, h1, d, wall, wall_mat)
+    for sx in (-1, 1):
+        add("WallFront", sx * (door_w / 2 + side / 2), h1 / 2, -d / 2, side, h1, 1.2, wall, wall_mat)
+    add("Lintel", 0, door_h + (h1 - door_h) / 2, -d / 2, door_w, h1 - door_h, 1.2, wall, wall_mat)
+    # escalera contra la pared derecha: abajo al fondo, arriba hacia la fachada
+    fw, length = 9, d - 10
+    fx = w / 2 - 0.6 - fw / 2 - 1
+    fz_top, fz_bottom = -d / 2 + 7, -d / 2 + 7 + length
+    sxw, _, szw = world(fx, 0, (fz_top + fz_bottom) / 2)
+    nodes.append(stair_flight(sxw, szw, 0, (quarter + 2) % 4, length, story, fw, trim, "Wood", rail=trim))
+    # forjado con el hueco de la escalera (a ras del extremo alto)
+    hole = (fx - fw / 2 - 1, fx + fw / 2 + 1, fz_top, fz_bottom + 1)
+    for a, b, c, e in slab_pieces(-w / 2 + 0.6, w / 2 - 0.6, -d / 2 + 0.6, d / 2 - 0.6, [hole]):
+        add("UpperFloor", (a + b) / 2, story - 0.15, (c + e) / 2, b - a, 0.3, e - c, floor_color, "WoodPlanks")
+        add("CeilingBelow", (a + b) / 2, story - 0.65, (c + e) / 2, b - a, 0.7, e - c, (40, 32, 28), "Wood")
+    add("Railing", hole[0] - 0.25, story + 1.8, (hole[2] + hole[3]) / 2, 0.5, 3.6, hole[3] - hole[2], trim, "Wood")
+    add("Railing", (hole[0] + hole[1]) / 2, story + 1.8, hole[3] + 0.25, hole[1] - hole[0], 3.6, 0.5, trim, "Wood")
+    # planta alta: ventanal en la fachada para vigilar el exterior
+    y2 = story + upper_h / 2
+    add("WallBack", 0, y2, d / 2, w, upper_h, 1.2, wall, wall_mat)
+    add("WallLeft", -w / 2, y2, 0, 1.2, upper_h, d, wall, wall_mat)
+    add("WallRight", w / 2, y2, 0, 1.2, upper_h, d, wall, wall_mat)
+    win_w, sill, win_top = 14, 3.5, 13
+    side2 = (w - win_w) / 2
+    for sx in (-1, 1):
+        add("WallFront", sx * (win_w / 2 + side2 / 2), y2, -d / 2, side2, upper_h, 1.2, wall, wall_mat)
+    add("Sill", 0, story + sill / 2, -d / 2, win_w, sill, 1.2, wall, wall_mat)
+    add("Lintel", 0, story + win_top + (upper_h - win_top) / 2, -d / 2, win_w, upper_h - win_top, 1.2, wall, wall_mat)
+    add("Roof", 0, story + upper_h + 0.8, 0, w + 3, 1.6, d + 3, roof, "Slate")
+    for y in (h1 - 1.2, story + upper_h - 1.2):
+        add("Lantern", -w / 4, y, 0, 1, 1.2, 1, (255, 180, 100), "Neon", CanCollide=False,
+            Tags=["MansionLamp"], attributes={"Flicker": True}, children=[point_light((255, 180, 110), 24, 0.8, True)])
+    # escondites: dos abajo (contra el fondo) y dos arriba (contra la pared izquierda)
+    for lx in (-w / 2 + 5, -w / 2 + 12):
+        px, _, pz = world(lx, 0, d / 2 - 2.6)
+        hides_out.append((style, px, pz, quarter, 0.0))
+    for lz in (-2, 8):
+        px, _, pz = world(-w / 2 + 2.6, 0, lz)
+        hides_out.append((style, px, pz, (quarter + 1) % 4, story))
+    upper_points = [world(lx, story, lz) for lx, lz in ((-w / 4, -d / 4), (-w / 4, d / 4), (0, d / 4 + 2))]
+    return nodes, hides_out, upper_points
 
 
 def build_outdoor(name, t, origin):
@@ -838,19 +1043,19 @@ def build_outdoor(name, t, origin):
             lights.append(lamp_post(lx + 5, lz + 5))
             blocked.append((lx + 5, lz + 5, 3))
         # arbustos (cobertura) y rocas
-        for _ in range(65):
+        for _ in range(100):
             pt = random_point(4)
             if pt:
                 r = rng.uniform(4, 7)
                 decor.append(part("Bush", (pt[0], r * 0.35, pt[1]), (r, r, r), (26, 50, 26), "Grass", Shape="Ball"))
                 blocked.append((pt[0], pt[1], r / 2))
-        for _ in range(20):
+        for _ in range(30):
             pt = random_point(3)
             if pt:
                 r = rng.uniform(2.5, 5)
                 decor.append(part("Rock", (pt[0], r * 0.3, pt[1]), (r, r * 0.7, r * 1.2), (80, 80, 84), "Slate"))
                 blocked.append((pt[0], pt[1], r / 2))
-        tree_count, dead = 190, False
+        tree_count, dead = 290, False
     else:
         # capilla al fondo, criptas y lápidas
         cx, cz = ox, oz - half + 50
@@ -892,8 +1097,8 @@ def build_outdoor(name, t, origin):
             for y in (2.5, 7.5):
                 decor.append(part("FenceRail", (px, y, pz), (sx, 0.3, sz), (28, 28, 32), "Metal"))
         # lápidas en hileras
-        for gx in range(-11, 12):
-            for gz in range(-10, 11):
+        for gx in range(-int((half - 25) / 17), int((half - 25) / 17) + 1):
+            for gz in range(-int((half - 25) / 19), int((half - 25) / 19) + 1):
                 x, z = ox + gx * 17 + rng.uniform(-2, 2), oz + gz * 19 + rng.uniform(-2, 2)
                 if not free(x, z, 3) or rng.random() < 0.5:
                     continue
@@ -912,7 +1117,26 @@ def build_outdoor(name, t, origin):
             if free(lx, lz, 2):
                 lights.append(lamp_post(lx, lz, (190, 210, 255)))
                 blocked.append((lx, lz, 2))
-        tree_count, dead = 70, True
+        tree_count, dead = 110, True
+
+    # Dos edificios de dos plantas a los lados: refugios de madera en el bosque,
+    # mausoleos de piedra en el cementerio. Escalera interior y ventanal arriba.
+    upper_points = []
+    big_z = 0 if forest else -(half - 50) * 0.55
+    for k, sx in enumerate((-1, 1)):
+        bx, bz = ox + sx * (half - 75), oz + big_z
+        quarter = 1 if sx < 0 else 3  # la puerta mira al centro del mapa
+        if forest:
+            nodes, spots, points = two_story(bx, bz, quarter, 30, 40, (86, 58, 38), "WoodPlanks", (40, 30, 26), (70, 52, 40), (50, 34, 24))
+        else:
+            nodes, spots, points = two_story(bx, bz, quarter, 30, 40, (128, 126, 120), "Slate", (50, 50, 56), (90, 88, 84), (60, 60, 64),
+                                             style="coffin")
+        decor.append(container("Model", f"{'Lodge' if forest else 'Mausoleum'}{k + 1}", nodes))
+        for style, hx, hz, q, y in spots:
+            hide_count += 1
+            hides.append(hide_spot(style, hx, hz, q, hide_count, base_y=y))
+        upper_points += points
+        blocked.append((bx, bz, 28))
 
     # Muros que cortan la línea de visión: setos en el bosque, piedra en el
     # cementerio. Tramos sobre una rejilla, con huecos, sin tapar los caminos.
@@ -942,7 +1166,7 @@ def build_outdoor(name, t, origin):
                     blocked.append((px, pz, 3))
 
     # Cobertizos / mausoleos extra con un escondite dentro
-    extra_buildings = 5 if forest else 5
+    extra_buildings = 7
     for k in range(extra_buildings):
         pt = random_point(14, margin=35)
         if not pt or math.dist(pt, (ox, oz)) < 50:
@@ -962,7 +1186,7 @@ def build_outdoor(name, t, origin):
         blocked.append((bx, bz, 14))
 
     # Arbustos densos para esconderse
-    for _ in range(18 if forest else 10):
+    for _ in range(26 if forest else 16):
         pt = random_point(6, margin=20)
         if pt:
             hide_count += 1
@@ -988,7 +1212,7 @@ def build_outdoor(name, t, origin):
     kx, kz = (ox, oz + 12) if forest else (ox, oz + 8)
     blocked.append((kx, kz, 4))
     survivor_spawns = []
-    for i in range(16):
+    for i in range(20):
         for _ in range(40):
             pt = random_point(3)
             if pt and math.dist(pt, (kx, kz)) > 70:
@@ -996,10 +1220,12 @@ def build_outdoor(name, t, origin):
                 blocked.append((pt[0], pt[1], 3))
                 break
     gold = []
-    for i in range(44):
+    for i in range(64):
         pt = random_point(2)
         if pt:
-            gold.append(marker(f"Gold{i + 1}", pt[0], pt[1], (1, 1, 1)))
+            gold.append(marker(f"Gold{len(gold) + 1}", pt[0], pt[1], (1, 1, 1)))
+    for x, y, z in upper_points:
+        gold.append(marker(f"Gold{len(gold) + 1}", x, z, (1, 1, 1), y0=y))
     tables = []
     for i in range(3):
         for _ in range(60):
@@ -1085,7 +1311,8 @@ def build_obby(top):
     for px in (40, 48):
         parts.append(part("ObbySignPost", (px, top + 4, 47), (0.5, 8, 0.5), (40, 30, 26), "Wood"))
     parts.append(part("ObbySign", (44, top + 7, 46.6), (10, 4, 0.5), (20, 14, 20), "SmoothPlastic",
-                      children=[surface_text("Front", "OBBY\n<font color=\"#ffc83c\">premio al final</font>", 40)]))
+                      children=[surface_text("Front", "OBBY\n<font color=\"#ffc83c\">premio al final</font>", 40,
+                                                   translate="premio al final", wrap="OBBY\n<font color=\"#ffc83c\">{text}</font>")]))
     # plataformas: (x, z, altura, tamaño)
     steps = [
         (52, 40, 1.5, 4), (57, 34, 3, 4), (63, 29, 4.5, 3.5), (68, 23, 6, 3.5), (63, 17, 7.5, 3),
@@ -1182,7 +1409,8 @@ def build_lobby():
     for z in (-8.5, 8.5):
         shop.append(part("AwningPost", (-48.5, top + 6, z), (0.5, 12, 0.5), DARK_WOOD, "Wood"))
     shop.append(part("ShopSign", (-48.2, top + 14.5, 0), (0.6, 4, 14), (20, 14, 20), "SmoothPlastic",
-                     children=[surface_text("Right", "<font color=\"#ffc83c\">TIENDA</font>", 40)]))
+                     children=[surface_text("Right", "<font color=\"#ffc83c\">TIENDA</font>", 40,
+                                           translate="TIENDA", wrap="<font color=\"#ffc83c\">{text}</font>")]))
     shop.append(part("ShopLight", (-50, top + 10, 0), (0.5, 0.5, 0.5), (255, 220, 150), "Neon", Transparency=1, CanCollide=False,
                      children=[point_light((255, 220, 150), 22, 1.4)]))
     c.append(container("Model", "Shop", shop))
@@ -1212,7 +1440,7 @@ def main():
         old.unlink()
     names = list(THEMES) + list(OUTDOOR)
     for i, name in enumerate(names):
-        origin = ((i - (len(names) - 1) / 2) * 620, 0)
+        origin = ((i - (len(names) - 1) / 2) * 720, 0)
         if name in THEMES:
             data = build_map(name, THEMES[name], origin)
         else:
