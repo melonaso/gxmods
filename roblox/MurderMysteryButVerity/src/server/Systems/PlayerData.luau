@@ -17,7 +17,7 @@ export type Data = {
 }
 
 local MAX_STORED_RECEIPTS = 50
-local store = DataStoreService:GetDataStore("SurviveVerity_v1")
+local store = DataStoreService:GetDataStore("MurderMysteryButVerity_v1")
 
 local PlayerData = {}
 

@@ -1,4 +1,4 @@
-# Survive Verity
+# Murder Mystery but Verity
 
 Juego de Roblox estilo *Murder Mystery 2* (lobby → ronda → resultados) con gameplay de *Survive the Killer*: un jugador es **Verity** (la asesina) y el resto son supervivientes. No hay sheriff.
 
@@ -38,7 +38,7 @@ Texturas de VFX generadas con **ForgeGUI** y publicadas en Roblox ([`src/shared/
 ```bash
 rojo serve        # y conecta con el plugin de Rojo en Studio
 # o
-rojo build -o SurviveVerity.rbxlx
+rojo build -o MurderMysteryButVerity.rbxlx
 ```
 Activa **Game Settings → Security → Enable Studio Access to API Services** para probar DataStores en Studio. Prueba con *Test → Clients and Servers* (2+ jugadores).
 

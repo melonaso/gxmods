@@ -75,7 +75,7 @@ local function buildLobby(): Model
 	local label = Instance.new("TextLabel")
 	label.Size = UDim2.fromScale(1, 1)
 	label.BackgroundTransparency = 1
-	label.Text = "SURVIVE <font color=\"#ff3b4e\">VERITY</font>"
+	label.Text = "MURDER MYSTERY\nbut <font color=\"#ff3b4e\">VERITY</font>"
 	label.RichText = true
 	label.TextScaled = true
 	label.Font = Enum.Font.GothamBlack
