@@ -26,18 +26,26 @@ Sin importar nada, el juego intenta `InsertService:LoadAsset` (solo funciona si 
 ## Modo prueba (activado)
 `Config.Testing.Enabled = true` en [`src/shared/Config.luau`](src/shared/Config.luau):
 - Basta **1 jugador**. El primer jugador del servidor es **Verity en todas las rondas**.
-- **5 NPCs** hacen de supervivientes: huyen de Verity, recogen oro, lo depositan y craftean tótems.
-- El intermedio dura 8 s y empiezas con 1500 monedas para probar la tienda.
+- **6 NPCs** hacen de supervivientes: huyen de Verity, se esconden en armarios, recogen oro, lo depositan y craftean tótems.
+- Empiezas con 1500 monedas para probar la tienda.
 
 Ponlo en `false` antes de publicar.
+
+## Ronda
+1. **Intermedio de 23 s** en el lobby.
+2. Cinemática de inicio: barras de cine, nombre del mapa y la cámara rodea a tu personaje.
+3. Verity empieza como una **bola sonriente** (su diseño original) durante **20 s**.
+4. Al liberarse, la bola **se retuerce con crujidos de huesos** y se transforma en el monstruo (2,6 s); si eres Verity, la cámara orbita la transformación.
+5. Verity atrapa con `Q`: la víctima **grita** mientras la levanta y el grito se corta en seco con la explosión.
 
 ## Controles
 | Tecla | Verity | Superviviente |
 | --- | --- | --- |
 | `Q` | Atrapar: levanta a la víctima y la aplasta | — |
-| `Shift` | Correr (28, sin límite) | Correr (24, gasta estamina) |
+| `Shift` | Correr (34, sin límite) | Correr (24, gasta estamina) |
 | `C` | Agacharse (alterna) | — |
 | `E` / `F` | — | Recoger / depositar oro · Craftear tótem |
+| `R` | — | Esconderse en armarios, taquillas, ataúdes y confesionarios (Verity puede sacarte con `Q` si te encuentra) |
 | `1`–`4` | Objetos de la tienda | Objetos de la tienda |
 
 ## Monedas y tienda
@@ -63,14 +71,30 @@ Ponlo en `false` antes de publicar.
 - **Pases (Robux):** 2x/3x de probabilidad de ser Verity y la Poción de Verity. Pon los IDs en `Config.luau`.
 
 ## Mapas y lobby
-Mapas **inspirados** en los clásicos de MM2 (construcciones propias, no copias de los originales): **Mansión, Hospital, Oficina, Banco, Hotel, Fábrica** y **Escuela Nocturna**. Están en `Workspace/Maps` para verlos en Studio; al iniciar se mueven a `ServerStorage/Maps` y cada ronda usa uno al azar.
+Mapas **inspirados** en los clásicos de MM2 (construcciones propias, no copias de los originales), más grandes y oscuros para poder esconderse: **Mansión, Hospital, Oficina, Banco, Hotel, Fábrica** y **Escuela Nocturna** (20–25 habitaciones cada uno, con 10–17 escondites). Al aire libre y de noche: **Bosque Nocturno** (cabañas, fogata, tiendas de campaña) y **Cementerio** (capilla, criptas, tumbas y verja). Están en `Workspace/Maps` para verlos en Studio; al iniciar se mueven a `ServerStorage/Maps` y cada ronda usa uno al azar.
 
 El **lobby** tiene la estatua de Verity mirando al spawn, el puesto de la **tienda** y un **obby** sobre lava con un cofre de monedas al final.
 
 Para regenerarlos: `python3 tools/generate_world.py`. Para un mapa propio, copia la estructura `SurvivorSpawns` / `KillerSpawn` / `GoldSpawns` / `CraftingTables`.
 
+## Aspecto cinematográfico
+- Iluminación **Future** (sombras reales de cada lámpara), corrección de color, bloom, profundidad de campo y niebla atmosférica.
+- Tres ambientes: lobby al atardecer, interiores oscuros y fríos con luces que parpadean (algunas habitaciones sin luz) y exteriores de noche con luna y niebla.
+
+## Animaciones de Verity
+Procedurales, en `VerityAnimator.luau`: reposo con tics de cabeza, caminar, correr encorvada con los brazos atrás, agacharse, la pose de transformación y el ataque. Se aplican modificando `C0` localmente, por lo que ningún Animator de Roblox las pisa y funcionan con cualquier rig.
+
+## Crujidos de huesos (paso opcional)
+Roblox no tiene crujidos de huesos públicos y ForgeGUI necesita un plan de pago para generar sonidos, así que están **sintetizados** en `assets/audio/verity_bone_cracks.ogg` (`tools/synth_bone_cracks.py`). Para usarlos:
+1. En Studio: **Ventana → Asset Manager → Bulk Import** y elige el `.ogg`.
+2. Clic derecho en el audio subido → **Copy ID**.
+3. Pégalo en `Config.Sounds.BoneCracks`.
+
+Mientras sea `0`, el juego usa un sustituto con sonidos internos de Roblox.
+
 ## Música y efectos
-- Música ambiente de terror de **DistroKid Official** y **APM Official** (licenciadas para experiencias de Roblox), distinta en lobby, ronda y resultados. Se puede silenciar con el botón ♪.
+- Música ambiente de terror de **DistroKid Official** y **APM Official** (licenciadas para experiencias de Roblox), distinta en lobby, interiores, exteriores y resultados, más un zumbido de fondo y una **capa de persecución** que sube cuando Verity está cerca de alguien. Se puede silenciar con el botón ♪.
+- Grito de muerte: *HORROR SCREAM 07* (APM).
 - Texturas de VFX generadas con **ForgeGUI**: destello, orbe, onda, salpicadura de líquido y gota (sangre).
 
 ## Puzzle: oro y tótems

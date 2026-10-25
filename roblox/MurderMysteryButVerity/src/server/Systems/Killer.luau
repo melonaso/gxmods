@@ -9,6 +9,7 @@ local Debris = game:GetService("Debris")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
+local ServerStorage = game:GetService("ServerStorage")
 local TweenService = game:GetService("TweenService")
 local Workspace = game:GetService("Workspace")
 
@@ -36,6 +37,9 @@ local released = false
 local killing = false
 local lastKill = 0
 local rig: Pose.RigData? = nil
+local ball: Model? = nil
+local hiddenParts: { [BasePart]: number } = {}
+local cameraOffset = Vector3.zero
 
 local function now(): number
 	return Workspace:GetServerTimeNow()
@@ -207,6 +211,8 @@ function Killer.tryKill(player: Player)
 
 	killing = true
 	ctx.onGrab(victim, victimRoot.Position)
+	-- el grito suena en la víctima mientras la levanta; la explosión lo corta
+	Net.get("Effect"):FireAllClients("Grab", victimRoot)
 
 	-- Verity se queda quieta y de pie mientras dura la animación (si estaba
 	-- agachada, se la levanta: el cálculo de las manos parte de los pies).
@@ -261,28 +267,123 @@ function Killer.tryKill(player: Player)
 	end)
 end
 
+-- La bola sonriente (diseño original de Verity) que espera durante la
+-- ventaja inicial. El monstruo ya está en su sitio, pero invisible.
+local function spawnBall(character: Model, spawn: CFrame, parent: Instance)
+	local template = ServerStorage:FindFirstChild("VerityBall")
+	if not (template and template:IsA("Model")) then
+		return
+	end
+	local model = template:Clone()
+	local core = model:FindFirstChild("Core")
+	if core and core:IsA("BasePart") then
+		model.PrimaryPart = core
+	end
+	local floorY = spawn.Position.Y - 3
+	local look = spawn.LookVector * Vector3.new(1, 0, 1)
+	local facing = if look.Magnitude > 0.01 then look.Unit else Vector3.new(0, 0, -1)
+	local center = Vector3.new(spawn.Position.X, floorY + 3.6, spawn.Position.Z)
+	model:PivotTo(CFrame.lookAt(center, center + facing))
+	model.Name = "VerityBall"
+	model:SetAttribute("Owner", character.Name)
+	game:GetService("CollectionService"):AddTag(model, "VerityBall")
+	model.Parent = parent
+	ball = model
+
+	-- el monstruo queda invisible hasta la transformación
+	table.clear(hiddenParts)
+	for _, inst in character:GetDescendants() do
+		if inst:IsA("BasePart") and inst.Name ~= "HumanoidRootPart" then
+			hiddenParts[inst] = inst.Transparency
+			inst.Transparency = 1
+		elseif inst:IsA("Highlight") or inst:IsA("ParticleEmitter") then
+			inst.Enabled = false
+		elseif inst:IsA("Decal") or inst:IsA("SurfaceGui") then
+			if inst:IsA("SurfaceGui") then
+				inst.Enabled = false
+			else
+				inst.Transparency = 1
+			end
+		end
+	end
+	-- cámara a la altura de la bola
+	local humanoid = character:FindFirstChildOfClass("Humanoid")
+	if humanoid and rig then
+		cameraOffset = humanoid.CameraOffset
+		humanoid.CameraOffset = Vector3.new(0, 4 - rig.rootY, 0)
+	end
+end
+
 function Killer.setup(player: Player, spawn: CFrame, ctx: Context)
 	current = player
 	context = ctx
 	released = false
 	killing = false
-	morph(player, spawn)
+	local character = morph(player, spawn)
+	if character then
+		spawnBall(character, spawn, ctx.goreParent)
+	end
 end
 
+-- La bola se retuerce (huesos crujiendo) y se convierte en el monstruo.
+-- Los clientes animan la bola con TransformStart; aquí se revela el
+-- monstruo poco a poco y se libera al terminar.
 function Killer.release()
 	local player = current
 	if not player then
 		return
 	end
-	released = true
 	local character = player.Character
 	local root = rootOf(player)
-	if root then
-		root.Anchored = false
+	local duration = Config.Round.TransformTime
+	local start = now()
+	local ballModel = ball
+	if ballModel then
+		ballModel:SetAttribute("TransformStart", start)
 	end
 	if character then
-		character:SetAttribute("Released", true)
+		character:SetAttribute("TransformStart", start)
 	end
+	Net.get("Effect"):FireAllClients("Transform", if root then root.Position else Vector3.zero)
+
+	task.spawn(function()
+		local steps = 14
+		local revealFrom = duration * 0.35
+		task.wait(revealFrom)
+		for i = 1, steps do
+			local alpha = i / steps
+			for part, base in hiddenParts do
+				if part.Parent then
+					part.Transparency = 1 - (1 - base) * alpha
+				end
+			end
+			task.wait((duration - revealFrom) / steps)
+		end
+		if character and character.Parent then
+			for _, inst in character:GetDescendants() do
+				if inst:IsA("Highlight") or inst:IsA("ParticleEmitter") or inst:IsA("SurfaceGui") then
+					inst.Enabled = true
+				elseif inst:IsA("Decal") then
+					inst.Transparency = 0
+				end
+			end
+			local humanoid = character:FindFirstChildOfClass("Humanoid")
+			if humanoid then
+				humanoid.CameraOffset = cameraOffset
+			end
+			character:SetAttribute("TransformStart", nil)
+			character:SetAttribute("Released", true)
+		end
+		if ballModel then
+			ballModel:Destroy()
+		end
+		ball = nil
+		table.clear(hiddenParts)
+		if root and root.Parent then
+			root.Anchored = false
+		end
+		released = true
+	end)
 end
 
 function Killer.current(): Player?
@@ -294,6 +395,11 @@ function Killer.isKilling(): boolean
 end
 
 function Killer.cleanup()
+	if ball then
+		ball:Destroy()
+		ball = nil
+	end
+	table.clear(hiddenParts)
 	rig = nil
 	current = nil
 	context = nil

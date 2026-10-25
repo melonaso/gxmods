@@ -6,9 +6,10 @@ local Config = {}
 
 Config.Round = {
 	MinPlayers = 2,
-	IntermissionTime = 25,
-	Duration = 240, -- segundos de una partida si nadie craftea tótems
-	KillerReleaseDelay = 10, -- ventaja inicial de los supervivientes
+	IntermissionTime = 23,
+	Duration = 270, -- segundos de una partida si nadie craftea tótems
+	KillerReleaseDelay = 20, -- Verity es una bola sonriente durante este tiempo
+	TransformTime = 2.6, -- la bola se retuerce y se convierte en el monstruo
 	ResultsTime = 7,
 	MinRemainingAfterTotem = 15, -- un tótem nunca deja el reloj por debajo de esto
 }
@@ -18,8 +19,8 @@ Config.Round = {
 -- Ponlo en false antes de publicar el juego.
 Config.Testing = {
 	Enabled = true,
-	Bots = 5,
-	IntermissionTime = 8,
+	Bots = 6,
+	IntermissionTime = 23,
 	StartingCoins = 1500, -- para probar la tienda sin farmear
 }
 
@@ -48,11 +49,11 @@ Config.Movement = {
 	StaminaDrain = 22, -- por segundo corriendo
 	StaminaRegen = 14,
 	StaminaRegenDelay = 0.8,
-	VerityWalk = 18,
-	VeritySprint = 28, -- más rápida que el sprint de los supervivientes
-	VerityCrouch = 9, -- tecla C
+	VerityWalk = 22,
+	VeritySprint = 34, -- mucho más rápida que el sprint de los supervivientes
+	VerityCrouch = 12, -- tecla C
 	BotWalk = 15,
-	BotFlee = 21,
+	BotFlee = 22,
 }
 
 Config.Crafting = {
@@ -80,7 +81,7 @@ Config.Chance = {
 -- Monedas repartidas por el mapa en cada ronda (las recogen los jugadores,
 -- también Verity, con solo acercarse).
 Config.Coins = {
-	PerMap = 45,
+	PerMap = 60,
 	MaxPerRound = 40, -- bolsa llena
 	PickupRadius = 4.5,
 	VerityPickupRadius = 8, -- Verity es enorme
@@ -122,11 +123,23 @@ Config.Skins = {
 }
 
 -- Música (licenciada para uso en experiencias: DistroKid / APM oficiales).
+-- Encontradas con ForgeGUI (toolbox_search).
 Config.Music = {
-	Lobby = { 134959834418523, 133838630142849 }, -- Liminal Space Creepy Music, Scary Place
+	Lobby = { 134959834418523, 1836009626, 133838630142849 }, -- Liminal Space, Halloween Horrors Waltz (APM), Scary Place
 	Round = { 138890398994853, 135768960171473, 98165789328752 }, -- Horror Cinematic Ambience, Creepy Scary, Beneath the Dread Moon
+	Outdoor = { 1846999567, 138890398994853 }, -- Creepy Night (APM), Horror Cinematic Ambience
 	Results = { 9041745502 }, -- 80s Horror Throwback Scary Creeper Bed (APM)
+	Chase = 1846862303, -- Horror Race (APM): suena cuando Verity está cerca de alguien
+	Drone = 9043360237, -- METALLIC DRONE 03 (APM): capa ambiental durante la ronda
+	DeathScream = 9043345732, -- HORROR SCREAM 07 (APM): al ser agarrado; la explosión lo corta
 	Volume = 0.35,
+}
+
+-- Crujidos de huesos de la transformación. Sube assets/audio/verity_bone_cracks.ogg
+-- (Studio > Asset Manager > Bulk Import) y pega aquí su ID. Con 0 se usa un
+-- sustituto con sonidos internos de Roblox.
+Config.Sounds = {
+	BoneCracks = 0,
 }
 
 -- Reemplaza Id = 0 por los IDs reales creados en el Creator Hub.

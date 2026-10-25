@@ -36,7 +36,7 @@ end
 -- MapService primero: el lobby debe existir antes de que aparezcan jugadores.
 local ORDER = {
 	"MapService", "PlayerData", "Monetization", "VerityModel", "Killer", "Movement",
-	"Items", "Shop", "Coins", "Crafting", "Bots", "Lobby", "Round",
+	"Items", "Shop", "Coins", "Crafting", "Hiding", "Bots", "Lobby", "Round",
 }
 for _, name in ORDER do
 	run(name, "init")

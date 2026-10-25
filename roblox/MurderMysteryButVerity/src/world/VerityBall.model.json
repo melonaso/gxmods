@@ -1,0 +1,1870 @@
+{
+ "className": "Model",
+ "attributes": {
+  "VerityBall": true
+ },
+ "children": [
+  {
+   "name": "Core",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       0,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     7.0,
+     7.0,
+     7.0
+    ],
+    "Color": [
+     0.9255,
+     0.8078,
+     0.2588
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "Shape": "Ball",
+    "CanCollide": false,
+    "CanQuery": false
+   },
+   "children": [
+    {
+     "className": "PointLight",
+     "properties": {
+      "Color": [
+       1.0,
+       0.8627,
+       0.4706
+      ],
+      "Range": 14,
+      "Brightness": 0.7,
+      "Shadows": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "Eye",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -1.15,
+       1.05,
+       -2.834
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     1.25,
+     1.25,
+     1.25
+    ],
+    "Color": [
+     0.0314,
+     0.0235,
+     0.0235
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "Shape": "Ball",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Pupil",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -1.01,
+       1.21,
+       -3.354
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.3,
+     0.3,
+     0.3
+    ],
+    "Color": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "Material": "Neon",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "Shape": "Ball",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Eye",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       1.15,
+       1.05,
+       -2.834
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     1.25,
+     1.25,
+     1.25
+    ],
+    "Color": [
+     0.0314,
+     0.0235,
+     0.0235
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "Shape": "Ball",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Pupil",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       1.01,
+       1.21,
+       -3.354
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.3,
+     0.3,
+     0.3
+    ],
+    "Color": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "Material": "Neon",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "Shape": "Ball",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Mouth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -2.213,
+       -0.121,
+       -2.735
+      ],
+      "orientation": [
+       [
+        0.7774488652675231,
+        0,
+        0.628946151824018
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        -0.628946151824018,
+        0,
+        0.7774488652675231
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.62,
+     1.05,
+     0.3
+    ],
+    "Color": [
+     0.2745,
+     0.0392,
+     0.0627
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Teeth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -2.288,
+       -0.121,
+       -2.828
+      ],
+      "orientation": [
+       [
+        0.7774488652675231,
+        0,
+        0.628946151824018
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        -0.628946151824018,
+        0,
+        0.7774488652675231
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.56,
+     0.74,
+     0.1
+    ],
+    "Color": [
+     0.9608,
+     0.9412,
+     0.8824
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   },
+   "children": [
+    {
+     "className": "SurfaceGui",
+     "properties": {
+      "Face": "Front",
+      "SizingMode": "PixelsPerStud",
+      "PixelsPerStud": 80
+     },
+     "children": [
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.5,
+           -1
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           1,
+           0
+          ],
+          [
+           0,
+           3
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           -1
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mouth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -1.659,
+       -0.396,
+       -3.079
+      ],
+      "orientation": [
+       [
+        0.8802681857601933,
+        0,
+        0.47447647058464115
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        -0.47447647058464115,
+        0,
+        0.8802681857601933
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.62,
+     1.05,
+     0.3
+    ],
+    "Color": [
+     0.2745,
+     0.0392,
+     0.0627
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Teeth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -1.716,
+       -0.396,
+       -3.184
+      ],
+      "orientation": [
+       [
+        0.8802681857601933,
+        0,
+        0.47447647058464115
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        -0.47447647058464115,
+        0,
+        0.8802681857601933
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.56,
+     0.74,
+     0.1
+    ],
+    "Color": [
+     0.9608,
+     0.9412,
+     0.8824
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   },
+   "children": [
+    {
+     "className": "SurfaceGui",
+     "properties": {
+      "Face": "Front",
+      "SizingMode": "PixelsPerStud",
+      "PixelsPerStud": 80
+     },
+     "children": [
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.5,
+           -1
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           1,
+           0
+          ],
+          [
+           0,
+           3
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           -1
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mouth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -1.106,
+       -0.593,
+       -3.288
+      ],
+      "orientation": [
+       [
+        0.9477912617721306,
+        0,
+        0.31889139861149063
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        -0.31889139861149063,
+        0,
+        0.9477912617721306
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.62,
+     1.05,
+     0.3
+    ],
+    "Color": [
+     0.2745,
+     0.0392,
+     0.0627
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Teeth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -1.145,
+       -0.593,
+       -3.402
+      ],
+      "orientation": [
+       [
+        0.9477912617721306,
+        0,
+        0.31889139861149063
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        -0.31889139861149063,
+        0,
+        0.9477912617721306
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.56,
+     0.74,
+     0.1
+    ],
+    "Color": [
+     0.9608,
+     0.9412,
+     0.8824
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   },
+   "children": [
+    {
+     "className": "SurfaceGui",
+     "properties": {
+      "Face": "Front",
+      "SizingMode": "PixelsPerStud",
+      "PixelsPerStud": 80
+     },
+     "children": [
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.5,
+           -1
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           1,
+           0
+          ],
+          [
+           0,
+           3
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           -1
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mouth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -0.553,
+       -0.711,
+       -3.402
+      ],
+      "orientation": [
+       [
+        0.9870381097086576,
+        0,
+        0.16048604295314917
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        -0.16048604295314917,
+        0,
+        0.9870381097086576
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.62,
+     1.05,
+     0.3
+    ],
+    "Color": [
+     0.2745,
+     0.0392,
+     0.0627
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Teeth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -0.572,
+       -0.711,
+       -3.521
+      ],
+      "orientation": [
+       [
+        0.9870381097086576,
+        0,
+        0.16048604295314917
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        -0.16048604295314917,
+        0,
+        0.9870381097086576
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.56,
+     0.74,
+     0.1
+    ],
+    "Color": [
+     0.9608,
+     0.9412,
+     0.8824
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   },
+   "children": [
+    {
+     "className": "SurfaceGui",
+     "properties": {
+      "Face": "Front",
+      "SizingMode": "PixelsPerStud",
+      "PixelsPerStud": 80
+     },
+     "children": [
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.5,
+           -1
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           1,
+           0
+          ],
+          [
+           0,
+           3
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           -1
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mouth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0.0,
+       -0.75,
+       -3.439
+      ],
+      "orientation": [
+       [
+        1.0,
+        0,
+        -0.0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0.0,
+        0,
+        1.0
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.62,
+     1.05,
+     0.3
+    ],
+    "Color": [
+     0.2745,
+     0.0392,
+     0.0627
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Teeth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0.0,
+       -0.75,
+       -3.559
+      ],
+      "orientation": [
+       [
+        1.0,
+        0,
+        -0.0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0.0,
+        0,
+        1.0
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.56,
+     0.74,
+     0.1
+    ],
+    "Color": [
+     0.9608,
+     0.9412,
+     0.8824
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   },
+   "children": [
+    {
+     "className": "SurfaceGui",
+     "properties": {
+      "Face": "Front",
+      "SizingMode": "PixelsPerStud",
+      "PixelsPerStud": 80
+     },
+     "children": [
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.5,
+           -1
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           1,
+           0
+          ],
+          [
+           0,
+           3
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           -1
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mouth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0.553,
+       -0.711,
+       -3.402
+      ],
+      "orientation": [
+       [
+        0.9870381097086576,
+        0,
+        -0.1604860429531491
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0.1604860429531491,
+        0,
+        0.9870381097086576
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.62,
+     1.05,
+     0.3
+    ],
+    "Color": [
+     0.2745,
+     0.0392,
+     0.0627
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Teeth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0.572,
+       -0.711,
+       -3.521
+      ],
+      "orientation": [
+       [
+        0.9870381097086576,
+        0,
+        -0.1604860429531491
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0.1604860429531491,
+        0,
+        0.9870381097086576
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.56,
+     0.74,
+     0.1
+    ],
+    "Color": [
+     0.9608,
+     0.9412,
+     0.8824
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   },
+   "children": [
+    {
+     "className": "SurfaceGui",
+     "properties": {
+      "Face": "Front",
+      "SizingMode": "PixelsPerStud",
+      "PixelsPerStud": 80
+     },
+     "children": [
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.5,
+           -1
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           1,
+           0
+          ],
+          [
+           0,
+           3
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           -1
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mouth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       1.106,
+       -0.593,
+       -3.288
+      ],
+      "orientation": [
+       [
+        0.9477912617721306,
+        0,
+        -0.31889139861149063
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0.31889139861149063,
+        0,
+        0.9477912617721306
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.62,
+     1.05,
+     0.3
+    ],
+    "Color": [
+     0.2745,
+     0.0392,
+     0.0627
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Teeth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       1.145,
+       -0.593,
+       -3.402
+      ],
+      "orientation": [
+       [
+        0.9477912617721306,
+        0,
+        -0.31889139861149063
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0.31889139861149063,
+        0,
+        0.9477912617721306
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.56,
+     0.74,
+     0.1
+    ],
+    "Color": [
+     0.9608,
+     0.9412,
+     0.8824
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   },
+   "children": [
+    {
+     "className": "SurfaceGui",
+     "properties": {
+      "Face": "Front",
+      "SizingMode": "PixelsPerStud",
+      "PixelsPerStud": 80
+     },
+     "children": [
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.5,
+           -1
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           1,
+           0
+          ],
+          [
+           0,
+           3
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           -1
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mouth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       1.659,
+       -0.396,
+       -3.079
+      ],
+      "orientation": [
+       [
+        0.8802681857601933,
+        0,
+        -0.4744764705846412
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0.4744764705846412,
+        0,
+        0.8802681857601933
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.62,
+     1.05,
+     0.3
+    ],
+    "Color": [
+     0.2745,
+     0.0392,
+     0.0627
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Teeth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       1.716,
+       -0.396,
+       -3.184
+      ],
+      "orientation": [
+       [
+        0.8802681857601933,
+        0,
+        -0.4744764705846412
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0.4744764705846412,
+        0,
+        0.8802681857601933
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.56,
+     0.74,
+     0.1
+    ],
+    "Color": [
+     0.9608,
+     0.9412,
+     0.8824
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   },
+   "children": [
+    {
+     "className": "SurfaceGui",
+     "properties": {
+      "Face": "Front",
+      "SizingMode": "PixelsPerStud",
+      "PixelsPerStud": 80
+     },
+     "children": [
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.5,
+           -1
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           1,
+           0
+          ],
+          [
+           0,
+           3
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           -1
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Mouth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       2.213,
+       -0.121,
+       -2.735
+      ],
+      "orientation": [
+       [
+        0.7774488652675231,
+        0,
+        -0.628946151824018
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0.628946151824018,
+        0,
+        0.7774488652675231
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.62,
+     1.05,
+     0.3
+    ],
+    "Color": [
+     0.2745,
+     0.0392,
+     0.0627
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   }
+  },
+  {
+   "name": "Teeth",
+   "className": "Part",
+   "properties": {
+    "Anchored": true,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       2.288,
+       -0.121,
+       -2.828
+      ],
+      "orientation": [
+       [
+        0.7774488652675231,
+        0,
+        -0.628946151824018
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0.628946151824018,
+        0,
+        0.7774488652675231
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.56,
+     0.74,
+     0.1
+    ],
+    "Color": [
+     0.9608,
+     0.9412,
+     0.8824
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "CanQuery": false
+   },
+   "children": [
+    {
+     "className": "SurfaceGui",
+     "properties": {
+      "Face": "Front",
+      "SizingMode": "PixelsPerStud",
+      "PixelsPerStud": 80
+     },
+     "children": [
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.5,
+           -1
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           1,
+           0
+          ],
+          [
+           0,
+           3
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           -1
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

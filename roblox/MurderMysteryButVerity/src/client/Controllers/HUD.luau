@@ -337,9 +337,9 @@ end
 
 local function onRoleReveal(role: string, killerName: string)
 	if role == "Verity" then
-		showCard(roleCard, "TU ROL", "ERES VERITY", C.Verity, "Atrapa a todos antes de que acabe el tiempo. Q atrapar · Shift correr · C agacharse", 4)
+		showCard(roleCard, "TU ROL", "ERES VERITY", C.Verity, "Eres una bola sonriente... por ahora. Al despertar: Q atrapar · Shift correr · C agacharse", 4.5)
 	elseif role == "Survivor" then
-		showCard(roleCard, "TU ROL", "SUPERVIVIENTE", C.Survivor, `Verity es {killerName}. Busca oro, craftea tótems y resiste. Shift para correr.`, 4)
+		showCard(roleCard, "TU ROL", "SUPERVIVIENTE", C.Survivor, `Verity es {killerName}. Escóndete en armarios (R), busca oro y craftea tótems.`, 4.5)
 	end
 end
 
@@ -388,7 +388,7 @@ local function update()
 		local maxTotems = Workspace:GetAttribute("MaxTotems") or 0
 		local alive = Workspace:GetAttribute("SurvivorsAlive") or 0
 		if releaseAt > now then
-			info = `Verity sale en <font color="#ff3b4e"><b>{math.ceil(releaseAt - now)}s</b></font>`
+			info = `Verity despierta en <font color="#ff3b4e"><b>{math.ceil(releaseAt - now)}s</b></font>`
 		else
 			info = `Tótems <font color="#ffc83c"><b>{totems}/{maxTotems}</b></font>  ·  Vivos <b>{alive}</b>`
 		end
@@ -403,7 +403,7 @@ local function update()
 	if inRound and role == "Verity" then
 		controlsLabel.Text = `{key("Q", "Atrapar")}   {key("Shift", "Correr")}   {key("C", "Agacharse")}`
 	elseif inRound and role == "Survivor" then
-		controlsLabel.Text = `{key("Shift", "Correr")}   {key("E", "Oro / mesa")}   {key("F", "Craftear")}`
+		controlsLabel.Text = `{key("Shift", "Correr")}   {key("E", "Oro / mesa")}   {key("F", "Craftear")}   {key("R", "Esconderse")}`
 	else
 		controlsLabel.Text = ""
 	end

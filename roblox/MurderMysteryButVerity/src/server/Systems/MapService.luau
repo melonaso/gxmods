@@ -19,6 +19,7 @@ export type MapInfo = {
 	killerSpawn: CFrame,
 	goldSpawns: { Vector3 },
 	tableSpots: { CFrame },
+	outdoor: boolean, -- mapas al aire libre de noche (atributo Outdoor del modelo)
 }
 
 local LOBBY_HEIGHT = 300
@@ -289,6 +290,7 @@ local function buildMansion(): MapInfo
 	return {
 		model = model,
 		name = model.Name,
+		outdoor = false,
 		survivorSpawns = survivorSpawns,
 		killerSpawn = killerSpawn,
 		goldSpawns = goldSpawns,
@@ -336,6 +338,7 @@ local function loadCustomMap(template: Model): MapInfo?
 	return {
 		model = model,
 		name = template.Name,
+		outdoor = template:GetAttribute("Outdoor") == true,
 		survivorSpawns = spawnsUp,
 		killerSpawn = killer.CFrame + Vector3.new(0, 3 - killer.Size.Y / 2, 0),
 		goldSpawns = goldPositions,
@@ -364,27 +367,77 @@ end
 
 -- Ambientación ----------------------------------------------------------------
 
-local lobbyLighting = {
-	ClockTime = 14.5,
-	Brightness = 2,
-	Ambient = Color3.fromRGB(120, 110, 120),
-	OutdoorAmbient = Color3.fromRGB(128, 128, 128),
-	FogEnd = 100000,
-	FogColor = Color3.fromRGB(192, 192, 192),
-}
-local roundLighting = {
-	ClockTime = 0,
-	Brightness = 0.4,
-	Ambient = Color3.fromRGB(38, 30, 44),
-	OutdoorAmbient = Color3.fromRGB(30, 24, 36),
-	FogEnd = 150,
-	FogColor = Color3.fromRGB(16, 10, 20),
+-- Tres ambientes cinematográficos: lobby (atardecer cálido), interiores de
+-- noche (oscuro, frío, contraste alto) y exteriores de noche (luna y niebla).
+-- Con Lighting.Technology = Future (en default.project.json) las luces de
+-- cada habitación proyectan sombras reales.
+type Preset = {
+	lighting: { [string]: any },
+	atmosphere: { [string]: any },
+	color: { [string]: any },
+	bloom: { [string]: any },
+	dof: { [string]: any },
+	rays: number,
 }
 
-function MapService.setAtmosphere(inRound: boolean)
-	for k, v in if inRound then roundLighting else lobbyLighting do
-		(Lighting :: any)[k] = v
+local PRESETS: { [string]: Preset } = {
+	Lobby = {
+		lighting = { ClockTime = 18.6, Brightness = 1.6, ExposureCompensation = 0, Ambient = Color3.fromRGB(70, 58, 66), OutdoorAmbient = Color3.fromRGB(110, 90, 110) },
+		atmosphere = { Density = 0.28, Offset = 0.1, Color = Color3.fromRGB(199, 160, 180), Decay = Color3.fromRGB(110, 80, 110), Glare = 0.4, Haze = 1.2 },
+		color = { Brightness = 0, Contrast = 0.1, Saturation = 0.05, TintColor = Color3.fromRGB(255, 240, 228) },
+		bloom = { Intensity = 0.6, Size = 24, Threshold = 1.4 },
+		dof = { FarIntensity = 0.12, FocusDistance = 45, InFocusRadius = 50, NearIntensity = 0 },
+		rays = 0.06,
+	},
+	Indoor = {
+		lighting = { ClockTime = 0, Brightness = 0.2, ExposureCompensation = -0.15, Ambient = Color3.fromRGB(20, 16, 26), OutdoorAmbient = Color3.fromRGB(16, 14, 22) },
+		atmosphere = { Density = 0.42, Offset = 0, Color = Color3.fromRGB(40, 32, 48), Decay = Color3.fromRGB(18, 14, 24), Glare = 0, Haze = 2.2 },
+		color = { Brightness = -0.02, Contrast = 0.2, Saturation = -0.25, TintColor = Color3.fromRGB(225, 230, 255) },
+		bloom = { Intensity = 0.9, Size = 30, Threshold = 1.2 },
+		dof = { FarIntensity = 0.35, FocusDistance = 25, InFocusRadius = 32, NearIntensity = 0 },
+		rays = 0,
+	},
+	Outdoor = {
+		lighting = { ClockTime = 0.3, Brightness = 0.7, ExposureCompensation = -0.1, Ambient = Color3.fromRGB(24, 27, 40), OutdoorAmbient = Color3.fromRGB(44, 50, 74) },
+		atmosphere = { Density = 0.38, Offset = 0.05, Color = Color3.fromRGB(80, 92, 122), Decay = Color3.fromRGB(28, 32, 52), Glare = 0.2, Haze = 2.6 },
+		color = { Brightness = -0.01, Contrast = 0.16, Saturation = -0.3, TintColor = Color3.fromRGB(210, 222, 255) },
+		bloom = { Intensity = 1, Size = 32, Threshold = 1.1 },
+		dof = { FarIntensity = 0.3, FocusDistance = 30, InFocusRadius = 45, NearIntensity = 0 },
+		rays = 0,
+	},
+}
+
+local function effect(className: string, name: string): Instance
+	local existing = Lighting:FindFirstChild(name)
+	if existing then
+		return existing
 	end
+	local inst = Instance.new(className)
+	inst.Name = name
+	inst.Parent = Lighting
+	return inst
+end
+
+local function apply(target: Instance, props: { [string]: any })
+	for k, v in props do
+		(target :: any)[k] = v
+	end
+end
+
+function MapService.setAtmosphere(inRound: boolean, outdoor: boolean?)
+	local preset = PRESETS[if not inRound then "Lobby" elseif outdoor then "Outdoor" else "Indoor"]
+	apply(Lighting, preset.lighting)
+	apply(effect("Atmosphere", "CinematicAtmosphere"), preset.atmosphere)
+	apply(effect("ColorCorrectionEffect", "CinematicGrade"), preset.color)
+	apply(effect("BloomEffect", "CinematicBloom"), preset.bloom)
+	apply(effect("DepthOfFieldEffect", "CinematicDepth"), preset.dof)
+	local rays = effect("SunRaysEffect", "CinematicRays") :: SunRaysEffect
+	rays.Intensity = preset.rays
+	rays.Spread = 0.6
+	local sky = effect("Sky", "NightSky") :: Sky
+	sky.StarCount = 3000
+	sky.MoonAngularSize = 14
+	sky.CelestialBodiesShown = true
 end
 
 -- Mueve los mapas visibles en el editor fuera de Workspace.

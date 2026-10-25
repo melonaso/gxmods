@@ -15,6 +15,7 @@ local Entity = require(script.Parent.Parent.Lib.Entity)
 local Bots = require(script.Parent.Bots)
 local Coins = require(script.Parent.Coins)
 local Crafting = require(script.Parent.Crafting)
+local Hiding = require(script.Parent.Hiding)
 local Items = require(script.Parent.Items)
 local Killer = require(script.Parent.Killer)
 local MapService = require(script.Parent.MapService)
@@ -77,6 +78,9 @@ local function markDead(who: Instance, position: Vector3?)
 		return
 	end
 	survivors[who] = false
+	if Hiding.isHidden(who) then
+		Hiding.unhide(who, true)
+	end
 	if who:IsA("Player") then
 		who:SetAttribute("Role", "Dead")
 	end
@@ -140,7 +144,8 @@ local function playRound()
 	setPhase("Starting")
 	local map = MapService.load()
 	currentMap = map.model
-	MapService.setAtmosphere(true)
+	MapService.setAtmosphere(true, map.outdoor)
+	Workspace:SetAttribute("MapOutdoor", map.outdoor)
 	Workspace:SetAttribute("MapName", map.name)
 	notifyAll(`Mapa: {map.name}`, "info")
 
@@ -187,6 +192,10 @@ local function playRound()
 	Killer.setup(killer, map.killerSpawn, {
 		survivors = aliveSurvivors,
 		onGrab = function(victim, position)
+			-- si estaba escondida, Verity la saca del escondite (visible y sujeta)
+			if Hiding.isHidden(victim) then
+				Hiding.unhide(victim, true)
+			end
 			markDead(victim, position)
 			notifyAll(`Verity atrapó a {Entity.name(victim)}`, "bad")
 			Coins.award(killer, Config.Coins.RewardKill, "atrapar")
@@ -207,6 +216,13 @@ local function playRound()
 		table.insert(coinPoints, p)
 	end
 	Coins.start(map.model, coinPoints)
+
+	-- Escondites (armarios, taquillas, ataúdes...)
+	Hiding.start(map.model, {
+		isSurvivor = function(who)
+			return survivors[who] == true
+		end,
+	})
 
 	-- NPCs para completar la partida (modo prueba)
 	local bots: { Model } = {}
@@ -325,6 +341,7 @@ local function playRound()
 	Bots.stop()
 	Crafting.stop()
 	Coins.stop()
+	Hiding.stop()
 	Items.cleanup()
 	Killer.cleanup()
 	task.wait(R.ResultsTime)
@@ -333,6 +350,7 @@ local function playRound()
 	currentMap = nil
 	MapService.setAtmosphere(false)
 	Workspace:SetAttribute("MapName", nil)
+	Workspace:SetAttribute("MapOutdoor", nil)
 	Workspace:SetAttribute("KillerReleaseAt", nil)
 	table.clear(survivors)
 	for _, player in participants do
@@ -370,6 +388,7 @@ function Round.start()
 				Bots.stop()
 				Crafting.stop()
 				Coins.stop()
+				Hiding.stop()
 				Items.cleanup()
 				Killer.cleanup()
 				MapService.setAtmosphere(false)

@@ -10,6 +10,7 @@ local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
 
 local Assets = require(ReplicatedStorage.Shared.Assets)
+local Config = require(ReplicatedStorage.Shared.Config)
 local Net = require(ReplicatedStorage.Shared.Net)
 local UI = require(script.Parent.Parent.Lib.UI)
 
@@ -80,6 +81,7 @@ local function shockRing(position: Vector3)
 	game:GetService("Debris"):AddItem(ring, 1)
 end
 
+local screams: { Sound } = {}
 local shakeUntil = 0
 local shakeStrength = 0
 
@@ -151,7 +153,88 @@ local function radar(targets: { Model })
 	playSound("rbxasset://sounds/electronicpingshort.wav", Workspace.CurrentCamera and Workspace.CurrentCamera.CFrame.Position or Vector3.zero, 0.6)
 end
 
+-- Grito de la víctima: suena en ella (sube con ella) mientras Verity la levanta.
+local function grabScream(victimRoot: Instance)
+	if typeof(victimRoot) ~= "Instance" or not victimRoot:IsA("BasePart") then
+		return
+	end
+	local sound = Instance.new("Sound")
+	sound.Name = "DeathScream"
+	sound.SoundId = `rbxassetid://{Config.Music.DeathScream}`
+	sound.Volume = 1.4
+	sound.RollOffMinDistance = 15
+	sound.RollOffMaxDistance = 160
+	sound.Parent = victimRoot
+	sound:Play()
+	table.insert(screams, sound)
+	game:GetService("Debris"):AddItem(sound, 6)
+end
+
+-- La explosión corta el grito en seco.
+local function cutScreams()
+	for _, sound in screams do
+		sound:Stop()
+		sound:Destroy()
+	end
+	table.clear(screams)
+end
+
+-- Crujidos de huesos durante la transformación.
+local function boneCracks(position: Vector3)
+	local id = Config.Sounds.BoneCracks
+	if id ~= 0 then
+		playSound(`rbxassetid://{id}`, position, 1.6)
+		return
+	end
+	-- sustituto con sonidos internos: golpes secos agudos que se aceleran
+	task.spawn(function()
+		local t = 0
+		local duration = Config.Round.TransformTime
+		while t < duration do
+			local progress = t / duration
+			local holder = playSound("rbxasset://sounds/action_footsteps_plastic.mp3", position, 0.9 + progress * 0.6)
+			local sound = holder:FindFirstChildOfClass("Sound")
+			if sound then
+				sound.PlaybackSpeed = 1.8 + math.random() * 1.2
+				sound.TimePosition = math.random() * 0.2
+			end
+			local wait = (0.16 - progress * 0.11) * (0.6 + math.random() * 0.8)
+			task.wait(wait)
+			t += wait
+		end
+		local final = playSound("rbxasset://sounds/action_jump_land.mp3", position, 1.5)
+		local sound = final:FindFirstChildOfClass("Sound")
+		if sound then
+			sound.PlaybackSpeed = 0.7
+		end
+	end)
+end
+
+local function transform(position: Vector3)
+	boneCracks(position)
+	burst(position, Color3.fromRGB(240, 210, 70), Assets.Splash, 30, 16)
+	task.delay(Config.Round.TransformTime * 0.92, function()
+		shockRing(position - Vector3.new(0, 7, 0))
+		burst(position, Color3.fromRGB(255, 230, 120), Assets.GlowOrb, 40, 22)
+		local camera = Workspace.CurrentCamera
+		if camera then
+			local strength = math.clamp(1 - (camera.CFrame.Position - position).Magnitude / 90, 0, 1)
+			if strength > 0 then
+				shakeStrength = strength
+				shakeUntil = os.clock() + 0.6
+			end
+		end
+	end)
+end
+
 local function onEffect(kind: string, position: any)
+	if kind == "Grab" then
+		grabScream(position)
+		return
+	elseif kind == "Transform" then
+		transform(position)
+		return
+	end
 	if kind == "Radar" then
 		radar(position)
 		return
@@ -179,6 +262,7 @@ local function onEffect(kind: string, position: any)
 		return
 	end
 	if kind == "Gore" then
+		cutScreams()
 		gore(position)
 	elseif kind == "Totem" then
 		playSound("rbxasset://sounds/electronicpingshort.wav", position, 1)

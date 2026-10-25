@@ -34,11 +34,26 @@
       },
       "Maps": {
         "$path": "src/world/Maps"
+      },
+      "$properties": {
+        "StreamingEnabled": false
       }
     },
     "ServerStorage": {
       "VerityFallback": {
         "$path": "src/world/VerityFallback.model.json"
+      },
+      "VerityBall": {
+        "$path": "src/world/VerityBall.model.json"
+      }
+    },
+    "Lighting": {
+      "$properties": {
+        "Technology": "Future",
+        "GlobalShadows": true,
+        "ShadowSoftness": 0.15,
+        "EnvironmentDiffuseScale": 0.5,
+        "EnvironmentSpecularScale": 1
       }
     }
   }

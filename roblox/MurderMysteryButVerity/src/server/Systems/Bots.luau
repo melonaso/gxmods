@@ -12,6 +12,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Config = require(ReplicatedStorage.Shared.Config)
 local Crafting = require(script.Parent.Crafting)
+local Hiding = require(script.Parent.Hiding)
 
 export type Context = {
 	parent: Instance,
@@ -134,11 +135,46 @@ local function think(bot: Model, ctx: Context)
 	end
 
 	while running and bot.Parent and ctx.isAlive(bot) and humanoid.Health > 0 do
-		if root.Anchored then
-			task.wait(0.2) -- atrapado
+		local killer = ctx.killerRoot()
+		-- escondido: espera hasta que Verity lleve un rato lejos
+		if Hiding.isHidden(bot) then
+			local calm = 0
+			while running and bot.Parent and Hiding.isHidden(bot) and ctx.isAlive(bot) do
+				local k = ctx.killerRoot()
+				local far = not k or (k.Position - root.Position).Magnitude > 50
+				calm = if far then calm + 0.5 else 0
+				if calm >= 5 then
+					Hiding.unhide(bot)
+					break
+				end
+				task.wait(0.5)
+			end
 			continue
 		end
-		local killer = ctx.killerRoot()
+		if root.Anchored then
+			task.wait(0.2) -- atrapado (cepo o en manos de Verity)
+			continue
+		end
+		if killer and threatened() and rng:NextNumber() < 0.45 then
+			-- intenta llegar a un escondite que no quede hacia Verity
+			local best, bestDistance = nil, 32
+			for _, spot in Hiding.freeSpots() do
+				local d = (spot.exitPoint.Position - root.Position).Magnitude
+				local towardKiller = (spot.exitPoint.Position - killer.Position).Magnitude < (root.Position - killer.Position).Magnitude * 0.7
+				if d < bestDistance and not towardKiller then
+					best, bestDistance = spot, d
+				end
+			end
+			if best then
+				humanoid.WalkSpeed = M.BotFlee
+				walkTo(humanoid, root, best.exitPoint.Position, function()
+					return best.occupant ~= nil
+				end)
+				if (root.Position - best.exitPoint.Position).Magnitude < 6 and Hiding.hide(bot, best) then
+					continue
+				end
+			end
+		end
 		if killer and threatened() then
 			-- huir: el punto más lejano de Verity que quede "hacia afuera"
 			humanoid.WalkSpeed = M.BotFlee
@@ -231,6 +267,7 @@ function Bots.spawn(count: number, spawns: { CFrame }, ctx: Context): { Model }
 		local name = table.remove(names, nameIndex) or `NPC {i}`
 		bot.Name = `NPC_{name}`
 		bot:SetAttribute("IsBot", true)
+		game:GetService("CollectionService"):AddTag(bot, "Bot")
 		bot:SetAttribute("Gold", 0)
 		local humanoid = bot:FindFirstChildOfClass("Humanoid") :: Humanoid
 		humanoid.DisplayName = `{name} (NPC)`
