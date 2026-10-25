@@ -57,13 +57,13 @@ Config.Movement = {
 	StaminaDrain = 22, -- por segundo corriendo
 	StaminaRegen = 14,
 	StaminaRegenDelay = 0.8,
-	VerityWalk = 22,
-	VeritySprint = 34, -- mucho más rápida que el sprint de los supervivientes
-	VerityCrouch = 12, -- tecla C
+	VerityWalk = 26,
+	VeritySprint = 40, -- mucho más rápida que el sprint de los supervivientes
+	VerityCrouch = 14, -- tecla C
 	BotWalk = 15,
 	BotFlee = 22,
-	VerityBotPatrol = 17, -- Verity NPC buscando
-	VerityBotChase = 25, -- Verity NPC persiguiendo (un poco más que el sprint)
+	VerityBotPatrol = 20, -- Verity NPC buscando
+	VerityBotChase = 28, -- Verity NPC persiguiendo (más que el sprint de 24)
 }
 
 Config.Crafting = {

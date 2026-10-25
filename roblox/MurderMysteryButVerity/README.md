@@ -26,7 +26,7 @@ Si no importas ninguno, se usa `ServerStorage/VerityFallback`: un modelo esbelto
 ## Modo prueba (activado)
 `Config.Testing.Enabled = true` en [`src/shared/Config.luau`](src/shared/Config.luau):
 - Basta **1 jugador**. En el lobby, el botón **"Rol de prueba"** (izquierda, debajo de ♪) alterna entre **Verity** y **Superviviente** para la próxima ronda, así puedes probar los dos lados.
-- Si eliges **Superviviente**, Verity la maneja la **IA**: ve con la vista (no a través de paredes), persigue al más cercano, va adonde te vio por última vez, te saca del escondite si te vio entrar, registra escondites al patrullar y usa la revelación de cada minuto. Corre 25 (un poco más que tu sprint), así que hay que usar escondites y estamina.
+- Si eliges **Superviviente**, Verity la maneja la **IA**: ve con la vista (no a través de paredes), persigue al más cercano, va adonde te vio por última vez, te saca del escondite si te vio entrar, registra escondites al patrullar y usa la revelación de cada minuto. Corre 28 (más que tu sprint de 24), así que hay que usar escondites y estamina.
 - Cada ronda tiene **10 participantes** (el máximo por servidor): tú + 9 NPCs si eres Verity, o tú + Verity NPC + 8 NPCs si eres superviviente. Los NPCs huyen, se esconden, cambian de sitio al ser revelados, recogen oro y craftean tótems.
 - Si caes como superviviente frente a la Verity NPC, la ronda termina 20 s después (no hace falta esperar todo el reloj).
 - Todos empiezan con 0 monedas.
@@ -45,7 +45,7 @@ Ponlo en `false` antes de publicar y pon **10 jugadores máximo** en Game Settin
 | Tecla | Verity | Superviviente |
 | --- | --- | --- |
 | `Q` | Atrapar: levanta a la víctima y la aplasta | — |
-| `Shift` | Correr (34, sin límite) | Correr (24, gasta estamina) |
+| `Shift` | Correr (40, sin límite; camina a 26) | Correr (24, gasta estamina) |
 | `C` | Agacharse (alterna) | — |
 | `E` / `F` | — | Recoger / depositar oro · Craftear tótem |
 | `R` | — | Esconderse en armarios, taquillas, ataúdes, confesionarios y arbustos (Verity puede sacarte con `Q` si te encuentra) |
@@ -86,7 +86,7 @@ Para regenerarlos: `python3 tools/generate_world.py`. Para un mapa propio, copia
 
 ## Aspecto cinematográfico
 - Iluminación **Future** (sombras reales de cada lámpara), corrección de color, bloom, profundidad de campo y niebla atmosférica.
-- Tres ambientes: lobby al atardecer, interiores en penumbra con luces que parpadean (un 12 % de habitaciones sin luz) y exteriores de noche con luna y niebla densa: se ve el camino, pero no a alguien quieto lejos o en una esquina oscura.
+- Tres ambientes: lobby al atardecer y, en los mapas, un **filtro nocturno de invierno** con subtono azul (luz ambiente y niebla azuladas, colores fríos y algo desaturados) que deja ver bien a media distancia. Las lámparas siguen cálidas y parpadean; un 8 % de habitaciones queda sin luz.
 
 ## Animaciones de Verity
 Procedurales, en `VerityAnimator.luau`: reposo con tics de cabeza, caminar, correr encorvada con los brazos atrás, agacharse, la pose de transformación y el ataque. Se aplican modificando `C0` localmente, por lo que ningún Animator de Roblox las pisa y funcionan con cualquier rig.

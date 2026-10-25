@@ -382,29 +382,33 @@ type Preset = {
 
 local PRESETS: { [string]: Preset } = {
 	Lobby = {
-		lighting = { ClockTime = 18.6, Brightness = 1.6, ExposureCompensation = 0, Ambient = Color3.fromRGB(70, 58, 66), OutdoorAmbient = Color3.fromRGB(110, 90, 110) },
+		lighting = { ClockTime = 18.6, Brightness = 1.6, ExposureCompensation = 0, Ambient = Color3.fromRGB(70, 58, 66), OutdoorAmbient = Color3.fromRGB(110, 90, 110),
+			ColorShift_Top = Color3.new(0, 0, 0), ColorShift_Bottom = Color3.new(0, 0, 0) },
 		atmosphere = { Density = 0.28, Offset = 0.1, Color = Color3.fromRGB(199, 160, 180), Decay = Color3.fromRGB(110, 80, 110), Glare = 0.4, Haze = 1.2 },
 		color = { Brightness = 0, Contrast = 0.1, Saturation = 0.05, TintColor = Color3.fromRGB(255, 240, 228) },
 		bloom = { Intensity = 0.6, Size = 24, Threshold = 1.4 },
 		dof = { FarIntensity = 0.12, FocusDistance = 45, InFocusRadius = 50, NearIntensity = 0 },
 		rays = 0.06,
 	},
+	-- Filtro nocturno de invierno (subtono azul) en todos los mapas: luz ambiente
+	-- y niebla azuladas, desaturado y tinte frío. Las lámparas siguen cálidas,
+	-- así contrastan con el frío.
 	Indoor = {
-		-- penumbra: se ve el camino, pero no a alguien quieto en una esquina oscura
-		lighting = { ClockTime = 0, Brightness = 0.5, ExposureCompensation = 0, Ambient = Color3.fromRGB(44, 40, 58), OutdoorAmbient = Color3.fromRGB(38, 36, 52) },
-		atmosphere = { Density = 0.38, Offset = 0, Color = Color3.fromRGB(62, 56, 80), Decay = Color3.fromRGB(30, 26, 42), Glare = 0, Haze = 1.7 },
-		color = { Brightness = 0, Contrast = 0.16, Saturation = -0.18, TintColor = Color3.fromRGB(228, 232, 255) },
+		lighting = { ClockTime = 0, Brightness = 0.9, ExposureCompensation = 0.3, Ambient = Color3.fromRGB(70, 78, 108), OutdoorAmbient = Color3.fromRGB(64, 74, 104),
+			ColorShift_Top = Color3.fromRGB(90, 120, 170), ColorShift_Bottom = Color3.fromRGB(40, 55, 90) },
+		atmosphere = { Density = 0.3, Offset = 0, Color = Color3.fromRGB(110, 128, 165), Decay = Color3.fromRGB(60, 74, 108), Glare = 0, Haze = 1.3 },
+		color = { Brightness = 0.03, Contrast = 0.12, Saturation = -0.25, TintColor = Color3.fromRGB(205, 222, 255) },
 		bloom = { Intensity = 0.7, Size = 28, Threshold = 1.3 },
-		dof = { FarIntensity = 0.16, FocusDistance = 36, InFocusRadius = 50, NearIntensity = 0 },
+		dof = { FarIntensity = 0.12, FocusDistance = 40, InFocusRadius = 60, NearIntensity = 0 },
 		rays = 0,
 	},
 	Outdoor = {
-		-- noche con luna: siluetas cercanas visibles, la niebla oculta lo lejano
-		lighting = { ClockTime = 0.3, Brightness = 1.1, ExposureCompensation = 0.1, Ambient = Color3.fromRGB(40, 44, 64), OutdoorAmbient = Color3.fromRGB(68, 76, 106) },
-		atmosphere = { Density = 0.36, Offset = 0.05, Color = Color3.fromRGB(92, 104, 138), Decay = Color3.fromRGB(42, 48, 76), Glare = 0.2, Haze = 2.1 },
-		color = { Brightness = 0, Contrast = 0.14, Saturation = -0.22, TintColor = Color3.fromRGB(215, 226, 255) },
+		lighting = { ClockTime = 0.3, Brightness = 1.8, ExposureCompensation = 0.35, Ambient = Color3.fromRGB(66, 76, 108), OutdoorAmbient = Color3.fromRGB(104, 120, 165),
+			ColorShift_Top = Color3.fromRGB(120, 150, 210), ColorShift_Bottom = Color3.fromRGB(50, 65, 100) },
+		atmosphere = { Density = 0.3, Offset = 0.05, Color = Color3.fromRGB(130, 150, 190), Decay = Color3.fromRGB(70, 86, 125), Glare = 0.15, Haze = 1.6 },
+		color = { Brightness = 0.03, Contrast = 0.12, Saturation = -0.28, TintColor = Color3.fromRGB(200, 218, 255) },
 		bloom = { Intensity = 0.8, Size = 30, Threshold = 1.2 },
-		dof = { FarIntensity = 0.16, FocusDistance = 40, InFocusRadius = 60, NearIntensity = 0 },
+		dof = { FarIntensity = 0.12, FocusDistance = 45, InFocusRadius = 70, NearIntensity = 0 },
 		rays = 0,
 	},
 }

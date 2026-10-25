@@ -51703,8 +51703,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -51771,8 +51771,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -51839,8 +51839,76 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
+        "Shadows": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Lamp",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -2303.0,
+         23.6,
+         78.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       2.4,
+       0.6,
+       2.4
+      ],
+      "Color": [
+       0.7451,
+       0.9216,
+       1.0
+      ],
+      "Material": "Neon",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "Tags": [
+       "MansionLamp"
+      ]
+     },
+     "attributes": {
+      "Flicker": false
+     },
+     "children": [
+      {
+       "className": "PointLight",
+       "properties": {
+        "Color": [
+         0.7451,
+         0.9216,
+         1.0
+        ],
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -51907,8 +51975,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -51975,8 +52043,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52043,8 +52111,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52111,8 +52179,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52179,8 +52247,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52247,8 +52315,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52315,8 +52383,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52383,8 +52451,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52451,8 +52519,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52519,8 +52587,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52587,8 +52655,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52655,8 +52723,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52723,8 +52791,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52791,8 +52859,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52859,8 +52927,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52927,8 +52995,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -52995,8 +53063,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53063,8 +53131,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53131,8 +53199,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53199,8 +53267,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53267,8 +53335,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53335,8 +53403,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53403,8 +53471,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53471,8 +53539,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53539,8 +53607,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53607,8 +53675,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53675,8 +53743,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53743,8 +53811,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53811,8 +53879,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53879,8 +53947,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -53947,8 +54015,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54015,8 +54083,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54083,8 +54151,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54151,8 +54219,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54219,8 +54287,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54287,8 +54355,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54355,8 +54423,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54423,8 +54491,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54491,8 +54559,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54559,8 +54627,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54627,8 +54695,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54695,8 +54763,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54763,8 +54831,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54831,8 +54899,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54899,8 +54967,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -54967,8 +55035,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -55035,8 +55103,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -55103,8 +55171,8 @@
          0.9216,
          1.0
         ],
-        "Range": 34,
-        "Brightness": 0.8,
+        "Range": 38,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }

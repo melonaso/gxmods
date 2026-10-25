@@ -754,12 +754,12 @@ def build_map(name, t, origin):
         for i, j in cells:
             cx, cz = center(i, j)
             stairs = (i, j) in stair_here
-            # habitaciones en penumbra; algunas sin luz para esconderse
-            if rng.random() > 0.12:
+            # cada habitación con su lámpara; unas pocas sin luz para esconderse
+            if rng.random() > 0.08:
                 lx = cx + cell / 4 if stairs else cx
                 lamp = part("Lamp", (lx, base + h - 0.4, cz), (2.4, 0.6, 2.4), t["lamp"], "Neon", CanCollide=False,
                             Tags=["MansionLamp"], attributes={"Flicker": rng.random() < 0.45},
-                            children=[point_light(t["lamp"], 34, t["lamp_brightness"], True)])
+                            children=[point_light(t["lamp"], 38, t["lamp_brightness"] * 1.2, True)])
                 lights.append(lamp)
             if t["rug"] and not stairs and rng.random() < 0.7:
                 decor.append(part("Rug", (cx, base + 0.05, cz), (rng.choice([12, 14, 16]), 0.1, rng.choice([10, 12])), rng.choice(t["rug"]), "Fabric", CanCollide=False))
