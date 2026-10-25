@@ -6,4 +6,6 @@ return {
 	Sparkle = "rbxassetid://140630278287223", -- destello de 4 puntas
 	GlowOrb = "rbxassetid://119954499459661", -- orbe suave
 	ShockRing = "rbxassetid://108896619635513", -- onda expansiva
+	Splash = "rbxassetid://91422563835542", -- salpicadura de líquido (sangre)
+	Streak = "rbxassetid://124321547680421", -- gota alargada
 }

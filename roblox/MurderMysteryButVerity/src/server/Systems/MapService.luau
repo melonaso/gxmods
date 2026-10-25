@@ -24,8 +24,9 @@ export type MapInfo = {
 local LOBBY_HEIGHT = 300
 local CELL = 40
 local GRID = 4
-local WALL_HEIGHT = 18
-local DOOR_WIDTH = 10
+local WALL_HEIGHT = 24
+local DOOR_WIDTH = 12
+local DOOR_TOP = 18 -- Verity mide ~16 studs
 
 local MapService = {}
 
@@ -161,8 +162,8 @@ local function wallWithDoor(parent: Instance, from: Vector3, to: Vector3)
 		local mid = from + unit * center
 		part({
 			Name = "Lintel",
-			Size = Vector3.new(1.5, WALL_HEIGHT - 10, DOOR_WIDTH),
-			CFrame = CFrame.new(mid + Vector3.new(0, 10 + (WALL_HEIGHT - 10) / 2, 0)) * look,
+			Size = Vector3.new(1.5, WALL_HEIGHT - DOOR_TOP, DOOR_WIDTH),
+			CFrame = CFrame.new(mid + Vector3.new(0, DOOR_TOP + (WALL_HEIGHT - DOOR_TOP) / 2, 0)) * look,
 			Material = Enum.Material.Plaster,
 			Color = WALL_COLOR,
 		}, parent)

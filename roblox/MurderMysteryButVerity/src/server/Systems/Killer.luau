@@ -1,254 +1,265 @@
 --!strict
--- Verity: apariencia, cuchillo y ataque validado en el servidor.
---
--- Para un modelo propio de Verity, coloca un Model R15 llamado
--- "VerityCharacter" en ServerStorage (con Humanoid, HumanoidRootPart y su
--- script Animate). Si no existe, se aplica un aspecto oscuro al avatar.
+-- Verity: transforma al asesino en la criatura (ServerStorage.VerityCharacter)
+-- y resuelve el ataque de la tecla Q: agarra a la víctima, la levanta sobre
+-- la cabeza y la aplasta contra el suelo, que la hace volar en pedazos.
+-- La animación la reproducen los clientes con VerityPose; el servidor usa la
+-- misma línea de tiempo para mover a la víctima entre las manos.
 
+local Debris = game:GetService("Debris")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
 local ServerStorage = game:GetService("ServerStorage")
+local TweenService = game:GetService("TweenService")
 local Workspace = game:GetService("Workspace")
 
+local Assets = require(ReplicatedStorage.Shared.Assets)
 local Config = require(ReplicatedStorage.Shared.Config)
 local Net = require(ReplicatedStorage.Shared.Net)
+local Pose = require(ReplicatedStorage.Shared.VerityPose)
+local Entity = require(script.Parent.Parent.Lib.Entity)
+local VerityRig = require(script.Parent.Parent.Lib.VerityRig)
 
 export type Context = {
-	survivors: () -> { Player },
-	onKill: (killer: Player, victim: Player) -> (),
+	survivors: () -> { Instance },
+	onGrab: (victim: Instance, position: Vector3) -> (), -- la víctima ya cuenta como muerta
+	goreParent: Instance,
 }
+
+local K = Config.Killer
+local BLOOD = Color3.fromRGB(120, 4, 12)
 
 local Killer = {}
 
 local current: Player? = nil
 local context: Context? = nil
-local lastAttack = 0
-local connections: { RBXScriptConnection } = {}
+local released = false
+local killing = false
+local lastKill = 0
+
+local function now(): number
+	return Workspace:GetServerTimeNow()
+end
 
 local function rootOf(player: Player): BasePart?
-	local character = player.Character
-	local root = character and character:FindFirstChild("HumanoidRootPart")
-	return if root and root:IsA("BasePart") then root else nil
+	return Entity.root(player)
 end
 
-local function humanoidOf(player: Player): Humanoid?
-	local character = player.Character
-	return character and character:FindFirstChildOfClass("Humanoid")
-end
-
-local function applyFallbackLook(character: Model)
-	for _, inst in character:GetDescendants() do
-		if inst:IsA("Accessory") or inst:IsA("Shirt") or inst:IsA("Pants") or inst:IsA("ShirtGraphic") then
-			inst:Destroy()
-		elseif inst:IsA("BasePart") and inst.Name ~= "HumanoidRootPart" then
-			inst.Color = Color3.fromRGB(22, 18, 24)
-			inst.Material = Enum.Material.SmoothPlastic
-		end
-	end
-	local head = character:FindFirstChild("Head")
-	if head and head:IsA("BasePart") then
-		local face = head:FindFirstChildOfClass("Decal")
-		if face then
-			face:Destroy()
-		end
-		-- Ojos rojos brillantes
-		for _, side in { -0.22, 0.22 } do
-			local eye = Instance.new("Part")
-			eye.Name = "VerityEye"
-			eye.Shape = Enum.PartType.Ball
-			eye.Size = Vector3.new(0.22, 0.22, 0.22)
-			eye.Material = Enum.Material.Neon
-			eye.Color = Color3.fromRGB(255, 40, 60)
-			eye.CanCollide = false
-			eye.Massless = true
-			eye.CFrame = head.CFrame * CFrame.new(side, 0.1, -head.Size.Z / 2)
-			local weld = Instance.new("WeldConstraint")
-			weld.Part0 = head
-			weld.Part1 = eye
-			weld.Parent = eye
-			eye.Parent = character
-		end
-		-- Capucha simple
-		local hood = Instance.new("Part")
-		hood.Name = "VerityHood"
-		hood.Size = head.Size * Vector3.new(1.25, 1.15, 1.2)
-		hood.Color = Color3.fromRGB(14, 10, 16)
-		hood.Material = Enum.Material.Fabric
-		hood.CanCollide = false
-		hood.Massless = true
-		hood.CFrame = head.CFrame * CFrame.new(0, 0.12, 0.12)
-		local mesh = Instance.new("SpecialMesh")
-		mesh.MeshType = Enum.MeshType.Head
-		mesh.Parent = hood
-		local weld = Instance.new("WeldConstraint")
-		weld.Part0 = head
-		weld.Part1 = hood
-		weld.Parent = hood
-		hood.Parent = character
-	end
-end
-
-local function morph(player: Player): Model?
-	local character = player.Character
-	if not character then
+-- Crea a Verity en `spawn` (CFrame a 3 studs sobre el suelo) y la asigna
+-- como personaje del jugador. Queda anclada hasta release().
+local function morph(player: Player, spawn: CFrame): Model?
+	local template = ServerStorage:FindFirstChild("VerityCharacter")
+	if not (template and template:IsA("Model")) then
+		warn("[Killer] falta ServerStorage.VerityCharacter")
 		return nil
 	end
-	local template = ServerStorage:FindFirstChild("VerityCharacter")
-	if template and template:IsA("Model") and template:FindFirstChildOfClass("Humanoid") then
-		local clone = template:Clone()
-		clone.Name = player.Name
-		clone:PivotTo(character:GetPivot())
-		player.Character = clone
-		clone.Parent = Workspace
-		character:Destroy()
-		return clone
+	local model = template:Clone()
+	model.Name = player.Name
+	local root = VerityRig.assemble(model)
+	local floorY = spawn.Position.Y - 3
+	local look = spawn.LookVector * Vector3.new(1, 0, 1)
+	local facing = if look.Magnitude > 0.01 then look.Unit else Vector3.new(0, 0, -1)
+	local position = Vector3.new(spawn.Position.X, floorY + Pose.RootY + 0.1, spawn.Position.Z)
+	model:PivotTo(CFrame.lookAt(position, position + facing))
+	root.Anchored = true
+
+	local humanoid = model:FindFirstChildOfClass("Humanoid") :: Humanoid
+	humanoid.CameraOffset = Vector3.new(0, 6, 0) -- cámara a la altura de la cabeza
+	humanoid.WalkSpeed = Config.Movement.VerityWalk
+	humanoid.HipHeight = Pose.HipHeight
+
+	local old = player.Character
+	player.Character = model
+	model.Parent = Workspace
+	if old then
+		old:Destroy()
 	end
-	applyFallbackLook(character)
-	return character
+	return model
 end
 
-local function makeKnife(): Tool
-	local tool = Instance.new("Tool")
-	tool.Name = "Cuchillo de Verity"
-	tool.CanBeDropped = false
-	tool.RequiresHandle = true
-	-- Misma orientación que la espada clásica: la hoja va a lo largo de +Z.
-	tool.GripForward = Vector3.new(-1, 0, 0)
-	tool.GripRight = Vector3.new(0, 1, 0)
-	tool.GripUp = Vector3.new(0, 0, 1)
-	tool.GripPos = Vector3.new(0, 0, -1.2)
-	tool.ToolTip = "Clic para atacar"
-
-	local handle = Instance.new("Part")
-	handle.Name = "Handle"
-	handle.Size = Vector3.new(0.25, 0.5, 2.8)
-	handle.Color = Color3.fromRGB(190, 196, 206)
-	handle.Material = Enum.Material.Metal
-	handle.CanCollide = false
-	handle.Massless = true
-	handle.Parent = tool
-
-	local grip = Instance.new("Part")
-	grip.Name = "Grip"
-	grip.Size = Vector3.new(0.32, 0.55, 1)
-	grip.Color = Color3.fromRGB(70, 14, 22)
-	grip.Material = Enum.Material.Wood
-	grip.CanCollide = false
-	grip.Massless = true
-	grip.CFrame = handle.CFrame * CFrame.new(0, 0, -1.75)
-	local weld = Instance.new("WeldConstraint")
-	weld.Part0 = handle
-	weld.Part1 = grip
-	weld.Parent = grip
-	grip.Parent = tool
-
-	local trail0 = Instance.new("Attachment")
-	trail0.Position = Vector3.new(0, 0, 1.3)
-	trail0.Parent = handle
-	local trail1 = Instance.new("Attachment")
-	trail1.Position = Vector3.new(0, 0, -0.6)
-	trail1.Parent = handle
-	local trail = Instance.new("Trail")
-	trail.Attachment0 = trail0
-	trail.Attachment1 = trail1
-	trail.Lifetime = 0.15
-	trail.Color = ColorSequence.new(Color3.fromRGB(255, 60, 80))
-	trail.Transparency = NumberSequence.new(0.3, 1)
-	trail.LightEmission = 1
-	trail.Parent = handle
-
-	local slash = Instance.new("Sound")
-	slash.Name = "Slash"
-	slash.SoundId = "rbxasset://sounds/swordslash.wav"
-	slash.Volume = 0.7
-	slash.Parent = handle
-
-	return tool
+local function bloodPool(position: Vector3, size: number, parent: Instance)
+	local pool = Instance.new("Part")
+	pool.Name = "BloodPool"
+	pool.Anchored = true
+	pool.CanCollide = false
+	pool.CanQuery = false
+	pool.Shape = Enum.PartType.Cylinder
+	pool.Color = BLOOD
+	pool.Material = Enum.Material.Glass
+	pool.Reflectance = 0.12
+	pool.Size = Vector3.new(0.06, 0.5, 0.5)
+	-- el eje del cilindro es X: se gira para que quede plano en el suelo
+	pool.CFrame = CFrame.new(position) * CFrame.Angles(0, math.random() * math.pi, math.rad(90))
+	pool.Parent = parent
+	TweenService:Create(pool, TweenInfo.new(0.6 + math.random() * 0.6, Enum.EasingStyle.Quint), { Size = Vector3.new(0.06, size, size) }):Play()
 end
 
-local function attack(player: Player, tool: Tool)
-	if player ~= current or not context then
-		return
+local function bleedingEmitter(part: BasePart)
+	local emitter = Instance.new("ParticleEmitter")
+	if Assets.Splash ~= "" then
+		emitter.Texture = Assets.Splash
 	end
-	local now = os.clock()
-	if now - lastAttack < Config.Killer.AttackCooldown then
-		return
-	end
-	lastAttack = now
+	emitter.Color = ColorSequence.new(Color3.fromRGB(150, 6, 16), Color3.fromRGB(80, 0, 6))
+	emitter.Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.5), NumberSequenceKeypoint.new(1, 0.1) })
+	emitter.Transparency = NumberSequence.new(0, 0.8)
+	emitter.Lifetime = NumberRange.new(0.4, 0.8)
+	emitter.Rate = 30
+	emitter.Speed = NumberRange.new(1, 4)
+	emitter.Acceleration = Vector3.new(0, -40, 0)
+	emitter.SpreadAngle = Vector2.new(60, 60)
+	emitter.Parent = part
+	task.delay(1.6, function()
+		emitter.Enabled = false
+	end)
+end
 
-	-- El script Animate por defecto reproduce el tajo al ver "toolanim".
-	local anim = Instance.new("StringValue")
-	anim.Name = "toolanim"
-	anim.Value = "Slash"
-	anim.Parent = tool
-	game:GetService("Debris"):AddItem(anim, 0.5)
-	local handle = tool:FindFirstChild("Handle")
-	local sound = handle and handle:FindFirstChild("Slash")
-	if sound and sound:IsA("Sound") then
-		sound:Play()
+-- Rompe a la víctima en pedazos que salen volando.
+local function explode(character: Model, impact: Vector3, parent: Instance)
+	for _, inst in character:GetDescendants() do
+		if inst:IsA("JointInstance") or inst:IsA("WeldConstraint") or inst:IsA("Motor6D") then
+			inst:Destroy()
+		end
 	end
+	for _, inst in character:GetDescendants() do
+		if inst:IsA("BasePart") then
+			inst.Anchored = false
+			-- el servidor simula los pedazos (si no, el cliente de la víctima los congela)
+			pcall(inst.SetNetworkOwner, inst, nil)
+			inst.CanCollide = inst.Name ~= "HumanoidRootPart"
+			if inst.Name == "HumanoidRootPart" then
+				inst.Transparency = 1
+			end
+			local dir = Vector3.new(math.random() - 0.5, 0, math.random() - 0.5)
+			dir = if dir.Magnitude > 0.01 then dir.Unit else Vector3.xAxis
+			inst.AssemblyLinearVelocity = dir * math.random(25, 55) + Vector3.new(0, math.random(35, 65), 0)
+			inst.AssemblyAngularVelocity = Vector3.new(math.random(-20, 20), math.random(-20, 20), math.random(-20, 20))
+			if inst.Name ~= "HumanoidRootPart" then
+				bleedingEmitter(inst)
+				if inst.Size.Magnitude > 1 then
+					inst.Color = inst.Color:Lerp(BLOOD, 0.35)
+				end
+			end
+		end
+	end
+	local humanoid = character:FindFirstChildOfClass("Humanoid")
+	if humanoid then
+		humanoid.Health = 0
+	end
+	-- charcos y salpicaduras en el suelo
+	bloodPool(impact + Vector3.new(0, 0.05, 0), 9, parent)
+	for _ = 1, 6 do
+		local offset = Vector3.new(math.random(-9, 9), 0.04, math.random(-9, 9))
+		bloodPool(impact + offset, 1.5 + math.random() * 3, parent)
+	end
+	Net.get("Effect"):FireAllClients("Gore", impact)
+	if not Players:GetPlayerFromCharacter(character) then
+		Debris:AddItem(character, 12)
+	end
+end
 
-	local root = rootOf(player)
-	if not root then
-		return
-	end
+local function findVictim(root: BasePart, ctx: Context): Instance?
 	local forward = root.CFrame.LookVector * Vector3.new(1, 0, 1)
 	forward = if forward.Magnitude > 0 then forward.Unit else Vector3.zAxis
-
-	local best: Player? = nil
-	local bestDistance = Config.Killer.AttackRange
-	for _, survivor in context.survivors() do
-		local targetRoot = rootOf(survivor)
-		local humanoid = humanoidOf(survivor)
-		if targetRoot and humanoid and humanoid.Health > 0 then
-			local offset = targetRoot.Position - root.Position
+	local best: Instance? = nil
+	local bestDistance = K.KillRange
+	for _, survivor in ctx.survivors() do
+		local targetRoot = Entity.root(survivor)
+		local humanoid = Entity.humanoid(survivor)
+		if targetRoot and humanoid and humanoid.Health > 0 and not targetRoot.Anchored then
+			local offset = (targetRoot.Position - root.Position) * Vector3.new(1, 0, 1)
 			local distance = offset.Magnitude
-			local flat = offset * Vector3.new(1, 0, 1)
-			local facing = if flat.Magnitude > 0.01 then flat.Unit:Dot(forward) else 1
-			if distance <= bestDistance and (facing >= Config.Killer.AttackConeDot or distance < 3) then
+			local facing = if distance > 0.01 then offset.Unit:Dot(forward) else 1
+			if distance <= bestDistance and (facing >= K.KillConeDot or distance < 4) then
 				best = survivor
 				bestDistance = distance
 			end
 		end
 	end
-
-	if best then
-		local humanoid = humanoidOf(best)
-		local targetRoot = rootOf(best)
-		if humanoid and targetRoot then
-			Net.get("Effect"):FireAllClients("Slash", targetRoot.Position)
-			humanoid.Health = 0
-			context.onKill(player, best)
-		end
-	end
+	return best
 end
 
--- Convierte al jugador en Verity y lo deja inmóvil hasta release().
+function Killer.tryKill(player: Player)
+	local ctx = context
+	if player ~= current or not ctx or not released or killing then
+		return
+	end
+	if os.clock() - lastKill < K.KillCooldown then
+		return
+	end
+	local character = player.Character
+	local root = rootOf(player)
+	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+	if not (character and root and humanoid) then
+		return
+	end
+	local victim = findVictim(root, ctx)
+	if not victim then
+		return
+	end
+	local victimCharacter = Entity.character(victim)
+	local victimRoot = Entity.root(victim)
+	if not (victimCharacter and victimRoot) then
+		return
+	end
+
+	killing = true
+	ctx.onGrab(victim, victimRoot.Position)
+
+	-- Verity se queda quieta (y de pie) mientras dura la animación
+	character:SetAttribute("Crouching", false)
+	humanoid.HipHeight = Pose.HipHeight
+	local killerCF = root.CFrame
+	root.Anchored = true
+	victimRoot.Anchored = true
+	local victimStart = victimRoot.CFrame
+	local start = now()
+	character:SetAttribute("KillStart", start)
+
+	-- La víctima mira a Verity mientras cuelga de sus manos
+	local hangRotation = (killerCF - killerCF.Position) * CFrame.Angles(0, math.pi, 0)
+	local origin = killerCF * CFrame.new(0, -Pose.RootY, 0)
+
+	local connection: RBXScriptConnection
+	local impacted = false
+	connection = RunService.Heartbeat:Connect(function()
+		local t = now() - start
+		if not victimRoot.Parent then
+			connection:Disconnect()
+			return
+		end
+		if t < Pose.KillImpact then
+			local grip = origin:PointToWorldSpace(Pose.gripLocal(t))
+			local target = CFrame.new(grip - Vector3.new(0, 1.2, 0)) * hangRotation
+			local alpha = math.clamp((t - 0.2) / (Pose.KillGrab - 0.2), 0, 1)
+			victimRoot.CFrame = victimStart:Lerp(target, alpha * alpha * (3 - 2 * alpha))
+		elseif not impacted then
+			impacted = true
+			connection:Disconnect()
+			local grip = origin:PointToWorldSpace(Pose.gripLocal(Pose.KillImpact))
+			local ground = Vector3.new(grip.X, origin.Position.Y, grip.Z)
+			explode(victimCharacter, ground, ctx.goreParent)
+		end
+	end)
+
+	task.delay(Pose.KillDuration, function()
+		if connection.Connected then
+			connection:Disconnect()
+		end
+		if character.Parent then
+			character:SetAttribute("KillStart", nil)
+			root.Anchored = false
+		end
+		killing = false
+		lastKill = os.clock()
+	end)
+end
+
 function Killer.setup(player: Player, spawn: CFrame, ctx: Context)
 	current = player
 	context = ctx
-	lastAttack = 0
-	local character = morph(player)
-	if not character then
-		return
-	end
-	character:PivotTo(spawn)
-	local humanoid = character:FindFirstChildOfClass("Humanoid")
-	if humanoid then
-		humanoid.WalkSpeed = Config.Killer.WalkSpeed
-		humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
-	end
-	local root = character:FindFirstChild("HumanoidRootPart")
-	if root and root:IsA("BasePart") then
-		root.Anchored = true
-	end
-	local highlight = Instance.new("Highlight")
-	highlight.Name = "VerityAura"
-	highlight.FillTransparency = 1
-	highlight.OutlineColor = Color3.fromRGB(255, 40, 60)
-	highlight.OutlineTransparency = 0.35
-	highlight.DepthMode = Enum.HighlightDepthMode.Occluded
-	highlight.Parent = character
+	released = false
+	killing = false
+	morph(player, spawn)
 end
 
 function Killer.release()
@@ -256,36 +267,30 @@ function Killer.release()
 	if not player then
 		return
 	end
+	released = true
+	local character = player.Character
 	local root = rootOf(player)
 	if root then
 		root.Anchored = false
 	end
-	local tool = makeKnife()
-	table.insert(connections, tool.Activated:Connect(function()
-		attack(player, tool)
-	end))
-	tool.Parent = player:FindFirstChildOfClass("Backpack")
-	local humanoid = humanoidOf(player)
-	if humanoid then
-		humanoid:EquipTool(tool)
+	if character then
+		character:SetAttribute("Released", true)
 	end
-	local unsheath = Instance.new("Sound")
-	unsheath.SoundId = "rbxasset://sounds/unsheath.wav"
-	unsheath.Parent = tool:FindFirstChild("Handle")
-	unsheath:Play()
 end
 
 function Killer.current(): Player?
 	return current
 end
 
+function Killer.isKilling(): boolean
+	return killing
+end
+
 function Killer.cleanup()
-	for _, c in connections do
-		c:Disconnect()
-	end
-	table.clear(connections)
 	current = nil
 	context = nil
+	released = false
+	killing = false
 end
 
 function Killer.init()

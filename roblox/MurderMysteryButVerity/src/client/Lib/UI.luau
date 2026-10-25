@@ -65,6 +65,7 @@ function UI.label(props: { [string]: any }): TextLabel
 		FontFace = UI.Font,
 		TextColor3 = UI.Colors.Text,
 		TextSize = 16,
+		Text = "", -- evita el "Label" por defecto de Roblox
 	}
 	for k, v in props do
 		defaults[k] = v

@@ -1,14 +1,16 @@
 --!strict
--- Punto único de definición de remotes. El servidor los crea al iniciar;
--- el cliente solo los espera. El estado continuo (fase, temporizador, oro)
--- viaja por atributos, así que solo hay eventos servidor -> cliente.
+-- Punto único de definición de remotes. El servidor los crea al iniciar
+-- (Net.setup); el cliente solo los espera. El estado continuo (fase,
+-- temporizador, oro, estamina) viaja por atributos.
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 
-export type RemoteName = "Notify" | "RoleReveal" | "RoundResult" | "Effect"
+-- "Action" es el único remote cliente -> servidor (Shift, C, Q); el servidor
+-- valida el rol y aplica límites.
+export type RemoteName = "Notify" | "RoleReveal" | "RoundResult" | "Effect" | "Action"
 
-local NAMES: { RemoteName } = { "Notify", "RoleReveal", "RoundResult", "Effect" }
+local NAMES: { RemoteName } = { "Notify", "RoleReveal", "RoundResult", "Effect", "Action" }
 local FOLDER_NAME = "Remotes"
 
 local Net = {}
@@ -30,6 +32,12 @@ local function folder(): Folder
 		return f
 	end
 	return ReplicatedStorage:WaitForChild(FOLDER_NAME) :: Folder
+end
+
+-- Debe llamarse en el servidor antes que nada: si no, el cliente se queda
+-- esperando la carpeta y la interfaz nunca se actualiza.
+function Net.setup()
+	folder()
 end
 
 function Net.get(name: RemoteName): RemoteEvent

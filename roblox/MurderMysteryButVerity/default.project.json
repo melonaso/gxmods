@@ -17,6 +17,9 @@
         "Client": {
           "$path": "src/client"
         }
+      },
+      "$properties": {
+        "EnableMouseLockOption": false
       }
     },
     "Players": {
@@ -31,6 +34,11 @@
       },
       "Maps": {
         "$path": "src/world/Maps"
+      }
+    },
+    "ServerStorage": {
+      "VerityCharacter": {
+        "$path": "src/world/VerityCharacter.model.json"
       }
     }
   }

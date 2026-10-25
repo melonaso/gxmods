@@ -13,13 +13,34 @@ Config.Round = {
 	MinRemainingAfterTotem = 15, -- un tótem nunca deja el reloj por debajo de esto
 }
 
+-- MODO PRUEBA: permite jugar solo. El primer jugador del servidor es
+-- Verity en todas las rondas y NPCs ocupan el lugar de los supervivientes.
+-- Ponlo en false antes de publicar el juego.
+Config.Testing = {
+	Enabled = true,
+	Bots = 5,
+	IntermissionTime = 8,
+}
+
 Config.Killer = {
 	Name = "Verity",
-	WalkSpeed = 19,
-	SurvivorWalkSpeed = 16,
-	AttackRange = 7.5,
-	AttackCooldown = 1.1,
-	AttackConeDot = 0.25, -- el objetivo debe estar más o menos al frente
+	KillRange = 9, -- distancia máxima para atrapar con Q
+	KillConeDot = 0.2, -- el objetivo debe estar más o menos al frente
+	KillCooldown = 1,
+}
+
+Config.Movement = {
+	SurvivorWalk = 16,
+	SurvivorSprint = 24, -- Shift
+	StaminaMax = 100,
+	StaminaDrain = 22, -- por segundo corriendo
+	StaminaRegen = 14,
+	StaminaRegenDelay = 0.8,
+	VerityWalk = 18,
+	VeritySprint = 28, -- más rápida que el sprint de los supervivientes
+	VerityCrouch = 9, -- tecla C
+	BotWalk = 15,
+	BotFlee = 21,
 }
 
 Config.Crafting = {

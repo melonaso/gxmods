@@ -1,7 +1,9 @@
 --!strict
 -- Bucle principal: espera -> intermedio -> partida -> resultados.
 -- El estado se replica con atributos de Workspace:
---   Phase, PhaseEndsAt (GetServerTimeNow), Totems, MaxTotems, SurvivorsAlive, MapName
+--   Phase, PhaseEndsAt (GetServerTimeNow), Totems, MaxTotems, SurvivorsAlive,
+--   MapName, KillerReleaseAt
+-- Los supervivientes pueden ser jugadores o NPCs (modo prueba).
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -9,22 +11,30 @@ local Workspace = game:GetService("Workspace")
 
 local Config = require(ReplicatedStorage.Shared.Config)
 local Net = require(ReplicatedStorage.Shared.Net)
+local Entity = require(script.Parent.Parent.Lib.Entity)
+local Bots = require(script.Parent.Bots)
 local Crafting = require(script.Parent.Crafting)
 local Killer = require(script.Parent.Killer)
 local MapService = require(script.Parent.MapService)
+local Movement = require(script.Parent.Movement)
 local PlayerData = require(script.Parent.PlayerData)
 
 local R = Config.Round
+local T = Config.Testing
 
 local Round = {}
 
-local survivors: { [Player]: boolean } = {} -- jugador -> vivo
+local survivors: { [Instance]: boolean } = {} -- Player o NPC -> vivo
 local endsAt = 0
 local totems = 0
 local currentMap: Model? = nil
 
 local function now(): number
 	return Workspace:GetServerTimeNow()
+end
+
+local function minPlayers(): number
+	return if T.Enabled then 1 else R.MinPlayers
 end
 
 local function setPhase(phase: string, duration: number?)
@@ -42,11 +52,11 @@ local function eligiblePlayers(): { Player }
 	return list
 end
 
-local function aliveSurvivors(): { Player }
+local function aliveSurvivors(): { Instance }
 	local list = {}
-	for player, alive in survivors do
-		if alive and player.Parent then
-			table.insert(list, player)
+	for who, alive in survivors do
+		if alive and Entity.exists(who) then
+			table.insert(list, who)
 		end
 	end
 	return list
@@ -60,21 +70,23 @@ local function notifyAll(text: string, kind: string?)
 	Net.get("Notify"):FireAllClients(text, kind or "info")
 end
 
-local function markDead(player: Player, position: Vector3?)
-	if not survivors[player] then
+local function markDead(who: Instance, position: Vector3?)
+	if not survivors[who] then
 		return
 	end
-	survivors[player] = false
-	player:SetAttribute("Role", "Dead")
+	survivors[who] = false
+	if who:IsA("Player") then
+		who:SetAttribute("Role", "Dead")
+	end
 	if position then
-		Crafting.dropGold(player, position)
+		Crafting.dropGold(who, position)
 	else
-		player:SetAttribute("Gold", 0)
+		who:SetAttribute("Gold", 0)
 	end
 	publishAlive()
 end
 
-local function onTotem(player: Player): boolean
+local function onTotem(who: Instance): boolean
 	local remaining = endsAt - now()
 	if remaining <= R.MinRemainingAfterTotem then
 		return false
@@ -83,22 +95,23 @@ local function onTotem(player: Player): boolean
 	totems += 1
 	Workspace:SetAttribute("PhaseEndsAt", endsAt)
 	Workspace:SetAttribute("Totems", totems)
-	notifyAll(`{player.DisplayName} crafteó un tótem: -{Config.Crafting.TimeReductionPerTotem}s`, "good")
+	notifyAll(`{Entity.name(who)} crafteó un tótem: -{Config.Crafting.TimeReductionPerTotem}s`, "good")
 	return true
 end
 
 local function waitForPlayers()
 	setPhase("Waiting")
-	while #eligiblePlayers() < R.MinPlayers do
+	while #eligiblePlayers() < minPlayers() do
 		task.wait(1)
 	end
 end
 
 local function intermission(): boolean
-	setPhase("Intermission", R.IntermissionTime)
-	local deadline = os.clock() + R.IntermissionTime
+	local duration = if T.Enabled then T.IntermissionTime else R.IntermissionTime
+	setPhase("Intermission", duration)
+	local deadline = os.clock() + duration
 	while os.clock() < deadline do
-		if #eligiblePlayers() < R.MinPlayers then
+		if #eligiblePlayers() < minPlayers() then
 			return false
 		end
 		task.wait(0.5)
@@ -106,9 +119,17 @@ local function intermission(): boolean
 	return true
 end
 
+local function chooseKiller(participants: { Player }): Player?
+	if T.Enabled then
+		-- modo prueba: el primer jugador del servidor siempre es Verity
+		return participants[1]
+	end
+	return PlayerData.pickKiller(participants)
+end
+
 local function playRound()
 	local participants = eligiblePlayers()
-	local killer = PlayerData.pickKiller(participants)
+	local killer = chooseKiller(participants)
 	if not killer then
 		return
 	end
@@ -127,9 +148,22 @@ local function playRound()
 	Workspace:SetAttribute("MaxTotems", Config.Crafting.MaxTotemsPerRound)
 
 	local deathConnections: { RBXScriptConnection } = {}
+	local function watchDeath(who: Instance, humanoid: Humanoid, character: Model)
+		table.insert(deathConnections, humanoid.Died:Connect(function()
+			local root = character:FindFirstChild("HumanoidRootPart")
+			markDead(who, if root and root:IsA("BasePart") then root.Position else nil)
+		end))
+	end
+
 	local spawnIndex = 0
+	local function nextSpawn(): CFrame
+		spawnIndex = spawnIndex % #map.survivorSpawns + 1
+		return map.survivorSpawns[spawnIndex]
+	end
+
 	for _, player in participants do
 		player:SetAttribute("Gold", 0)
+		Movement.reset(player)
 		if player == killer then
 			player:SetAttribute("Role", "Verity")
 		else
@@ -138,13 +172,8 @@ local function playRound()
 			local character = player.Character
 			local humanoid = character and character:FindFirstChildOfClass("Humanoid")
 			if character and humanoid and humanoid.Health > 0 then
-				spawnIndex = spawnIndex % #map.survivorSpawns + 1
-				character:PivotTo(map.survivorSpawns[spawnIndex])
-				humanoid.WalkSpeed = Config.Killer.SurvivorWalkSpeed
-				table.insert(deathConnections, humanoid.Died:Connect(function()
-					local root = character:FindFirstChild("HumanoidRootPart")
-					markDead(player, if root and root:IsA("BasePart") then root.Position else nil)
-				end))
+				character:PivotTo(nextSpawn())
+				watchDeath(player, humanoid, character)
 			else
 				survivors[player] = false
 				player:SetAttribute("Role", "Dead")
@@ -152,26 +181,62 @@ local function playRound()
 		end
 		Net.get("RoleReveal"):FireClient(player, player:GetAttribute("Role"), killer.DisplayName)
 	end
-	publishAlive()
 
 	Killer.setup(killer, map.killerSpawn, {
 		survivors = aliveSurvivors,
-		onKill = function(_, victim)
-			notifyAll(`{victim.DisplayName} fue atrapado por Verity`, "bad")
+		onGrab = function(victim, position)
+			markDead(victim, position)
+			notifyAll(`Verity atrapó a {Entity.name(victim)}`, "bad")
 		end,
+		goreParent = map.model,
 	})
-
 	-- Si Verity se reinicia o muere, pierde la ronda.
 	local killerCharacter = killer.Character
 	local killerHumanoid = killerCharacter and killerCharacter:FindFirstChildOfClass("Humanoid")
+
+	-- NPCs para completar la partida (modo prueba)
+	local bots: { Model } = {}
+	if T.Enabled and T.Bots > 0 then
+		local points: { Vector3 } = {}
+		for _, cf in map.survivorSpawns do
+			table.insert(points, cf.Position)
+		end
+		for _, p in map.goldSpawns do
+			table.insert(points, p)
+		end
+		local botCtx = {
+			parent = map.model,
+			killerRoot = function(): BasePart?
+				return Entity.root(killer)
+			end,
+			killerReleased = function(): boolean
+				return (Workspace:GetAttribute("KillerReleaseAt") :: number? or math.huge) <= now()
+			end,
+			isAlive = function(bot: Model): boolean
+				return survivors[bot] == true
+			end,
+			points = points,
+		}
+		local spawns = {}
+		for _ = 1, T.Bots do
+			table.insert(spawns, nextSpawn())
+		end
+		bots = Bots.spawn(T.Bots, spawns, botCtx)
+		for _, bot in bots do
+			survivors[bot] = true
+			watchDeath(bot, bot:FindFirstChildOfClass("Humanoid") :: Humanoid, bot)
+		end
+		Bots.startAI(bots, botCtx)
+	end
+	publishAlive()
 
 	Crafting.start({
 		parent = map.model,
 		goldSpawns = map.goldSpawns,
 		tableSpots = map.tableSpots,
 		survivorCount = #aliveSurvivors(),
-		isSurvivor = function(player)
-			return survivors[player] == true
+		isSurvivor = function(who)
+			return survivors[who] == true
 		end,
 		onTotem = onTotem,
 		totemsCrafted = function()
@@ -193,9 +258,9 @@ local function playRound()
 			Killer.release()
 			notifyAll("¡Verity ha sido liberada!", "bad")
 		end
-		for player, alive in survivors do
-			if alive and not player.Parent then
-				markDead(player, nil)
+		for who, alive in survivors do
+			if alive and not Entity.exists(who) then
+				markDead(who, nil)
 			end
 		end
 		if not killer.Parent then
@@ -208,7 +273,7 @@ local function playRound()
 			notifyAll("Verity ha caído.", "info")
 			break
 		end
-		if #aliveSurvivors() == 0 then
+		if #aliveSurvivors() == 0 and not Killer.isKilling() then
 			winner = "Verity"
 			break
 		end
@@ -219,12 +284,13 @@ local function playRound()
 	end
 
 	-- Resultados
-	local alive = aliveSurvivors()
 	local survivorNames = {}
 	if winner == "Survivors" then
-		for _, player in alive do
-			PlayerData.addWin(player)
-			table.insert(survivorNames, player.DisplayName)
+		for _, who in aliveSurvivors() do
+			if who:IsA("Player") then
+				PlayerData.addWin(who)
+			end
+			table.insert(survivorNames, Entity.name(who))
 		end
 	elseif killer.Parent then
 		PlayerData.addWin(killer)
@@ -235,11 +301,12 @@ local function playRound()
 	for _, c in deathConnections do
 		c:Disconnect()
 	end
+	Bots.stop()
 	Crafting.stop()
 	Killer.cleanup()
 	task.wait(R.ResultsTime)
 
-	map.model:Destroy()
+	map.model:Destroy() -- también elimina NPCs y restos
 	currentMap = nil
 	MapService.setAtmosphere(false)
 	Workspace:SetAttribute("MapName", nil)
@@ -260,6 +327,7 @@ end
 function Round.init()
 	Workspace:SetAttribute("Totems", 0)
 	Workspace:SetAttribute("MaxTotems", Config.Crafting.MaxTotemsPerRound)
+	Workspace:SetAttribute("TestMode", T.Enabled)
 	Players.PlayerAdded:Connect(function(player)
 		player:SetAttribute("Role", "Lobby")
 		player:SetAttribute("Gold", 0)
@@ -276,6 +344,7 @@ function Round.start()
 			local ok, err = pcall(playRound)
 			if not ok then
 				warn(`[Round] error en la ronda: {err}`)
+				Bots.stop()
 				Crafting.stop()
 				Killer.cleanup()
 				MapService.setAtmosphere(false)

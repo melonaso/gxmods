@@ -31,6 +31,10 @@ local infoPill: Frame
 local infoLabel: TextLabel
 local goldChip: Frame
 local goldLabel: TextLabel
+local controls: Frame
+local controlsLabel: TextLabel
+local staminaBar: Frame
+local staminaFill: Frame
 local toastList: Frame
 local roleCard: CanvasGroup
 local resultCard: CanvasGroup
@@ -128,6 +132,43 @@ local function build()
 		TextSize = 16,
 		Parent = goldChip,
 	})
+
+	-- Controles y estamina (abajo al centro, discretos)
+	controls = UI.new("Frame", {
+		Name = "Controls",
+		AnchorPoint = Vector2.new(0.5, 1),
+		Position = UDim2.new(0.5, 0, 1, -14),
+		Size = UDim2.fromOffset(0, 26),
+		AutomaticSize = Enum.AutomaticSize.X,
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.4,
+		Visible = false,
+		Parent = gui,
+	}, { UI.corner(13), UI.new("UIPadding", { PaddingLeft = UDim.new(0, 12), PaddingRight = UDim.new(0, 12) }) })
+	controlsLabel = UI.label({
+		Size = UDim2.fromScale(0, 1),
+		AutomaticSize = Enum.AutomaticSize.X,
+		TextSize = 13,
+		RichText = true,
+		TextColor3 = C.Muted,
+		Parent = controls,
+	})
+	staminaBar = UI.new("Frame", {
+		Name = "Stamina",
+		AnchorPoint = Vector2.new(0.5, 1),
+		Position = UDim2.new(0.5, 0, 1, -46),
+		Size = UDim2.fromOffset(180, 6),
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.3,
+		Visible = false,
+		Parent = gui,
+	}, { UI.corner(3) })
+	staminaFill = UI.new("Frame", {
+		Size = UDim2.fromScale(1, 1),
+		BackgroundColor3 = C.Survivor,
+		BorderSizePixel = 0,
+		Parent = staminaBar,
+	}, { UI.corner(3) })
 
 	-- Avisos (esquina superior derecha, apilados)
 	toastList = UI.new("Frame", {
@@ -246,9 +287,9 @@ end
 
 local function onRoleReveal(role: string, killerName: string)
 	if role == "Verity" then
-		showCard(roleCard, "TU ROL", "ERES VERITY", C.Verity, "Atrapa a todos los supervivientes antes de que se acabe el tiempo.", 3.5)
+		showCard(roleCard, "TU ROL", "ERES VERITY", C.Verity, "Atrapa a todos antes de que acabe el tiempo. Q atrapar · Shift correr · C agacharse", 4)
 	elseif role == "Survivor" then
-		showCard(roleCard, "TU ROL", "SUPERVIVIENTE", C.Survivor, `Verity es {killerName}. Busca oro, craftea tótems y resiste.`, 3.5)
+		showCard(roleCard, "TU ROL", "SUPERVIVIENTE", C.Survivor, `Verity es {killerName}. Busca oro, craftea tótems y resiste. Shift para correr.`, 4)
 	end
 end
 
@@ -273,7 +314,8 @@ local function update()
 
 	phaseLabel.Text = PHASE_TEXT[phase] or phase
 	if phase == "Waiting" then
-		timerLabel.Text = `{#Players:GetPlayers()}/{Config.Round.MinPlayers}`
+		local needed = if Workspace:GetAttribute("TestMode") then 1 else Config.Round.MinPlayers
+		timerLabel.Text = `{#Players:GetPlayers()}/{needed}`
 	elseif endsAt > 0 then
 		timerLabel.Text = formatTime(remaining)
 	else
@@ -304,6 +346,24 @@ local function update()
 	infoLabel.Text = info
 	infoPill.Visible = info ~= ""
 
+	local inRound = phase == "Playing" or phase == "Starting"
+	local key = function(k: string, text: string)
+		return `<font color="#f0ecf5"><b>{k}</b></font> {text}`
+	end
+	if inRound and role == "Verity" then
+		controlsLabel.Text = `{key("Q", "Atrapar")}   {key("Shift", "Correr")}   {key("C", "Agacharse")}`
+	elseif inRound and role == "Survivor" then
+		controlsLabel.Text = `{key("Shift", "Correr")}   {key("E", "Oro / mesa")}   {key("F", "Craftear")}`
+	else
+		controlsLabel.Text = ""
+	end
+	controls.Visible = controlsLabel.Text ~= ""
+
+	local stamina = (player:GetAttribute("Stamina") :: number?) or Config.Movement.StaminaMax
+	staminaBar.Visible = inRound and role == "Survivor" and stamina < Config.Movement.StaminaMax
+	staminaFill.Size = UDim2.fromScale(stamina / Config.Movement.StaminaMax, 1)
+	staminaFill.BackgroundColor3 = if stamina < 25 then C.Warn else C.Survivor
+
 	local showGold = phase == "Playing" and role == "Survivor"
 	goldChip.Visible = showGold
 	if showGold then
@@ -317,10 +377,7 @@ function HUD.init()
 end
 
 function HUD.start()
-	Net.get("Notify").OnClientEvent:Connect(toast)
-	Net.get("RoleReveal").OnClientEvent:Connect(onRoleReveal)
-	Net.get("RoundResult").OnClientEvent:Connect(onRoundResult)
-
+	-- el HUD se actualiza aunque los remotes tarden en llegar
 	local accumulator = 0
 	RunService.Heartbeat:Connect(function(dt)
 		accumulator += dt
@@ -330,6 +387,10 @@ function HUD.start()
 		end
 	end)
 	update()
+
+	Net.get("Notify").OnClientEvent:Connect(toast)
+	Net.get("RoleReveal").OnClientEvent:Connect(onRoleReveal)
+	Net.get("RoundResult").OnClientEvent:Connect(onRoundResult)
 end
 
 return HUD

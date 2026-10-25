@@ -37,9 +37,9 @@
        }
       },
       "Size": [
-       190,
+       200,
        2,
-       114
+       120
       ],
       "Color": [
        0.6667,
@@ -60,7 +60,7 @@
        "CFrame": {
         "position": [
          320,
-         16.5,
+         22.5,
          0
         ],
         "orientation": [
@@ -83,9 +83,9 @@
        }
       },
       "Size": [
-       190,
+       200,
        1,
-       114
+       120
       ],
       "Color": [
        0.4706,
@@ -106,8 +106,8 @@
        "CFrame": {
         "position": [
          320,
-         8.0,
-         -58.0
+         11.0,
+         -61.0
         ],
         "orientation": [
          [
@@ -129,8 +129,8 @@
        }
       },
       "Size": [
-       194,
-       16,
+       204,
+       22,
        2
       ],
       "Color": [
@@ -152,8 +152,8 @@
        "CFrame": {
         "position": [
          320,
-         8.0,
-         58.0
+         11.0,
+         61.0
         ],
         "orientation": [
          [
@@ -175,8 +175,8 @@
        }
       },
       "Size": [
-       194,
-       16,
+       204,
+       22,
        2
       ],
       "Color": [
@@ -197,8 +197,8 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         224.0,
-         8.0,
+         219.0,
+         11.0,
          0
         ],
         "orientation": [
@@ -222,8 +222,8 @@
       },
       "Size": [
        2,
-       16,
-       114
+       22,
+       120
       ],
       "Color": [
        0.4314,
@@ -243,8 +243,8 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         416.0,
-         8.0,
+         421.0,
+         11.0,
          0
         ],
         "orientation": [
@@ -268,8 +268,8 @@
       },
       "Size": [
        2,
-       16,
-       114
+       22,
+       120
       ],
       "Color": [
        0.4314,
@@ -289,9 +289,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
-         8.0,
-         -48.785
+         260.0,
+         11.0,
+         -51.92
         ],
         "orientation": [
          [
@@ -314,8 +314,8 @@
       },
       "Size": [
        1.5,
-       16,
-       16.43
+       22,
+       16.16
       ],
       "Color": [
        0.5882,
@@ -335,9 +335,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
+         260.0,
          0.4,
-         -48.785
+         -51.92
         ],
         "orientation": [
          [
@@ -361,7 +361,7 @@
       "Size": [
        1.9,
        0.8,
-       16.43
+       16.16
       ],
       "Color": [
        0.3529,
@@ -381,9 +381,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
-         13.0,
-         -35.57
+         260.0,
+         20.0,
+         -37.84
         ],
         "orientation": [
          [
@@ -406,8 +406,8 @@
       },
       "Size": [
        1.5,
-       6,
-       10
+       4,
+       12
       ],
       "Color": [
        0.5882,
@@ -427,9 +427,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
-         8.0,
-         -24.785
+         260.0,
+         11.0,
+         -25.92
         ],
         "orientation": [
          [
@@ -452,8 +452,8 @@
       },
       "Size": [
        1.5,
-       16,
-       11.57
+       22,
+       11.84
       ],
       "Color": [
        0.5882,
@@ -473,9 +473,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
+         260.0,
          0.4,
-         -24.785
+         -25.92
         ],
         "orientation": [
          [
@@ -499,7 +499,7 @@
       "Size": [
        1.9,
        0.8,
-       11.57
+       11.84
       ],
       "Color": [
        0.3529,
@@ -519,9 +519,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
-         8.0,
-         -16.165
+         260.0,
+         11.0,
+         -17.707
         ],
         "orientation": [
          [
@@ -544,8 +544,8 @@
       },
       "Size": [
        1.5,
-       16,
-       5.671
+       22,
+       4.585
       ],
       "Color": [
        0.5882,
@@ -565,9 +565,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
+         260.0,
          0.4,
-         -16.165
+         -17.707
         ],
         "orientation": [
          [
@@ -591,145 +591,7 @@
       "Size": [
        1.9,
        0.8,
-       5.671
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Lintel",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         263.0,
-         13.0,
-         -8.329
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       6,
-       10
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         263.0,
-         8.0,
-         1.201
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       16,
-       9.061
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         263.0,
-         0.4,
-         1.201
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.9,
-       0.8,
-       9.061
+       4.585
       ],
       "Color": [
        0.3529,
@@ -749,9 +611,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
-         13.0,
-         10.731
+         260.0,
+         20.0,
+         -9.415
         ],
         "orientation": [
          [
@@ -774,8 +636,8 @@
       },
       "Size": [
        1.5,
-       6,
-       10
+       4,
+       12
       ],
       "Color": [
        0.5882,
@@ -795,9 +657,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
-         8.0,
-         17.366
+         260.0,
+         11.0,
+         0.6
         ],
         "orientation": [
          [
@@ -820,8 +682,8 @@
       },
       "Size": [
        1.5,
-       16,
-       3.269
+       22,
+       8.03
       ],
       "Color": [
        0.5882,
@@ -841,9 +703,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
+         260.0,
          0.4,
-         17.366
+         0.6
         ],
         "orientation": [
          [
@@ -867,99 +729,7 @@
       "Size": [
        1.9,
        0.8,
-       3.269
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         263.0,
-         8.0,
-         23.625
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       16,
-       9.249
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         263.0,
-         0.4,
-         23.625
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.9,
-       0.8,
-       9.249
+       8.03
       ],
       "Color": [
        0.3529,
@@ -979,9 +749,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
-         13.0,
-         33.249
+         260.0,
+         20.0,
+         10.616
         ],
         "orientation": [
          [
@@ -1004,8 +774,8 @@
       },
       "Size": [
        1.5,
-       6,
-       10
+       4,
+       12
       ],
       "Color": [
        0.5882,
@@ -1025,9 +795,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
-         8.0,
-         47.625
+         260.0,
+         11.0,
+         18.308
         ],
         "orientation": [
          [
@@ -1050,8 +820,8 @@
       },
       "Size": [
        1.5,
-       16,
-       18.751
+       22,
+       3.384
       ],
       "Color": [
        0.5882,
@@ -1071,9 +841,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         263.0,
+         260.0,
          0.4,
-         47.625
+         18.308
         ],
         "orientation": [
          [
@@ -1097,7 +867,7 @@
       "Size": [
        1.9,
        0.8,
-       18.751
+       3.384
       ],
       "Color": [
        0.3529,
@@ -1117,9 +887,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         301.0,
-         8.0,
-         -15.877
+         260.0,
+         11.0,
+         24.888
         ],
         "orientation": [
          [
@@ -1142,8 +912,8 @@
       },
       "Size": [
        1.5,
-       16,
-       6.247
+       22,
+       9.777
       ],
       "Color": [
        0.5882,
@@ -1163,9 +933,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         301.0,
+         260.0,
          0.4,
-         -15.877
+         24.888
         ],
         "orientation": [
          [
@@ -1189,237 +959,7 @@
       "Size": [
        1.9,
        0.8,
-       6.247
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Lintel",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         301.0,
-         13.0,
-         -7.753
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       6,
-       10
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         301.0,
-         8.0,
-         8.123
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       16,
-       21.753
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         301.0,
-         0.4,
-         8.123
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.9,
-       0.8,
-       21.753
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         301.0,
-         8.0,
-         20.715
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       16,
-       3.431
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         301.0,
-         0.4,
-         20.715
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.9,
-       0.8,
-       3.431
+       9.777
       ],
       "Color": [
        0.3529,
@@ -1439,9 +979,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         301.0,
-         13.0,
-         27.431
+         260.0,
+         20.0,
+         35.777
         ],
         "orientation": [
          [
@@ -1464,8 +1004,8 @@
       },
       "Size": [
        1.5,
-       6,
-       10
+       4,
+       12
       ],
       "Color": [
        0.5882,
@@ -1485,9 +1025,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         301.0,
-         8.0,
-         36.55
+         260.0,
+         11.0,
+         50.888
         ],
         "orientation": [
          [
@@ -1510,8 +1050,8 @@
       },
       "Size": [
        1.5,
-       16,
-       8.239
+       22,
+       18.223
       ],
       "Color": [
        0.5882,
@@ -1531,9 +1071,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         301.0,
+         260.0,
          0.4,
-         36.55
+         50.888
         ],
         "orientation": [
          [
@@ -1557,7 +1097,99 @@
       "Size": [
        1.9,
        0.8,
-       8.239
+       18.223
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         300.0,
+         11.0,
+         -16.446
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.5,
+       22,
+       7.108
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         300.0,
+         0.4,
+         -16.446
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.9,
+       0.8,
+       7.108
       ],
       "Color": [
        0.3529,
@@ -1577,9 +1209,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         301.0,
-         13.0,
-         45.669
+         300.0,
+         20.0,
+         -6.892
         ],
         "orientation": [
          [
@@ -1602,8 +1234,8 @@
       },
       "Size": [
        1.5,
-       6,
-       10
+       4,
+       12
       ],
       "Color": [
        0.5882,
@@ -1623,9 +1255,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         301.0,
-         8.0,
-         53.835
+         300.0,
+         11.0,
+         9.554
         ],
         "orientation": [
          [
@@ -1648,8 +1280,8 @@
       },
       "Size": [
        1.5,
-       16,
-       6.331
+       22,
+       20.892
       ],
       "Color": [
        0.5882,
@@ -1669,9 +1301,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         301.0,
+         300.0,
          0.4,
-         53.835
+         9.554
         ],
         "orientation": [
          [
@@ -1695,7 +1327,7 @@
       "Size": [
        1.9,
        0.8,
-       6.331
+       20.892
       ],
       "Color": [
        0.3529,
@@ -1715,9 +1347,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         339.0,
-         8.0,
-         -46.625
+         300.0,
+         11.0,
+         21.733
         ],
         "orientation": [
          [
@@ -1740,8 +1372,8 @@
       },
       "Size": [
        1.5,
-       16,
-       20.751
+       22,
+       3.465
       ],
       "Color": [
        0.5882,
@@ -1761,9 +1393,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         339.0,
+         300.0,
          0.4,
-         -46.625
+         21.733
         ],
         "orientation": [
          [
@@ -1787,237 +1419,7 @@
       "Size": [
        1.9,
        0.8,
-       20.751
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Lintel",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         339.0,
-         13.0,
-         -31.249
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       6,
-       10
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         339.0,
-         8.0,
-         -22.625
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       16,
-       7.249
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         339.0,
-         0.4,
-         -22.625
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.9,
-       0.8,
-       7.249
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         339.0,
-         8.0,
-         -17.092
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       16,
-       3.816
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         339.0,
-         0.4,
-         -17.092
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.9,
-       0.8,
-       3.816
+       3.465
       ],
       "Color": [
        0.3529,
@@ -2037,9 +1439,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         339.0,
-         13.0,
-         -10.184
+         300.0,
+         20.0,
+         29.465
         ],
         "orientation": [
          [
@@ -2062,8 +1464,8 @@
       },
       "Size": [
        1.5,
-       6,
-       10
+       4,
+       12
       ],
       "Color": [
        0.5882,
@@ -2083,9 +1485,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         339.0,
-         8.0,
-         -0.347
+         300.0,
+         11.0,
+         39.275
         ],
         "orientation": [
          [
@@ -2108,8 +1510,8 @@
       },
       "Size": [
        1.5,
-       16,
-       9.674
+       22,
+       7.619
       ],
       "Color": [
        0.5882,
@@ -2129,9 +1531,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         339.0,
+         300.0,
          0.4,
-         -0.347
+         39.275
         ],
         "orientation": [
          [
@@ -2155,7 +1557,7 @@
       "Size": [
        1.9,
        0.8,
-       9.674
+       7.619
       ],
       "Color": [
        0.3529,
@@ -2175,9 +1577,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         339.0,
-         13.0,
-         9.49
+         300.0,
+         20.0,
+         49.085
         ],
         "orientation": [
          [
@@ -2200,8 +1602,8 @@
       },
       "Size": [
        1.5,
-       6,
-       10
+       4,
+       12
       ],
       "Color": [
        0.5882,
@@ -2221,9 +1623,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         339.0,
-         8.0,
-         16.745
+         300.0,
+         11.0,
+         57.542
         ],
         "orientation": [
          [
@@ -2246,8 +1648,8 @@
       },
       "Size": [
        1.5,
-       16,
-       4.51
+       22,
+       4.915
       ],
       "Color": [
        0.5882,
@@ -2267,9 +1669,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         339.0,
+         300.0,
          0.4,
-         16.745
+         57.542
         ],
         "orientation": [
          [
@@ -2293,7 +1695,7 @@
       "Size": [
        1.9,
        0.8,
-       4.51
+       4.915
       ],
       "Color": [
        0.3529,
@@ -2313,9 +1715,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         377.0,
-         8.0,
-         -53.107
+         340.0,
+         11.0,
+         -50.0
         ],
         "orientation": [
          [
@@ -2338,8 +1740,8 @@
       },
       "Size": [
        1.5,
-       16,
-       7.787
+       22,
+       20.001
       ],
       "Color": [
        0.5882,
@@ -2359,9 +1761,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         377.0,
+         340.0,
          0.4,
-         -53.107
+         -50.0
         ],
         "orientation": [
          [
@@ -2385,237 +1787,7 @@
       "Size": [
        1.9,
        0.8,
-       7.787
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Lintel",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         377.0,
-         13.0,
-         -44.213
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       6,
-       10
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         377.0,
-         8.0,
-         -29.107
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       16,
-       20.213
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         377.0,
-         0.4,
-         -29.107
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.9,
-       0.8,
-       20.213
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         377.0,
-         8.0,
-         -15.894
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       16,
-       6.212
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         377.0,
-         0.4,
-         -15.894
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.9,
-       0.8,
-       6.212
+       20.001
       ],
       "Color": [
        0.3529,
@@ -2635,9 +1807,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         377.0,
-         13.0,
-         -7.788
+         340.0,
+         20.0,
+         -33.999
         ],
         "orientation": [
          [
@@ -2660,8 +1832,8 @@
       },
       "Size": [
        1.5,
-       6,
-       10
+       4,
+       12
       ],
       "Color": [
        0.5882,
@@ -2681,9 +1853,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         377.0,
-         8.0,
-         0.762
+         340.0,
+         11.0,
+         -24.0
         ],
         "orientation": [
          [
@@ -2706,8 +1878,8 @@
       },
       "Size": [
        1.5,
-       16,
-       7.101
+       22,
+       7.999
       ],
       "Color": [
        0.5882,
@@ -2727,9 +1899,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         377.0,
+         340.0,
          0.4,
-         0.762
+         -24.0
         ],
         "orientation": [
          [
@@ -2753,7 +1925,99 @@
       "Size": [
        1.9,
        0.8,
-       7.101
+       7.999
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         340.0,
+         11.0,
+         -18.171
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.5,
+       22,
+       3.658
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         340.0,
+         0.4,
+         -18.171
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.9,
+       0.8,
+       3.658
       ],
       "Color": [
        0.3529,
@@ -2773,9 +2037,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         377.0,
-         13.0,
-         9.313
+         340.0,
+         20.0,
+         -10.342
         ],
         "orientation": [
          [
@@ -2798,8 +2062,8 @@
       },
       "Size": [
        1.5,
-       6,
-       10
+       4,
+       12
       ],
       "Color": [
        0.5882,
@@ -2819,9 +2083,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         377.0,
-         8.0,
-         16.656
+         340.0,
+         11.0,
+         -0.174
         ],
         "orientation": [
          [
@@ -2844,8 +2108,8 @@
       },
       "Size": [
        1.5,
-       16,
-       4.687
+       22,
+       8.337
       ],
       "Color": [
        0.5882,
@@ -2865,9 +2129,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         377.0,
+         340.0,
          0.4,
-         16.656
+         -0.174
         ],
         "orientation": [
          [
@@ -2891,99 +2155,7 @@
       "Size": [
        1.9,
        0.8,
-       4.687
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         377.0,
-         8.0,
-         25.862
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.5,
-       16,
-       13.725
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         377.0,
-         0.4,
-         25.862
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       1.9,
-       0.8,
-       13.725
+       8.337
       ],
       "Color": [
        0.3529,
@@ -3003,9 +2175,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         377.0,
-         13.0,
-         37.725
+         340.0,
+         20.0,
+         9.995
         ],
         "orientation": [
          [
@@ -3028,8 +2200,8 @@
       },
       "Size": [
        1.5,
-       6,
-       10
+       4,
+       12
       ],
       "Color": [
        0.5882,
@@ -3049,9 +2221,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         377.0,
-         8.0,
-         49.862
+         340.0,
+         11.0,
+         17.998
         ],
         "orientation": [
          [
@@ -3074,8 +2246,8 @@
       },
       "Size": [
        1.5,
-       16,
-       14.275
+       22,
+       4.005
       ],
       "Color": [
        0.5882,
@@ -3095,9 +2267,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         377.0,
+         340.0,
          0.4,
-         49.862
+         17.998
         ],
         "orientation": [
          [
@@ -3121,7 +2293,7 @@
       "Size": [
        1.9,
        0.8,
-       14.275
+       4.005
       ],
       "Color": [
        0.3529,
@@ -3141,9 +2313,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         227.982,
-         8.0,
-         -19.0
+         380.0,
+         11.0,
+         -55.761
         ],
         "orientation": [
          [
@@ -3165,8 +2337,836 @@
        }
       },
       "Size": [
-       5.964,
-       16,
+       1.5,
+       22,
+       8.477
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         0.4,
+         -55.761
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.9,
+       0.8,
+       8.477
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Lintel",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         20.0,
+         -45.523
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.5,
+       4,
+       12
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         11.0,
+         -29.761
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.5,
+       22,
+       19.523
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         0.4,
+         -29.761
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.9,
+       0.8,
+       19.523
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         11.0,
+         -17.572
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.5,
+       22,
+       4.856
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         0.4,
+         -17.572
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.9,
+       0.8,
+       4.856
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Lintel",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         20.0,
+         -9.144
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.5,
+       4,
+       12
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         11.0,
+         0.381
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.5,
+       22,
+       7.05
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         0.4,
+         0.381
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.9,
+       0.8,
+       7.05
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Lintel",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         20.0,
+         9.906
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.5,
+       4,
+       12
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         11.0,
+         17.953
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.5,
+       22,
+       4.094
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         0.4,
+         17.953
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.9,
+       0.8,
+       4.094
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         11.0,
+         26.878
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.5,
+       22,
+       13.755
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         0.4,
+         26.878
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.9,
+       0.8,
+       13.755
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Lintel",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         20.0,
+         39.755
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.5,
+       4,
+       12
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         11.0,
+         52.878
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.5,
+       22,
+       14.245
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         380.0,
+         0.4,
+         52.878
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.9,
+       0.8,
+       14.245
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         222.366,
+         11.0,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       4.732,
+       22,
        1.5
       ],
       "Color": [
@@ -3187,9 +3187,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         227.982,
+         222.366,
          0.4,
-         -19.0
+         -20.0
         ],
         "orientation": [
          [
@@ -3211,7 +3211,7 @@
        }
       },
       "Size": [
-       5.964,
+       4.732,
        0.8,
        1.9
       ],
@@ -3233,9 +3233,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         235.964,
-         13.0,
-         -19.0
+         230.732,
+         20.0,
+         -20.0
         ],
         "orientation": [
          [
@@ -3257,8 +3257,8 @@
        }
       },
       "Size": [
-       10,
-       6,
+       12,
+       4,
        1.5
       ],
       "Color": [
@@ -3279,9 +3279,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         244.202,
-         8.0,
-         -19.0
+         240.101,
+         11.0,
+         -20.0
         ],
         "orientation": [
          [
@@ -3303,8 +3303,8 @@
        }
       },
       "Size": [
-       6.476,
-       16,
+       6.738,
+       22,
        1.5
       ],
       "Color": [
@@ -3325,9 +3325,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         244.202,
+         240.101,
          0.4,
-         -19.0
+         -20.0
         ],
         "orientation": [
          [
@@ -3349,7 +3349,7 @@
        }
       },
       "Size": [
-       6.476,
+       6.738,
        0.8,
        1.9
       ],
@@ -3371,9 +3371,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         252.439,
-         13.0,
-         -19.0
+         249.47,
+         20.0,
+         -20.0
         ],
         "orientation": [
          [
@@ -3395,8 +3395,8 @@
        }
       },
       "Size": [
-       10,
-       6,
+       12,
+       4,
        1.5
       ],
       "Color": [
@@ -3417,9 +3417,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         260.22,
-         8.0,
-         -19.0
+         257.735,
+         11.0,
+         -20.0
         ],
         "orientation": [
          [
@@ -3441,8 +3441,8 @@
        }
       },
       "Size": [
-       5.561,
-       16,
+       4.53,
+       22,
        1.5
       ],
       "Color": [
@@ -3463,9 +3463,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         260.22,
+         257.735,
          0.4,
-         -19.0
+         -20.0
         ],
         "orientation": [
          [
@@ -3487,7 +3487,7 @@
        }
       },
       "Size": [
-       5.561,
+       4.53,
        0.8,
        1.9
       ],
@@ -3509,9 +3509,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         266.188,
-         8.0,
-         -19.0
+         262.469,
+         11.0,
+         -20.0
         ],
         "orientation": [
          [
@@ -3533,8 +3533,8 @@
        }
       },
       "Size": [
-       6.375,
-       16,
+       4.938,
+       22,
        1.5
       ],
       "Color": [
@@ -3555,9 +3555,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         266.188,
+         262.469,
          0.4,
-         -19.0
+         -20.0
         ],
         "orientation": [
          [
@@ -3579,7 +3579,7 @@
        }
       },
       "Size": [
-       6.375,
+       4.938,
        0.8,
        1.9
       ],
@@ -3601,9 +3601,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         274.375,
-         13.0,
-         -19.0
+         270.938,
+         20.0,
+         -20.0
         ],
         "orientation": [
          [
@@ -3625,8 +3625,8 @@
        }
       },
       "Size": [
-       10,
-       6,
+       12,
+       4,
        1.5
       ],
       "Color": [
@@ -3647,9 +3647,607 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         283.725,
-         8.0,
-         -19.0
+         280.863,
+         11.0,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       7.85,
+       22,
+       1.5
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         280.863,
+         0.4,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       7.85,
+       0.8,
+       1.9
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Lintel",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         290.788,
+         20.0,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       12,
+       4,
+       1.5
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         298.394,
+         11.0,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       3.212,
+       22,
+       1.5
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         298.394,
+         0.4,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       3.212,
+       0.8,
+       1.9
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         307.646,
+         11.0,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       15.292,
+       22,
+       1.5
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         307.646,
+         0.4,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       15.292,
+       0.8,
+       1.9
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Lintel",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         321.292,
+         20.0,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       12,
+       4,
+       1.5
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         333.646,
+         11.0,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       12.708,
+       22,
+       1.5
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         333.646,
+         0.4,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       12.708,
+       0.8,
+       1.9
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         341.976,
+         11.0,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       3.953,
+       22,
+       1.5
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         341.976,
+         0.4,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       3.953,
+       0.8,
+       1.9
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Lintel",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         349.953,
+         20.0,
+         -20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       12,
+       4,
+       1.5
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         360.303,
+         11.0,
+         -20.0
         ],
         "orientation": [
          [
@@ -3672,7 +4270,7 @@
       },
       "Size": [
        8.701,
-       16,
+       22,
        1.5
       ],
       "Color": [
@@ -3693,9 +4291,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         283.725,
+         360.303,
          0.4,
-         -19.0
+         -20.0
         ],
         "orientation": [
          [
@@ -3739,9 +4337,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         293.076,
-         13.0,
-         -19.0
+         370.654,
+         20.0,
+         -20.0
         ],
         "orientation": [
          [
@@ -3763,8 +4361,8 @@
        }
       },
       "Size": [
-       10,
-       6,
+       12,
+       4,
        1.5
       ],
       "Color": [
@@ -3785,9 +4383,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         299.538,
-         8.0,
-         -19.0
+         378.327,
+         11.0,
+         -20.0
         ],
         "orientation": [
          [
@@ -3809,8 +4407,8 @@
        }
       },
       "Size": [
-       2.924,
-       16,
+       3.346,
+       22,
        1.5
       ],
       "Color": [
@@ -3831,9 +4429,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         299.538,
+         378.327,
          0.4,
-         -19.0
+         -20.0
         ],
         "orientation": [
          [
@@ -3855,7 +4453,7 @@
        }
       },
       "Size": [
-       2.924,
+       3.346,
        0.8,
        1.9
       ],
@@ -3877,9 +4475,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         308.727,
-         8.0,
-         -19.0
+         390.1,
+         11.0,
+         -20.0
         ],
         "orientation": [
          [
@@ -3901,8 +4499,8 @@
        }
       },
       "Size": [
-       15.454,
-       16,
+       20.201,
+       22,
        1.5
       ],
       "Color": [
@@ -3923,9 +4521,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         308.727,
+         390.1,
          0.4,
-         -19.0
+         -20.0
         ],
         "orientation": [
          [
@@ -3947,237 +4545,7 @@
        }
       },
       "Size": [
-       15.454,
-       0.8,
-       1.9
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Lintel",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         321.454,
-         13.0,
-         -19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       10,
-       6,
-       1.5
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         332.727,
-         8.0,
-         -19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       12.546,
-       16,
-       1.5
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         332.727,
-         0.4,
-         -19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       12.546,
-       0.8,
-       1.9
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         341.203,
-         8.0,
-         -19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       4.405,
-       16,
-       1.5
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         341.203,
-         0.4,
-         -19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       4.405,
+       20.201,
        0.8,
        1.9
       ],
@@ -4199,9 +4567,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         348.405,
-         13.0,
-         -19.0
+         406.201,
+         20.0,
+         -20.0
         ],
         "orientation": [
          [
@@ -4223,8 +4591,8 @@
        }
       },
       "Size": [
-       10,
-       6,
+       12,
+       4,
        1.5
       ],
       "Color": [
@@ -4245,9 +4613,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         358.607,
-         8.0,
-         -19.0
+         416.1,
+         11.0,
+         -20.0
         ],
         "orientation": [
          [
@@ -4269,8 +4637,8 @@
        }
       },
       "Size": [
-       10.403,
-       16,
+       7.799,
+       22,
        1.5
       ],
       "Color": [
@@ -4291,9 +4659,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         358.607,
+         416.1,
          0.4,
-         -19.0
+         -20.0
         ],
         "orientation": [
          [
@@ -4315,7 +4683,99 @@
        }
       },
       "Size": [
-       10.403,
+       7.799,
+       0.8,
+       1.9
+      ],
+      "Color": [
+       0.3529,
+       0.4314,
+       0.4078
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Wall",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         226.611,
+         11.0,
+         20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       13.221,
+       22,
+       1.5
+      ],
+      "Color": [
+       0.5882,
+       0.6902,
+       0.6588
+      ],
+      "Material": "Plaster",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "Baseboard",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         226.611,
+         0.4,
+         20.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       13.221,
        0.8,
        1.9
       ],
@@ -4337,9 +4797,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         368.808,
-         13.0,
-         -19.0
+         239.221,
+         20.0,
+         20.0
         ],
         "orientation": [
          [
@@ -4361,8 +4821,8 @@
        }
       },
       "Size": [
-       10,
-       6,
+       12,
+       4,
        1.5
       ],
       "Color": [
@@ -4383,9 +4843,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         375.404,
-         8.0,
-         -19.0
+         252.611,
+         11.0,
+         20.0
         ],
         "orientation": [
          [
@@ -4407,8 +4867,8 @@
        }
       },
       "Size": [
-       3.192,
-       16,
+       14.779,
+       22,
        1.5
       ],
       "Color": [
@@ -4429,9 +4889,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         375.404,
+         252.611,
          0.4,
-         -19.0
+         20.0
         ],
         "orientation": [
          [
@@ -4453,7 +4913,7 @@
        }
       },
       "Size": [
-       3.192,
+       14.779,
        0.8,
        1.9
       ],
@@ -4475,9 +4935,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         387.488,
-         8.0,
-         -19.0
+         266.093,
+         11.0,
+         20.0
         ],
         "orientation": [
          [
@@ -4499,8 +4959,8 @@
        }
       },
       "Size": [
-       20.976,
-       16,
+       12.185,
+       22,
        1.5
       ],
       "Color": [
@@ -4521,9 +4981,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         387.488,
+         266.093,
          0.4,
-         -19.0
+         20.0
         ],
         "orientation": [
          [
@@ -4545,237 +5005,7 @@
        }
       },
       "Size": [
-       20.976,
-       0.8,
-       1.9
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Lintel",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         402.976,
-         13.0,
-         -19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       10,
-       6,
-       1.5
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         411.488,
-         8.0,
-         -19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       7.024,
-       16,
-       1.5
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         411.488,
-         0.4,
-         -19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       7.024,
-       0.8,
-       1.9
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         231.562,
-         8.0,
-         19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       13.124,
-       16,
-       1.5
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         231.562,
-         0.4,
-         19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       13.124,
+       12.185,
        0.8,
        1.9
       ],
@@ -4797,9 +5027,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         243.124,
-         13.0,
-         19.0
+         278.185,
+         20.0,
+         20.0
         ],
         "orientation": [
          [
@@ -4821,8 +5051,8 @@
        }
       },
       "Size": [
-       10,
-       6,
+       12,
+       4,
        1.5
       ],
       "Color": [
@@ -4843,9 +5073,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         255.562,
-         8.0,
-         19.0
+         292.093,
+         11.0,
+         20.0
         ],
         "orientation": [
          [
@@ -4867,8 +5097,8 @@
        }
       },
       "Size": [
-       14.876,
-       16,
+       15.815,
+       22,
        1.5
       ],
       "Color": [
@@ -4889,9 +5119,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         255.562,
+         292.093,
          0.4,
-         19.0
+         20.0
         ],
         "orientation": [
          [
@@ -4913,7 +5143,7 @@
        }
       },
       "Size": [
-       14.876,
+       15.815,
        0.8,
        1.9
       ],
@@ -4935,9 +5165,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         268.979,
-         8.0,
-         19.0
+         386.968,
+         11.0,
+         20.0
         ],
         "orientation": [
          [
@@ -4959,8 +5189,8 @@
        }
       },
       "Size": [
-       11.959,
-       16,
+       13.936,
+       22,
        1.5
       ],
       "Color": [
@@ -4981,9 +5211,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         268.979,
+         386.968,
          0.4,
-         19.0
+         20.0
         ],
         "orientation": [
          [
@@ -5005,237 +5235,7 @@
        }
       },
       "Size": [
-       11.959,
-       0.8,
-       1.9
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Lintel",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         279.959,
-         13.0,
-         19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       10,
-       6,
-       1.5
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         292.979,
-         8.0,
-         19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       16.041,
-       16,
-       1.5
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         292.979,
-         0.4,
-         19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       16.041,
-       0.8,
-       1.9
-      ],
-      "Color": [
-       0.3529,
-       0.4314,
-       0.4078
-      ],
-      "Material": "Wood",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Wall",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         383.964,
-         8.0,
-         19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       13.928,
-       16,
-       1.5
-      ],
-      "Color": [
-       0.5882,
-       0.6902,
-       0.6588
-      ],
-      "Material": "Plaster",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth"
-     }
-    },
-    {
-     "name": "Baseboard",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         383.964,
-         0.4,
-         19.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       13.928,
+       13.936,
        0.8,
        1.9
       ],
@@ -5257,9 +5257,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         395.928,
-         13.0,
-         19.0
+         399.936,
+         20.0,
+         20.0
         ],
         "orientation": [
          [
@@ -5281,8 +5281,8 @@
        }
       },
       "Size": [
-       10,
-       6,
+       12,
+       4,
        1.5
       ],
       "Color": [
@@ -5303,9 +5303,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         407.964,
-         8.0,
-         19.0
+         412.968,
+         11.0,
+         20.0
         ],
         "orientation": [
          [
@@ -5327,8 +5327,8 @@
        }
       },
       "Size": [
-       14.072,
-       16,
+       14.064,
+       22,
        1.5
       ],
       "Color": [
@@ -5349,9 +5349,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         407.964,
+         412.968,
          0.4,
-         19.0
+         20.0
         ],
         "orientation": [
          [
@@ -5373,7 +5373,7 @@
        }
       },
       "Size": [
-       14.072,
+       14.064,
        0.8,
        1.9
       ],
@@ -5405,9 +5405,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           255.52,
+           252.48,
            0.8,
-           -47.295
+           -50.07
           ],
           "orientation": [
            [
@@ -5451,9 +5451,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           255.52,
+           252.48,
            2.0,
-           -47.295
+           -50.07
           ],
           "orientation": [
            [
@@ -5497,9 +5497,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           255.52,
+           252.48,
            2.65,
-           -50.095
+           -52.87
           ],
           "orientation": [
            [
@@ -5543,9 +5543,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           255.52,
+           252.48,
            2.8,
-           -43.695
+           -46.47
           ],
           "orientation": [
            [
@@ -5595,9 +5595,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           237.898,
+           233.39,
            0.8,
-           -7.951
+           -8.614
           ],
           "orientation": [
            [
@@ -5641,9 +5641,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           237.898,
+           233.39,
            2.0,
-           -7.951
+           -8.614
           ],
           "orientation": [
            [
@@ -5687,9 +5687,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           240.698,
+           236.19,
            2.65,
-           -7.951
+           -8.614
           ],
           "orientation": [
            [
@@ -5733,9 +5733,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           234.298,
+           229.79,
            2.8,
-           -7.951
+           -8.614
           ],
           "orientation": [
            [
@@ -5785,9 +5785,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           248.222,
+           244.573,
            0.8,
-           9.569
+           10.366
           ],
           "orientation": [
            [
@@ -5831,9 +5831,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           248.222,
+           244.573,
            2.0,
-           9.569
+           10.366
           ],
           "orientation": [
            [
@@ -5877,9 +5877,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           251.022,
+           247.373,
            2.65,
-           9.569
+           10.366
           ],
           "orientation": [
            [
@@ -5923,9 +5923,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           244.622,
+           240.973,
            2.8,
-           9.569
+           10.366
           ],
           "orientation": [
            [
@@ -5975,9 +5975,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           255.074,
+           251.997,
            3.5,
-           40.172
+           42.353
           ],
           "orientation": [
            [
@@ -6021,9 +6021,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           254.024,
+           250.947,
            5.2,
-           40.172
+           42.353
           ],
           "orientation": [
            [
@@ -6067,9 +6067,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           253.974,
+           250.897,
            5.05,
-           40.172
+           42.353
           ],
           "orientation": [
            [
@@ -6119,9 +6119,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           273.895,
+           271.22,
            4.0,
-           -48.336
+           -51.197
           ],
           "orientation": [
            [
@@ -6165,9 +6165,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           273.895,
+           271.22,
            8.1,
-           -48.336
+           -51.197
           ],
           "orientation": [
            [
@@ -6217,9 +6217,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           274.095,
+           271.436,
            3.5,
-           -10.333
+           -11.194
           ],
           "orientation": [
            [
@@ -6263,9 +6263,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           275.145,
+           272.486,
            5.2,
-           -10.333
+           -11.194
           ],
           "orientation": [
            [
@@ -6309,9 +6309,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           275.195,
+           272.536,
            5.05,
-           -10.333
+           -11.194
           ],
           "orientation": [
            [
@@ -6361,9 +6361,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           293.603,
+           292.57,
            4.0,
-           5.9
+           6.392
           ],
           "orientation": [
            [
@@ -6407,9 +6407,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           293.603,
+           292.57,
            8.1,
-           5.9
+           6.392
           ],
           "orientation": [
            [
@@ -6459,9 +6459,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           276.053,
+           273.558,
            0.5,
-           11.013
+           11.931
           ],
           "orientation": [
            [
@@ -6505,9 +6505,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           276.053,
+           273.558,
            2.5,
-           11.013
+           11.931
           ],
           "orientation": [
            [
@@ -6551,9 +6551,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           275.153,
+           272.658,
            1.3,
-           12.413
+           13.331
           ],
           "orientation": [
            [
@@ -6597,9 +6597,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           276.953,
+           274.458,
            1.3,
-           9.613
+           10.531
           ],
           "orientation": [
            [
@@ -6643,9 +6643,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           276.053,
+           273.558,
            3.0,
-           10.513
+           11.431
           ],
           "orientation": [
            [
@@ -6695,9 +6695,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           291.587,
+           290.385,
            0.8,
-           34.777
+           36.509
           ],
           "orientation": [
            [
@@ -6741,9 +6741,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           291.587,
+           290.385,
            2.0,
-           34.777
+           36.509
           ],
           "orientation": [
            [
@@ -6787,9 +6787,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           291.587,
+           290.385,
            2.65,
-           31.977
+           33.709
           ],
           "orientation": [
            [
@@ -6833,9 +6833,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           291.587,
+           290.385,
            2.8,
-           38.377
+           40.109
           ],
           "orientation": [
            [
@@ -6885,9 +6885,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           314.624,
+           314.176,
            0.8,
-           -31.562
+           -33.025
           ],
           "orientation": [
            [
@@ -6931,9 +6931,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           314.624,
+           314.176,
            2.0,
-           -31.562
+           -33.025
           ],
           "orientation": [
            [
@@ -6977,9 +6977,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           317.424,
+           316.976,
            2.65,
-           -31.562
+           -33.025
           ],
           "orientation": [
            [
@@ -7023,9 +7023,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           311.024,
+           310.576,
            2.8,
-           -31.562
+           -33.025
           ],
           "orientation": [
            [
@@ -7075,9 +7075,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           324.447,
+           324.818,
            0.8,
-           -27.105
+           -28.197
           ],
           "orientation": [
            [
@@ -7121,9 +7121,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           324.447,
+           324.818,
            2.0,
-           -27.105
+           -28.197
           ],
           "orientation": [
            [
@@ -7167,9 +7167,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           324.447,
+           324.818,
            2.65,
-           -29.905
+           -30.997
           ],
           "orientation": [
            [
@@ -7213,9 +7213,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           324.447,
+           324.818,
            2.8,
-           -23.505
+           -24.597
           ],
           "orientation": [
            [
@@ -7265,9 +7265,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           313.994,
+           313.494,
            4.0,
-           10.936
+           11.848
           ],
           "orientation": [
            [
@@ -7311,9 +7311,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           313.994,
+           313.494,
            8.1,
-           10.936
+           11.848
           ],
           "orientation": [
            [
@@ -7363,9 +7363,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           324.396,
+           324.762,
            0.8,
-           6.039
+           6.543
           ],
           "orientation": [
            [
@@ -7409,9 +7409,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           324.396,
+           324.762,
            2.0,
-           6.039
+           6.543
           ],
           "orientation": [
            [
@@ -7455,9 +7455,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           321.596,
+           321.962,
            2.65,
-           6.039
+           6.543
           ],
           "orientation": [
            [
@@ -7501,9 +7501,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           327.996,
+           328.362,
            2.8,
-           6.039
+           6.543
           ],
           "orientation": [
            [
@@ -7553,9 +7553,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           311.407,
+           310.691,
            0.8,
-           -2.473
+           -2.679
           ],
           "orientation": [
            [
@@ -7599,9 +7599,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           311.407,
+           310.691,
            2.0,
-           -2.473
+           -2.679
           ],
           "orientation": [
            [
@@ -7645,9 +7645,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           311.407,
+           310.691,
            2.65,
-           0.327
+           0.121
           ],
           "orientation": [
            [
@@ -7691,9 +7691,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           311.407,
+           310.691,
            2.8,
-           -6.073
+           -6.279
           ],
           "orientation": [
            [
@@ -7743,9 +7743,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           323.728,
+           324.038,
            0.5,
-           29.037
+           30.29
           ],
           "orientation": [
            [
@@ -7789,9 +7789,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           323.728,
+           324.038,
            2.5,
-           29.037
+           30.29
           ],
           "orientation": [
            [
@@ -7835,9 +7835,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           325.128,
+           325.438,
            1.3,
-           29.937
+           31.19
           ],
           "orientation": [
            [
@@ -7881,9 +7881,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           322.328,
+           322.638,
            1.3,
-           28.137
+           29.39
           ],
           "orientation": [
            [
@@ -7927,9 +7927,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           323.228,
+           323.538,
            3.0,
-           29.037
+           30.29
           ],
           "orientation": [
            [
@@ -7979,9 +7979,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           317.511,
+           317.303,
            0.5,
-           47.311
+           50.087
           ],
           "orientation": [
            [
@@ -8025,9 +8025,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           317.511,
+           317.303,
            2.5,
-           47.311
+           50.087
           ],
           "orientation": [
            [
@@ -8071,9 +8071,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           318.411,
+           318.203,
            1.3,
-           45.911
+           48.687
           ],
           "orientation": [
            [
@@ -8117,9 +8117,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           316.611,
+           316.403,
            1.3,
-           48.711
+           51.487
           ],
           "orientation": [
            [
@@ -8163,9 +8163,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           317.511,
+           317.303,
            3.0,
-           47.811
+           50.587
           ],
           "orientation": [
            [
@@ -8215,9 +8215,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           350.839,
+           352.242,
            0.8,
-           -32.139
+           -33.651
           ],
           "orientation": [
            [
@@ -8261,9 +8261,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           350.839,
+           352.242,
            2.0,
-           -32.139
+           -33.651
           ],
           "orientation": [
            [
@@ -8307,9 +8307,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           350.839,
+           352.242,
            2.65,
-           -29.339
+           -30.851
           ],
           "orientation": [
            [
@@ -8353,9 +8353,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           350.839,
+           352.242,
            2.8,
-           -35.739
+           -37.251
           ],
           "orientation": [
            [
@@ -8405,9 +8405,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           364.977,
+           367.559,
            4.0,
-           -49.812
+           -52.797
           ],
           "orientation": [
            [
@@ -8451,9 +8451,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           364.977,
+           367.559,
            8.1,
-           -49.812
+           -52.797
           ],
           "orientation": [
            [
@@ -8503,9 +8503,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           352.07,
+           353.576,
            3.5,
-           4.722
+           5.115
           ],
           "orientation": [
            [
@@ -8549,9 +8549,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           352.07,
+           353.576,
            5.2,
-           3.672
+           4.065
           ],
           "orientation": [
            [
@@ -8595,9 +8595,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           352.07,
+           353.576,
            5.05,
-           3.622
+           4.015
           ],
           "orientation": [
            [
@@ -8647,9 +8647,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           351.873,
+           353.362,
            3.5,
-           -8.252
+           -8.939
           ],
           "orientation": [
            [
@@ -8693,9 +8693,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           350.823,
+           352.312,
            5.2,
-           -8.252
+           -8.939
           ],
           "orientation": [
            [
@@ -8739,9 +8739,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           350.773,
+           352.262,
            5.05,
-           -8.252
+           -8.939
           ],
           "orientation": [
            [
@@ -8791,9 +8791,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           359.09,
+           361.181,
            0.5,
-           27.441
+           28.561
           ],
           "orientation": [
            [
@@ -8837,9 +8837,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           359.09,
+           361.181,
            2.5,
-           27.441
+           28.561
           ],
           "orientation": [
            [
@@ -8883,9 +8883,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           360.49,
+           362.581,
            1.3,
-           28.341
+           29.461
           ],
           "orientation": [
            [
@@ -8929,9 +8929,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           357.69,
+           359.781,
            1.3,
-           26.541
+           27.661
           ],
           "orientation": [
            [
@@ -8975,9 +8975,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           358.59,
+           360.681,
            3.0,
-           27.441
+           28.561
           ],
           "orientation": [
            [
@@ -9027,9 +9027,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           369.211,
+           372.145,
            0.5,
-           33.444
+           35.064
           ],
           "orientation": [
            [
@@ -9073,9 +9073,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           369.211,
+           372.145,
            2.5,
-           33.444
+           35.064
           ],
           "orientation": [
            [
@@ -9119,9 +9119,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           370.111,
+           373.045,
            1.3,
-           32.044
+           33.664
           ],
           "orientation": [
            [
@@ -9165,9 +9165,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           368.311,
+           371.245,
            1.3,
-           34.844
+           36.464
           ],
           "orientation": [
            [
@@ -9211,9 +9211,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           369.211,
+           372.145,
            3.0,
-           33.944
+           35.564
           ],
           "orientation": [
            [
@@ -9263,9 +9263,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           407.444,
+           412.398,
            3.5,
-           -41.475
+           -43.764
           ],
           "orientation": [
            [
@@ -9309,9 +9309,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           406.394,
+           411.348,
            5.2,
-           -41.475
+           -43.764
           ],
           "orientation": [
            [
@@ -9355,9 +9355,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           406.344,
+           411.298,
            5.05,
-           -41.475
+           -43.764
           ],
           "orientation": [
            [
@@ -9407,9 +9407,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           386.583,
+           389.798,
            0.8,
-           -48.173
+           -51.021
           ],
           "orientation": [
            [
@@ -9453,9 +9453,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           386.583,
+           389.798,
            2.0,
-           -48.173
+           -51.021
           ],
           "orientation": [
            [
@@ -9499,9 +9499,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           389.383,
+           392.598,
            2.65,
-           -48.173
+           -51.021
           ],
           "orientation": [
            [
@@ -9545,9 +9545,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           382.983,
+           386.198,
            2.8,
-           -48.173
+           -51.021
           ],
           "orientation": [
            [
@@ -9597,9 +9597,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           396.121,
+           400.131,
            4.0,
-           -27.271
+           -28.377
           ],
           "orientation": [
            [
@@ -9643,9 +9643,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           396.121,
+           400.131,
            8.1,
-           -27.271
+           -28.377
           ],
           "orientation": [
            [
@@ -9695,9 +9695,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           405.016,
+           409.767,
            0.8,
-           -10.311
+           -11.171
           ],
           "orientation": [
            [
@@ -9741,9 +9741,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           405.016,
+           409.767,
            2.0,
-           -10.311
+           -11.171
           ],
           "orientation": [
            [
@@ -9787,9 +9787,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           405.016,
+           409.767,
            2.65,
-           -7.511
+           -8.371
           ],
           "orientation": [
            [
@@ -9833,9 +9833,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           405.016,
+           409.767,
            2.8,
-           -13.911
+           -14.771
           ],
           "orientation": [
            [
@@ -9885,9 +9885,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           399.164,
+           403.427,
            0.8,
-           49.115
+           52.041
           ],
           "orientation": [
            [
@@ -9931,9 +9931,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           399.164,
+           403.427,
            2.0,
-           49.115
+           52.041
           ],
           "orientation": [
            [
@@ -9977,9 +9977,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           399.164,
+           403.427,
            2.65,
-           51.915
+           54.841
           ],
           "orientation": [
            [
@@ -10023,9 +10023,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           399.164,
+           403.427,
            2.8,
-           45.515
+           48.441
           ],
           "orientation": [
            [
@@ -10077,9 +10077,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         244.0,
-         15.6,
-         -38.0
+         240.0,
+         21.6,
+         -40.0
         ],
         "orientation": [
          [
@@ -10145,8 +10145,8 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         244.0,
-         15.6,
+         240.0,
+         21.6,
          0.0
         ],
         "orientation": [
@@ -10213,9 +10213,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         244.0,
-         15.6,
-         38.0
+         240.0,
+         21.6,
+         40.0
         ],
         "orientation": [
          [
@@ -10281,9 +10281,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         282.0,
-         15.6,
-         -38.0
+         280.0,
+         21.6,
+         -40.0
         ],
         "orientation": [
          [
@@ -10349,8 +10349,8 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         282.0,
-         15.6,
+         280.0,
+         21.6,
          0.0
         ],
         "orientation": [
@@ -10417,9 +10417,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         282.0,
-         15.6,
-         38.0
+         280.0,
+         21.6,
+         40.0
         ],
         "orientation": [
          [
@@ -10486,8 +10486,8 @@
        "CFrame": {
         "position": [
          320.0,
-         15.6,
-         -38.0
+         21.6,
+         -40.0
         ],
         "orientation": [
          [
@@ -10554,7 +10554,7 @@
        "CFrame": {
         "position": [
          320.0,
-         15.6,
+         21.6,
          0.0
         ],
         "orientation": [
@@ -10622,8 +10622,8 @@
        "CFrame": {
         "position": [
          320.0,
-         15.6,
-         38.0
+         21.6,
+         40.0
         ],
         "orientation": [
          [
@@ -10689,9 +10689,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         358.0,
-         15.6,
-         -38.0
+         360.0,
+         21.6,
+         -40.0
         ],
         "orientation": [
          [
@@ -10757,8 +10757,8 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         358.0,
-         15.6,
+         360.0,
+         21.6,
          0.0
         ],
         "orientation": [
@@ -10825,9 +10825,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         358.0,
-         15.6,
-         38.0
+         360.0,
+         21.6,
+         40.0
         ],
         "orientation": [
          [
@@ -10893,9 +10893,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         396.0,
-         15.6,
-         -38.0
+         400.0,
+         21.6,
+         -40.0
         ],
         "orientation": [
          [
@@ -10961,8 +10961,8 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         396.0,
-         15.6,
+         400.0,
+         21.6,
          0.0
         ],
         "orientation": [
@@ -11029,9 +11029,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         396.0,
-         15.6,
-         38.0
+         400.0,
+         21.6,
+         40.0
         ],
         "orientation": [
          [
@@ -11103,9 +11103,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         240.954,
+         236.737,
          0.5,
-         -47.928
+         -50.637
         ],
         "orientation": [
          [
@@ -11153,9 +11153,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         245.491,
+         241.597,
          0.5,
-         -11.774
+         -12.614
         ],
         "orientation": [
          [
@@ -11203,9 +11203,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         352.473,
+         354.078,
          0.5,
-         -25.581
+         -26.694
         ],
         "orientation": [
          [
@@ -11253,9 +11253,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         233.03,
+         228.247,
          0.5,
-         50.768
+         53.68
         ],
         "orientation": [
          [
@@ -11303,9 +11303,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         287.711,
+         286.119,
          0.5,
-         29.763
+         31.175
         ],
         "orientation": [
          [
@@ -11353,9 +11353,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         325.086,
+         325.449,
          0.5,
-         -44.696
+         -47.174
         ],
         "orientation": [
          [
@@ -11403,9 +11403,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         351.119,
+         352.627,
          0.5,
-         47.67
+         50.361
         ],
         "orientation": [
          [
@@ -11453,9 +11453,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         386.295,
+         389.602,
          0.5,
-         43.073
+         45.435
         ],
         "orientation": [
          [
@@ -11503,9 +11503,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         273.597,
+         270.996,
          0.5,
-         2.743
+         2.939
         ],
         "orientation": [
          [
@@ -11553,9 +11553,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         389.768,
+         393.322,
          0.5,
-         -3.388
+         -3.63
         ],
         "orientation": [
          [
@@ -11603,9 +11603,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         332.34,
+         333.222,
          0.5,
-         37.075
+         39.009
         ],
         "orientation": [
          [
@@ -11653,9 +11653,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         280.233,
+         278.106,
          0.5,
-         -34.721
+         -36.487
         ],
         "orientation": [
          [
@@ -11703,9 +11703,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         349.277,
+         350.654,
          0.5,
-         12.902
+         13.824
         ],
         "orientation": [
          [
@@ -11753,9 +11753,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         382.963,
+         386.031,
          0.5,
-         -29.308
+         -30.687
         ],
         "orientation": [
          [
@@ -11805,9 +11805,9 @@
     "CFrame": {
      "CFrame": {
       "position": [
-       319.432,
+       319.391,
        0.5,
-       -0.227
+       -0.243
       ],
       "orientation": [
        [
@@ -11859,9 +11859,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         256.173,
+         253.042,
          0.5,
-         -32.271
+         -33.862
         ],
         "orientation": [
          [
@@ -11909,9 +11909,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         230.532,
+         225.57,
          0.5,
-         -37.966
+         -39.964
         ],
         "orientation": [
          [
@@ -11959,9 +11959,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         231.1,
+         226.178,
          0.5,
-         3.02
+         3.236
         ],
         "orientation": [
          [
@@ -12009,9 +12009,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         249.611,
+         246.012,
          0.5,
-         -7.274
+         -7.793
         ],
         "orientation": [
          [
@@ -12059,9 +12059,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         230.213,
+         225.228,
          0.5,
-         39.243
+         41.332
         ],
         "orientation": [
          [
@@ -12109,9 +12109,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         232.647,
+         227.836,
          0.5,
-         32.651
+         34.269
         ],
         "orientation": [
          [
@@ -12159,9 +12159,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         280.715,
+         278.623,
          0.5,
-         -26.955
+         -28.166
         ],
         "orientation": [
          [
@@ -12209,9 +12209,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         290.168,
+         288.751,
          0.5,
-         -28.974
+         -30.33
         ],
         "orientation": [
          [
@@ -12259,9 +12259,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         282.824,
+         280.882,
          0.5,
-         -12.624
+         -13.525
         ],
         "orientation": [
          [
@@ -12309,9 +12309,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         273.252,
+         270.627,
          0.5,
-         -2.717
+         -2.911
         ],
         "orientation": [
          [
@@ -12359,9 +12359,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         283.453,
+         281.557,
          0.5,
-         30.303
+         31.754
         ],
         "orientation": [
          [
@@ -12409,9 +12409,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         290.466,
+         289.071,
          0.5,
-         47.618
+         50.305
         ],
         "orientation": [
          [
@@ -12459,9 +12459,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         331.905,
+         332.755,
          0.5,
-         -27.26
+         -28.493
         ],
         "orientation": [
          [
@@ -12509,9 +12509,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         306.493,
+         305.528,
          0.5,
-         -35.702
+         -37.538
         ],
         "orientation": [
          [
@@ -12559,9 +12559,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         308.252,
+         307.413,
          0.5,
-         11.191
+         11.99
         ],
         "orientation": [
          [
@@ -12609,9 +12609,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         311.272,
+         310.649,
          0.5,
-         -12.33
+         -13.211
         ],
         "orientation": [
          [
@@ -12659,9 +12659,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         328.826,
+         329.456,
          0.5,
-         40.983
+         43.196
         ],
         "orientation": [
          [
@@ -12709,9 +12709,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         323.368,
+         323.608,
          0.5,
-         37.191
+         39.133
         ],
         "orientation": [
          [
@@ -12759,9 +12759,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         366.403,
+         369.003,
          0.5,
-         -42.536
+         -44.86
         ],
         "orientation": [
          [
@@ -12809,9 +12809,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         351.552,
+         353.092,
          0.5,
-         -42.112
+         -44.406
         ],
         "orientation": [
          [
@@ -12859,9 +12859,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         368.924,
+         371.704,
          0.5,
-         -12.012
+         -12.87
         ],
         "orientation": [
          [
@@ -12909,9 +12909,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         345.894,
+         347.029,
          0.5,
-         0.329
+         0.353
         ],
         "orientation": [
          [
@@ -12959,9 +12959,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         351.556,
+         353.096,
          0.5,
-         25.645
+         26.763
         ],
         "orientation": [
          [
@@ -13009,9 +13009,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         345.04,
+         346.114,
          0.5,
-         37.862
+         39.852
         ],
         "orientation": [
          [
@@ -13059,9 +13059,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         401.061,
+         405.423,
          0.5,
-         -33.711
+         -35.405
         ],
         "orientation": [
          [
@@ -13109,9 +13109,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         393.436,
+         397.253,
          0.5,
-         -32.656
+         -34.274
         ],
         "orientation": [
          [
@@ -13159,9 +13159,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         402.379,
+         406.834,
          0.5,
-         0.688
+         0.737
         ],
         "orientation": [
          [
@@ -13209,9 +13209,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         384.193,
+         387.349,
          0.5,
-         9.164
+         9.818
         ],
         "orientation": [
          [
@@ -13259,9 +13259,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         387.984,
+         391.411,
          0.5,
-         25.133
+         26.214
         ],
         "orientation": [
          [
@@ -13309,9 +13309,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         391.864,
+         395.568,
          0.5,
-         38.911
+         40.977
         ],
         "orientation": [
          [
@@ -13365,9 +13365,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         253.095,
+         249.745,
          0.5,
-         -25.016
+         -26.089
         ],
         "orientation": [
          [
@@ -13415,9 +13415,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         257.698,
+         254.676,
          0.5,
-         24.179
+         25.192
         ],
         "orientation": [
          [
@@ -13465,9 +13465,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         390.753,
+         394.378,
          0.5,
-         32.729
+         34.352
         ],
         "orientation": [
          [

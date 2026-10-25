@@ -1,0 +1,2409 @@
+{
+ "className": "Model",
+ "attributes": {
+  "VerityRig": true
+ },
+ "children": [
+  {
+   "name": "HumanoidRootPart",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       8.2,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     2,
+     2.4,
+     1
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": true,
+    "Massless": false,
+    "Transparency": 1
+   }
+  },
+  {
+   "name": "LowerTorso",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       7.45,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     1.5,
+     1.1,
+     0.8
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "HumanoidRootPart",
+    "JointPivot": {
+     "Vector3": [
+      0,
+      7.45,
+      0
+     ]
+    },
+    "Motor": "Root"
+   }
+  },
+  {
+   "name": "UpperTorso",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       10.6,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     2.0,
+     2.4,
+     1.1
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "LowerTorso",
+    "JointPivot": {
+     "Vector3": [
+      0,
+      8.0,
+      0
+     ]
+    },
+    "Motor": "Waist"
+   }
+  },
+  {
+   "name": "Abdomen",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       8.75,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     1.1,
+     1.7,
+     0.72
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "UpperTorso"
+   }
+  },
+  {
+   "name": "Clavicle",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       11.6,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     2.9,
+     0.45,
+     0.8
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "UpperTorso"
+   }
+  },
+  {
+   "name": "NeckPart",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       12.7,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.5,
+     1.9,
+     0.5
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "UpperTorso",
+    "JointPivot": {
+     "Vector3": [
+      0,
+      11.75,
+      0
+     ]
+    },
+    "Motor": "Neck"
+   }
+  },
+  {
+   "name": "Head",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       14.8,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     2.0,
+     2.7,
+     2.1
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "NeckPart",
+    "JointPivot": {
+     "Vector3": [
+      0,
+      13.6,
+      0
+     ]
+    },
+    "Motor": "HeadJoint"
+   },
+   "children": [
+    {
+     "className": "SpecialMesh",
+     "properties": {
+      "MeshType": "Sphere"
+     }
+    }
+   ]
+  },
+  {
+   "name": "Mouth",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       14.25,
+       -0.95
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     1.6,
+     0.62,
+     0.16
+    ],
+    "Color": [
+     0.3137,
+     0.0706,
+     0.0863
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "Head"
+   }
+  },
+  {
+   "name": "Teeth",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       14.25,
+       -1.0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     1.42,
+     0.42,
+     0.12
+    ],
+    "Color": [
+     0.9608,
+     0.9412,
+     0.8824
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "Head"
+   },
+   "children": [
+    {
+     "className": "SurfaceGui",
+     "properties": {
+      "Face": "Front",
+      "SizingMode": "PixelsPerStud",
+      "PixelsPerStud": 60
+     },
+     "children": [
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.08333333333333333,
+           0
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.16666666666666666,
+           0
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.25,
+           0
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.3333333333333333,
+           0
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.4166666666666667,
+           0
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.5,
+           0
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.5833333333333334,
+           0
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.6666666666666666,
+           0
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.75,
+           0
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.8333333333333334,
+           0
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           0,
+           3
+          ],
+          [
+           1,
+           0
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0.9166666666666666,
+           0
+          ],
+          [
+           0,
+           0
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      },
+      {
+       "className": "Frame",
+       "properties": {
+        "Size": {
+         "UDim2": [
+          [
+           1,
+           0
+          ],
+          [
+           0,
+           3
+          ]
+         ]
+        },
+        "Position": {
+         "UDim2": [
+          [
+           0,
+           0
+          ],
+          [
+           0.5,
+           -1
+          ]
+         ]
+        },
+        "BackgroundColor3": [
+         0.35,
+         0.3,
+         0.25
+        ],
+        "BorderSizePixel": 0
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "LeftEye",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -0.42,
+       15.25,
+       -0.86
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.3,
+     0.3,
+     0.3
+    ],
+    "Color": [
+     0.0471,
+     0.0314,
+     0.0235
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0,
+    "Shape": "Ball"
+   },
+   "attributes": {
+    "WeldTo": "Head"
+   }
+  },
+  {
+   "name": "RightEye",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0.42,
+       15.25,
+       -0.86
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.3,
+     0.3,
+     0.3
+    ],
+    "Color": [
+     0.0471,
+     0.0314,
+     0.0235
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0,
+    "Shape": "Ball"
+   },
+   "attributes": {
+    "WeldTo": "Head"
+   }
+  },
+  {
+   "name": "Rib1",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       9.75,
+       -0.57
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     1.75,
+     0.13,
+     0.08
+    ],
+    "Color": [
+     0.549,
+     0.4863,
+     0.2039
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "UpperTorso"
+   }
+  },
+  {
+   "name": "Rib2",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       10.2,
+       -0.57
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     1.7,
+     0.13,
+     0.08
+    ],
+    "Color": [
+     0.549,
+     0.4863,
+     0.2039
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "UpperTorso"
+   }
+  },
+  {
+   "name": "Rib3",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       10.65,
+       -0.57
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     1.65,
+     0.13,
+     0.08
+    ],
+    "Color": [
+     0.549,
+     0.4863,
+     0.2039
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "UpperTorso"
+   }
+  },
+  {
+   "name": "Rib4",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0,
+       11.1,
+       -0.57
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     1.6,
+     0.13,
+     0.08
+    ],
+    "Color": [
+     0.549,
+     0.4863,
+     0.2039
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "UpperTorso"
+   }
+  },
+  {
+   "name": "LeftUpperArm",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -1.35,
+       9.7,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.42,
+     3.6,
+     0.42
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "UpperTorso",
+    "JointPivot": {
+     "Vector3": [
+      -1.35,
+      11.5,
+      0
+     ]
+    },
+    "Motor": "LeftShoulder"
+   }
+  },
+  {
+   "name": "LeftLowerArm",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -1.35,
+       6.2,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.36,
+     3.4,
+     0.36
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "LeftUpperArm",
+    "JointPivot": {
+     "Vector3": [
+      -1.35,
+      7.9,
+      0
+     ]
+    },
+    "Motor": "LeftElbow"
+   }
+  },
+  {
+   "name": "LeftHand",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -1.35,
+       3.95,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.5,
+     1.1,
+     0.3
+    ],
+    "Color": [
+     0.6588,
+     0.5882,
+     0.2431
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "LeftLowerArm",
+    "JointPivot": {
+     "Vector3": [
+      -1.35,
+      4.5,
+      0
+     ]
+    },
+    "Motor": "LeftWrist"
+   }
+  },
+  {
+   "name": "LeftUpperLeg",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -0.55,
+       5.25,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.5,
+     3.5,
+     0.5
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "LowerTorso",
+    "JointPivot": {
+     "Vector3": [
+      -0.55,
+      7.0,
+      0
+     ]
+    },
+    "Motor": "LeftHip"
+   }
+  },
+  {
+   "name": "LeftLowerLeg",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -0.55,
+       1.95,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.42,
+     3.1,
+     0.42
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "LeftUpperLeg",
+    "JointPivot": {
+     "Vector3": [
+      -0.55,
+      3.5,
+      0
+     ]
+    },
+    "Motor": "LeftKnee"
+   }
+  },
+  {
+   "name": "LeftFoot",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -0.55,
+       0.2,
+       -0.35
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.55,
+     0.4,
+     1.4
+    ],
+    "Color": [
+     0.6588,
+     0.5882,
+     0.2431
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "LeftLowerLeg",
+    "JointPivot": {
+     "Vector3": [
+      -0.55,
+      0.4,
+      0
+     ]
+    },
+    "Motor": "LeftAnkle"
+   }
+  },
+  {
+   "name": "LeftKnee",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -0.55,
+       3.5,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.55,
+     0.55,
+     0.55
+    ],
+    "Color": [
+     0.6588,
+     0.5882,
+     0.2431
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0,
+    "Shape": "Ball"
+   },
+   "attributes": {
+    "WeldTo": "LeftUpperLeg"
+   }
+  },
+  {
+   "name": "LeftFinger1",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -1.51,
+       2.95,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.1,
+     0.79,
+     0.1
+    ],
+    "Color": [
+     0.6588,
+     0.5882,
+     0.2431
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "LeftHand"
+   }
+  },
+  {
+   "name": "LeftFinger2",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -1.35,
+       2.95,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.1,
+     0.95,
+     0.1
+    ],
+    "Color": [
+     0.6588,
+     0.5882,
+     0.2431
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "LeftHand"
+   }
+  },
+  {
+   "name": "LeftFinger3",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       -1.19,
+       2.95,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.1,
+     0.79,
+     0.1
+    ],
+    "Color": [
+     0.6588,
+     0.5882,
+     0.2431
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "LeftHand"
+   }
+  },
+  {
+   "name": "RightUpperArm",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       1.35,
+       9.7,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.42,
+     3.6,
+     0.42
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "UpperTorso",
+    "JointPivot": {
+     "Vector3": [
+      1.35,
+      11.5,
+      0
+     ]
+    },
+    "Motor": "RightShoulder"
+   }
+  },
+  {
+   "name": "RightLowerArm",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       1.35,
+       6.2,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.36,
+     3.4,
+     0.36
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "RightUpperArm",
+    "JointPivot": {
+     "Vector3": [
+      1.35,
+      7.9,
+      0
+     ]
+    },
+    "Motor": "RightElbow"
+   }
+  },
+  {
+   "name": "RightHand",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       1.35,
+       3.95,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.5,
+     1.1,
+     0.3
+    ],
+    "Color": [
+     0.6588,
+     0.5882,
+     0.2431
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "RightLowerArm",
+    "JointPivot": {
+     "Vector3": [
+      1.35,
+      4.5,
+      0
+     ]
+    },
+    "Motor": "RightWrist"
+   }
+  },
+  {
+   "name": "RightUpperLeg",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0.55,
+       5.25,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.5,
+     3.5,
+     0.5
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "LowerTorso",
+    "JointPivot": {
+     "Vector3": [
+      0.55,
+      7.0,
+      0
+     ]
+    },
+    "Motor": "RightHip"
+   }
+  },
+  {
+   "name": "RightLowerLeg",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0.55,
+       1.95,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.42,
+     3.1,
+     0.42
+    ],
+    "Color": [
+     0.8392,
+     0.7608,
+     0.3608
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "RightUpperLeg",
+    "JointPivot": {
+     "Vector3": [
+      0.55,
+      3.5,
+      0
+     ]
+    },
+    "Motor": "RightKnee"
+   }
+  },
+  {
+   "name": "RightFoot",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0.55,
+       0.2,
+       -0.35
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.55,
+     0.4,
+     1.4
+    ],
+    "Color": [
+     0.6588,
+     0.5882,
+     0.2431
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "JointParent": "RightLowerLeg",
+    "JointPivot": {
+     "Vector3": [
+      0.55,
+      0.4,
+      0
+     ]
+    },
+    "Motor": "RightAnkle"
+   }
+  },
+  {
+   "name": "RightKnee",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       0.55,
+       3.5,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.55,
+     0.55,
+     0.55
+    ],
+    "Color": [
+     0.6588,
+     0.5882,
+     0.2431
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0,
+    "Shape": "Ball"
+   },
+   "attributes": {
+    "WeldTo": "RightUpperLeg"
+   }
+  },
+  {
+   "name": "RightFinger1",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       1.19,
+       2.95,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.1,
+     0.79,
+     0.1
+    ],
+    "Color": [
+     0.6588,
+     0.5882,
+     0.2431
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "RightHand"
+   }
+  },
+  {
+   "name": "RightFinger2",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       1.35,
+       2.95,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.1,
+     0.95,
+     0.1
+    ],
+    "Color": [
+     0.6588,
+     0.5882,
+     0.2431
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "RightHand"
+   }
+  },
+  {
+   "name": "RightFinger3",
+   "className": "Part",
+   "properties": {
+    "Anchored": false,
+    "CFrame": {
+     "CFrame": {
+      "position": [
+       1.51,
+       2.95,
+       0
+      ],
+      "orientation": [
+       [
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    "Size": [
+     0.1,
+     0.79,
+     0.1
+    ],
+    "Color": [
+     0.6588,
+     0.5882,
+     0.2431
+    ],
+    "Material": "SmoothPlastic",
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth",
+    "CanCollide": false,
+    "Massless": true,
+    "Transparency": 0
+   },
+   "attributes": {
+    "WeldTo": "RightHand"
+   }
+  },
+  {
+   "name": "Humanoid",
+   "className": "Humanoid",
+   "properties": {
+    "RigType": "R15",
+    "HipHeight": 7.0,
+    "DisplayDistanceType": "None",
+    "WalkSpeed": 18,
+    "HealthDisplayType": "AlwaysOff",
+    "BreakJointsOnDeath": false
+   }
+  }
+ ]
+}

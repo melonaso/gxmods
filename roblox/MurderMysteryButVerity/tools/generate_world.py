@@ -11,11 +11,14 @@ Cada mapa sigue la estructura que espera MapService:
 """
 
 import json
+import sys
 import math
 import random
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import verity_rig  # noqa: E402
 OUT = ROOT / "src" / "world"
 
 IDENTITY = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
@@ -174,7 +177,7 @@ def chalk_cart():
 
 THEMES = {
     "Mansión de Verity": {
-        "seed": 7, "cols": 4, "rows": 4, "cell": 40, "height": 18,
+        "seed": 7, "cols": 4, "rows": 4, "cell": 40, "height": 24,
         "floor": ((78, 54, 44), "WoodPlanks"), "wall": ((70, 58, 72), "Plaster"),
         "outer": ((52, 40, 50), "Brick"), "ceiling": ((30, 24, 32), "Plaster"),
         "trim": (40, 28, 26), "rug": [(110, 22, 32), (40, 34, 70), (70, 50, 30)],
@@ -183,7 +186,7 @@ THEMES = {
         "origin": (0, 0),
     },
     "Hospital Abandonado": {
-        "seed": 21, "cols": 5, "rows": 3, "cell": 38, "height": 16,
+        "seed": 21, "cols": 5, "rows": 3, "cell": 40, "height": 22,
         "floor": ((170, 182, 176), "Marble"), "wall": ((150, 176, 168), "Plaster"),
         "outer": ((110, 120, 118), "Concrete"), "ceiling": ((120, 130, 128), "Concrete"),
         "trim": (90, 110, 104), "rug": [],
@@ -192,7 +195,7 @@ THEMES = {
         "origin": (320, 0),
     },
     "Escuela Nocturna": {
-        "seed": 42, "cols": 4, "rows": 4, "cell": 36, "height": 15,
+        "seed": 42, "cols": 4, "rows": 4, "cell": 38, "height": 22,
         "floor": ((120, 112, 100), "Concrete"), "wall": ((200, 190, 160), "Plaster"),
         "outer": ((150, 80, 60), "Brick"), "ceiling": ((160, 158, 150), "Concrete"),
         "trim": (60, 90, 130), "rug": [(60, 90, 130)],
@@ -202,7 +205,8 @@ THEMES = {
     },
 }
 
-DOOR = 10
+DOOR = 12
+DOOR_TOP = 18  # Verity mide ~16 studs
 
 
 def build_map(name, t):
@@ -230,8 +234,8 @@ def build_map(name, t):
             structure.append(part("Baseboard", (mid, 0.4, fixed), (length, 0.8, 1.9), t["trim"], "Wood"))
 
     def lintel(axis, fixed, center):
-        size = (1.5, h - 10, DOOR) if axis == "x" else (DOOR, h - 10, 1.5)
-        pos = (fixed, 10 + (h - 10) / 2, center) if axis == "x" else (center, 10 + (h - 10) / 2, fixed)
+        size = (1.5, h - DOOR_TOP, DOOR) if axis == "x" else (DOOR, h - DOOR_TOP, 1.5)
+        pos = (fixed, DOOR_TOP + (h - DOOR_TOP) / 2, center) if axis == "x" else (center, DOOR_TOP + (h - DOOR_TOP) / 2, fixed)
         structure.append(part("Lintel", pos, size, *t["wall"]))
 
     def wall_line(axis, fixed, start, length):
@@ -338,15 +342,15 @@ def build_lobby():
     c.append(part("Rug", (0, top + 0.05, 0), (34, 0.1, 34), (110, 22, 32), "Fabric", CanCollide=False))
     c.append(part("RugBorder", (0, top + 0.02, 0), (38, 0.05, 38), (200, 160, 80), "Fabric", CanCollide=False))
     wall_c, wall_m = (58, 44, 56), "Plaster"
-    H = 16
+    H = 26
     # muros con ventanales
     for (px, pz, sx, sz) in [(0, -50, 100, 2), (0, 50, 100, 2), (-50, 0, 2, 100), (50, 0, 2, 100)]:
-        c.append(part("WallLow", (px, top + 2.5, pz), (sx, 5, sz), wall_c, wall_m))
-        c.append(part("WallHigh", (px, top + 13.5, pz), (sx, 5, sz), wall_c, wall_m))
-        c.append(part("Window", (px, top + 8, pz), (sx * 0.98 if sx > 2 else 0.4, 6, sz * 0.98 if sz > 2 else 0.4),
+        c.append(part("WallLow", (px, top + 3, pz), (sx, 6, sz), wall_c, wall_m))
+        c.append(part("WallHigh", (px, top + 20, pz), (sx, 12, sz), wall_c, wall_m))
+        c.append(part("Window", (px, top + 10, pz), (sx * 0.98 if sx > 2 else 0.4, 8, sz * 0.98 if sz > 2 else 0.4),
                       (90, 70, 140), "Glass", Transparency=0.55))
-    # columnas
-    for x in (-49, -25, 0, 25, 49):
+    # columnas (sin la central para no tapar el cartel)
+    for x in (-49, -25, 25, 49):
         for z in (-49, 49):
             c.append(part("Pillar", (x, top + H / 2, z), (3, H, 3), (40, 30, 38), "Marble"))
             c.append(part("Pillar", (z, top + H / 2, x), (3, H, 3), (40, 30, 38), "Marble"))
@@ -357,7 +361,7 @@ def build_lobby():
                   children=[point_light((255, 200, 140), 60, 1.6, True)]))
     for x in (-32, 32):
         for z in (-32, 32):
-            c.append(part("WallLamp", (x, top + 9, z), (1.6, 1.6, 1.6), (255, 190, 120), "Neon", Shape="Ball", CanCollide=False,
+            c.append(part("WallLamp", (x, top + 12, z), (1.6, 1.6, 1.6), (255, 190, 120), "Neon", Shape="Ball", CanCollide=False,
                           children=[point_light((255, 190, 130), 36, 1.0)]))
     # bancos
     for z in (-20, 20):
@@ -365,30 +369,18 @@ def build_lobby():
             c.append(place("Bench", [(0, 1.2, 0, 3, 0.5, 12, (90, 60, 40), "Wood"), (0, 0, -5, 2.5, 1.2, 0.6, (50, 40, 38), "Metal"),
                                      (0, 0, 5, 2.5, 1.2, 0.6, (50, 40, 38), "Metal"), (1.3 if x > 0 else -1.3, 1.7, 0, 0.4, 2.4, 12, (90, 60, 40), "Wood")],
                            x, z, 0))
-    # estatua de Verity sobre un pedestal
+    # estatua de Verity sobre un pedestal (misma geometría que el personaje)
+    sx, sz = 0, -30
     statue = [
-        (0, 0, 0, 7, 3, 7, (30, 26, 32), "Marble"),
-        (0, 3, 0, 5.5, 0.3, 5.5, (200, 160, 80), "Metal"),
-        (-0.55, 3.3, 0, 1, 3, 1, (18, 14, 20), "SmoothPlastic"),
-        (0.55, 3.3, 0, 1, 3, 1, (18, 14, 20), "SmoothPlastic"),
-        (0, 6.3, 0, 2.3, 3, 1.2, (20, 14, 22), "Fabric"),
-        (-1.7, 6.5, 0, 1, 2.8, 1, (20, 14, 22), "Fabric"),
-        (1.7, 6.5, -0.6, 1, 2.8, 1, (20, 14, 22), "Fabric"),
-        (0, 9.3, 0, 1.6, 1.6, 1.6, (18, 14, 20), "SmoothPlastic"),
-        (0, 9.2, 0.15, 2.1, 2.1, 1.9, (14, 10, 16), "Fabric"),  # capucha
-        (-0.35, 9.9, -0.82, 0.3, 0.3, 0.1, (255, 40, 60), "Neon"),
-        (0.35, 9.9, -0.82, 0.3, 0.3, 0.1, (255, 40, 60), "Neon"),
-        (1.7, 7.6, -1.6, 0.25, 0.4, 2.6, (200, 205, 215), "Metal"),  # cuchillo
+        part("Pedestal", (sx, top + 1.5, sz), (8, 3, 8), (30, 26, 32), "Marble"),
+        part("PedestalTrim", (sx, top + 3.1, sz), (6.5, 0.2, 6.5), (200, 160, 80), "Metal"),
+        part("StatueLight", (sx, top + 4, sz - 6), (0.5, 0.5, 0.5), (255, 230, 150), "Neon", Transparency=1, CanCollide=False,
+             children=[point_light((255, 220, 140), 22, 1.6)]),
     ]
-    statue_model = place("VerityStatue", statue, 0, -30, 0)
-    # place() trabaja con y relativa al suelo 0: se sube al piso del lobby
-    for p in statue_model["children"]:
-        p["properties"]["CFrame"]["CFrame"]["position"][1] += top
-    c.append(statue_model)
-    statue_model["children"].append(part("StatueLight", (0, top + 12, -26), (0.5, 0.5, 0.5), (255, 40, 60), "Neon", Transparency=1, CanCollide=False,
-                                  children=[point_light((255, 50, 70), 18, 2.0)]))
+    statue += verity_rig.build(part, cframe, rgb, offset=(sx, top + 3.2, sz), statue=True)
+    c.append(container("Model", "VerityStatue", statue))
     # cartel
-    c.append(part("Sign", (0, top + 10.5, 48.6), (40, 8, 0.6), (20, 14, 20), "SmoothPlastic", children=[{
+    c.append(part("Sign", (0, top + 15, 48.4), (44, 9, 0.6), (20, 14, 20), "SmoothPlastic", children=[{
         "className": "SurfaceGui",
         "properties": {"Face": "Front", "SizingMode": "PixelsPerStud", "PixelsPerStud": 30},
         "children": [{
@@ -415,6 +407,7 @@ def write(path, data):
 
 def main():
     write(OUT / "Lobby.model.json", build_lobby())
+    write(OUT / "VerityCharacter.model.json", verity_rig.character(part, cframe, rgb))
     for name, theme in THEMES.items():
         write(OUT / "Maps" / f"{name}.model.json", build_map(name, theme))
     print("Mundo generado en", OUT)

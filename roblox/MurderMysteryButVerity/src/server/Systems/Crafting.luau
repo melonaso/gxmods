@@ -1,7 +1,9 @@
 --!strict
 -- Puzzle de oro: los supervivientes recogen bloques de oro, los depositan
 -- en mesas de crafteo y, con una mesa llena, craftean un tótem que resta
--- tiempo a la partida.
+-- tiempo a la partida. Funciona con jugadores (ProximityPrompts) y con NPCs
+-- (llaman a pickup/deposit/craft directamente). "who" es un Player o el Model
+-- del NPC; el oro que lleva se guarda en su atributo "Gold".
 
 local CollectionService = game:GetService("CollectionService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -15,12 +17,12 @@ export type Context = {
 	goldSpawns: { Vector3 },
 	tableSpots: { CFrame },
 	survivorCount: number,
-	isSurvivor: (Player) -> boolean,
-	onTotem: (Player) -> boolean, -- devuelve false si no se pudo aplicar
+	isSurvivor: (Instance) -> boolean,
+	onTotem: (Instance) -> boolean, -- devuelve false si no se pudo aplicar
 	totemsCrafted: () -> number,
 }
 
-type TableState = {
+export type TableState = {
 	model: Model,
 	top: BasePart,
 	gold: number,
@@ -37,21 +39,24 @@ local Crafting = {}
 local ctx: Context? = nil
 local folder: Folder? = nil
 local occupied: { [number]: BasePart } = {} -- índice de goldSpawn -> bloque
+local blocks: { [BasePart]: number | boolean } = {} -- bloque -> índice (o true si se soltó)
 local tables: { TableState } = {}
 local connections: { RBXScriptConnection } = {}
 local active = false
 local rng = Random.new()
 
-local function setGold(player: Player, amount: number)
-	player:SetAttribute("Gold", amount)
+local function setGold(who: Instance, amount: number)
+	who:SetAttribute("Gold", amount)
 end
 
-local function getGold(player: Player): number
-	return (player:GetAttribute("Gold") :: number?) or 0
+local function getGold(who: Instance): number
+	return (who:GetAttribute("Gold") :: number?) or 0
 end
 
-local function notify(player: Player, text: string, kind: string?)
-	Net.get("Notify"):FireClient(player, text, kind or "info")
+local function notify(who: Instance, text: string, kind: string?)
+	if who:IsA("Player") then
+		Net.get("Notify"):FireClient(who, text, kind or "info")
+	end
 end
 
 local spawnGoldAt: (index: number?, position: Vector3?) -> ()
@@ -133,26 +138,37 @@ spawnGoldAt = function(index: number?, position: Vector3?)
 	if index then
 		occupied[index] = block
 	end
+	blocks[block] = index or true
 	CollectionService:AddTag(block, "GoldBlock")
 	block.Parent = parent
 
 	table.insert(connections, prompt.Triggered:Connect(function(player)
-		if not active or not block.Parent or not context.isSurvivor(player) then
-			return
-		end
-		local carried = getGold(player)
-		if carried >= CFG.MaxGoldCarried then
-			notify(player, `Solo puedes llevar {CFG.MaxGoldCarried} bloques. ¡Llévalos a una mesa!`, "warn")
-			return
-		end
-		setGold(player, carried + 1)
-		if index then
-			occupied[index] = nil
-		end
-		Net.get("Effect"):FireClient(player, "Pickup", block.Position)
-		block:Destroy()
-		scheduleRespawn()
+		Crafting.pickup(player, block)
 	end))
+end
+
+function Crafting.pickup(who: Instance, block: BasePart): boolean
+	local context = ctx
+	if not active or not context or not block.Parent or blocks[block] == nil or not context.isSurvivor(who) then
+		return false
+	end
+	local carried = getGold(who)
+	if carried >= CFG.MaxGoldCarried then
+		notify(who, `Solo puedes llevar {CFG.MaxGoldCarried} bloques. ¡Llévalos a una mesa!`, "warn")
+		return false
+	end
+	setGold(who, carried + 1)
+	local index = blocks[block]
+	if typeof(index) == "number" then
+		occupied[index] = nil
+	end
+	blocks[block] = nil
+	if who:IsA("Player") then
+		Net.get("Effect"):FireClient(who, "Pickup", block.Position)
+	end
+	block:Destroy()
+	scheduleRespawn()
+	return true
 end
 
 local function refreshTable(state: TableState)
@@ -261,49 +277,79 @@ local function spawnTotemVisual(state: TableState)
 	totem.Parent = state.model
 end
 
-local function connectTable(state: TableState)
-	local context = ctx :: Context
-	table.insert(connections, state.deposit.Triggered:Connect(function(player)
-		if not active or not context.isSurvivor(player) then
-			return
-		end
-		local carried = getGold(player)
-		if carried <= 0 then
-			notify(player, "Necesitas bloques de oro. ¡Búscalos por la mansión!", "warn")
-			return
-		end
-		local moved = math.min(carried, CFG.GoldPerTotem - state.gold)
-		if moved <= 0 then
-			return
-		end
-		state.gold += moved
-		setGold(player, carried - moved)
-		refreshTable(state)
-	end))
+function Crafting.deposit(who: Instance, state: TableState): boolean
+	local context = ctx
+	if not active or not context or not context.isSurvivor(who) then
+		return false
+	end
+	local carried = getGold(who)
+	if carried <= 0 then
+		notify(who, "Necesitas bloques de oro. ¡Búscalos por el mapa!", "warn")
+		return false
+	end
+	local moved = math.min(carried, CFG.GoldPerTotem - state.gold)
+	if moved <= 0 then
+		return false
+	end
+	state.gold += moved
+	setGold(who, carried - moved)
+	refreshTable(state)
+	return true
+end
 
+function Crafting.craft(who: Instance, state: TableState): boolean
+	local context = ctx
+	if not active or not context or not context.isSurvivor(who) or state.gold < CFG.GoldPerTotem then
+		return false
+	end
+	if context.totemsCrafted() >= CFG.MaxTotemsPerRound then
+		notify(who, "El reloj ya no puede acelerarse más esta ronda.", "warn")
+		return false
+	end
+	if not context.onTotem(who) then
+		notify(who, "¡Ya casi amanece! El tótem no tendría efecto.", "warn")
+		return false
+	end
+	state.gold = 0
+	refreshTable(state)
+	spawnTotemVisual(state)
+	Net.get("Effect"):FireAllClients("Totem", state.top.Position)
+	return true
+end
+
+local function connectTable(state: TableState)
+	table.insert(connections, state.deposit.Triggered:Connect(function(player)
+		Crafting.deposit(player, state)
+	end))
 	table.insert(connections, state.craft.Triggered:Connect(function(player)
-		if not active or not context.isSurvivor(player) or state.gold < CFG.GoldPerTotem then
-			return
-		end
-		if context.totemsCrafted() >= CFG.MaxTotemsPerRound then
-			notify(player, "El reloj ya no puede acelerarse más esta ronda.", "warn")
-			return
-		end
-		if not context.onTotem(player) then
-			notify(player, "¡Ya casi amanece! El tótem no tendría efecto.", "warn")
-			return
-		end
-		state.gold = 0
-		refreshTable(state)
-		spawnTotemVisual(state)
-		Net.get("Effect"):FireAllClients("Totem", state.top.Position)
+		Crafting.craft(player, state)
 	end))
 end
 
+-- Lectura para la IA de los NPCs.
+function Crafting.goldBlocks(): { BasePart }
+	local list = {}
+	for block in blocks do
+		if block.Parent then
+			table.insert(list, block)
+		end
+	end
+	return list
+end
+
+function Crafting.tables(): { TableState }
+	return tables
+end
+
+function Crafting.canCraft(): boolean
+	local context = ctx
+	return active and context ~= nil and context.totemsCrafted() < CFG.MaxTotemsPerRound
+end
+
 -- Suelta el oro que llevaba un superviviente al morir.
-function Crafting.dropGold(player: Player, position: Vector3)
-	local carried = getGold(player)
-	setGold(player, 0)
+function Crafting.dropGold(who: Instance, position: Vector3)
+	local carried = getGold(who)
+	setGold(who, 0)
 	if not active then
 		return
 	end
@@ -341,6 +387,7 @@ function Crafting.stop()
 	table.clear(connections)
 	table.clear(tables)
 	table.clear(occupied)
+	table.clear(blocks)
 	if folder then
 		folder:Destroy()
 		folder = nil

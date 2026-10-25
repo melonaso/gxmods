@@ -1,12 +1,31 @@
 # Murder Mystery but Verity
 
-Juego de Roblox estilo *Murder Mystery 2* (lobby → ronda → resultados) con gameplay de *Survive the Killer*: un jugador es **Verity** (la asesina) y el resto son supervivientes. No hay sheriff.
+Juego de Roblox estilo *Murder Mystery 2* (lobby → ronda → resultados) con gameplay de *Survive the Killer*: un jugador es **Verity** (la criatura asesina) y el resto son supervivientes. No hay sheriff.
+
+## Modo prueba (activado)
+`Config.Testing.Enabled = true` en [`src/shared/Config.luau`](src/shared/Config.luau):
+- Basta **1 jugador**. El primer jugador del servidor es **Verity en todas las rondas**.
+- **5 NPCs** ocupan el lugar de los supervivientes: huyen de Verity, recogen oro, lo depositan y craftean tótems.
+- El intermedio dura 8 s.
+
+Ponlo en `false` antes de publicar.
+
+## Controles
+| Tecla | Verity | Superviviente |
+| --- | --- | --- |
+| `Q` | Atrapar: levanta a la víctima y la aplasta | — |
+| `Shift` | Correr (28, sin límite) | Correr (24, gasta estamina) |
+| `C` | Agacharse (alterna) | — |
+| `E` / `F` | — | Recoger / depositar oro · Craftear tótem |
+
+## Verity
+Criatura amarilla de ~16 studs (3× un jugador), delgada, de brazos larguísimos y sonrisa enorme. El modelo está en `ServerStorage/VerityCharacter` (generado por `tools/verity_rig.py`) y también hay una estatua en el lobby. Las animaciones (caminar, correr, agacharse y el ataque de agarrar, levantar y aplastar) son procedurales en `VerityAnimator.luau`, así que no hay que subir animaciones. Al aplastar, la víctima sale volando en pedazos con salpicaduras, gotas y charcos de sangre.
 
 ## Cómo jugar
 
 | Rol | Objetivo |
 | --- | --- |
-| **Verity** | Atrapar a todos los supervivientes con el cuchillo (clic) antes de que acabe el reloj. Empieza congelada 10 s. |
+| **Verity** | Atrapar (Q) a todos los supervivientes antes de que acabe el reloj. Empieza congelada 10 s. |
 | **Superviviente** | Resistir hasta que el reloj llegue a 0. Puede acortar la ronda crafteando tótems. |
 
 ### Puzzle: oro y tótems
@@ -32,7 +51,7 @@ Configura los IDs en [`src/shared/Config.luau`](src/shared/Config.luau) (con `Id
 ## Interfaz
 UI discreta construida por código: píldora superior con fase y reloj, línea de info (probabilidad / tótems / vivos), chip de oro abajo a la izquierda, avisos pequeños arriba a la derecha, tarjeta de rol al empezar, banner de resultados y un botón "Pases" que solo aparece fuera de la partida. Los supervivientes ven una viñeta roja que late cuando Verity está cerca.
 
-Texturas de VFX generadas con **ForgeGUI** y publicadas en Roblox ([`src/shared/Assets.luau`](src/shared/Assets.luau)): destello (oro), orbe (golpe) y onda expansiva (tótem).
+Texturas de VFX generadas con **ForgeGUI** y publicadas en Roblox ([`src/shared/Assets.luau`](src/shared/Assets.luau)): destello (oro), orbe, onda expansiva (tótem), salpicadura de líquido y gota (sangre).
 
 ## Instalación (Rojo)
 ```bash

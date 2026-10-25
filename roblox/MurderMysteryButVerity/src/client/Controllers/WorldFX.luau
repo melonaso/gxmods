@@ -21,6 +21,7 @@ local WorldFX = {}
 
 local goldBlocks: { [BasePart]: CFrame } = {}
 local vignette: Frame
+local flash: Frame
 
 local function playSound(id: string, position: Vector3, volume: number?)
 	local holder = Instance.new("Part")
@@ -78,10 +79,64 @@ local function shockRing(position: Vector3)
 	game:GetService("Debris"):AddItem(ring, 1)
 end
 
+local shakeUntil = 0
+local shakeStrength = 0
+
+-- Salpicadura de sangre: nube de líquido, gotas alargadas que caen y
+-- sacudida de cámara según la distancia.
+local function gore(position: Vector3)
+	playSound("rbxasset://sounds/swordslash.wav", position, 1)
+	playSound("rbxasset://sounds/collide.wav", position, 1)
+
+	local holder = playSound("", position + Vector3.new(0, 1, 0), 0)
+	local splash = Instance.new("ParticleEmitter")
+	splash.Texture = if Assets.Splash ~= "" then Assets.Splash else Assets.GlowOrb
+	splash.Color = ColorSequence.new(Color3.fromRGB(170, 8, 20), Color3.fromRGB(90, 0, 8))
+	splash.Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 1.5), NumberSequenceKeypoint.new(0.4, 4), NumberSequenceKeypoint.new(1, 2.5) })
+	splash.Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.7, 0.3), NumberSequenceKeypoint.new(1, 1) })
+	splash.Lifetime = NumberRange.new(0.5, 0.9)
+	splash.Speed = NumberRange.new(8, 22)
+	splash.SpreadAngle = Vector2.new(70, 70)
+	splash.EmissionDirection = Enum.NormalId.Top
+	splash.Acceleration = Vector3.new(0, -45, 0)
+	splash.Rotation = NumberRange.new(0, 360)
+	splash.Rate = 0
+	splash.Parent = holder
+	splash:Emit(26)
+
+	local drops = Instance.new("ParticleEmitter")
+	drops.Texture = if Assets.Streak ~= "" then Assets.Streak else Assets.GlowOrb
+	drops.Color = ColorSequence.new(Color3.fromRGB(150, 4, 14))
+	drops.Size = NumberSequence.new(0.6, 0.2)
+	drops.Lifetime = NumberRange.new(0.8, 1.4)
+	drops.Speed = NumberRange.new(20, 45)
+	drops.SpreadAngle = Vector2.new(80, 80)
+	drops.EmissionDirection = Enum.NormalId.Top
+	drops.Acceleration = Vector3.new(0, -70, 0)
+	drops.Orientation = Enum.ParticleOrientation.VelocityParallel
+	drops.Rate = 0
+	drops.Parent = holder
+	drops:Emit(60)
+
+	local camera = Workspace.CurrentCamera
+	if camera then
+		local distance = (camera.CFrame.Position - position).Magnitude
+		local strength = math.clamp(1 - distance / 70, 0, 1)
+		if strength > 0 then
+			shakeStrength = strength
+			shakeUntil = os.clock() + 0.45
+		end
+		-- destello rojo si estás muy cerca
+		if distance < 30 then
+			flash.BackgroundTransparency = 0.45
+			UI.tween(flash, 0.8, { BackgroundTransparency = 1 })
+		end
+	end
+end
+
 local function onEffect(kind: string, position: Vector3)
-	if kind == "Slash" then
-		playSound("rbxasset://sounds/swordslash.wav", position, 1)
-		burst(position, Color3.fromRGB(255, 40, 60), Assets.GlowOrb, 28, 14)
+	if kind == "Gore" then
+		gore(position)
 	elseif kind == "Totem" then
 		playSound("rbxasset://sounds/electronicpingshort.wav", position, 1)
 		burst(position + Vector3.new(0, 4, 0), Color3.fromRGB(120, 230, 255), Assets.Sparkle, 40, 10)
@@ -125,6 +180,13 @@ local function buildVignette()
 		})
 	end
 	vignette.Visible = false
+	flash = UI.new("Frame", {
+		Size = UDim2.fromScale(1, 1),
+		BackgroundColor3 = Color3.fromRGB(140, 0, 12),
+		BackgroundTransparency = 1,
+		BorderSizePixel = 0,
+		Parent = gui,
+	})
 end
 
 local function killerRoot(): BasePart?
@@ -146,7 +208,8 @@ local function updateTerror()
 		local character = player.Character
 		local myRoot = character and character:FindFirstChild("HumanoidRootPart")
 		local theirRoot = killerRoot()
-		if myRoot and myRoot:IsA("BasePart") and theirRoot and not theirRoot.Anchored then
+		local released = theirRoot and theirRoot.Parent and (theirRoot.Parent :: Instance):GetAttribute("Released")
+		if myRoot and myRoot:IsA("BasePart") and theirRoot and released then
 			local distance = (myRoot.Position - theirRoot.Position).Magnitude
 			intensity = math.clamp(1 - distance / TERROR_RADIUS, 0, 1)
 		end
@@ -217,6 +280,15 @@ function WorldFX.start()
 		end
 
 		updateTerror()
+	end)
+
+	-- la sacudida va después de la cámara para que no la sobrescriba
+	RunService:BindToRenderStep("GoreShake", Enum.RenderPriority.Camera.Value + 1, function()
+		local camera = Workspace.CurrentCamera
+		if camera and os.clock() < shakeUntil then
+			local m = shakeStrength * (shakeUntil - os.clock()) / 0.45
+			camera.CFrame *= CFrame.Angles(math.rad(math.random(-10, 10) / 10 * 2 * m), math.rad(math.random(-10, 10) / 10 * 2 * m), 0)
+		end
 	end)
 end
 

@@ -16,6 +16,7 @@ local Shop = {}
 
 local gui: ScreenGui
 local openButton: TextButton
+local openChance: TextLabel
 local panel: CanvasGroup
 local chanceLabel: TextLabel
 local boostLabel: TextLabel
@@ -152,15 +153,15 @@ local function build()
 		Name = "OpenShop",
 		AnchorPoint = Vector2.new(0, 0.5),
 		Position = UDim2.new(0, 14, 0.5, 0),
-		Size = UDim2.fromOffset(58, 58),
+		Size = UDim2.fromOffset(132, 46),
 		BackgroundColor3 = C.Panel,
 		BackgroundTransparency = 0.2,
 		Text = "",
 		AutoButtonColor = true,
 		Parent = gui,
-	}, { UI.corner(14), UI.stroke(0.6, C.Verity) })
-	UI.label({ Size = UDim2.new(1, 0, 0, 26), Position = UDim2.fromOffset(0, 8), FontFace = UI.FontHeavy, TextSize = 22, TextColor3 = C.Verity, Text = "2x", Parent = openButton })
-	UI.label({ Size = UDim2.new(1, 0, 0, 14), Position = UDim2.fromOffset(0, 35), FontFace = UI.FontBold, TextSize = 10, TextColor3 = C.Muted, Text = "PASES", Parent = openButton })
+	}, { UI.corner(12), UI.stroke(0.6, C.Verity) })
+	UI.label({ Size = UDim2.new(1, -24, 0, 18), Position = UDim2.fromOffset(12, 6), TextXAlignment = Enum.TextXAlignment.Left, FontFace = UI.FontBold, TextSize = 15, Text = "Tienda", Parent = openButton })
+	openChance = UI.label({ Size = UDim2.new(1, -24, 0, 14), Position = UDim2.fromOffset(12, 25), TextXAlignment = Enum.TextXAlignment.Left, TextSize = 11, TextColor3 = C.Muted, Text = "", Parent = openButton })
 
 	panel = UI.new("CanvasGroup", {
 		Name = "Panel",
@@ -222,6 +223,7 @@ end
 local function refresh()
 	local chance = (player:GetAttribute("VerityChance") :: number?) or 0
 	chanceLabel.Text = `{chance}%`
+	openChance.Text = `Ser Verity: {chance}%`
 	local mult = (player:GetAttribute("PassMultiplier") :: number?) or 1
 	local boost = (player:GetAttribute("BoostRounds") :: number?) or 0
 	local parts = {}
