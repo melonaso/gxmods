@@ -1,0 +1,2887 @@
+<roblox version="4">
+  <Item class="Players" referent="0">
+    <Properties>
+      <string name="Name">Players</string>
+      <bool name="CharacterAutoLoads">true</bool>
+      <float name="RespawnTime">4</float>
+    </Properties>
+  </Item>
+  <Item class="ReplicatedStorage" referent="1">
+    <Properties>
+      <string name="Name">ReplicatedStorage</string>
+    </Properties>
+    <Item class="Folder" referent="2">
+      <Properties>
+        <string name="Name">Shared</string>
+      </Properties>
+      <Item class="ModuleScript" referent="3">
+        <Properties>
+          <string name="Name">Assets</string>
+          <string name="Source"><![CDATA[--!strict
+-- Texturas generadas con ForgeGUI y publicadas en Roblox.
+-- Un valor vacío ("") hace que el código use un respaldo sin imagen.
+
+return {
+	Sparkle = "rbxassetid://140630278287223", -- destello de 4 puntas
+	GlowOrb = "rbxassetid://119954499459661", -- orbe suave
+	ShockRing = "rbxassetid://108896619635513", -- onda expansiva
+}
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="4">
+        <Properties>
+          <string name="Name">Config</string>
+          <string name="Source"><![CDATA[--!strict
+-- Valores ajustables del juego. Este módulo es legible por el cliente:
+-- toda validación real ocurre en el servidor.
+
+local Config = {}
+
+Config.Round = {
+	MinPlayers = 2,
+	IntermissionTime = 25,
+	Duration = 240, -- segundos de una partida si nadie craftea tótems
+	KillerReleaseDelay = 10, -- ventaja inicial de los supervivientes
+	ResultsTime = 7,
+	MinRemainingAfterTotem = 15, -- un tótem nunca deja el reloj por debajo de esto
+}
+
+Config.Killer = {
+	Name = "Verity",
+	WalkSpeed = 19,
+	SurvivorWalkSpeed = 16,
+	AttackRange = 7.5,
+	AttackCooldown = 1.1,
+	AttackConeDot = 0.25, -- el objetivo debe estar más o menos al frente
+}
+
+Config.Crafting = {
+	TableCount = 3,
+	GoldPerTotem = 3, -- bloques de oro que necesita una mesa para craftear
+	MaxGoldCarried = 2,
+	TimeReductionPerTotem = 30, -- segundos que resta cada tótem
+	MaxTotemsPerRound = 5,
+	CraftHoldDuration = 3,
+	PickupHoldDuration = 0.35,
+	GoldRespawnDelay = 18,
+	GoldMinBlocks = 6,
+	GoldMaxBlocks = 18,
+	GoldPerSurvivor = 3,
+}
+
+-- Probabilidad de ser Verity estilo MM2: cada ronda que no eres elegido
+-- sumas +1 de "suerte"; al ser elegido vuelve a 0.
+-- peso = (1 + suerte) * multiplicadorPase * multiplicadorPoción
+Config.Chance = {
+	LuckPerRound = 1,
+	MaxLuck = 10,
+}
+
+-- Reemplaza Id = 0 por los IDs reales creados en el Creator Hub.
+-- Si un jugador tiene varios pases se aplica el multiplicador más alto.
+Config.GamePasses = {
+	{ Key = "Chance2x", Id = 0, Multiplier = 2, Title = "2x Probabilidad", Description = "Doble probabilidad de ser Verity en cada ronda." },
+	{ Key = "Chance3x", Id = 0, Multiplier = 3, Title = "3x Probabilidad", Description = "Triple probabilidad de ser Verity en cada ronda." },
+}
+
+-- Producto de desarrollador consumible: multiplica la probabilidad en las
+-- próximas rondas (se acumulan rondas, no el multiplicador).
+Config.Products = {
+	{ Key = "VerityPotion", Id = 0, Multiplier = 5, Rounds = 1, Title = "Poción de Verity", Description = "x5 de probabilidad en tu próxima ronda." },
+}
+
+return Config
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="5">
+        <Properties>
+          <string name="Name">Net</string>
+          <string name="Source"><![CDATA[--!strict
+-- Punto único de definición de remotes. El servidor los crea al iniciar;
+-- el cliente solo los espera. El estado continuo (fase, temporizador, oro)
+-- viaja por atributos, así que solo hay eventos servidor -> cliente.
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+
+export type RemoteName = "Notify" | "RoleReveal" | "RoundResult" | "Effect"
+
+local NAMES: { RemoteName } = { "Notify", "RoleReveal", "RoundResult", "Effect" }
+local FOLDER_NAME = "Remotes"
+
+local Net = {}
+
+local function folder(): Folder
+	if RunService:IsServer() then
+		local existing = ReplicatedStorage:FindFirstChild(FOLDER_NAME)
+		if existing then
+			return existing :: Folder
+		end
+		local f = Instance.new("Folder")
+		f.Name = FOLDER_NAME
+		for _, name in NAMES do
+			local remote = Instance.new("RemoteEvent")
+			remote.Name = name
+			remote.Parent = f
+		end
+		f.Parent = ReplicatedStorage
+		return f
+	end
+	return ReplicatedStorage:WaitForChild(FOLDER_NAME) :: Folder
+end
+
+function Net.get(name: RemoteName): RemoteEvent
+	return folder():WaitForChild(name) :: RemoteEvent
+end
+
+return Net
+]]></string>
+        </Properties>
+      </Item>
+    </Item>
+  </Item>
+  <Item class="ServerScriptService" referent="6">
+    <Properties>
+      <string name="Name">ServerScriptService</string>
+    </Properties>
+    <Item class="Script" referent="7">
+      <Properties>
+        <string name="Name">Server</string>
+        <token name="RunContext">0</token>
+        <string name="Source"><![CDATA[--!strict
+-- Único Script del servidor: carga todos los sistemas en dos fases
+-- (init síncrono para todos, luego start en paralelo).
+
+local Systems = script.Systems
+
+local loaded: { [string]: any } = {}
+for _, child in Systems:GetChildren() do
+	if child:IsA("ModuleScript") then
+		loaded[child.Name] = require(child) :: any
+	end
+end
+
+-- MapService primero: el lobby debe existir antes de que aparezcan jugadores.
+local ORDER = { "MapService", "PlayerData", "Monetization", "Killer", "Crafting", "Round" }
+for _, name in ORDER do
+	local system = loaded[name]
+	if system and typeof(system.init) == "function" then
+		system.init()
+	end
+end
+for name, system in loaded do
+	if not table.find(ORDER, name) and typeof(system.init) == "function" then
+		system.init()
+	end
+end
+
+for _, system in loaded do
+	if typeof(system.start) == "function" then
+		task.spawn(system.start)
+	end
+end
+]]></string>
+      </Properties>
+      <Item class="Folder" referent="8">
+        <Properties>
+          <string name="Name">Systems</string>
+        </Properties>
+        <Item class="ModuleScript" referent="9">
+          <Properties>
+            <string name="Name">Crafting</string>
+            <string name="Source"><![CDATA[--!strict
+-- Puzzle de oro: los supervivientes recogen bloques de oro, los depositan
+-- en mesas de crafteo y, con una mesa llena, craftean un tótem que resta
+-- tiempo a la partida.
+
+local CollectionService = game:GetService("CollectionService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Assets = require(ReplicatedStorage.Shared.Assets)
+local Config = require(ReplicatedStorage.Shared.Config)
+local Net = require(ReplicatedStorage.Shared.Net)
+
+export type Context = {
+	parent: Instance,
+	goldSpawns: { Vector3 },
+	tableSpots: { CFrame },
+	survivorCount: number,
+	isSurvivor: (Player) -> boolean,
+	onTotem: (Player) -> boolean, -- devuelve false si no se pudo aplicar
+	totemsCrafted: () -> number,
+}
+
+type TableState = {
+	model: Model,
+	top: BasePart,
+	gold: number,
+	label: TextLabel,
+	deposit: ProximityPrompt,
+	craft: ProximityPrompt,
+}
+
+local CFG = Config.Crafting
+local GOLD_COLOR = Color3.fromRGB(255, 196, 46)
+
+local Crafting = {}
+
+local ctx: Context? = nil
+local folder: Folder? = nil
+local occupied: { [number]: BasePart } = {} -- índice de goldSpawn -> bloque
+local tables: { TableState } = {}
+local connections: { RBXScriptConnection } = {}
+local active = false
+local rng = Random.new()
+
+local function setGold(player: Player, amount: number)
+	player:SetAttribute("Gold", amount)
+end
+
+local function getGold(player: Player): number
+	return (player:GetAttribute("Gold") :: number?) or 0
+end
+
+local function notify(player: Player, text: string, kind: string?)
+	Net.get("Notify"):FireClient(player, text, kind or "info")
+end
+
+local spawnGoldAt: (index: number?, position: Vector3?) -> ()
+
+local function freeSpawnIndex(): number?
+	local context = ctx
+	if not context then
+		return nil
+	end
+	local free = {}
+	for i = 1, #context.goldSpawns do
+		if not occupied[i] then
+			table.insert(free, i)
+		end
+	end
+	if #free == 0 then
+		return nil
+	end
+	return free[rng:NextInteger(1, #free)]
+end
+
+local function scheduleRespawn()
+	task.delay(CFG.GoldRespawnDelay, function()
+		local context = ctx
+		if active and context and context.totemsCrafted() < CFG.MaxTotemsPerRound then
+			spawnGoldAt(freeSpawnIndex(), nil)
+		end
+	end)
+end
+
+spawnGoldAt = function(index: number?, position: Vector3?)
+	local context = ctx
+	local parent = folder
+	if not context or not parent then
+		return
+	end
+	local pos = position or (index and context.goldSpawns[index])
+	if not pos then
+		return
+	end
+
+	local block = Instance.new("Part")
+	block.Name = "GoldBlock"
+	block.Size = Vector3.new(1.6, 1.6, 1.6)
+	block.Anchored = true
+	block.CanCollide = false
+	block.Color = GOLD_COLOR
+	block.Material = Enum.Material.Foil
+	block.Reflectance = 0.15
+	block.CFrame = CFrame.new(pos)
+
+	local light = Instance.new("PointLight")
+	light.Color = GOLD_COLOR
+	light.Range = 9
+	light.Brightness = 1.2
+	light.Parent = block
+
+	local sparkles = Instance.new("ParticleEmitter")
+	if Assets.Sparkle ~= "" then
+		sparkles.Texture = Assets.Sparkle
+	end
+	sparkles.Color = ColorSequence.new(Color3.fromRGB(255, 230, 140))
+	sparkles.LightEmission = 1
+	sparkles.Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.3, 0.45), NumberSequenceKeypoint.new(1, 0) })
+	sparkles.Lifetime = NumberRange.new(0.6, 1)
+	sparkles.Rate = 4
+	sparkles.Speed = NumberRange.new(0.5, 1.2)
+	sparkles.SpreadAngle = Vector2.new(180, 180)
+	sparkles.Parent = block
+
+	local prompt = Instance.new("ProximityPrompt")
+	prompt.ActionText = "Recoger oro"
+	prompt.ObjectText = "Bloque de oro"
+	prompt.HoldDuration = CFG.PickupHoldDuration
+	prompt.MaxActivationDistance = 9
+	prompt.RequiresLineOfSight = false
+	prompt.Parent = block
+
+	if index then
+		occupied[index] = block
+	end
+	CollectionService:AddTag(block, "GoldBlock")
+	block.Parent = parent
+
+	table.insert(connections, prompt.Triggered:Connect(function(player)
+		if not active or not block.Parent or not context.isSurvivor(player) then
+			return
+		end
+		local carried = getGold(player)
+		if carried >= CFG.MaxGoldCarried then
+			notify(player, `Solo puedes llevar {CFG.MaxGoldCarried} bloques. ¡Llévalos a una mesa!`, "warn")
+			return
+		end
+		setGold(player, carried + 1)
+		if index then
+			occupied[index] = nil
+		end
+		Net.get("Effect"):FireClient(player, "Pickup", block.Position)
+		block:Destroy()
+		scheduleRespawn()
+	end))
+end
+
+local function refreshTable(state: TableState)
+	local full = state.gold >= CFG.GoldPerTotem
+	state.label.Text = if full then "¡Listo para craftear!" else `Oro {state.gold}/{CFG.GoldPerTotem}`
+	state.label.TextColor3 = if full then Color3.fromRGB(120, 255, 200) else Color3.fromRGB(255, 220, 120)
+	state.deposit.Enabled = not full
+	state.craft.Enabled = full
+end
+
+local function buildTable(spot: CFrame, parent: Instance): TableState
+	local model = Instance.new("Model")
+	model.Name = "CraftingTable"
+
+	local function piece(name: string, size: Vector3, offset: CFrame, color: Color3, material: Enum.Material): Part
+		local p = Instance.new("Part")
+		p.Name = name
+		p.Anchored = true
+		p.Size = size
+		p.CFrame = spot * offset
+		p.Color = color
+		p.Material = material
+		p.TopSurface = Enum.SurfaceType.Smooth
+		p.Parent = model
+		return p
+	end
+
+	local top = piece("Top", Vector3.new(6, 0.6, 4), CFrame.new(0, 3.2, 0), Color3.fromRGB(120, 82, 52), Enum.Material.WoodPlanks)
+	for _, x in { -2.6, 2.6 } do
+		for _, z in { -1.6, 1.6 } do
+			piece("Leg", Vector3.new(0.6, 2.9, 0.6), CFrame.new(x, 1.45, z), Color3.fromRGB(80, 54, 36), Enum.Material.Wood)
+		end
+	end
+	piece("Anvil", Vector3.new(2, 0.8, 1.2), CFrame.new(0, 3.9, 0), Color3.fromRGB(60, 62, 70), Enum.Material.Metal)
+	local rune = piece("Rune", Vector3.new(5.4, 0.05, 3.4), CFrame.new(0, 3.53, 0), Color3.fromRGB(90, 220, 255), Enum.Material.Neon)
+	rune.Transparency = 0.75
+	model.PrimaryPart = top
+
+	local light = Instance.new("PointLight")
+	light.Color = Color3.fromRGB(110, 220, 255)
+	light.Range = 14
+	light.Brightness = 1.4
+	light.Parent = top
+
+	local billboard = Instance.new("BillboardGui")
+	billboard.Size = UDim2.fromOffset(180, 34)
+	billboard.StudsOffset = Vector3.new(0, 3.6, 0)
+	billboard.MaxDistance = 70
+	billboard.AlwaysOnTop = true
+	billboard.Parent = top
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.fromScale(1, 1)
+	label.BackgroundColor3 = Color3.fromRGB(14, 12, 20)
+	label.BackgroundTransparency = 0.3
+	label.Font = Enum.Font.GothamBold
+	label.TextScaled = true
+	label.Parent = billboard
+	local corner = Instance.new("UICorner")
+	corner.CornerRadius = UDim.new(0.5, 0)
+	corner.Parent = label
+	local padding = Instance.new("UIPadding")
+	padding.PaddingTop = UDim.new(0, 6)
+	padding.PaddingBottom = UDim.new(0, 6)
+	padding.Parent = label
+
+	local deposit = Instance.new("ProximityPrompt")
+	deposit.ActionText = "Depositar oro"
+	deposit.ObjectText = "Mesa de crafteo"
+	deposit.HoldDuration = 0.4
+	deposit.MaxActivationDistance = 10
+	deposit.RequiresLineOfSight = false
+	deposit.Parent = top
+
+	local craft = Instance.new("ProximityPrompt")
+	craft.ActionText = "Craftear tótem"
+	craft.ObjectText = "Mesa de crafteo"
+	craft.HoldDuration = CFG.CraftHoldDuration
+	craft.MaxActivationDistance = 10
+	craft.RequiresLineOfSight = false
+	craft.KeyboardKeyCode = Enum.KeyCode.F
+	craft.Parent = top
+
+	model.Parent = parent
+	local state: TableState = { model = model, top = top, gold = 0, label = label, deposit = deposit, craft = craft }
+	refreshTable(state)
+	return state
+end
+
+local function spawnTotemVisual(state: TableState)
+	local totem = Instance.new("Part")
+	totem.Name = "Totem"
+	totem.Anchored = true
+	totem.CanCollide = false
+	totem.Size = Vector3.new(1.1, 2.4, 1.1)
+	totem.Color = GOLD_COLOR
+	totem.Material = Enum.Material.Foil
+	totem.CFrame = state.top.CFrame * CFrame.new(rng:NextNumber(-2.2, 2.2), 1.5, rng:NextNumber(-1.2, 1.2))
+	local eye = Instance.new("Part")
+	eye.Anchored = true
+	eye.CanCollide = false
+	eye.Size = Vector3.new(0.7, 0.25, 0.1)
+	eye.Material = Enum.Material.Neon
+	eye.Color = Color3.fromRGB(90, 230, 255)
+	eye.CFrame = totem.CFrame * CFrame.new(0, 0.6, -0.56)
+	eye.Parent = totem
+	totem.Parent = state.model
+end
+
+local function connectTable(state: TableState)
+	local context = ctx :: Context
+	table.insert(connections, state.deposit.Triggered:Connect(function(player)
+		if not active or not context.isSurvivor(player) then
+			return
+		end
+		local carried = getGold(player)
+		if carried <= 0 then
+			notify(player, "Necesitas bloques de oro. ¡Búscalos por la mansión!", "warn")
+			return
+		end
+		local moved = math.min(carried, CFG.GoldPerTotem - state.gold)
+		if moved <= 0 then
+			return
+		end
+		state.gold += moved
+		setGold(player, carried - moved)
+		refreshTable(state)
+	end))
+
+	table.insert(connections, state.craft.Triggered:Connect(function(player)
+		if not active or not context.isSurvivor(player) or state.gold < CFG.GoldPerTotem then
+			return
+		end
+		if context.totemsCrafted() >= CFG.MaxTotemsPerRound then
+			notify(player, "El reloj ya no puede acelerarse más esta ronda.", "warn")
+			return
+		end
+		if not context.onTotem(player) then
+			notify(player, "¡Ya casi amanece! El tótem no tendría efecto.", "warn")
+			return
+		end
+		state.gold = 0
+		refreshTable(state)
+		spawnTotemVisual(state)
+		Net.get("Effect"):FireAllClients("Totem", state.top.Position)
+	end))
+end
+
+-- Suelta el oro que llevaba un superviviente al morir.
+function Crafting.dropGold(player: Player, position: Vector3)
+	local carried = getGold(player)
+	setGold(player, 0)
+	if not active then
+		return
+	end
+	for i = 1, carried do
+		local angle = (i / math.max(carried, 1)) * math.pi * 2
+		spawnGoldAt(nil, position + Vector3.new(math.cos(angle) * 2, 0, math.sin(angle) * 2))
+	end
+end
+
+function Crafting.start(context: Context)
+	ctx = context
+	active = true
+	local f = Instance.new("Folder")
+	f.Name = "Crafting"
+	f.Parent = context.parent
+	folder = f
+
+	for _, spot in context.tableSpots do
+		local state = buildTable(spot, f)
+		table.insert(tables, state)
+		connectTable(state)
+	end
+
+	local count = math.clamp(context.survivorCount * CFG.GoldPerSurvivor, CFG.GoldMinBlocks, CFG.GoldMaxBlocks)
+	for _ = 1, math.min(count, #context.goldSpawns) do
+		spawnGoldAt(freeSpawnIndex(), nil)
+	end
+end
+
+function Crafting.stop()
+	active = false
+	for _, c in connections do
+		c:Disconnect()
+	end
+	table.clear(connections)
+	table.clear(tables)
+	table.clear(occupied)
+	if folder then
+		folder:Destroy()
+		folder = nil
+	end
+	ctx = nil
+end
+
+return Crafting
+]]></string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="10">
+          <Properties>
+            <string name="Name">Killer</string>
+            <string name="Source"><![CDATA[--!strict
+-- Verity: apariencia, cuchillo y ataque validado en el servidor.
+--
+-- Para un modelo propio de Verity, coloca un Model R15 llamado
+-- "VerityCharacter" en ServerStorage (con Humanoid, HumanoidRootPart y su
+-- script Animate). Si no existe, se aplica un aspecto oscuro al avatar.
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ServerStorage = game:GetService("ServerStorage")
+local Workspace = game:GetService("Workspace")
+
+local Config = require(ReplicatedStorage.Shared.Config)
+local Net = require(ReplicatedStorage.Shared.Net)
+
+export type Context = {
+	survivors: () -> { Player },
+	onKill: (killer: Player, victim: Player) -> (),
+}
+
+local Killer = {}
+
+local current: Player? = nil
+local context: Context? = nil
+local lastAttack = 0
+local connections: { RBXScriptConnection } = {}
+
+local function rootOf(player: Player): BasePart?
+	local character = player.Character
+	local root = character and character:FindFirstChild("HumanoidRootPart")
+	return if root and root:IsA("BasePart") then root else nil
+end
+
+local function humanoidOf(player: Player): Humanoid?
+	local character = player.Character
+	return character and character:FindFirstChildOfClass("Humanoid")
+end
+
+local function applyFallbackLook(character: Model)
+	for _, inst in character:GetDescendants() do
+		if inst:IsA("Accessory") or inst:IsA("Shirt") or inst:IsA("Pants") or inst:IsA("ShirtGraphic") then
+			inst:Destroy()
+		elseif inst:IsA("BasePart") and inst.Name ~= "HumanoidRootPart" then
+			inst.Color = Color3.fromRGB(22, 18, 24)
+			inst.Material = Enum.Material.SmoothPlastic
+		end
+	end
+	local head = character:FindFirstChild("Head")
+	if head and head:IsA("BasePart") then
+		local face = head:FindFirstChildOfClass("Decal")
+		if face then
+			face:Destroy()
+		end
+		-- Ojos rojos brillantes
+		for _, side in { -0.22, 0.22 } do
+			local eye = Instance.new("Part")
+			eye.Name = "VerityEye"
+			eye.Shape = Enum.PartType.Ball
+			eye.Size = Vector3.new(0.22, 0.22, 0.22)
+			eye.Material = Enum.Material.Neon
+			eye.Color = Color3.fromRGB(255, 40, 60)
+			eye.CanCollide = false
+			eye.Massless = true
+			eye.CFrame = head.CFrame * CFrame.new(side, 0.1, -head.Size.Z / 2)
+			local weld = Instance.new("WeldConstraint")
+			weld.Part0 = head
+			weld.Part1 = eye
+			weld.Parent = eye
+			eye.Parent = character
+		end
+		-- Capucha simple
+		local hood = Instance.new("Part")
+		hood.Name = "VerityHood"
+		hood.Size = head.Size * Vector3.new(1.25, 1.15, 1.2)
+		hood.Color = Color3.fromRGB(14, 10, 16)
+		hood.Material = Enum.Material.Fabric
+		hood.CanCollide = false
+		hood.Massless = true
+		hood.CFrame = head.CFrame * CFrame.new(0, 0.12, 0.12)
+		local mesh = Instance.new("SpecialMesh")
+		mesh.MeshType = Enum.MeshType.Head
+		mesh.Parent = hood
+		local weld = Instance.new("WeldConstraint")
+		weld.Part0 = head
+		weld.Part1 = hood
+		weld.Parent = hood
+		hood.Parent = character
+	end
+end
+
+local function morph(player: Player): Model?
+	local character = player.Character
+	if not character then
+		return nil
+	end
+	local template = ServerStorage:FindFirstChild("VerityCharacter")
+	if template and template:IsA("Model") and template:FindFirstChildOfClass("Humanoid") then
+		local clone = template:Clone()
+		clone.Name = player.Name
+		clone:PivotTo(character:GetPivot())
+		player.Character = clone
+		clone.Parent = Workspace
+		character:Destroy()
+		return clone
+	end
+	applyFallbackLook(character)
+	return character
+end
+
+local function makeKnife(): Tool
+	local tool = Instance.new("Tool")
+	tool.Name = "Cuchillo de Verity"
+	tool.CanBeDropped = false
+	tool.RequiresHandle = true
+	-- Misma orientación que la espada clásica: la hoja va a lo largo de +Z.
+	tool.GripForward = Vector3.new(-1, 0, 0)
+	tool.GripRight = Vector3.new(0, 1, 0)
+	tool.GripUp = Vector3.new(0, 0, 1)
+	tool.GripPos = Vector3.new(0, 0, -1.2)
+	tool.ToolTip = "Clic para atacar"
+
+	local handle = Instance.new("Part")
+	handle.Name = "Handle"
+	handle.Size = Vector3.new(0.25, 0.5, 2.8)
+	handle.Color = Color3.fromRGB(190, 196, 206)
+	handle.Material = Enum.Material.Metal
+	handle.CanCollide = false
+	handle.Massless = true
+	handle.Parent = tool
+
+	local grip = Instance.new("Part")
+	grip.Name = "Grip"
+	grip.Size = Vector3.new(0.32, 0.55, 1)
+	grip.Color = Color3.fromRGB(70, 14, 22)
+	grip.Material = Enum.Material.Wood
+	grip.CanCollide = false
+	grip.Massless = true
+	grip.CFrame = handle.CFrame * CFrame.new(0, 0, -1.75)
+	local weld = Instance.new("WeldConstraint")
+	weld.Part0 = handle
+	weld.Part1 = grip
+	weld.Parent = grip
+	grip.Parent = tool
+
+	local trail0 = Instance.new("Attachment")
+	trail0.Position = Vector3.new(0, 0, 1.3)
+	trail0.Parent = handle
+	local trail1 = Instance.new("Attachment")
+	trail1.Position = Vector3.new(0, 0, -0.6)
+	trail1.Parent = handle
+	local trail = Instance.new("Trail")
+	trail.Attachment0 = trail0
+	trail.Attachment1 = trail1
+	trail.Lifetime = 0.15
+	trail.Color = ColorSequence.new(Color3.fromRGB(255, 60, 80))
+	trail.Transparency = NumberSequence.new(0.3, 1)
+	trail.LightEmission = 1
+	trail.Parent = handle
+
+	local slash = Instance.new("Sound")
+	slash.Name = "Slash"
+	slash.SoundId = "rbxasset://sounds/swordslash.wav"
+	slash.Volume = 0.7
+	slash.Parent = handle
+
+	return tool
+end
+
+local function attack(player: Player, tool: Tool)
+	if player ~= current or not context then
+		return
+	end
+	local now = os.clock()
+	if now - lastAttack < Config.Killer.AttackCooldown then
+		return
+	end
+	lastAttack = now
+
+	-- El script Animate por defecto reproduce el tajo al ver "toolanim".
+	local anim = Instance.new("StringValue")
+	anim.Name = "toolanim"
+	anim.Value = "Slash"
+	anim.Parent = tool
+	game:GetService("Debris"):AddItem(anim, 0.5)
+	local handle = tool:FindFirstChild("Handle")
+	local sound = handle and handle:FindFirstChild("Slash")
+	if sound and sound:IsA("Sound") then
+		sound:Play()
+	end
+
+	local root = rootOf(player)
+	if not root then
+		return
+	end
+	local forward = root.CFrame.LookVector * Vector3.new(1, 0, 1)
+	forward = if forward.Magnitude > 0 then forward.Unit else Vector3.zAxis
+
+	local best: Player? = nil
+	local bestDistance = Config.Killer.AttackRange
+	for _, survivor in context.survivors() do
+		local targetRoot = rootOf(survivor)
+		local humanoid = humanoidOf(survivor)
+		if targetRoot and humanoid and humanoid.Health > 0 then
+			local offset = targetRoot.Position - root.Position
+			local distance = offset.Magnitude
+			local flat = offset * Vector3.new(1, 0, 1)
+			local facing = if flat.Magnitude > 0.01 then flat.Unit:Dot(forward) else 1
+			if distance <= bestDistance and (facing >= Config.Killer.AttackConeDot or distance < 3) then
+				best = survivor
+				bestDistance = distance
+			end
+		end
+	end
+
+	if best then
+		local humanoid = humanoidOf(best)
+		local targetRoot = rootOf(best)
+		if humanoid and targetRoot then
+			Net.get("Effect"):FireAllClients("Slash", targetRoot.Position)
+			humanoid.Health = 0
+			context.onKill(player, best)
+		end
+	end
+end
+
+-- Convierte al jugador en Verity y lo deja inmóvil hasta release().
+function Killer.setup(player: Player, spawn: CFrame, ctx: Context)
+	current = player
+	context = ctx
+	lastAttack = 0
+	local character = morph(player)
+	if not character then
+		return
+	end
+	character:PivotTo(spawn)
+	local humanoid = character:FindFirstChildOfClass("Humanoid")
+	if humanoid then
+		humanoid.WalkSpeed = Config.Killer.WalkSpeed
+		humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+	end
+	local root = character:FindFirstChild("HumanoidRootPart")
+	if root and root:IsA("BasePart") then
+		root.Anchored = true
+	end
+	local highlight = Instance.new("Highlight")
+	highlight.Name = "VerityAura"
+	highlight.FillTransparency = 1
+	highlight.OutlineColor = Color3.fromRGB(255, 40, 60)
+	highlight.OutlineTransparency = 0.35
+	highlight.DepthMode = Enum.HighlightDepthMode.Occluded
+	highlight.Parent = character
+end
+
+function Killer.release()
+	local player = current
+	if not player then
+		return
+	end
+	local root = rootOf(player)
+	if root then
+		root.Anchored = false
+	end
+	local tool = makeKnife()
+	table.insert(connections, tool.Activated:Connect(function()
+		attack(player, tool)
+	end))
+	tool.Parent = player:FindFirstChildOfClass("Backpack")
+	local humanoid = humanoidOf(player)
+	if humanoid then
+		humanoid:EquipTool(tool)
+	end
+	local unsheath = Instance.new("Sound")
+	unsheath.SoundId = "rbxasset://sounds/unsheath.wav"
+	unsheath.Parent = tool:FindFirstChild("Handle")
+	unsheath:Play()
+end
+
+function Killer.current(): Player?
+	return current
+end
+
+function Killer.cleanup()
+	for _, c in connections do
+		c:Disconnect()
+	end
+	table.clear(connections)
+	current = nil
+	context = nil
+end
+
+function Killer.init()
+	Players.PlayerRemoving:Connect(function(player)
+		if player == current then
+			current = nil
+		end
+	end)
+end
+
+return Killer
+]]></string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="11">
+          <Properties>
+            <string name="Name">MapService</string>
+            <string name="Source"><![CDATA[--!strict
+-- Lobby, mapas y ambientación.
+--
+-- Mapas personalizados: coloca Models en ServerStorage/Maps con:
+--   SurvivorSpawns (Folder de Parts), KillerSpawn (Part),
+--   GoldSpawns (Folder de Parts), CraftingTables (Folder de Parts: la mesa
+--   se coloca encima de cada Part). Si no hay ninguno, se genera una mansión.
+
+local Lighting = game:GetService("Lighting")
+local ServerStorage = game:GetService("ServerStorage")
+local Workspace = game:GetService("Workspace")
+
+export type MapInfo = {
+	model: Model,
+	name: string,
+	survivorSpawns: { CFrame },
+	killerSpawn: CFrame,
+	goldSpawns: { Vector3 },
+	tableSpots: { CFrame },
+}
+
+local LOBBY_HEIGHT = 300
+local CELL = 40
+local GRID = 4
+local WALL_HEIGHT = 18
+local DOOR_WIDTH = 10
+
+local MapService = {}
+
+local lobbySpawn: CFrame = CFrame.new(0, LOBBY_HEIGHT + 4, 0)
+local rng = Random.new()
+
+local function part(props: { [string]: any }, parent: Instance): Part
+	local p = Instance.new("Part")
+	p.Anchored = true
+	p.TopSurface = Enum.SurfaceType.Smooth
+	p.BottomSurface = Enum.SurfaceType.Smooth
+	for k, v in props do
+		(p :: any)[k] = v
+	end
+	p.Parent = parent
+	return p
+end
+
+local function buildLobby(): Model
+	local lobby = Instance.new("Model")
+	lobby.Name = "Lobby"
+
+	local y = LOBBY_HEIGHT
+	part({ Name = "Floor", Size = Vector3.new(90, 2, 90), CFrame = CFrame.new(0, y, 0), Material = Enum.Material.WoodPlanks, Color = Color3.fromRGB(92, 64, 51) }, lobby)
+	part({ Name = "Rug", Size = Vector3.new(30, 0.2, 30), CFrame = CFrame.new(0, y + 1.1, 0), Material = Enum.Material.Fabric, Color = Color3.fromRGB(110, 22, 32) }, lobby)
+	for i = 0, 3 do
+		local angle = math.rad(i * 90)
+		local cf = CFrame.new(0, y, 0) * CFrame.Angles(0, angle, 0) * CFrame.new(0, 7, -45)
+		part({ Name = "Wall", Size = Vector3.new(90, 12, 2), CFrame = cf, Material = Enum.Material.Brick, Color = Color3.fromRGB(60, 46, 58) }, lobby)
+	end
+	for _, x in { -30, 30 } do
+		for _, z in { -30, 30 } do
+			local lamp = part({ Name = "Lamp", Size = Vector3.new(1.5, 1.5, 1.5), Shape = Enum.PartType.Ball, CFrame = CFrame.new(x, y + 10, z), Material = Enum.Material.Neon, Color = Color3.fromRGB(255, 196, 120), CanCollide = false }, lobby)
+			local light = Instance.new("PointLight")
+			light.Range = 40
+			light.Brightness = 1.4
+			light.Color = Color3.fromRGB(255, 200, 140)
+			light.Parent = lamp
+		end
+	end
+
+	-- Cartel con el nombre del juego
+	local sign = part({ Name = "Sign", Size = Vector3.new(36, 9, 1), CFrame = CFrame.new(0, y + 7, -43.5), Material = Enum.Material.SmoothPlastic, Color = Color3.fromRGB(20, 14, 20) }, lobby)
+	local surface = Instance.new("SurfaceGui")
+	surface.Face = Enum.NormalId.Back
+	surface.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
+	surface.PixelsPerStud = 30
+	surface.Parent = sign
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.fromScale(1, 1)
+	label.BackgroundTransparency = 1
+	label.Text = "MURDER MYSTERY\nbut <font color=\"#ff3b4e\">VERITY</font>"
+	label.RichText = true
+	label.TextScaled = true
+	label.Font = Enum.Font.GothamBlack
+	label.TextColor3 = Color3.new(1, 1, 1)
+	label.Parent = surface
+
+	local spawn = Instance.new("SpawnLocation")
+	spawn.Name = "LobbySpawn"
+	spawn.Anchored = true
+	spawn.Neutral = true
+	spawn.Duration = 0
+	spawn.Size = Vector3.new(8, 1, 8)
+	spawn.CFrame = CFrame.new(0, y + 1.5, 10)
+	spawn.Transparency = 1
+	spawn.CanCollide = false
+	spawn.Parent = lobby
+
+	lobby.Parent = Workspace
+	return lobby
+end
+
+function MapService.ensureLobby()
+	local lobby = Workspace:FindFirstChild("Lobby") or buildLobby()
+	local spawn = lobby:FindFirstChildWhichIsA("SpawnLocation", true)
+	if spawn then
+		lobbySpawn = spawn.CFrame + Vector3.new(0, 3, 0)
+	end
+	-- Solo el lobby debe ser punto de aparición.
+	for _, inst in Workspace:GetDescendants() do
+		if inst:IsA("SpawnLocation") and not inst:IsDescendantOf(lobby) then
+			inst.Enabled = false
+		end
+	end
+end
+
+function MapService.lobbyCFrame(): CFrame
+	return lobbySpawn * CFrame.new(rng:NextNumber(-12, 12), 0, rng:NextNumber(-12, 12))
+end
+
+-- Mansión procedural ---------------------------------------------------------
+
+local WALL_COLOR = Color3.fromRGB(70, 58, 72)
+local FLOOR_COLOR = Color3.fromRGB(78, 54, 44)
+
+local function wallWithDoor(parent: Instance, from: Vector3, to: Vector3)
+	local dir = to - from
+	local length = dir.Magnitude
+	local unit = dir.Unit
+	local look = CFrame.lookAt(Vector3.zero, unit)
+
+	-- 15% sin pared (habitación abierta), resto con 1 puerta (a veces 2)
+	if rng:NextNumber() < 0.15 then
+		return
+	end
+	local doors = if rng:NextNumber() < 0.3 then 2 else 1
+	local gaps: { number } = {}
+	if doors == 1 then
+		table.insert(gaps, rng:NextNumber(DOOR_WIDTH, length - DOOR_WIDTH))
+	else
+		table.insert(gaps, rng:NextNumber(DOOR_WIDTH * 0.75, length / 2 - DOOR_WIDTH * 0.75))
+		table.insert(gaps, rng:NextNumber(length / 2 + DOOR_WIDTH * 0.75, length - DOOR_WIDTH * 0.75))
+	end
+
+	local cursor = 0
+	local function segment(a: number, b: number)
+		if b - a < 0.5 then
+			return
+		end
+		local mid = from + unit * ((a + b) / 2)
+		part({
+			Name = "Wall",
+			Size = Vector3.new(1.5, WALL_HEIGHT, b - a),
+			CFrame = CFrame.new(mid + Vector3.new(0, WALL_HEIGHT / 2, 0)) * look,
+			Material = Enum.Material.Plaster,
+			Color = WALL_COLOR,
+		}, parent)
+	end
+	for _, center in gaps do
+		segment(cursor, center - DOOR_WIDTH / 2)
+		-- dintel sobre la puerta
+		local mid = from + unit * center
+		part({
+			Name = "Lintel",
+			Size = Vector3.new(1.5, WALL_HEIGHT - 10, DOOR_WIDTH),
+			CFrame = CFrame.new(mid + Vector3.new(0, 10 + (WALL_HEIGHT - 10) / 2, 0)) * look,
+			Material = Enum.Material.Plaster,
+			Color = WALL_COLOR,
+		}, parent)
+		cursor = center + DOOR_WIDTH / 2
+	end
+	segment(cursor, length)
+end
+
+local FURNITURE = {
+	{ size = Vector3.new(6, 4, 3), color = Color3.fromRGB(101, 67, 45), material = Enum.Material.Wood }, -- cómoda
+	{ size = Vector3.new(4, 9, 2), color = Color3.fromRGB(84, 56, 40), material = Enum.Material.Wood }, -- estantería
+	{ size = Vector3.new(4, 4, 4), color = Color3.fromRGB(140, 104, 66), material = Enum.Material.WoodPlanks }, -- caja
+	{ size = Vector3.new(8, 3, 4), color = Color3.fromRGB(96, 30, 40), material = Enum.Material.Fabric }, -- sofá
+}
+
+local function buildMansion(): MapInfo
+	local model = Instance.new("Model")
+	model.Name = "Mansión de Verity"
+	local half = CELL * GRID / 2
+
+	part({ Name = "Floor", Size = Vector3.new(CELL * GRID, 2, CELL * GRID), CFrame = CFrame.new(0, -1, 0), Material = Enum.Material.WoodPlanks, Color = FLOOR_COLOR }, model)
+	-- Muros exteriores
+	for i = 0, 3 do
+		local cf = CFrame.Angles(0, math.rad(i * 90), 0) * CFrame.new(0, WALL_HEIGHT / 2, -half)
+		part({ Name = "OuterWall", Size = Vector3.new(CELL * GRID + 2, WALL_HEIGHT, 2), CFrame = cf, Material = Enum.Material.Brick, Color = Color3.fromRGB(52, 40, 50) }, model)
+	end
+	part({ Name = "Ceiling", Size = Vector3.new(CELL * GRID, 1, CELL * GRID), CFrame = CFrame.new(0, WALL_HEIGHT + 0.5, 0), Material = Enum.Material.Plaster, Color = Color3.fromRGB(30, 24, 32) }, model)
+
+	-- Paredes interiores con puertas
+	for i = 1, GRID - 1 do
+		local c = -half + i * CELL
+		for j = 0, GRID - 1 do
+			local a = -half + j * CELL
+			wallWithDoor(model, Vector3.new(c, 0, a), Vector3.new(c, 0, a + CELL))
+			wallWithDoor(model, Vector3.new(a, 0, c), Vector3.new(a + CELL, 0, c))
+		end
+	end
+
+	local centers: { Vector3 } = {}
+	local blocked: { Vector3 } = {}
+	for gx = 0, GRID - 1 do
+		for gz = 0, GRID - 1 do
+			local center = Vector3.new(-half + (gx + 0.5) * CELL, 0, -half + (gz + 0.5) * CELL)
+			table.insert(centers, center)
+
+			-- Lámpara por habitación
+			local lamp = part({ Name = "Lamp", Size = Vector3.new(2, 0.6, 2), CFrame = CFrame.new(center + Vector3.new(0, WALL_HEIGHT - 0.4, 0)), Material = Enum.Material.Neon, Color = Color3.fromRGB(255, 170, 110), CanCollide = false }, model)
+			local light = Instance.new("PointLight")
+			light.Range = 26
+			light.Brightness = 0.9
+			light.Color = Color3.fromRGB(255, 170, 120)
+			light.Shadows = true
+			light.Parent = lamp
+			lamp:SetAttribute("Flicker", rng:NextNumber() < 0.35)
+			lamp:AddTag("MansionLamp")
+
+			-- Muebles cerca de las paredes para tener cobertura
+			for _ = 1, rng:NextInteger(1, 3) do
+				local f = FURNITURE[rng:NextInteger(1, #FURNITURE)]
+				local offset = Vector3.new(rng:NextNumber(-14, 14), 0, rng:NextNumber(-14, 14))
+				if offset.Magnitude > 7 then
+					local pos = center + offset + Vector3.new(0, f.size.Y / 2, 0)
+					part({ Name = "Furniture", Size = f.size, CFrame = CFrame.new(pos) * CFrame.Angles(0, math.rad(rng:NextInteger(0, 3) * 90), 0), Material = f.material, Color = f.color }, model)
+					table.insert(blocked, pos)
+				end
+			end
+		end
+	end
+
+	local function freeSpot(center: Vector3): Vector3
+		for _ = 1, 12 do
+			local p = center + Vector3.new(rng:NextNumber(-15, 15), 0, rng:NextNumber(-15, 15))
+			local ok = true
+			for _, b in blocked do
+				if (Vector3.new(b.X, 0, b.Z) - p).Magnitude < 6 then
+					ok = false
+					break
+				end
+			end
+			if ok then
+				return p
+			end
+		end
+		return center
+	end
+
+	-- Mesas: en habitaciones distintas, lejos del centro del mapa
+	local shuffled = table.clone(centers)
+	for i = #shuffled, 2, -1 do
+		local j = rng:NextInteger(1, i)
+		shuffled[i], shuffled[j] = shuffled[j], shuffled[i]
+	end
+	local tableSpots: { CFrame } = {}
+	for _, c in shuffled do
+		if #tableSpots >= 3 then
+			break
+		end
+		if c.Magnitude > CELL * 0.8 then
+			local spot = freeSpot(c)
+			table.insert(blocked, spot)
+			table.insert(tableSpots, CFrame.new(spot) * CFrame.Angles(0, math.rad(rng:NextInteger(0, 3) * 90), 0))
+		end
+	end
+
+	local goldSpawns: { Vector3 } = {}
+	for _, c in centers do
+		for _ = 1, 2 do
+			table.insert(goldSpawns, freeSpot(c) + Vector3.new(0, 1.6, 0))
+		end
+	end
+
+	local survivorSpawns: { CFrame } = {}
+	for _, c in centers do
+		if c.Magnitude > CELL then
+			table.insert(survivorSpawns, CFrame.new(freeSpot(c) + Vector3.new(0, 3, 0)))
+		end
+	end
+
+	-- Verity aparece en una de las habitaciones centrales
+	local killerSpawn = CFrame.new(freeSpot(centers[GRID + 2]) + Vector3.new(0, 3, 0))
+
+	model.Parent = Workspace
+	return {
+		model = model,
+		name = model.Name,
+		survivorSpawns = survivorSpawns,
+		killerSpawn = killerSpawn,
+		goldSpawns = goldSpawns,
+		tableSpots = tableSpots,
+	}
+end
+
+local function loadCustomMap(template: Model): MapInfo?
+	local model = template:Clone()
+	local function cframes(folderName: string): { CFrame }
+		local list = {}
+		local folder = model:FindFirstChild(folderName)
+		if folder then
+			for _, child in folder:GetChildren() do
+				if child:IsA("BasePart") then
+					child.Transparency = 1
+					child.CanCollide = false
+					-- se usa la base de la Part (a ras de suelo)
+					table.insert(list, child.CFrame - Vector3.new(0, child.Size.Y / 2, 0))
+				end
+			end
+		end
+		return list
+	end
+	local survivors = cframes("SurvivorSpawns")
+	local gold = cframes("GoldSpawns")
+	local tables = cframes("CraftingTables")
+	local killer = model:FindFirstChild("KillerSpawn")
+	if #survivors == 0 or #gold == 0 or #tables == 0 or not (killer and killer:IsA("BasePart")) then
+		warn(`[MapService] el mapa {template.Name} no tiene la estructura requerida; se usa la mansión`)
+		model:Destroy()
+		return nil
+	end
+	killer.Transparency = 1
+	killer.CanCollide = false
+	local goldPositions = {}
+	for _, cf in gold do
+		table.insert(goldPositions, cf.Position + Vector3.new(0, 1.6, 0))
+	end
+	model.Parent = Workspace
+	local spawnsUp = {}
+	for _, cf in survivors do
+		table.insert(spawnsUp, cf + Vector3.new(0, 3, 0))
+	end
+	return {
+		model = model,
+		name = template.Name,
+		survivorSpawns = spawnsUp,
+		killerSpawn = killer.CFrame + Vector3.new(0, 3 - killer.Size.Y / 2, 0),
+		goldSpawns = goldPositions,
+		tableSpots = tables,
+	}
+end
+
+function MapService.load(): MapInfo
+	local maps = ServerStorage:FindFirstChild("Maps")
+	if maps then
+		local options = {}
+		for _, child in maps:GetChildren() do
+			if child:IsA("Model") then
+				table.insert(options, child)
+			end
+		end
+		if #options > 0 then
+			local info = loadCustomMap(options[rng:NextInteger(1, #options)])
+			if info then
+				return info
+			end
+		end
+	end
+	return buildMansion()
+end
+
+-- Ambientación ----------------------------------------------------------------
+
+local lobbyLighting = {
+	ClockTime = 14.5,
+	Brightness = 2,
+	Ambient = Color3.fromRGB(120, 110, 120),
+	OutdoorAmbient = Color3.fromRGB(128, 128, 128),
+	FogEnd = 100000,
+	FogColor = Color3.fromRGB(192, 192, 192),
+}
+local roundLighting = {
+	ClockTime = 0,
+	Brightness = 0.4,
+	Ambient = Color3.fromRGB(38, 30, 44),
+	OutdoorAmbient = Color3.fromRGB(30, 24, 36),
+	FogEnd = 150,
+	FogColor = Color3.fromRGB(16, 10, 20),
+}
+
+function MapService.setAtmosphere(inRound: boolean)
+	for k, v in if inRound then roundLighting else lobbyLighting do
+		(Lighting :: any)[k] = v
+	end
+end
+
+function MapService.init()
+	MapService.ensureLobby()
+	MapService.setAtmosphere(false)
+end
+
+return MapService
+]]></string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="12">
+          <Properties>
+            <string name="Name">Monetization</string>
+            <string name="Source"><![CDATA[--!strict
+-- Pases de juego (multiplicador permanente de probabilidad) y productos
+-- consumibles (Poción de Verity).
+
+local MarketplaceService = game:GetService("MarketplaceService")
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Config = require(ReplicatedStorage.Shared.Config)
+local Net = require(ReplicatedStorage.Shared.Net)
+local PlayerData = require(script.Parent.PlayerData)
+
+local Monetization = {}
+
+local function refreshPasses(player: Player)
+	local best = 1
+	for _, pass in Config.GamePasses do
+		local owned = false
+		if pass.Id ~= 0 then
+			local ok, result = pcall(MarketplaceService.UserOwnsGamePassAsync, MarketplaceService, player.UserId, pass.Id)
+			owned = ok and result == true
+		end
+		player:SetAttribute("Pass_" .. pass.Key, owned)
+		if owned then
+			best = math.max(best, pass.Multiplier)
+		end
+	end
+	player:SetAttribute("PassMultiplier", best)
+	PlayerData.setPassMultiplier(player, best)
+end
+
+local function findProduct(productId: number)
+	for _, product in Config.Products do
+		if product.Id == productId then
+			return product
+		end
+	end
+	return nil
+end
+
+local function processReceipt(receipt): Enum.ProductPurchaseDecision
+	local player = Players:GetPlayerByUserId(receipt.PlayerId)
+	local product = findProduct(receipt.ProductId)
+	if not player or not product or not PlayerData.isLoaded(player) then
+		return Enum.ProductPurchaseDecision.NotProcessedYet
+	end
+	if player:GetAttribute("DataUnsaved") then
+		return Enum.ProductPurchaseDecision.NotProcessedYet
+	end
+	if PlayerData.grantProduct(player, receipt.PurchaseId, product.Multiplier, product.Rounds) then
+		Net.get("Notify"):FireClient(player, `{product.Title} activada: x{product.Multiplier} en tus próximas {product.Rounds} ronda(s).`, "good")
+		return Enum.ProductPurchaseDecision.PurchaseGranted
+	end
+	return Enum.ProductPurchaseDecision.NotProcessedYet
+end
+
+function Monetization.init()
+	MarketplaceService.ProcessReceipt = processReceipt
+
+	MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player, passId, purchased)
+		if not purchased then
+			return
+		end
+		for _, pass in Config.GamePasses do
+			if pass.Id == passId then
+				refreshPasses(player)
+				Net.get("Notify"):FireClient(player, `¡{pass.Title} activado!`, "good")
+				return
+			end
+		end
+	end)
+
+	Players.PlayerAdded:Connect(function(player)
+		-- Espera a que PlayerData cargue para que el multiplicador cuente.
+		local deadline = os.clock() + 30
+		while player.Parent and not PlayerData.isLoaded(player) and os.clock() < deadline do
+			task.wait(0.25)
+		end
+		if player.Parent then
+			refreshPasses(player)
+		end
+	end)
+	for _, player in Players:GetPlayers() do
+		task.spawn(refreshPasses, player)
+	end
+end
+
+return Monetization
+]]></string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="13">
+          <Properties>
+            <string name="Name">PlayerData</string>
+            <string name="Source"><![CDATA[--!strict
+-- Datos persistentes (suerte, pociones, victorias) y cálculo de la
+-- probabilidad de ser Verity.
+
+local DataStoreService = game:GetService("DataStoreService")
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Config = require(ReplicatedStorage.Shared.Config)
+
+export type Data = {
+	luck: number,
+	boostRounds: number,
+	boostMultiplier: number,
+	wins: number,
+	receipts: { string },
+}
+
+local MAX_STORED_RECEIPTS = 50
+local store = DataStoreService:GetDataStore("MurderMysteryButVerity_v1")
+
+local PlayerData = {}
+
+local sessions: { [Player]: Data } = {}
+local passMultiplier: { [Player]: number } = {}
+
+local function key(player: Player): string
+	return "u_" .. player.UserId
+end
+
+local function defaults(): Data
+	return { luck = 0, boostRounds = 0, boostMultiplier = 1, wins = 0, receipts = {} }
+end
+
+local function sanitize(raw: any): Data
+	local data = defaults()
+	if typeof(raw) == "table" then
+		data.luck = tonumber(raw.luck) or 0
+		data.boostRounds = tonumber(raw.boostRounds) or 0
+		data.boostMultiplier = tonumber(raw.boostMultiplier) or 1
+		data.wins = tonumber(raw.wins) or 0
+		if typeof(raw.receipts) == "table" then
+			for _, id in raw.receipts do
+				if typeof(id) == "string" then
+					table.insert(data.receipts, id)
+				end
+			end
+		end
+	end
+	return data
+end
+
+local function retry<T>(fn: () -> T): (boolean, T?)
+	for attempt = 1, 3 do
+		local ok, result = pcall(fn)
+		if ok then
+			return true, result
+		end
+		warn(`[PlayerData] intento {attempt} falló: {result}`)
+		task.wait(attempt * 2)
+	end
+	return false, nil
+end
+
+local function publish(player: Player)
+	local data = sessions[player]
+	if not data then
+		return
+	end
+	player:SetAttribute("BoostRounds", data.boostRounds)
+	local leaderstats = player:FindFirstChild("leaderstats")
+	local wins = leaderstats and leaderstats:FindFirstChild("Victorias")
+	if wins and wins:IsA("IntValue") then
+		wins.Value = data.wins
+	end
+end
+
+function PlayerData.get(player: Player): Data?
+	return sessions[player]
+end
+
+function PlayerData.isLoaded(player: Player): boolean
+	return sessions[player] ~= nil
+end
+
+function PlayerData.save(player: Player): boolean
+	local data = sessions[player]
+	if not data then
+		return false
+	end
+	local ok = retry(function()
+		return store:UpdateAsync(key(player), function()
+			return data
+		end)
+	end)
+	return ok
+end
+
+function PlayerData.setPassMultiplier(player: Player, multiplier: number)
+	passMultiplier[player] = multiplier
+	PlayerData.refreshChances()
+end
+
+function PlayerData.weight(player: Player): number
+	local data = sessions[player]
+	if not data then
+		return 0
+	end
+	local weight = (1 + data.luck) * (passMultiplier[player] or 1)
+	if data.boostRounds > 0 then
+		weight *= data.boostMultiplier
+	end
+	return weight
+end
+
+-- Publica en cada jugador su probabilidad actual (0-100) como atributo.
+function PlayerData.refreshChances()
+	local total = 0
+	for player in sessions do
+		total += PlayerData.weight(player)
+	end
+	for player in sessions do
+		local chance = if total > 0 then PlayerData.weight(player) / total * 100 else 0
+		player:SetAttribute("VerityChance", math.floor(chance * 10 + 0.5) / 10)
+	end
+end
+
+function PlayerData.pickKiller(candidates: { Player }): Player?
+	local total = 0
+	for _, player in candidates do
+		total += PlayerData.weight(player)
+	end
+	if total <= 0 then
+		return candidates[math.random(1, #candidates)]
+	end
+	local roll = math.random() * total
+	for _, player in candidates do
+		roll -= PlayerData.weight(player)
+		if roll <= 0 then
+			return player
+		end
+	end
+	return candidates[#candidates]
+end
+
+-- Se llama al empezar una ronda: el elegido pierde su suerte, el resto gana,
+-- y todos los participantes consumen una ronda de poción.
+function PlayerData.applyRoundRoles(killer: Player, participants: { Player })
+	for _, player in participants do
+		local data = sessions[player]
+		if data then
+			if player == killer then
+				data.luck = 0
+			else
+				data.luck = math.min(data.luck + Config.Chance.LuckPerRound, Config.Chance.MaxLuck)
+			end
+			if data.boostRounds > 0 then
+				data.boostRounds -= 1
+				if data.boostRounds == 0 then
+					data.boostMultiplier = 1
+				end
+			end
+			publish(player)
+		end
+	end
+	PlayerData.refreshChances()
+end
+
+function PlayerData.addWin(player: Player)
+	local data = sessions[player]
+	if data then
+		data.wins += 1
+		publish(player)
+	end
+end
+
+-- Concede un producto de forma idempotente. Devuelve true solo si quedó
+-- guardado (o ya estaba concedido); si no, Roblox reintentará el recibo.
+function PlayerData.grantProduct(player: Player, receiptId: string, multiplier: number, rounds: number): boolean
+	local data = sessions[player]
+	if not data then
+		return false
+	end
+	if table.find(data.receipts, receiptId) then
+		return true
+	end
+	local before = table.clone(data)
+	before.receipts = table.clone(data.receipts)
+
+	data.boostRounds += rounds
+	data.boostMultiplier = math.max(data.boostMultiplier, multiplier)
+	table.insert(data.receipts, receiptId)
+	while #data.receipts > MAX_STORED_RECEIPTS do
+		table.remove(data.receipts, 1)
+	end
+
+	if not PlayerData.save(player) then
+		sessions[player] = before
+		return false
+	end
+	publish(player)
+	PlayerData.refreshChances()
+	return true
+end
+
+local function onPlayerAdded(player: Player)
+	local leaderstats = Instance.new("Folder")
+	leaderstats.Name = "leaderstats"
+	local wins = Instance.new("IntValue")
+	wins.Name = "Victorias"
+	wins.Parent = leaderstats
+	leaderstats.Parent = player
+
+	local ok, raw = retry(function()
+		return store:GetAsync(key(player))
+	end)
+	if not player.Parent then
+		return
+	end
+	if not ok then
+		-- Sin datos no guardamos nada para no sobrescribir el progreso real.
+		warn(`[PlayerData] no se pudieron cargar los datos de {player.Name}; sesión sin guardado`)
+	end
+	sessions[player] = sanitize(raw)
+	if not ok then
+		player:SetAttribute("DataUnsaved", true)
+	end
+	publish(player)
+	PlayerData.refreshChances()
+end
+
+local function onPlayerRemoving(player: Player)
+	if not player:GetAttribute("DataUnsaved") then
+		PlayerData.save(player)
+	end
+	sessions[player] = nil
+	passMultiplier[player] = nil
+	PlayerData.refreshChances()
+end
+
+function PlayerData.init()
+	Players.PlayerAdded:Connect(onPlayerAdded)
+	Players.PlayerRemoving:Connect(onPlayerRemoving)
+	for _, player in Players:GetPlayers() do
+		task.spawn(onPlayerAdded, player)
+	end
+	game:BindToClose(function()
+		local pending = 0
+		for player in sessions do
+			if not player:GetAttribute("DataUnsaved") then
+				pending += 1
+				task.spawn(function()
+					PlayerData.save(player)
+					pending -= 1
+				end)
+			end
+		end
+		local deadline = os.clock() + 25
+		while pending > 0 and os.clock() < deadline do
+			task.wait(0.2)
+		end
+	end)
+end
+
+return PlayerData
+]]></string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="14">
+          <Properties>
+            <string name="Name">Round</string>
+            <string name="Source"><![CDATA[--!strict
+-- Bucle principal: espera -> intermedio -> partida -> resultados.
+-- El estado se replica con atributos de Workspace:
+--   Phase, PhaseEndsAt (GetServerTimeNow), Totems, MaxTotems, SurvivorsAlive, MapName
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+
+local Config = require(ReplicatedStorage.Shared.Config)
+local Net = require(ReplicatedStorage.Shared.Net)
+local Crafting = require(script.Parent.Crafting)
+local Killer = require(script.Parent.Killer)
+local MapService = require(script.Parent.MapService)
+local PlayerData = require(script.Parent.PlayerData)
+
+local R = Config.Round
+
+local Round = {}
+
+local survivors: { [Player]: boolean } = {} -- jugador -> vivo
+local endsAt = 0
+local totems = 0
+local currentMap: Model? = nil
+
+local function now(): number
+	return Workspace:GetServerTimeNow()
+end
+
+local function setPhase(phase: string, duration: number?)
+	Workspace:SetAttribute("Phase", phase)
+	Workspace:SetAttribute("PhaseEndsAt", if duration then now() + duration else 0)
+end
+
+local function eligiblePlayers(): { Player }
+	local list = {}
+	for _, player in Players:GetPlayers() do
+		if PlayerData.isLoaded(player) and player.Character then
+			table.insert(list, player)
+		end
+	end
+	return list
+end
+
+local function aliveSurvivors(): { Player }
+	local list = {}
+	for player, alive in survivors do
+		if alive and player.Parent then
+			table.insert(list, player)
+		end
+	end
+	return list
+end
+
+local function publishAlive()
+	Workspace:SetAttribute("SurvivorsAlive", #aliveSurvivors())
+end
+
+local function notifyAll(text: string, kind: string?)
+	Net.get("Notify"):FireAllClients(text, kind or "info")
+end
+
+local function markDead(player: Player, position: Vector3?)
+	if not survivors[player] then
+		return
+	end
+	survivors[player] = false
+	player:SetAttribute("Role", "Dead")
+	if position then
+		Crafting.dropGold(player, position)
+	else
+		player:SetAttribute("Gold", 0)
+	end
+	publishAlive()
+end
+
+local function onTotem(player: Player): boolean
+	local remaining = endsAt - now()
+	if remaining <= R.MinRemainingAfterTotem then
+		return false
+	end
+	endsAt = math.max(now() + R.MinRemainingAfterTotem, endsAt - Config.Crafting.TimeReductionPerTotem)
+	totems += 1
+	Workspace:SetAttribute("PhaseEndsAt", endsAt)
+	Workspace:SetAttribute("Totems", totems)
+	notifyAll(`{player.DisplayName} crafteó un tótem: -{Config.Crafting.TimeReductionPerTotem}s`, "good")
+	return true
+end
+
+local function waitForPlayers()
+	setPhase("Waiting")
+	while #eligiblePlayers() < R.MinPlayers do
+		task.wait(1)
+	end
+end
+
+local function intermission(): boolean
+	setPhase("Intermission", R.IntermissionTime)
+	local deadline = os.clock() + R.IntermissionTime
+	while os.clock() < deadline do
+		if #eligiblePlayers() < R.MinPlayers then
+			return false
+		end
+		task.wait(0.5)
+	end
+	return true
+end
+
+local function playRound()
+	local participants = eligiblePlayers()
+	local killer = PlayerData.pickKiller(participants)
+	if not killer then
+		return
+	end
+	PlayerData.applyRoundRoles(killer, participants)
+
+	setPhase("Starting")
+	local map = MapService.load()
+	currentMap = map.model
+	MapService.setAtmosphere(true)
+	Workspace:SetAttribute("MapName", map.name)
+
+	table.clear(survivors)
+	totems = 0
+	Workspace:SetAttribute("Totems", 0)
+	Workspace:SetAttribute("MaxTotems", Config.Crafting.MaxTotemsPerRound)
+
+	local deathConnections: { RBXScriptConnection } = {}
+	local spawnIndex = 0
+	for _, player in participants do
+		player:SetAttribute("Gold", 0)
+		if player == killer then
+			player:SetAttribute("Role", "Verity")
+		else
+			player:SetAttribute("Role", "Survivor")
+			survivors[player] = true
+			local character = player.Character
+			local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+			if character and humanoid and humanoid.Health > 0 then
+				spawnIndex = spawnIndex % #map.survivorSpawns + 1
+				character:PivotTo(map.survivorSpawns[spawnIndex])
+				humanoid.WalkSpeed = Config.Killer.SurvivorWalkSpeed
+				table.insert(deathConnections, humanoid.Died:Connect(function()
+					local root = character:FindFirstChild("HumanoidRootPart")
+					markDead(player, if root and root:IsA("BasePart") then root.Position else nil)
+				end))
+			else
+				survivors[player] = false
+				player:SetAttribute("Role", "Dead")
+			end
+		end
+		Net.get("RoleReveal"):FireClient(player, player:GetAttribute("Role"), killer.DisplayName)
+	end
+	publishAlive()
+
+	Killer.setup(killer, map.killerSpawn, {
+		survivors = aliveSurvivors,
+		onKill = function(_, victim)
+			notifyAll(`{victim.DisplayName} fue atrapado por Verity`, "bad")
+		end,
+	})
+
+	-- Si Verity se reinicia o muere, pierde la ronda.
+	local killerCharacter = killer.Character
+	local killerHumanoid = killerCharacter and killerCharacter:FindFirstChildOfClass("Humanoid")
+
+	Crafting.start({
+		parent = map.model,
+		goldSpawns = map.goldSpawns,
+		tableSpots = map.tableSpots,
+		survivorCount = #aliveSurvivors(),
+		isSurvivor = function(player)
+			return survivors[player] == true
+		end,
+		onTotem = onTotem,
+		totemsCrafted = function()
+			return totems
+		end,
+	})
+
+	endsAt = now() + R.Duration
+	setPhase("Playing")
+	Workspace:SetAttribute("PhaseEndsAt", endsAt)
+	Workspace:SetAttribute("KillerReleaseAt", now() + R.KillerReleaseDelay)
+
+	local released = false
+	local winner: string
+	while true do
+		task.wait(0.25)
+		if not released and (Workspace:GetAttribute("KillerReleaseAt") :: number) <= now() then
+			released = true
+			Killer.release()
+			notifyAll("¡Verity ha sido liberada!", "bad")
+		end
+		for player, alive in survivors do
+			if alive and not player.Parent then
+				markDead(player, nil)
+			end
+		end
+		if not killer.Parent then
+			winner = "Survivors"
+			notifyAll("Verity abandonó la partida.", "info")
+			break
+		end
+		if killer.Character ~= killerCharacter or not killerHumanoid or killerHumanoid.Health <= 0 then
+			winner = "Survivors"
+			notifyAll("Verity ha caído.", "info")
+			break
+		end
+		if #aliveSurvivors() == 0 then
+			winner = "Verity"
+			break
+		end
+		if now() >= endsAt then
+			winner = "Survivors"
+			break
+		end
+	end
+
+	-- Resultados
+	local alive = aliveSurvivors()
+	local survivorNames = {}
+	if winner == "Survivors" then
+		for _, player in alive do
+			PlayerData.addWin(player)
+			table.insert(survivorNames, player.DisplayName)
+		end
+	elseif killer.Parent then
+		PlayerData.addWin(killer)
+	end
+	Net.get("RoundResult"):FireAllClients(winner, killer.DisplayName, survivorNames, totems)
+	setPhase("Results", R.ResultsTime)
+
+	for _, c in deathConnections do
+		c:Disconnect()
+	end
+	Crafting.stop()
+	Killer.cleanup()
+	task.wait(R.ResultsTime)
+
+	map.model:Destroy()
+	currentMap = nil
+	MapService.setAtmosphere(false)
+	Workspace:SetAttribute("MapName", nil)
+	Workspace:SetAttribute("KillerReleaseAt", nil)
+	table.clear(survivors)
+	for _, player in participants do
+		if player.Parent then
+			player:SetAttribute("Role", "Lobby")
+			player:SetAttribute("Gold", 0)
+			-- Devuelve a todos al lobby con su avatar normal.
+			task.spawn(function()
+				pcall(player.LoadCharacter, player)
+			end)
+		end
+	end
+end
+
+function Round.init()
+	Workspace:SetAttribute("Totems", 0)
+	Workspace:SetAttribute("MaxTotems", Config.Crafting.MaxTotemsPerRound)
+	Players.PlayerAdded:Connect(function(player)
+		player:SetAttribute("Role", "Lobby")
+		player:SetAttribute("Gold", 0)
+	end)
+	for _, player in Players:GetPlayers() do
+		player:SetAttribute("Role", "Lobby")
+	end
+end
+
+function Round.start()
+	while true do
+		waitForPlayers()
+		if intermission() then
+			local ok, err = pcall(playRound)
+			if not ok then
+				warn(`[Round] error en la ronda: {err}`)
+				Crafting.stop()
+				Killer.cleanup()
+				MapService.setAtmosphere(false)
+				if currentMap then
+					currentMap:Destroy()
+					currentMap = nil
+				end
+				for _, player in Players:GetPlayers() do
+					player:SetAttribute("Role", "Lobby")
+					task.spawn(function()
+						pcall(player.LoadCharacter, player)
+					end)
+				end
+				task.wait(3)
+			end
+		end
+	end
+end
+
+return Round
+]]></string>
+          </Properties>
+        </Item>
+      </Item>
+    </Item>
+  </Item>
+  <Item class="StarterPlayer" referent="15">
+    <Properties>
+      <string name="Name">StarterPlayer</string>
+    </Properties>
+    <Item class="StarterPlayerScripts" referent="16">
+      <Properties>
+        <string name="Name">StarterPlayerScripts</string>
+      </Properties>
+      <Item class="LocalScript" referent="17">
+        <Properties>
+          <string name="Name">Client</string>
+          <string name="Source"><![CDATA[--!strict
+-- Único LocalScript: carga los controladores en dos fases.
+
+local Controllers = script.Controllers
+
+local loaded: { any } = {}
+for _, child in Controllers:GetChildren() do
+	if child:IsA("ModuleScript") then
+		table.insert(loaded, require(child) :: any)
+	end
+end
+for _, controller in loaded do
+	if typeof(controller.init) == "function" then
+		controller.init()
+	end
+end
+for _, controller in loaded do
+	if typeof(controller.start) == "function" then
+		task.spawn(controller.start)
+	end
+end
+]]></string>
+        </Properties>
+        <Item class="Folder" referent="18">
+          <Properties>
+            <string name="Name">Controllers</string>
+          </Properties>
+          <Item class="ModuleScript" referent="19">
+            <Properties>
+              <string name="Name">HUD</string>
+              <string name="Source"><![CDATA[--!strict
+-- HUD discreto: píldora superior con fase y reloj, chip de oro, avisos
+-- pequeños, tarjeta de rol y banner de resultados.
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+
+local Config = require(ReplicatedStorage.Shared.Config)
+local Net = require(ReplicatedStorage.Shared.Net)
+local UI = require(script.Parent.Parent.Lib.UI)
+
+local player = Players.LocalPlayer
+local C = UI.Colors
+
+local HUD = {}
+
+local PHASE_TEXT = {
+	Waiting = "ESPERANDO JUGADORES",
+	Intermission = "INTERMEDIO",
+	Starting = "PREPARANDO",
+	Playing = "SOBREVIVE",
+	Results = "RESULTADOS",
+}
+
+local gui: ScreenGui
+local phaseLabel: TextLabel
+local timerLabel: TextLabel
+local infoPill: Frame
+local infoLabel: TextLabel
+local goldChip: Frame
+local goldLabel: TextLabel
+local toastList: Frame
+local roleCard: CanvasGroup
+local resultCard: CanvasGroup
+
+local function formatTime(seconds: number): string
+	seconds = math.max(0, math.ceil(seconds))
+	return string.format("%d:%02d", seconds // 60, seconds % 60)
+end
+
+local function build()
+	gui = UI.new("ScreenGui", {
+		Name = "HUD",
+		ResetOnSpawn = false,
+		ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
+		Parent = player:WaitForChild("PlayerGui"),
+	})
+
+	-- Píldora superior
+	local pill = UI.new("Frame", {
+		Name = "TopPill",
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.new(0.5, 0, 0, 8),
+		Size = UDim2.fromOffset(190, 50),
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.25,
+		Parent = gui,
+	}, { UI.corner(14), UI.stroke() })
+	phaseLabel = UI.label({
+		Size = UDim2.new(1, 0, 0, 14),
+		Position = UDim2.fromOffset(0, 6),
+		TextSize = 11,
+		FontFace = UI.FontBold,
+		TextColor3 = C.Muted,
+		Text = "",
+		Parent = pill,
+	})
+	timerLabel = UI.label({
+		Size = UDim2.new(1, 0, 0, 26),
+		Position = UDim2.fromOffset(0, 19),
+		TextSize = 24,
+		FontFace = UI.FontHeavy,
+		Text = "",
+		Parent = pill,
+	})
+
+	infoPill = UI.new("Frame", {
+		Name = "Info",
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.new(0.5, 0, 0, 62),
+		Size = UDim2.fromOffset(0, 24),
+		AutomaticSize = Enum.AutomaticSize.X,
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.4,
+		Parent = gui,
+	}, { UI.corner(12), UI.new("UIPadding", { PaddingLeft = UDim.new(0, 12), PaddingRight = UDim.new(0, 12) }) })
+	infoLabel = UI.label({
+		Size = UDim2.fromScale(0, 1),
+		AutomaticSize = Enum.AutomaticSize.X,
+		TextSize = 13,
+		RichText = true,
+		TextColor3 = C.Muted,
+		Parent = infoPill,
+	})
+
+	-- Chip de oro (solo supervivientes en partida)
+	goldChip = UI.new("Frame", {
+		Name = "Gold",
+		AnchorPoint = Vector2.new(0, 1),
+		Position = UDim2.new(0, 16, 1, -16),
+		Size = UDim2.fromOffset(118, 42),
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.25,
+		Visible = false,
+		Parent = gui,
+	}, { UI.corner(12), UI.stroke() })
+	UI.new("Frame", {
+		AnchorPoint = Vector2.new(0, 0.5),
+		Position = UDim2.new(0, 12, 0.5, 0),
+		Size = UDim2.fromOffset(18, 18),
+		Rotation = 45,
+		BackgroundColor3 = C.Gold,
+		Parent = goldChip,
+	}, {
+		UI.corner(4),
+		UI.new("UIGradient", {
+			Color = ColorSequence.new(Color3.fromRGB(255, 240, 170), Color3.fromRGB(220, 150, 20)),
+			Rotation = 90,
+		}),
+	})
+	goldLabel = UI.label({
+		Position = UDim2.fromOffset(42, 0),
+		Size = UDim2.new(1, -50, 1, 0),
+		TextXAlignment = Enum.TextXAlignment.Left,
+		FontFace = UI.FontBold,
+		TextSize = 16,
+		Parent = goldChip,
+	})
+
+	-- Avisos (esquina superior derecha, apilados)
+	toastList = UI.new("Frame", {
+		Name = "Toasts",
+		AnchorPoint = Vector2.new(1, 0),
+		Position = UDim2.new(1, -16, 0, 8),
+		Size = UDim2.fromOffset(280, 300),
+		BackgroundTransparency = 1,
+		Parent = gui,
+	}, {
+		UI.new("UIListLayout", {
+			Padding = UDim.new(0, 6),
+			HorizontalAlignment = Enum.HorizontalAlignment.Right,
+			SortOrder = Enum.SortOrder.LayoutOrder,
+		}),
+	})
+
+	-- Tarjeta de rol
+	roleCard = UI.new("CanvasGroup", {
+		Name = "RoleCard",
+		AnchorPoint = Vector2.new(0.5, 0.5),
+		Position = UDim2.fromScale(0.5, 0.4),
+		Size = UDim2.fromOffset(380, 132),
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.1,
+		GroupTransparency = 1,
+		Visible = false,
+		Parent = gui,
+	}, { UI.corner(18), UI.stroke(0.8) })
+
+	resultCard = UI.new("CanvasGroup", {
+		Name = "Result",
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.fromScale(0.5, 0.18),
+		Size = UDim2.fromOffset(420, 118),
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.1,
+		GroupTransparency = 1,
+		Visible = false,
+		Parent = gui,
+	}, { UI.corner(18), UI.stroke(0.8) })
+end
+
+local toastOrder = 0
+local TOAST_COLORS = { info = C.Muted, good = C.Good, warn = C.Warn, bad = C.Verity }
+
+local function toast(text: string, kind: string?)
+	toastOrder += 1
+	local color = TOAST_COLORS[kind or "info"] or C.Muted
+	local frame = UI.new("CanvasGroup", {
+		LayoutOrder = toastOrder,
+		Size = UDim2.fromOffset(0, 34),
+		AutomaticSize = Enum.AutomaticSize.X,
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.2,
+		GroupTransparency = 1,
+		Parent = toastList,
+	}, {
+		UI.corner(10),
+		UI.new("UIPadding", { PaddingLeft = UDim.new(0, 14), PaddingRight = UDim.new(0, 12) }),
+		UI.new("Frame", {
+			Size = UDim2.new(0, 3, 1, -14),
+			Position = UDim2.new(0, -8, 0, 7),
+			BackgroundColor3 = color,
+			BorderSizePixel = 0,
+		}, { UI.corner(2) }),
+	})
+	UI.label({
+		Size = UDim2.fromScale(0, 1),
+		AutomaticSize = Enum.AutomaticSize.X,
+		TextSize = 14,
+		Text = text,
+		Parent = frame,
+	})
+	UI.tween(frame, 0.25, { GroupTransparency = 0 })
+	-- máximo 4 avisos visibles
+	local toasts = {}
+	for _, child in toastList:GetChildren() do
+		if child:IsA("CanvasGroup") then
+			table.insert(toasts, child)
+		end
+	end
+	if #toasts > 4 then
+		table.sort(toasts, function(a, b)
+			return a.LayoutOrder < b.LayoutOrder
+		end)
+		toasts[1]:Destroy()
+	end
+	task.delay(4, function()
+		if frame.Parent then
+			UI.tween(frame, 0.4, { GroupTransparency = 1 }).Completed:Wait()
+			frame:Destroy()
+		end
+	end)
+end
+HUD.toast = toast
+
+local function showCard(card: CanvasGroup, title: string, headline: string, color: Color3, body: string, duration: number)
+	card:ClearAllChildren()
+	UI.corner(18).Parent = card
+	UI.stroke(0.5, color).Parent = card
+	UI.label({ Size = UDim2.new(1, 0, 0, 16), Position = UDim2.fromOffset(0, 14), TextSize = 12, FontFace = UI.FontBold, TextColor3 = C.Muted, Text = title, Parent = card })
+	UI.label({ Size = UDim2.new(1, 0, 0, 40), Position = UDim2.fromOffset(0, 32), TextSize = 34, FontFace = UI.FontHeavy, TextColor3 = color, Text = headline, Parent = card })
+	UI.label({ Size = UDim2.new(1, -40, 0, 36), Position = UDim2.fromOffset(20, 76), TextSize = 14, TextWrapped = true, TextColor3 = C.Text, Text = body, Parent = card })
+
+	card.Visible = true
+	card.GroupTransparency = 1
+	local scale = UI.new("UIScale", { Scale = 0.92, Parent = card })
+	UI.tween(card, 0.35, { GroupTransparency = 0 })
+	UI.tween(scale, 0.45, { Scale = 1 }, Enum.EasingStyle.Back)
+	task.delay(duration, function()
+		UI.tween(card, 0.5, { GroupTransparency = 1 }).Completed:Wait()
+		card.Visible = false
+	end)
+end
+
+local function onRoleReveal(role: string, killerName: string)
+	if role == "Verity" then
+		showCard(roleCard, "TU ROL", "ERES VERITY", C.Verity, "Atrapa a todos los supervivientes antes de que se acabe el tiempo.", 3.5)
+	elseif role == "Survivor" then
+		showCard(roleCard, "TU ROL", "SUPERVIVIENTE", C.Survivor, `Verity es {killerName}. Busca oro, craftea tótems y resiste.`, 3.5)
+	end
+end
+
+local function onRoundResult(winner: string, killerName: string, survivors: { string }, totems: number)
+	if winner == "Verity" then
+		showCard(resultCard, "FIN DE LA RONDA", "VERITY GANA", C.Verity, `{killerName} atrapó a todos. Tótems crafteados: {totems}`, Config.Round.ResultsTime - 0.5)
+	else
+		local names = if #survivors > 0 then table.concat(survivors, ", ") else "nadie"
+		if #names > 70 then
+			names = `{#survivors} supervivientes`
+		end
+		showCard(resultCard, "FIN DE LA RONDA", "SUPERVIVIENTES GANAN", C.Survivor, `Sobrevivieron: {names}. Tótems: {totems}`, Config.Round.ResultsTime - 0.5)
+	end
+end
+
+local function update()
+	local phase = (Workspace:GetAttribute("Phase") :: string?) or "Waiting"
+	local endsAt = (Workspace:GetAttribute("PhaseEndsAt") :: number?) or 0
+	local now = Workspace:GetServerTimeNow()
+	local remaining = endsAt - now
+	local role = (player:GetAttribute("Role") :: string?) or "Lobby"
+
+	phaseLabel.Text = PHASE_TEXT[phase] or phase
+	if phase == "Waiting" then
+		timerLabel.Text = `{#Players:GetPlayers()}/{Config.Round.MinPlayers}`
+	elseif endsAt > 0 then
+		timerLabel.Text = formatTime(remaining)
+	else
+		timerLabel.Text = "..."
+	end
+	local urgent = phase == "Playing" and remaining <= 10
+	timerLabel.TextColor3 = if urgent then C.Verity else C.Text
+
+	-- Línea de información contextual
+	local info = ""
+	if phase == "Waiting" or phase == "Intermission" or role == "Lobby" then
+		local chance = (player:GetAttribute("VerityChance") :: number?) or 0
+		info = `Probabilidad de Verity: <font color="#ff3b4e"><b>{chance}%</b></font>`
+		if phase == "Playing" then
+			info ..= "  ·  ronda en curso"
+		end
+	elseif phase == "Playing" then
+		local releaseAt = (Workspace:GetAttribute("KillerReleaseAt") :: number?) or 0
+		local totems = Workspace:GetAttribute("Totems") or 0
+		local maxTotems = Workspace:GetAttribute("MaxTotems") or 0
+		local alive = Workspace:GetAttribute("SurvivorsAlive") or 0
+		if releaseAt > now then
+			info = `Verity sale en <font color="#ff3b4e"><b>{math.ceil(releaseAt - now)}s</b></font>`
+		else
+			info = `Tótems <font color="#ffc83c"><b>{totems}/{maxTotems}</b></font>  ·  Vivos <b>{alive}</b>`
+		end
+	end
+	infoLabel.Text = info
+	infoPill.Visible = info ~= ""
+
+	local showGold = phase == "Playing" and role == "Survivor"
+	goldChip.Visible = showGold
+	if showGold then
+		local gold = (player:GetAttribute("Gold") :: number?) or 0
+		goldLabel.Text = `Oro {gold}/{Config.Crafting.MaxGoldCarried}`
+	end
+end
+
+function HUD.init()
+	build()
+end
+
+function HUD.start()
+	Net.get("Notify").OnClientEvent:Connect(toast)
+	Net.get("RoleReveal").OnClientEvent:Connect(onRoleReveal)
+	Net.get("RoundResult").OnClientEvent:Connect(onRoundResult)
+
+	local accumulator = 0
+	RunService.Heartbeat:Connect(function(dt)
+		accumulator += dt
+		if accumulator >= 0.1 then
+			accumulator = 0
+			update()
+		end
+	end)
+	update()
+end
+
+return HUD
+]]></string>
+            </Properties>
+          </Item>
+          <Item class="ModuleScript" referent="20">
+            <Properties>
+              <string name="Name">Shop</string>
+              <string name="Source"><![CDATA[--!strict
+-- Botón pequeño "Pases" (solo fuera de partida) y panel de compra de
+-- multiplicadores de probabilidad.
+
+local MarketplaceService = game:GetService("MarketplaceService")
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Config = require(ReplicatedStorage.Shared.Config)
+local UI = require(script.Parent.Parent.Lib.UI)
+
+local player = Players.LocalPlayer
+local C = UI.Colors
+
+local Shop = {}
+
+local gui: ScreenGui
+local openButton: TextButton
+local panel: CanvasGroup
+local chanceLabel: TextLabel
+local boostLabel: TextLabel
+local isOpen = false
+
+type Item = {
+	kind: "pass" | "product",
+	key: string,
+	id: number,
+	badge: string,
+	title: string,
+	description: string,
+}
+
+local function items(): { Item }
+	local list: { Item } = {}
+	for _, pass in Config.GamePasses do
+		table.insert(list, { kind = "pass", key = pass.Key, id = pass.Id, badge = `{pass.Multiplier}x`, title = pass.Title, description = pass.Description })
+	end
+	for _, product in Config.Products do
+		table.insert(list, { kind = "product", key = product.Key, id = product.Id, badge = `x{product.Multiplier}`, title = product.Title, description = product.Description })
+	end
+	return list
+end
+
+local function setOpen(open: boolean)
+	isOpen = open
+	if open then
+		panel.Visible = true
+		UI.tween(panel, 0.25, { GroupTransparency = 0 })
+	else
+		UI.tween(panel, 0.2, { GroupTransparency = 1 }).Completed:Connect(function()
+			if not isOpen then
+				panel.Visible = false
+			end
+		end)
+	end
+end
+
+local function buildRow(item: Item, parent: Instance, order: number)
+	local row = UI.new("Frame", {
+		LayoutOrder = order,
+		Size = UDim2.new(1, 0, 0, 64),
+		BackgroundColor3 = C.PanelLight,
+		BackgroundTransparency = 0.2,
+		Parent = parent,
+	}, { UI.corner(12) })
+
+	local badgeColor = if item.kind == "product" then Color3.fromRGB(150, 80, 255) else C.Verity
+	UI.new("TextLabel", {
+		AnchorPoint = Vector2.new(0, 0.5),
+		Position = UDim2.new(0, 10, 0.5, 0),
+		Size = UDim2.fromOffset(44, 44),
+		BackgroundColor3 = badgeColor,
+		FontFace = UI.FontHeavy,
+		TextColor3 = Color3.new(1, 1, 1),
+		TextSize = 17,
+		Text = item.badge,
+		Parent = row,
+	}, {
+		UI.corner(10),
+		UI.new("UIGradient", {
+			Transparency = NumberSequence.new(0, 0.35),
+			Rotation = 90,
+		}),
+	})
+	UI.label({ Position = UDim2.fromOffset(64, 11), Size = UDim2.new(1, -170, 0, 18), TextXAlignment = Enum.TextXAlignment.Left, FontFace = UI.FontBold, TextSize = 15, Text = item.title, Parent = row })
+	UI.label({ Position = UDim2.fromOffset(64, 30), Size = UDim2.new(1, -170, 0, 26), TextXAlignment = Enum.TextXAlignment.Left, TextYAlignment = Enum.TextYAlignment.Top, TextWrapped = true, TextSize = 12, TextColor3 = C.Muted, Text = item.description, Parent = row })
+
+	local button: TextButton = UI.new("TextButton", {
+		AnchorPoint = Vector2.new(1, 0.5),
+		Position = UDim2.new(1, -10, 0.5, 0),
+		Size = UDim2.fromOffset(90, 34),
+		BackgroundColor3 = C.Gold,
+		FontFace = UI.FontBold,
+		TextSize = 14,
+		TextColor3 = Color3.fromRGB(30, 20, 10),
+		AutoButtonColor = true,
+		Text = "...",
+		Parent = row,
+	}, { UI.corner(10) })
+
+	local function refreshOwned()
+		if item.kind == "pass" and player:GetAttribute("Pass_" .. item.key) then
+			button.Text = "Adquirido"
+			button.BackgroundColor3 = C.PanelLight
+			button.TextColor3 = C.Good
+			button.Active = false
+			button.AutoButtonColor = false
+		end
+	end
+
+	if item.id == 0 then
+		button.Text = "Pronto"
+		button.BackgroundColor3 = C.PanelLight
+		button.TextColor3 = C.Muted
+		button.AutoButtonColor = false
+		return
+	end
+
+	task.spawn(function()
+		local infoType = if item.kind == "pass" then Enum.InfoType.GamePass else Enum.InfoType.Product
+		local ok, info = pcall(MarketplaceService.GetProductInfo, MarketplaceService, item.id, infoType)
+		if button.Text == "..." then
+			button.Text = if ok and info and info.PriceInRobux then `R$ {info.PriceInRobux}` else "Comprar"
+		end
+		refreshOwned()
+	end)
+	if item.kind == "pass" then
+		player:GetAttributeChangedSignal("Pass_" .. item.key):Connect(refreshOwned)
+	end
+
+	button.Activated:Connect(function()
+		if item.kind == "pass" then
+			if not player:GetAttribute("Pass_" .. item.key) then
+				MarketplaceService:PromptGamePassPurchase(player, item.id)
+			end
+		else
+			MarketplaceService:PromptProductPurchase(player, item.id)
+		end
+	end)
+end
+
+local function build()
+	gui = UI.new("ScreenGui", {
+		Name = "Shop",
+		ResetOnSpawn = false,
+		ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
+		DisplayOrder = 5,
+		Parent = player:WaitForChild("PlayerGui"),
+	})
+
+	openButton = UI.new("TextButton", {
+		Name = "OpenShop",
+		AnchorPoint = Vector2.new(0, 0.5),
+		Position = UDim2.new(0, 14, 0.5, 0),
+		Size = UDim2.fromOffset(58, 58),
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.2,
+		Text = "",
+		AutoButtonColor = true,
+		Parent = gui,
+	}, { UI.corner(14), UI.stroke(0.6, C.Verity) })
+	UI.label({ Size = UDim2.new(1, 0, 0, 26), Position = UDim2.fromOffset(0, 8), FontFace = UI.FontHeavy, TextSize = 22, TextColor3 = C.Verity, Text = "2x", Parent = openButton })
+	UI.label({ Size = UDim2.new(1, 0, 0, 14), Position = UDim2.fromOffset(0, 35), FontFace = UI.FontBold, TextSize = 10, TextColor3 = C.Muted, Text = "PASES", Parent = openButton })
+
+	panel = UI.new("CanvasGroup", {
+		Name = "Panel",
+		AnchorPoint = Vector2.new(0.5, 0.5),
+		Position = UDim2.fromScale(0.5, 0.5),
+		Size = UDim2.fromOffset(420, 0),
+		AutomaticSize = Enum.AutomaticSize.Y,
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.05,
+		GroupTransparency = 1,
+		Visible = false,
+		Parent = gui,
+	}, {
+		UI.corner(18),
+		UI.stroke(0.8),
+		UI.padding(16),
+		UI.new("UISizeConstraint", { MaxSize = Vector2.new(420, 520) }),
+		UI.new("UIListLayout", { Padding = UDim.new(0, 8), SortOrder = Enum.SortOrder.LayoutOrder }),
+	})
+
+	local header = UI.new("Frame", { LayoutOrder = 0, Size = UDim2.new(1, 0, 0, 58), BackgroundTransparency = 1, Parent = panel })
+	UI.label({ Size = UDim2.new(1, -40, 0, 14), TextXAlignment = Enum.TextXAlignment.Left, FontFace = UI.FontBold, TextSize = 11, TextColor3 = C.Muted, Text = "PROBABILIDAD DE SER VERITY", Parent = header })
+	chanceLabel = UI.label({ Position = UDim2.fromOffset(0, 16), Size = UDim2.new(1, -40, 0, 30), TextXAlignment = Enum.TextXAlignment.Left, FontFace = UI.FontHeavy, TextSize = 28, TextColor3 = C.Verity, Text = "0%", Parent = header })
+	boostLabel = UI.label({ Position = UDim2.fromOffset(0, 44), Size = UDim2.new(1, -40, 0, 14), TextXAlignment = Enum.TextXAlignment.Left, TextSize = 12, TextColor3 = C.Muted, Text = "", Parent = header })
+	local close: TextButton = UI.new("TextButton", {
+		AnchorPoint = Vector2.new(1, 0),
+		Position = UDim2.new(1, 0, 0, 0),
+		Size = UDim2.fromOffset(30, 30),
+		BackgroundColor3 = C.PanelLight,
+		FontFace = UI.FontBold,
+		TextColor3 = C.Muted,
+		TextSize = 14,
+		Text = "X",
+		Parent = header,
+	}, { UI.corner(15) })
+	close.Activated:Connect(function()
+		setOpen(false)
+	end)
+
+	for i, item in items() do
+		buildRow(item, panel, i)
+	end
+
+	UI.label({
+		LayoutOrder = 999,
+		Size = UDim2.new(1, 0, 0, 28),
+		TextWrapped = true,
+		TextSize = 11,
+		TextColor3 = C.Muted,
+		Text = "Cada ronda que no eres Verity ganas suerte extra. Los pases multiplican tu probabilidad.",
+		Parent = panel,
+	})
+
+	openButton.Activated:Connect(function()
+		setOpen(not isOpen)
+	end)
+end
+
+local function refresh()
+	local chance = (player:GetAttribute("VerityChance") :: number?) or 0
+	chanceLabel.Text = `{chance}%`
+	local mult = (player:GetAttribute("PassMultiplier") :: number?) or 1
+	local boost = (player:GetAttribute("BoostRounds") :: number?) or 0
+	local parts = {}
+	if mult > 1 then
+		table.insert(parts, `Pase activo: {mult}x`)
+	end
+	if boost > 0 then
+		table.insert(parts, `Poción: {boost} ronda(s)`)
+	end
+	boostLabel.Text = if #parts > 0 then table.concat(parts, "  ·  ") else "Sin multiplicadores activos"
+
+	local role = player:GetAttribute("Role")
+	local inRound = role == "Survivor" or role == "Verity"
+	openButton.Visible = not inRound
+	if inRound and isOpen then
+		setOpen(false)
+	end
+end
+
+function Shop.init()
+	build()
+end
+
+function Shop.start()
+	for _, attr in { "VerityChance", "PassMultiplier", "BoostRounds", "Role" } do
+		player:GetAttributeChangedSignal(attr):Connect(refresh)
+	end
+	refresh()
+end
+
+return Shop
+]]></string>
+            </Properties>
+          </Item>
+          <Item class="ModuleScript" referent="21">
+            <Properties>
+              <string name="Name">WorldFX</string>
+              <string name="Source"><![CDATA[--!strict
+-- Efectos locales: oro girando, lámparas parpadeantes, golpes, tótems,
+-- viñeta de "radio de terror" y bloqueo de prompts para Verity.
+
+local CollectionService = game:GetService("CollectionService")
+local Players = game:GetService("Players")
+local ProximityPromptService = game:GetService("ProximityPromptService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+
+local Assets = require(ReplicatedStorage.Shared.Assets)
+local Net = require(ReplicatedStorage.Shared.Net)
+local UI = require(script.Parent.Parent.Lib.UI)
+
+local player = Players.LocalPlayer
+
+local TERROR_RADIUS = 45
+
+local WorldFX = {}
+
+local goldBlocks: { [BasePart]: CFrame } = {}
+local vignette: Frame
+
+local function playSound(id: string, position: Vector3, volume: number?)
+	local holder = Instance.new("Part")
+	holder.Anchored = true
+	holder.CanCollide = false
+	holder.CanQuery = false
+	holder.Transparency = 1
+	holder.Size = Vector3.one
+	holder.Position = position
+	holder.Parent = Workspace
+	local sound = Instance.new("Sound")
+	sound.SoundId = id
+	sound.Volume = volume or 0.8
+	sound.RollOffMaxDistance = 120
+	sound.Parent = holder
+	sound:Play()
+	game:GetService("Debris"):AddItem(holder, 4)
+	return holder
+end
+
+local function burst(position: Vector3, color: Color3, texture: string, count: number, speed: number)
+	local holder = playSound("", position, 0)
+	local emitter = Instance.new("ParticleEmitter")
+	if texture ~= "" then
+		emitter.Texture = texture
+	end
+	emitter.Color = ColorSequence.new(color)
+	emitter.LightEmission = 1
+	emitter.Size = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.8), NumberSequenceKeypoint.new(1, 0) })
+	emitter.Transparency = NumberSequence.new(0, 1)
+	emitter.Lifetime = NumberRange.new(0.35, 0.7)
+	emitter.Speed = NumberRange.new(speed * 0.5, speed)
+	emitter.SpreadAngle = Vector2.new(180, 180)
+	emitter.Rate = 0
+	emitter.Parent = holder
+	emitter:Emit(count)
+end
+
+local function shockRing(position: Vector3)
+	local ring = Instance.new("Part")
+	ring.Anchored = true
+	ring.CanCollide = false
+	ring.CanQuery = false
+	ring.Transparency = 1
+	ring.Size = Vector3.new(1, 0.05, 1)
+	ring.CFrame = CFrame.new(position)
+	ring.Parent = Workspace
+	local decal = Instance.new("Decal")
+	decal.Face = Enum.NormalId.Top
+	decal.Texture = if Assets.ShockRing ~= "" then Assets.ShockRing else Assets.GlowOrb
+	decal.Color3 = Color3.fromRGB(110, 230, 255)
+	decal.Parent = ring
+	UI.tween(ring, 0.9, { Size = Vector3.new(36, 0.05, 36) })
+	UI.tween(decal, 0.9, { Transparency = 1 })
+	game:GetService("Debris"):AddItem(ring, 1)
+end
+
+local function onEffect(kind: string, position: Vector3)
+	if kind == "Slash" then
+		playSound("rbxasset://sounds/swordslash.wav", position, 1)
+		burst(position, Color3.fromRGB(255, 40, 60), Assets.GlowOrb, 28, 14)
+	elseif kind == "Totem" then
+		playSound("rbxasset://sounds/electronicpingshort.wav", position, 1)
+		burst(position + Vector3.new(0, 4, 0), Color3.fromRGB(120, 230, 255), Assets.Sparkle, 40, 10)
+		shockRing(position + Vector3.new(0, 0.2, 0))
+	elseif kind == "Pickup" then
+		playSound("rbxasset://sounds/clickfast.wav", position, 0.6)
+		burst(position, Color3.fromRGB(255, 220, 120), Assets.Sparkle, 14, 6)
+	end
+end
+
+local function buildVignette()
+	local gui = UI.new("ScreenGui", {
+		Name = "TerrorVignette",
+		IgnoreGuiInset = true,
+		ResetOnSpawn = false,
+		DisplayOrder = -1,
+		Parent = player:WaitForChild("PlayerGui"),
+	})
+	vignette = UI.new("Frame", {
+		Size = UDim2.fromScale(1, 1),
+		BackgroundTransparency = 1,
+		Parent = gui,
+	})
+	-- dos capas con degradado: bordes rojos, centro transparente
+	for _, rotation in { 0, 90 } do
+		UI.new("Frame", {
+			Size = UDim2.fromScale(1, 1),
+			BackgroundColor3 = Color3.fromRGB(150, 0, 20),
+			BorderSizePixel = 0,
+			Parent = vignette,
+		}, {
+			UI.new("UIGradient", {
+				Rotation = rotation,
+				Transparency = NumberSequence.new({
+					NumberSequenceKeypoint.new(0, 0.2),
+					NumberSequenceKeypoint.new(0.18, 1),
+					NumberSequenceKeypoint.new(0.82, 1),
+					NumberSequenceKeypoint.new(1, 0.2),
+				}),
+			}),
+		})
+	end
+	vignette.Visible = false
+end
+
+local function killerRoot(): BasePart?
+	for _, other in Players:GetPlayers() do
+		if other ~= player and other:GetAttribute("Role") == "Verity" then
+			local character = other.Character
+			local root = character and character:FindFirstChild("HumanoidRootPart")
+			if root and root:IsA("BasePart") then
+				return root
+			end
+		end
+	end
+	return nil
+end
+
+local function updateTerror()
+	local intensity = 0
+	if player:GetAttribute("Role") == "Survivor" then
+		local character = player.Character
+		local myRoot = character and character:FindFirstChild("HumanoidRootPart")
+		local theirRoot = killerRoot()
+		if myRoot and myRoot:IsA("BasePart") and theirRoot and not theirRoot.Anchored then
+			local distance = (myRoot.Position - theirRoot.Position).Magnitude
+			intensity = math.clamp(1 - distance / TERROR_RADIUS, 0, 1)
+		end
+	end
+	vignette.Visible = intensity > 0
+	if intensity > 0 then
+		-- pulso tipo latido, más rápido cuanto más cerca
+		local beat = (math.sin(os.clock() * (4 + intensity * 6)) + 1) / 2
+		local alpha = 1 - intensity * (0.55 + beat * 0.3)
+		for _, layer in vignette:GetChildren() do
+			if layer:IsA("Frame") then
+				layer.BackgroundTransparency = alpha
+			end
+		end
+	end
+end
+
+local function trackGold(inst: Instance)
+	if inst:IsA("BasePart") then
+		goldBlocks[inst] = inst.CFrame
+	end
+end
+
+function WorldFX.init()
+	buildVignette()
+end
+
+function WorldFX.start()
+	Net.get("Effect").OnClientEvent:Connect(onEffect)
+
+	for _, inst in CollectionService:GetTagged("GoldBlock") do
+		trackGold(inst)
+	end
+	CollectionService:GetInstanceAddedSignal("GoldBlock"):Connect(trackGold)
+	CollectionService:GetInstanceRemovedSignal("GoldBlock"):Connect(function(inst)
+		goldBlocks[inst :: BasePart] = nil
+	end)
+
+	local function applyRole()
+		-- Verity no puede recoger oro ni craftear.
+		ProximityPromptService.Enabled = player:GetAttribute("Role") ~= "Verity"
+	end
+	player:GetAttributeChangedSignal("Role"):Connect(applyRole)
+	applyRole()
+
+	local flickerClock = 0
+	RunService.RenderStepped:Connect(function(dt)
+		local t = os.clock()
+		for block, base in goldBlocks do
+			if block.Parent then
+				block.CFrame = base * CFrame.new(0, math.sin(t * 2) * 0.25, 0) * CFrame.Angles(0, t * 1.5, math.rad(15))
+			else
+				goldBlocks[block] = nil
+			end
+		end
+
+		flickerClock += dt
+		if flickerClock > 0.08 then
+			flickerClock = 0
+			for _, lamp in CollectionService:GetTagged("MansionLamp") do
+				if lamp:GetAttribute("Flicker") then
+					local light = lamp:FindFirstChildOfClass("PointLight")
+					if light then
+						light.Brightness = if math.random() < 0.12 then 0.1 else 0.9
+					end
+				end
+			end
+		end
+
+		updateTerror()
+	end)
+end
+
+return WorldFX
+]]></string>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="Folder" referent="22">
+          <Properties>
+            <string name="Name">Lib</string>
+          </Properties>
+          <Item class="ModuleScript" referent="23">
+            <Properties>
+              <string name="Name">UI</string>
+              <string name="Source"><![CDATA[--!strict
+-- Ayudas mínimas para construir UI por código con un estilo consistente.
+
+local TweenService = game:GetService("TweenService")
+
+local UI = {}
+
+UI.Colors = {
+	Panel = Color3.fromRGB(16, 13, 22),
+	PanelLight = Color3.fromRGB(30, 25, 40),
+	Stroke = Color3.fromRGB(255, 255, 255),
+	Text = Color3.fromRGB(240, 236, 245),
+	Muted = Color3.fromRGB(165, 156, 178),
+	Verity = Color3.fromRGB(255, 59, 78),
+	Survivor = Color3.fromRGB(70, 220, 190),
+	Gold = Color3.fromRGB(255, 200, 60),
+	Good = Color3.fromRGB(110, 230, 160),
+	Warn = Color3.fromRGB(255, 190, 90),
+}
+
+UI.Font = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Medium)
+UI.FontBold = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold)
+UI.FontHeavy = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy)
+
+function UI.new(className: string, props: { [string]: any }, children: { Instance }?): any
+	local inst = Instance.new(className)
+	local parent = props.Parent
+	for k, v in props do
+		if k ~= "Parent" then
+			(inst :: any)[k] = v
+		end
+	end
+	if children then
+		for _, child in children do
+			child.Parent = inst
+		end
+	end
+	if parent then
+		inst.Parent = parent
+	end
+	return inst
+end
+
+function UI.corner(radius: number?): UICorner
+	return UI.new("UICorner", { CornerRadius = UDim.new(0, radius or 10) })
+end
+
+function UI.stroke(transparency: number?, color: Color3?): UIStroke
+	return UI.new("UIStroke", {
+		Color = color or UI.Colors.Stroke,
+		Transparency = transparency or 0.88,
+		Thickness = 1,
+		ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+	})
+end
+
+function UI.padding(px: number): UIPadding
+	local u = UDim.new(0, px)
+	return UI.new("UIPadding", { PaddingTop = u, PaddingBottom = u, PaddingLeft = u, PaddingRight = u })
+end
+
+function UI.label(props: { [string]: any }): TextLabel
+	local defaults = {
+		BackgroundTransparency = 1,
+		FontFace = UI.Font,
+		TextColor3 = UI.Colors.Text,
+		TextSize = 16,
+	}
+	for k, v in props do
+		defaults[k] = v
+	end
+	return UI.new("TextLabel", defaults)
+end
+
+function UI.tween(inst: Instance, time: number, goal: { [string]: any }, style: Enum.EasingStyle?): Tween
+	local tween = TweenService:Create(inst, TweenInfo.new(time, style or Enum.EasingStyle.Quint, Enum.EasingDirection.Out), goal)
+	tween:Play()
+	return tween
+end
+
+return UI
+]]></string>
+            </Properties>
+          </Item>
+        </Item>
+      </Item>
+    </Item>
+  </Item>
+</roblox>
