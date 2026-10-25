@@ -9672,196 +9672,6 @@
    "className": "Folder",
    "children": [
     {
-     "name": "bed",
-     "className": "Model",
-     "children": [
-      {
-       "name": "bed0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1317.633,
-           0.8,
-           -64.85
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         4,
-         1.6,
-         7.5
-        ],
-        "Color": [
-         0.7059,
-         0.7294,
-         0.7451
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1317.633,
-           2.0,
-           -64.85
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         3.8,
-         0.8,
-         7.3
-        ],
-        "Color": [
-         0.9216,
-         0.9412,
-         0.9412
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1317.633,
-           2.65,
-           -67.65
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         2.6,
-         0.5,
-         1.2
-        ],
-        "Color": [
-         0.9804,
-         0.9804,
-         0.9804
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1317.633,
-           2.8,
-           -61.25
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         4,
-         2.4,
-         0.3
-        ],
-        "Color": [
-         0.6667,
-         0.6902,
-         0.7059
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
      "name": "wheelchair",
      "className": "Model",
      "children": [
@@ -9873,9 +9683,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1299.283,
+           -1306.85,
            1.35,
-           -54.116
+           -70.082
           ],
           "orientation": [
            [
@@ -9919,9 +9729,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1298.283,
+           -1305.85,
            2.7,
-           -54.116
+           -70.082
           ],
           "orientation": [
            [
@@ -9965,9 +9775,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1299.283,
+           -1306.85,
            1.3,
-           -52.866
+           -68.832
           ],
           "orientation": [
            [
@@ -10012,9 +9822,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1299.283,
+           -1306.85,
            1.3,
-           -55.366
+           -71.332
           ],
           "orientation": [
            [
@@ -10065,447 +9875,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1306.232,
+           -1292.032,
            4.0,
-           -70.38
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7,
-         8,
-         0.3
-        ],
-        "Color": [
-         0.5098,
-         0.7059,
-         0.6667
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "curtain1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1306.232,
-           8.1,
-           -70.38
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7.4,
-         0.2,
-         0.4
-        ],
-        "Color": [
-         0.7059,
-         0.7294,
-         0.7451
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
-     "name": "curtain",
-     "className": "Model",
-     "children": [
-      {
-       "name": "curtain0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1316.609,
-           4.0,
-           -21.568
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7,
-         8,
-         0.3
-        ],
-        "Color": [
-         0.5098,
-         0.7059,
-         0.6667
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "curtain1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1316.609,
-           8.1,
-           -21.568
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7.4,
-         0.2,
-         0.4
-        ],
-        "Color": [
-         0.7059,
-         0.7294,
-         0.7451
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
-     "name": "curtain",
-     "className": "Model",
-     "children": [
-      {
-       "name": "curtain0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1298.919,
-           4.0,
-           -10.066
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7,
-         8,
-         0.3
-        ],
-        "Color": [
-         0.5098,
-         0.7059,
-         0.6667
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "curtain1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1298.919,
-           8.1,
-           -10.066
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7.4,
-         0.2,
-         0.4
-        ],
-        "Color": [
-         0.7059,
-         0.7294,
-         0.7451
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
-     "name": "curtain",
-     "className": "Model",
-     "children": [
-      {
-       "name": "curtain0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1312.131,
-           4.0,
-           -9.333
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7,
-         8,
-         0.3
-        ],
-        "Color": [
-         0.5098,
-         0.7059,
-         0.6667
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "curtain1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1312.131,
-           8.1,
-           -9.333
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7.4,
-         0.2,
-         0.4
-        ],
-        "Color": [
-         0.7059,
-         0.7294,
-         0.7451
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
-     "name": "wheelchair",
-     "className": "Model",
-     "children": [
-      {
-       "name": "wheelchair0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1313.343,
-           1.35,
-           31.519
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         2.2,
-         0.3,
-         2.2
-        ],
-        "Color": [
-         0.1569,
-         0.1569,
-         0.1765
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "wheelchair1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1314.343,
-           2.7,
-           31.519
+           -74.609
           ],
           "orientation": [
            [
@@ -10528,13 +9900,13 @@
         },
         "Size": [
          0.3,
-         2.4,
-         2.2
+         8,
+         7
         ],
         "Color": [
-         0.1569,
-         0.1569,
-         0.1765
+         0.5098,
+         0.7059,
+         0.6667
         ],
         "Material": "Fabric",
         "TopSurface": "Smooth",
@@ -10542,22 +9914,22 @@
        }
       },
       {
-       "name": "wheelchair2",
+       "name": "curtain1",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1313.343,
-           1.3,
-           30.269
+           -1292.032,
+           8.1,
+           -74.609
           ],
           "orientation": [
            [
+            1,
             0,
-            0,
-            1
+            0
            ],
            [
             0,
@@ -10565,74 +9937,26 @@
             0
            ],
            [
-            -1,
-            0,
-            0
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.2,
-         2.6,
-         2.6
-        ],
-        "Color": [
-         0.5882,
-         0.6078,
-         0.6471
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth",
-        "Shape": "Cylinder"
-       }
-      },
-      {
-       "name": "wheelchair3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1313.343,
-           1.3,
-           32.769
-          ],
-          "orientation": [
-           [
             0,
             0,
             1
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            -1,
-            0,
-            0
            ]
           ]
          }
         },
         "Size": [
+         0.4,
          0.2,
-         2.6,
-         2.6
+         7.4
         ],
         "Color": [
-         0.5882,
-         0.6078,
-         0.6471
+         0.7059,
+         0.7294,
+         0.7451
         ],
         "Material": "Metal",
         "TopSurface": "Smooth",
-        "BottomSurface": "Smooth",
-        "Shape": "Cylinder"
+        "BottomSurface": "Smooth"
        }
       }
      ]
@@ -10649,9 +9973,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1316.46,
+           -1297.174,
            0.5,
-           11.909
+           -17.449
           ],
           "orientation": [
            [
@@ -10695,9 +10019,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1316.46,
+           -1297.174,
            2.5,
-           11.909
+           -17.449
           ],
           "orientation": [
            [
@@ -10741,9 +10065,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1315.06,
+           -1295.774,
            1.3,
-           12.809
+           -16.549
           ],
           "orientation": [
            [
@@ -10787,9 +10111,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1317.86,
+           -1298.574,
            1.3,
-           11.009
+           -18.349
           ],
           "orientation": [
            [
@@ -10833,9 +10157,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1316.96,
+           -1297.674,
            3.0,
-           11.909
+           -17.449
           ],
           "orientation": [
            [
@@ -10874,20 +10198,20 @@
      ]
     },
     {
-     "name": "bed",
+     "name": "curtain",
      "className": "Model",
      "children": [
       {
-       "name": "bed0",
+       "name": "curtain0",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1298.197,
-           0.8,
-           34.524
+           -1312.131,
+           4.0,
+           -9.333
           ],
           "orientation": [
            [
@@ -10909,9 +10233,55 @@
          }
         },
         "Size": [
-         7.5,
-         1.6,
-         4
+         7,
+         8,
+         0.3
+        ],
+        "Color": [
+         0.5098,
+         0.7059,
+         0.6667
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "curtain1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1312.131,
+           8.1,
+           -9.333
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         7.4,
+         0.2,
+         0.4
         ],
         "Color": [
          0.7059,
@@ -10922,110 +10292,24 @@
         "TopSurface": "Smooth",
         "BottomSurface": "Smooth"
        }
-      },
+      }
+     ]
+    },
+    {
+     "name": "curtain",
+     "className": "Model",
+     "children": [
       {
-       "name": "bed1",
+       "name": "curtain0",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1298.197,
-           2.0,
-           34.524
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7.3,
-         0.8,
-         3.8
-        ],
-        "Color": [
-         0.9216,
-         0.9412,
-         0.9412
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1295.397,
-           2.65,
-           34.524
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         1.2,
-         0.5,
-         2.6
-        ],
-        "Color": [
-         0.9804,
-         0.9804,
-         0.9804
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1301.797,
-           2.8,
-           34.524
+           -1314.468,
+           4.0,
+           12.657
           ],
           "orientation": [
            [
@@ -11048,13 +10332,157 @@
         },
         "Size": [
          0.3,
-         2.4,
-         4
+         8,
+         7
         ],
         "Color": [
-         0.6667,
-         0.6902,
-         0.7059
+         0.5098,
+         0.7059,
+         0.6667
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "curtain1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1314.468,
+           8.1,
+           12.657
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.4,
+         0.2,
+         7.4
+        ],
+        "Color": [
+         0.7059,
+         0.7294,
+         0.7451
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      }
+     ]
+    },
+    {
+     "name": "curtain",
+     "className": "Model",
+     "children": [
+      {
+       "name": "curtain0",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1291.257,
+           4.0,
+           53.66
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.3,
+         8,
+         7
+        ],
+        "Color": [
+         0.5098,
+         0.7059,
+         0.6667
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "curtain1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1291.257,
+           8.1,
+           53.66
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.4,
+         0.2,
+         7.4
+        ],
+        "Color": [
+         0.7059,
+         0.7294,
+         0.7451
         ],
         "Material": "Metal",
         "TopSurface": "Smooth",
@@ -11265,9 +10693,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1274.229,
+           -1251.808,
            0.8,
-           -49.695
+           -62.803
           ],
           "orientation": [
            [
@@ -11311,9 +10739,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1274.229,
+           -1251.808,
            2.0,
-           -49.695
+           -62.803
           ],
           "orientation": [
            [
@@ -11357,9 +10785,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1274.229,
+           -1251.808,
            2.65,
-           -46.895
+           -65.603
           ],
           "orientation": [
            [
@@ -11403,9 +10831,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1274.229,
+           -1251.808,
            2.8,
-           -53.295
+           -59.203
           ],
           "orientation": [
            [
@@ -11444,20 +10872,20 @@
      ]
     },
     {
-     "name": "med_cart",
+     "name": "curtain",
      "className": "Model",
      "children": [
       {
-       "name": "med_cart0",
+       "name": "curtain0",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1266.705,
-           0.5,
-           -32.903
+           -1256.947,
+           4.0,
+           -72.599
           ],
           "orientation": [
            [
@@ -11479,31 +10907,31 @@
          }
         },
         "Size": [
-         3,
-         0.2,
-         2
+         0.3,
+         8,
+         7
         ],
         "Color": [
-         0.7451,
-         0.7686,
-         0.7843
+         0.5098,
+         0.7059,
+         0.6667
         ],
-        "Material": "Metal",
+        "Material": "Fabric",
         "TopSurface": "Smooth",
         "BottomSurface": "Smooth"
        }
       },
       {
-       "name": "med_cart1",
+       "name": "curtain1",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1266.705,
-           2.5,
-           -32.903
+           -1256.947,
+           8.1,
+           -72.599
           ],
           "orientation": [
            [
@@ -11525,154 +10953,16 @@
          }
         },
         "Size": [
-         3,
+         0.4,
          0.2,
-         2
+         7.4
         ],
         "Color": [
-         0.7451,
-         0.7686,
-         0.7843
+         0.7059,
+         0.7294,
+         0.7451
         ],
         "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "med_cart2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1268.105,
-           1.3,
-           -33.803
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.2,
-         2.6,
-         0.2
-        ],
-        "Color": [
-         0.5882,
-         0.6118,
-         0.6275
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "med_cart3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1265.305,
-           1.3,
-           -32.003
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.2,
-         2.6,
-         0.2
-        ],
-        "Color": [
-         0.5882,
-         0.6118,
-         0.6275
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "med_cart4",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1266.205,
-           3.0,
-           -32.903
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.6,
-         0.8,
-         0.6
-        ],
-        "Color": [
-         0.9412,
-         0.9412,
-         0.9412
-        ],
-        "Material": "SmoothPlastic",
         "TopSurface": "Smooth",
         "BottomSurface": "Smooth"
        }
@@ -11680,20 +10970,20 @@
      ]
     },
     {
-     "name": "med_cart",
+     "name": "bed",
      "className": "Model",
      "children": [
       {
-       "name": "med_cart0",
+       "name": "bed0",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1264.41,
-           0.5,
-           -7.257
+           -1266.23,
+           0.8,
+           -27.373
           ],
           "orientation": [
            [
@@ -11715,14 +11005,14 @@
          }
         },
         "Size": [
-         2,
-         0.2,
-         3
+         7.5,
+         1.6,
+         4
         ],
         "Color": [
-         0.7451,
-         0.7686,
-         0.7843
+         0.7059,
+         0.7294,
+         0.7451
         ],
         "Material": "Metal",
         "TopSurface": "Smooth",
@@ -11730,16 +11020,16 @@
        }
       },
       {
-       "name": "med_cart1",
+       "name": "bed1",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1264.41,
-           2.5,
-           -7.257
+           -1266.23,
+           2.0,
+           -27.373
           ],
           "orientation": [
            [
@@ -11761,154 +11051,680 @@
          }
         },
         "Size": [
-         2,
-         0.2,
-         3
-        ],
-        "Color": [
-         0.7451,
-         0.7686,
-         0.7843
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "med_cart2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1263.51,
-           1.3,
-           -8.657
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.2,
-         2.6,
-         0.2
-        ],
-        "Color": [
-         0.5882,
-         0.6118,
-         0.6275
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "med_cart3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1265.31,
-           1.3,
-           -5.857
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.2,
-         2.6,
-         0.2
-        ],
-        "Color": [
-         0.5882,
-         0.6118,
-         0.6275
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "med_cart4",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1264.41,
-           3.0,
-           -6.757
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.6,
+         7.3,
          0.8,
-         0.6
+         3.8
         ],
         "Color": [
-         0.9412,
+         0.9216,
          0.9412,
          0.9412
         ],
-        "Material": "SmoothPlastic",
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed2",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1269.03,
+           2.65,
+           -27.373
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         1.2,
+         0.5,
+         2.6
+        ],
+        "Color": [
+         0.9804,
+         0.9804,
+         0.9804
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed3",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1262.63,
+           2.8,
+           -27.373
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.3,
+         2.4,
+         4
+        ],
+        "Color": [
+         0.6667,
+         0.6902,
+         0.7059
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      }
+     ]
+    },
+    {
+     "name": "wheelchair",
+     "className": "Model",
+     "children": [
+      {
+       "name": "wheelchair0",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1276.037,
+           1.35,
+           -12.308
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         2.2,
+         0.3,
+         2.2
+        ],
+        "Color": [
+         0.1569,
+         0.1569,
+         0.1765
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "wheelchair1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1276.037,
+           2.7,
+           -13.308
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         2.2,
+         2.4,
+         0.3
+        ],
+        "Color": [
+         0.1569,
+         0.1569,
+         0.1765
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "wheelchair2",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1274.787,
+           1.3,
+           -12.308
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.2,
+         2.6,
+         2.6
+        ],
+        "Color": [
+         0.5882,
+         0.6078,
+         0.6471
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth",
+        "Shape": "Cylinder"
+       }
+      },
+      {
+       "name": "wheelchair3",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1277.287,
+           1.3,
+           -12.308
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.2,
+         2.6,
+         2.6
+        ],
+        "Color": [
+         0.5882,
+         0.6078,
+         0.6471
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth",
+        "Shape": "Cylinder"
+       }
+      }
+     ]
+    },
+    {
+     "name": "bed",
+     "className": "Model",
+     "children": [
+      {
+       "name": "bed0",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1272.859,
+           0.8,
+           34.24
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         7.5,
+         1.6,
+         4
+        ],
+        "Color": [
+         0.7059,
+         0.7294,
+         0.7451
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1272.859,
+           2.0,
+           34.24
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         7.3,
+         0.8,
+         3.8
+        ],
+        "Color": [
+         0.9216,
+         0.9412,
+         0.9412
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed2",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1270.059,
+           2.65,
+           34.24
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         1.2,
+         0.5,
+         2.6
+        ],
+        "Color": [
+         0.9804,
+         0.9804,
+         0.9804
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed3",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1276.459,
+           2.8,
+           34.24
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.3,
+         2.4,
+         4
+        ],
+        "Color": [
+         0.6667,
+         0.6902,
+         0.7059
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      }
+     ]
+    },
+    {
+     "name": "bed",
+     "className": "Model",
+     "children": [
+      {
+       "name": "bed0",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1266.624,
+           0.8,
+           7.084
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         7.5,
+         1.6,
+         4
+        ],
+        "Color": [
+         0.7059,
+         0.7294,
+         0.7451
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1266.624,
+           2.0,
+           7.084
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         7.3,
+         0.8,
+         3.8
+        ],
+        "Color": [
+         0.9216,
+         0.9412,
+         0.9412
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed2",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1269.424,
+           2.65,
+           7.084
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         1.2,
+         0.5,
+         2.6
+        ],
+        "Color": [
+         0.9804,
+         0.9804,
+         0.9804
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed3",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1263.024,
+           2.8,
+           7.084
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.3,
+         2.4,
+         4
+        ],
+        "Color": [
+         0.6667,
+         0.6902,
+         0.7059
+        ],
+        "Material": "Metal",
         "TopSurface": "Smooth",
         "BottomSurface": "Smooth"
        }
@@ -11927,9 +11743,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1274.353,
+           -1261.018,
            4.0,
-           -26.349
+           32.536
           ],
           "orientation": [
            [
@@ -11973,9 +11789,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1274.353,
+           -1261.018,
            8.1,
-           -26.349
+           32.536
           ],
           "orientation": [
            [
@@ -12014,578 +11830,6 @@
      ]
     },
     {
-     "name": "bed",
-     "className": "Model",
-     "children": [
-      {
-       "name": "bed0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1251.955,
-           0.8,
-           -24.639
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7.5,
-         1.6,
-         4
-        ],
-        "Color": [
-         0.7059,
-         0.7294,
-         0.7451
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1251.955,
-           2.0,
-           -24.639
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7.3,
-         0.8,
-         3.8
-        ],
-        "Color": [
-         0.9216,
-         0.9412,
-         0.9412
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1249.155,
-           2.65,
-           -24.639
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         1.2,
-         0.5,
-         2.6
-        ],
-        "Color": [
-         0.9804,
-         0.9804,
-         0.9804
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1255.555,
-           2.8,
-           -24.639
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.3,
-         2.4,
-         4
-        ],
-        "Color": [
-         0.6667,
-         0.6902,
-         0.7059
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
-     "name": "bed",
-     "className": "Model",
-     "children": [
-      {
-       "name": "bed0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1265.32,
-           0.8,
-           31.711
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7.5,
-         1.6,
-         4
-        ],
-        "Color": [
-         0.7059,
-         0.7294,
-         0.7451
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1265.32,
-           2.0,
-           31.711
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7.3,
-         0.8,
-         3.8
-        ],
-        "Color": [
-         0.9216,
-         0.9412,
-         0.9412
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1268.12,
-           2.65,
-           31.711
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         1.2,
-         0.5,
-         2.6
-        ],
-        "Color": [
-         0.9804,
-         0.9804,
-         0.9804
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1261.72,
-           2.8,
-           31.711
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.3,
-         2.4,
-         4
-        ],
-        "Color": [
-         0.6667,
-         0.6902,
-         0.7059
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
-     "name": "wheelchair",
-     "className": "Model",
-     "children": [
-      {
-       "name": "wheelchair0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1274.748,
-           1.35,
-           74.191
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         2.2,
-         0.3,
-         2.2
-        ],
-        "Color": [
-         0.1569,
-         0.1569,
-         0.1765
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "wheelchair1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1275.748,
-           2.7,
-           74.191
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.3,
-         2.4,
-         2.2
-        ],
-        "Color": [
-         0.1569,
-         0.1569,
-         0.1765
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "wheelchair2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1274.748,
-           1.3,
-           72.941
-          ],
-          "orientation": [
-           [
-            0,
-            0,
-            1
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            -1,
-            0,
-            0
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.2,
-         2.6,
-         2.6
-        ],
-        "Color": [
-         0.5882,
-         0.6078,
-         0.6471
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth",
-        "Shape": "Cylinder"
-       }
-      },
-      {
-       "name": "wheelchair3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1274.748,
-           1.3,
-           75.441
-          ],
-          "orientation": [
-           [
-            0,
-            0,
-            1
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            -1,
-            0,
-            0
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.2,
-         2.6,
-         2.6
-        ],
-        "Color": [
-         0.5882,
-         0.6078,
-         0.6471
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth",
-        "Shape": "Cylinder"
-       }
-      }
-     ]
-    },
-    {
      "name": "med_cart",
      "className": "Model",
      "children": [
@@ -12597,9 +11841,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1272.741,
+           -1252.289,
            0.5,
-           62.926
+           13.841
           ],
           "orientation": [
            [
@@ -12643,9 +11887,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1272.741,
+           -1252.289,
            2.5,
-           62.926
+           13.841
           ],
           "orientation": [
            [
@@ -12689,9 +11933,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1273.641,
+           -1253.189,
            1.3,
-           64.326
+           15.241
           ],
           "orientation": [
            [
@@ -12735,9 +11979,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1271.841,
+           -1251.389,
            1.3,
-           61.526
+           12.441
           ],
           "orientation": [
            [
@@ -12781,9 +12025,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1272.741,
+           -1252.289,
            3.0,
-           62.426
+           13.341
           ],
           "orientation": [
            [
@@ -12822,530 +12066,6 @@
      ]
     },
     {
-     "name": "med_cabinet",
-     "className": "Model",
-     "children": [
-      {
-       "name": "med_cabinet0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1263.809,
-           3.5,
-           71.403
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         2,
-         7,
-         4
-        ],
-        "Color": [
-         0.7843,
-         0.8235,
-         0.8039
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "med_cabinet1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1262.759,
-           5.2,
-           71.403
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.1,
-         2.4,
-         3.4
-        ],
-        "Color": [
-         0.5882,
-         0.7843,
-         0.8235
-        ],
-        "Material": "Glass",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "med_cabinet2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1262.709,
-           5.05,
-           71.403
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.05,
-         0.9,
-         0.9
-        ],
-        "Color": [
-         0.8627,
-         0.1569,
-         0.1569
-        ],
-        "Material": "SmoothPlastic",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
-     "name": "bed",
-     "className": "Model",
-     "children": [
-      {
-       "name": "bed0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1217.081,
-           0.8,
-           -76.741
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         4,
-         1.6,
-         7.5
-        ],
-        "Color": [
-         0.7059,
-         0.7294,
-         0.7451
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1217.081,
-           2.0,
-           -76.741
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         3.8,
-         0.8,
-         7.3
-        ],
-        "Color": [
-         0.9216,
-         0.9412,
-         0.9412
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1217.081,
-           2.65,
-           -73.941
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         2.6,
-         0.5,
-         1.2
-        ],
-        "Color": [
-         0.9804,
-         0.9804,
-         0.9804
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1217.081,
-           2.8,
-           -80.341
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         4,
-         2.4,
-         0.3
-        ],
-        "Color": [
-         0.6667,
-         0.6902,
-         0.7059
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
-     "name": "bed",
-     "className": "Model",
-     "children": [
-      {
-       "name": "bed0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1229.782,
-           0.8,
-           -74.252
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         4,
-         1.6,
-         7.5
-        ],
-        "Color": [
-         0.7059,
-         0.7294,
-         0.7451
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1229.782,
-           2.0,
-           -74.252
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         3.8,
-         0.8,
-         7.3
-        ],
-        "Color": [
-         0.9216,
-         0.9412,
-         0.9412
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1229.782,
-           2.65,
-           -77.052
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         2.6,
-         0.5,
-         1.2
-        ],
-        "Color": [
-         0.9804,
-         0.9804,
-         0.9804
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1229.782,
-           2.8,
-           -70.652
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         4,
-         2.4,
-         0.3
-        ],
-        "Color": [
-         0.6667,
-         0.6902,
-         0.7059
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
      "name": "wheelchair",
      "className": "Model",
      "children": [
@@ -13357,9 +12077,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1233.96,
+           -1274.956,
            1.35,
-           -63.138
+           61.202
           ],
           "orientation": [
            [
@@ -13403,9 +12123,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1232.96,
+           -1275.956,
            2.7,
-           -63.138
+           61.202
           ],
           "orientation": [
            [
@@ -13449,9 +12169,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1233.96,
+           -1274.956,
            1.3,
-           -61.888
+           59.952
           ],
           "orientation": [
            [
@@ -13496,9 +12216,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1233.96,
+           -1274.956,
            1.3,
-           -64.388
+           62.452
           ],
           "orientation": [
            [
@@ -13538,20 +12258,20 @@
      ]
     },
     {
-     "name": "med_cabinet",
+     "name": "bed",
      "className": "Model",
      "children": [
       {
-       "name": "med_cabinet0",
+       "name": "bed0",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1228.485,
-           3.5,
-           -24.959
+           -1258.069,
+           0.8,
+           53.276
           ],
           "orientation": [
            [
@@ -13573,14 +12293,14 @@
          }
         },
         "Size": [
-         2,
-         7,
-         4
+         4,
+         1.6,
+         7.5
         ],
         "Color": [
-         0.7843,
-         0.8235,
-         0.8039
+         0.7059,
+         0.7294,
+         0.7451
         ],
         "Material": "Metal",
         "TopSurface": "Smooth",
@@ -13588,16 +12308,16 @@
        }
       },
       {
-       "name": "med_cabinet1",
+       "name": "bed1",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1229.535,
-           5.2,
-           -24.959
+           -1258.069,
+           2.0,
+           53.276
           ],
           "orientation": [
            [
@@ -13619,31 +12339,31 @@
          }
         },
         "Size": [
-         0.1,
-         2.4,
-         3.4
+         3.8,
+         0.8,
+         7.3
         ],
         "Color": [
-         0.5882,
-         0.7843,
-         0.8235
+         0.9216,
+         0.9412,
+         0.9412
         ],
-        "Material": "Glass",
+        "Material": "Fabric",
         "TopSurface": "Smooth",
         "BottomSurface": "Smooth"
        }
       },
       {
-       "name": "med_cabinet2",
+       "name": "bed2",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1229.585,
-           5.05,
-           -24.959
+           -1258.069,
+           2.65,
+           50.476
           ],
           "orientation": [
            [
@@ -13665,16 +12385,540 @@
          }
         },
         "Size": [
-         0.05,
-         0.9,
-         0.9
+         2.6,
+         0.5,
+         1.2
         ],
         "Color": [
-         0.8627,
-         0.1569,
-         0.1569
+         0.9804,
+         0.9804,
+         0.9804
         ],
-        "Material": "SmoothPlastic",
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed3",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1258.069,
+           2.8,
+           56.876
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         4,
+         2.4,
+         0.3
+        ],
+        "Color": [
+         0.6667,
+         0.6902,
+         0.7059
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      }
+     ]
+    },
+    {
+     "name": "bed",
+     "className": "Model",
+     "children": [
+      {
+       "name": "bed0",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1210.076,
+           0.8,
+           -75.012
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         7.5,
+         1.6,
+         4
+        ],
+        "Color": [
+         0.7059,
+         0.7294,
+         0.7451
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1210.076,
+           2.0,
+           -75.012
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         7.3,
+         0.8,
+         3.8
+        ],
+        "Color": [
+         0.9216,
+         0.9412,
+         0.9412
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed2",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1212.876,
+           2.65,
+           -75.012
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         1.2,
+         0.5,
+         2.6
+        ],
+        "Color": [
+         0.9804,
+         0.9804,
+         0.9804
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed3",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1206.476,
+           2.8,
+           -75.012
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.3,
+         2.4,
+         4
+        ],
+        "Color": [
+         0.6667,
+         0.6902,
+         0.7059
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      }
+     ]
+    },
+    {
+     "name": "bed",
+     "className": "Model",
+     "children": [
+      {
+       "name": "bed0",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1229.686,
+           0.8,
+           -69.444
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         7.5,
+         1.6,
+         4
+        ],
+        "Color": [
+         0.7059,
+         0.7294,
+         0.7451
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1229.686,
+           2.0,
+           -69.444
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         7.3,
+         0.8,
+         3.8
+        ],
+        "Color": [
+         0.9216,
+         0.9412,
+         0.9412
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed2",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1232.486,
+           2.65,
+           -69.444
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         1.2,
+         0.5,
+         2.6
+        ],
+        "Color": [
+         0.9804,
+         0.9804,
+         0.9804
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "bed3",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1226.086,
+           2.8,
+           -69.444
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.3,
+         2.4,
+         4
+        ],
+        "Color": [
+         0.6667,
+         0.6902,
+         0.7059
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      }
+     ]
+    },
+    {
+     "name": "curtain",
+     "className": "Model",
+     "children": [
+      {
+       "name": "curtain0",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1227.293,
+           4.0,
+           -12.9
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.3,
+         8,
+         7
+        ],
+        "Color": [
+         0.5098,
+         0.7059,
+         0.6667
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "curtain1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1227.293,
+           8.1,
+           -12.9
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.4,
+         0.2,
+         7.4
+        ],
+        "Color": [
+         0.7059,
+         0.7294,
+         0.7451
+        ],
+        "Material": "Metal",
         "TopSurface": "Smooth",
         "BottomSurface": "Smooth"
        }
@@ -13693,9 +12937,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1208.288,
+           -1234.092,
            3.5,
-           -23.143
+           -28.485
           ],
           "orientation": [
            [
@@ -13717,9 +12961,9 @@
          }
         },
         "Size": [
-         2,
+         4,
          7,
-         4
+         2
         ],
         "Color": [
          0.7843,
@@ -13739,9 +12983,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1207.238,
+           -1234.092,
            5.2,
-           -23.143
+           -27.435
           ],
           "orientation": [
            [
@@ -13763,9 +13007,9 @@
          }
         },
         "Size": [
-         0.1,
+         3.4,
          2.4,
-         3.4
+         0.1
         ],
         "Color": [
          0.5882,
@@ -13785,9 +13029,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1207.188,
+           -1234.092,
            5.05,
-           -23.143
+           -27.385
           ],
           "orientation": [
            [
@@ -13809,9 +13053,9 @@
          }
         },
         "Size": [
-         0.05,
          0.9,
-         0.9
+         0.9,
+         0.05
         ],
         "Color": [
          0.8627,
@@ -13970,6 +13214,434 @@
      ]
     },
     {
+     "name": "wheelchair",
+     "className": "Model",
+     "children": [
+      {
+       "name": "wheelchair0",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1212.411,
+           1.35,
+           74.378
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         2.2,
+         0.3,
+         2.2
+        ],
+        "Color": [
+         0.1569,
+         0.1569,
+         0.1765
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "wheelchair1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1212.411,
+           2.7,
+           75.378
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         2.2,
+         2.4,
+         0.3
+        ],
+        "Color": [
+         0.1569,
+         0.1569,
+         0.1765
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "wheelchair2",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1213.661,
+           1.3,
+           74.378
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.2,
+         2.6,
+         2.6
+        ],
+        "Color": [
+         0.5882,
+         0.6078,
+         0.6471
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth",
+        "Shape": "Cylinder"
+       }
+      },
+      {
+       "name": "wheelchair3",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1211.161,
+           1.3,
+           74.378
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.2,
+         2.6,
+         2.6
+        ],
+        "Color": [
+         0.5882,
+         0.6078,
+         0.6471
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth",
+        "Shape": "Cylinder"
+       }
+      }
+     ]
+    },
+    {
+     "name": "med_cart",
+     "className": "Model",
+     "children": [
+      {
+       "name": "med_cart0",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1228.915,
+           0.5,
+           70.775
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         3,
+         0.2,
+         2
+        ],
+        "Color": [
+         0.7451,
+         0.7686,
+         0.7843
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "med_cart1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1228.915,
+           2.5,
+           70.775
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         3,
+         0.2,
+         2
+        ],
+        "Color": [
+         0.7451,
+         0.7686,
+         0.7843
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "med_cart2",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1230.315,
+           1.3,
+           69.875
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.2,
+         2.6,
+         0.2
+        ],
+        "Color": [
+         0.5882,
+         0.6118,
+         0.6275
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "med_cart3",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1227.515,
+           1.3,
+           71.675
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.2,
+         2.6,
+         0.2
+        ],
+        "Color": [
+         0.5882,
+         0.6118,
+         0.6275
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "med_cart4",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1228.415,
+           3.0,
+           70.775
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.6,
+         0.8,
+         0.6
+        ],
+        "Color": [
+         0.9412,
+         0.9412,
+         0.9412
+        ],
+        "Material": "SmoothPlastic",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      }
+     ]
+    },
+    {
      "name": "curtain",
      "className": "Model",
      "children": [
@@ -13981,9 +13653,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1221.602,
+           -1207.835,
            4.0,
-           31.197
+           59.924
           ],
           "orientation": [
            [
@@ -14027,9 +13699,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1221.602,
+           -1207.835,
            8.1,
-           31.197
+           59.924
           ],
           "orientation": [
            [
@@ -14068,576 +13740,6 @@
      ]
     },
     {
-     "name": "bed",
-     "className": "Model",
-     "children": [
-      {
-       "name": "bed0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1209.622,
-           0.8,
-           26.025
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         4,
-         1.6,
-         7.5
-        ],
-        "Color": [
-         0.7059,
-         0.7294,
-         0.7451
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1209.622,
-           2.0,
-           26.025
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         3.8,
-         0.8,
-         7.3
-        ],
-        "Color": [
-         0.9216,
-         0.9412,
-         0.9412
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1209.622,
-           2.65,
-           28.825
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         2.6,
-         0.5,
-         1.2
-        ],
-        "Color": [
-         0.9804,
-         0.9804,
-         0.9804
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1209.622,
-           2.8,
-           22.425
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         4,
-         2.4,
-         0.3
-        ],
-        "Color": [
-         0.6667,
-         0.6902,
-         0.7059
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
-     "name": "bed",
-     "className": "Model",
-     "children": [
-      {
-       "name": "bed0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1208.77,
-           0.8,
-           71.228
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         4,
-         1.6,
-         7.5
-        ],
-        "Color": [
-         0.7059,
-         0.7294,
-         0.7451
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1208.77,
-           2.0,
-           71.228
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         3.8,
-         0.8,
-         7.3
-        ],
-        "Color": [
-         0.9216,
-         0.9412,
-         0.9412
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1208.77,
-           2.65,
-           68.428
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         2.6,
-         0.5,
-         1.2
-        ],
-        "Color": [
-         0.9804,
-         0.9804,
-         0.9804
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1208.77,
-           2.8,
-           74.828
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         4,
-         2.4,
-         0.3
-        ],
-        "Color": [
-         0.6667,
-         0.6902,
-         0.7059
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
-     "name": "bed",
-     "className": "Model",
-     "children": [
-      {
-       "name": "bed0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1230.146,
-           0.8,
-           56.425
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7.5,
-         1.6,
-         4
-        ],
-        "Color": [
-         0.7059,
-         0.7294,
-         0.7451
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1230.146,
-           2.0,
-           56.425
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         7.3,
-         0.8,
-         3.8
-        ],
-        "Color": [
-         0.9216,
-         0.9412,
-         0.9412
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1227.346,
-           2.65,
-           56.425
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         1.2,
-         0.5,
-         2.6
-        ],
-        "Color": [
-         0.9804,
-         0.9804,
-         0.9804
-        ],
-        "Material": "Fabric",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "bed3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1233.746,
-           2.8,
-           56.425
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.3,
-         2.4,
-         4
-        ],
-        "Color": [
-         0.6667,
-         0.6902,
-         0.7059
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
      "name": "med_cart",
      "className": "Model",
      "children": [
@@ -14649,245 +13751,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1216.888,
+           -1234.685,
            0.5,
-           53.521
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         2,
-         0.2,
-         3
-        ],
-        "Color": [
-         0.7451,
-         0.7686,
-         0.7843
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "med_cart1",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1216.888,
-           2.5,
-           53.521
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         2,
-         0.2,
-         3
-        ],
-        "Color": [
-         0.7451,
-         0.7686,
-         0.7843
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "med_cart2",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1217.788,
-           1.3,
-           54.921
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.2,
-         2.6,
-         0.2
-        ],
-        "Color": [
-         0.5882,
-         0.6118,
-         0.6275
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "med_cart3",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1215.988,
-           1.3,
-           52.121
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.2,
-         2.6,
-         0.2
-        ],
-        "Color": [
-         0.5882,
-         0.6118,
-         0.6275
-        ],
-        "Material": "Metal",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      },
-      {
-       "name": "med_cart4",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1216.888,
-           3.0,
-           53.021
-          ],
-          "orientation": [
-           [
-            1,
-            0,
-            0
-           ],
-           [
-            0,
-            1,
-            0
-           ],
-           [
-            0,
-            0,
-            1
-           ]
-          ]
-         }
-        },
-        "Size": [
-         0.6,
-         0.8,
-         0.6
-        ],
-        "Color": [
-         0.9412,
-         0.9412,
-         0.9412
-        ],
-        "Material": "SmoothPlastic",
-        "TopSurface": "Smooth",
-        "BottomSurface": "Smooth"
-       }
-      }
-     ]
-    },
-    {
-     "name": "med_cart",
-     "className": "Model",
-     "children": [
-      {
-       "name": "med_cart0",
-       "className": "Part",
-       "properties": {
-        "Anchored": true,
-        "CFrame": {
-         "CFrame": {
-          "position": [
-           -1229.209,
-           0.5,
-           76.946
+           58.854
           ],
           "orientation": [
            [
@@ -14931,9 +13797,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1229.209,
+           -1234.685,
            2.5,
-           76.946
+           58.854
           ],
           "orientation": [
            [
@@ -14977,9 +13843,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1227.809,
+           -1233.285,
            1.3,
-           77.846
+           59.754
           ],
           "orientation": [
            [
@@ -15023,9 +13889,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1230.609,
+           -1236.085,
            1.3,
-           76.046
+           57.954
           ],
           "orientation": [
            [
@@ -15069,9 +13935,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1229.709,
+           -1235.185,
            3.0,
-           76.946
+           58.854
           ],
           "orientation": [
            [
@@ -15121,9 +13987,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1167.516,
+           -1172.042,
            0.5,
-           -70.284
+           -71.895
           ],
           "orientation": [
            [
@@ -15167,9 +14033,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1167.516,
+           -1172.042,
            2.5,
-           -70.284
+           -71.895
           ],
           "orientation": [
            [
@@ -15213,9 +14079,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1166.616,
+           -1172.942,
            1.3,
-           -71.684
+           -70.495
           ],
           "orientation": [
            [
@@ -15259,9 +14125,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1168.416,
+           -1171.142,
            1.3,
-           -68.884
+           -73.295
           ],
           "orientation": [
            [
@@ -15305,9 +14171,9 @@
         "CFrame": {
          "CFrame": {
           "position": [
-           -1167.516,
+           -1172.042,
            3.0,
-           -69.784
+           -72.395
           ],
           "orientation": [
            [
@@ -15346,20 +14212,20 @@
      ]
     },
     {
-     "name": "bed",
+     "name": "med_cart",
      "className": "Model",
      "children": [
       {
-       "name": "bed0",
+       "name": "med_cart0",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1168.736,
-           0.8,
-           -60.959
+           -1187.209,
+           0.5,
+           -49.054
           ],
           "orientation": [
            [
@@ -15381,14 +14247,14 @@
          }
         },
         "Size": [
-         7.5,
-         1.6,
-         4
+         3,
+         0.2,
+         2
         ],
         "Color": [
-         0.7059,
-         0.7294,
-         0.7451
+         0.7451,
+         0.7686,
+         0.7843
         ],
         "Material": "Metal",
         "TopSurface": "Smooth",
@@ -15396,16 +14262,16 @@
        }
       },
       {
-       "name": "bed1",
+       "name": "med_cart1",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1168.736,
-           2.0,
-           -60.959
+           -1187.209,
+           2.5,
+           -49.054
           ],
           "orientation": [
            [
@@ -15427,31 +14293,175 @@
          }
         },
         "Size": [
-         7.3,
-         0.8,
-         3.8
+         3,
+         0.2,
+         2
         ],
         "Color": [
-         0.9216,
+         0.7451,
+         0.7686,
+         0.7843
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "med_cart2",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1185.809,
+           1.3,
+           -48.154
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.2,
+         2.6,
+         0.2
+        ],
+        "Color": [
+         0.5882,
+         0.6118,
+         0.6275
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "med_cart3",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1188.609,
+           1.3,
+           -49.954
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.2,
+         2.6,
+         0.2
+        ],
+        "Color": [
+         0.5882,
+         0.6118,
+         0.6275
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "med_cart4",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1187.709,
+           3.0,
+           -49.054
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.6,
+         0.8,
+         0.6
+        ],
+        "Color": [
+         0.9412,
          0.9412,
          0.9412
         ],
-        "Material": "Fabric",
+        "Material": "SmoothPlastic",
         "TopSurface": "Smooth",
         "BottomSurface": "Smooth"
        }
-      },
+      }
+     ]
+    },
+    {
+     "name": "med_cabinet",
+     "className": "Model",
+     "children": [
       {
-       "name": "bed2",
+       "name": "med_cabinet0",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1165.936,
-           2.65,
-           -60.959
+           -1171.284,
+           3.5,
+           -56.281
           ],
           "orientation": [
            [
@@ -15473,31 +14483,31 @@
          }
         },
         "Size": [
-         1.2,
-         0.5,
-         2.6
+         4,
+         7,
+         2
         ],
         "Color": [
-         0.9804,
-         0.9804,
-         0.9804
+         0.7843,
+         0.8235,
+         0.8039
         ],
-        "Material": "Fabric",
+        "Material": "Metal",
         "TopSurface": "Smooth",
         "BottomSurface": "Smooth"
        }
       },
       {
-       "name": "bed3",
+       "name": "med_cabinet1",
        "className": "Part",
        "properties": {
         "Anchored": true,
         "CFrame": {
          "CFrame": {
           "position": [
-           -1172.336,
-           2.8,
-           -60.959
+           -1171.284,
+           5.2,
+           -57.331
           ],
           "orientation": [
            [
@@ -15519,14 +14529,302 @@
          }
         },
         "Size": [
-         0.3,
+         3.4,
          2.4,
-         4
+         0.1
         ],
         "Color": [
-         0.6667,
-         0.6902,
-         0.7059
+         0.5882,
+         0.7843,
+         0.8235
+        ],
+        "Material": "Glass",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "med_cabinet2",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1171.284,
+           5.05,
+           -57.381
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.9,
+         0.9,
+         0.05
+        ],
+        "Color": [
+         0.8627,
+         0.1569,
+         0.1569
+        ],
+        "Material": "SmoothPlastic",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      }
+     ]
+    },
+    {
+     "name": "med_cabinet",
+     "className": "Model",
+     "children": [
+      {
+       "name": "med_cabinet0",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1186.284,
+           3.5,
+           -60.218
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         4,
+         7,
+         2
+        ],
+        "Color": [
+         0.7843,
+         0.8235,
+         0.8039
+        ],
+        "Material": "Metal",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "med_cabinet1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1186.284,
+           5.2,
+           -59.168
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         3.4,
+         2.4,
+         0.1
+        ],
+        "Color": [
+         0.5882,
+         0.7843,
+         0.8235
+        ],
+        "Material": "Glass",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "med_cabinet2",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1186.284,
+           5.05,
+           -59.118
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         0.9,
+         0.9,
+         0.05
+        ],
+        "Color": [
+         0.8627,
+         0.1569,
+         0.1569
+        ],
+        "Material": "SmoothPlastic",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      }
+     ]
+    },
+    {
+     "name": "curtain",
+     "className": "Model",
+     "children": [
+      {
+       "name": "curtain0",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1176.959,
+           4.0,
+           -49.164
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         7,
+         8,
+         0.3
+        ],
+        "Color": [
+         0.5098,
+         0.7059,
+         0.6667
+        ],
+        "Material": "Fabric",
+        "TopSurface": "Smooth",
+        "BottomSurface": "Smooth"
+       }
+      },
+      {
+       "name": "curtain1",
+       "className": "Part",
+       "properties": {
+        "Anchored": true,
+        "CFrame": {
+         "CFrame": {
+          "position": [
+           -1176.959,
+           8.1,
+           -49.164
+          ],
+          "orientation": [
+           [
+            1,
+            0,
+            0
+           ],
+           [
+            0,
+            1,
+            0
+           ],
+           [
+            0,
+            0,
+            1
+           ]
+          ]
+         }
+        },
+        "Size": [
+         7.4,
+         0.2,
+         0.4
+        ],
+        "Color": [
+         0.7059,
+         0.7294,
+         0.7451
         ],
         "Material": "Metal",
         "TopSurface": "Smooth",
@@ -20323,6 +19621,74 @@
         "position": [
          -1305.0,
          21.6,
+         -63.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       2.4,
+       0.6,
+       2.4
+      ],
+      "Color": [
+       0.7451,
+       0.9216,
+       1.0
+      ],
+      "Material": "Neon",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "Tags": [
+       "MansionLamp"
+      ]
+     },
+     "attributes": {
+      "Flicker": true
+     },
+     "children": [
+      {
+       "className": "PointLight",
+       "properties": {
+        "Color": [
+         0.7451,
+         0.9216,
+         1.0
+        ],
+        "Range": 30,
+        "Brightness": 0.96,
+        "Shadows": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Lamp",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1305.0,
+         21.6,
          -21.0
         ],
         "orientation": [
@@ -20374,8 +19740,76 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
+        "Shadows": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Lamp",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1305.0,
+         21.6,
+         21.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       2.4,
+       0.6,
+       2.4
+      ],
+      "Color": [
+       0.7451,
+       0.9216,
+       1.0
+      ],
+      "Material": "Neon",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "Tags": [
+       "MansionLamp"
+      ]
+     },
+     "attributes": {
+      "Flicker": false
+     },
+     "children": [
+      {
+       "className": "PointLight",
+       "properties": {
+        "Color": [
+         0.7451,
+         0.9216,
+         1.0
+        ],
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -20431,7 +19865,7 @@
       ]
      },
      "attributes": {
-      "Flicker": true
+      "Flicker": false
      },
      "children": [
       {
@@ -20442,8 +19876,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -20499,7 +19933,7 @@
       ]
      },
      "attributes": {
-      "Flicker": false
+      "Flicker": true
      },
      "children": [
       {
@@ -20510,8 +19944,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -20578,76 +20012,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
-        "Shadows": true
-       }
-      }
-     ]
-    },
-    {
-     "name": "Lamp",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         -1263.0,
-         21.6,
-         21.0
-        ],
-        "orientation": [
-         [
-          1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       2.4,
-       0.6,
-       2.4
-      ],
-      "Color": [
-       0.7451,
-       0.9216,
-       1.0
-      ],
-      "Material": "Neon",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "Tags": [
-       "MansionLamp"
-      ]
-     },
-     "attributes": {
-      "Flicker": true
-     },
-     "children": [
-      {
-       "className": "PointLight",
-       "properties": {
-        "Color": [
-         0.7451,
-         0.9216,
-         1.0
-        ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -20703,7 +20069,7 @@
       ]
      },
      "attributes": {
-      "Flicker": false
+      "Flicker": true
      },
      "children": [
       {
@@ -20714,8 +20080,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -20771,7 +20137,7 @@
       ]
      },
      "attributes": {
-      "Flicker": true
+      "Flicker": false
      },
      "children": [
       {
@@ -20782,8 +20148,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -20839,7 +20205,7 @@
       ]
      },
      "attributes": {
-      "Flicker": true
+      "Flicker": false
      },
      "children": [
       {
@@ -20850,8 +20216,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -20907,7 +20273,7 @@
       ]
      },
      "attributes": {
-      "Flicker": true
+      "Flicker": false
      },
      "children": [
       {
@@ -20918,8 +20284,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -20986,8 +20352,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -21054,8 +20420,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -21122,8 +20488,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -21190,8 +20556,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -21258,8 +20624,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -21326,8 +20692,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -21394,8 +20760,76 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
+        "Shadows": true
+       }
+      }
+     ]
+    },
+    {
+     "name": "Lamp",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -1137.0,
+         21.6,
+         63.0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       2.4,
+       0.6,
+       2.4
+      ],
+      "Color": [
+       0.7451,
+       0.9216,
+       1.0
+      ],
+      "Material": "Neon",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "Tags": [
+       "MansionLamp"
+      ]
+     },
+     "attributes": {
+      "Flicker": false
+     },
+     "children": [
+      {
+       "className": "PointLight",
+       "properties": {
+        "Color": [
+         0.7451,
+         0.9216,
+         1.0
+        ],
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -21462,8 +20896,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -21530,8 +20964,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -21598,8 +21032,8 @@
          0.9216,
          1.0
         ],
-        "Range": 24,
-        "Brightness": 0.5599999999999999,
+        "Range": 30,
+        "Brightness": 0.96,
         "Shadows": true
        }
       }
@@ -26557,9 +25991,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1257.654,
+         -1258.18,
          0.5,
-         12.376
+         19.408
         ],
         "orientation": [
          [
@@ -26607,9 +26041,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1300.18,
+         -1297.435,
          0.5,
-         19.408
+         21.91
         ],
         "orientation": [
          [
@@ -26907,9 +26341,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1292.872,
+         -1299.375,
          0.5,
-         -29.126
+         -6.141
         ],
         "orientation": [
          [
@@ -27207,9 +26641,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1181.222,
+         -1163.69,
          0.5,
-         -57.751
+         -63.022
         ],
         "orientation": [
          [
@@ -27257,9 +26691,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1224.638,
+         -1214.549,
          0.5,
-         51.38
+         63.444
         ],
         "orientation": [
          [
@@ -27307,9 +26741,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1235.447,
+         -1205.983,
          0.5,
-         25.374
+         25.961
         ],
         "orientation": [
          [
@@ -27357,9 +26791,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1269.535,
+         -1265.222,
          0.5,
-         -22.73
+         -15.751
         ],
         "orientation": [
          [
@@ -27463,9 +26897,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1298.218,
+         -1311.564,
          0.5,
-         -65.771
+         -74.857
         ],
         "orientation": [
          [
@@ -27513,9 +26947,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1308.464,
+         -1320.872,
          0.5,
-         -55.687
+         -76.039
         ],
         "orientation": [
          [
@@ -27563,9 +26997,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1289.659,
+         -1306.461,
          0.5,
-         -28.771
+         -12.573
         ],
         "orientation": [
          [
@@ -27613,9 +27047,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1300.994,
+         -1319.447,
          0.5,
-         -26.996
+         -16.626
         ],
         "orientation": [
          [
@@ -27663,9 +27097,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1291.04,
+         -1317.438,
          0.5,
-         16.277
+         21.331
         ],
         "orientation": [
          [
@@ -27713,9 +27147,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1320.884,
+         -1311.535,
          0.5,
-         15.894
+         19.27
         ],
         "orientation": [
          [
@@ -27763,9 +27197,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1315.659,
+         -1298.218,
          0.5,
-         58.067
+         60.229
         ],
         "orientation": [
          [
@@ -27813,9 +27247,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1314.18,
+         -1317.293,
          0.5,
-         47.811
+         58.166
         ],
         "orientation": [
          [
@@ -27863,9 +27297,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1253.3,
+         -1256.542,
          0.5,
-         -73.448
+         -52.282
         ],
         "orientation": [
          [
@@ -27913,9 +27347,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1260.658,
+         -1247.659,
          0.5,
-         -61.266
+         -70.771
         ],
         "orientation": [
          [
@@ -27963,9 +27397,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1251.816,
+         -1258.994,
          0.5,
-         -9.898
+         -26.996
         ],
         "orientation": [
          [
@@ -28013,9 +27447,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1259.107,
+         -1256.541,
          0.5,
-         -31.595
+         -9.922
         ],
         "orientation": [
          [
@@ -28063,9 +27497,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1254.653,
+         -1274.677,
          0.5,
-         8.12
+         16.04
         ],
         "orientation": [
          [
@@ -28113,9 +27547,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1249.286,
+         -1270.082,
          0.5,
-         14.868
+         30.07
         ],
         "orientation": [
          [
@@ -28163,9 +27597,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1270.911,
+         -1278.884,
          0.5,
-         53.931
+         57.894
         ],
         "orientation": [
          [
@@ -28213,9 +27647,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1251.643,
+         -1272.18,
          0.5,
-         70.874
+         47.811
         ],
         "orientation": [
          [
@@ -28263,9 +27697,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1213.662,
+         -1218.658,
          0.5,
-         -71.189
+         -61.266
         ],
         "orientation": [
          [
@@ -28313,9 +27747,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1226.722,
+         -1209.816,
          0.5,
-         -69.265
+         -51.898
         ],
         "orientation": [
          [
@@ -28363,9 +27797,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1223.133,
+         -1217.107,
          0.5,
-         -9.017
+         -31.595
         ],
         "orientation": [
          [
@@ -28413,9 +27847,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1205.129,
+         -1212.653,
          0.5,
-         -34.32
+         -33.88
         ],
         "orientation": [
          [
@@ -28463,9 +27897,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1206.134,
+         -1207.286,
          0.5,
-         34.388
+         14.868
         ],
         "orientation": [
          [
@@ -28513,9 +27947,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1211.896,
+         -1228.911,
          0.5,
-         10.98
+         11.931
         ],
         "orientation": [
          [
@@ -28563,9 +27997,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1217.293,
+         -1213.662,
          0.5,
-         78.414
+         54.811
         ],
         "orientation": [
          [
@@ -28613,9 +28047,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1234.288,
+         -1226.722,
          0.5,
-         69.869
+         56.735
         ],
         "orientation": [
          [
@@ -28663,9 +28097,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1179.431,
+         -1163.129,
          0.5,
-         -49.905
+         -76.32
         ],
         "orientation": [
          [
@@ -28713,9 +28147,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1189.66,
+         -1164.134,
          0.5,
-         -61.439
+         -49.612
         ],
         "orientation": [
          [
@@ -28763,9 +28197,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1171.878,
+         -1180.251,
          0.5,
-         -36.003
+         -14.83
         ],
         "orientation": [
          [
@@ -28813,9 +28247,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1185.093,
+         -1169.896,
          0.5,
-         -32.47
+         -31.02
         ],
         "orientation": [
          [
@@ -28863,9 +28297,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1192.995,
+         -1175.293,
          0.5,
-         35.428
+         36.414
         ],
         "orientation": [
          [
@@ -28913,9 +28347,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1164.112,
+         -1166.828,
          0.5,
-         19.102
+         34.171
         ],
         "orientation": [
          [
@@ -28963,9 +28397,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1176.627,
+         -1189.66,
          0.5,
-         58.631
+         64.561
         ],
         "orientation": [
          [
@@ -29013,9 +28447,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1175.603,
+         -1171.878,
          0.5,
-         59.749
+         47.997
         ],
         "orientation": [
          [
@@ -29063,9 +28497,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1138.897,
+         -1143.093,
          0.5,
-         -55.008
+         -74.47
         ],
         "orientation": [
          [
@@ -29113,9 +28547,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1147.033,
+         -1132.665,
          0.5,
-         -69.455
+         -58.841
         ],
         "orientation": [
          [
@@ -29163,9 +28597,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1150.798,
+         -1150.995,
          0.5,
-         -7.83
+         -6.572
         ],
         "orientation": [
          [
@@ -29213,9 +28647,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1147.896,
+         -1122.112,
          0.5,
-         -23.846
+         -22.898
         ],
         "orientation": [
          [
@@ -29263,9 +28697,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1142.968,
+         -1134.627,
          0.5,
-         13.374
+         16.631
         ],
         "orientation": [
          [
@@ -29313,9 +28747,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1141.722,
+         -1133.603,
          0.5,
-         22.195
+         17.749
         ],
         "orientation": [
          [
@@ -29363,9 +28797,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1149.286,
+         -1138.897,
          0.5,
-         64.064
+         70.992
         ],
         "orientation": [
          [
@@ -29413,9 +28847,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1151.366,
+         -1147.033,
          0.5,
-         49.525
+         56.545
         ],
         "orientation": [
          [
@@ -29463,9 +28897,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1104.531,
+         -1086.563,
          0.5,
-         -71.311
+         -71.801
         ],
         "orientation": [
          [
@@ -29513,9 +28947,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1089.052,
+         -1108.798,
          0.5,
-         -68.908
+         -49.83
         ],
         "orientation": [
          [
@@ -29563,9 +28997,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1091.292,
+         -1105.896,
          0.5,
-         -13.146
+         -23.846
         ],
         "orientation": [
          [
@@ -29613,9 +29047,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1093.901,
+         -1100.968,
          0.5,
-         -12.919
+         -28.626
         ],
         "orientation": [
          [
@@ -29663,9 +29097,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1090.751,
+         -1099.722,
          0.5,
-         34.693
+         22.195
         ],
         "orientation": [
          [
@@ -29713,9 +29147,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1079.741,
+         -1107.286,
          0.5,
-         21.899
+         22.064
         ],
         "orientation": [
          [
@@ -29763,9 +29197,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1082.032,
+         -1109.366,
          0.5,
-         50.03
+         49.525
         ],
         "orientation": [
          [
@@ -29813,9 +29247,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -1087.847,
+         -1104.531,
          0.5,
-         55.492
+         54.689
         ],
         "orientation": [
          [

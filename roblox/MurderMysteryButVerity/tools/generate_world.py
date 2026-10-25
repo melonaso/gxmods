@@ -599,10 +599,10 @@ def build_map(name, t, origin):
 
     for cx, cz in centers:
         # habitaciones más oscuras; algunas sin luz para esconderse
-        if rng.random() > 0.18:
+        if rng.random() > 0.06:
             lamp = part("Lamp", (cx, h - 0.4, cz), (2.4, 0.6, 2.4), t["lamp"], "Neon", CanCollide=False,
                         Tags=["MansionLamp"], attributes={"Flicker": rng.random() < 0.45},
-                        children=[point_light(t["lamp"], 24, t["lamp_brightness"] * 0.7, True)])
+                        children=[point_light(t["lamp"], 30, t["lamp_brightness"] * 1.2, True)])
             lights.append(lamp)
         if t["rug"] and rng.random() < 0.7:
             decor.append(part("Rug", (cx, 0.05, cz), (rng.choice([12, 14, 16]), 0.1, rng.choice([10, 12])), rng.choice(t["rug"]), "Fabric", CanCollide=False))
@@ -1009,8 +1009,11 @@ def build_obby(top):
     # inicio
     parts.append(part("ObbyStart", (44, top + 0.5, 40), (6, 1, 6), (80, 220, 120), "Neon",
                       attributes={"ObbyStart": True}))
-    parts.append(part("ObbySign", (40.6, top + 6, 40), (0.6, 4, 8), (20, 14, 20), "SmoothPlastic",
-                      children=[surface_text("Right", "OBBY\n<font size=\"30\">premio al final</font>", 40)]))
+    # cartel sobre dos postes junto a la salida, mirando a la plaza (-Z)
+    for px in (40, 48):
+        parts.append(part("ObbySignPost", (px, top + 4, 47), (0.5, 8, 0.5), (40, 30, 26), "Wood"))
+    parts.append(part("ObbySign", (44, top + 7, 46.6), (10, 4, 0.5), (20, 14, 20), "SmoothPlastic",
+                      children=[surface_text("Front", "OBBY\n<font color=\"#ffc83c\">premio al final</font>", 40)]))
     # plataformas: (x, z, altura, tamaño)
     steps = [
         (52, 40, 1.5, 4), (57, 34, 3, 4), (63, 29, 4.5, 3.5), (68, 23, 6, 3.5), (63, 17, 7.5, 3),

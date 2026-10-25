@@ -21,7 +21,7 @@ Config.Testing = {
 	Enabled = true,
 	Bots = 6,
 	IntermissionTime = 23,
-	StartingCoins = 1500, -- para probar la tienda sin farmear
+	StartingCoins = 0, -- todos empiezan sin monedas
 }
 
 -- Modelo de Verity. Orden de prioridad al arrancar el servidor:
@@ -86,8 +86,8 @@ Config.Coins = {
 	PickupRadius = 4.5,
 	VerityPickupRadius = 8, -- Verity es enorme
 	MagnetMultiplier = 3,
-	RewardWin = 25,
-	RewardSurvive = 15,
+	RewardWin = 100, -- al ganar, sea Verity o superviviente
+	RewardSurvive = 0,
 	RewardKill = 6,
 	ObbyReward = 15,
 	ObbyCooldown = 120,
@@ -113,13 +113,13 @@ Config.Items = {
 -- Skins de Verity: tinte (Highlight) y aura opcional sobre el modelo.
 Config.Skins = {
 	{ Key = "Classic", Title = "Clásica", Price = 0, Tint = Color3.fromRGB(214, 194, 92), Amount = 0, Description = "La Verity de siempre." },
-	{ Key = "Pale", Title = "Pálida", Price = 300, Tint = Color3.fromRGB(235, 230, 215), Amount = 0.55, Description = "Piel blanca como la cera." },
-	{ Key = "Shadow", Title = "Sombra", Price = 600, Tint = Color3.fromRGB(12, 8, 18), Amount = 0.8, Outline = Color3.fromRGB(255, 40, 60), Description = "Negra como la noche, contorno rojo." },
-	{ Key = "Bloody", Title = "Sangrienta", Price = 800, Tint = Color3.fromRGB(150, 8, 18), Amount = 0.6, Aura = Color3.fromRGB(160, 0, 12), Description = "Gotea sangre al caminar." },
-	{ Key = "Toxic", Title = "Tóxica", Price = 900, Tint = Color3.fromRGB(90, 255, 90), Amount = 0.5, Aura = Color3.fromRGB(90, 255, 90), Description = "Brillo radiactivo verde." },
-	{ Key = "Golden", Title = "Dorada", Price = 1200, Tint = Color3.fromRGB(255, 200, 50), Amount = 0.6, Aura = Color3.fromRGB(255, 220, 120), Description = "Reluce como el oro." },
-	{ Key = "Spectral", Title = "Espectral", Price = 1500, Tint = Color3.fromRGB(120, 220, 255), Amount = 0.45, Outline = Color3.fromRGB(180, 240, 255), Ghost = true, Description = "Semitransparente, como un fantasma." },
-	{ Key = "Void", Title = "Vacío", Price = 2500, Tint = Color3.fromRGB(40, 0, 70), Amount = 0.75, Outline = Color3.fromRGB(190, 90, 255), Aura = Color3.fromRGB(150, 60, 255), Description = "Morada, con un aura del más allá." },
+	{ Key = "Pale", Title = "Pálida", Price = 1000, Tint = Color3.fromRGB(235, 230, 215), Amount = 0.55, Description = "Piel blanca como la cera." },
+	{ Key = "Shadow", Title = "Sombra", Price = 1500, Tint = Color3.fromRGB(12, 8, 18), Amount = 0.8, Outline = Color3.fromRGB(255, 40, 60), Description = "Negra como la noche, contorno rojo." },
+	{ Key = "Bloody", Title = "Sangrienta", Price = 2000, Tint = Color3.fromRGB(150, 8, 18), Amount = 0.6, Aura = Color3.fromRGB(160, 0, 12), Description = "Gotea sangre al caminar." },
+	{ Key = "Toxic", Title = "Tóxica", Price = 2500, Tint = Color3.fromRGB(90, 255, 90), Amount = 0.5, Aura = Color3.fromRGB(90, 255, 90), Description = "Brillo radiactivo verde." },
+	{ Key = "Golden", Title = "Dorada", Price = 3500, Tint = Color3.fromRGB(255, 200, 50), Amount = 0.6, Aura = Color3.fromRGB(255, 220, 120), Description = "Reluce como el oro." },
+	{ Key = "Spectral", Title = "Espectral", Price = 4500, Tint = Color3.fromRGB(120, 220, 255), Amount = 0.45, Outline = Color3.fromRGB(180, 240, 255), Ghost = true, Description = "Semitransparente, como un fantasma." },
+	{ Key = "Void", Title = "Vacío", Price = 6000, Tint = Color3.fromRGB(40, 0, 70), Amount = 0.75, Outline = Color3.fromRGB(190, 90, 255), Aura = Color3.fromRGB(150, 60, 255), Description = "Morada, con un aura del más allá." },
 }
 
 -- Música (licenciada para uso en experiencias: DistroKid / APM oficiales).
@@ -129,7 +129,7 @@ Config.Music = {
 	Round = { 138890398994853, 135768960171473, 98165789328752 }, -- Horror Cinematic Ambience, Creepy Scary, Beneath the Dread Moon
 	Outdoor = { 1846999567, 138890398994853 }, -- Creepy Night (APM), Horror Cinematic Ambience
 	Results = { 9041745502 }, -- 80s Horror Throwback Scary Creeper Bed (APM)
-	Chase = 1846862303, -- Horror Race (APM): suena cuando Verity está cerca de alguien
+	Chase = 1848090337, -- Intense Chase (APM): suena cuando Verity está cerca de alguien
 	Drone = 9043360237, -- METALLIC DRONE 03 (APM): capa ambiental durante la ronda
 	DeathScream = 9043345732, -- HORROR SCREAM 07 (APM): al ser agarrado; la explosión lo corta
 	Volume = 0.35,

@@ -6665,16 +6665,16 @@
      }
     },
     {
-     "name": "ObbySign",
+     "name": "ObbySignPost",
      "className": "Part",
      "properties": {
       "Anchored": true,
       "CFrame": {
        "CFrame": {
         "position": [
-         40.6,
-         307,
-         40
+         40,
+         305,
+         47
         ],
         "orientation": [
          [
@@ -6696,9 +6696,101 @@
        }
       },
       "Size": [
-       0.6,
+       0.5,
+       8,
+       0.5
+      ],
+      "Color": [
+       0.1569,
+       0.1176,
+       0.102
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "ObbySignPost",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         48,
+         305,
+         47
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.5,
+       8,
+       0.5
+      ],
+      "Color": [
+       0.1569,
+       0.1176,
+       0.102
+      ],
+      "Material": "Wood",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth"
+     }
+    },
+    {
+     "name": "ObbySign",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         44,
+         308,
+         46.6
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       10,
        4,
-       8
+       0.5
       ],
       "Color": [
        0.0784,
@@ -6713,7 +6805,7 @@
       {
        "className": "SurfaceGui",
        "properties": {
-        "Face": "Right",
+        "Face": "Front",
         "SizingMode": "PixelsPerStud",
         "PixelsPerStud": 40
        },
@@ -6742,7 +6834,7 @@
            1,
            1
           ],
-          "Text": "OBBY\n<font size=\"30\">premio al final</font>"
+          "Text": "OBBY\n<font color=\"#ffc83c\">premio al final</font>"
          }
         }
        ]

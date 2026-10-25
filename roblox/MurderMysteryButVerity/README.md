@@ -27,7 +27,7 @@ Sin importar nada, el juego intenta `InsertService:LoadAsset` (solo funciona si 
 `Config.Testing.Enabled = true` en [`src/shared/Config.luau`](src/shared/Config.luau):
 - Basta **1 jugador**. El primer jugador del servidor es **Verity en todas las rondas**.
 - **6 NPCs** hacen de supervivientes: huyen de Verity, se esconden en armarios, recogen oro, lo depositan y craftean tótems.
-- Empiezas con 1500 monedas para probar la tienda.
+- Todos empiezan con 0 monedas.
 
 Ponlo en `false` antes de publicar.
 
@@ -50,7 +50,7 @@ Ponlo en `false` antes de publicar.
 
 ## Monedas y tienda
 - **Monedas** repartidas por cada mapa (45). Se recogen con solo acercarse; Verity tiene más alcance. Máximo 40 por ronda.
-- **Premios:** atrapar +6, ganar +25, sobrevivir +15, completar el obby del lobby +15 (cada 2 min).
+- **Premios:** **ganar la ronda +100** (seas Verity o superviviente), atrapar +6, completar el obby del lobby +15 (cada 2 min).
 - **Tienda** en el mostrador del lobby (o con el botón "Tienda"). Se pueden **equipar 4 objetos**, que aparecen en la mochila en el lobby y en las rondas:
 
 | Objeto | Precio | Efecto |
@@ -67,7 +67,7 @@ Ponlo en `false` antes de publicar.
 | Imán de monedas | 300 | Triple de alcance para recoger monedas |
 | Martillo de empuje | 400 | Empuja a quien tengas delante |
 
-- **Skins de Verity:** Clásica (gratis), Pálida, Sombra, Sangrienta, Tóxica, Dorada, Espectral y Vacío. Se aplican como tinte, contorno y aura sobre cualquier modelo.
+- **Skins de Verity:** Clásica (gratis), Pálida (1000), Sombra (1500), Sangrienta (2000), Tóxica (2500), Dorada (3500), Espectral (4500) y Vacío (6000). Se aplican como tinte, contorno y aura sobre cualquier modelo.
 - **Pases (Robux):** 2x/3x de probabilidad de ser Verity y la Poción de Verity. Pon los IDs en `Config.luau`.
 
 ## Mapas y lobby
@@ -93,7 +93,7 @@ Roblox no tiene crujidos de huesos públicos y ForgeGUI necesita un plan de pago
 Mientras sea `0`, el juego usa un sustituto con sonidos internos de Roblox.
 
 ## Música y efectos
-- Música ambiente de terror de **DistroKid Official** y **APM Official** (licenciadas para experiencias de Roblox), distinta en lobby, interiores, exteriores y resultados, más un zumbido de fondo y una **capa de persecución** que sube cuando Verity está cerca de alguien. Se puede silenciar con el botón ♪.
+- Música ambiente de terror de **DistroKid Official** y **APM Official** (licenciadas para experiencias de Roblox), distinta en lobby, interiores, exteriores y resultados, más un zumbido de fondo y una **capa de persecución** (*Intense Chase*, APM) que sube cuando Verity está cerca de alguien. Se puede silenciar con el botón ♪.
 - Grito de muerte: *HORROR SCREAM 07* (APM).
 - Texturas de VFX generadas con **ForgeGUI**: destello, orbe, onda, salpicadura de líquido y gota (sangre).
 
