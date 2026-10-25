@@ -124,7 +124,13 @@ local function think(bot: Model, ctx: Context)
 
 	local function threatened(): boolean
 		local killer = ctx.killerRoot()
-		return killer ~= nil and ctx.killerReleased() and (killer.Position - root.Position).Magnitude < FLEE_RADIUS
+		if not killer or not ctx.killerReleased() then
+			return false
+		end
+		-- con la Capa fantasma solo la notan si está muy cerca
+		local invisible = killer.Parent ~= nil and (killer.Parent :: Instance):GetAttribute("Invisible") == true
+		local radius = if invisible then 10 else FLEE_RADIUS
+		return (killer.Position - root.Position).Magnitude < radius
 	end
 
 	while running and bot.Parent and ctx.isAlive(bot) and humanoid.Health > 0 do

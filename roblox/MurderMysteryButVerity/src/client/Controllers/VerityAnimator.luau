@@ -3,8 +3,9 @@
 --   - caminar / correr: zancadas largas, brazos colgando que se balancean
 --   - agacharse (C): rodillas flexionadas que coinciden con la bajada de cadera
 --   - ataque (Q): sigue la misma línea de tiempo que usa el servidor
--- No hay AnimationTracks: todo es procedural, así que no hace falta subir
--- animaciones a Roblox.
+-- Funciona con cualquier rig (R15, R6 o personalizado): busca las uniones por
+-- nombre y aplica las rotaciones en el marco del torso, así que no importa
+-- cómo estén orientadas las uniones del modelo. No hay AnimationTracks.
 
 local CollectionService = game:GetService("CollectionService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -13,10 +14,30 @@ local Workspace = game:GetService("Workspace")
 
 local Pose = require(ReplicatedStorage.Shared.VerityPose)
 
+local JOINTS: { [string]: { string } } = {
+	Waist = { "Waist" },
+	Neck = { "Neck" },
+	HeadJoint = { "HeadJoint" },
+	LeftShoulder = { "LeftShoulder", "Left Shoulder" },
+	RightShoulder = { "RightShoulder", "Right Shoulder" },
+	LeftElbow = { "LeftElbow" },
+	RightElbow = { "RightElbow" },
+	LeftWrist = { "LeftWrist" },
+	RightWrist = { "RightWrist" },
+	LeftHip = { "LeftHip", "Left Hip" },
+	RightHip = { "RightHip", "Right Hip" },
+	LeftKnee = { "LeftKnee" },
+	RightKnee = { "RightKnee" },
+	LeftAnkle = { "LeftAnkle" },
+	RightAnkle = { "RightAnkle" },
+}
+
+type Joint = { motor: Motor6D, frame: CFrame } -- frame = rotación de C0
 type Rig = {
 	model: Model,
 	root: BasePart,
-	motors: { [string]: Motor6D },
+	joints: { [string]: Joint },
+	crouchAngle: number,
 	phase: number,
 	crouch: number, -- 0..1 suavizado
 	stride: number, -- 0..1 suavizado según la velocidad
@@ -34,19 +55,26 @@ local function track(model: Instance)
 	if not (root and root:IsA("BasePart")) then
 		return
 	end
-	local motors = {}
+	local joints: { [string]: Joint } = {}
 	for _, inst in model:GetDescendants() do
 		if inst:IsA("Motor6D") then
-			motors[inst.Name] = inst
+			for key, names in JOINTS do
+				if not joints[key] and table.find(names, inst.Name) then
+					joints[key] = { motor = inst, frame = inst.C0.Rotation }
+				end
+			end
 		end
 	end
-	rigs[model] = { model = model, root = root, motors = motors, phase = 0, crouch = 0, stride = 0 }
+	local data = Pose.read(model)
+	rigs[model] = { model = model, root = root, joints = joints, crouchAngle = data.crouchAngle, phase = 0, crouch = 0, stride = 0 }
 end
 
-local function set(rig: Rig, name: string, cf: CFrame)
-	local motor = rig.motors[name]
-	if motor then
-		motor.Transform = cf
+-- Aplica una rotación expresada en el marco del modelo (X = derecha,
+-- ángulo positivo = hacia delante) a la unión, sea cual sea su C0.
+local function set(rig: Rig, name: string, rotation: CFrame)
+	local joint = rig.joints[name]
+	if joint then
+		joint.motor.Transform = joint.frame:Inverse() * rotation * joint.frame
 	end
 end
 
@@ -90,7 +118,8 @@ local function animate(rig: Rig, dt: number)
 	local c = math.cos(rig.phase)
 	local stride = rig.stride
 	local crouch = rig.crouch
-	local theta = Pose.CrouchAngle * crouch
+	local hasKnees = rig.joints.LeftKnee ~= nil
+	local theta = rig.crouchAngle * crouch
 
 	-- piernas
 	local swing = s * 0.55 * stride * (1 - crouch * 0.5)
@@ -98,17 +127,19 @@ local function animate(rig: Rig, dt: number)
 	local liftR = math.max(0, -c) * 0.9 * stride
 	set(rig, "LeftHip", rx(theta + swing))
 	set(rig, "RightHip", rx(theta - swing))
-	set(rig, "LeftKnee", rx(-2 * theta - liftL))
-	set(rig, "RightKnee", rx(-2 * theta - liftR))
-	set(rig, "LeftAnkle", rx(theta + liftL * 0.4))
-	set(rig, "RightAnkle", rx(theta + liftR * 0.4))
+	if hasKnees then
+		set(rig, "LeftKnee", rx(-2 * theta - liftL))
+		set(rig, "RightKnee", rx(-2 * theta - liftR))
+		set(rig, "LeftAnkle", rx(theta + liftL * 0.4))
+		set(rig, "RightAnkle", rx(theta + liftR * 0.4))
+	end
 
 	-- torso: se inclina al correr y al agacharse; respiración en reposo
 	local breathe = math.sin(clock * 1.6) * 0.02 * (1 - stride)
 	local lean = -0.12 * stride - 0.35 * crouch
 	set(rig, "Waist", rx(lean + breathe) * CFrame.Angles(0, s * 0.08 * stride, 0))
 
-	-- brazos colgantes, desfasados de las piernas y con retraso
+	-- brazos colgantes, desfasados de las piernas
 	local armSwing = -s * 0.5 * stride
 	local dangle = math.sin(clock * 1.3) * 0.05
 	set(rig, "LeftShoulder", rx(-armSwing + dangle + 0.25 * crouch) * CFrame.Angles(0, 0, -0.06))
@@ -120,8 +151,8 @@ local function animate(rig: Rig, dt: number)
 
 	-- cabeza: compensa la inclinación y hace un ladeo inquietante en reposo
 	local tilt = math.sin(clock * 0.7) * 0.18 * (1 - stride)
-	set(rig, "Neck", rx(-lean * 0.7 + c * 0.04 * stride))
-	set(rig, "HeadJoint", CFrame.Angles(0, math.sin(clock * 0.45) * 0.15, tilt))
+	set(rig, "Neck", rx(-lean * 0.7 + c * 0.04 * stride) * CFrame.Angles(0, math.sin(clock * 0.45) * 0.15, tilt))
+	set(rig, "HeadJoint", CFrame.identity)
 end
 
 function VerityAnimator.start()
@@ -136,7 +167,9 @@ function VerityAnimator.start()
 	RunService.Stepped:Connect(function(_, dt)
 		for model, rig in rigs do
 			if model.Parent and rig.root.Parent then
-				animate(rig, dt)
+				if not rig.root.Anchored or model:GetAttribute("KillStart") then
+					animate(rig, dt)
+				end
 			else
 				rigs[model] = nil
 			end

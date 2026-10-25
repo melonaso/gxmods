@@ -10,7 +10,6 @@ local RunService = game:GetService("RunService")
 
 local Config = require(ReplicatedStorage.Shared.Config)
 local Net = require(ReplicatedStorage.Shared.Net)
-local Pose = require(ReplicatedStorage.Shared.VerityPose)
 local Killer = require(script.Parent.Killer)
 
 local M = Config.Movement
@@ -21,6 +20,7 @@ type State = {
 	crouch: boolean,
 	stamina: number,
 	lastDrain: number,
+	energizedUntil: number,
 	actions: number,
 	window: number,
 }
@@ -32,7 +32,7 @@ local states: { [Player]: State } = {}
 local function state(player: Player): State
 	local s = states[player]
 	if not s then
-		s = { sprint = false, crouch = false, stamina = M.StaminaMax, lastDrain = 0, actions = 0, window = os.clock() }
+		s = { sprint = false, crouch = false, stamina = M.StaminaMax, lastDrain = 0, energizedUntil = 0, actions = 0, window = os.clock() }
 		states[player] = s
 	end
 	return s
@@ -71,6 +71,9 @@ local function update(dt: number)
 		local s = state(player)
 		local role = player:GetAttribute("Role")
 		local moving = humanoid.MoveDirection.Magnitude > 0.1
+		-- bobinas de velocidad (las pone Items en el personaje)
+		local mult = (character:GetAttribute("SpeedMult") :: number?) or 1
+		local energized = clock < s.energizedUntil
 
 		if role == "Verity" then
 			local busy = Killer.isKilling()
@@ -79,27 +82,34 @@ local function update(dt: number)
 				humanoid.WalkSpeed = 0
 			else
 				local speed = if s.crouch then M.VerityCrouch elseif s.sprint then M.VeritySprint else M.VerityWalk
-				humanoid.WalkSpeed = speed
-				humanoid.HipHeight = if s.crouch then Pose.HipHeight - Pose.CrouchDrop else Pose.HipHeight
+				humanoid.WalkSpeed = speed * mult
+				local stand = (character:GetAttribute("HipHeightStand") :: number?) or humanoid.HipHeight
+				local drop = (character:GetAttribute("CrouchDrop") :: number?) or 0
+				humanoid.HipHeight = if s.crouch then stand - drop else stand
 			end
 			if character:GetAttribute("Crouching") ~= s.crouch then
 				character:SetAttribute("Crouching", s.crouch)
 			end
 		elseif role == "Survivor" then
+			if energized then
+				s.stamina = M.StaminaMax
+			end
 			if s.sprint and moving and s.stamina > 0 then
-				s.stamina = math.max(0, s.stamina - M.StaminaDrain * dt)
+				if not energized then
+					s.stamina = math.max(0, s.stamina - M.StaminaDrain * dt)
+				end
 				s.lastDrain = clock
-				humanoid.WalkSpeed = M.SurvivorSprint
+				humanoid.WalkSpeed = M.SurvivorSprint * mult
 			else
 				if clock - s.lastDrain > M.StaminaRegenDelay then
 					s.stamina = math.min(M.StaminaMax, s.stamina + M.StaminaRegen * dt)
 				end
-				humanoid.WalkSpeed = M.SurvivorWalk
+				humanoid.WalkSpeed = M.SurvivorWalk * mult
 			end
 		else
 			-- lobby: correr libre
 			s.stamina = M.StaminaMax
-			humanoid.WalkSpeed = if s.sprint then M.SurvivorSprint else M.SurvivorWalk
+			humanoid.WalkSpeed = (if s.sprint then M.SurvivorSprint else M.SurvivorWalk) * mult
 		end
 
 		local shown = player:GetAttribute("Stamina") :: number?
@@ -116,6 +126,13 @@ function Movement.reset(player: Player)
 	s.stamina = M.StaminaMax
 	s.crouch = false
 	s.sprint = false
+end
+
+-- Bebida energética: estamina llena e infinita durante `seconds`.
+function Movement.energize(player: Player, seconds: number)
+	local s = state(player)
+	s.stamina = M.StaminaMax
+	s.energizedUntil = os.clock() + seconds
 end
 
 function Movement.init()

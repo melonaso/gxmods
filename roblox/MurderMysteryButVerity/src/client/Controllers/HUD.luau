@@ -10,6 +10,7 @@ local Workspace = game:GetService("Workspace")
 local Config = require(ReplicatedStorage.Shared.Config)
 local Net = require(ReplicatedStorage.Shared.Net)
 local UI = require(script.Parent.Parent.Lib.UI)
+local Music = require(script.Parent.Music)
 
 local player = Players.LocalPlayer
 local C = UI.Colors
@@ -33,6 +34,8 @@ local goldChip: Frame
 local goldLabel: TextLabel
 local controls: Frame
 local controlsLabel: TextLabel
+local coinChip: Frame
+local coinLabel: TextLabel
 local staminaBar: Frame
 local staminaFill: Frame
 local toastList: Frame
@@ -132,6 +135,53 @@ local function build()
 		TextSize = 16,
 		Parent = goldChip,
 	})
+
+	-- Monedas de la ronda (abajo a la izquierda, encima del oro)
+	coinChip = UI.new("Frame", {
+		Name = "RoundCoins",
+		AnchorPoint = Vector2.new(0, 1),
+		Position = UDim2.new(0, 16, 1, -66),
+		Size = UDim2.fromOffset(118, 34),
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.3,
+		Visible = false,
+		Parent = gui,
+	}, { UI.corner(12) })
+	UI.new("Frame", {
+		AnchorPoint = Vector2.new(0, 0.5),
+		Position = UDim2.new(0, 12, 0.5, 0),
+		Size = UDim2.fromOffset(16, 16),
+		BackgroundColor3 = Color3.fromRGB(255, 196, 40),
+		Parent = coinChip,
+	}, { UI.corner(8), UI.stroke(0.4, Color3.fromRGB(150, 100, 10)) })
+	coinLabel = UI.label({
+		Position = UDim2.fromOffset(36, 0),
+		Size = UDim2.new(1, -44, 1, 0),
+		TextXAlignment = Enum.TextXAlignment.Left,
+		FontFace = UI.FontBold,
+		TextSize = 14,
+		Parent = coinChip,
+	})
+
+	-- Botón de música (debajo del de la tienda)
+	local musicButton: TextButton = UI.new("TextButton", {
+		Name = "Music",
+		AnchorPoint = Vector2.new(0, 0.5),
+		Position = UDim2.new(0, 14, 0.5, 40),
+		Size = UDim2.fromOffset(34, 26),
+		BackgroundColor3 = C.Panel,
+		BackgroundTransparency = 0.3,
+		FontFace = UI.FontBold,
+		TextSize = 14,
+		TextColor3 = C.Text,
+		Text = "♪",
+		Parent = gui,
+	}, { UI.corner(8) })
+	musicButton.Activated:Connect(function()
+		Music.setEnabled(not Music.isEnabled())
+		musicButton.TextColor3 = if Music.isEnabled() then C.Text else C.Muted
+		musicButton.BackgroundTransparency = if Music.isEnabled() then 0.3 else 0.6
+	end)
 
 	-- Controles y estamina (abajo al centro, discretos)
 	controls = UI.new("Frame", {
@@ -363,6 +413,12 @@ local function update()
 	staminaBar.Visible = inRound and role == "Survivor" and stamina < Config.Movement.StaminaMax
 	staminaFill.Size = UDim2.fromScale(stamina / Config.Movement.StaminaMax, 1)
 	staminaFill.BackgroundColor3 = if stamina < 25 then C.Warn else C.Survivor
+
+	coinChip.Visible = phase == "Playing" and (role == "Survivor" or role == "Verity")
+	if coinChip.Visible then
+		local got = (player:GetAttribute("RoundCoins") :: number?) or 0
+		coinLabel.Text = `{got}/{Config.Coins.MaxPerRound}`
+	end
 
 	local showGold = phase == "Playing" and role == "Survivor"
 	goldChip.Visible = showGold

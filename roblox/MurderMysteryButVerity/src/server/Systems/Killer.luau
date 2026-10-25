@@ -1,6 +1,6 @@
 --!strict
--- Verity: transforma al asesino en la criatura (ServerStorage.VerityCharacter)
--- y resuelve el ataque de la tecla Q: agarra a la víctima, la levanta sobre
+-- Verity: transforma al asesino en la criatura (modelo preparado por
+-- VerityModel, con la skin equipada) y resuelve el ataque de la tecla Q: agarra a la víctima, la levanta sobre
 -- la cabeza y la aplasta contra el suelo, que la hace volar en pedazos.
 -- La animación la reproducen los clientes con VerityPose; el servidor usa la
 -- misma línea de tiempo para mover a la víctima entre las manos.
@@ -9,7 +9,6 @@ local Debris = game:GetService("Debris")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
-local ServerStorage = game:GetService("ServerStorage")
 local TweenService = game:GetService("TweenService")
 local Workspace = game:GetService("Workspace")
 
@@ -18,7 +17,7 @@ local Config = require(ReplicatedStorage.Shared.Config)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Pose = require(ReplicatedStorage.Shared.VerityPose)
 local Entity = require(script.Parent.Parent.Lib.Entity)
-local VerityRig = require(script.Parent.Parent.Lib.VerityRig)
+local VerityModel = require(script.Parent.VerityModel)
 
 export type Context = {
 	survivors: () -> { Instance },
@@ -36,6 +35,7 @@ local context: Context? = nil
 local released = false
 local killing = false
 local lastKill = 0
+local rig: Pose.RigData? = nil
 
 local function now(): number
 	return Workspace:GetServerTimeNow()
@@ -48,25 +48,27 @@ end
 -- Crea a Verity en `spawn` (CFrame a 3 studs sobre el suelo) y la asigna
 -- como personaje del jugador. Queda anclada hasta release().
 local function morph(player: Player, spawn: CFrame): Model?
-	local template = ServerStorage:FindFirstChild("VerityCharacter")
-	if not (template and template:IsA("Model")) then
-		warn("[Killer] falta ServerStorage.VerityCharacter")
+	local skin = player:GetAttribute("Skin")
+	local model, data = VerityModel.create(if typeof(skin) == "string" then skin else nil)
+	if not (model and data) then
+		warn("[Killer] no hay modelo de Verity disponible")
 		return nil
 	end
-	local model = template:Clone()
+	rig = data
 	model.Name = player.Name
-	local root = VerityRig.assemble(model)
+	local root = model.PrimaryPart :: BasePart
 	local floorY = spawn.Position.Y - 3
 	local look = spawn.LookVector * Vector3.new(1, 0, 1)
 	local facing = if look.Magnitude > 0.01 then look.Unit else Vector3.new(0, 0, -1)
-	local position = Vector3.new(spawn.Position.X, floorY + Pose.RootY + 0.1, spawn.Position.Z)
+	local position = Vector3.new(spawn.Position.X, floorY + data.rootY + 0.1, spawn.Position.Z)
 	model:PivotTo(CFrame.lookAt(position, position + facing))
 	root.Anchored = true
 
 	local humanoid = model:FindFirstChildOfClass("Humanoid") :: Humanoid
-	humanoid.CameraOffset = Vector3.new(0, 6, 0) -- cámara a la altura de la cabeza
+	-- cámara a la altura de la cabeza
+	humanoid.CameraOffset = Vector3.new(0, math.max(0, (model:GetAttribute("RigHeight") :: number? or 16) * 0.85 - data.rootY), 0)
 	humanoid.WalkSpeed = Config.Movement.VerityWalk
-	humanoid.HipHeight = Pose.HipHeight
+	humanoid.HipHeight = data.hipHeight
 
 	local old = player.Character
 	player.Character = model
@@ -165,7 +167,7 @@ local function findVictim(root: BasePart, ctx: Context): Instance?
 	for _, survivor in ctx.survivors() do
 		local targetRoot = Entity.root(survivor)
 		local humanoid = Entity.humanoid(survivor)
-		if targetRoot and humanoid and humanoid.Health > 0 and not targetRoot.Anchored then
+		if targetRoot and humanoid and humanoid.Health > 0 and targetRoot:GetAttribute("Grabbed") ~= true then
 			local offset = (targetRoot.Position - root.Position) * Vector3.new(1, 0, 1)
 			local distance = offset.Magnitude
 			local facing = if distance > 0.01 then offset.Unit:Dot(forward) else 1
@@ -189,7 +191,8 @@ function Killer.tryKill(player: Player)
 	local character = player.Character
 	local root = rootOf(player)
 	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
-	if not (character and root and humanoid) then
+	local data = rig
+	if not (character and root and humanoid and data) then
 		return
 	end
 	local victim = findVictim(root, ctx)
@@ -205,19 +208,23 @@ function Killer.tryKill(player: Player)
 	killing = true
 	ctx.onGrab(victim, victimRoot.Position)
 
-	-- Verity se queda quieta (y de pie) mientras dura la animación
+	-- Verity se queda quieta y de pie mientras dura la animación (si estaba
+	-- agachada, se la levanta: el cálculo de las manos parte de los pies).
+	local feetY = root.Position.Y - root.Size.Y / 2 - humanoid.HipHeight
 	character:SetAttribute("Crouching", false)
-	humanoid.HipHeight = Pose.HipHeight
-	local killerCF = root.CFrame
+	humanoid.HipHeight = data.hipHeight
 	root.Anchored = true
+	root.CFrame = CFrame.new(root.Position.X, feetY + data.rootY, root.Position.Z) * root.CFrame.Rotation
+	local killerCF = root.CFrame
 	victimRoot.Anchored = true
+	victimRoot:SetAttribute("Grabbed", true) -- un cepo no debe soltarla
 	local victimStart = victimRoot.CFrame
 	local start = now()
 	character:SetAttribute("KillStart", start)
 
 	-- La víctima mira a Verity mientras cuelga de sus manos
 	local hangRotation = (killerCF - killerCF.Position) * CFrame.Angles(0, math.pi, 0)
-	local origin = killerCF * CFrame.new(0, -Pose.RootY, 0)
+	local origin = CFrame.new(killerCF.Position.X, feetY, killerCF.Position.Z) * killerCF.Rotation
 
 	local connection: RBXScriptConnection
 	local impacted = false
@@ -228,14 +235,14 @@ function Killer.tryKill(player: Player)
 			return
 		end
 		if t < Pose.KillImpact then
-			local grip = origin:PointToWorldSpace(Pose.gripLocal(t))
+			local grip = origin:PointToWorldSpace(Pose.gripLocal(t, data))
 			local target = CFrame.new(grip - Vector3.new(0, 1.2, 0)) * hangRotation
 			local alpha = math.clamp((t - 0.2) / (Pose.KillGrab - 0.2), 0, 1)
 			victimRoot.CFrame = victimStart:Lerp(target, alpha * alpha * (3 - 2 * alpha))
 		elseif not impacted then
 			impacted = true
 			connection:Disconnect()
-			local grip = origin:PointToWorldSpace(Pose.gripLocal(Pose.KillImpact))
+			local grip = origin:PointToWorldSpace(Pose.gripLocal(Pose.KillImpact, data))
 			local ground = Vector3.new(grip.X, origin.Position.Y, grip.Z)
 			explode(victimCharacter, ground, ctx.goreParent)
 		end
@@ -287,6 +294,7 @@ function Killer.isKilling(): boolean
 end
 
 function Killer.cleanup()
+	rig = nil
 	current = nil
 	context = nil
 	released = false

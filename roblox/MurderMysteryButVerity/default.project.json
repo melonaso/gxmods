@@ -37,8 +37,8 @@
       }
     },
     "ServerStorage": {
-      "VerityCharacter": {
-        "$path": "src/world/VerityCharacter.model.json"
+      "VerityFallback": {
+        "$path": "src/world/VerityFallback.model.json"
       }
     }
   }

@@ -2,11 +2,32 @@
 
 Juego de Roblox estilo *Murder Mystery 2* (lobby → ronda → resultados) con gameplay de *Survive the Killer*: un jugador es **Verity** (la criatura asesina) y el resto son supervivientes. No hay sheriff.
 
+## Abrir y probar
+1. Abre `MurderMysteryButVerity.rbxlx` en Roblox Studio.
+2. **(Recomendado) Importa el modelo realista de Verity** pegando esta línea en la barra de comandos de Studio (abajo, "Ejecutar un comando") y pulsando Enter:
+   ```lua
+   local id=107080030600115 local m=game:GetObjects("rbxassetid://"..id)[1] local old=game.ServerStorage:FindFirstChild("VerityCharacter") if old then old:Destroy() end m.Name="VerityCharacter" m.Parent=game.ServerStorage print("Verity importado:",m:GetFullName(),#m:GetDescendants(),"objetos")
+   ```
+   Luego guarda (Ctrl+S). Si ese modelo no te convence, cambia `id` por otro de la lista de abajo y repite.
+3. Pulsa **Play**. En Output verás `[VerityModel] usando el modelo de ...` con la fuente elegida.
+
+### Modelos de Verity en el Toolbox
+Encontrados con ForgeGUI (`toolbox_search`). El juego quita todos los scripts del modelo (los modelos gratuitos pueden traer virus), lo escala a ~16 studs y lo adapta para animarlo:
+
+| ID | Nombre | Autor |
+| --- | --- | --- |
+| 107080030600115 | verity | JayJay00630 (el mejor valorado) |
+| 77078054144134 | Verity rig | Plumones11c |
+| 90398340255135 | verity | Cessybee |
+| 72873880902024 | verity | pro123game123start |
+
+Sin importar nada, el juego intenta `InsertService:LoadAsset` (solo funciona si el creador del juego posee el modelo) y, si falla, usa `ServerStorage/VerityFallback`, un modelo de respaldo hecho con piezas.
+
 ## Modo prueba (activado)
 `Config.Testing.Enabled = true` en [`src/shared/Config.luau`](src/shared/Config.luau):
 - Basta **1 jugador**. El primer jugador del servidor es **Verity en todas las rondas**.
-- **5 NPCs** ocupan el lugar de los supervivientes: huyen de Verity, recogen oro, lo depositan y craftean tótems.
-- El intermedio dura 8 s.
+- **5 NPCs** hacen de supervivientes: huyen de Verity, recogen oro, lo depositan y craftean tótems.
+- El intermedio dura 8 s y empiezas con 1500 monedas para probar la tienda.
 
 Ponlo en `false` antes de publicar.
 
@@ -17,64 +38,59 @@ Ponlo en `false` antes de publicar.
 | `Shift` | Correr (28, sin límite) | Correr (24, gasta estamina) |
 | `C` | Agacharse (alterna) | — |
 | `E` / `F` | — | Recoger / depositar oro · Craftear tótem |
+| `1`–`4` | Objetos de la tienda | Objetos de la tienda |
 
-## Verity
-Criatura amarilla de ~16 studs (3× un jugador), delgada, de brazos larguísimos y sonrisa enorme. El modelo está en `ServerStorage/VerityCharacter` (generado por `tools/verity_rig.py`) y también hay una estatua en el lobby. Las animaciones (caminar, correr, agacharse y el ataque de agarrar, levantar y aplastar) son procedurales en `VerityAnimator.luau`, así que no hay que subir animaciones. Al aplastar, la víctima sale volando en pedazos con salpicaduras, gotas y charcos de sangre.
+## Monedas y tienda
+- **Monedas** repartidas por cada mapa (45). Se recogen con solo acercarse; Verity tiene más alcance. Máximo 40 por ronda.
+- **Premios:** atrapar +6, ganar +25, sobrevivir +15, completar el obby del lobby +15 (cada 2 min).
+- **Tienda** en el mostrador del lobby (o con el botón "Tienda"). Se pueden **equipar 4 objetos**, que aparecen en la mochila en el lobby y en las rondas:
 
-## Cómo jugar
+| Objeto | Precio | Efecto |
+| --- | --- | --- |
+| Bobina de velocidad | 250 | +35 % de velocidad |
+| Bobina de gravedad | 250 | Saltos enormes |
+| Bobina de fusión | 650 | Las dos anteriores |
+| Botiquín | 150 | Cura 50 (recarga 20 s) |
+| Bebida energética | 200 | Estamina infinita 6 s |
+| Linterna | 100 | Foco que se enciende y apaga |
+| Capa fantasma | 500 | Casi invisible 6 s; los NPCs solo te notan muy de cerca |
+| Radar de almas | 450 | Ves a tus objetivos a través de las paredes 6 s |
+| Cepo | 350 | Trampa que inmoviliza 3 s (máx. 2) |
+| Imán de monedas | 300 | Triple de alcance para recoger monedas |
+| Martillo de empuje | 400 | Empuja a quien tengas delante |
 
-| Rol | Objetivo |
-| --- | --- |
-| **Verity** | Atrapar (Q) a todos los supervivientes antes de que acabe el reloj. Empieza congelada 10 s. |
-| **Superviviente** | Resistir hasta que el reloj llegue a 0. Puede acortar la ronda crafteando tótems. |
+- **Skins de Verity:** Clásica (gratis), Pálida, Sombra, Sangrienta, Tóxica, Dorada, Espectral y Vacío. Se aplican como tinte, contorno y aura sobre cualquier modelo.
+- **Pases (Robux):** 2x/3x de probabilidad de ser Verity y la Poción de Verity. Pon los IDs en `Config.luau`.
 
-### Puzzle: oro y tótems
-1. Por la mansión aparecen **bloques de oro** (brillan y giran). Mantén `E` para recogerlos (máx. 2 encima).
-2. Llévalos a una de las **3 mesas de crafteo** y deposítalos.
-3. Con **3 de oro** en la mesa, mantén `F` 3 s para **craftear un tótem**: **−30 s** al reloj de la ronda (máx. 5 tótems; nunca baja de 15 s).
-4. Si mueres llevando oro, lo sueltas en el suelo. El oro reaparece con el tiempo.
+## Mapas y lobby
+Mapas **inspirados** en los clásicos de MM2 (construcciones propias, no copias de los originales): **Mansión, Hospital, Oficina, Banco, Hotel, Fábrica** y **Escuela Nocturna**. Están en `Workspace/Maps` para verlos en Studio; al iniciar se mueven a `ServerStorage/Maps` y cada ronda usa uno al azar.
 
-### Probabilidad de ser Verity
-Sistema tipo MM2: cada ronda que **no** eres Verity sumas +1 de suerte (máx. 10); al ser elegido vuelve a 0.
+El **lobby** tiene la estatua de Verity mirando al spawn, el puesto de la **tienda** y un **obby** sobre lava con un cofre de monedas al final.
 
-`peso = (1 + suerte) × multiplicador del pase × multiplicador de poción`
-`probabilidad = tu peso / suma de pesos de todos`
+Para regenerarlos: `python3 tools/generate_world.py`. Para un mapa propio, copia la estructura `SurvivorSpawns` / `KillerSpawn` / `GoldSpawns` / `CraftingTables`.
 
-Ejemplo: 3 jugadores sin suerte (peso 1 cada uno) y tú con el pase **2x** (peso 2): 2 / (2+1+1) = **50 %** en vez de 33 %.
+## Música y efectos
+- Música ambiente de terror de **DistroKid Official** y **APM Official** (licenciadas para experiencias de Roblox), distinta en lobby, ronda y resultados. Se puede silenciar con el botón ♪.
+- Texturas de VFX generadas con **ForgeGUI**: destello, orbe, onda, salpicadura de líquido y gota (sangre).
 
-## Monetización
-Configura los IDs en [`src/shared/Config.luau`](src/shared/Config.luau) (con `Id = 0` el botón muestra "Pronto"):
+## Puzzle: oro y tótems
+1. Recoge **bloques de oro** (máx. 2 encima).
+2. Llévalos a una de las **3 mesas de crafteo**.
+3. Con **3 de oro**, mantén `F` 3 s para **craftear un tótem**: **−30 s** al reloj (máx. 5 por ronda).
 
-- **Pase 2x Probabilidad** y **Pase 3x Probabilidad** (permanentes; se aplica el más alto).
-- **Poción de Verity** (producto de desarrollador): x5 en la próxima ronda. Se guarda en DataStore de forma idempotente.
+## Probabilidad de ser Verity (fuera del modo prueba)
+Cada ronda que no eres Verity sumas +1 de suerte (máx. 10).
+`peso = (1 + suerte) × multiplicador del pase × multiplicador de poción`, `probabilidad = tu peso / suma de pesos`.
 
-## Interfaz
-UI discreta construida por código: píldora superior con fase y reloj, línea de info (probabilidad / tótems / vivos), chip de oro abajo a la izquierda, avisos pequeños arriba a la derecha, tarjeta de rol al empezar, banner de resultados y un botón "Pases" que solo aparece fuera de la partida. Los supervivientes ven una viñeta roja que late cuando Verity está cerca.
-
-Texturas de VFX generadas con **ForgeGUI** y publicadas en Roblox ([`src/shared/Assets.luau`](src/shared/Assets.luau)): destello (oro), orbe, onda expansiva (tótem), salpicadura de líquido y gota (sangre).
-
-## Instalación (Rojo)
-```bash
-rojo serve        # y conecta con el plugin de Rojo en Studio
-# o
-rojo build -o MurderMysteryButVerity.rbxlx
-```
-Activa **Game Settings → Security → Enable Studio Access to API Services** para probar DataStores en Studio. Prueba con *Test → Clients and Servers* (2+ jugadores).
-
-## Personalización
-- **Modelo de Verity**: coloca un Model R15 llamado `VerityCharacter` en `ServerStorage` (con `Humanoid`, `HumanoidRootPart` y script `Animate`). Sin él, se aplica un aspecto oscuro con capucha y ojos rojos al avatar.
-- **Mundo incluido** (visible en Studio sin darle a Play):
-  - `Workspace/Lobby`: salón con ventanales, columnas, bancos, candelabro, cartel y una estatua de Verity.
-  - `Workspace/Maps`: **Mansión de Verity**, **Hospital Abandonado** y **Escuela Nocturna**. Al iniciar el servidor se mueven a `ServerStorage/Maps` y cada ronda clona uno al azar.
-- **Editar mapas**: puedes modificarlos en Studio, o cambiar temas/semillas en `tools/generate_world.py` y ejecutar `python3 tools/generate_world.py` (sobrescribe `src/world/`). Cada mapa necesita `SurvivorSpawns` (Folder), `KillerSpawn` (Part), `GoldSpawns` (Folder) y `CraftingTables` (Folder); los marcadores son Parts invisibles cuya base toca el suelo. Si no hay mapas válidos, se genera una mansión procedural.
-- Todos los tiempos y números están en `Config.luau`.
+## Datos
+Con el juego publicado y "Enable Studio Access to API Services" activo se guardan en DataStore. En un archivo local sin publicar, todo funciona en memoria (se avisa en Output).
 
 ## Estructura
 ```
-src/shared   → ReplicatedStorage.Shared   (Config, Net, Assets)
-src/server   → ServerScriptService.Server (Round, Killer, Crafting, MapService, PlayerData, Monetization)
-src/client   → StarterPlayerScripts.Client (HUD, Shop, WorldFX)
-src/world    → Workspace (Lobby y Maps)
-tools/       → generate_world.py (genera src/world)
+src/shared   → ReplicatedStorage.Shared   (Config, Net, Assets, VerityPose)
+src/server   → ServerScriptService.Server (Round, Killer, VerityModel, Movement, Items, Shop, Coins, Lobby, Crafting, Bots, MapService, PlayerData, Monetization)
+src/client   → StarterPlayerScripts.Client (HUD, Shop, Music, Input, VerityAnimator, WorldFX)
+src/world    → Workspace (Lobby y Maps) y ServerStorage (VerityFallback)
+tools/       → generate_world.py y verity_rig.py
 ```
-Un solo `Script` y un solo `LocalScript`; el resto son ModuleScripts. Solo hay remotes servidor → cliente (el estado viaja por atributos), y todas las acciones (recoger, depositar, craftear, atacar) se validan en el servidor.
+Un solo `Script` y un solo `LocalScript`; cada sistema se carga protegido, así que un fallo en uno no detiene a los demás.

@@ -20,6 +20,7 @@ local TERROR_RADIUS = 45
 local WorldFX = {}
 
 local goldBlocks: { [BasePart]: CFrame } = {}
+local coins: { [BasePart]: CFrame } = {}
 local vignette: Frame
 local flash: Frame
 
@@ -134,7 +135,49 @@ local function gore(position: Vector3)
 	end
 end
 
-local function onEffect(kind: string, position: Vector3)
+local function radar(targets: { Model })
+	for _, model in targets do
+		if typeof(model) == "Instance" and model:IsA("Model") and model.Parent then
+			local highlight = Instance.new("Highlight")
+			highlight.Name = "RadarHighlight"
+			highlight.FillColor = Color3.fromRGB(255, 60, 90)
+			highlight.FillTransparency = 0.5
+			highlight.OutlineColor = Color3.fromRGB(255, 200, 210)
+			highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+			highlight.Parent = model
+			game:GetService("Debris"):AddItem(highlight, 6)
+		end
+	end
+	playSound("rbxasset://sounds/electronicpingshort.wav", Workspace.CurrentCamera and Workspace.CurrentCamera.CFrame.Position or Vector3.zero, 0.6)
+end
+
+local function onEffect(kind: string, position: any)
+	if kind == "Radar" then
+		radar(position)
+		return
+	elseif kind == "Knockback" then
+		local character = player.Character
+		local root = character and character:FindFirstChild("HumanoidRootPart")
+		if root and root:IsA("BasePart") and typeof(position) == "Vector3" then
+			root.AssemblyLinearVelocity = position
+		end
+		return
+	elseif kind == "Coin" then
+		playSound("rbxasset://sounds/electronicpingshort.wav", position, 0.35)
+		burst(position, Color3.fromRGB(255, 220, 90), Assets.Sparkle, 8, 5)
+		return
+	elseif kind == "Heal" then
+		burst(position, Color3.fromRGB(120, 255, 140), Assets.Sparkle, 20, 6)
+		return
+	elseif kind == "Trap" then
+		playSound("rbxasset://sounds/swordslash.wav", position, 0.9)
+		burst(position, Color3.fromRGB(200, 200, 210), Assets.Sparkle, 12, 8)
+		return
+	elseif kind == "Push" then
+		playSound("rbxasset://sounds/collide.wav", position, 0.8)
+		shockRing(position)
+		return
+	end
 	if kind == "Gore" then
 		gore(position)
 	elseif kind == "Totem" then
@@ -247,6 +290,18 @@ function WorldFX.start()
 	CollectionService:GetInstanceRemovedSignal("GoldBlock"):Connect(function(inst)
 		goldBlocks[inst :: BasePart] = nil
 	end)
+	local function trackCoin(inst: Instance)
+		if inst:IsA("BasePart") then
+			coins[inst] = inst.CFrame
+		end
+	end
+	for _, inst in CollectionService:GetTagged("Coin") do
+		trackCoin(inst)
+	end
+	CollectionService:GetInstanceAddedSignal("Coin"):Connect(trackCoin)
+	CollectionService:GetInstanceRemovedSignal("Coin"):Connect(function(inst)
+		coins[inst :: BasePart] = nil
+	end)
 
 	local function applyRole()
 		-- Verity no puede recoger oro ni craftear.
@@ -258,6 +313,14 @@ function WorldFX.start()
 	local flickerClock = 0
 	RunService.RenderStepped:Connect(function(dt)
 		local t = os.clock()
+		for coin, base in coins do
+			if coin.Parent then
+				-- de canto, girando sobre sí misma
+				coin.CFrame = base * CFrame.new(0, math.sin(t * 3 + base.X) * 0.2, 0) * CFrame.Angles(0, t * 3, 0)
+			else
+				coins[coin] = nil
+			end
+		end
 		for block, base in goldBlocks do
 			if block.Parent then
 				block.CFrame = base * CFrame.new(0, math.sin(t * 2) * 0.25, 0) * CFrame.Angles(0, t * 1.5, math.rad(15))

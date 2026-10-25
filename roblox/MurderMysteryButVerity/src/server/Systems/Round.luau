@@ -13,7 +13,9 @@ local Config = require(ReplicatedStorage.Shared.Config)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Entity = require(script.Parent.Parent.Lib.Entity)
 local Bots = require(script.Parent.Bots)
+local Coins = require(script.Parent.Coins)
 local Crafting = require(script.Parent.Crafting)
+local Items = require(script.Parent.Items)
 local Killer = require(script.Parent.Killer)
 local MapService = require(script.Parent.MapService)
 local Movement = require(script.Parent.Movement)
@@ -187,12 +189,24 @@ local function playRound()
 		onGrab = function(victim, position)
 			markDead(victim, position)
 			notifyAll(`Verity atrapó a {Entity.name(victim)}`, "bad")
+			Coins.award(killer, Config.Coins.RewardKill, "atrapar")
 		end,
 		goreParent = map.model,
 	})
+	Items.give(killer)
 	-- Si Verity se reinicia o muere, pierde la ronda.
 	local killerCharacter = killer.Character
 	local killerHumanoid = killerCharacter and killerCharacter:FindFirstChildOfClass("Humanoid")
+
+	-- Monedas por el mapa (antes de crear NPCs para que no caigan encima de ellos)
+	local coinPoints: { Vector3 } = {}
+	for _, cf in map.survivorSpawns do
+		table.insert(coinPoints, cf.Position)
+	end
+	for _, p in map.goldSpawns do
+		table.insert(coinPoints, p)
+	end
+	Coins.start(map.model, coinPoints)
 
 	-- NPCs para completar la partida (modo prueba)
 	local bots: { Model } = {}
@@ -289,11 +303,18 @@ local function playRound()
 		for _, who in aliveSurvivors() do
 			if who:IsA("Player") then
 				PlayerData.addWin(who)
+				Coins.award(who, Config.Coins.RewardSurvive + Config.Coins.RewardWin, "sobrevivir")
 			end
 			table.insert(survivorNames, Entity.name(who))
 		end
 	elseif killer.Parent then
 		PlayerData.addWin(killer)
+		Coins.award(killer, Config.Coins.RewardWin, "victoria")
+	end
+	for _, player in participants do
+		if player.Parent then
+			task.spawn(PlayerData.save, player)
+		end
 	end
 	Net.get("RoundResult"):FireAllClients(winner, killer.DisplayName, survivorNames, totems)
 	setPhase("Results", R.ResultsTime)
@@ -303,6 +324,8 @@ local function playRound()
 	end
 	Bots.stop()
 	Crafting.stop()
+	Coins.stop()
+	Items.cleanup()
 	Killer.cleanup()
 	task.wait(R.ResultsTime)
 
@@ -346,6 +369,8 @@ function Round.start()
 				warn(`[Round] error en la ronda: {err}`)
 				Bots.stop()
 				Crafting.stop()
+				Coins.stop()
+				Items.cleanup()
 				Killer.cleanup()
 				MapService.setAtmosphere(false)
 				if currentMap then

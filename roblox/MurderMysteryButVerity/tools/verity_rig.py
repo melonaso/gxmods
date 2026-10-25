@@ -66,9 +66,14 @@ def _teeth_gui():
     return {"className": "SurfaceGui", "properties": {"Face": "Front", "SizingMode": "PixelsPerStud", "PixelsPerStud": 60}, "children": lines}
 
 
-def build(part_fn, cframe_fn, rgb_fn, offset=(0, 0, 0), statue=False):
-    """Devuelve la lista de nodos de Rojo. statue=True: anclado y sin raíz."""
+def build(part_fn, offset=(0, 0, 0), statue=False, yaw180=False):
+    """Devuelve la lista de nodos de Rojo.
+
+    statue=True: piezas ancladas, sin raíz, marcadas con StatueBody.
+    yaw180=True: girada 180° (mirando a +Z).
+    """
     ox, oy, oz = offset
+    flip = -1 if yaw180 else 1
     nodes = []
     for name, (x, y, z), size, color, extra in BODY:
         if statue and extra.get("root"):
@@ -80,6 +85,8 @@ def build(part_fn, cframe_fn, rgb_fn, offset=(0, 0, 0), statue=False):
             Massless=not is_root,
             Transparency=1 if is_root else 0,
         )
+        if yaw180:
+            props["orientation"] = [[-1, 0, 0], [0, 1, 0], [0, 0, -1]]
         if extra.get("shape"):
             props["Shape"] = extra["shape"]
         children = []
@@ -87,25 +94,30 @@ def build(part_fn, cframe_fn, rgb_fn, offset=(0, 0, 0), statue=False):
             children.append({"className": "SpecialMesh", "properties": {"MeshType": extra["mesh"]}})
         if extra.get("teeth"):
             children.append(_teeth_gui())
+        if name == "RightHand" and not statue:
+            # punto de agarre para los objetos de la tienda (Tools)
+            children.append({"name": "RightGripAttachment", "className": "Attachment",
+                             "properties": {"CFrame": {"CFrame": {"position": [0, -0.55, 0], "orientation": [[1, 0, 0], [0, 1, 0], [0, 0, 1]]}}}})
         attributes = {}
-        if not statue:
-            if "joint" in extra:
-                parent, pivot, motor = extra["joint"]
-                attributes = {"JointParent": parent, "JointPivot": {"Vector3": list(pivot)}, "Motor": motor}
-            elif "weld" in extra:
-                attributes = {"WeldTo": extra["weld"]}
-        node = part_fn(name, (x + ox, y + oy, z + oz), size, color, "SmoothPlastic", **props,
+        if statue:
+            attributes = {"StatueBody": True}
+        elif "joint" in extra:
+            parent, pivot, motor = extra["joint"]
+            attributes = {"JointParent": parent, "JointPivot": {"Vector3": list(pivot)}, "Motor": motor}
+        elif "weld" in extra:
+            attributes = {"WeldTo": extra["weld"]}
+        node = part_fn(name, (x * flip + ox, y + oy, z * flip + oz), size, color, "SmoothPlastic", **props,
                        **({"attributes": attributes} if attributes else {}),
                        **({"children": children} if children else {}))
         nodes.append(node)
     return nodes
 
 
-def character(part_fn, cframe_fn, rgb_fn):
-    nodes = build(part_fn, cframe_fn, rgb_fn)
+def character(part_fn):
+    nodes = build(part_fn)
     nodes.append({
         "name": "Humanoid", "className": "Humanoid",
         "properties": {"RigType": "R15", "HipHeight": HIP_HEIGHT, "DisplayDistanceType": "None", "WalkSpeed": 18,
-                       "HealthDisplayType": "AlwaysOff", "BreakJointsOnDeath": False},
+                       "HealthDisplayType": "AlwaysOff", "BreakJointsOnDeath": False, "RequiresNeck": False},
     })
     return {"className": "Model", "attributes": {"VerityRig": True}, "children": nodes}

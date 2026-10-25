@@ -1,8 +1,14 @@
 --!strict
--- Datos persistentes (suerte, pociones, victorias) y cálculo de la
--- probabilidad de ser Verity.
+-- Datos persistentes (suerte, pociones, victorias, monedas, objetos y skins)
+-- y cálculo de la probabilidad de ser Verity.
+--
+-- Si el DataStore no está disponible (archivo local sin publicar o sin
+-- "Enable Studio Access to API Services"), todo funciona en memoria y se
+-- avisa una vez en Output. Antes, el error de GetDataStore detenía el
+-- servidor completo.
 
 local DataStoreService = game:GetService("DataStoreService")
+local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
@@ -13,14 +19,21 @@ export type Data = {
 	boostRounds: number,
 	boostMultiplier: number,
 	wins: number,
+	coins: number,
+	items: { string }, -- objetos comprados
+	equipped: { string }, -- objetos que se llevan a las rondas
+	skins: { string }, -- skins de Verity compradas
+	skin: string, -- skin equipada
 	receipts: { string },
 }
 
 local MAX_STORED_RECEIPTS = 50
-local store = DataStoreService:GetDataStore("MurderMysteryButVerity_v1")
+local STORE_NAME = "MurderMysteryButVerity_v1"
 
 local PlayerData = {}
 
+local store: DataStore? = nil
+local memoryOnly = false
 local sessions: { [Player]: Data } = {}
 local passMultiplier: { [Player]: number } = {}
 
@@ -28,8 +41,88 @@ local function key(player: Player): string
 	return "u_" .. player.UserId
 end
 
+local function useMemory(reason: string)
+	if not memoryOnly then
+		memoryOnly = true
+		warn(`[PlayerData] DataStore no disponible ({reason}). Los datos se guardan solo en memoria durante esta sesión.`)
+	end
+end
+
+local function getStore(): DataStore?
+	if memoryOnly then
+		return nil
+	end
+	if store then
+		return store
+	end
+	if game.PlaceId == 0 then
+		useMemory("lugar sin publicar")
+		return nil
+	end
+	local ok, result = pcall(DataStoreService.GetDataStore, DataStoreService, STORE_NAME)
+	if not ok then
+		useMemory(tostring(result))
+		return nil
+	end
+	store = result
+	return store
+end
+
+-- Errores que no se arreglan reintentando (Studio sin acceso a API, etc.).
+local function isPermanent(err: string): boolean
+	local lower = string.lower(err)
+	return string.find(lower, "publish", 1, true) ~= nil
+		or string.find(lower, "studio", 1, true) ~= nil
+		or string.find(lower, "403", 1, true) ~= nil
+		or string.find(lower, "api", 1, true) ~= nil
+end
+
+local function call<T>(fn: (DataStore) -> T): (boolean, T?)
+	for attempt = 1, 3 do
+		local ds = getStore()
+		if not ds then
+			return false, nil
+		end
+		local ok, result = pcall(fn, ds)
+		if ok then
+			return true, result
+		end
+		local message = tostring(result)
+		if isPermanent(message) then
+			useMemory(message)
+			return false, nil
+		end
+		warn(`[PlayerData] intento {attempt} falló: {message}`)
+		task.wait(attempt * 2)
+	end
+	return false, nil
+end
+
 local function defaults(): Data
-	return { luck = 0, boostRounds = 0, boostMultiplier = 1, wins = 0, receipts = {} }
+	return {
+		luck = 0,
+		boostRounds = 0,
+		boostMultiplier = 1,
+		wins = 0,
+		coins = 0,
+		items = {},
+		equipped = {},
+		skins = { "Classic" },
+		skin = "Classic",
+		receipts = {},
+	}
+end
+
+local function stringList(raw: any): { string }
+	local list = {}
+	if typeof(raw) == "table" then
+		for _, v in raw do
+			if typeof(v) == "string" and not table.find(list, v) then
+				table.insert(list, v)
+			end
+		end
+	end
+	return list
 end
 
 local function sanitize(raw: any): Data
@@ -39,41 +132,44 @@ local function sanitize(raw: any): Data
 		data.boostRounds = tonumber(raw.boostRounds) or 0
 		data.boostMultiplier = tonumber(raw.boostMultiplier) or 1
 		data.wins = tonumber(raw.wins) or 0
-		if typeof(raw.receipts) == "table" then
-			for _, id in raw.receipts do
-				if typeof(id) == "string" then
-					table.insert(data.receipts, id)
-				end
-			end
+		data.coins = math.max(0, math.floor(tonumber(raw.coins) or 0))
+		data.items = stringList(raw.items)
+		data.equipped = stringList(raw.equipped)
+		data.skins = stringList(raw.skins)
+		if not table.find(data.skins, "Classic") then
+			table.insert(data.skins, 1, "Classic")
 		end
+		data.skin = if typeof(raw.skin) == "string" and table.find(data.skins, raw.skin) then raw.skin else "Classic"
+		data.receipts = stringList(raw.receipts)
 	end
 	return data
 end
 
-local function retry<T>(fn: () -> T): (boolean, T?)
-	for attempt = 1, 3 do
-		local ok, result = pcall(fn)
-		if ok then
-			return true, result
-		end
-		warn(`[PlayerData] intento {attempt} falló: {result}`)
-		task.wait(attempt * 2)
-	end
-	return false, nil
-end
-
+-- Publica en atributos lo que el cliente necesita mostrar.
 local function publish(player: Player)
 	local data = sessions[player]
 	if not data then
 		return
 	end
 	player:SetAttribute("BoostRounds", data.boostRounds)
+	player:SetAttribute("Coins", data.coins)
+	player:SetAttribute("OwnedItems", HttpService:JSONEncode(data.items))
+	player:SetAttribute("EquippedItems", HttpService:JSONEncode(data.equipped))
+	player:SetAttribute("OwnedSkins", HttpService:JSONEncode(data.skins))
+	player:SetAttribute("Skin", data.skin)
 	local leaderstats = player:FindFirstChild("leaderstats")
-	local wins = leaderstats and leaderstats:FindFirstChild("Victorias")
-	if wins and wins:IsA("IntValue") then
-		wins.Value = data.wins
+	if leaderstats then
+		local wins = leaderstats:FindFirstChild("Victorias")
+		if wins and wins:IsA("IntValue") then
+			wins.Value = data.wins
+		end
+		local coins = leaderstats:FindFirstChild("Monedas")
+		if coins and coins:IsA("IntValue") then
+			coins.Value = data.coins
+		end
 	end
 end
+PlayerData.publish = publish
 
 function PlayerData.get(player: Player): Data?
 	return sessions[player]
@@ -83,18 +179,47 @@ function PlayerData.isLoaded(player: Player): boolean
 	return sessions[player] ~= nil
 end
 
+function PlayerData.isMemoryOnly(): boolean
+	return memoryOnly
+end
+
 function PlayerData.save(player: Player): boolean
 	local data = sessions[player]
 	if not data then
 		return false
 	end
-	local ok = retry(function()
-		return store:UpdateAsync(key(player), function()
+	if memoryOnly then
+		return true
+	end
+	local ok = call(function(ds)
+		return ds:UpdateAsync(key(player), function()
 			return data
 		end)
 	end)
-	return ok
+	return ok or memoryOnly
 end
+
+-- Monedas -----------------------------------------------------------------
+
+function PlayerData.addCoins(player: Player, amount: number)
+	local data = sessions[player]
+	if data and amount > 0 then
+		data.coins += math.floor(amount)
+		publish(player)
+	end
+end
+
+function PlayerData.spendCoins(player: Player, amount: number): boolean
+	local data = sessions[player]
+	if not data or data.coins < amount then
+		return false
+	end
+	data.coins -= amount
+	publish(player)
+	return true
+end
+
+-- Probabilidad de ser Verity ----------------------------------------------
 
 function PlayerData.setPassMultiplier(player: Player, multiplier: number)
 	passMultiplier[player] = multiplier
@@ -204,27 +329,34 @@ function PlayerData.grantProduct(player: Player, receiptId: string, multiplier: 
 end
 
 local function onPlayerAdded(player: Player)
+	if sessions[player] then
+		return
+	end
 	local leaderstats = Instance.new("Folder")
 	leaderstats.Name = "leaderstats"
+	local coins = Instance.new("IntValue")
+	coins.Name = "Monedas"
+	coins.Parent = leaderstats
 	local wins = Instance.new("IntValue")
 	wins.Name = "Victorias"
 	wins.Parent = leaderstats
 	leaderstats.Parent = player
 
-	local ok, raw = retry(function()
-		return store:GetAsync(key(player))
+	local ok, raw = call(function(ds)
+		return ds:GetAsync(key(player))
 	end)
 	if not player.Parent then
 		return
 	end
-	if not ok then
-		-- Sin datos no guardamos nada para no sobrescribir el progreso real.
-		warn(`[PlayerData] no se pudieron cargar los datos de {player.Name}; sesión sin guardado`)
-	end
-	sessions[player] = sanitize(raw)
-	if not ok then
+	local data = sanitize(if ok then raw else nil)
+	if not ok and not memoryOnly then
+		-- El DataStore existe pero falló: no guardamos para no pisar datos reales.
 		player:SetAttribute("DataUnsaved", true)
 	end
+	if Config.Testing.Enabled and data.coins < Config.Testing.StartingCoins then
+		data.coins = Config.Testing.StartingCoins
+	end
+	sessions[player] = data
 	publish(player)
 	PlayerData.refreshChances()
 end
@@ -245,6 +377,9 @@ function PlayerData.init()
 		task.spawn(onPlayerAdded, player)
 	end
 	game:BindToClose(function()
+		if memoryOnly then
+			return
+		end
 		local pending = 0
 		for player in sessions do
 			if not player:GetAttribute("DataUnsaved") then

@@ -2002,7 +2002,41 @@
      ]
     },
     "Motor": "RightWrist"
-   }
+   },
+   "children": [
+    {
+     "name": "RightGripAttachment",
+     "className": "Attachment",
+     "properties": {
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         -0.55,
+         0
+        ],
+        "orientation": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ]
+       }
+      }
+     }
+    }
+   ]
   },
   {
    "name": "RightUpperLeg",
@@ -2402,7 +2436,8 @@
     "DisplayDistanceType": "None",
     "WalkSpeed": 18,
     "HealthDisplayType": "AlwaysOff",
-    "BreakJointsOnDeath": false
+    "BreakJointsOnDeath": false,
+    "RequiresNeck": false
    }
   }
  ]

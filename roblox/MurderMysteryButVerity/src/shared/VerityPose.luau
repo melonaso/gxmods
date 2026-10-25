@@ -1,21 +1,24 @@
 --!strict
--- Medidas del rig de Verity y línea de tiempo del ataque "levantar y
--- aplastar". El cliente la usa para animar y el servidor para saber dónde
--- están las manos (y mover a la víctima con ellas) sin depender de la red.
--- Las medidas deben coincidir con tools/verity_rig.py.
+-- Línea de tiempo del ataque "levantar y aplastar" y medidas del rig de
+-- Verity. Funciona con cualquier modelo: VerityModel (servidor) mide el rig
+-- al prepararlo y guarda las medidas como atributos del modelo; el cliente
+-- anima con ellas y el servidor calcula dónde están las manos para mover a
+-- la víctima, sin depender de la red.
 
 local Pose = {}
 
-Pose.RootY = 8.2 -- altura del centro de HumanoidRootPart sobre los pies
-Pose.HipHeight = 7
-Pose.Waist = Vector3.new(0, 8.0, 0)
-Pose.Shoulder = Vector3.new(1.35, 11.5, 0)
-Pose.UpperArm = 3.6
-Pose.ForearmToGrip = 4.2 -- antebrazo + mitad de la mano
-Pose.Thigh = 3.5
-Pose.Shin = 3.1
-Pose.CrouchDrop = 3.5 -- cuánto baja la cadera al agacharse
-Pose.CrouchAngle = math.acos((Pose.Thigh + Pose.Shin - Pose.CrouchDrop) / (Pose.Thigh + Pose.Shin))
+export type RigData = {
+	rootY: number, -- altura del centro de HumanoidRootPart sobre los pies
+	hipHeight: number,
+	crouchDrop: number,
+	crouchAngle: number,
+	waist: Vector3, -- pivotes en espacio del modelo (pies en el origen, mirando a -Z)
+	shoulder: Vector3,
+	elbow: Vector3,
+	grip: Vector3,
+	hasWaist: boolean,
+	hasArms: boolean,
+}
 
 Pose.KillGrab = 0.45 -- la víctima termina de llegar a las manos
 Pose.KillImpact = 1.75 -- golpe contra el suelo
@@ -52,13 +55,46 @@ function Pose.killAngles(t: number): (number, number, number)
 	return 0, 0, 0
 end
 
--- Punto medio entre las dos manos, en espacio del modelo (pies en el origen).
-function Pose.gripLocal(t: number): Vector3
+-- Lee las medidas que VerityModel guardó en el modelo.
+function Pose.read(model: Instance): RigData
+	local function v(name: string, default: Vector3): Vector3
+		local value = model:GetAttribute(name)
+		return if typeof(value) == "Vector3" then value else default
+	end
+	local function n(name: string, default: number): number
+		local value = model:GetAttribute(name)
+		return if typeof(value) == "number" then value else default
+	end
+	local height = n("RigHeight", 16)
+	return {
+		rootY = n("RootY", height * 0.5),
+		hipHeight = n("HipHeightStand", height * 0.42),
+		crouchDrop = n("CrouchDrop", height * 0.2),
+		crouchAngle = n("CrouchAngle", math.rad(60)),
+		waist = v("PivotWaist", Vector3.new(0, height * 0.5, 0)),
+		shoulder = v("PivotShoulder", Vector3.new(0, height * 0.72, 0)),
+		elbow = v("PivotElbow", Vector3.new(0, height * 0.5, 0)),
+		grip = v("PivotGrip", Vector3.new(0, height * 0.25, 0)),
+		hasWaist = model:GetAttribute("HasWaist") == true,
+		hasArms = model:GetAttribute("HasArms") == true,
+	}
+end
+
+-- Punto medio entre las dos manos, en espacio del modelo, en el instante t.
+function Pose.gripLocal(t: number, rig: RigData): Vector3
 	local shoulder, elbow, waist = Pose.killAngles(t)
+	if not rig.hasArms then
+		-- modelo sin brazos articulados: la víctima "flota" siguiendo la curva
+		local lift = math.sin(math.clamp(shoulder / rad(176), 0, 1) * math.pi * 0.5)
+		return Vector3.new(0, rig.shoulder.Y * (0.55 + 0.6 * lift), -rig.shoulder.Y * 0.35 * (1 - lift * 0.6))
+	end
+	if not rig.hasWaist then
+		waist = 0
+	end
 	local upper = CFrame.Angles(shoulder, 0, 0)
-	local elbowPos = Pose.Shoulder + upper:VectorToWorldSpace(Vector3.new(0, -Pose.UpperArm, 0))
-	local grip = elbowPos + (upper * CFrame.Angles(elbow, 0, 0)):VectorToWorldSpace(Vector3.new(0, -Pose.ForearmToGrip, 0))
-	grip = Pose.Waist + CFrame.Angles(waist, 0, 0):VectorToWorldSpace(grip - Pose.Waist)
+	local elbowPos = rig.shoulder + upper:VectorToWorldSpace(rig.elbow - rig.shoulder)
+	local grip = elbowPos + (upper * CFrame.Angles(elbow, 0, 0)):VectorToWorldSpace(rig.grip - rig.elbow)
+	grip = rig.waist + CFrame.Angles(waist, 0, 0):VectorToWorldSpace(grip - rig.waist)
 	return Vector3.new(0, grip.Y, grip.Z)
 end
 
