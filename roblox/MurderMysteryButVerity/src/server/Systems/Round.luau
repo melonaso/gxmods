@@ -119,6 +119,7 @@ local function playRound()
 	currentMap = map.model
 	MapService.setAtmosphere(true)
 	Workspace:SetAttribute("MapName", map.name)
+	notifyAll(`Mapa: {map.name}`, "info")
 
 	table.clear(survivors)
 	totems = 0

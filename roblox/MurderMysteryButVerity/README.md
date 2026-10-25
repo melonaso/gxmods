@@ -44,8 +44,10 @@ Activa **Game Settings → Security → Enable Studio Access to API Services** p
 
 ## Personalización
 - **Modelo de Verity**: coloca un Model R15 llamado `VerityCharacter` en `ServerStorage` (con `Humanoid`, `HumanoidRootPart` y script `Animate`). Sin él, se aplica un aspecto oscuro con capucha y ojos rojos al avatar.
-- **Mapas propios**: Models en `ServerStorage/Maps` con `SurvivorSpawns` (Folder), `KillerSpawn` (Part), `GoldSpawns` (Folder) y `CraftingTables` (Folder). Sin mapas, se genera una **mansión procedural** 4×4 distinta en cada ronda.
-- **Lobby propio**: un Model `Lobby` en Workspace con un `SpawnLocation`.
+- **Mundo incluido** (visible en Studio sin darle a Play):
+  - `Workspace/Lobby`: salón con ventanales, columnas, bancos, candelabro, cartel y una estatua de Verity.
+  - `Workspace/Maps`: **Mansión de Verity**, **Hospital Abandonado** y **Escuela Nocturna**. Al iniciar el servidor se mueven a `ServerStorage/Maps` y cada ronda clona uno al azar.
+- **Editar mapas**: puedes modificarlos en Studio, o cambiar temas/semillas en `tools/generate_world.py` y ejecutar `python3 tools/generate_world.py` (sobrescribe `src/world/`). Cada mapa necesita `SurvivorSpawns` (Folder), `KillerSpawn` (Part), `GoldSpawns` (Folder) y `CraftingTables` (Folder); los marcadores son Parts invisibles cuya base toca el suelo. Si no hay mapas válidos, se genera una mansión procedural.
 - Todos los tiempos y números están en `Config.luau`.
 
 ## Estructura
@@ -53,5 +55,7 @@ Activa **Game Settings → Security → Enable Studio Access to API Services** p
 src/shared   → ReplicatedStorage.Shared   (Config, Net, Assets)
 src/server   → ServerScriptService.Server (Round, Killer, Crafting, MapService, PlayerData, Monetization)
 src/client   → StarterPlayerScripts.Client (HUD, Shop, WorldFX)
+src/world    → Workspace (Lobby y Maps)
+tools/       → generate_world.py (genera src/world)
 ```
 Un solo `Script` y un solo `LocalScript`; el resto son ModuleScripts. Solo hay remotes servidor → cliente (el estado viaja por atributos), y todas las acciones (recoger, depositar, craftear, atacar) se validan en el servidor.

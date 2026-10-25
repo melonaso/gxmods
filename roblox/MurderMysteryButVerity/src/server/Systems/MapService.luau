@@ -1,7 +1,9 @@
 --!strict
 -- Lobby, mapas y ambientación.
 --
--- Mapas personalizados: coloca Models en ServerStorage/Maps con:
+-- Los mapas viven en Workspace/Maps para poder verlos y editarlos en Studio;
+-- al iniciar, el servidor los mueve a ServerStorage/Maps y clona uno por ronda.
+-- Cada mapa es un Model con:
 --   SurvivorSpawns (Folder de Parts), KillerSpawn (Part),
 --   GoldSpawns (Folder de Parts), CraftingTables (Folder de Parts: la mesa
 --   se coloca encima de cada Part). Si no hay ninguno, se genera una mansión.
@@ -384,7 +386,26 @@ function MapService.setAtmosphere(inRound: boolean)
 	end
 end
 
+-- Mueve los mapas visibles en el editor fuera de Workspace.
+local function stashMaps()
+	local source = Workspace:FindFirstChild("Maps")
+	if not source then
+		return
+	end
+	local target = ServerStorage:FindFirstChild("Maps")
+	if not target then
+		target = Instance.new("Folder")
+		target.Name = "Maps"
+		target.Parent = ServerStorage
+	end
+	for _, child in source:GetChildren() do
+		child.Parent = target
+	end
+	source:Destroy()
+end
+
 function MapService.init()
+	stashMaps()
 	MapService.ensureLobby()
 	MapService.setAtmosphere(false)
 end

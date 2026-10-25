@@ -3,18 +3,35 @@
   "tree": {
     "$className": "DataModel",
     "ReplicatedStorage": {
-      "Shared": { "$path": "src/shared" }
+      "Shared": {
+        "$path": "src/shared"
+      }
     },
     "ServerScriptService": {
-      "Server": { "$path": "src/server" }
+      "Server": {
+        "$path": "src/server"
+      }
     },
     "StarterPlayer": {
       "StarterPlayerScripts": {
-        "Client": { "$path": "src/client" }
+        "Client": {
+          "$path": "src/client"
+        }
       }
     },
     "Players": {
-      "$properties": { "CharacterAutoLoads": true, "RespawnTime": 4 }
+      "$properties": {
+        "CharacterAutoLoads": true,
+        "RespawnTime": 4
+      }
+    },
+    "Workspace": {
+      "Lobby": {
+        "$path": "src/world/Lobby.model.json"
+      },
+      "Maps": {
+        "$path": "src/world/Maps"
+      }
     }
   }
 }
