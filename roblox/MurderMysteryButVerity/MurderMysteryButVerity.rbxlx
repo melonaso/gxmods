@@ -15648,11 +15648,15 @@ return Music
             <Properties>
               <string name="Name">NightVision</string>
               <string name="Source"><![CDATA[--!strict
--- Visión nocturna para quien es Verity (solo en su pantalla): una luz que
--- sigue a la cámara e ilumina lo que tiene alrededor, más exposición, menos
--- niebla y un tinte verde. Los supervivientes siguen viendo la noche oscura.
--- El servidor cambia la iluminación al empezar y acabar cada ronda; aquí se
--- vuelve a aplicar el ajuste encima de lo que llegue.
+-- Verity ve en la oscuridad (solo en su pantalla). No es un filtro de
+-- lentes: para ella la noche se ve casi como de día, con los colores
+-- normales, mientras los supervivientes siguen viendo sombras azules.
+--   - luz ambiente mucho más alta (las zonas sin lámpara dejan de ser negras)
+--   - más exposición, menos niebla y menos desenfoque a lo lejos
+--   - el filtro cinematográfico oscuro se suaviza
+--   - una luz suave sigue a la cámara para que nada quede en negro
+-- El servidor cambia la iluminación al empezar y acabar cada ronda: cada
+-- ajuste se vuelve a aplicar encima del valor que llegue.
 
 local Lighting = game:GetService("Lighting")
 local Players = game:GetService("Players")
@@ -15661,45 +15665,94 @@ local Workspace = game:GetService("Workspace")
 
 local player = Players.LocalPlayer
 
-local EXPOSURE_BONUS = 0.7
-local FOG_FACTOR = 0.45 -- la niebla se reduce a menos de la mitad
-
 local NightVision = {}
 
+type Override = {
+	className: string, -- dónde está la propiedad (Lighting o un efecto dentro de Lighting)
+	prop: string,
+	adjust: (any) -> any, -- valor del servidor -> valor para Verity
+	base: any,
+	applied: any,
+}
+
+local function toward(target: Color3, amount: number): (Color3) -> Color3
+	return function(value: Color3): Color3
+		return value:Lerp(target, amount)
+	end
+end
+
+local OVERRIDES: { Override } = {
+	{ className = "Lighting", prop = "Ambient", adjust = toward(Color3.fromRGB(140, 142, 150), 0.75), base = nil, applied = nil },
+	{ className = "Lighting", prop = "OutdoorAmbient", adjust = toward(Color3.fromRGB(150, 152, 160), 0.7), base = nil, applied = nil },
+	{ className = "Lighting", prop = "ExposureCompensation", adjust = function(v: number): number
+		return v + 0.45
+	end, base = nil, applied = nil },
+	{ className = "Atmosphere", prop = "Density", adjust = function(v: number): number
+		return v * 0.35
+	end, base = nil, applied = nil },
+	{ className = "ColorCorrectionEffect", prop = "Contrast", adjust = function(v: number): number
+		return v * 0.4
+	end, base = nil, applied = nil },
+	{ className = "ColorCorrectionEffect", prop = "TintColor", adjust = toward(Color3.new(1, 1, 1), 0.7), base = nil, applied = nil },
+	{ className = "DepthOfFieldEffect", prop = "FarIntensity", adjust = function(v: number): number
+		return v * 0.25
+	end, base = nil, applied = nil },
+}
+
 local active = false
-local grade: ColorCorrectionEffect? = nil
 local lamp: Part? = nil
 local follow: RBXScriptConnection? = nil
-local exposureBase = 0
-local exposureApplied: number? = nil
-local fogBase = 0
-local fogApplied: number? = nil
+local watched: { [Instance]: boolean } = {}
 
--- las propiedades se guardan en float32: se comparan con margen para no
--- confundir nuestro propio ajuste con un cambio del servidor
-local function differs(value: number, applied: number?): boolean
-	return applied == nil or math.abs(value - applied) > 1e-3
+local function target(className: string): Instance?
+	if className == "Lighting" then
+		return Lighting
+	end
+	return Lighting:FindFirstChildOfClass(className)
 end
 
-local function atmosphere(): Atmosphere?
-	return Lighting:FindFirstChildOfClass("Atmosphere")
+-- las propiedades se guardan con menos precisión: se compara con margen para
+-- no confundir nuestro propio ajuste con un cambio del servidor
+local function differs(a: any, b: any): boolean
+	if b == nil then
+		return true
+	end
+	if typeof(a) == "number" then
+		return math.abs(a - b) > 1e-3
+	end
+	if typeof(a) == "Color3" then
+		return math.abs(a.R - b.R) + math.abs(a.G - b.G) + math.abs(a.B - b.B) > 3 / 255
+	end
+	return a ~= b
 end
 
-local function applyLighting()
+local function apply()
 	if not active then
 		return
 	end
-	if differs(Lighting.ExposureCompensation, exposureApplied) then
-		exposureBase = Lighting.ExposureCompensation
-		exposureApplied = exposureBase + EXPOSURE_BONUS
-		Lighting.ExposureCompensation = exposureApplied :: number
+	for _, o in OVERRIDES do
+		local inst = target(o.className)
+		if inst then
+			local current = (inst :: any)[o.prop]
+			if differs(current, o.applied) then
+				o.base = current
+				o.applied = o.adjust(current)
+				;(inst :: any)[o.prop] = o.applied
+			end
+		end
 	end
-	local atmo = atmosphere()
-	if atmo and differs(atmo.Density, fogApplied) then
-		fogBase = atmo.Density
-		fogApplied = fogBase * FOG_FACTOR
-		atmo.Density = fogApplied :: number
+end
+
+local function watch(inst: Instance)
+	if watched[inst] then
+		return
 	end
+	watched[inst] = true
+	inst.Changed:Connect(function()
+		if active then
+			apply()
+		end
+	end)
 end
 
 local function enable()
@@ -15707,19 +15760,12 @@ local function enable()
 		return
 	end
 	active = true
-	exposureApplied, fogApplied = nil, nil
-	applyLighting()
+	for _, o in OVERRIDES do
+		o.base, o.applied = nil, nil
+	end
+	apply()
 
-	local effect = Instance.new("ColorCorrectionEffect")
-	effect.Name = "NightVision"
-	effect.Brightness = 0.06
-	effect.Contrast = 0.15
-	effect.Saturation = -0.75
-	effect.TintColor = Color3.fromRGB(170, 255, 185)
-	effect.Parent = Workspace.CurrentCamera
-	grade = effect
-
-	-- luz local que acompaña a la cámara (solo la ve Verity)
+	-- luz suave que acompaña a la cámara (solo la ve Verity)
 	local part = Instance.new("Part")
 	part.Name = "NightVisionLamp"
 	part.Anchored = true
@@ -15729,9 +15775,9 @@ local function enable()
 	part.Transparency = 1
 	part.Size = Vector3.one
 	local light = Instance.new("PointLight")
-	light.Range = 70
-	light.Brightness = 1.4
-	light.Color = Color3.fromRGB(200, 255, 210)
+	light.Range = 60
+	light.Brightness = 0.7
+	light.Color = Color3.fromRGB(235, 238, 245)
 	light.Shadows = false
 	light.Parent = part
 	part.Parent = Workspace.CurrentCamera
@@ -15753,22 +15799,18 @@ local function disable()
 		follow:Disconnect()
 		follow = nil
 	end
-	if grade then
-		grade:Destroy()
-		grade = nil
-	end
 	if lamp then
 		lamp:Destroy()
 		lamp = nil
 	end
-	if exposureApplied and not differs(Lighting.ExposureCompensation, exposureApplied) then
-		Lighting.ExposureCompensation = exposureBase
+	-- devuelve los valores del servidor (si no los cambió entretanto)
+	for _, o in OVERRIDES do
+		local inst = target(o.className)
+		if inst and o.applied ~= nil and not differs((inst :: any)[o.prop], o.applied) then
+			(inst :: any)[o.prop] = o.base
+		end
+		o.base, o.applied = nil, nil
 	end
-	local atmo = atmosphere()
-	if atmo and fogApplied and not differs(atmo.Density, fogApplied) then
-		atmo.Density = fogBase
-	end
-	exposureApplied, fogApplied = nil, nil
 end
 
 local function refresh()
@@ -15784,16 +15826,16 @@ end
 function NightVision.start()
 	player:GetAttributeChangedSignal("Role"):Connect(refresh)
 	Workspace:GetAttributeChangedSignal("Phase"):Connect(refresh)
-	Lighting:GetPropertyChangedSignal("ExposureCompensation"):Connect(applyLighting)
+	watch(Lighting)
+	for _, child in Lighting:GetChildren() do
+		watch(child)
+	end
 	Lighting.ChildAdded:Connect(function(child)
-		if child:IsA("Atmosphere") then
-			child:GetPropertyChangedSignal("Density"):Connect(applyLighting)
+		watch(child)
+		if active then
+			apply()
 		end
 	end)
-	local atmo = atmosphere()
-	if atmo then
-		atmo:GetPropertyChangedSignal("Density"):Connect(applyLighting)
-	end
 	refresh()
 end
 
