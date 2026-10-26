@@ -6687,8 +6687,8 @@
        "CFrame": {
         "position": [
          0,
-         319.65,
-         -18.22
+         319.7,
+         -18.24
         ],
         "orientation": [
          [
@@ -6710,9 +6710,9 @@
        }
       },
       "Size": [
-       1.24,
-       1.34,
-       1.46
+       1.32,
+       1.42,
+       1.5
       ],
       "Color": [
        0.8078,
@@ -7586,6 +7586,59 @@
      }
     },
     {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.448,
+         318.93,
+         -17.524
+        ],
+        "orientation": [
+         [
+          -0.4871540979797308,
+          0.14130864480632216,
+          -0.861807839210433
+         ],
+         [
+          -1.3877787807814457e-17,
+          0.9868224234361744,
+          0.16180699800551118
+         ],
+         [
+          0.8733160280342704,
+          0.0788249421601829,
+          -0.4807345875552216
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
      "name": "ToothLower",
      "className": "Part",
      "properties": {
@@ -7800,6 +7853,59 @@
        0.9412,
        0.9176,
        0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.384,
+         318.867,
+         -17.447
+        ],
+        "orientation": [
+         [
+          -0.6056688440620185,
+          0.16685042909607634,
+          -0.7780271111234066
+         ],
+         [
+          1.3877787807814457e-17,
+          0.9777688436862142,
+          0.2096856893460395
+         ],
+         [
+          0.7957168160423522,
+          0.12700008908256324,
+          -0.5922041253152857
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
@@ -8042,6 +8148,59 @@
      }
     },
     {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.32,
+         318.815,
+         -17.393
+        ],
+        "orientation": [
+         [
+          -0.7096655687098886,
+          0.179599878655926,
+          -0.6812625515720403
+         ],
+         [
+          0.0,
+          0.9669625685997458,
+          0.25491840052648557
+         ],
+         [
+          0.7045387005606364,
+          0.18090681168424355,
+          -0.6862200411665134
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
      "name": "ToothLower",
      "className": "Part",
      "properties": {
@@ -8256,6 +8415,59 @@
        0.9412,
        0.9176,
        0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.256,
+         318.773,
+         -17.354
+        ],
+        "orientation": [
+         [
+          -0.8022966258986161,
+          0.17663775270523666,
+          -0.5701922731771623
+         ],
+         [
+          -2.7755575615628914e-17,
+          0.955215040992496,
+          0.29591253008567253
+         ],
+         [
+          0.5969255599081814,
+          0.2374096244488578,
+          -0.7663658043958879
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
@@ -8498,6 +8710,59 @@
      }
     },
     {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.192,
+         318.741,
+         -17.326
+        ],
+        "orientation": [
+         [
+          -0.8821621957655118,
+          0.15572370597514978,
+          -0.44445470833318423
+         ],
+         [
+          2.7755575615628914e-17,
+          0.9437493543389311,
+          0.330661694462559
+         ],
+         [
+          0.47094570850807294,
+          0.2916972464426358,
+          -0.8325400026759154
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
      "name": "ToothLower",
      "className": "Part",
      "properties": {
@@ -8712,6 +8977,59 @@
        0.9412,
        0.9176,
        0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.128,
+         318.719,
+         -17.306
+        ],
+        "orientation": [
+         [
+          -0.9451226398801321,
+          0.11661500473751604,
+          -0.30519524284640986
+         ],
+         [
+          1.3877787807814457e-17,
+          0.9341307311345949,
+          0.3569310537764221
+         ],
+         [
+          0.32671577186602113,
+          0.3373436198003694,
+          -0.8828681026030863
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
@@ -8954,6 +9272,59 @@
      }
     },
     {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.064,
+         318.707,
+         -17.295
+        ],
+        "orientation": [
+         [
+          -0.9858717331024109,
+          0.062415259448286395,
+          -0.15543893095891848
+         ],
+         [
+          0.0,
+          0.9279824402735457,
+          0.3726239264244248
+         ],
+         [
+          0.16750201750918803,
+          0.36735939613947294,
+          -0.914871656681085
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
      "name": "ToothLower",
      "className": "Part",
      "properties": {
@@ -9168,6 +9539,59 @@
        0.9412,
        0.9176,
        0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.0,
+         318.705,
+         -17.29
+        ],
+        "orientation": [
+         [
+          -1.0,
+          0.0,
+          0.0
+         ],
+         [
+          0.0,
+          0.9265126510675301,
+          0.37626361425444455
+         ],
+         [
+          0.0,
+          0.37626361425444455,
+          -0.9265126510675299
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
@@ -9410,6 +9834,59 @@
      }
     },
     {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.064,
+         318.707,
+         -17.295
+        ],
+        "orientation": [
+         [
+          -0.9858717331024109,
+          -0.062415259448286395,
+          0.15543893095891848
+         ],
+         [
+          0.0,
+          0.9279824402735457,
+          0.3726239264244248
+         ],
+         [
+          -0.16750201750918803,
+          0.36735939613947294,
+          -0.914871656681085
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
      "name": "ToothLower",
      "className": "Part",
      "properties": {
@@ -9624,6 +10101,59 @@
        0.9412,
        0.9176,
        0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.128,
+         318.719,
+         -17.306
+        ],
+        "orientation": [
+         [
+          -0.9451226398801321,
+          -0.11661500473751604,
+          0.30519524284640986
+         ],
+         [
+          -1.3877787807814457e-17,
+          0.9341307311345949,
+          0.3569310537764221
+         ],
+         [
+          -0.32671577186602113,
+          0.3373436198003694,
+          -0.8828681026030863
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
@@ -9866,6 +10396,59 @@
      }
     },
     {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.192,
+         318.741,
+         -17.326
+        ],
+        "orientation": [
+         [
+          -0.8821621957655118,
+          -0.15572370597514978,
+          0.44445470833318423
+         ],
+         [
+          -2.7755575615628914e-17,
+          0.9437493543389311,
+          0.330661694462559
+         ],
+         [
+          -0.47094570850807294,
+          0.2916972464426358,
+          -0.8325400026759154
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
      "name": "ToothLower",
      "className": "Part",
      "properties": {
@@ -10080,6 +10663,59 @@
        0.9412,
        0.9176,
        0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.256,
+         318.773,
+         -17.354
+        ],
+        "orientation": [
+         [
+          -0.8022966258986161,
+          -0.17663775270523666,
+          0.5701922731771623
+         ],
+         [
+          2.7755575615628914e-17,
+          0.955215040992496,
+          0.29591253008567253
+         ],
+         [
+          -0.5969255599081814,
+          0.2374096244488578,
+          -0.7663658043958879
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
@@ -10322,6 +10958,59 @@
      }
     },
     {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.32,
+         318.815,
+         -17.393
+        ],
+        "orientation": [
+         [
+          -0.7096655687098886,
+          -0.179599878655926,
+          0.6812625515720403
+         ],
+         [
+          0.0,
+          0.9669625685997458,
+          0.25491840052648557
+         ],
+         [
+          -0.7045387005606364,
+          0.18090681168424355,
+          -0.6862200411665134
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
      "name": "ToothLower",
      "className": "Part",
      "properties": {
@@ -10550,6 +11239,59 @@
      }
     },
     {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.384,
+         318.867,
+         -17.447
+        ],
+        "orientation": [
+         [
+          -0.6056688440620185,
+          -0.16685042909607634,
+          0.7780271111234066
+         ],
+         [
+          -1.3877787807814457e-17,
+          0.9777688436862142,
+          0.2096856893460395
+         ],
+         [
+          -0.7957168160423522,
+          0.12700008908256324,
+          -0.5922041253152857
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
      "name": "ToothLower",
      "className": "Part",
      "properties": {
@@ -10764,6 +11506,59 @@
        0.9412,
        0.9176,
        0.8314
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     }
+    },
+    {
+     "name": "Gum",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.448,
+         318.93,
+         -17.524
+        ],
+        "orientation": [
+         [
+          -0.4871540979797308,
+          -0.14130864480632216,
+          0.861807839210433
+         ],
+         [
+          1.3877787807814457e-17,
+          0.9868224234361744,
+          0.16180699800551118
+         ],
+         [
+          -0.8733160280342704,
+          0.0788249421601829,
+          -0.4807345875552216
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.07,
+       0.075,
+       0.05
+      ],
+      "Color": [
+       0.698,
+       0.3843,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",

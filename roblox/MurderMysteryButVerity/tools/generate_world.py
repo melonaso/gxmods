@@ -520,7 +520,7 @@ THEMES = {
 }
 
 DOOR = 16
-DOOR_TOP = 18  # Verity mide ~16 studs
+DOOR_TOP = 20  # Verity mide ~18 studs
 SLAB = 1.0  # grosor del forjado entre pisos
 
 
@@ -884,7 +884,7 @@ def lamp_post(x, z, color=(255, 190, 120)):
     ])
 
 
-def building(cx, cz, quarter, w, d, h, wall, wall_mat, roof, door_w=12, door_h=18, extras=()):
+def building(cx, cz, quarter, w, d, h, wall, wall_mat, roof, door_w=12, door_h=20, extras=()):
     """Construcción rectangular con una puerta en el lado -Z local (girada `quarter`)."""
     def rot(lx, lz):
         for _ in range(quarter):
@@ -914,7 +914,7 @@ def building(cx, cz, quarter, w, d, h, wall, wall_mat, roof, door_w=12, door_h=1
     return nodes, rot
 
 
-def two_story(cx, cz, quarter, w, d, wall, wall_mat, roof, floor_color, trim, story=21, upper_h=18, style="wardrobe"):
+def two_story(cx, cz, quarter, w, d, wall, wall_mat, roof, floor_color, trim, story=24, upper_h=20, style="wardrobe"):
     """Edificio de dos plantas: puerta en el -Z local, escalera interior que sube
     hacia la fachada y planta alta con un gran ventanal. Devuelve (nodos,
     escondites, puntos de la planta alta para oro / aparición)."""
@@ -925,7 +925,7 @@ def two_story(cx, cz, quarter, w, d, wall, wall_mat, roof, floor_color, trim, st
         nodes.append(part(name, world(lx, y, lz), (sx, sy, sz), color, mat, orientation=orient, **props))
 
     h1 = story - SLAB
-    door_w, door_h = 12, 18
+    door_w, door_h = 12, 20
     side = (w - door_w) / 2
     add("Floor", 0, 0.1, 0, w, 0.2, d, floor_color, "WoodPlanks")
     # planta baja

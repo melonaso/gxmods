@@ -40,12 +40,12 @@ Config.Testing = {
 Config.Verity = {
 	AssetId = 107080030600115, -- "verity" (Toolbox, JayJay00630)
 	AlternativeAssetIds = { 77078054144134, 90398340255135, 72873880902024 },
-	Height = 16, -- ~3 veces un jugador R15
+	Height = 18, -- algo más de 3 veces un jugador R15 (las puertas miden 20)
 }
 
 Config.Killer = {
 	Name = "Verity",
-	KillRange = 9, -- distancia máxima para atrapar con Q
+	KillRange = 10, -- distancia máxima para atrapar con Q (brazos larguísimos)
 	KillConeDot = 0.2, -- el objetivo debe estar más o menos al frente
 	KillCooldown = 1,
 }

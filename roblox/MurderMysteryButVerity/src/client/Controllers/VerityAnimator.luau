@@ -1,8 +1,15 @@
 --!strict
--- Anima a Verity en cada cliente:
---   - reposo: respiración, brazos colgando y tics de cabeza inquietantes
---   - caminar / correr: zancadas largas; al correr se encorva y los brazos
---     quedan atrás
+-- Anima a Verity en cada cliente, con andares de monstruo:
+--   - reposo: encorvada, con la cabeza muy ladeada (cuello roto), respiración
+--     pesada, brazos colgando que se mecen y espasmos bruscos de cabeza,
+--     hombros y dedos cada pocos segundos
+--   - caminar (acechar): zancadas largas y lentas con las rodillas dobladas,
+--     la cadera se balancea y gira, los brazos cuelgan y se balancean con
+--     retraso, como sin vida (uno más que otro), y la cabeza ladeada cabecea
+--   - correr (atributo Sprinting): se lanza hacia delante casi a cuatro patas,
+--     torso muy inclinado, cabeza levantada mirando a la presa, brazos
+--     abiertos estirados hacia delante agarrando el aire, zancadas enormes con
+--     las rodillas muy altas y temblores nerviosos por todo el cuerpo
 --   - agacharse (C): rodillas flexionadas que coinciden con la bajada de cadera
 --   - transformación: se estira, abre los brazos y echa la cabeza atrás
 --   - ataque (Q): sigue la misma línea de tiempo que usa el servidor
@@ -47,8 +54,14 @@ type Rig = {
 	phase: number,
 	crouch: number,
 	stride: number,
+	run: number,
+	tilt: number, -- ladeo de la cabeza (cambia de lado de vez en cuando)
+	tiltTarget: number,
+	tiltAt: number,
+	spasm: number, -- espasmo de todo el cuerpo (decae)
 	twitchAt: number,
 	twitch: CFrame,
+	seed: number,
 	connection: RBXScriptConnection?,
 }
 
@@ -79,8 +92,14 @@ local function track(model: Instance)
 		phase = 0,
 		crouch = 0,
 		stride = 0,
+		run = 0,
+		tilt = 0.45,
+		tiltTarget = 0.45,
+		tiltAt = os.clock() + 6,
+		spasm = 0,
 		twitchAt = os.clock() + 2,
 		twitch = CFrame.identity,
+		seed = math.random() * 100,
 	}
 	for _, inst in model:GetDescendants() do
 		addJoint(rig, inst)
@@ -178,60 +197,108 @@ local function animate(rig: Rig, dt: number)
 	local velocity = root.AssemblyLinearVelocity * Vector3.new(1, 0, 1)
 	local speed = velocity.Magnitude
 	local walkSpeed = Config.Movement.VerityWalk
-	local targetStride = math.clamp(speed / walkSpeed, 0, 1.6)
-	rig.stride += (targetStride - rig.stride) * math.min(1, dt * 8)
+	rig.stride += (math.clamp(speed / walkSpeed, 0, 1.6) - rig.stride) * math.min(1, dt * 8)
+	-- corre cuando esprinta (jugador con Shift o la Verity NPC persiguiendo)
+	local sprinting = model:GetAttribute("Sprinting") == true and speed > 8
+	rig.run += ((if sprinting then 1 else 0) - rig.run) * math.min(1, dt * 5)
 	local targetCrouch = if model:GetAttribute("Crouching") then 1 else 0
 	rig.crouch += (targetCrouch - rig.crouch) * math.min(1, dt * 10)
 
-	-- cadencia: piernas muy largas, más rápida al correr
-	rig.phase += dt * (1.8 + speed * 0.17)
-	local s = math.sin(rig.phase)
-	local c = math.cos(rig.phase)
+	-- cadencia: piernas larguísimas; al correr, zancadas más rápidas
+	rig.phase += dt * (1.5 + speed * 0.14 + rig.run * 1.2)
+	local ph = rig.phase
+	local s = math.sin(ph)
+	local c = math.cos(ph)
 	local stride = math.min(rig.stride, 1)
-	local run = math.clamp(rig.stride - 1, 0, 0.6) / 0.6 -- 0 caminando, 1 corriendo
+	local run = rig.run * stride
+	local walk = stride * (1 - rig.run)
 	local crouch = rig.crouch
 	local theta = rig.crouchAngle * crouch
 	local hasKnees = rig.joints.LeftKnee ~= nil
-
-	-- piernas
-	local swing = s * (0.5 + 0.25 * run) * stride * (1 - crouch * 0.5)
-	local liftL = math.max(0, c) * (0.8 + 0.5 * run) * stride
-	local liftR = math.max(0, -c) * (0.8 + 0.5 * run) * stride
-	set(rig, "LeftHip", rx(theta + swing + 0.15 * run))
-	set(rig, "RightHip", rx(theta - swing + 0.15 * run))
-	if hasKnees then
-		set(rig, "LeftKnee", rx(-2 * theta - liftL))
-		set(rig, "RightKnee", rx(-2 * theta - liftR))
-		set(rig, "LeftAnkle", rx(theta + liftL * 0.4))
-		set(rig, "RightAnkle", rx(theta + liftR * 0.4))
-	end
-
-	-- torso: respira en reposo, se encorva al correr y al agacharse
-	local breathe = math.sin(clock * 1.4) * 0.03 * (1 - stride)
-	local lean = -0.1 * stride - 0.45 * run - 0.35 * crouch
-	local bob = math.abs(s) * 0.05 * stride
-	set(rig, "Waist", rx(lean + breathe - bob) * CFrame.Angles(0, s * 0.1 * stride, s * 0.04 * stride))
-
-	-- brazos: cuelgan y se balancean; al correr quedan atrás, como arrastrados
-	local armSwing = -s * (0.55 - 0.25 * run) * stride
-	local dangle = math.sin(clock * 1.1) * 0.06 * (1 - stride)
-	local back = -0.7 * run
-	set(rig, "LeftShoulder", rx(-armSwing + dangle + back + 0.25 * crouch) * CFrame.Angles(0, 0, -0.07 - 0.1 * run))
-	set(rig, "RightShoulder", rx(armSwing - dangle + back + 0.25 * crouch) * CFrame.Angles(0, 0, 0.07 + 0.1 * run))
-	set(rig, "LeftElbow", rx(math.max(0, -armSwing) * 0.5 + 0.12))
-	set(rig, "RightElbow", rx(math.max(0, armSwing) * 0.5 + 0.12))
-	set(rig, "LeftWrist", rx(-0.15 + math.sin(clock * 2.3) * 0.08))
-	set(rig, "RightWrist", rx(-0.15 + math.sin(clock * 2.1 + 1) * 0.08))
-
-	-- cabeza: compensa la inclinación; en reposo, tics bruscos cada pocos segundos
-	if clock >= rig.twitchAt then
-		rig.twitchAt = clock + 1.5 + math.random() * 3
-		rig.twitch = CFrame.Angles((math.random() - 0.5) * 0.5, (math.random() - 0.5) * 0.9, (math.random() - 0.5) * 0.8)
-	end
 	local rest = 1 - math.min(1, rig.stride * 1.5)
-	local twitch = CFrame.identity:Lerp(rig.twitch, rest)
-	set(rig, "Neck", rx(-lean * 0.7 + c * 0.05 * stride + 0.25 * run) * twitch)
-	set(rig, "HeadJoint", CFrame.Angles(0, 0, math.sin(clock * 0.6) * 0.12 * rest))
+	local seed = rig.seed
+	-- ruido suave para temblores (más fuerte corriendo)
+	local function noise(k: number, freq: number): number
+		return math.noise(clock * freq, seed + k, 0) * 2
+	end
+	local shake = 0.03 + 0.07 * run
+
+	-- espasmos: un tirón brusco de todo el cuerpo de vez en cuando
+	if clock >= rig.twitchAt then
+		rig.twitchAt = clock + 1.2 + math.random() * (if run > 0.5 then 1.5 else 3.5)
+		rig.twitch = CFrame.Angles((math.random() - 0.5) * 0.6, (math.random() - 0.5) * 1.0, (math.random() - 0.5) * 0.9)
+		rig.spasm = 1
+	end
+	rig.spasm = math.max(0, rig.spasm - dt * 3.5)
+	local spasm = rig.spasm * rig.spasm
+
+	-- la cabeza ladeada cambia de lado de golpe cada cierto tiempo
+	if clock >= rig.tiltAt then
+		rig.tiltAt = clock + 5 + math.random() * 6
+		rig.tiltTarget = (if math.random() < 0.5 then -1 else 1) * (0.35 + math.random() * 0.25)
+	end
+	rig.tilt += (rig.tiltTarget - rig.tilt) * math.min(1, dt * 6)
+
+	-- PIERNAS -----------------------------------------------------------------
+	-- caminar: zancada larga con las rodillas siempre algo dobladas
+	-- correr: zancadas enormes, rodillas muy altas, cadera adelantada
+	local hipAmp = 0.5 * walk + 0.95 * run
+	local hipBase = theta + 0.12 * walk + 0.45 * run
+	local liftAmp = 0.85 * walk + 1.5 * run
+	local bend = 0.18 * walk + 0.35 * run + 0.08 * rest
+	local swing = s * hipAmp * (1 - crouch * 0.5)
+	local liftL = math.max(0, c) * liftAmp
+	local liftR = math.max(0, -c) * liftAmp
+	set(rig, "LeftHip", rx(hipBase + swing) * CFrame.Angles(0, 0, -0.04 * run))
+	set(rig, "RightHip", rx(hipBase - swing) * CFrame.Angles(0, 0, 0.04 * run))
+	if hasKnees then
+		set(rig, "LeftKnee", rx(-2 * theta - bend - liftL))
+		set(rig, "RightKnee", rx(-2 * theta - bend - liftR))
+		set(rig, "LeftAnkle", rx(theta + bend * 0.5 + liftL * 0.35 - math.max(0, -s) * 0.3 * stride))
+		set(rig, "RightAnkle", rx(theta + bend * 0.5 + liftR * 0.35 - math.max(0, s) * 0.3 * stride))
+	end
+
+	-- TORSO -------------------------------------------------------------------
+	-- reposo: encorvada y respirando hondo; caminar: cadera que se mece y
+	-- gira; correr: casi a cuatro patas, el pecho sube y baja a cada zancada
+	local breathe = math.sin(clock * 1.2) * 0.05 * rest
+	local lean = -0.14 * rest - 0.3 * walk - 0.8 * run - 0.35 * crouch
+	local heave = math.sin(ph * 2) * (0.05 * walk + 0.1 * run)
+	local twist = s * (0.16 * walk + 0.22 * run)
+	local sway = s * 0.09 * walk + noise(1, 1.3) * shake
+	set(rig, "Waist", rx(lean + breathe + heave + noise(2, 2) * shake) * CFrame.Angles(0, twist, sway) * CFrame.identity:Lerp(rig.twitch, spasm * 0.3))
+
+	-- BRAZOS ------------------------------------------------------------------
+	-- caminar: cuelgan y se balancean con retraso (como peso muerto), el
+	-- derecho más flojo que el izquierdo
+	-- correr: abiertos y estirados hacia delante, alternando como si
+	-- quisiera agarrar algo, con los dedos crispados
+	local lag = math.sin(ph - 0.7)
+	local walkArmL = -lag * 0.5 * walk
+	local walkArmR = lag * 0.32 * walk
+	local reach = 1.05 * run -- brazos hacia delante al correr
+	local claw = s * 0.55 * run
+	local dangle = math.sin(clock * 1.1) * 0.07 * rest
+	local spread = 0.08 * rest + 0.1 * walk + 0.6 * run
+	set(rig, "LeftShoulder",
+		rx(walkArmL + reach - claw + dangle + 0.25 * crouch + noise(3, 3) * shake + 0.06 * rest)
+			* CFrame.Angles(0, 0, -spread - noise(4, 2) * shake))
+	set(rig, "RightShoulder",
+		rx(walkArmR + reach + claw - dangle + 0.25 * crouch + noise(5, 3) * shake + 0.02 * rest)
+			* CFrame.Angles(0, 0, spread + noise(6, 2) * shake))
+	set(rig, "LeftElbow", rx(0.15 + math.max(0, -lag) * 0.45 * walk + (0.4 + math.max(0, -s) * 0.5) * run))
+	set(rig, "RightElbow", rx(0.1 + math.max(0, lag) * 0.3 * walk + (0.4 + math.max(0, s) * 0.5) * run))
+	set(rig, "LeftWrist", rx(-0.25 - 0.35 * run + math.sin(clock * 2.3) * 0.08 + noise(7, 6) * shake * 2))
+	set(rig, "RightWrist", rx(-0.3 - 0.35 * run + math.sin(clock * 2.1 + 1) * 0.08 + noise(8, 6) * shake * 2))
+
+	-- CABEZA ------------------------------------------------------------------
+	-- siempre ladeada (cuello roto); al caminar cabecea con cada paso y al
+	-- correr se levanta para mirar al frente pese al torso inclinado
+	local look = -lean * (0.55 + 0.35 * run) + 0.05 * run
+	local nod = c * 0.07 * walk + math.sin(ph * 2) * 0.06 * run
+	local twitch = CFrame.identity:Lerp(rig.twitch, math.max(rest, spasm))
+	set(rig, "Neck", rx(look + nod + noise(9, 4) * shake) * CFrame.Angles(0, noise(10, 0.7) * 0.15 * rest, rig.tilt * 0.45) * twitch)
+	set(rig, "HeadJoint", CFrame.Angles(noise(11, 5) * shake, 0, rig.tilt * 0.55 + math.sin(clock * 0.6) * 0.1 * rest))
 end
 
 function VerityAnimator.start()

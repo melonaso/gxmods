@@ -126,6 +126,11 @@ local function update(dt: number)
 			if character:GetAttribute("Crouching") ~= s.crouch then
 				character:SetAttribute("Crouching", s.crouch)
 			end
+			-- el animador usa el andar de carrera (a cuatro patas) cuando esprinta
+			local sprinting = s.sprint and moving and not s.crouch
+			if character:GetAttribute("Sprinting") ~= sprinting then
+				character:SetAttribute("Sprinting", sprinting)
+			end
 		elseif role == "Survivor" then
 			if energized then
 				s.stamina = M.StaminaMax

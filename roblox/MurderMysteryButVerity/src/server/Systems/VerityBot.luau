@@ -57,7 +57,7 @@ local function run(model: Model, ctx: Context)
 	params.FilterType = Enum.RaycastFilterType.Exclude
 	params.FilterDescendantsInstances = { model }
 	local seen: { [Instance]: Sighting } = {}
-	local path = PathfindingService:CreatePath({ AgentRadius = 3, AgentHeight = 16, AgentCanJump = false, WaypointSpacing = 8 })
+	local path = PathfindingService:CreatePath({ AgentRadius = 3, AgentHeight = Config.Verity.Height, AgentCanJump = false, WaypointSpacing = 8 })
 	local waypoints: { PathWaypoint } = {}
 	local waypointIndex = 0
 	local pathGoal: Vector3? = nil
@@ -186,6 +186,7 @@ local function run(model: Model, ctx: Context)
 			-- persecución
 			patrolGoal = nil
 			humanoid.WalkSpeed = Config.Movement.VerityBotChase
+			model:SetAttribute("Sprinting", true) -- andar de carrera monstruoso
 			if bestDistance <= K.KillRange - 1.5 then
 				humanoid:MoveTo(bestRoot.Position)
 				attack(bestRoot.Position)
@@ -207,6 +208,7 @@ local function run(model: Model, ctx: Context)
 			end
 			if memory and who then
 				humanoid.WalkSpeed = Config.Movement.VerityBotChase
+				model:SetAttribute("Sprinting", true)
 				local goal = memory.position
 				local hiddenRoot = if memory.hidden and Hiding.isHidden(who) then Entity.root(who) else nil
 				if hiddenRoot then
@@ -225,6 +227,7 @@ local function run(model: Model, ctx: Context)
 			else
 				-- patrulla
 				humanoid.WalkSpeed = Config.Movement.VerityBotPatrol
+				model:SetAttribute("Sprinting", false)
 				if not patrolGoal or (flat(patrolGoal) - flat(root.Position)).Magnitude < 8 then
 					patrolGoal = if #ctx.points > 0 then ctx.points[rng:NextInteger(1, #ctx.points)] else nil
 					-- a veces registra el escondite más cercano por si hay alguien dentro

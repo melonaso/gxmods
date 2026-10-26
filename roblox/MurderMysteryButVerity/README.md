@@ -12,7 +12,7 @@ Juego de Roblox estilo *Murder Mystery 2* (lobby → ronda → resultados) con g
 3. Pulsa **Play**. En Output verás `[VerityModel] usando el modelo de ...` con la fuente elegida.
 
 ### Modelos de Verity en el Toolbox
-Encontrados con ForgeGUI (`toolbox_search`). El juego quita todos los scripts del modelo (los modelos gratuitos pueden traer virus), lo escala a ~16 studs y lo adapta para animarlo:
+Encontrados con ForgeGUI (`toolbox_search`). El juego quita todos los scripts del modelo (los modelos gratuitos pueden traer virus), lo escala a ~18 studs (`Config.Verity.Height`; las puertas miden 20) y lo adapta para animarlo:
 
 | ID | Nombre | Autor |
 | --- | --- | --- |
@@ -91,7 +91,13 @@ Para regenerarlos: `python3 tools/generate_world.py`. Para un mapa propio, copia
 - Lobby al atardecer y, en los mapas, una **noche de invierno cinematográfica**: sombras azul marino (se distinguen las formas, no los detalles), niebla oscura que se traga lo lejano, superficies claras atenuadas y lámparas cálidas que dejan charcos de luz anaranjada con mucho contraste y bloom. Los bordes de la pantalla se oscurecen durante la ronda. Un 10 % de habitaciones queda sin luz.
 
 ## Animaciones de Verity
-Procedurales, en `VerityAnimator.luau`: reposo con tics de cabeza, caminar, correr encorvada con los brazos atrás, agacharse, la pose de transformación y el ataque. Se aplican modificando `C0` localmente, por lo que ningún Animator de Roblox las pisa y funcionan con cualquier rig.
+Procedurales, en `VerityAnimator.luau`, con andares de monstruo:
+- **Reposo:** encorvada, con la cabeza muy ladeada como con el cuello roto (cambia de lado de golpe cada 5–11 s), respiración pesada, brazos colgando y espasmos bruscos de todo el cuerpo.
+- **Caminar (acechar):** zancadas largas y lentas con las rodillas dobladas, cadera que se mece y gira, brazos que cuelgan y se balancean con retraso como peso muerto (uno más flojo que el otro) y la cabeza ladeada cabeceando a cada paso.
+- **Correr:** se lanza hacia delante casi a cuatro patas, con el torso muy inclinado y la cabeza levantada mirando a la presa. Lleva los brazos abiertos y estirados hacia delante, agarrando el aire con los dedos crispados, y da zancadas enormes con las rodillas altas. Todo el cuerpo tiembla de forma nerviosa. Se activa al esprintar con Shift; la Verity NPC lo usa al perseguir.
+- Además: agacharse, la pose de transformación y el ataque.
+
+Se aplican modificando `C0` localmente, por lo que ningún Animator de Roblox las pisa y funcionan con cualquier rig.
 
 ## Crujidos de huesos (paso opcional)
 Roblox no tiene crujidos de huesos públicos y ForgeGUI necesita un plan de pago para generar sonidos, así que están **sintetizados** en `assets/audio/verity_bone_cracks.ogg` (`tools/synth_bone_cracks.py`). Para usarlos:

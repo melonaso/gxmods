@@ -27,6 +27,7 @@ TEETH = (240, 234, 212)
 SOCKET = (96, 78, 40)
 SOCKET_DEEP = (26, 18, 10)
 LIPS = (168, 120, 66)
+GUMS = (178, 98, 92)
 
 HIP_HEIGHT = 7.0
 ROOT_CENTER_Y = 8.2
@@ -193,7 +194,7 @@ for sx in (-1, 1):
 HEAD_C = (0, 15.0, -0.02)
 HEAD_R = (0.58, 1.04, 0.78)
 add("Head", HEAD_C, (HEAD_R[0] * 2, HEAD_R[1] * 2, HEAD_R[2] * 2), SKIN, joint=("NeckPart", (0, 14.05, 0), "HeadJoint"))
-add("Cranium", (0, 15.45, 0.22), (1.24, 1.34, 1.46), SKIN, weld="Head")
+add("Cranium", (0, 15.5, 0.24), (1.32, 1.42, 1.5), SKIN, weld="Head")
 
 
 def on_face(name, x, y, size, color, inset=0.0, tilt=None, **extra):
@@ -228,6 +229,9 @@ for k in range(COLUMNS):
     for row, y, h in (("Upper", upper_y, 0.22 * (1 - 0.3 * t)), ("Lower", lower_y, 0.14 * (1 - 0.35 * t))):
         y = y - h * 0.22 if row == "Upper" else y + h * 0.22
         on_face(f"Tooth{row}", x, y, (0.06, h, 0.05), TEETH, inset=-0.012, ellipsoid=False)
+        # encía rosada asomando sobre los dientes de arriba (sonrisa forzada)
+        if row == "Upper":
+            on_face("Gum", x, y + h * 0.56, (0.07, 0.075, 0.05), GUMS, inset=-0.004, ellipsoid=False)
 on_face("Chin", 0, 13.98, (0.38, 0.26, 0.28), SKIN, inset=0.13)
 
 # --- brazos, manos, piernas y pies --------------------------------------------
