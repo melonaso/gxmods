@@ -45,10 +45,12 @@ Config.Verity = {
 
 -- Distancia máxima a la que se puede alejar la cámara (rueda del ratón).
 -- Cerca da más tensión: no se ve lo que hay detrás de las esquinas.
+-- El servidor lo fija al cambiar de rol y cada cliente lo vuelve a aplicar
+-- (CameraLimits), así nunca se puede alejar más de esto.
 Config.Camera = {
-	LobbyMaxZoom = 18,
-	SurvivorMaxZoom = 13,
-	VerityMaxZoom = 22, -- Verity mide 18 studs: necesita algo más de margen
+	LobbyMaxZoom = 12,
+	SurvivorMaxZoom = 10,
+	VerityMaxZoom = 16, -- Verity mide 18 studs: necesita algo más de margen
 }
 
 Config.Killer = {

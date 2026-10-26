@@ -104,12 +104,14 @@ local function build()
 		Size = UDim2.fromOffset(600, 80),
 		BackgroundTransparency = 1,
 		GroupTransparency = 1,
+		Visible = false,
 		Parent = gui,
 	})
 	titleLabel = UI.label({
 		Size = UDim2.new(1, 0, 0, 46),
 		FontFace = Font.new("rbxasset://fonts/families/Merriweather.json", Enum.FontWeight.Bold),
 		TextSize = 40,
+		TextTransparency = 1,
 		TextColor3 = Color3.fromRGB(240, 232, 220),
 		Parent = title,
 	})
@@ -117,6 +119,7 @@ local function build()
 		Position = UDim2.fromOffset(0, 50),
 		Size = UDim2.new(1, 0, 0, 20),
 		TextSize = 14,
+		TextTransparency = 1,
 		TextColor3 = Color3.fromRGB(190, 180, 170),
 		Parent = title,
 	})
@@ -185,10 +188,27 @@ local function ballPosition(): Vector3?
 	return nil
 end
 
+-- Muestra u oculta el título. No basta con GroupTransparency: en algunos
+-- equipos Roblox dibuja el CanvasGroup como un Frame normal y la ignora, así
+-- que también se funden los textos y al final se oculta con Visible.
+local function fadeTitle(show: boolean, time: number)
+	local alpha = if show then 0 else 1
+	if show then
+		title.Visible = true
+	end
+	tween(title, time, { GroupTransparency = alpha })
+	tween(titleLabel, time, { TextTransparency = alpha })
+	tween(subtitleLabel, time, { TextTransparency = alpha }).Completed:Connect(function(state)
+		if not show and state == Enum.PlaybackState.Completed and titleShownAt == nil then
+			title.Visible = false
+		end
+	end)
+end
+
 -- Oculta el título del mapa (también al volver al lobby, pase lo que pase).
 local function hideTitle()
 	titleShownAt = nil
-	tween(title, 0.6, { GroupTransparency = 1 })
+	fadeTitle(false, 0.6)
 	letterbox(Workspace:GetAttribute("Phase") == "Results")
 end
 
@@ -217,7 +237,7 @@ local function roundIntro(mapName: string)
 	local role = player:GetAttribute("Role")
 	subtitleLabel.Text = if role == "Verity" then T("Despierta y atrápalos a todos") else T("Sobrevive hasta el amanecer")
 	letterbox(true)
-	tween(title, 0.8, { GroupTransparency = 0 })
+	fadeTitle(true, 0.8)
 	task.wait(0.4)
 	local isVerity = role == "Verity"
 	local focus = if isVerity then function()

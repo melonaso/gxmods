@@ -252,15 +252,30 @@ local function build()
 		Name = "OpenShop",
 		AnchorPoint = Vector2.new(0, 0.5),
 		Position = UDim2.new(0, 14, 0.5, 0),
-		Size = UDim2.fromOffset(132, 46),
+		-- el ancho crece con el texto (monedas, probabilidad, traducciones largas)
+		Size = UDim2.fromOffset(0, 46),
+		AutomaticSize = Enum.AutomaticSize.X,
 		BackgroundColor3 = C.Panel,
 		BackgroundTransparency = 0.2,
 		Text = "",
 		AutoButtonColor = true,
 		Parent = gui,
-	}, { UI.corner(12), UI.stroke(0.6, C.Gold) })
-	UI.label({ Size = UDim2.new(1, -24, 0, 18), Position = UDim2.fromOffset(12, 6), TextXAlignment = Enum.TextXAlignment.Left, FontFace = UI.FontBold, TextSize = 15, Text = T("Tienda"), Parent = openButton })
-	openChance = UI.label({ Size = UDim2.new(1, -24, 0, 14), Position = UDim2.fromOffset(12, 25), TextXAlignment = Enum.TextXAlignment.Left, TextSize = 11, TextColor3 = C.Muted, Parent = openButton })
+	}, {
+		UI.corner(12),
+		UI.stroke(0.6, C.Gold),
+		UI.new("UIPadding", { PaddingLeft = UDim.new(0, 12), PaddingRight = UDim.new(0, 14) }),
+		UI.new("UISizeConstraint", { MinSize = Vector2.new(132, 46) }),
+		UI.new("UIListLayout", {
+			FillDirection = Enum.FillDirection.Vertical,
+			VerticalAlignment = Enum.VerticalAlignment.Center,
+			SortOrder = Enum.SortOrder.LayoutOrder,
+			Padding = UDim.new(0, 1),
+		}),
+	})
+	UI.label({ LayoutOrder = 1, Size = UDim2.fromOffset(0, 18), AutomaticSize = Enum.AutomaticSize.X, TextXAlignment = Enum.TextXAlignment.Left,
+		FontFace = UI.FontBold, TextSize = 15, Text = T("Tienda"), Parent = openButton })
+	openChance = UI.label({ LayoutOrder = 2, Size = UDim2.fromOffset(0, 14), AutomaticSize = Enum.AutomaticSize.X,
+		TextXAlignment = Enum.TextXAlignment.Left, TextSize = 11, TextColor3 = C.Muted, Parent = openButton })
 
 	panel = UI.new("CanvasGroup", {
 		Name = "Panel",
