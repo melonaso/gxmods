@@ -137,11 +137,14 @@ Config.Skins = {
 -- Encontradas con ForgeGUI (toolbox_search).
 Config.Music = {
 	Lobby = { 134959834418523, 1836009626, 133838630142849 }, -- Liminal Space, Halloween Horrors Waltz (APM), Scary Place
-	Round = { 138890398994853, 135768960171473, 98165789328752 }, -- Horror Cinematic Ambience, Creepy Scary, Beneath the Dread Moon
-	Outdoor = { 1846999567, 138890398994853 }, -- Creepy Night (APM), Horror Cinematic Ambience
+	Round = { 138890398994853, 98165789328752, 135768960171473 }, -- Horror Cinematic Ambience, Beneath the Dread Moon, Creepy Scary
+	Outdoor = { 98165789328752, 1846999567, 138890398994853 }, -- Beneath the Dread Moon, Creepy Night (APM), Horror Cinematic Ambience
 	Results = { 9041745502 }, -- 80s Horror Throwback Scary Creeper Bed (APM)
 	Chase = 1848090337, -- Intense Chase (APM): suena cuando Verity está cerca de alguien
-	Drone = 9043360237, -- METALLIC DRONE 03 (APM): capa ambiental durante la ronda
+	Drone = 9043360237, -- METALLIC DRONE 03 (APM): capa de tensión durante la ronda (sube de volumen y tono)
+	Rumble = 9112775175, -- Eerie Ambience 1 (Pro Sound Effects): retumbar grave de fondo en la ronda
+	FinalMinute = 1847683499, -- Running Faster A (APM): sustituye a la música en el último minuto
+	HeartbeatHit = 12221944, -- bass.wav (Roblox): golpe grave del latido cuando Verity se acerca
 	DeathScream = 9043345732, -- HORROR SCREAM 07 (APM): al ser agarrado; la explosión lo corta
 	Volume = 0.35,
 }

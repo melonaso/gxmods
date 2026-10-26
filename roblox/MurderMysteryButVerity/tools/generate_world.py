@@ -1274,32 +1274,40 @@ def build_outdoor(name, t, origin):
 # ---------------------------------------------------------------------------
 
 def build_ball():
+    """La forma original de Verity: una cara sonriente plana y simple, amarilla,
+    con dos ojos ovalados negros y una sonrisa fina con los extremos marcados."""
     radius = 3.5
-    nodes = [part("Core", (0, 0, 0), (radius * 2, radius * 2, radius * 2), (236, 206, 66), "SmoothPlastic", Shape="Ball",
-                  CanCollide=False, CanQuery=False, children=[point_light((255, 220, 120), 14, 0.7)])]
+    yellow, ink = (226, 204, 24), (14, 12, 10)
+    ellipsoid = [{"className": "SpecialMesh", "properties": {"MeshType": "Sphere"}}]
+    nodes = [part("Core", (0, 0, 0), (radius * 2, radius * 2, radius * 2), yellow, "SmoothPlastic", Shape="Ball",
+                  CanCollide=False, CanQuery=False, children=[point_light((255, 230, 120), 14, 0.6)])]
+
+    def on_ball(name, x, y, size, inset=0.0, tangent=None):
+        pos, orient = verity_rig.surface((0, 0, 0), (radius, radius, radius), x, y, inset)
+        if tangent is not None:
+            # gira el trazo sobre la normal para que siga la dirección de la línea
+            orient = matmul(orient, rz(tangent))
+        nodes.append(part(name, pos, size, ink, "SmoothPlastic", orientation=orient, CanCollide=False, CanQuery=False,
+                          children=ellipsoid))
+
     for side in (-1, 1):
-        ex, ey = side * 1.15, 1.05
-        ez = -math.sqrt(radius ** 2 - ex ** 2 - ey ** 2) + 0.3
-        nodes.append(part("Eye", (ex, ey, ez), (1.25, 1.25, 1.25), (8, 6, 6), Shape="Ball", CanCollide=False, CanQuery=False))
-        nodes.append(part("Pupil", (ex - side * 0.14, ey + 0.16, ez - 0.52), (0.3, 0.3, 0.3), (255, 255, 255), "Neon",
-                          Shape="Ball", CanCollide=False, CanQuery=False))
-    lines = [{"className": "Frame", "properties": {"Size": {"UDim2": [[0, 3], [1, 0]]}, "Position": {"UDim2": [[0.5, -1], [0, 0]]},
-                                                   "BackgroundColor3": [0.35, 0.3, 0.25], "BorderSizePixel": 0}},
-             {"className": "Frame", "properties": {"Size": {"UDim2": [[1, 0], [0, 3]]}, "Position": {"UDim2": [[0, 0], [0.5, -1]]},
-                                                   "BackgroundColor3": [0.35, 0.3, 0.25], "BorderSizePixel": 0}}]
-    for k in range(9):
-        x = -2.2 + k * 0.55
-        y = -0.75 + 0.13 * x * x
-        z = -math.sqrt(max(0.1, radius ** 2 - x * x - y * y))
-        rxz = math.sqrt(x * x + z * z)
-        nx, nz = x / rxz, z / rxz
-        orient = ry(-math.asin(nx))
-        nodes.append(part("Mouth", (x + nx * 0.02, y, z + nz * 0.02), (0.62, 1.05, 0.3), (70, 10, 16), CanCollide=False, CanQuery=False,
-                          orientation=orient))
-        nodes.append(part("Teeth", (x + nx * 0.14, y, z + nz * 0.14), (0.56, 0.74, 0.1), (245, 240, 225), CanCollide=False, CanQuery=False,
-                          orientation=orient, children=[{"className": "SurfaceGui",
-                                                         "properties": {"Face": "Front", "SizingMode": "PixelsPerStud", "PixelsPerStud": 80},
-                                                         "children": lines}]))
+        on_ball("Eye", side * 0.82, 0.45, (0.52, 0.95, 0.22), inset=-0.03)
+
+    # sonrisa: arco ancho y poco profundo hecho de trazos solapados
+    def smile_y(x):
+        return -1.62 + 0.245 * x * x
+
+    steps = 22
+    xs = [-2.13 + 4.26 * k / steps for k in range(steps + 1)]
+    for a, b in zip(xs, xs[1:]):
+        mx = (a + b) / 2
+        angle = math.atan2(smile_y(b) - smile_y(a), b - a)
+        length = math.hypot(b - a, smile_y(b) - smile_y(a)) * 1.6
+        on_ball("Smile", mx, smile_y(mx), (length, 0.2, 0.14), inset=-0.02, tangent=angle)
+    # pequeños trazos en las comisuras
+    for side in (-1, 1):
+        on_ball("SmileEnd", side * 2.2, smile_y(2.13) + 0.06, (0.36, 0.16, 0.14), inset=-0.02,
+                tangent=math.radians(side * -62))
     return {"className": "Model", "attributes": {"VerityBall": True}, "children": nodes}
 
 

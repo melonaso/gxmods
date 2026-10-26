@@ -102,7 +102,13 @@ Roblox no tiene crujidos de huesos públicos y ForgeGUI necesita un plan de pago
 Mientras sea `0`, el juego usa un sustituto con sonidos internos de Roblox.
 
 ## Música y efectos
-- Música ambiente de terror de **DistroKid Official** y **APM Official** (licenciadas para experiencias de Roblox), distinta en lobby, interiores, exteriores y resultados, más un zumbido de fondo y una **capa de persecución** (*Intense Chase*, APM) que sube cuando Verity está cerca de alguien. Se puede silenciar con el botón ♪.
+- Música de terror por capas (pistas oficiales de **DistroKid**, **APM** y **Pro Sound Effects**, licenciadas para experiencias de Roblox), pensada para que la tensión no baje:
+  - pista principal distinta en lobby, interiores, exteriores y resultados;
+  - en la ronda, un **zumbido metálico** y un **retumbar grave** de fondo; el zumbido sube de volumen y de tono con la tensión (Verity cerca, los segundos antes de que despierte, la revelación de cada minuto);
+  - **persecución** (*Intense Chase*, APM) que sube cuando Verity está cerca de alguien, mientras la música principal se agacha;
+  - **latido** grave para los supervivientes cuando Verity está a menos de ~55 studs, cada vez más rápido;
+  - en el **último minuto**, la música cambia a una pista más urgente (*Running Faster*, APM).
+  - Se puede silenciar todo con el botón ♪.
 - Grito de muerte: *HORROR SCREAM 07* (APM).
 - Texturas de VFX generadas con **ForgeGUI**: destello, orbe, onda, salpicadura de líquido y gota (sangre).
 

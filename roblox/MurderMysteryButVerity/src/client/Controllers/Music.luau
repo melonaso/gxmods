@@ -1,12 +1,20 @@
 --!strict
--- Música ambiente de terror en tres capas:
+-- Música de terror por capas, pensada para que la tensión no baje nunca:
 --   1. pista principal según la fase (lobby, ronda interior, ronda exterior,
 --      resultados), con fundido entre pistas
---   2. zumbido metálico muy bajo durante la ronda
+--   2. durante la ronda, dos capas de fondo: un zumbido metálico y un
+--      retumbar grave. El zumbido sube de volumen y de tono con la tensión
 --   3. persecución: sube cuando Verity está cerca de alguien (si eres Verity,
---      cerca de un superviviente; si eres superviviente, cerca de Verity)
--- Pistas de DistroKid y APM oficiales en Roblox (uso permitido en experiencias),
--- encontradas con ForgeGUI. Se silencia todo con el botón ♪ del HUD.
+--      cerca de un superviviente; si eres superviviente, cerca de Verity) y la
+--      música principal se agacha
+--   4. latido grave (supervivientes): empieza cuando Verity está a ~55 studs y
+--      se acelera al acercarse
+--   5. último minuto: la música principal cambia a una pista más urgente
+-- La tensión también sube en los segundos antes de que Verity despierte y
+-- durante la revelación de cada minuto.
+-- Pistas de DistroKid, APM y Pro Sound Effects oficiales en Roblox (uso
+-- permitido en experiencias), encontradas con ForgeGUI. El botón ♪ del HUD
+-- lo silencia todo.
 
 local CollectionService = game:GetService("CollectionService")
 local Players = game:GetService("Players")
@@ -20,12 +28,17 @@ local Config = require(ReplicatedStorage.Shared.Config)
 
 local player = Players.LocalPlayer
 local CHASE_RADIUS = 38
+local HEART_RADIUS = 55
+local FINAL_MINUTE = 60
 
 local Music = {}
 
 local sound: Sound
 local drone: Sound
+local rumble: Sound
 local chase: Sound
+local finale: Sound
+local heart: Sound
 local currentList: { number } = {}
 local currentName = ""
 local index = 0
@@ -74,8 +87,6 @@ end
 
 local function onPhase()
 	local phase = (Workspace:GetAttribute("Phase") :: string?) or "Waiting"
-	local inRound = phase == "Playing" or phase == "Starting"
-	fade(drone, if inRound and enabled then Config.Music.Volume * 0.35 else 0, 2)
 	local name, list = listFor(phase)
 	if name == currentName then
 		return
@@ -131,6 +142,16 @@ local function threatDistance(): number
 	return best
 end
 
+local function layer(name: string, id: number, looped: boolean): Sound
+	local s = Instance.new("Sound")
+	s.Name = name
+	s.SoundId = `rbxassetid://{id}`
+	s.Looped = looped
+	s.Volume = 0
+	s.Parent = SoundService
+	return s
+end
+
 function Music.setEnabled(value: boolean)
 	enabled = value
 	fade(sound, if value then Config.Music.Volume else 0, 0.6)
@@ -148,48 +169,100 @@ function Music.init()
 	sound.Parent = SoundService
 	sound.Ended:Connect(playNext)
 
-	drone = Instance.new("Sound")
-	drone.Name = "AmbientDrone"
-	drone.SoundId = `rbxassetid://{Config.Music.Drone}`
-	drone.Looped = true
-	drone.Volume = 0
-	drone.Parent = SoundService
-
-	chase = Instance.new("Sound")
-	chase.Name = "ChaseMusic"
-	chase.SoundId = `rbxassetid://{Config.Music.Chase}`
-	chase.Looped = true
-	chase.Volume = 0
-	chase.Parent = SoundService
+	drone = layer("TensionDrone", Config.Music.Drone, true)
+	rumble = layer("TensionRumble", Config.Music.Rumble, true)
+	chase = layer("ChaseMusic", Config.Music.Chase, true)
+	finale = layer("FinalMinute", Config.Music.FinalMinute, true)
+	heart = layer("Heartbeat", Config.Music.HeartbeatHit, false)
 end
 
 function Music.start()
 	Workspace:GetAttributeChangedSignal("Phase"):Connect(function()
 		task.spawn(onPhase)
 	end)
-	drone:Play()
-	chase:Play()
+	for _, s in { drone, rumble, chase, finale } do
+		s:Play()
+	end
 	onPhase()
 
-	-- la persecución sube y baja según la distancia; la música principal se agacha
+	local V = Config.Music.Volume
 	local accumulator = 0
 	local chaseLevel = 0
+	local tension = 0
+	local finaleLevel = 0
+	local nextBeat = 0
 	RunService.Heartbeat:Connect(function(dt)
 		accumulator += dt
-		if accumulator < 0.25 then
+		if accumulator < 0.1 then
 			return
 		end
+		local step = accumulator
 		accumulator = 0
+
 		local phase = Workspace:GetAttribute("Phase")
+		local playing = enabled and phase == "Playing"
+		local inRound = enabled and (phase == "Playing" or phase == "Starting")
+		local now = Workspace:GetServerTimeNow()
+
+		-- ¿qué tan cerca está el peligro?
+		local distance = if playing then threatDistance() else math.huge
+		local chaseTarget = math.clamp(1 - (distance - 12) / (CHASE_RADIUS - 12), 0, 1)
+		chaseLevel += (chaseTarget - chaseLevel) * math.min(1, step * 3.5)
+
+		-- tensión general: cercanía, cuenta atrás de Verity, revelación y último minuto
 		local target = 0
-		if enabled and phase == "Playing" then
-			local d = threatDistance()
-			target = math.clamp(1 - (d - 12) / (CHASE_RADIUS - 12), 0, 1)
+		if inRound then
+			target = 0.25 + 0.75 * math.clamp(1 - (distance - 12) / (HEART_RADIUS - 12), 0, 1)
+			local releaseAt = (Workspace:GetAttribute("KillerReleaseAt") :: number?) or 0
+			if releaseAt > now and releaseAt - now < 6 then
+				target = math.max(target, 0.85)
+			end
+			if ((Workspace:GetAttribute("RevealUntil") :: number?) or 0) > now then
+				target = math.max(target, 0.7)
+			end
 		end
-		chaseLevel += (target - chaseLevel) * 0.35
-		chase.Volume = chaseLevel * Config.Music.Volume * 1.6
+		local endsAt = (Workspace:GetAttribute("PhaseEndsAt") :: number?) or 0
+		local finalMinute = playing and endsAt > now and endsAt - now <= FINAL_MINUTE
+		if finalMinute then
+			target = math.max(target, 0.6)
+		end
+		tension += (target - tension) * math.min(1, step * 2)
+
+		-- capas de fondo
+		drone.Volume = if inRound then V * (0.45 + 0.9 * tension) else 0
+		drone.PlaybackSpeed = 0.9 + 0.25 * tension
+		rumble.Volume = if inRound then V * (0.5 + 0.5 * tension) else 0
+		chase.Volume = chaseLevel * V * 1.7
+
+		-- último minuto: la pista principal da paso a una más urgente
+		finaleLevel += ((if finalMinute then 1 else 0) - finaleLevel) * math.min(1, step * 0.8)
+		finale.Volume = finaleLevel * V * 1.1 * (1 - 0.6 * chaseLevel)
 		if enabled and sound.IsPlaying and not transitioning then
-			sound.Volume = Config.Music.Volume * (1 - 0.7 * chaseLevel)
+			sound.Volume = V * (1 - 0.7 * chaseLevel) * (1 - finaleLevel)
+		end
+
+		-- latido: solo supervivientes, más rápido cuanto más cerca está Verity
+		local closeness = math.clamp(1 - (distance - 10) / (HEART_RADIUS - 10), 0, 1)
+		if playing and player:GetAttribute("Role") == "Survivor" and closeness > 0 then
+			local clock = os.clock()
+			if clock >= nextBeat then
+				nextBeat = clock + (1.15 - 0.7 * closeness)
+				local volume = (0.35 + 0.65 * closeness) * 1.4
+				-- "pum-pum": dos golpes graves (copias, para que no se corten entre sí)
+				for k, offset in { 0, 0.17 } do
+					task.delay(offset, function()
+						local beat = heart:Clone()
+						beat.PlaybackSpeed = if k == 1 then 0.42 else 0.36
+						beat.Volume = if k == 1 then volume else volume * 0.7
+						beat.Parent = SoundService
+						beat:Play()
+						beat.Ended:Once(function()
+							beat:Destroy()
+						end)
+						game:GetService("Debris"):AddItem(beat, 3)
+					end)
+				end
+			end
 		end
 	end)
 end
