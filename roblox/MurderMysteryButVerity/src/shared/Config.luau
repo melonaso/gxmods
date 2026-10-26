@@ -43,6 +43,14 @@ Config.Verity = {
 	Height = 18, -- algo más de 3 veces un jugador R15 (las puertas miden 20)
 }
 
+-- Distancia máxima a la que se puede alejar la cámara (rueda del ratón).
+-- Cerca da más tensión: no se ve lo que hay detrás de las esquinas.
+Config.Camera = {
+	LobbyMaxZoom = 18,
+	SurvivorMaxZoom = 13,
+	VerityMaxZoom = 22, -- Verity mide 18 studs: necesita algo más de margen
+}
+
 Config.Killer = {
 	Name = "Verity",
 	KillRange = 10, -- distancia máxima para atrapar con Q (brazos larguísimos)

@@ -412,6 +412,16 @@ local function update()
 		else
 			local chance = (player:GetAttribute("VerityChance") :: number?) or 0
 			info = T("Probabilidad de Verity: {chance}", { chance = `<font color="#ff3b4e"><b>{chance}%</b></font>` })
+			-- rotación: nadie repite hasta que todos hayan sido Verity
+			local total = (Workspace:GetAttribute("RotationTotal") :: number?) or 0
+			if total > 1 then
+				if player:GetAttribute("RotationDone") then
+					info ..= "  ·  " .. T("Ya fuiste Verity en esta rotación")
+				else
+					local done = (Workspace:GetAttribute("RotationDone") :: number?) or 0
+					info ..= "  ·  " .. T("Rotación: {done}/{total} ya fueron Verity", { done = done, total = total })
+				end
+			end
 		end
 		if phase == "Playing" then
 			info ..= "  ·  " .. T("ronda en curso")

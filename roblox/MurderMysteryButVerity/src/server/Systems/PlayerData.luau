@@ -11,6 +11,7 @@ local DataStoreService = game:GetService("DataStoreService")
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
 
 local Config = require(ReplicatedStorage.Shared.Config)
 
@@ -251,34 +252,95 @@ function PlayerData.weight(player: Player): number
 	return weight
 end
 
--- Publica en cada jugador su probabilidad actual (0-100) como atributo.
-function PlayerData.refreshChances()
-	local total = 0
+-- Rotación de Verity (como en Survive the Killer): nadie repite hasta que
+-- todos los del servidor hayan sido Verity una vez. Con 10 jugadores, en 10
+-- rondas todos lo han sido. Entre los que faltan, el orden lo deciden la
+-- suerte y los pases. Se guarda por UserId: salir y volver no reinicia el turno.
+local rotationDone: { [number]: boolean } = {}
+
+local function publishRotation()
+	local done, total = 0, 0
 	for player in sessions do
+		total += 1
+		local had = rotationDone[player.UserId] == true
+		if had then
+			done += 1
+		end
+		player:SetAttribute("RotationDone", had)
+	end
+	Workspace:SetAttribute("RotationDone", done)
+	Workspace:SetAttribute("RotationTotal", total)
+end
+
+-- Jugadores que aún no han sido Verity en esta rotación (si ya lo fueron
+-- todos, empieza una rotación nueva).
+local function rotationPool(candidates: { Player }): { Player }
+	local pool = {}
+	for _, player in candidates do
+		if not rotationDone[player.UserId] then
+			table.insert(pool, player)
+		end
+	end
+	if #pool == 0 then
+		table.clear(rotationDone)
+		pool = table.clone(candidates)
+	end
+	return pool
+end
+
+-- Publica en cada jugador su probabilidad actual (0-100) como atributo: 0 %
+-- si ya fue Verity en esta rotación.
+function PlayerData.refreshChances()
+	local players = {}
+	for player in sessions do
+		table.insert(players, player)
+	end
+	local pool = {}
+	for _, player in players do
+		if not rotationDone[player.UserId] then
+			pool[player] = true
+		end
+	end
+	if next(pool) == nil then
+		for _, player in players do
+			pool[player] = true
+		end
+	end
+	local total = 0
+	for player in pool do
 		total += PlayerData.weight(player)
 	end
-	for player in sessions do
-		local chance = if total > 0 then PlayerData.weight(player) / total * 100 else 0
+	for _, player in players do
+		local chance = if pool[player] and total > 0 then PlayerData.weight(player) / total * 100 else 0
 		player:SetAttribute("VerityChance", math.floor(chance * 10 + 0.5) / 10)
 	end
+	publishRotation()
 end
 
 function PlayerData.pickKiller(candidates: { Player }): Player?
+	if #candidates == 0 then
+		return nil
+	end
+	local pool = rotationPool(candidates)
+	local chosen = pool[#pool]
 	local total = 0
-	for _, player in candidates do
+	for _, player in pool do
 		total += PlayerData.weight(player)
 	end
 	if total <= 0 then
-		return candidates[math.random(1, #candidates)]
-	end
-	local roll = math.random() * total
-	for _, player in candidates do
-		roll -= PlayerData.weight(player)
-		if roll <= 0 then
-			return player
+		chosen = pool[math.random(1, #pool)]
+	else
+		local roll = math.random() * total
+		for _, player in pool do
+			roll -= PlayerData.weight(player)
+			if roll <= 0 then
+				chosen = player
+				break
+			end
 		end
 	end
-	return candidates[#candidates]
+	rotationDone[chosen.UserId] = true
+	return chosen
 end
 
 -- Se llama al empezar una ronda: el elegido pierde su suerte, el resto gana,

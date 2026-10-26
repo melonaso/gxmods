@@ -247,8 +247,10 @@ local function playRound()
 		Movement.reset(player)
 		if player == killerPlayer then
 			player:SetAttribute("Role", "Verity")
+			player.CameraMaxZoomDistance = Config.Camera.VerityMaxZoom
 		else
 			player:SetAttribute("Role", "Survivor")
+			player.CameraMaxZoomDistance = Config.Camera.SurvivorMaxZoom
 			survivors[player] = true
 			local character = player.Character
 			local humanoid = character and character:FindFirstChildOfClass("Humanoid")
@@ -472,6 +474,7 @@ local function playRound()
 		if player.Parent then
 			player:SetAttribute("Role", "Lobby")
 			player:SetAttribute("Gold", 0)
+			player.CameraMaxZoomDistance = Config.Camera.LobbyMaxZoom
 			-- Devuelve a todos al lobby con su avatar normal.
 			task.spawn(function()
 				pcall(player.LoadCharacter, player)
@@ -487,6 +490,7 @@ function Round.init()
 	local function setup(player: Player)
 		player:SetAttribute("Role", "Lobby")
 		player:SetAttribute("Gold", 0)
+		player.CameraMaxZoomDistance = Config.Camera.LobbyMaxZoom
 		-- modo prueba: el botón del lobby alterna entre "Verity" y "Survivor"
 		if player:GetAttribute("TestRole") == nil then
 			player:SetAttribute("TestRole", "Verity")
@@ -521,6 +525,7 @@ function Round.start()
 				end
 				for _, player in Players:GetPlayers() do
 					player:SetAttribute("Role", "Lobby")
+					player.CameraMaxZoomDistance = Config.Camera.LobbyMaxZoom
 					task.spawn(function()
 						pcall(player.LoadCharacter, player)
 					end)

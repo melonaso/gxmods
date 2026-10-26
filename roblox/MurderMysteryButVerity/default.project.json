@@ -19,7 +19,8 @@
         }
       },
       "$properties": {
-        "EnableMouseLockOption": false
+        "EnableMouseLockOption": false,
+        "CameraMaxZoomDistance": 18
       }
     },
     "Players": {

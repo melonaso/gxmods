@@ -105,6 +105,7 @@ RESULTADOS,RESULTADOS,,src/client/Controllers/HUD.luau,RESULTS
 Revelación en {seconds},Revelación en {seconds},,src/client/Controllers/HUD.luau,Reveal in {seconds}
 Rol de prueba: {role},Rol de prueba: {role},,src/client/Controllers/HUD.luau,Test role: {role}
 ronda en curso,ronda en curso,,src/client/Controllers/HUD.luau,round in progress
+Rotación: {done}/{total} ya fueron Verity,Rotación: {done}/{total} ya fueron Verity,,src/client/Controllers/HUD.luau,Rotation: {done}/{total} have been Verity
 Salir,Salir,,src/server/Systems/Hiding.luau,Leave
 Saltos enormes: la gravedad te afecta mucho menos.,Saltos enormes: la gravedad te afecta mucho menos.,,src/shared/Config.luau,Huge jumps: gravity affects you much less.
 Sangrienta,Sangrienta,,src/shared/Config.luau,Bloody
@@ -141,6 +142,7 @@ VERITY GANA,VERITY GANA,,src/client/Controllers/HUD.luau,VERITY WINS
 Verity ha caído.,Verity ha caído.,,src/server/Systems/Round.luau,Verity has fallen.
 victoria,victoria,,src/server/Systems/Round.luau,victory
 x5 de probabilidad en tu próxima ronda.,x5 de probabilidad en tu próxima ronda.,,src/shared/Config.luau,x5 chance in your next round.
+Ya fuiste Verity en esta rotación,Ya fuiste Verity en esta rotación,,src/client/Controllers/HUD.luau,You were already Verity this rotation
 Ya tienes 2 cepos colocados.,Ya tienes 2 cepos colocados.,,src/server/Systems/Items.luau,You already have 2 traps placed.
 {coins} monedas · Verity {chance}%,{coins} monedas · Verity {chance}%,,src/client/Controllers/Shop.luau,{coins} coins · Verity {chance}%
 {count} supervivientes,{count} supervivientes,,src/client/Controllers/HUD.luau,{count} survivors

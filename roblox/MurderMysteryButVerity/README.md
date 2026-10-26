@@ -42,6 +42,9 @@ Ponlo en `false` antes de publicar y pon **10 jugadores máximo** en Game Settin
 6. Verity atrapa con `Q`: la víctima **grita** mientras la levanta y el grito se corta en seco con la explosión.
 7. **Anti-campeo:** cada **60 s** (desde que Verity despierta) todos los supervivientes se **resaltan en rojo para Verity durante 5 s**, a través de las paredes (si estás en un escondite, se resalta el escondite). Los supervivientes reciben un pulso rojo en pantalla, tres latidos y el aviso "¡Verity puede verte! Cambia de sitio". El HUD muestra la cuenta atrás ("Revelación en 42s").
 
+## Cámara
+La cámara se aleja poco del personaje para que no se vea detrás de las esquinas: 13 studs como superviviente, 22 como Verity (es mucho más alta) y 18 en el lobby (`Config.Camera`).
+
 ## Controles
 | Tecla | Verity | Superviviente |
 | --- | --- | --- |
@@ -123,9 +126,11 @@ Mientras sea `0`, el juego usa un sustituto con sonidos internos de Roblox.
 2. Llévalos a una de las **3 mesas de crafteo**.
 3. Con **3 de oro**, mantén `E` 3 s para **craftear un tótem**: **−30 s** al reloj (máx. 5 por ronda).
 
-## Probabilidad de ser Verity (fuera del modo prueba)
-Cada ronda que no eres Verity sumas +1 de suerte (máx. 10).
-`peso = (1 + suerte) × multiplicador del pase × multiplicador de poción`, `probabilidad = tu peso / suma de pesos`.
+## Quién es Verity (fuera del modo prueba)
+**Rotación como en Survive the Killer:** nadie repite hasta que todos los del servidor hayan sido Verity una vez. Con 10 jugadores, en 10 rondas todos lo han sido; después empieza otra rotación. Si entra alguien nuevo, se suma a los que faltan, y salir y volver no reinicia tu turno. El HUD del lobby muestra "Rotación: 4/10 ya fueron Verity" o "Ya fuiste Verity en esta rotación".
+
+Entre los que aún no lo han sido, el orden lo deciden la suerte y los pases. Cada ronda que no eres Verity sumas +1 de suerte (máx. 10).
+`peso = (1 + suerte) × multiplicador del pase × multiplicador de poción`, `probabilidad = tu peso / suma de pesos de los que faltan` (0 % si ya lo fuiste en esta rotación).
 
 ## Traducción a todos los idiomas
 El juego está escrito en **español** y todos los textos (HUD, tienda, avisos, carteles, mesas de crafteo, escondites, nombres de mapas y objetos) pasan por [`Locale.luau`](src/shared/Locale.luau), que los traduce con el `Translator` de cada jugador. Los textos con números o nombres usan parámetros (`"Verity atrapó a {name}"`), así una sola entrada sirve para cualquier valor.
