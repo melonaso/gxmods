@@ -2661,7 +2661,7 @@
        "CFrame": {
         "position": [
          0,
-         312.15,
+         312.1,
          -18.04
         ],
         "orientation": [
@@ -2684,8 +2684,8 @@
        }
       },
       "Size": [
-       1.08,
-       1.12,
+       1.34,
+       0.82,
        0.66
       ],
       "Color": [
@@ -2714,16 +2714,77 @@
      ]
     },
     {
-     "name": "Hips",
+     "name": "HipCrest",
      "className": "Part",
      "properties": {
       "Anchored": true,
       "CFrame": {
        "CFrame": {
         "position": [
-         0,
-         312.62,
-         -18.04
+         0.52,
+         312.45,
+         -17.82
+        ],
+        "orientation": [
+         [
+          -0.9135454576426009,
+          -0.4067366430758002,
+          0
+         ],
+         [
+          -0.4067366430758002,
+          0.9135454576426009,
+          0
+         ],
+         [
+          0.0,
+          0.0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.12,
+       0.46,
+       0.2
+      ],
+      "Color": [
+       0.8627,
+       0.8,
+       0.4392
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Glute",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.32,
+         312.05,
+         -18.26
         ],
         "orientation": [
          [
@@ -2745,9 +2806,9 @@
        }
       },
       "Size": [
-       0.96,
+       0.6,
        0.72,
-       0.62
+       0.38
       ],
       "Color": [
        0.8078,
@@ -2782,18 +2843,18 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.44,
-         312.5,
-         -17.9
+         -0.52,
+         312.45,
+         -17.82
         ],
         "orientation": [
          [
           -0.9135454576426009,
-          -0.4067366430758002,
+          0.4067366430758002,
           0
          ],
          [
-          -0.4067366430758002,
+          0.4067366430758002,
           0.9135454576426009,
           0
          ],
@@ -2806,9 +2867,9 @@
        }
       },
       "Size": [
-       0.14,
+       0.12,
        0.46,
-       0.26
+       0.2
       ],
       "Color": [
        0.8627,
@@ -2843,7 +2904,7 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.26,
+         -0.32,
          312.05,
          -18.26
         ],
@@ -2867,131 +2928,9 @@
        }
       },
       "Size": [
-       0.5,
-       0.7,
-       0.36
-      ],
-      "Color": [
-       0.8078,
-       0.7373,
-       0.3608
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "CanQuery": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     },
-     "children": [
-      {
-       "className": "SpecialMesh",
-       "properties": {
-        "MeshType": "Sphere"
-       }
-      }
-     ]
-    },
-    {
-     "name": "HipCrest",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         -0.44,
-         312.5,
-         -17.9
-        ],
-        "orientation": [
-         [
-          -0.9135454576426009,
-          0.4067366430758002,
-          0
-         ],
-         [
-          0.4067366430758002,
-          0.9135454576426009,
-          0
-         ],
-         [
-          0.0,
-          0.0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.14,
-       0.46,
-       0.26
-      ],
-      "Color": [
-       0.8627,
-       0.8,
-       0.4392
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "CanQuery": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     },
-     "children": [
-      {
-       "className": "SpecialMesh",
-       "properties": {
-        "MeshType": "Sphere"
-       }
-      }
-     ]
-    },
-    {
-     "name": "Glute",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         -0.26,
-         312.05,
-         -18.26
-        ],
-        "orientation": [
-         [
-          -1,
-          0,
-          0
-         ],
-         [
-          0,
-          1,
-          0
-         ],
-         [
-          0,
-          0,
-          -1
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.5,
-       0.7,
-       0.36
+       0.6,
+       0.72,
+       0.38
       ],
       "Color": [
        0.8078,
@@ -3050,9 +2989,9 @@
        }
       },
       "Size": [
-       1.52,
+       1.96,
        2.6,
-       0.94
+       1.04
       ],
       "Color": [
        0.8078,
@@ -3080,7 +3019,7 @@
      ]
     },
     {
-     "name": "Chest",
+     "name": "TorsoSlice",
      "className": "Part",
      "properties": {
       "Anchored": true,
@@ -3088,8 +3027,8 @@
        "CFrame": {
         "position": [
          0,
-         315.98,
-         -18.06
+         311.95,
+         -18.05
         ],
         "orientation": [
          [
@@ -3111,9 +3050,9 @@
        }
       },
       "Size": [
-       1.82,
-       1.1,
-       0.88
+       1.288,
+       1.4,
+       0.653
       ],
       "Color": [
        0.8078,
@@ -3141,7 +3080,7 @@
      ]
     },
     {
-     "name": "Waist",
+     "name": "TorsoSlice",
      "className": "Part",
      "properties": {
       "Anchored": true,
@@ -3149,8 +3088,8 @@
        "CFrame": {
         "position": [
          0,
-         313.55,
-         -18.12
+         312.3,
+         -18.046
         ],
         "orientation": [
          [
@@ -3172,9 +3111,9 @@
        }
       },
       "Size": [
-       0.74,
-       1.5,
-       0.54
+       1.43,
+       1.4,
+       0.697
       ],
       "Color": [
        0.8078,
@@ -3202,7 +3141,7 @@
      ]
     },
     {
-     "name": "Belly",
+     "name": "TorsoSlice",
      "className": "Part",
      "properties": {
       "Anchored": true,
@@ -3210,8 +3149,8 @@
        "CFrame": {
         "position": [
          0,
-         313.06,
-         -18.0
+         312.65,
+         -18.02
         ],
         "orientation": [
          [
@@ -3233,9 +3172,619 @@
        }
       },
       "Size": [
-       0.82,
-       1.1,
-       0.6
+       1.36,
+       1.4,
+       0.68
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "TorsoSlice",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         313.0,
+         -18.001
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.303,
+       1.4,
+       0.68
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "TorsoSlice",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         313.35,
+         -18.028
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.243,
+       1.4,
+       0.623
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "TorsoSlice",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         313.7,
+         -18.047
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.392,
+       1.4,
+       0.671
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "TorsoSlice",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         314.05,
+         -18.05
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.6,
+       1.4,
+       0.77
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "TorsoSlice",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         314.4,
+         -18.05
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.795,
+       1.4,
+       0.867
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "TorsoSlice",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         314.75,
+         -18.05
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.949,
+       1.4,
+       0.944
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "TorsoSlice",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         315.1,
+         -18.05
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.985,
+       1.4,
+       0.965
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "TorsoSlice",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         315.45,
+         -18.05
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       2.0,
+       1.4,
+       0.98
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "TorsoSlice",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         315.8,
+         -18.061
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.943,
+       1.4,
+       0.946
+      ],
+      "Color": [
+       0.8078,
+       0.7373,
+       0.3608
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "TorsoSlice",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0,
+         316.15,
+         -18.074
+        ],
+        "orientation": [
+         [
+          -1,
+          0,
+          0
+         ],
+         [
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          -1
+         ]
+        ]
+       }
+      },
+      "Size": [
+       1.837,
+       1.4,
+       0.897
       ],
       "Color": [
        0.8078,
@@ -3272,7 +3821,7 @@
         "position": [
          0,
          313.05,
-         -17.69
+         -17.67
         ],
         "orientation": [
          [
@@ -3333,7 +3882,7 @@
         "position": [
          0,
          315.3,
-         -17.603
+         -17.553
         ],
         "orientation": [
          [
@@ -3392,31 +3941,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.4,
+         0.5,
          314.15,
-         -17.905
+         -17.875
         ],
         "orientation": [
          [
-          -0.5857097495603575,
-          0.5658218485043134,
-          -0.5803358725988812
+          -0.6607123011805326,
+          0.5757482610437212,
+          -0.4816359568946822
          ],
          [
-          0.2970109544229685,
-          0.816030890607772,
-          0.4958609467649612
+          0.2862240805957862,
+          0.7863941983410825,
+          0.5474120390552103
          ],
          [
-          0.7541409564681528,
-          0.11806447953998725,
-          -0.6460125358290282
+          0.6939272517748687,
+          0.2238260590740434,
+          -0.6843733370928186
          ]
         ]
        }
       },
       "Size": [
-       0.52,
+       0.655,
        0.1,
        0.13
       ],
@@ -3453,31 +4002,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.42,
+         0.52,
          314.31,
-         -17.838
+         -17.8
         ],
         "orientation": [
          [
-          -0.7231769945607726,
-          0.4653683282901005,
-          -0.5103404290887853
+          -0.7756417207862478,
+          0.47015455170630044,
+          -0.4211111711716944
          ],
          [
-          0.3205347962731222,
-          0.8806621149098909,
-          0.34884335129193167
+          0.31543024437992906,
+          0.8666374738469085,
+          0.3865789050823485
          ],
          [
-          0.6117781288311934,
-          0.08869362089189539,
-          -0.7860413237844995
+          0.5467025534110543,
+          0.1670155275239306,
+          -0.8205011466535171
          ]
         ]
        }
       },
       "Size": [
-       0.5,
+       0.62,
        0.07,
        0.1
       ],
@@ -3514,31 +4063,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.4,
+         -0.5,
          314.15,
-         -17.905
+         -17.875
         ],
         "orientation": [
          [
-          -0.5857097495603575,
-          -0.5658218485043134,
-          0.5803358725988812
+          -0.6607123011805326,
+          -0.5757482610437212,
+          0.4816359568946822
          ],
          [
-          -0.2970109544229685,
-          0.816030890607772,
-          0.4958609467649612
+          -0.2862240805957862,
+          0.7863941983410825,
+          0.5474120390552103
          ],
          [
-          -0.7541409564681528,
-          0.11806447953998725,
-          -0.6460125358290282
+          -0.6939272517748687,
+          0.2238260590740434,
+          -0.6843733370928186
          ]
         ]
        }
       },
       "Size": [
-       0.52,
+       0.655,
        0.1,
        0.13
       ],
@@ -3575,31 +4124,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.42,
+         -0.52,
          314.31,
-         -17.838
+         -17.8
         ],
         "orientation": [
          [
-          -0.7231769945607726,
-          -0.4653683282901005,
-          0.5103404290887853
+          -0.7756417207862478,
+          -0.47015455170630044,
+          0.4211111711716944
          ],
          [
-          -0.3205347962731222,
-          0.8806621149098909,
-          0.34884335129193167
+          -0.31543024437992906,
+          0.8666374738469085,
+          0.3865789050823485
          ],
          [
-          -0.6117781288311934,
-          0.08869362089189539,
-          -0.7860413237844995
+          -0.5467025534110543,
+          0.1670155275239306,
+          -0.8205011466535171
          ]
         ]
        }
       },
       "Size": [
-       0.5,
+       0.62,
        0.07,
        0.1
       ],
@@ -3636,31 +4185,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.4,
+         0.5,
          314.47,
-         -17.76
+         -17.72
         ],
         "orientation": [
          [
-          -0.8155828069269749,
-          0.3944549713763134,
-          -0.4233555959257286
+          -0.8460541927599551,
+          0.39813736177007225,
+          -0.3545122622365374
          ],
          [
-          0.31556527991470384,
-          0.9164681185450988,
-          0.24597711642094158
+          0.3131094354464923,
+          0.9093358283266387,
+          0.2739905705601655
          ],
          [
-          0.4850188028906422,
-          0.06701837991863602,
-          -0.871931934038208
+          0.4314565845455134,
+          0.12080973671137928,
+          -0.8940079547565825
          ]
         ]
        }
       },
       "Size": [
-       0.56,
+       0.705,
        0.1,
        0.13
       ],
@@ -3697,519 +4246,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.42,
+         0.52,
          314.63,
-         -17.741
-        ],
-        "orientation": [
-         [
-          -0.8322512912873639,
-          0.36555420138662414,
-          -0.41680680656522767
-         ],
-         [
-          0.32046441976727785,
-          0.9306962537961992,
-          0.1763718765363189
-         ],
-         [
-          0.45239401390130884,
-          0.013213970573149214,
-          -0.8917202740590542
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.5,
-       0.07,
-       0.1
-      ],
-      "Color": [
-       0.5882,
-       0.5176,
-       0.2353
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "CanQuery": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     },
-     "children": [
-      {
-       "className": "SpecialMesh",
-       "properties": {
-        "MeshType": "Sphere"
-       }
-      }
-     ]
-    },
-    {
-     "name": "Rib",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         -0.4,
-         314.47,
-         -17.76
-        ],
-        "orientation": [
-         [
-          -0.8155828069269749,
-          -0.3944549713763134,
-          0.4233555959257286
-         ],
-         [
-          -0.31556527991470384,
-          0.9164681185450988,
-          0.24597711642094158
-         ],
-         [
-          -0.4850188028906422,
-          0.06701837991863602,
-          -0.871931934038208
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.56,
-       0.1,
-       0.13
-      ],
-      "Color": [
-       0.698,
-       0.6275,
-       0.2902
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "CanQuery": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     },
-     "children": [
-      {
-       "className": "SpecialMesh",
-       "properties": {
-        "MeshType": "Sphere"
-       }
-      }
-     ]
-    },
-    {
-     "name": "RibShadow",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         -0.42,
-         314.63,
-         -17.741
-        ],
-        "orientation": [
-         [
-          -0.8322512912873639,
-          -0.36555420138662414,
-          0.41680680656522767
-         ],
-         [
-          -0.32046441976727785,
-          0.9306962537961992,
-          0.1763718765363189
-         ],
-         [
-          -0.45239401390130884,
-          0.013213970573149214,
-          -0.8917202740590542
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.5,
-       0.07,
-       0.1
-      ],
-      "Color": [
-       0.5882,
-       0.5176,
-       0.2353
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "CanQuery": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     },
-     "children": [
-      {
-       "className": "SpecialMesh",
-       "properties": {
-        "MeshType": "Sphere"
-       }
-      }
-     ]
-    },
-    {
-     "name": "Rib",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         0.4,
-         314.79,
-         -17.697
-        ],
-        "orientation": [
-         [
-          -0.868248553521187,
-          0.3273595303075886,
-          -0.37280046569869113
-         ],
-         [
-          0.30697851626442213,
-          0.9447827257734978,
-          0.11467254088095108
-         ],
-         [
-          0.3897545892744047,
-          -0.014877466074384837,
-          -0.9207985779434857
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.6,
-       0.1,
-       0.13
-      ],
-      "Color": [
-       0.698,
-       0.6275,
-       0.2902
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "CanQuery": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     },
-     "children": [
-      {
-       "className": "SpecialMesh",
-       "properties": {
-        "MeshType": "Sphere"
-       }
-      }
-     ]
-    },
-    {
-     "name": "RibShadow",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         0.42,
-         314.95,
-         -17.7
-        ],
-        "orientation": [
-         [
-          -0.8702784575028966,
-          0.30809429371224223,
-          -0.3843088765411668
-         ],
-         [
-          0.3084119587612722,
-          0.9491944081475406,
-          0.06254629672870587
-         ],
-         [
-          0.38405399372928606,
-          -0.06409275874382857,
-          -0.9210834099999798
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.5,
-       0.07,
-       0.1
-      ],
-      "Color": [
-       0.5882,
-       0.5176,
-       0.2353
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "CanQuery": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     },
-     "children": [
-      {
-       "className": "SpecialMesh",
-       "properties": {
-        "MeshType": "Sphere"
-       }
-      }
-     ]
-    },
-    {
-     "name": "Rib",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         -0.4,
-         314.79,
-         -17.697
-        ],
-        "orientation": [
-         [
-          -0.868248553521187,
-          -0.3273595303075886,
-          0.37280046569869113
-         ],
-         [
-          -0.30697851626442213,
-          0.9447827257734978,
-          0.11467254088095108
-         ],
-         [
-          -0.3897545892744047,
-          -0.014877466074384837,
-          -0.9207985779434857
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.6,
-       0.1,
-       0.13
-      ],
-      "Color": [
-       0.698,
-       0.6275,
-       0.2902
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "CanQuery": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     },
-     "children": [
-      {
-       "className": "SpecialMesh",
-       "properties": {
-        "MeshType": "Sphere"
-       }
-      }
-     ]
-    },
-    {
-     "name": "RibShadow",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         -0.42,
-         314.95,
-         -17.7
-        ],
-        "orientation": [
-         [
-          -0.8702784575028966,
-          -0.30809429371224223,
-          0.3843088765411668
-         ],
-         [
-          -0.3084119587612722,
-          0.9491944081475406,
-          0.06254629672870587
-         ],
-         [
-          -0.38405399372928606,
-          -0.06409275874382857,
-          -0.9210834099999798
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.5,
-       0.07,
-       0.1
-      ],
-      "Color": [
-       0.5882,
-       0.5176,
-       0.2353
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "CanQuery": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     },
-     "children": [
-      {
-       "className": "SpecialMesh",
-       "properties": {
-        "MeshType": "Sphere"
-       }
-      }
-     ]
-    },
-    {
-     "name": "Rib",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         0.4,
-         315.11,
-         -17.676
-        ],
-        "orientation": [
-         [
-          -0.8917537670005063,
-          0.27720895227798326,
-          -0.35767361632827965
-         ],
-         [
-          0.29234985850079775,
-          0.9562333001908021,
-          0.012224395313089345
-         ],
-         [
-          0.345408134349743,
-          -0.09366468055329041,
-          -0.9337666455500967
-         ]
-        ]
-       }
-      },
-      "Size": [
-       0.6,
-       0.1,
-       0.13
-      ],
-      "Color": [
-       0.698,
-       0.6275,
-       0.2902
-      ],
-      "Material": "SmoothPlastic",
-      "TopSurface": "Smooth",
-      "BottomSurface": "Smooth",
-      "CanCollide": false,
-      "CanQuery": false,
-      "Massless": true,
-      "Transparency": 0
-     },
-     "attributes": {
-      "StatueBody": true
-     },
-     "children": [
-      {
-       "className": "SpecialMesh",
-       "properties": {
-        "MeshType": "Sphere"
-       }
-      }
-     ]
-    },
-    {
-     "name": "RibShadow",
-     "className": "Part",
-     "properties": {
-      "Anchored": true,
-      "CFrame": {
-       "CFrame": {
-        "position": [
-         0.42,
-         315.27,
          -17.696
         ],
         "orientation": [
          [
-          -0.8881631217457959,
-          0.25669419850114866,
-          -0.38114873425818324
+          -0.8622546452037453,
+          0.37015142403132517,
+          -0.3456947354417555
          ],
          [
-          0.29216912794396066,
-          0.9556421571757314,
-          -0.03721919000972586
+          0.3192239001515903,
+          0.9270935232343492,
+          0.19645279521790626
          ],
          [
-          0.35468784846288137,
-          -0.14441660529304587,
-          -0.9237642417134388
+          0.3932086321491057,
+          0.05903831353031046,
+          -0.9175518781730688
          ]
         ]
        }
       },
       "Size": [
-       0.5,
+       0.62,
        0.07,
        0.1
       ],
@@ -4246,31 +4307,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.4,
-         315.11,
-         -17.676
+         -0.5,
+         314.47,
+         -17.72
         ],
         "orientation": [
          [
-          -0.8917537670005063,
-          -0.27720895227798326,
-          0.35767361632827965
+          -0.8460541927599551,
+          -0.39813736177007225,
+          0.3545122622365374
          ],
          [
-          -0.29234985850079775,
-          0.9562333001908021,
-          0.012224395313089345
+          -0.3131094354464923,
+          0.9093358283266387,
+          0.2739905705601655
          ],
          [
-          -0.345408134349743,
-          -0.09366468055329041,
-          -0.9337666455500967
+          -0.4314565845455134,
+          0.12080973671137928,
+          -0.8940079547565825
          ]
         ]
        }
       },
       "Size": [
-       0.6,
+       0.705,
        0.1,
        0.13
       ],
@@ -4307,31 +4368,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.42,
-         315.27,
+         -0.52,
+         314.63,
          -17.696
         ],
         "orientation": [
          [
-          -0.8881631217457959,
-          -0.25669419850114866,
-          0.38114873425818324
+          -0.8622546452037453,
+          -0.37015142403132517,
+          0.3456947354417555
          ],
          [
-          -0.29216912794396066,
-          0.9556421571757314,
-          -0.03721919000972586
+          -0.3192239001515903,
+          0.9270935232343492,
+          0.19645279521790626
          ],
          [
-          -0.35468784846288137,
-          -0.14441660529304587,
-          -0.9237642417134388
+          -0.3932086321491057,
+          0.05903831353031046,
+          -0.9175518781730688
          ]
         ]
        }
       },
       "Size": [
-       0.5,
+       0.62,
        0.07,
        0.1
       ],
@@ -4368,31 +4429,519 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.4,
+         0.5,
+         314.79,
+         -17.652
+        ],
+        "orientation": [
+         [
+          -0.8900008549138095,
+          0.33164989391810284,
+          -0.3129006649350544
+         ],
+         [
+          0.30647396187380016,
+          0.9432298670318712,
+          0.12802784319207725
+         ],
+         [
+          0.3375976731940914,
+          0.018048983438127303,
+          -0.9411174449827109
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.755,
+       0.1,
+       0.13
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "RibShadow",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.52,
+         314.95,
+         -17.652
+        ],
+        "orientation": [
+         [
+          -0.8941429460123382,
+          0.3140028598619569,
+          -0.3192343905265989
+         ],
+         [
+          0.3082638374450618,
+          0.9487385376111352,
+          0.06977530920840794
+         ],
+         [
+          0.3247796154625799,
+          -0.036019317733637174,
+          -0.9451035975648289
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.62,
+       0.07,
+       0.1
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Rib",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.5,
+         314.79,
+         -17.652
+        ],
+        "orientation": [
+         [
+          -0.8900008549138095,
+          -0.33164989391810284,
+          0.3129006649350544
+         ],
+         [
+          -0.30647396187380016,
+          0.9432298670318712,
+          0.12802784319207725
+         ],
+         [
+          -0.3375976731940914,
+          0.018048983438127303,
+          -0.9411174449827109
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.755,
+       0.1,
+       0.13
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "RibShadow",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.52,
+         314.95,
+         -17.652
+        ],
+        "orientation": [
+         [
+          -0.8941429460123382,
+          -0.3140028598619569,
+          0.3192343905265989
+         ],
+         [
+          -0.3082638374450618,
+          0.9487385376111352,
+          0.06977530920840794
+         ],
+         [
+          -0.3247796154625799,
+          -0.036019317733637174,
+          -0.9451035975648289
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.62,
+       0.07,
+       0.1
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Rib",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.5,
+         315.11,
+         -17.628
+        ],
+        "orientation": [
+         [
+          -0.9109295794032005,
+          0.2827894090362213,
+          -0.3003954918191232
+         ],
+         [
+          0.2923444386063277,
+          0.956215572514783,
+          0.013656796702630992
+         ],
+         [
+          0.29110484465954745,
+          -0.0753785713394106,
+          -0.9537169603181911
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.755,
+       0.1,
+       0.13
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "RibShadow",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.52,
+         315.27,
+         -17.647
+        ],
+        "orientation": [
+         [
+          -0.9108546896655095,
+          0.26471382256415565,
+          -0.316654901206062
+         ],
+         [
+          0.29211950080638255,
+          0.9554798341228362,
+          -0.04152690493194871
+         ],
+         [
+          0.29156462673475675,
+          -0.13032604777276846,
+          -0.9476313574955992
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.62,
+       0.07,
+       0.1
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Rib",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.5,
+         315.11,
+         -17.628
+        ],
+        "orientation": [
+         [
+          -0.9109295794032005,
+          -0.2827894090362213,
+          0.3003954918191232
+         ],
+         [
+          -0.2923444386063277,
+          0.956215572514783,
+          0.013656796702630992
+         ],
+         [
+          -0.29110484465954745,
+          -0.0753785713394106,
+          -0.9537169603181911
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.755,
+       0.1,
+       0.13
+      ],
+      "Color": [
+       0.698,
+       0.6275,
+       0.2902
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "RibShadow",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         -0.52,
+         315.27,
+         -17.647
+        ],
+        "orientation": [
+         [
+          -0.9108546896655095,
+          -0.26471382256415565,
+          0.316654901206062
+         ],
+         [
+          -0.29211950080638255,
+          0.9554798341228362,
+          -0.04152690493194871
+         ],
+         [
+          -0.29156462673475675,
+          -0.13032604777276846,
+          -0.9476313574955992
+         ]
+        ]
+       }
+      },
+      "Size": [
+       0.62,
+       0.07,
+       0.1
+      ],
+      "Color": [
+       0.5882,
+       0.5176,
+       0.2353
+      ],
+      "Material": "SmoothPlastic",
+      "TopSurface": "Smooth",
+      "BottomSurface": "Smooth",
+      "CanCollide": false,
+      "CanQuery": false,
+      "Massless": true,
+      "Transparency": 0
+     },
+     "attributes": {
+      "StatueBody": true
+     },
+     "children": [
+      {
+       "className": "SpecialMesh",
+       "properties": {
+        "MeshType": "Sphere"
+       }
+      }
+     ]
+    },
+    {
+     "name": "Rib",
+     "className": "Part",
+     "properties": {
+      "Anchored": true,
+      "CFrame": {
+       "CFrame": {
+        "position": [
+         0.5,
          315.43,
-         -17.688
+         -17.642
         ],
         "orientation": [
          [
-          -0.9027218740068488,
-          0.22528725502728475,
-          -0.366522674485269
+          -0.9225030374911574,
+          0.23302438669874678,
+          -0.3077137972585255
          ],
          [
-          0.2745756014147497,
-          0.9575589183001023,
-          -0.08768783890407315
+          0.2743125448674468,
+          0.9566415310974913,
+          -0.09792654751288096
          ],
          [
-          0.3312121031866013,
-          -0.17979591404203082,
-          -0.926267764740034
+          0.27155252447350403,
+          -0.17474729234846653,
+          -0.9464262307591366
          ]
         ]
        }
       },
       "Size": [
-       0.56,
+       0.705,
        0.1,
        0.13
       ],
@@ -4429,31 +4978,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.42,
+         0.52,
          315.59,
-         -17.727
+         -17.681
         ],
         "orientation": [
          [
-          -0.893376893991127,
-          0.19439970564370607,
-          -0.4050758937883209
+          -0.9189503679315992,
+          0.20622415074534084,
+          -0.33615743473518683
          ],
          [
-          0.27272281071410914,
-          0.9510974692492745,
-          -0.14503748654682858
+          0.2720125215354163,
+          0.9486203965081971,
+          -0.1616432227362951
          ],
          [
-          0.3570714127439535,
-          -0.24004657554996642,
-          -0.9027057370858853
+          0.2855510626951389,
+          -0.23998113046236313,
+          -0.9278306136443673
          ]
         ]
        }
       },
       "Size": [
-       0.5,
+       0.62,
        0.07,
        0.1
       ],
@@ -4490,31 +5039,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.4,
+         -0.5,
          315.43,
-         -17.688
+         -17.642
         ],
         "orientation": [
          [
-          -0.9027218740068488,
-          -0.22528725502728475,
-          0.366522674485269
+          -0.9225030374911574,
+          -0.23302438669874678,
+          0.3077137972585255
          ],
          [
-          -0.2745756014147497,
-          0.9575589183001023,
-          -0.08768783890407315
+          -0.2743125448674468,
+          0.9566415310974913,
+          -0.09792654751288096
          ],
          [
-          -0.3312121031866013,
-          -0.17979591404203082,
-          -0.926267764740034
+          -0.27155252447350403,
+          -0.17474729234846653,
+          -0.9464262307591366
          ]
         ]
        }
       },
       "Size": [
-       0.56,
+       0.705,
        0.1,
        0.13
       ],
@@ -4551,31 +5100,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.42,
+         -0.52,
          315.59,
-         -17.727
+         -17.681
         ],
         "orientation": [
          [
-          -0.893376893991127,
-          -0.19439970564370607,
-          0.4050758937883209
+          -0.9189503679315992,
+          -0.20622415074534084,
+          0.33615743473518683
          ],
          [
-          -0.27272281071410914,
-          0.9510974692492745,
-          -0.14503748654682858
+          -0.2720125215354163,
+          0.9486203965081971,
+          -0.1616432227362951
          ],
          [
-          -0.3570714127439535,
-          -0.24004657554996642,
-          -0.9027057370858853
+          -0.2855510626951389,
+          -0.23998113046236313,
+          -0.9278306136443673
          ]
         ]
        }
       },
       "Size": [
-       0.5,
+       0.62,
        0.07,
        0.1
       ],
@@ -4612,31 +5161,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.4,
+         0.5,
          315.75,
-         -17.739
+         -17.698
         ],
         "orientation": [
          [
-          -0.9012605641422198,
-          0.15219688566692402,
-          -0.4056667394738406
+          -0.9259807671385833,
+          0.1642234629310272,
+          -0.3399856954525917
          ],
          [
-          0.2531600078954095,
-          0.9448060119102063,
-          -0.20797021484031672
+          0.25176661940066386,
+          0.9396058152531339,
+          -0.231850126801895
          ],
          [
-          0.3516239552767187,
-          -0.290133948119865,
-          -0.8900465640762485
+          0.28137730584573123,
+          -0.3002858074658793,
+          -0.9114028997043859
          ]
         ]
        }
       },
       "Size": [
-       0.52,
+       0.655,
        0.1,
        0.13
       ],
@@ -4673,31 +5222,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.42,
+         0.52,
          315.91,
-         -17.806
+         -17.766
         ],
         "orientation": [
          [
-          -0.8752777874206297,
-          0.08236313894975855,
-          -0.4765554618199124
+          -0.9132684200789994,
+          0.10344552617881578,
+          -0.39400484260982904
          ],
          [
-          0.24732278187563456,
-          0.9230211878291434,
-          -0.2947258529273849
+          0.2445680600387982,
+          0.9127404259733505,
+          -0.32724819144320044
          ],
          [
-          0.4155962420587372,
-          -0.37583001498126783,
-          -0.8282702236745176
+          0.32577178652435057,
+          -0.39522643877601954,
+          -0.8588764784281605
          ]
         ]
        }
       },
       "Size": [
-       0.5,
+       0.62,
        0.07,
        0.1
       ],
@@ -4734,31 +5283,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.4,
+         -0.5,
          315.75,
-         -17.739
+         -17.698
         ],
         "orientation": [
          [
-          -0.9012605641422198,
-          -0.15219688566692402,
-          0.4056667394738406
+          -0.9259807671385833,
+          -0.1642234629310272,
+          0.3399856954525917
          ],
          [
-          -0.2531600078954095,
-          0.9448060119102063,
-          -0.20797021484031672
+          -0.25176661940066386,
+          0.9396058152531339,
+          -0.231850126801895
          ],
          [
-          -0.3516239552767187,
-          -0.290133948119865,
-          -0.8900465640762485
+          -0.28137730584573123,
+          -0.3002858074658793,
+          -0.9114028997043859
          ]
         ]
        }
       },
       "Size": [
-       0.52,
+       0.655,
        0.1,
        0.13
       ],
@@ -4795,31 +5344,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.42,
+         -0.52,
          315.91,
-         -17.806
+         -17.766
         ],
         "orientation": [
          [
-          -0.8752777874206297,
-          -0.08236313894975855,
-          0.4765554618199124
+          -0.9132684200789994,
+          -0.10344552617881578,
+          0.39400484260982904
          ],
          [
-          -0.24732278187563456,
-          0.9230211878291434,
-          -0.2947258529273849
+          -0.2445680600387982,
+          0.9127404259733505,
+          -0.32724819144320044
          ],
          [
-          -0.4155962420587372,
-          -0.37583001498126783,
-          -0.8282702236745176
+          -0.32577178652435057,
+          -0.39522643877601954,
+          -0.8588764784281605
          ]
         ]
        }
       },
       "Size": [
-       0.5,
+       0.62,
        0.07,
        0.1
       ],
@@ -4856,31 +5405,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.3,
+         0.38,
          313.98,
-         -17.993
+         -17.976
         ],
         "orientation": [
          [
-          -0.8196407775099401,
-          0.1723618032265098,
-          -0.5463336019607493
+          -0.8877864700194001,
+          0.10843136775893403,
+          -0.4473005948312834
          ],
          [
-          -0.3631763169333005,
-          0.5812036001183167,
-          0.7282206657519894
+          -0.329855103059378,
+          0.5278785110063169,
+          0.782649275603984
          ],
          [
-          0.44304848342101744,
-          0.7952947780527756,
-          -0.41378044581676743
+          0.32098410340105665,
+          0.8423698214582955,
+          -0.4328767598984026
          ]
         ]
        }
       },
       "Size": [
-       0.62,
+       0.74,
        0.12,
        0.14
       ],
@@ -4979,37 +5528,37 @@
        "CFrame": {
         "position": [
          0.57,
-         316.59,
-         -17.73
+         316.565,
+         -17.69
         ],
         "orientation": [
          [
-          0.2108378722530519,
-          -0.9632934942410295,
-          -0.16617170510262455
+          0.1643989873053572,
+          -0.9717812090920348,
+          -0.1691574846957595
          ],
          [
-          -0.9775210440823286,
-          -0.2077691850323795,
-          -0.035840956002526965
+          -0.9863939238321437,
+          -0.1619635348486724,
+          -0.028192914115959904
          ],
          [
           0.0,
-          0.16999296957194637,
-          -0.9854452751401833
+          0.17149080160447674,
+          -0.9851857210521547
          ]
         ]
        }
       },
       "Size": [
-       0.13,
-       1.112,
-       0.14
+       0.11,
+       1.102,
+       0.12
       ],
       "Color": [
-       0.8627,
-       0.8,
-       0.4392
+       0.8078,
+       0.7373,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
@@ -5100,9 +5649,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.48,
+         0.56,
          315.75,
-         -18.44
+         -18.48
         ],
         "orientation": [
          [
@@ -5124,7 +5673,7 @@
        }
       },
       "Size": [
-       0.62,
+       0.66,
        0.9,
        0.16
       ],
@@ -5161,31 +5710,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.3,
+         -0.38,
          313.98,
-         -17.993
+         -17.976
         ],
         "orientation": [
          [
-          -0.8196407775099401,
-          -0.1723618032265098,
-          0.5463336019607493
+          -0.8877864700194001,
+          -0.10843136775893403,
+          0.4473005948312834
          ],
          [
-          0.3631763169333005,
-          0.5812036001183167,
-          0.7282206657519894
+          0.329855103059378,
+          0.5278785110063169,
+          0.782649275603984
          ],
          [
-          -0.44304848342101744,
-          0.7952947780527756,
-          -0.41378044581676743
+          -0.32098410340105665,
+          0.8423698214582955,
+          -0.4328767598984026
          ]
         ]
        }
       },
       "Size": [
-       0.62,
+       0.74,
        0.12,
        0.14
       ],
@@ -5284,37 +5833,37 @@
        "CFrame": {
         "position": [
          -0.57,
-         316.59,
-         -17.73
+         316.565,
+         -17.69
         ],
         "orientation": [
          [
-          0.2108378722530519,
-          0.9632934942410295,
-          0.16617170510262455
+          0.1643989873053572,
+          0.9717812090920348,
+          0.1691574846957595
          ],
          [
-          0.9775210440823286,
-          -0.2077691850323795,
-          -0.035840956002526965
+          0.9863939238321437,
+          -0.1619635348486724,
+          -0.028192914115959904
          ],
          [
           0.0,
-          0.16999296957194637,
-          -0.9854452751401833
+          0.17149080160447674,
+          -0.9851857210521547
          ]
         ]
        }
       },
       "Size": [
-       0.13,
-       1.112,
-       0.14
+       0.11,
+       1.102,
+       0.12
       ],
       "Color": [
-       0.8627,
-       0.8,
-       0.4392
+       0.8078,
+       0.7373,
+       0.3608
       ],
       "Material": "SmoothPlastic",
       "TopSurface": "Smooth",
@@ -5405,9 +5954,9 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.48,
+         -0.56,
          315.75,
-         -18.44
+         -18.48
         ],
         "orientation": [
          [
@@ -5429,7 +5978,7 @@
        }
       },
       "Size": [
-       0.62,
+       0.66,
        0.9,
        0.16
       ],
@@ -6100,9 +6649,9 @@
        }
       },
       "Size": [
-       1.44,
-       2.04,
-       1.72
+       1.16,
+       2.08,
+       1.56
       ],
       "Color": [
        0.8078,
@@ -6138,8 +6687,8 @@
        "CFrame": {
         "position": [
          0,
-         319.62,
-         -18.26
+         319.65,
+         -18.22
         ],
         "orientation": [
          [
@@ -6161,9 +6710,9 @@
        }
       },
       "Size": [
-       1.56,
-       1.46,
-       1.6
+       1.24,
+       1.34,
+       1.46
       ],
       "Color": [
        0.8078,
@@ -6198,32 +6747,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.27,
+         0.22,
          319.42,
-         -17.28
+         -17.352
         ],
         "orientation": [
          [
-          -0.8956951966120228,
-          0.07762381746604272,
-          -0.4378409045853851
+          -0.8699007296300821,
+          0.07758292283869117,
+          -0.48708686152765057
          ],
          [
-          0.1708825590886227,
-          0.9691231506490551,
-          -0.1777623972480461
+          0.17164395845895522,
+          0.9734412610554901,
+          -0.15149410153282367
          ],
          [
-          0.4105231610585122,
-          -0.23404029960254125,
-          -0.881303507536694
+          0.4623970935392992,
+          -0.21539034648401195,
+          -0.8601139032290468
          ]
         ]
        }
       },
       "Size": [
-       0.44,
-       0.3,
+       0.36,
+       0.26,
        0.2
       ],
       "Color": [
@@ -6259,32 +6808,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.27,
+         0.22,
          319.41,
-         -17.243
+         -17.316
         ],
         "orientation": [
          [
-          -0.8954787619352361,
-          0.08143564823990594,
-          -0.4375911586386119
+          -0.8697865785665837,
+          0.08119948805895788,
+          -0.48670108987385624
          ],
          [
-          0.1711329668611465,
-          0.9705432836968602,
-          -0.16958550092569105
+          0.17182587079415412,
+          0.9744729371748679,
+          -0.14449347680645186
          ],
          [
-          0.4108908548218593,
-          -0.22674648766113692,
-          -0.8830372221809789
+          0.46254424423104323,
+          -0.209306325400713,
+          -0.8615356546748277
          ]
         ]
        }
       },
       "Size": [
-       0.32,
-       0.19,
+       0.26,
+       0.16,
        0.2
       ],
       "Color": [
@@ -6320,25 +6869,25 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.47,
+         0.38,
          319.1,
-         -17.424
+         -17.486
         ],
         "orientation": [
          [
-          -0.6429107635149415,
-          0.26653846298717065,
-          -0.7180689367359319
+          -0.6014954637515545,
+          0.245280286117128,
+          -0.760289937016532
          ],
          [
-          0.3081202909991526,
-          0.9482967470777405,
-          0.07612598607816669
+          0.308418109535467,
+          0.949213338284021,
+          0.062227872647822036
          ],
          [
-          0.7012329402069133,
-          -0.17230939391168548,
-          -0.6917960944805595
+          0.7369406195867284,
+          -0.19705740195690372,
+          -0.6465963992608713
          ]
         ]
        }
@@ -6381,25 +6930,25 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.33,
+         0.28,
          318.8,
-         -17.334
+         -17.406
         ],
         "orientation": [
          [
-          -0.8138880924044136,
-          -0.22546428799017704,
-          -0.5354923228986456
+          -0.7623331961225628,
+          -0.20918580264070422,
+          -0.6124454245588931
          ],
          [
-          -0.444240405685387,
-          0.8354946879486984,
-          0.32341782320396356
+          -0.4517554164220578,
+          0.8496283675285171,
+          0.27211887259828266
          ],
          [
-          0.3744818219871129,
-          0.5011132419429664,
-          -0.7801595245529098
+          0.46342760149012663,
+          0.48412078768050404,
+          -0.7422007283159434
          ]
         ]
        }
@@ -6444,23 +6993,23 @@
         "position": [
          0.05,
          318.96,
-         -17.146
+         -17.224
         ],
         "orientation": [
          [
-          -0.9963595225676937,
-          0.01703170705335014,
-          -0.08353216592143768
+          -0.9929214213689277,
+          0.020736935252219108,
+          -0.11694883711714925
          ],
          [
-          3.469446951953614e-18,
-          0.979840063957631,
-          0.19978350548407534
+          0.0,
+          0.9846407145870848,
+          0.1745928497316969
          ],
          [
-          0.08525081693847708,
-          0.1990561981410135,
-          -0.9762729783175237
+          0.11877310716954505,
+          0.17335698051644807,
+          -0.977670857865525
          ]
         ]
        }
@@ -6503,32 +7052,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.27,
+         -0.22,
          319.42,
-         -17.28
+         -17.352
         ],
         "orientation": [
          [
-          -0.8956951966120228,
-          -0.07762381746604272,
-          0.4378409045853851
+          -0.8699007296300821,
+          -0.07758292283869117,
+          0.48708686152765057
          ],
          [
-          -0.1708825590886227,
-          0.9691231506490551,
-          -0.1777623972480461
+          -0.17164395845895522,
+          0.9734412610554901,
+          -0.15149410153282367
          ],
          [
-          -0.4105231610585122,
-          -0.23404029960254125,
-          -0.881303507536694
+          -0.4623970935392992,
+          -0.21539034648401195,
+          -0.8601139032290468
          ]
         ]
        }
       },
       "Size": [
-       0.44,
-       0.3,
+       0.36,
+       0.26,
        0.2
       ],
       "Color": [
@@ -6564,32 +7113,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.27,
+         -0.22,
          319.41,
-         -17.243
+         -17.316
         ],
         "orientation": [
          [
-          -0.8954787619352361,
-          -0.08143564823990594,
-          0.4375911586386119
+          -0.8697865785665837,
+          -0.08119948805895788,
+          0.48670108987385624
          ],
          [
-          -0.1711329668611465,
-          0.9705432836968602,
-          -0.16958550092569105
+          -0.17182587079415412,
+          0.9744729371748679,
+          -0.14449347680645186
          ],
          [
-          -0.4108908548218593,
-          -0.22674648766113692,
-          -0.8830372221809789
+          -0.46254424423104323,
+          -0.209306325400713,
+          -0.8615356546748277
          ]
         ]
        }
       },
       "Size": [
-       0.32,
-       0.19,
+       0.26,
+       0.16,
        0.2
       ],
       "Color": [
@@ -6625,25 +7174,25 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.47,
+         -0.38,
          319.1,
-         -17.424
+         -17.486
         ],
         "orientation": [
          [
-          -0.6429107635149415,
-          -0.26653846298717065,
-          0.7180689367359319
+          -0.6014954637515545,
+          -0.245280286117128,
+          0.760289937016532
          ],
          [
-          -0.3081202909991526,
-          0.9482967470777405,
-          0.07612598607816669
+          -0.308418109535467,
+          0.949213338284021,
+          0.062227872647822036
          ],
          [
-          -0.7012329402069133,
-          -0.17230939391168548,
-          -0.6917960944805595
+          -0.7369406195867284,
+          -0.19705740195690372,
+          -0.6465963992608713
          ]
         ]
        }
@@ -6686,25 +7235,25 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.33,
+         -0.28,
          318.8,
-         -17.334
+         -17.406
         ],
         "orientation": [
          [
-          -0.8138880924044136,
-          0.22546428799017704,
-          0.5354923228986456
+          -0.7623331961225628,
+          0.20918580264070422,
+          0.6124454245588931
          ],
          [
-          0.444240405685387,
-          0.8354946879486984,
-          0.32341782320396356
+          0.4517554164220578,
+          0.8496283675285171,
+          0.27211887259828266
          ],
          [
-          -0.3744818219871129,
-          0.5011132419429664,
-          -0.7801595245529098
+          -0.46342760149012663,
+          0.48412078768050404,
+          -0.7422007283159434
          ]
         ]
        }
@@ -6749,23 +7298,23 @@
         "position": [
          -0.05,
          318.96,
-         -17.146
+         -17.224
         ],
         "orientation": [
          [
-          -0.9963595225676937,
-          -0.01703170705335014,
-          0.08353216592143768
+          -0.9929214213689277,
+          -0.020736935252219108,
+          0.11694883711714925
          ],
          [
-          -3.469446951953614e-18,
-          0.979840063957631,
-          0.19978350548407534
+          0.0,
+          0.9846407145870848,
+          0.1745928497316969
          ],
          [
-          -0.08525081693847708,
-          0.1990561981410135,
-          -0.9762729783175237
+          -0.11877310716954505,
+          0.17335698051644807,
+          -0.977670857865525
          ]
         ]
        }
@@ -6810,7 +7359,7 @@
         "position": [
          0,
          319.04,
-         -17.171
+         -17.249
         ],
         "orientation": [
          [
@@ -6820,13 +7369,13 @@
          ],
          [
           0.0,
-          0.9911522601233203,
-          0.13272979037290097
+          0.9932507665246444,
+          0.11598670095405897
          ],
          [
           0.0,
-          0.13272979037290097,
-          -0.9911522601233203
+          0.11598670095405898,
+          -0.9932507665246445
          ]
         ]
        }
@@ -6869,32 +7418,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.532,
-         318.786,
-         -17.592
+         0.448,
+         318.78,
+         -17.673
         ],
         "orientation": [
          [
-          -0.5205031564377972,
-          0.26827021604781814,
-          -0.8106217091343823
+          -0.4265125556009122,
+          0.23088284315143065,
+          -0.8745170968329268
          ],
          [
           0.0,
-          0.9493616649307997,
-          0.31418534205118487
+          0.966871030490904,
+          0.25526537249979175
          ],
          [
-          0.8538597450039965,
-          0.1635344622441307,
-          -0.4941457431975237
+          0.9044816415576264,
+          0.108873886381305,
+          -0.412382634151163
          ]
         ]
        }
       },
       "Size": [
-       0.1,
-       0.436,
+       0.085,
+       0.439,
        0.16
       ],
       "Color": [
@@ -6930,32 +7479,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.532,
-         318.786,
-         -17.567
+         0.448,
+         318.78,
+         -17.648
         ],
         "orientation": [
          [
-          -0.5205031564377972,
-          0.26827021604781814,
-          -0.8106217091343823
+          -0.4265125556009122,
+          0.23088284315143065,
+          -0.8745170968329268
          ],
          [
           0.0,
-          0.9493616649307997,
-          0.31418534205118487
+          0.966871030490904,
+          0.25526537249979175
          ],
          [
-          0.8538597450039965,
-          0.1635344622441307,
-          -0.4941457431975237
+          0.9044816415576264,
+          0.108873886381305,
+          -0.412382634151163
          ]
         ]
        }
       },
       "Size": [
-       0.09,
-       0.356,
+       0.076,
+       0.359,
        0.12
       ],
       "Color": [
@@ -6991,32 +7540,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.532,
-         318.848,
-         -17.47
+         0.448,
+         318.842,
+         -17.552
         ],
         "orientation": [
          [
-          -0.5484702665265513,
-          0.22206682768874283,
-          -0.8061430957197065
+          -0.4571726589526806,
+          0.1917783931124299,
+          -0.8684550695582072
          ],
          [
-          2.7755575615628914e-17,
-          0.9640898852122315,
-          0.2655761533561824
+          0.0,
+          0.9764746894196925,
+          0.2156320498504688
          ],
          [
-          0.8361700585026313,
-          0.14566062361436158,
-          -0.5287746362979047
+          0.88937796234567,
+          0.0985810775855558,
+          -0.4464175301619938
          ]
         ]
        }
       },
       "Size": [
-       0.072,
-       0.155,
+       0.06,
+       0.156,
        0.05
       ],
       "Color": [
@@ -7044,31 +7593,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.532,
-         318.71,
-         -17.561
+         0.448,
+         318.703,
+         -17.642
         ],
         "orientation": [
          [
-          -0.4721357367013589,
-          0.33049662299470106,
-          -0.8172269136039045
+          -0.3733926826359145,
+          0.28290554184083616,
+          -0.8834830835673642
          ],
          [
-          0.0,
-          0.92705948677783,
-          0.37491426750022006
+          -1.3877787807814457e-17,
+          0.9523643776536636,
+          0.3049624438785046
          ],
          [
-          0.8815258624280204,
-          0.17701042388606672,
-          -0.4376979137558344
+          0.9276733824757263,
+          0.11387074502299935,
+          -0.35560588981898467
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.092,
        0.05
       ],
@@ -7097,32 +7646,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.456,
-         318.709,
-         -17.534
+         0.384,
+         318.704,
+         -17.604
         ],
         "orientation": [
          [
-          -0.6251366763825645,
-          0.30151908556609885,
-          -0.7199238688088795
+          -0.5446009521155948,
+          0.2677640636752648,
+          -0.7948032518547569
          ],
          [
           0.0,
-          0.9223699618003345,
-          0.3863077187533918
+          0.947666278458895,
+          0.3192626264877681
          ],
          [
-          0.7805153014780435,
-          0.24149512336242582,
-          -0.576607292314974
+          0.8386952980402282,
+          0.17387073036016404,
+          -0.5160999575365566
          ]
         ]
        }
       },
       "Size": [
-       0.1,
-       0.472,
+       0.085,
+       0.474,
        0.16
       ],
       "Color": [
@@ -7158,32 +7707,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.456,
-         318.709,
-         -17.509
+         0.384,
+         318.704,
+         -17.579
         ],
         "orientation": [
          [
-          -0.6251366763825645,
-          0.30151908556609885,
-          -0.7199238688088795
+          -0.5446009521155948,
+          0.2677640636752648,
+          -0.7948032518547569
          ],
          [
           0.0,
-          0.9223699618003345,
-          0.3863077187533918
+          0.947666278458895,
+          0.3192626264877681
          ],
          [
-          0.7805153014780435,
-          0.24149512336242582,
-          -0.576607292314974
+          0.8386952980402282,
+          0.17387073036016404,
+          -0.5160999575365566
          ]
         ]
        }
       },
       "Size": [
-       0.09,
-       0.392,
+       0.076,
+       0.394,
        0.12
       ],
       "Color": [
@@ -7219,32 +7768,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.456,
-         318.779,
-         -17.405
+         0.384,
+         318.775,
+         -17.478
         ],
         "orientation": [
          [
-          -0.654455536483783,
-          0.24825537146657495,
-          -0.7141829046565851
+          -0.5764811948144483,
+          0.2212914107279295,
+          -0.7865745632572598
          ],
          [
-          2.7755575615628914e-17,
-          0.9445608278726658,
-          0.3283364774868979
+          0.0,
+          0.9626294657397608,
+          0.2708219187761264
          ],
          [
-          0.7561004898594657,
-          0.21488162552088327,
-          -0.6181730633469716
+          0.8171104160548355,
+          0.15612374331800277,
+          -0.5549377845732512
          ]
         ]
        }
       },
       "Size": [
-       0.072,
-       0.164,
+       0.06,
+       0.165,
        0.05
       ],
       "Color": [
@@ -7272,31 +7821,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.456,
-         318.624,
-         -17.513
+         0.384,
+         318.619,
+         -17.579
         ],
         "orientation": [
          [
-          -0.5732897545151688,
-          0.37546555085641975,
-          -0.7282612700727829
+          -0.4891088528840662,
+          0.33132197597421925,
+          -0.8068446432039887
          ],
          [
-          0.0,
-          0.8888251231097409,
-          0.4582465499367713
+          2.7755575615628914e-17,
+          0.9250442514414267,
+          0.37985935933601894
          ],
          [
-          0.8193527063285612,
-          0.26270805212067466,
-          -0.5095543366344981
+          0.8722227525296695,
+          0.1857925755021165,
+          -0.4524473326895158
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.099,
        0.05
       ],
@@ -7325,32 +7874,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.38,
-         318.644,
-         -17.495
+         0.32,
+         318.64,
+         -17.558
         ],
         "orientation": [
          [
-          -0.7184000878852015,
-          0.3148358209739467,
-          -0.6203061498632716
+          -0.6514292643097096,
+          0.28951270314202177,
+          -0.7013004408385255
          ],
          [
-          0.0,
-          0.8917183141754157,
-          0.45259081758709435
+          2.7755575615628914e-17,
+          0.9243334341625014,
+          0.38158577343679456
          ],
          [
-          0.6956301558490219,
-          0.3251412831306038,
-          -0.6406105152724625
+          0.7587093736081759,
+          0.24857613966098263,
+          -0.6021378489933457
          ]
         ]
        }
       },
       "Size": [
-       0.1,
-       0.504,
+       0.085,
+       0.506,
        0.16
       ],
       "Color": [
@@ -7386,32 +7935,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.38,
-         318.644,
-         -17.47
+         0.32,
+         318.64,
+         -17.533
         ],
         "orientation": [
          [
-          -0.7184000878852015,
-          0.3148358209739467,
-          -0.6203061498632716
+          -0.6514292643097096,
+          0.28951270314202177,
+          -0.7013004408385255
          ],
          [
-          0.0,
-          0.8917183141754157,
-          0.45259081758709435
+          2.7755575615628914e-17,
+          0.9243334341625014,
+          0.38158577343679456
          ],
          [
-          0.6956301558490219,
-          0.3251412831306038,
-          -0.6406105152724625
+          0.7587093736081759,
+          0.24857613966098263,
+          -0.6021378489933457
          ]
         ]
        }
       },
       "Size": [
-       0.09,
-       0.424,
+       0.076,
+       0.426,
        0.12
       ],
       "Color": [
@@ -7447,31 +7996,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.38,
-         318.721,
-         -17.36
+         0.32,
+         318.718,
+         -17.427
         ],
         "orientation": [
          [
-          -0.7466051706438206,
-          0.2566832664091839,
-          -0.613754364476069
+          -0.6826259298809877,
+          0.2368994412358871,
+          -0.6913034750355602
          ],
          [
           0.0,
-          0.9225679186263435,
-          0.3858347256552428
+          0.9459958487973052,
+          0.32417873782570306
          ],
          [
-          0.6652674042578002,
-          0.28806620118814424,
-          -0.6887939783165355
+          0.7307679794942556,
+          0.2212928123559155,
+          -0.6457612959488148
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.174,
        0.05
       ],
@@ -7500,31 +8049,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.38,
-         318.552,
-         -17.484
+         0.32,
+         318.548,
+         -17.539
         ],
         "orientation": [
          [
-          -0.6663204091906744,
-          0.39926369591382144,
-          -0.6297663165184431
+          -0.5954188414256747,
+          0.36458918475019975,
+          -0.7159267627617311
          ],
          [
-          0.0,
-          0.8445694140080956,
-          0.5354460803125017
+          2.7755575615628914e-17,
+          0.8911040393763932,
+          0.4537990645727198
          ],
          [
-          0.7456655498921566,
-          0.35677865133336883,
-          -0.5627538375318023
+          0.8034154611876144,
+          0.27020051326794375,
+          -0.5305801347152308
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.106,
        0.05
       ],
@@ -7553,32 +8102,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.304,
-         318.59,
-         -17.469
+         0.256,
+         318.588,
+         -17.527
         ],
         "orientation": [
          [
-          -0.8037520463831693,
-          0.3041416375973261,
-          -0.5113516522066635
+          -0.7520817516263373,
+          0.29005272607085814,
+          -0.5918128546842524
          ],
          [
           0.0,
-          0.8594659520833492,
-          0.5111929940927029
+          0.8979516722979495,
+          0.4400940742810745
          ],
          [
-          0.5949644089648286,
-          0.41087241509874933,
-          -0.6907975177836507
+          0.6590698285240042,
+          0.33098672226568193,
+          -0.6753330665776407
          ]
         ]
        }
       },
       "Size": [
-       0.1,
-       0.534,
+       0.085,
+       0.535,
        0.16
       ],
       "Color": [
@@ -7614,32 +8163,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.304,
-         318.59,
-         -17.444
+         0.256,
+         318.588,
+         -17.502
         ],
         "orientation": [
          [
-          -0.8037520463831693,
-          0.3041416375973261,
-          -0.5113516522066635
+          -0.7520817516263373,
+          0.29005272607085814,
+          -0.5918128546842524
          ],
          [
           0.0,
-          0.8594659520833492,
-          0.5111929940927029
+          0.8979516722979495,
+          0.4400940742810745
          ],
          [
-          0.5949644089648286,
-          0.41087241509874933,
-          -0.6907975177836507
+          0.6590698285240042,
+          0.33098672226568193,
+          -0.6753330665776407
          ]
         ]
        }
       },
       "Size": [
-       0.09,
-       0.454,
+       0.076,
+       0.455,
        0.12
       ],
       "Color": [
@@ -7675,31 +8224,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.304,
-         318.672,
-         -17.328
+         0.256,
+         318.67,
+         -17.392
         ],
         "orientation": [
          [
-          -0.8278497181951024,
-          0.24490960261437586,
-          -0.5046623927256301
+          -0.7795192384388454,
+          0.23421964541034326,
+          -0.5809396824176976
          ],
          [
-          0.0,
-          0.8996567244307989,
-          0.4365979594391679
+          2.7755575615628914e-17,
+          0.9274582079247446,
+          0.3739268278059507
          ],
          [
-          0.5609499479314438,
-          0.3614374976862719,
-          -0.744780565792366
+          0.6263782857856123,
+          0.291483156043148,
+          -0.7229715159253534
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.183,
        0.05
       ],
@@ -7728,32 +8277,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.304,
-         318.492,
-         -17.466
+         0.256,
+         318.49,
+         -17.514
         ],
         "orientation": [
          [
-          -0.7566297651265844,
-          0.3950442214086605,
-          -0.5210100398803416
+          -0.700386208254053,
+          0.374176850556875,
+          -0.6078246817914261
          ],
          [
           0.0,
-          0.7968420479058449,
-          0.6041876783659356
+          0.8515764527528934,
+          0.5242304313150842
          ],
          [
-          0.6538435581425345,
-          0.45714638117439416,
-          -0.6029144115499859
+          0.7137640781711492,
+          0.36716376404015855,
+          -0.5964324027820357
          ]
         ]
        }
       },
       "Size": [
-       0.072,
-       0.112,
+       0.06,
+       0.113,
        0.05
       ],
       "Color": [
@@ -7781,32 +8330,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.228,
-         318.548,
-         -17.452
+         0.192,
+         318.547,
+         -17.505
         ],
         "orientation": [
          [
-          -0.8801285726889748,
-          0.2658555148130272,
-          -0.3933122687890222
+          -0.8454033560564085,
+          0.26266372243943864,
+          -0.46508164281426845
          ],
          [
-          0.0,
-          0.8284873483108389,
-          0.5600077800253088
+          2.7755575615628914e-17,
+          0.8707300121819991,
+          0.4917613708756878
          ],
          [
-          0.4747353952850659,
-          0.49287884812839644,
-          -0.7291753873596922
+          0.5341284167394216,
+          0.41573671331720663,
+          -0.7361180745176995
          ]
         ]
        }
       },
       "Size": [
-       0.1,
-       0.56,
+       0.085,
+       0.561,
        0.16
       ],
       "Color": [
@@ -7842,32 +8391,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.228,
-         318.548,
-         -17.427
+         0.192,
+         318.547,
+         -17.48
         ],
         "orientation": [
          [
-          -0.8801285726889748,
-          0.2658555148130272,
-          -0.3933122687890222
+          -0.8454033560564085,
+          0.26266372243943864,
+          -0.46508164281426845
          ],
          [
-          0.0,
-          0.8284873483108389,
-          0.5600077800253088
+          2.7755575615628914e-17,
+          0.8707300121819991,
+          0.4917613708756878
          ],
          [
-          0.4747353952850659,
-          0.49287884812839644,
-          -0.7291753873596922
+          0.5341284167394216,
+          0.41573671331720663,
+          -0.7361180745176995
          ]
         ]
        }
       },
       "Size": [
-       0.09,
-       0.48,
+       0.076,
+       0.481,
        0.12
       ],
       "Color": [
@@ -7903,31 +8452,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.228,
-         318.634,
-         -17.306
+         0.192,
+         318.633,
+         -17.367
         ],
         "orientation": [
          [
-          -0.8974084066602013,
-          0.2113305338762319,
-          -0.38729518084683917
+          -0.8657643082019113,
+          0.20902602791674085,
+          -0.45470900837460426
          ],
          [
           0.0,
-          0.8778206547713715,
-          0.4789894550580009
+          0.908596720949983,
+          0.41767451284336055
          ],
          [
-          0.4412008064992618,
-          0.4298491636706387,
-          -0.7877636351317912
+          0.5004519583772912,
+          0.36160768566540236,
+          -0.7866306115477872
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.192,
        0.05
       ],
@@ -7956,32 +8505,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.228,
-         318.447,
-         -17.456
+         0.192,
+         318.446,
+         -17.497
         ],
         "orientation": [
          [
-          -0.8440883659128163,
-          0.35480687392318605,
-          -0.40202849743206964
+          -0.8047095064549257,
+          0.34864001176000264,
+          -0.4805130096272683
          ],
          [
           2.7755575615628914e-17,
-          0.7497676758812158,
-          0.6617011653334759
+          0.8093957990005778,
+          0.5872635188398955
          ],
          [
-          0.53620409410096,
-          0.55853425536894,
-          -0.6328701723488257
+          0.5936687714719968,
+          0.47257653640463526,
+          -0.6513284939404452
          ]
         ]
        }
       },
       "Size": [
-       0.072,
-       0.119,
+       0.06,
+       0.12,
        0.05
       ],
       "Color": [
@@ -8009,32 +8558,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.152,
-         318.519,
-         -17.441
+         0.128,
+         318.518,
+         -17.492
         ],
         "orientation": [
          [
-          -0.9428808696801959,
-          0.198837305075537,
-          -0.26728148402277113
+          -0.9249397556105179,
+          0.20254514655978237,
+          -0.32165495814029027
          ],
          [
           0.0,
-          0.8023336274203312,
-          0.5968758248668924
+          0.8462071530488343,
+          0.5328540645702036
          ],
          [
-          0.3331301030995504,
-          0.5627827968415798,
-          -0.7565050283957482
+          0.38011373099528467,
+          0.49285790825963516,
+          -0.782690637336861
          ]
         ]
        }
       },
       "Size": [
-       0.1,
-       0.583,
+       0.085,
+       0.584,
        0.16
       ],
       "Color": [
@@ -8070,32 +8619,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.152,
-         318.519,
-         -17.416
+         0.128,
+         318.518,
+         -17.467
         ],
         "orientation": [
          [
-          -0.9428808696801959,
-          0.198837305075537,
-          -0.26728148402277113
+          -0.9249397556105179,
+          0.20254514655978237,
+          -0.32165495814029027
          ],
          [
           0.0,
-          0.8023336274203312,
-          0.5968758248668924
+          0.8462071530488343,
+          0.5328540645702036
          ],
          [
-          0.3331301030995504,
-          0.5627827968415798,
-          -0.7565050283957482
+          0.38011373099528467,
+          0.49285790825963516,
+          -0.782690637336861
          ]
         ]
        }
       },
       "Size": [
-       0.09,
-       0.503,
+       0.076,
+       0.504,
        0.12
       ],
       "Color": [
@@ -8131,32 +8680,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.152,
+         0.128,
          318.606,
-         -17.293
+         -17.351
         ],
         "orientation": [
          [
-          -0.9521143106032981,
-          0.1563455798000878,
-          -0.2627439803713501
+          -0.9361863491589485,
+          0.15908310182623464,
+          -0.3134448697327541
          ],
          [
           0.0,
-          0.8593642446593595,
-          0.511363955516077
+          0.8917246934014145,
+          0.4525782486798867
          ],
          [
-          0.30574227634464624,
-          0.48687693997356535,
-          -0.8182129953609703
+          0.3515040819797678,
+          0.42369757834037386,
+          -0.8348204851703529
          ]
         ]
        }
       },
       "Size": [
-       0.072,
-       0.201,
+       0.06,
+       0.202,
        0.05
       ],
       "Color": [
@@ -8184,31 +8733,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.152,
-         318.415,
-         -17.45
+         0.128,
+         318.414,
+         -17.487
         ],
         "orientation": [
          [
-          -0.9224076235627203,
-          0.27230578279695367,
-          -0.273886357178873
+          -0.9010757655529913,
+          0.27659068532526404,
+          -0.33400607408307925
          ],
          [
           0.0,
-          0.7091500421619324,
-          0.7050575988539727
+          0.7701996251959391,
+          0.6378028985102174
          ],
          [
-          0.38621778311384747,
-          0.6503505042337308,
-          -0.6541254051399911
+          0.43366169387333553,
+          0.574708735047011,
+          -0.694008216902058
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.126,
        0.05
       ],
@@ -8237,31 +8786,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.076,
+         0.064,
          318.501,
-         -17.435
+         -17.484
         ],
         "orientation": [
          [
-          -0.9850330620985488,
-          0.10684722087998857,
-          -0.13525360609972487
+          -0.9800641257540071,
+          0.11116737830787961,
+          -0.16466974042059587
          ],
          [
           0.0,
-          0.7846906942706255,
-          0.619887501346078
+          0.8288129542786205,
+          0.5595257695762954
          ],
          [
-          0.1723655028500674,
-          0.6106096836075454,
-          -0.7729462773776303
+          0.19868142693778312,
+          0.54837113419663,
+          -0.8122898434486718
          ]
         ]
        }
       },
       "Size": [
-       0.1,
+       0.085,
        0.603,
        0.16
       ],
@@ -8298,31 +8847,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.076,
+         0.064,
          318.501,
-         -17.41
+         -17.459
         ],
         "orientation": [
          [
-          -0.9850330620985488,
-          0.10684722087998857,
-          -0.13525360609972487
+          -0.9800641257540071,
+          0.11116737830787961,
+          -0.16466974042059587
          ],
          [
           0.0,
-          0.7846906942706255,
-          0.619887501346078
+          0.8288129542786205,
+          0.5595257695762954
          ],
          [
-          0.1723655028500674,
-          0.6106096836075454,
-          -0.7729462773776303
+          0.19868142693778312,
+          0.54837113419663,
+          -0.8122898434486718
          ]
         ]
        }
       },
       "Size": [
-       0.09,
+       0.076,
        0.523,
        0.12
       ],
@@ -8359,31 +8908,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.076,
+         0.064,
          318.589,
-         -17.286
+         -17.343
         ],
         "orientation": [
          [
-          -0.9876137497901892,
-          0.08351677855243322,
-          -0.13283082821990255
+          -0.9832856373954215,
+          0.08662448378798142,
+          -0.1601422932905157
          ],
          [
-          0.0,
-          0.8465701670168956,
-          0.5322771386383089
+          1.3877787807814457e-17,
+          0.8795661358501723,
+          0.47577664157206817
          ],
          [
-          0.1569046883472939,
-          0.5256842208181727,
-          -0.836084337108063
+          0.18206964407028375,
+          0.467824338266044,
+          -0.8648647485208646
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.211,
        0.05
       ],
@@ -8412,31 +8961,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.076,
+         0.064,
          318.396,
-         -17.447
+         -17.481
         ],
         "orientation": [
          [
-          -0.979053610893202,
-          0.14895924007033387,
-          -0.1387990338390391
+          -0.9729099109257001,
+          0.15497788095673762,
+          -0.17154638333904046
          ],
          [
-          1.3877787807814457e-17,
-          0.6817153611672654,
-          0.7316175000289326
+          0.0,
+          0.7420321504743714,
+          0.6703642947400911
          ],
          [
-          0.2036026203097153,
-          0.7162927551959837,
-          -0.6674358859521743
+          0.23118456960304629,
+          0.6522040662833518,
+          -0.7219304334220266
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.133,
        0.05
       ],
@@ -8467,29 +9016,29 @@
         "position": [
          0.0,
          318.495,
-         -17.433
+         -17.482
         ],
         "orientation": [
          [
-          -0.9999999999999998,
+          -1.0000000000000002,
           0.0,
           0.0
          ],
          [
           0.0,
-          0.7784418174286983,
-          0.6277167648536282
+          0.8224796463315277,
+          0.5687945423176678
          ],
          [
           0.0,
-          0.627716764853628,
-          -0.7784418174286982
+          0.5687945423176679,
+          -0.8224796463315277
          ]
         ]
        }
       },
       "Size": [
-       0.1,
+       0.085,
        0.62,
        0.16
       ],
@@ -8528,29 +9077,29 @@
         "position": [
          0.0,
          318.495,
-         -17.408
+         -17.457
         ],
         "orientation": [
          [
-          -0.9999999999999998,
+          -1.0000000000000002,
           0.0,
           0.0
          ],
          [
           0.0,
-          0.7784418174286983,
-          0.6277167648536282
+          0.8224796463315277,
+          0.5687945423176678
          ],
          [
           0.0,
-          0.627716764853628,
-          -0.7784418174286982
+          0.5687945423176679,
+          -0.8224796463315277
          ]
         ]
        }
       },
       "Size": [
-       0.09,
+       0.076,
        0.54,
        0.12
       ],
@@ -8589,29 +9138,29 @@
         "position": [
          0.0,
          318.582,
-         -17.284
+         -17.341
         ],
         "orientation": [
          [
-          -1.0,
+          -0.9999999999999999,
           0.0,
           0.0
          ],
          [
           0.0,
-          0.8412087945624829,
-          0.5407104252284529
+          0.8744853016997272,
+          0.48505201485112615
          ],
          [
           0.0,
-          0.5407104252284529,
-          -0.841208794562483
+          0.48505201485112603,
+          -0.8744853016997272
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.22,
        0.05
       ],
@@ -8642,29 +9191,29 @@
         "position": [
          0.0,
          318.391,
-         -17.444
+         -17.478
         ],
         "orientation": [
          [
-          -1.0,
+          -0.9999999999999999,
           0.0,
           0.0
          ],
          [
           0.0,
-          0.6731004792641057,
-          0.739551042737708
+          0.7326434895633132,
+          0.6806126043502951
          ],
          [
           0.0,
-          0.739551042737708,
-          -0.6731004792641058
+          0.680612604350295,
+          -0.7326434895633132
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.14,
        0.05
       ],
@@ -8693,31 +9242,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.076,
+         -0.064,
          318.501,
-         -17.435
+         -17.484
         ],
         "orientation": [
          [
-          -0.9850330620985488,
-          -0.10684722087998857,
-          0.13525360609972487
+          -0.9800641257540071,
+          -0.11116737830787961,
+          0.16466974042059587
          ],
          [
           0.0,
-          0.7846906942706255,
-          0.619887501346078
+          0.8288129542786205,
+          0.5595257695762954
          ],
          [
-          -0.1723655028500674,
-          0.6106096836075454,
-          -0.7729462773776303
+          -0.19868142693778312,
+          0.54837113419663,
+          -0.8122898434486718
          ]
         ]
        }
       },
       "Size": [
-       0.1,
+       0.085,
        0.603,
        0.16
       ],
@@ -8754,31 +9303,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.076,
+         -0.064,
          318.501,
-         -17.41
+         -17.459
         ],
         "orientation": [
          [
-          -0.9850330620985488,
-          -0.10684722087998857,
-          0.13525360609972487
+          -0.9800641257540071,
+          -0.11116737830787961,
+          0.16466974042059587
          ],
          [
           0.0,
-          0.7846906942706255,
-          0.619887501346078
+          0.8288129542786205,
+          0.5595257695762954
          ],
          [
-          -0.1723655028500674,
-          0.6106096836075454,
-          -0.7729462773776303
+          -0.19868142693778312,
+          0.54837113419663,
+          -0.8122898434486718
          ]
         ]
        }
       },
       "Size": [
-       0.09,
+       0.076,
        0.523,
        0.12
       ],
@@ -8815,31 +9364,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.076,
+         -0.064,
          318.589,
-         -17.286
+         -17.343
         ],
         "orientation": [
          [
-          -0.9876137497901892,
-          -0.08351677855243322,
-          0.13283082821990255
+          -0.9832856373954215,
+          -0.08662448378798142,
+          0.1601422932905157
          ],
          [
-          0.0,
-          0.8465701670168956,
-          0.5322771386383089
+          -1.3877787807814457e-17,
+          0.8795661358501723,
+          0.47577664157206817
          ],
          [
-          -0.1569046883472939,
-          0.5256842208181727,
-          -0.836084337108063
+          -0.18206964407028375,
+          0.467824338266044,
+          -0.8648647485208646
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.211,
        0.05
       ],
@@ -8868,31 +9417,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.076,
+         -0.064,
          318.396,
-         -17.447
+         -17.481
         ],
         "orientation": [
          [
-          -0.979053610893202,
-          -0.14895924007033387,
-          0.1387990338390391
+          -0.9729099109257001,
+          -0.15497788095673762,
+          0.17154638333904046
          ],
          [
-          -1.3877787807814457e-17,
-          0.6817153611672654,
-          0.7316175000289326
+          0.0,
+          0.7420321504743714,
+          0.6703642947400911
          ],
          [
-          -0.2036026203097153,
-          0.7162927551959837,
-          -0.6674358859521743
+          -0.23118456960304629,
+          0.6522040662833518,
+          -0.7219304334220266
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.133,
        0.05
       ],
@@ -8921,32 +9470,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.152,
-         318.519,
-         -17.441
+         -0.128,
+         318.518,
+         -17.492
         ],
         "orientation": [
          [
-          -0.9428808696801959,
-          -0.198837305075537,
-          0.26728148402277113
+          -0.9249397556105179,
+          -0.20254514655978237,
+          0.32165495814029027
          ],
          [
           0.0,
-          0.8023336274203312,
-          0.5968758248668924
+          0.8462071530488343,
+          0.5328540645702036
          ],
          [
-          -0.3331301030995504,
-          0.5627827968415798,
-          -0.7565050283957482
+          -0.38011373099528467,
+          0.49285790825963516,
+          -0.782690637336861
          ]
         ]
        }
       },
       "Size": [
-       0.1,
-       0.583,
+       0.085,
+       0.584,
        0.16
       ],
       "Color": [
@@ -8982,32 +9531,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.152,
-         318.519,
-         -17.416
+         -0.128,
+         318.518,
+         -17.467
         ],
         "orientation": [
          [
-          -0.9428808696801959,
-          -0.198837305075537,
-          0.26728148402277113
+          -0.9249397556105179,
+          -0.20254514655978237,
+          0.32165495814029027
          ],
          [
           0.0,
-          0.8023336274203312,
-          0.5968758248668924
+          0.8462071530488343,
+          0.5328540645702036
          ],
          [
-          -0.3331301030995504,
-          0.5627827968415798,
-          -0.7565050283957482
+          -0.38011373099528467,
+          0.49285790825963516,
+          -0.782690637336861
          ]
         ]
        }
       },
       "Size": [
-       0.09,
-       0.503,
+       0.076,
+       0.504,
        0.12
       ],
       "Color": [
@@ -9043,32 +9592,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.152,
+         -0.128,
          318.606,
-         -17.293
+         -17.351
         ],
         "orientation": [
          [
-          -0.9521143106032981,
-          -0.1563455798000878,
-          0.2627439803713501
+          -0.9361863491589485,
+          -0.15908310182623464,
+          0.3134448697327541
          ],
          [
           0.0,
-          0.8593642446593595,
-          0.511363955516077
+          0.8917246934014145,
+          0.4525782486798867
          ],
          [
-          -0.30574227634464624,
-          0.48687693997356535,
-          -0.8182129953609703
+          -0.3515040819797678,
+          0.42369757834037386,
+          -0.8348204851703529
          ]
         ]
        }
       },
       "Size": [
-       0.072,
-       0.201,
+       0.06,
+       0.202,
        0.05
       ],
       "Color": [
@@ -9096,31 +9645,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.152,
-         318.415,
-         -17.45
+         -0.128,
+         318.414,
+         -17.487
         ],
         "orientation": [
          [
-          -0.9224076235627203,
-          -0.27230578279695367,
-          0.273886357178873
+          -0.9010757655529913,
+          -0.27659068532526404,
+          0.33400607408307925
          ],
          [
           0.0,
-          0.7091500421619324,
-          0.7050575988539727
+          0.7701996251959391,
+          0.6378028985102174
          ],
          [
-          -0.38621778311384747,
-          0.6503505042337308,
-          -0.6541254051399911
+          -0.43366169387333553,
+          0.574708735047011,
+          -0.694008216902058
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.126,
        0.05
       ],
@@ -9149,32 +9698,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.228,
-         318.548,
-         -17.452
+         -0.192,
+         318.547,
+         -17.505
         ],
         "orientation": [
          [
-          -0.8801285726889748,
-          -0.2658555148130272,
-          0.3933122687890222
+          -0.8454033560564085,
+          -0.26266372243943864,
+          0.46508164281426845
          ],
          [
-          0.0,
-          0.8284873483108389,
-          0.5600077800253088
+          -2.7755575615628914e-17,
+          0.8707300121819991,
+          0.4917613708756878
          ],
          [
-          -0.4747353952850659,
-          0.49287884812839644,
-          -0.7291753873596922
+          -0.5341284167394216,
+          0.41573671331720663,
+          -0.7361180745176995
          ]
         ]
        }
       },
       "Size": [
-       0.1,
-       0.56,
+       0.085,
+       0.561,
        0.16
       ],
       "Color": [
@@ -9210,32 +9759,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.228,
-         318.548,
-         -17.427
+         -0.192,
+         318.547,
+         -17.48
         ],
         "orientation": [
          [
-          -0.8801285726889748,
-          -0.2658555148130272,
-          0.3933122687890222
+          -0.8454033560564085,
+          -0.26266372243943864,
+          0.46508164281426845
          ],
          [
-          0.0,
-          0.8284873483108389,
-          0.5600077800253088
+          -2.7755575615628914e-17,
+          0.8707300121819991,
+          0.4917613708756878
          ],
          [
-          -0.4747353952850659,
-          0.49287884812839644,
-          -0.7291753873596922
+          -0.5341284167394216,
+          0.41573671331720663,
+          -0.7361180745176995
          ]
         ]
        }
       },
       "Size": [
-       0.09,
-       0.48,
+       0.076,
+       0.481,
        0.12
       ],
       "Color": [
@@ -9271,31 +9820,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.228,
-         318.634,
-         -17.306
+         -0.192,
+         318.633,
+         -17.367
         ],
         "orientation": [
          [
-          -0.8974084066602013,
-          -0.2113305338762319,
-          0.38729518084683917
+          -0.8657643082019113,
+          -0.20902602791674085,
+          0.45470900837460426
          ],
          [
           0.0,
-          0.8778206547713715,
-          0.4789894550580009
+          0.908596720949983,
+          0.41767451284336055
          ],
          [
-          -0.4412008064992618,
-          0.4298491636706387,
-          -0.7877636351317912
+          -0.5004519583772912,
+          0.36160768566540236,
+          -0.7866306115477872
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.192,
        0.05
       ],
@@ -9324,32 +9873,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.228,
-         318.447,
-         -17.456
+         -0.192,
+         318.446,
+         -17.497
         ],
         "orientation": [
          [
-          -0.8440883659128163,
-          -0.35480687392318605,
-          0.40202849743206964
+          -0.8047095064549257,
+          -0.34864001176000264,
+          0.4805130096272683
          ],
          [
           -2.7755575615628914e-17,
-          0.7497676758812158,
-          0.6617011653334759
+          0.8093957990005778,
+          0.5872635188398955
          ],
          [
-          -0.53620409410096,
-          0.55853425536894,
-          -0.6328701723488257
+          -0.5936687714719968,
+          0.47257653640463526,
+          -0.6513284939404452
          ]
         ]
        }
       },
       "Size": [
-       0.072,
-       0.119,
+       0.06,
+       0.12,
        0.05
       ],
       "Color": [
@@ -9377,32 +9926,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.304,
-         318.59,
-         -17.469
+         -0.256,
+         318.588,
+         -17.527
         ],
         "orientation": [
          [
-          -0.8037520463831693,
-          -0.3041416375973261,
-          0.5113516522066635
+          -0.7520817516263373,
+          -0.29005272607085814,
+          0.5918128546842524
          ],
          [
           0.0,
-          0.8594659520833492,
-          0.5111929940927029
+          0.8979516722979495,
+          0.4400940742810745
          ],
          [
-          -0.5949644089648286,
-          0.41087241509874933,
-          -0.6907975177836507
+          -0.6590698285240042,
+          0.33098672226568193,
+          -0.6753330665776407
          ]
         ]
        }
       },
       "Size": [
-       0.1,
-       0.534,
+       0.085,
+       0.535,
        0.16
       ],
       "Color": [
@@ -9438,32 +9987,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.304,
-         318.59,
-         -17.444
+         -0.256,
+         318.588,
+         -17.502
         ],
         "orientation": [
          [
-          -0.8037520463831693,
-          -0.3041416375973261,
-          0.5113516522066635
+          -0.7520817516263373,
+          -0.29005272607085814,
+          0.5918128546842524
          ],
          [
           0.0,
-          0.8594659520833492,
-          0.5111929940927029
+          0.8979516722979495,
+          0.4400940742810745
          ],
          [
-          -0.5949644089648286,
-          0.41087241509874933,
-          -0.6907975177836507
+          -0.6590698285240042,
+          0.33098672226568193,
+          -0.6753330665776407
          ]
         ]
        }
       },
       "Size": [
-       0.09,
-       0.454,
+       0.076,
+       0.455,
        0.12
       ],
       "Color": [
@@ -9499,31 +10048,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.304,
-         318.672,
-         -17.328
+         -0.256,
+         318.67,
+         -17.392
         ],
         "orientation": [
          [
-          -0.8278497181951024,
-          -0.24490960261437586,
-          0.5046623927256301
+          -0.7795192384388454,
+          -0.23421964541034326,
+          0.5809396824176976
          ],
          [
-          0.0,
-          0.8996567244307989,
-          0.4365979594391679
+          -2.7755575615628914e-17,
+          0.9274582079247446,
+          0.3739268278059507
          ],
          [
-          -0.5609499479314438,
-          0.3614374976862719,
-          -0.744780565792366
+          -0.6263782857856123,
+          0.291483156043148,
+          -0.7229715159253534
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.183,
        0.05
       ],
@@ -9552,32 +10101,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.304,
-         318.492,
-         -17.466
+         -0.256,
+         318.49,
+         -17.514
         ],
         "orientation": [
          [
-          -0.7566297651265844,
-          -0.3950442214086605,
-          0.5210100398803416
+          -0.700386208254053,
+          -0.374176850556875,
+          0.6078246817914261
          ],
          [
           0.0,
-          0.7968420479058449,
-          0.6041876783659356
+          0.8515764527528934,
+          0.5242304313150842
          ],
          [
-          -0.6538435581425345,
-          0.45714638117439416,
-          -0.6029144115499859
+          -0.7137640781711492,
+          0.36716376404015855,
+          -0.5964324027820357
          ]
         ]
        }
       },
       "Size": [
-       0.072,
-       0.112,
+       0.06,
+       0.113,
        0.05
       ],
       "Color": [
@@ -9605,32 +10154,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.38,
-         318.644,
-         -17.495
+         -0.32,
+         318.64,
+         -17.558
         ],
         "orientation": [
          [
-          -0.7184000878852015,
-          -0.3148358209739467,
-          0.6203061498632716
+          -0.6514292643097096,
+          -0.28951270314202177,
+          0.7013004408385255
          ],
          [
-          0.0,
-          0.8917183141754157,
-          0.45259081758709435
+          -2.7755575615628914e-17,
+          0.9243334341625014,
+          0.38158577343679456
          ],
          [
-          -0.6956301558490219,
-          0.3251412831306038,
-          -0.6406105152724625
+          -0.7587093736081759,
+          0.24857613966098263,
+          -0.6021378489933457
          ]
         ]
        }
       },
       "Size": [
-       0.1,
-       0.504,
+       0.085,
+       0.506,
        0.16
       ],
       "Color": [
@@ -9666,32 +10215,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.38,
-         318.644,
-         -17.47
+         -0.32,
+         318.64,
+         -17.533
         ],
         "orientation": [
          [
-          -0.7184000878852015,
-          -0.3148358209739467,
-          0.6203061498632716
+          -0.6514292643097096,
+          -0.28951270314202177,
+          0.7013004408385255
          ],
          [
-          0.0,
-          0.8917183141754157,
-          0.45259081758709435
+          -2.7755575615628914e-17,
+          0.9243334341625014,
+          0.38158577343679456
          ],
          [
-          -0.6956301558490219,
-          0.3251412831306038,
-          -0.6406105152724625
+          -0.7587093736081759,
+          0.24857613966098263,
+          -0.6021378489933457
          ]
         ]
        }
       },
       "Size": [
-       0.09,
-       0.424,
+       0.076,
+       0.426,
        0.12
       ],
       "Color": [
@@ -9727,31 +10276,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.38,
-         318.721,
-         -17.36
+         -0.32,
+         318.718,
+         -17.427
         ],
         "orientation": [
          [
-          -0.7466051706438206,
-          -0.2566832664091839,
-          0.613754364476069
+          -0.6826259298809877,
+          -0.2368994412358871,
+          0.6913034750355602
          ],
          [
           0.0,
-          0.9225679186263435,
-          0.3858347256552428
+          0.9459958487973052,
+          0.32417873782570306
          ],
          [
-          -0.6652674042578002,
-          0.28806620118814424,
-          -0.6887939783165355
+          -0.7307679794942556,
+          0.2212928123559155,
+          -0.6457612959488148
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.174,
        0.05
       ],
@@ -9780,31 +10329,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.38,
-         318.552,
-         -17.484
+         -0.32,
+         318.548,
+         -17.539
         ],
         "orientation": [
          [
-          -0.6663204091906744,
-          -0.39926369591382144,
-          0.6297663165184431
+          -0.5954188414256747,
+          -0.36458918475019975,
+          0.7159267627617311
          ],
          [
-          0.0,
-          0.8445694140080956,
-          0.5354460803125017
+          -2.7755575615628914e-17,
+          0.8911040393763932,
+          0.4537990645727198
          ],
          [
-          -0.7456655498921566,
-          0.35677865133336883,
-          -0.5627538375318023
+          -0.8034154611876144,
+          0.27020051326794375,
+          -0.5305801347152308
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.106,
        0.05
       ],
@@ -9833,32 +10382,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.456,
-         318.709,
-         -17.534
+         -0.384,
+         318.704,
+         -17.604
         ],
         "orientation": [
          [
-          -0.6251366763825645,
-          -0.30151908556609885,
-          0.7199238688088795
+          -0.5446009521155948,
+          -0.2677640636752648,
+          0.7948032518547569
          ],
          [
           0.0,
-          0.9223699618003345,
-          0.3863077187533918
+          0.947666278458895,
+          0.3192626264877681
          ],
          [
-          -0.7805153014780435,
-          0.24149512336242582,
-          -0.576607292314974
+          -0.8386952980402282,
+          0.17387073036016404,
+          -0.5160999575365566
          ]
         ]
        }
       },
       "Size": [
-       0.1,
-       0.472,
+       0.085,
+       0.474,
        0.16
       ],
       "Color": [
@@ -9894,32 +10443,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.456,
-         318.709,
-         -17.509
+         -0.384,
+         318.704,
+         -17.579
         ],
         "orientation": [
          [
-          -0.6251366763825645,
-          -0.30151908556609885,
-          0.7199238688088795
+          -0.5446009521155948,
+          -0.2677640636752648,
+          0.7948032518547569
          ],
          [
           0.0,
-          0.9223699618003345,
-          0.3863077187533918
+          0.947666278458895,
+          0.3192626264877681
          ],
          [
-          -0.7805153014780435,
-          0.24149512336242582,
-          -0.576607292314974
+          -0.8386952980402282,
+          0.17387073036016404,
+          -0.5160999575365566
          ]
         ]
        }
       },
       "Size": [
-       0.09,
-       0.392,
+       0.076,
+       0.394,
        0.12
       ],
       "Color": [
@@ -9955,32 +10504,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.456,
-         318.779,
-         -17.405
+         -0.384,
+         318.775,
+         -17.478
         ],
         "orientation": [
          [
-          -0.654455536483783,
-          -0.24825537146657495,
-          0.7141829046565851
+          -0.5764811948144483,
+          -0.2212914107279295,
+          0.7865745632572598
          ],
          [
-          -2.7755575615628914e-17,
-          0.9445608278726658,
-          0.3283364774868979
+          0.0,
+          0.9626294657397608,
+          0.2708219187761264
          ],
          [
-          -0.7561004898594657,
-          0.21488162552088327,
-          -0.6181730633469716
+          -0.8171104160548355,
+          0.15612374331800277,
+          -0.5549377845732512
          ]
         ]
        }
       },
       "Size": [
-       0.072,
-       0.164,
+       0.06,
+       0.165,
        0.05
       ],
       "Color": [
@@ -10008,31 +10557,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.456,
-         318.624,
-         -17.513
+         -0.384,
+         318.619,
+         -17.579
         ],
         "orientation": [
          [
-          -0.5732897545151688,
-          -0.37546555085641975,
-          0.7282612700727829
+          -0.4891088528840662,
+          -0.33132197597421925,
+          0.8068446432039887
          ],
          [
-          0.0,
-          0.8888251231097409,
-          0.4582465499367713
+          -2.7755575615628914e-17,
+          0.9250442514414267,
+          0.37985935933601894
          ],
          [
-          -0.8193527063285612,
-          0.26270805212067466,
-          -0.5095543366344981
+          -0.8722227525296695,
+          0.1857925755021165,
+          -0.4524473326895158
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.099,
        0.05
       ],
@@ -10061,32 +10610,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.532,
-         318.786,
-         -17.592
+         -0.448,
+         318.78,
+         -17.673
         ],
         "orientation": [
          [
-          -0.5205031564377972,
-          -0.26827021604781814,
-          0.8106217091343823
+          -0.4265125556009122,
+          -0.23088284315143065,
+          0.8745170968329268
          ],
          [
           0.0,
-          0.9493616649307997,
-          0.31418534205118487
+          0.966871030490904,
+          0.25526537249979175
          ],
          [
-          -0.8538597450039965,
-          0.1635344622441307,
-          -0.4941457431975237
+          -0.9044816415576264,
+          0.108873886381305,
+          -0.412382634151163
          ]
         ]
        }
       },
       "Size": [
-       0.1,
-       0.436,
+       0.085,
+       0.439,
        0.16
       ],
       "Color": [
@@ -10122,32 +10671,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.532,
-         318.786,
-         -17.567
+         -0.448,
+         318.78,
+         -17.648
         ],
         "orientation": [
          [
-          -0.5205031564377972,
-          -0.26827021604781814,
-          0.8106217091343823
+          -0.4265125556009122,
+          -0.23088284315143065,
+          0.8745170968329268
          ],
          [
           0.0,
-          0.9493616649307997,
-          0.31418534205118487
+          0.966871030490904,
+          0.25526537249979175
          ],
          [
-          -0.8538597450039965,
-          0.1635344622441307,
-          -0.4941457431975237
+          -0.9044816415576264,
+          0.108873886381305,
+          -0.412382634151163
          ]
         ]
        }
       },
       "Size": [
-       0.09,
-       0.356,
+       0.076,
+       0.359,
        0.12
       ],
       "Color": [
@@ -10183,32 +10732,32 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.532,
-         318.848,
-         -17.47
+         -0.448,
+         318.842,
+         -17.552
         ],
         "orientation": [
          [
-          -0.5484702665265513,
-          -0.22206682768874283,
-          0.8061430957197065
+          -0.4571726589526806,
+          -0.1917783931124299,
+          0.8684550695582072
          ],
          [
-          -2.7755575615628914e-17,
-          0.9640898852122315,
-          0.2655761533561824
+          0.0,
+          0.9764746894196925,
+          0.2156320498504688
          ],
          [
-          -0.8361700585026313,
-          0.14566062361436158,
-          -0.5287746362979047
+          -0.88937796234567,
+          0.0985810775855558,
+          -0.4464175301619938
          ]
         ]
        }
       },
       "Size": [
-       0.072,
-       0.155,
+       0.06,
+       0.156,
        0.05
       ],
       "Color": [
@@ -10236,31 +10785,31 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.532,
-         318.71,
-         -17.561
+         -0.448,
+         318.703,
+         -17.642
         ],
         "orientation": [
          [
-          -0.4721357367013589,
-          -0.33049662299470106,
-          0.8172269136039045
+          -0.3733926826359145,
+          -0.28290554184083616,
+          0.8834830835673642
          ],
          [
-          0.0,
-          0.92705948677783,
-          0.37491426750022006
+          1.3877787807814457e-17,
+          0.9523643776536636,
+          0.3049624438785046
          ],
          [
-          -0.8815258624280204,
-          0.17701042388606672,
-          -0.4376979137558344
+          -0.9276733824757263,
+          0.11387074502299935,
+          -0.35560588981898467
          ]
         ]
        }
       },
       "Size": [
-       0.072,
+       0.06,
        0.092,
        0.05
       ],
@@ -10291,7 +10840,7 @@
         "position": [
          0,
          318.18,
-         -17.988
+         -17.958
         ],
         "orientation": [
          [
@@ -10301,21 +10850,21 @@
          ],
          [
           0.0,
-          0.16542145291055727,
-          0.9862229681552546
+          0.256456710380134,
+          0.9665557178461054
          ],
          [
           0.0,
-          0.9862229681552547,
-          -0.1654214529105571
+          0.9665557178461054,
+          -0.2564567103801339
          ]
         ]
        }
       },
       "Size": [
-       0.46,
-       0.28,
-       0.3
+       0.38,
+       0.26,
+       0.28
       ],
       "Color": [
        0.8078,
@@ -11265,18 +11814,18 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.43,
+         0.45,
          310.125,
          -18.0
         ],
         "orientation": [
          [
           -0.9999810656265368,
-          -0.0061532636239173795,
-          7.573104142431885e-05
+          0.0061532636239173795,
+          -7.573104142431885e-05
          ],
          [
-          -0.006153729634624847,
+          0.006153729634624847,
           0.9999053388865733,
           -0.012306294231451803
          ],
@@ -11289,9 +11838,9 @@
        }
       },
       "Size": [
-       0.46,
+       0.48,
        3.64,
-       0.48
+       0.5
       ],
       "Color": [
        0.8078,
@@ -11326,33 +11875,33 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         0.426,
-         310.694,
-         -18.007
+         0.454,
+         310.743,
+         -18.008
         ],
         "orientation": [
          [
           -0.9999810656265368,
-          -0.006153263623917377,
-          7.573104142431879e-05
+          0.006153263623917374,
+          -7.573104142431879e-05
          ],
          [
-          -0.006153729634624845,
-          0.9999053388865732,
-          -0.012306294231451798
+          0.0061537296346248415,
+          0.9999053388865733,
+          -0.012306294231451805
          ],
          [
           0.0,
-          -0.012306527247834743,
-          -0.9999242718261709
+          -0.01230652724783475,
+          -0.999924271826171
          ]
         ]
        }
       },
       "Size": [
-       0.54,
-       1.788,
-       0.56
+       0.55,
+       1.885,
+       0.57
       ],
       "Color": [
        0.8078,
@@ -11389,7 +11938,7 @@
         "position": [
          0.44,
          308.55,
-         -17.83
+         -17.85
         ],
         "orientation": [
          [
@@ -11411,9 +11960,9 @@
        }
       },
       "Size": [
-       0.28,
-       0.38,
-       0.14
+       0.24,
+       0.32,
+       0.1
       ],
       "Color": [
        0.8627,
@@ -12912,18 +13461,18 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.43,
+         -0.45,
          310.125,
          -18.0
         ],
         "orientation": [
          [
           -0.9999810656265368,
-          0.0061532636239173795,
-          -7.573104142431885e-05
+          -0.0061532636239173795,
+          7.573104142431885e-05
          ],
          [
-          0.006153729634624847,
+          -0.006153729634624847,
           0.9999053388865733,
           -0.012306294231451803
          ],
@@ -12936,9 +13485,9 @@
        }
       },
       "Size": [
-       0.46,
+       0.48,
        3.64,
-       0.48
+       0.5
       ],
       "Color": [
        0.8078,
@@ -12973,33 +13522,33 @@
       "CFrame": {
        "CFrame": {
         "position": [
-         -0.426,
-         310.694,
-         -18.007
+         -0.454,
+         310.743,
+         -18.008
         ],
         "orientation": [
          [
           -0.9999810656265368,
-          0.006153263623917377,
-          -7.573104142431879e-05
+          -0.006153263623917374,
+          7.573104142431879e-05
          ],
          [
-          0.006153729634624845,
-          0.9999053388865732,
-          -0.012306294231451798
+          -0.0061537296346248415,
+          0.9999053388865733,
+          -0.012306294231451805
          ],
          [
           0.0,
-          -0.012306527247834743,
-          -0.9999242718261709
+          -0.01230652724783475,
+          -0.999924271826171
          ]
         ]
        }
       },
       "Size": [
-       0.54,
-       1.788,
-       0.56
+       0.55,
+       1.885,
+       0.57
       ],
       "Color": [
        0.8078,
@@ -13036,7 +13585,7 @@
         "position": [
          -0.44,
          308.55,
-         -17.83
+         -17.85
         ],
         "orientation": [
          [
@@ -13058,9 +13607,9 @@
        }
       },
       "Size": [
-       0.28,
-       0.38,
-       0.14
+       0.24,
+       0.32,
+       0.1
       ],
       "Color": [
        0.8627,

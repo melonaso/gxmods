@@ -118,46 +118,66 @@ def surface(center, radii, x, y, inset=0.0):
 BODY.append(("HumanoidRootPart", (0, ROOT_CENTER_Y, 0), (2, 2.4, 1), SKIN, {"root": True}))
 
 # pelvis estrecha con las crestas de la cadera marcadas
-add("LowerTorso", (0, 7.95, 0.04), (1.08, 1.12, 0.66), SKIN, joint=("HumanoidRootPart", (0, 7.9, 0), "Root"))
+add("LowerTorso", (0, 7.9, 0.04), (1.34, 0.82, 0.66), SKIN, joint=("HumanoidRootPart", (0, 7.9, 0), "Root"))
 # transición suave del vientre a la cadera (sin "cuentas" entre tramos)
-add("Hips", (0, 8.42, 0.04), (0.96, 0.72, 0.62), SKIN, weld="LowerTorso")
 for sx in (-1, 1):
-    add("HipCrest", (0.44 * sx, 8.3, -0.1), (0.14, 0.46, 0.26), SKIN_LIGHT, weld="LowerTorso", orient=rz(sx * math.radians(24)))
-    add("Glute", (0.26 * sx, 7.85, 0.26), (0.5, 0.7, 0.36), SKIN, weld="LowerTorso")
+    add("HipCrest", (0.52 * sx, 8.25, -0.18), (0.12, 0.46, 0.2), SKIN_LIGHT, weld="LowerTorso", orient=rz(sx * math.radians(24)))
+    add("Glute", (0.32 * sx, 7.85, 0.26), (0.6, 0.72, 0.38), SKIN, weld="LowerTorso")
 
 # caja torácica: barril que se estrecha hacia la cintura, con el pecho ancho arriba
-CHEST_C, CHEST_R = (0, 10.95, 0.05), (0.76, 1.3, 0.47)
+CHEST_C, CHEST_R = (0, 10.95, 0.05), (0.98, 1.3, 0.52)
 add("UpperTorso", CHEST_C, (CHEST_R[0] * 2, CHEST_R[1] * 2, CHEST_R[2] * 2), SKIN, joint=("LowerTorso", (0, 8.6, 0), "Waist"))
-add("Chest", (0, 11.78, 0.06), (1.82, 1.1, 0.88), SKIN, weld="UpperTorso")
-# cintura de avispa y un pequeño vientre bajo las costillas
-add("Waist", (0, 9.35, 0.12), (0.74, 1.5, 0.54), SKIN, weld="UpperTorso")
-add("Belly", (0, 8.86, 0.0), (0.82, 1.1, 0.6), SKIN, weld="UpperTorso")
-add("Navel", (0, 8.85, -0.31), (0.08, 0.12, 0.06), SKIN_DEEP, weld="UpperTorso")
+# Contorno del tronco con rodajas superpuestas cuyo ancho sigue el perfil de
+# la referencia: pecho ancho, costillas que se cierran, cintura fina, un
+# pequeño vientre y la pelvis. Así no quedan "barriles" apilados.
+TORSO_PROFILE = [  # (altura, ancho, fondo, desplazamiento hacia delante)
+    (7.55, 1.18, 0.62, 0.0), (8.0, 1.44, 0.7, 0.0), (8.45, 1.36, 0.68, -0.03), (8.85, 1.3, 0.68, -0.05),
+    (9.2, 1.24, 0.62, -0.02), (9.6, 1.42, 0.68, 0.0), (10.1, 1.78, 0.86, 0.0), (10.7, 1.98, 0.96, 0.0),
+    (11.3, 2.0, 0.98, 0.0), (11.85, 1.9, 0.92, 0.02), (12.3, 1.4, 0.74, 0.05),
+]
+
+
+def torso_at(y):
+    for (y0, w0, d0, z0), (y1, w1, d1, z1) in zip(TORSO_PROFILE, TORSO_PROFILE[1:]):
+        if y0 <= y <= y1:
+            t = (y - y0) / (y1 - y0)
+            t = t * t * (3 - 2 * t)
+            return w0 + (w1 - w0) * t, d0 + (d1 - d0) * t, z0 + (z1 - z0) * t
+    return TORSO_PROFILE[-1][1:]
+
+
+# rodajas altas y muy solapadas: el contorno ondula menos de un 3 %
+y = 7.75
+while y <= 12.0:
+    w, d, z = torso_at(y)
+    add("TorsoSlice", (0, y, 0.05 + z), (w, 1.4, d), SKIN, weld="UpperTorso" if y >= 8.6 else "LowerTorso")
+    y += 0.35
+add("Navel", (0, 8.85, -0.33), (0.08, 0.12, 0.06), SKIN_DEEP, weld="UpperTorso")
 sternum, _ = surface(CHEST_C, CHEST_R, 0, 11.1, 0.02)
 add("Sternum", sternum, (0.15, 1.7, 0.11), SKIN_LIGHT, weld="UpperTorso")
 # costillas: seis pares que bajan hacia los lados, más largas en el centro
 for i in range(6):
     y = 9.95 + i * 0.32
     for sx in (-1, 1):
-        pos, orient = surface(CHEST_C, CHEST_R, 0.4 * sx, y, 0.025)
-        add("Rib", pos, (0.62 - abs(i - 2.5) * 0.04, 0.1, 0.13), SKIN_SHADE, weld="UpperTorso",
+        pos, orient = surface(CHEST_C, CHEST_R, 0.5 * sx, y, 0.025)
+        add("Rib", pos, (0.78 - abs(i - 2.5) * 0.05, 0.1, 0.13), SKIN_SHADE, weld="UpperTorso",
             orient=matmul(orient, rz(-sx * math.radians(20 - i))))
         # sombra entre costillas: da relieve con poca luz
-        pos, orient = surface(CHEST_C, CHEST_R, 0.42 * sx, y + 0.16, 0.035)
-        add("RibShadow", pos, (0.5, 0.07, 0.1), SKIN_DEEP, weld="UpperTorso", orient=matmul(orient, rz(-sx * math.radians(20 - i))))
+        pos, orient = surface(CHEST_C, CHEST_R, 0.52 * sx, y + 0.16, 0.035)
+        add("RibShadow", pos, (0.62, 0.07, 0.1), SKIN_DEEP, weld="UpperTorso", orient=matmul(orient, rz(-sx * math.radians(20 - i))))
 for sx in (-1, 1):
     # borde inferior de la caja torácica (arco costal)
-    pos, orient = surface(CHEST_C, CHEST_R, 0.3 * sx, 9.78, 0.03)
-    add("CostalArch", pos, (0.62, 0.12, 0.14), SKIN_LIGHT, weld="UpperTorso", orient=matmul(orient, rz(sx * math.radians(32))))
+    pos, orient = surface(CHEST_C, CHEST_R, 0.38 * sx, 9.78, 0.03)
+    add("CostalArch", pos, (0.74, 0.12, 0.14), SKIN_LIGHT, weld="UpperTorso", orient=matmul(orient, rz(sx * math.radians(32))))
     # trapecio caído desde el cuello hasta el hombro
     add("Trapezius", (0.5 * sx, 12.42, 0.1), (1.05, 0.38, 0.56), SKIN, weld="UpperTorso", orient=rz(-sx * math.radians(22)))
     # clavícula marcada, del esternón al hombro
-    segment("Clavicle", (0.06 * sx, 12.28, -0.36), (1.08 * sx, 12.5, -0.18), 0.13, 0.14, SKIN_LIGHT, extend=0.05,
+    segment("Clavicle", (0.06 * sx, 12.28, -0.4), (1.08 * sx, 12.45, -0.22), 0.11, 0.12, SKIN, extend=0.05,
             weld="UpperTorso")
     # hombro caído que se funde con el brazo
     add("Deltoid", (1.16 * sx, 11.95, 0.04), (0.38, 1.15, 0.44), SKIN, weld="UpperTorso", orient=rz(sx * math.radians(6)))
     # omóplatos y columna (de espaldas)
-    add("Scapula", (0.48 * sx, 11.55, 0.44), (0.62, 0.9, 0.16), SKIN, weld="UpperTorso", orient=rz(sx * math.radians(12)))
+    add("Scapula", (0.56 * sx, 11.55, 0.48), (0.66, 0.9, 0.16), SKIN, weld="UpperTorso", orient=rz(sx * math.radians(12)))
 for k in range(6):
     add("Spine", (0, 9.4 + k * 0.48, 0.5 - 0.08 * abs(k - 3) / 3), (0.12, 0.2, 0.1), SKIN_LIGHT, weld="UpperTorso")
 
@@ -171,9 +191,9 @@ for sx in (-1, 1):
 
 # Cabeza de huevo, lisa y calva; sin ojos: cuencas pequeñas y hundidas
 HEAD_C = (0, 15.0, -0.02)
-HEAD_R = (0.72, 1.02, 0.86)
+HEAD_R = (0.58, 1.04, 0.78)
 add("Head", HEAD_C, (HEAD_R[0] * 2, HEAD_R[1] * 2, HEAD_R[2] * 2), SKIN, joint=("NeckPart", (0, 14.05, 0), "HeadJoint"))
-add("Cranium", (0, 15.42, 0.26), (1.56, 1.46, 1.6), SKIN, weld="Head")
+add("Cranium", (0, 15.45, 0.22), (1.24, 1.34, 1.46), SKIN, weld="Head")
 
 
 def on_face(name, x, y, size, color, inset=0.0, tilt=None, **extra):
@@ -183,12 +203,12 @@ def on_face(name, x, y, size, color, inset=0.0, tilt=None, **extra):
 
 for sx in (-1, 1):
     # cuencas almendradas, oscuras y hundidas (como en la imagen)
-    on_face("EyeSocket", 0.27 * sx, 15.22, (0.44, 0.3, 0.2), SOCKET, inset=0.075, tilt=rz(-sx * math.radians(10)))
-    on_face("EyeHollow", 0.27 * sx, 15.21, (0.32, 0.19, 0.2), SOCKET_DEEP, inset=0.04, tilt=rz(-sx * math.radians(10)))
+    on_face("EyeSocket", 0.22 * sx, 15.22, (0.36, 0.26, 0.2), SOCKET, inset=0.075, tilt=rz(-sx * math.radians(10)))
+    on_face("EyeHollow", 0.22 * sx, 15.21, (0.26, 0.16, 0.2), SOCKET_DEEP, inset=0.04, tilt=rz(-sx * math.radians(10)))
     # pómulos levantados por la sonrisa
-    on_face("Cheekbone", 0.47 * sx, 14.9, (0.3, 0.2, 0.18), SKIN, inset=0.09, tilt=rz(-sx * math.radians(18)))
+    on_face("Cheekbone", 0.38 * sx, 14.9, (0.3, 0.2, 0.18), SKIN, inset=0.09, tilt=rz(-sx * math.radians(18)))
     # surcos de la sonrisa, de la nariz a las comisuras
-    on_face("SmileFold", 0.33 * sx, 14.6, (0.06, 0.42, 0.1), SKIN_DEEP, inset=0.04, tilt=rz(sx * math.radians(28)))
+    on_face("SmileFold", 0.28 * sx, 14.6, (0.06, 0.42, 0.1), SKIN_DEEP, inset=0.04, tilt=rz(sx * math.radians(28)))
     on_face("Nostril", 0.05 * sx, 14.76, (0.06, 0.08, 0.06), SOCKET_DEEP, inset=0.0)
 on_face("Nose", 0, 14.84, (0.17, 0.26, 0.16), SKIN, inset=0.04)
 
@@ -196,19 +216,19 @@ on_face("Nose", 0, 14.84, (0.17, 0.26, 0.16), SKIN, inset=0.04)
 # grandes muy juntos (arriba más altos que abajo), como en la referencia.
 COLUMNS = 15
 for k in range(COLUMNS):
-    x = (k - (COLUMNS - 1) / 2) * 0.076
-    t = abs(x) / 0.54
+    x = (k - (COLUMNS - 1) / 2) * 0.064
+    t = abs(x) / 0.46
     upper_y = 14.43 + 0.26 * t * t
     lower_y = 14.16 + 0.34 * t * t
     mid = (upper_y + lower_y) / 2
     gap = upper_y - lower_y
     tall = gap + 0.27 * (1 - 0.4 * t)
-    on_face("Lip", x, mid, (0.1, tall + 0.08, 0.16), LIPS, inset=0.075)
-    on_face("MouthDark", x, mid, (0.09, tall, 0.12), MOUTH, inset=0.05)
+    on_face("Lip", x, mid, (0.085, tall + 0.08, 0.16), LIPS, inset=0.075)
+    on_face("MouthDark", x, mid, (0.076, tall, 0.12), MOUTH, inset=0.05)
     for row, y, h in (("Upper", upper_y, 0.22 * (1 - 0.3 * t)), ("Lower", lower_y, 0.14 * (1 - 0.35 * t))):
         y = y - h * 0.22 if row == "Upper" else y + h * 0.22
-        on_face(f"Tooth{row}", x, y, (0.072, h, 0.05), TEETH, inset=-0.012, ellipsoid=False)
-on_face("Chin", 0, 13.98, (0.46, 0.28, 0.3), SKIN, inset=0.13)
+        on_face(f"Tooth{row}", x, y, (0.06, h, 0.05), TEETH, inset=-0.012, ellipsoid=False)
+on_face("Chin", 0, 13.98, (0.38, 0.26, 0.28), SKIN, inset=0.13)
 
 # --- brazos, manos, piernas y pies --------------------------------------------
 for side, sx in (("Left", -1), ("Right", 1)):
@@ -235,13 +255,13 @@ for side, sx in (("Left", -1), ("Right", 1)):
     segment("Thumb", (hx - 0.02 * sx, hy - 0.05, hz - 0.2), (hx - 0.08 * sx, hy - 0.6, hz - 0.27), 0.08, 0.08, SKIN_SHADE,
             extend=0.1, weld=f"{side}Hand")
 
-    hip = (0.42 * sx, 7.55, 0.02)
+    hip = (0.46 * sx, 7.55, 0.02)
     knee = (0.44 * sx, 4.3, -0.02)
     ankle = (0.45 * sx, 0.55, 0.04)
     # muslo fino que se estrecha hacia la rodilla
-    segment(f"{side}UpperLeg", hip, knee, 0.46, 0.48, SKIN, joint=("LowerTorso", hip, f"{side}Hip"))
-    segment("Thigh", lerp3(hip, knee, 0.05), lerp3(hip, knee, 0.6), 0.54, 0.56, SKIN, extend=0, weld=f"{side}UpperLeg")
-    add("Kneecap", (knee[0], knee[1] + 0.05, knee[2] - 0.15), (0.28, 0.38, 0.14), SKIN_LIGHT, weld=f"{side}UpperLeg")
+    segment(f"{side}UpperLeg", hip, knee, 0.48, 0.5, SKIN, joint=("LowerTorso", hip, f"{side}Hip"))
+    segment("Thigh", lerp3(hip, knee, 0.02), lerp3(hip, knee, 0.6), 0.55, 0.57, SKIN, extend=0, weld=f"{side}UpperLeg")
+    add("Kneecap", (knee[0], knee[1] + 0.05, knee[2] - 0.13), (0.24, 0.32, 0.1), SKIN_LIGHT, weld=f"{side}UpperLeg")
     # pierna: espinilla recta y gemelo marcado detrás
     segment(f"{side}LowerLeg", knee, ankle, 0.33, 0.35, SKIN, joint=(f"{side}UpperLeg", knee, f"{side}Knee"))
     segment("Calf", lerp3(knee, ankle, 0.12), lerp3(knee, ankle, 0.5), 0.36, 0.34, SKIN,
