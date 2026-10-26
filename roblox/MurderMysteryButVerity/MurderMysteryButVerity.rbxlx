@@ -109,20 +109,24 @@ Config.Killer = {
 	KillCooldown = 1,
 }
 
+-- Correr (Shift) es igual de rápido para todos; la diferencia es que los
+-- supervivientes gastan estamina y Verity no.
+local SPRINT = 40
+
 Config.Movement = {
 	SurvivorWalk = 16,
-	SurvivorSprint = 24, -- Shift
+	SurvivorSprint = SPRINT, -- Shift, gasta estamina
 	StaminaMax = 100,
-	StaminaDrain = 22, -- por segundo corriendo
-	StaminaRegen = 14,
-	StaminaRegenDelay = 0.8,
+	StaminaDrain = 15, -- por segundo corriendo (~6,7 s de carrera con la barra llena)
+	StaminaRegen = 18, -- se llena en ~5,5 s
+	StaminaRegenDelay = 0.6,
 	VerityWalk = 26,
-	VeritySprint = 40, -- mucho más rápida que el sprint de los supervivientes
+	VeritySprint = SPRINT, -- sin límite de estamina
 	VerityCrouch = 14, -- tecla C
 	BotWalk = 15,
 	BotFlee = 22,
 	VerityBotPatrol = 20, -- Verity NPC buscando
-	VerityBotChase = 28, -- Verity NPC persiguiendo (más que el sprint de 24)
+	VerityBotChase = 28, -- Verity NPC persiguiendo
 }
 
 Config.Crafting = {

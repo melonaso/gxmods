@@ -26,7 +26,7 @@ Si no importas ninguno, se usa `ServerStorage/VerityFallback`: un modelo orgáni
 ## Modo prueba (activado)
 `Config.Testing.Enabled = true` en [`src/shared/Config.luau`](src/shared/Config.luau):
 - Basta **1 jugador**. En el lobby, el botón **"Rol de prueba"** (izquierda, debajo de ♪) alterna entre **Verity** y **Superviviente** para la próxima ronda, así puedes probar los dos lados.
-- Si eliges **Superviviente**, Verity la maneja la **IA**: ve con la vista (no a través de paredes), persigue al más cercano, va adonde te vio por última vez, te saca del escondite si te vio entrar, registra escondites al patrullar y usa la revelación de cada minuto. Corre 28 (más que tu sprint de 24), así que hay que usar escondites y estamina.
+- Si eliges **Superviviente**, Verity la maneja la **IA**: ve con la vista (no a través de paredes), persigue al más cercano, va adonde te vio por última vez, te saca del escondite si te vio entrar, registra escondites al patrullar y usa la revelación de cada minuto. Persigue a 28; tú corres a 40 mientras te dure la estamina, así que hay que administrarla y usar escondites.
 - Cada ronda tiene **10 participantes** (el máximo por servidor): tú + 9 NPCs si eres Verity, o tú + Verity NPC + 8 NPCs si eres superviviente. Los NPCs huyen, se esconden, cambian de sitio al ser revelados, recogen oro y craftean tótems.
 - Si caes como superviviente frente a la Verity NPC, la ronda termina 20 s después (no hace falta esperar todo el reloj).
 - Todos empiezan con 0 monedas.
@@ -46,7 +46,7 @@ Ponlo en `false` antes de publicar y pon **10 jugadores máximo** en Game Settin
 | Tecla | Verity | Superviviente |
 | --- | --- | --- |
 | `Q` | Atrapar: levanta a la víctima y la aplasta | — |
-| `Shift` | Correr (40, sin límite; camina a 26) | Correr (24, gasta estamina) |
+| `Shift` | Correr (40, sin límite; camina a 26) | Correr (40, igual que Verity; gasta estamina: ~6,7 s seguidos, se recarga en ~5,5 s) |
 | `F` | — | **Linterna** sin batería (la ven todos, también Verity) |
 | `C` | Agacharse (alterna) | — |
 | `E` | — | Recoger / depositar oro · Craftear tótem |
