@@ -401,6 +401,8 @@ function Killer.release()
 			root.Anchored = false
 		end
 		released = true
+		-- grito de liberación: lo oyen todos, estén donde estén
+		Net.get("Effect"):FireAllClients("Released", if root then root.Position else Vector3.zero)
 	end)
 end
 

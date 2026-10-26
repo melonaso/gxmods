@@ -9,6 +9,8 @@ local Players = game:GetService("Players")
 local ProximityPromptService = game:GetService("ProximityPromptService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
+local SoundService = game:GetService("SoundService")
+local TweenService = game:GetService("TweenService")
 local Workspace = game:GetService("Workspace")
 
 local Assets = require(ReplicatedStorage.Shared.Assets)
@@ -231,12 +233,44 @@ local function transform(position: Vector3)
 	end)
 end
 
+-- Verity queda libre: un grito distorsionado y grave sobre dos golpes sordos,
+-- sin distancia (se oye igual en todo el mapa), con temblor y destello.
+local function released()
+	local S = Config.Sounds
+	local function global(id: number, speed: number, volume: number): Sound
+		local s = Instance.new("Sound")
+		s.SoundId = `rbxassetid://{id}`
+		s.PlaybackSpeed = speed
+		s.Volume = volume
+		s.Parent = SoundService
+		s:Play()
+		game:GetService("Debris"):AddItem(s, 12)
+		return s
+	end
+	global(S.ReleaseHit, 0.22, S.ReleaseVolume)
+	task.delay(0.09, function()
+		global(S.ReleaseHit, 0.3, S.ReleaseVolume * 0.8)
+	end)
+	local scream = global(S.ReleaseScream, 0.82, S.ReleaseVolume * 0.75)
+	-- solo el primer alarido: se apaga a los ~4 s
+	task.delay(3.2, function()
+		TweenService:Create(scream, TweenInfo.new(1.4), { Volume = 0 }):Play()
+	end)
+	shakeStrength = 1
+	shakeUntil = os.clock() + 0.9
+	flash.BackgroundTransparency = 0.4
+	UI.tween(flash, 1.2, { BackgroundTransparency = 1 })
+end
+
 local function onEffect(kind: string, position: any)
 	if kind == "Grab" then
 		grabScream(position)
 		return
 	elseif kind == "Transform" then
 		transform(position)
+		return
+	elseif kind == "Released" then
+		released()
 		return
 	end
 	if kind == "Radar" then

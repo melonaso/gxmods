@@ -37,7 +37,7 @@ Ponlo en `false` antes de publicar y pon **10 jugadores máximo** en Game Settin
 1. **Intermedio de 23 s** en el lobby.
 2. Cinemática de inicio: barras de cine, nombre del mapa (5 s) y la cámara rodea a tu personaje.
 3. Verity empieza como una **bola sonriente** (su diseño original) durante **20 s**.
-4. Al liberarse, la bola **se retuerce con crujidos de huesos** y se transforma en el monstruo (2,6 s); si eres Verity, la cámara orbita la transformación.
+4. Al liberarse, la bola **se retuerce con crujidos de huesos** y se transforma en el monstruo (2,6 s); si eres Verity, la cámara orbita la transformación. Cuando queda libre, **todo el mapa oye un alarido distorsionado y grave** sobre dos golpes sordos (*Nightmare Yelling*, Pro Sound Effects), con temblor de cámara y destello rojo.
 5. **Verity ve en la oscuridad** (solo en su pantalla, sin filtros de color): para ella la noche se ve casi como de día, con luz ambiente alta, menos niebla y una luz suave alrededor. Los supervivientes siguen viendo la noche oscura y tienen su linterna (`F`).
 6. Verity atrapa con `Q`: la víctima **grita** mientras la levanta y el grito se corta en seco con la explosión.
 7. **Anti-campeo:** cada **60 s** (desde que Verity despierta) todos los supervivientes se **resaltan en rojo para Verity durante 5 s**, a través de las paredes (si estás en un escondite, se resalta el escondite). Los supervivientes reciben un pulso rojo en pantalla, tres latidos y el aviso "¡Verity puede verte! Cambia de sitio". El HUD muestra la cuenta atrás ("Revelación en 42s").

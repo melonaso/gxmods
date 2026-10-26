@@ -158,6 +158,10 @@ Config.Music = {
 -- sustituto con sonidos internos de Roblox.
 Config.Sounds = {
 	BoneCracks = 0,
+	-- Liberación de Verity (lo oyen todos): grito distorsionado más grave y un golpe sordo
+	ReleaseScream = 9125712561, -- Nightmare Yelling Bursts Of Distorted Scream (Pro Sound Effects)
+	ReleaseHit = 12221944, -- bass.wav (Roblox), muy lento: golpe grave
+	ReleaseVolume = 2.2,
 }
 
 -- Reemplaza Id = 0 por los IDs reales creados en el Creator Hub.
