@@ -23,15 +23,13 @@ Encontrados con ForgeGUI (`toolbox_search`). El juego quita todos los scripts de
 
 Si no importas ninguno, se usa `ServerStorage/VerityFallback`: un modelo orgánico de ~190 piezas basado en la imagen de referencia (cuerpo esquelético con costillas, cintura de avispa, cuello con tendones, clavículas, brazos larguísimos hasta las rodillas, dedos largos, rodillas y gemelos marcados, y cabeza de huevo calva con cuencas hundidas y una sonrisa enorme de dientes grandes). Antes de eso, el juego intenta `InsertService:LoadAsset` (solo funciona si el creador del juego posee el modelo).
 
-## Modo prueba (activado)
-`Config.Testing.Enabled = true` en [`src/shared/Config.luau`](src/shared/Config.luau):
-- Basta **1 jugador**. En el lobby, el botón **"Rol de prueba"** (izquierda, debajo de ♪) alterna entre **Verity** y **Superviviente** para la próxima ronda, así puedes probar los dos lados.
-- Si eliges **Superviviente**, Verity la maneja la **IA**: ve con la vista (no a través de paredes), persigue al más cercano, va adonde te vio por última vez, te saca del escondite si te vio entrar, registra escondites al patrullar y usa la revelación de cada minuto. Persigue a 28; tú corres a 40 mientras te dure la estamina, así que hay que administrarla y usar escondites.
-- Cada ronda tiene **10 participantes** (el máximo por servidor): tú + 9 NPCs si eres Verity, o tú + Verity NPC + 8 NPCs si eres superviviente. Los NPCs huyen, se esconden, cambian de sitio al ser revelados, recogen oro y craftean tótems.
-- Si caes como superviviente frente a la Verity NPC, la ronda termina 20 s después (no hace falta esperar todo el reloj).
-- Todos empiezan con 0 monedas.
-
-Ponlo en `false` antes de publicar y pon **10 jugadores máximo** en Game Settings → Places (en Studio ya está en 10).
+## Partida en solitario (NPCs)
+`Config.Round.SoloBots = true` en [`src/shared/Config.luau`](src/shared/Config.luau):
+- Si estás **solo en el servidor**, la ronda se completa con NPCs hasta **10 participantes**: tú + 9 NPCs si eres Verity, o tú + Verity NPC + 8 NPCs si eres superviviente. Los NPCs huyen, se esconden, cambian de sitio al ser revelados, recogen oro y craftean tótems.
+- En solitario **alternas**: una ronda eres Verity y la siguiente superviviente. El lobby muestra "Próxima ronda: Verity / Superviviente".
+- La **Verity NPC** ve con la vista (no a través de paredes), persigue al más cercano, va adonde te vio por última vez, te saca del escondite si te vio entrar, registra escondites al patrullar y usa la revelación de cada minuto. Persigue a 28; tú corres a 40 mientras te dure la estamina.
+- Si caes como superviviente frente a la Verity NPC, la ronda termina 20 s después.
+- **Si entra otro jugador**, los NPCs desaparecen al instante y esa ronda se cancela, sin premios. La siguiente ronda ya es entre jugadores reales, sin NPCs (mínimo 2).
 
 ## Ronda
 1. **Intermedio de 23 s** en el lobby.
@@ -126,7 +124,7 @@ Mientras sea `0`, el juego usa un sustituto con sonidos internos de Roblox.
 2. Llévalos a una de las **3 mesas de crafteo**.
 3. Con **3 de oro**, mantén `E` 3 s para **craftear un tótem**: **−30 s** al reloj (máx. 5 por ronda).
 
-## Quién es Verity (fuera del modo prueba)
+## Quién es Verity
 **Rotación como en Survive the Killer:** nadie repite hasta que todos los del servidor hayan sido Verity una vez. Con 10 jugadores, en 10 rondas todos lo han sido; después empieza otra rotación. Si entra alguien nuevo, se suma a los que faltan, y salir y volver no reinicia tu turno. El HUD del lobby muestra "Rotación: 4/10 ya fueron Verity" o "Ya fuiste Verity en esta rotación".
 
 Entre los que aún no lo han sido, el orden lo deciden la suerte y los pases. Cada ronda que no eres Verity sumas +1 de suerte (máx. 10).
@@ -135,7 +133,7 @@ Entre los que aún no lo han sido, el orden lo deciden la suerte y los pases. Ca
 ## Traducción a todos los idiomas
 El juego está escrito en **español** y todos los textos (HUD, tienda, avisos, carteles, mesas de crafteo, escondites, nombres de mapas y objetos) pasan por [`Locale.luau`](src/shared/Locale.luau), que los traduce con el `Translator` de cada jugador. Los textos con números o nombres usan parámetros (`"Verity atrapó a {name}"`), así una sola entrada sirve para cualquier valor.
 
-- `tools/extract_strings.py` reúne los 156 textos en [`src/localization/GameStrings.csv`](src/localization/GameStrings.csv), que va dentro del place como `LocalizationService.GameStrings` (idioma de origen `es-es`). Incluye ya el **inglés** (`tools/translations/en.json`).
+- `tools/extract_strings.py` reúne los 161 textos en [`src/localization/GameStrings.csv`](src/localization/GameStrings.csv), que va dentro del place como `LocalizationService.GameStrings` (idioma de origen `es-es`). Incluye ya el **inglés** (`tools/translations/en.json`).
 - Para que **Roblox traduzca automáticamente a todos los demás idiomas** (portugués, francés, alemán, italiano, ruso, turco, japonés, coreano, chino, indonesio, tailandés, vietnamita, polaco, árabe...):
   1. Publica el juego.
   2. En el **Creator Dashboard** → tu experiencia → **Localization**: pon el **idioma de origen en Español**, activa **Automatic Text Capture** y **Automatic Translation** para todos los idiomas.
@@ -143,8 +141,27 @@ El juego está escrito en **español** y todos los textos (HUD, tienda, avisos, 
 - Para probar en Studio: pestaña **Test → Language / Player Emulator** y elige *English*.
 - Si añades textos nuevos, escríbelos como `T("...")` y vuelve a ejecutar `python3 tools/extract_strings.py`.
 
-## Datos
-Con el juego publicado y "Enable Studio Access to API Services" activo se guardan en DataStore. En un archivo local sin publicar, todo funciona en memoria (se avisa en Output).
+## Datos guardados
+Se guardan por jugador en DataStore: **monedas, victorias**, objetos y skins comprados, objetos equipados, suerte y pociones.
+- **Cuándo:** al terminar cada ronda, cada 60 s (autoguardado), al salir del juego y al cerrarse el servidor.
+- **Bloqueo de sesión:** solo un servidor escribe los datos de un jugador a la vez. Si cambia de servidor muy rápido, el nuevo espera a que el anterior termine de guardar (si tarda más de ~30 s, le pide volver a entrar). Así no se pierden ni se duplican monedas.
+- Si el DataStore falla al cargar, el jugador puede jugar pero esa sesión no se guarda, para no borrar sus datos reales.
+- En el juego publicado funciona solo. Para que también guarde al probar en Studio: Game Settings → Security → **Enable Studio Access to API Services**. En un archivo local sin publicar, todo funciona en memoria (se avisa en Output).
+
+## Publicar en Roblox
+1. Abre `MurderMysteryButVerity.rbxlx` en Roblox Studio → **File → Publish to Roblox** → *Create new experience* (nombre, descripción, género **Horror**, dispositivos).
+2. **Game Settings** (pestaña Home):
+   - **Places → Max Players: 10.**
+   - **Avatar → R15** (Verity y los NPCs son R15).
+   - **Security → Enable Studio Access to API Services** (solo para probar el guardado en Studio).
+3. En el **Creator Hub** (create.roblox.com → Creations → tu experiencia):
+   - Rellena el **cuestionario de madurez** (*Maturity & Compliance*). Es obligatorio para hacerlo público.
+   - Configura **Localization** como se explica arriba.
+   - Sube icono y miniaturas.
+   - Opcional: crea los **pases** 2x y 3x y la **Poción de Verity**, y pon sus IDs en `Config.GamePasses` / `Config.Products`. Con `Id = 0` aparecen como no disponibles.
+4. Pruébalo primero en privado (**Audience/Privacy → Private**) y luego cámbialo a **Public**.
+5. Si algún sonido no suena en el juego publicado, es que el audio del Toolbox no permite su uso en tu experiencia: cambia su ID en `Config.Music` / `Config.Sounds`.
+6. Para actualizar: vuelve a generar el `.rbxlx` (o abre el place desde Studio), haz los cambios y **File → Publish to Roblox** de nuevo.
 
 ## Estructura
 ```

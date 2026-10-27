@@ -16,7 +16,7 @@
     <Item class="LocalizationTable" referent="2">
       <Properties>
         <string name="Name">GameStrings</string>
-        <string name="Contents">[{"key":"+35% de velocidad mientras la sostienes.","example":"src/shared/Config.luau","source":"+35% de velocidad mientras la sostienes.","values":{"en":"+35% speed while you hold it."}},{"key":"+HP","example":"src/shared/Config.luau","source":"+HP","values":{"en":"+HP"}},{"key":"+{amount} monedas ({reason})","example":"src/server/Systems/Coins.luau","source":"+{amount} monedas ({reason})","values":{"en":"+{amount} coins ({reason})"}},{"key":"2x Probabilidad","example":"src/shared/Config.luau","source":"2x Probabilidad","values":{"en":"2x Chance"}},{"key":"3x Probabilidad","example":"src/shared/Config.luau","source":"3x Probabilidad","values":{"en":"3x Chance"}},{"key":"Abrir tienda","example":"src/world/Lobby.model.json","source":"Abrir tienda","values":{"en":"Open shop"}},{"key":"Adquirido","example":"src/client/Controllers/Shop.luau","source":"Adquirido","values":{"en":"Owned"}},{"key":"Agacharse","example":"src/client/Controllers/HUD.luau","source":"Agacharse","values":{"en":"Crouch"}},{"key":"Atrapar","example":"src/client/Controllers/HUD.luau","source":"Atrapar","values":{"en":"Grab"}},{"key":"atrapar","example":"src/server/Systems/Round.luau","source":"atrapar","values":{"en":"grab"}},{"key":"Banco","example":"map","source":"Banco","values":{"en":"Bank"}},{"key":"Bebida energética","example":"src/shared/Config.luau","source":"Bebida energética","values":{"en":"Energy Drink"}},{"key":"Bengala","example":"src/shared/Config.luau","source":"Bengala","values":{"en":"Flare"}},{"key":"Bloque de oro","example":"src/server/Systems/Crafting.luau","source":"Bloque de oro","values":{"en":"Gold block"}},{"key":"BNG","example":"src/shared/Config.luau","source":"BNG","values":{"en":"FLR"}},{"key":"Bobina de fusión","example":"src/shared/Config.luau","source":"Bobina de fusión","values":{"en":"Fusion Coil"}},{"key":"Bobina de gravedad","example":"src/shared/Config.luau","source":"Bobina de gravedad","values":{"en":"Gravity Coil"}},{"key":"Bobina de velocidad","example":"src/shared/Config.luau","source":"Bobina de velocidad","values":{"en":"Speed Coil"}},{"key":"Bosque Nocturno","example":"map","source":"Bosque Nocturno","values":{"en":"Night Forest"}},{"key":"Botiquín","example":"src/shared/Config.luau","source":"Botiquín","values":{"en":"Medkit"}},{"key":"Brillo radiactivo verde.","example":"src/shared/Config.luau","source":"Brillo radiactivo verde.","values":{"en":"Green radioactive glow."}},{"key":"Capa fantasma","example":"src/shared/Config.luau","source":"Capa fantasma","values":{"en":"Ghost Cloak"}},{"key":"Cementerio","example":"map","source":"Cementerio","values":{"en":"Graveyard"}},{"key":"Cepo","example":"src/shared/Config.luau","source":"Cepo","values":{"en":"Bear Trap"}},{"key":"Cepo colocado.","example":"src/server/Systems/Items.luau","source":"Cepo colocado.","values":{"en":"Trap placed."}},{"key":"Clic: casi invisible durante 6 s. Recarga 40 s.","example":"src/shared/Config.luau","source":"Clic: casi invisible durante 6 s. Recarga 40 s.","values":{"en":"Click: nearly invisible for 6 s. Cooldown 40 s."}},{"key":"Clic: coloca un cepo (máx. 2) que inmoviliza 3 s a Verity si lo pisa.","example":"src/shared/Config.luau","source":"Clic: coloca un cepo (máx. 2) que inmoviliza 3 s a Verity si lo pisa.","values":{"en":"Click: place a trap (max 2) that holds Verity for 3 s if she steps on it."}},{"key":"Clic: cura 50 de vida. Recarga 20 s.","example":"src/shared/Config.luau","source":"Clic: cura 50 de vida. Recarga 20 s.","values":{"en":"Click: heals 50 health. Cooldown 20 s."}},{"key":"Clic: deja en el suelo una bengala roja que ilumina la zona 20 s. Recarga 30 s.","example":"src/shared/Config.luau","source":"Clic: deja en el suelo una bengala roja que ilumina la zona 20 s. Recarga 30 s.","values":{"en":"Click: drop a red flare that lights up the area for 20 s. Cooldown 30 s."}},{"key":"Clic: empuja con fuerza a Verity si la tienes delante. Recarga 8 s.","example":"src/shared/Config.luau","source":"Clic: empuja con fuerza a Verity si la tienes delante. Recarga 8 s.","values":{"en":"Click: shove Verity hard if she is in front of you. Cooldown 8 s."}},{"key":"Clic: estamina llena e infinita durante 6 s. Recarga 30 s.","example":"src/shared/Config.luau","source":"Clic: estamina llena e infinita durante 6 s. Recarga 30 s.","values":{"en":"Click: full, unlimited stamina for 6 s. Cooldown 30 s."}},{"key":"Clic: ves a Verity a través de las paredes 6 s. Recarga 30 s.","example":"src/shared/Config.luau","source":"Clic: ves a Verity a través de las paredes 6 s. Recarga 30 s.","values":{"en":"Click: see Verity through walls for 6 s. Cooldown 30 s."}},{"key":"Clásica","example":"src/shared/Config.luau","source":"Clásica","values":{"en":"Classic"}},{"key":"Comprar","example":"src/client/Controllers/Shop.luau","source":"Comprar","values":{"en":"Buy"}},{"key":"Comprar · {price}","example":"src/client/Controllers/Shop.luau","source":"Comprar · {price}","values":{"en":"Buy · {price}"}},{"key":"Compraste {item}.","example":"src/server/Systems/Shop.luau","source":"Compraste {item}.","values":{"en":"You bought {item}."}},{"key":"Correr","example":"src/client/Controllers/HUD.luau","source":"Correr","values":{"en":"Sprint"}},{"key":"CPO","example":"src/shared/Config.luau","source":"CPO","values":{"en":"TRP"}},{"key":"Craftear tótem","example":"src/server/Systems/Crafting.luau","source":"Craftear tótem","values":{"en":"Craft totem"}},{"key":"Depositar oro","example":"src/server/Systems/Crafting.luau","source":"Depositar oro","values":{"en":"Deposit gold"}},{"key":"Despierta y atrápalos a todos","example":"src/client/Controllers/Cinematics.luau","source":"Despierta y atrápalos a todos","values":{"en":"Wake up and catch them all"}},{"key":"Doble probabilidad de ser Verity en cada ronda.","example":"src/shared/Config.luau","source":"Doble probabilidad de ser Verity en cada ronda.","values":{"en":"Double chance to be Verity every round."}},{"key":"Dorada","example":"src/shared/Config.luau","source":"Dorada","values":{"en":"Golden"}},{"key":"El radar no detecta a nadie.","example":"src/server/Systems/Items.luau","source":"El radar no detecta a nadie.","values":{"en":"The radar detects no one."}},{"key":"El reloj ya no puede acelerarse más esta ronda.","example":"src/server/Systems/Crafting.luau","source":"El reloj ya no puede acelerarse más esta ronda.","values":{"en":"The clock can't be sped up any further this round."}},{"key":"Equipada","example":"src/client/Controllers/Shop.luau","source":"Equipada","values":{"en":"Equipped"}},{"key":"Equipado (quitar)","example":"src/client/Controllers/Shop.luau","source":"Equipado (quitar)","values":{"en":"Equipped (remove)"}},{"key":"Equipar","example":"src/client/Controllers/Shop.luau","source":"Equipar","values":{"en":"Equip"}},{"key":"Eres una bola sonriente... por ahora. Ves en la oscuridad. Al despertar: Q atrapar · Shift correr · C agacharse","example":"src/client/Controllers/HUD.luau","source":"Eres una bola sonriente... por ahora. Ves en la oscuridad. Al despertar: Q atrapar · Shift correr · C agacharse","values":{"en":"You are a smiling ball... for now. You can see in the dark. Once awake: Q grab · Shift sprint · C crouch"}},{"key":"ERES VERITY","example":"src/client/Controllers/HUD.luau","source":"ERES VERITY","values":{"en":"YOU ARE VERITY"}},{"key":"Esconderse","example":"src/client/Controllers/HUD.luau","source":"Esconderse","values":{"en":"Hide"}},{"key":"Escondido","example":"src/server/Systems/Hiding.luau","source":"Escondido","values":{"en":"Hidden"}},{"key":"Escondite","example":"src/server/Systems/Hiding.luau","source":"Escondite","values":{"en":"Hiding spot"}},{"key":"Escuela Nocturna","example":"map","source":"Escuela Nocturna","values":{"en":"Night School"}},{"key":"Espectral","example":"src/shared/Config.luau","source":"Espectral","values":{"en":"Spectral"}},{"key":"ESPERANDO JUGADORES","example":"src/client/Controllers/HUD.luau","source":"ESPERANDO JUGADORES","values":{"en":"WAITING FOR PLAYERS"}},{"key":"FIN DE LA RONDA","example":"src/client/Controllers/HUD.luau","source":"FIN DE LA RONDA","values":{"en":"ROUND OVER"}},{"key":"FUS","example":"src/shared/Config.luau","source":"FUS","values":{"en":"FUS"}},{"key":"Fábrica","example":"map","source":"Fábrica","values":{"en":"Factory"}},{"key":"Gotea sangre al caminar.","example":"src/shared/Config.luau","source":"Gotea sangre al caminar.","values":{"en":"Drips blood as she walks."}},{"key":"GRV","example":"src/shared/Config.luau","source":"GRV","values":{"en":"GRV"}},{"key":"Has caído. La ronda termina en {seconds} s.","example":"src/server/Systems/Round.luau","source":"Has caído. La ronda termina en {seconds} s.","values":{"en":"You fell. The round ends in {seconds} s."}},{"key":"Hospital","example":"map","source":"Hospital","values":{"en":"Hospital"}},{"key":"Hotel","example":"map","source":"Hotel","values":{"en":"Hotel"}},{"key":"IMN","example":"src/shared/Config.luau","source":"IMN","values":{"en":"MAG"}},{"key":"Imán de monedas","example":"src/shared/Config.luau","source":"Imán de monedas","values":{"en":"Coin Magnet"}},{"key":"INTERMEDIO","example":"src/client/Controllers/HUD.luau","source":"INTERMEDIO","values":{"en":"INTERMISSION"}},{"key":"INV","example":"src/shared/Config.luau","source":"INV","values":{"en":"INV"}},{"key":"La Verity de siempre.","example":"src/shared/Config.luau","source":"La Verity de siempre.","values":{"en":"The Verity you know."}},{"key":"Linterna","example":"src/client/Controllers/HUD.luau","source":"Linterna","values":{"en":"Flashlight"}},{"key":"Los cepos solo funcionan durante la ronda.","example":"src/server/Systems/Items.luau","source":"Los cepos solo funcionan durante la ronda.","values":{"en":"Traps only work during the round."}},{"key":"Los supervivientes están marcados en rojo.","example":"src/server/Systems/Round.luau","source":"Los supervivientes están marcados en rojo.","values":{"en":"The survivors are marked in red."}},{"key":"Mansión","example":"map","source":"Mansión","values":{"en":"Mansion"}},{"key":"Mapa: {map}","example":"src/server/Systems/Round.luau","source":"Mapa: {map}","values":{"en":"Map: {map}"}},{"key":"Martillo de empuje","example":"src/shared/Config.luau","source":"Martillo de empuje","values":{"en":"Push Hammer"}},{"key":"Mesa de crafteo","example":"src/server/Systems/Crafting.luau","source":"Mesa de crafteo","values":{"en":"Crafting table"}},{"key":"Morada, con un aura del más allá.","example":"src/shared/Config.luau","source":"Morada, con un aura del más allá.","values":{"en":"Purple, with an otherworldly aura."}},{"key":"MRT","example":"src/shared/Config.luau","source":"MRT","values":{"en":"HMR"}},{"key":"nadie","example":"src/client/Controllers/HUD.luau","source":"nadie","values":{"en":"no one"}},{"key":"Necesitas bloques de oro. ¡Búscalos por el mapa!","example":"src/server/Systems/Crafting.luau","source":"Necesitas bloques de oro. ¡Búscalos por el mapa!","values":{"en":"You need gold blocks. Look for them around the map!"}},{"key":"Negra como la noche, contorno rojo.","example":"src/shared/Config.luau","source":"Negra como la noche, contorno rojo.","values":{"en":"Black as night, red outline."}},{"key":"NRG","example":"src/shared/Config.luau","source":"NRG","values":{"en":"NRG"}},{"key":"obby completado","example":"src/server/Systems/Lobby.luau","source":"obby completado","values":{"en":"obby completed"}},{"key":"Objetos","example":"src/client/Controllers/Shop.luau","source":"Objetos","values":{"en":"Items"}},{"key":"Objetos equipados: {count}/{max} · solo los usan los supervivientes durante la ronda","example":"src/client/Controllers/Shop.luau","source":"Objetos equipados: {count}/{max} · solo los usan los supervivientes durante la ronda","values":{"en":"Equipped items: {count}/{max} · only survivors use them, during the round"}},{"key":"Oficina","example":"map","source":"Oficina","values":{"en":"Office"}},{"key":"Oro / tótem","example":"src/client/Controllers/HUD.luau","source":"Oro / tótem","values":{"en":"Gold / totem"}},{"key":"Oro {gold}/{max}","example":"src/client/Controllers/HUD.luau","source":"Oro {gold}/{max}","values":{"en":"Gold {gold}/{max}"}},{"key":"Pases","example":"src/client/Controllers/Shop.luau","source":"Pases","values":{"en":"Passes"}},{"key":"Piel blanca como la cera.","example":"src/shared/Config.luau","source":"Piel blanca como la cera.","values":{"en":"Skin as white as wax."}},{"key":"Poción de Verity","example":"src/shared/Config.luau","source":"Poción de Verity","values":{"en":"Verity Potion"}},{"key":"premio al final","example":"src/world/Lobby.model.json","source":"premio al final","values":{"en":"prize at the end"}},{"key":"PREPARANDO","example":"src/client/Controllers/HUD.luau","source":"PREPARANDO","values":{"en":"GETTING READY"}},{"key":"Probabilidad de Verity: {chance}","example":"src/client/Controllers/HUD.luau","source":"Probabilidad de Verity: {chance}","values":{"en":"Verity chance: {chance}"}},{"key":"Pronto","example":"src/client/Controllers/Shop.luau","source":"Pronto","values":{"en":"Soon"}},{"key":"Próxima ronda: {role}","example":"src/client/Controllers/HUD.luau","source":"Próxima ronda: {role}","values":{"en":"Next round: {role}"}},{"key":"Pálida","example":"src/shared/Config.luau","source":"Pálida","values":{"en":"Pale"}},{"key":"RAD","example":"src/shared/Config.luau","source":"RAD","values":{"en":"RAD"}},{"key":"Radar de almas","example":"src/shared/Config.luau","source":"Radar de almas","values":{"en":"Soul Radar"}},{"key":"Recargando... {seconds} s","example":"src/server/Systems/Items.luau","source":"Recargando... {seconds} s","values":{"en":"Recharging... {seconds} s"}},{"key":"Recoger oro","example":"src/server/Systems/Crafting.luau","source":"Recoger oro","values":{"en":"Pick up gold"}},{"key":"Reluce como el oro.","example":"src/shared/Config.luau","source":"Reluce como el oro.","values":{"en":"Shines like gold."}},{"key":"RESULTADOS","example":"src/client/Controllers/HUD.luau","source":"RESULTADOS","values":{"en":"RESULTS"}},{"key":"Revelación en {seconds}","example":"src/client/Controllers/HUD.luau","source":"Revelación en {seconds}","values":{"en":"Reveal in {seconds}"}},{"key":"Rol de prueba: {role}","example":"src/client/Controllers/HUD.luau","source":"Rol de prueba: {role}","values":{"en":"Test role: {role}"}},{"key":"ronda en curso","example":"src/client/Controllers/HUD.luau","source":"ronda en curso","values":{"en":"round in progress"}},{"key":"Rotación: {done}/{total} ya fueron Verity","example":"src/client/Controllers/HUD.luau","source":"Rotación: {done}/{total} ya fueron Verity","values":{"en":"Rotation: {done}/{total} have been Verity"}},{"key":"Salir","example":"src/server/Systems/Hiding.luau","source":"Salir","values":{"en":"Leave"}},{"key":"Saltos enormes: la gravedad te afecta mucho menos.","example":"src/shared/Config.luau","source":"Saltos enormes: la gravedad te afecta mucho menos.","values":{"en":"Huge jumps: gravity affects you much less."}},{"key":"Sangrienta","example":"src/shared/Config.luau","source":"Sangrienta","values":{"en":"Bloody"}},{"key":"Semitransparente, como un fantasma.","example":"src/shared/Config.luau","source":"Semitransparente, como un fantasma.","values":{"en":"See-through, like a ghost."}},{"key":"Skin {skin} comprada y equipada.","example":"src/server/Systems/Shop.luau","source":"Skin {skin} comprada y equipada.","values":{"en":"Skin {skin} bought and equipped."}},{"key":"Skins de Verity","example":"src/client/Controllers/Shop.luau","source":"Skins de Verity","values":{"en":"Verity skins"}},{"key":"SOBREVIVE","example":"src/client/Controllers/HUD.luau","source":"SOBREVIVE","values":{"en":"SURVIVE"}},{"key":"Sobrevive hasta el amanecer","example":"src/client/Controllers/Cinematics.luau","source":"Sobrevive hasta el amanecer","values":{"en":"Survive until dawn"}},{"key":"Sobrevivieron: {names}. Tótems: {totems}","example":"src/client/Controllers/HUD.luau","source":"Sobrevivieron: {names}. Tótems: {totems}","values":{"en":"Survived: {names}. Totems: {totems}"}},{"key":"sobrevivir","example":"src/server/Systems/Round.luau","source":"sobrevivir","values":{"en":"survive"}},{"key":"Solo puedes llevar {count} bloques. ¡Llévalos a una mesa!","example":"src/server/Systems/Crafting.luau","source":"Solo puedes llevar {count} bloques. ¡Llévalos a una mesa!","values":{"en":"You can only carry {count} blocks. Take them to a table!"}},{"key":"Solo puedes llevar {count} objetos por ronda. Quita uno primero.","example":"src/server/Systems/Shop.luau","source":"Solo puedes llevar {count} objetos por ronda. Quita uno primero.","values":{"en":"You can only bring {count} items per round. Remove one first."}},{"key":"Sombra","example":"src/shared/Config.luau","source":"Sombra","values":{"en":"Shadow"}},{"key":"Sostenlo para recoger monedas desde el triple de distancia.","example":"src/shared/Config.luau","source":"Sostenlo para recoger monedas desde el triple de distancia.","values":{"en":"Hold it to collect coins from three times as far."}},{"key":"SUPERVIVIENTE","example":"src/client/Controllers/HUD.luau","source":"SUPERVIVIENTE","values":{"en":"SURVIVOR"}},{"key":"Superviviente","example":"src/client/Controllers/HUD.luau","source":"Superviviente","values":{"en":"Survivor"}},{"key":"SUPERVIVIENTES GANAN","example":"src/client/Controllers/HUD.luau","source":"SUPERVIVIENTES GANAN","values":{"en":"SURVIVORS WIN"}},{"key":"Te faltan {coins} monedas.","example":"src/server/Systems/Shop.luau","source":"Te faltan {coins} monedas.","values":{"en":"You need {coins} more coins."}},{"key":"Tienda","example":"src/client/Controllers/Shop.luau","source":"Tienda","values":{"en":"Shop"}},{"key":"TIENDA","example":"src/client/Controllers/Shop.luau","source":"TIENDA","values":{"en":"SHOP"}},{"key":"Triple probabilidad de ser Verity en cada ronda.","example":"src/shared/Config.luau","source":"Triple probabilidad de ser Verity en cada ronda.","values":{"en":"Triple chance to be Verity every round."}},{"key":"TU ROL","example":"src/client/Controllers/HUD.luau","source":"TU ROL","values":{"en":"YOUR ROLE"}},{"key":"Tótems {totems}  ·  Vivos {alive}","example":"src/client/Controllers/HUD.luau","source":"Tótems {totems}  ·  Vivos {alive}","values":{"en":"Totems {totems}  ·  Alive {alive}"}},{"key":"Tóxica","example":"src/shared/Config.luau","source":"Tóxica","values":{"en":"Toxic"}},{"key":"Vacío","example":"src/shared/Config.luau","source":"Vacío","values":{"en":"Void"}},{"key":"VEL","example":"src/shared/Config.luau","source":"VEL","values":{"en":"SPD"}},{"key":"Velocidad y gravedad baja a la vez.","example":"src/shared/Config.luau","source":"Velocidad y gravedad baja a la vez.","values":{"en":"Speed and low gravity at once."}},{"key":"Verity","example":"src/client/Controllers/HUD.luau","source":"Verity","values":{"en":"Verity"}},{"key":"Verity abandonó la partida.","example":"src/server/Systems/Round.luau","source":"Verity abandonó la partida.","values":{"en":"Verity left the game."}},{"key":"Verity atrapó a {name}","example":"src/server/Systems/Round.luau","source":"Verity atrapó a {name}","values":{"en":"Verity caught {name}"}},{"key":"Verity despierta en {seconds}","example":"src/client/Controllers/HUD.luau","source":"Verity despierta en {seconds}","values":{"en":"Verity wakes up in {seconds}"}},{"key":"Verity es {name}. F linterna, R esconderse, E oro y tótems. Cada minuto Verity te verá en rojo: ¡muévete!","example":"src/client/Controllers/HUD.luau","source":"Verity es {name}. F linterna, R esconderse, E oro y tótems. Cada minuto Verity te verá en rojo: ¡muévete!","values":{"en":"Verity is {name}. F flashlight, R hide, E gold and totems. Every minute Verity sees you in red: keep moving!"}},{"key":"VERITY GANA","example":"src/client/Controllers/HUD.luau","source":"VERITY GANA","values":{"en":"VERITY WINS"}},{"key":"Verity ha caído.","example":"src/server/Systems/Round.luau","source":"Verity ha caído.","values":{"en":"Verity has fallen."}},{"key":"victoria","example":"src/server/Systems/Round.luau","source":"victoria","values":{"en":"victory"}},{"key":"x5 de probabilidad en tu próxima ronda.","example":"src/shared/Config.luau","source":"x5 de probabilidad en tu próxima ronda.","values":{"en":"x5 chance in your next round."}},{"key":"Ya fuiste Verity en esta rotación","example":"src/client/Controllers/HUD.luau","source":"Ya fuiste Verity en esta rotación","values":{"en":"You were already Verity this rotation"}},{"key":"Ya tienes 2 cepos colocados.","example":"src/server/Systems/Items.luau","source":"Ya tienes 2 cepos colocados.","values":{"en":"You already have 2 traps placed."}},{"key":"{coins} monedas · Verity {chance}%","example":"src/client/Controllers/Shop.luau","source":"{coins} monedas · Verity {chance}%","values":{"en":"{coins} coins · Verity {chance}%"}},{"key":"{count} supervivientes","example":"src/client/Controllers/HUD.luau","source":"{count} supervivientes","values":{"en":"{count} survivors"}},{"key":"{name} atrapó a todos. Tótems crafteados: {totems}","example":"src/client/Controllers/HUD.luau","source":"{name} atrapó a todos. Tótems crafteados: {totems}","values":{"en":"{name} caught everyone. Totems crafted: {totems}"}},{"key":"{name} crafteó un tótem: -{seconds}s","example":"src/server/Systems/Round.luau","source":"{name} crafteó un tótem: -{seconds}s","values":{"en":"{name} crafted a totem: -{seconds}s"}},{"key":"{product} activada: x{multiplier} en tus próximas {rounds} ronda(s).","example":"src/server/Systems/Monetization.luau","source":"{product} activada: x{multiplier} en tus próximas {rounds} ronda(s).","values":{"en":"{product} active: x{multiplier} for your next {rounds} round(s)."}},{"key":"¡Bolsa de monedas llena!","example":"src/server/Systems/Coins.luau","source":"¡Bolsa de monedas llena!","values":{"en":"Coin bag full!"}},{"key":"¡Estamina infinita durante {seconds} s!","example":"src/server/Systems/Items.luau","source":"¡Estamina infinita durante {seconds} s!","values":{"en":"Unlimited stamina for {seconds} s!"}},{"key":"¡Listo para craftear!","example":"src/server/Systems/Crafting.luau","source":"¡Listo para craftear!","values":{"en":"Ready to craft!"}},{"key":"¡Revelados!","example":"src/client/Controllers/HUD.luau","source":"¡Revelados!","values":{"en":"Revealed!"}},{"key":"¡Verity ha sido liberada!","example":"src/server/Systems/Round.luau","source":"¡Verity ha sido liberada!","values":{"en":"Verity has been released!"}},{"key":"¡Verity puede verte! Cambia de sitio.","example":"src/server/Systems/Round.luau","source":"¡Verity puede verte! Cambia de sitio.","values":{"en":"Verity can see you! Move somewhere else."}},{"key":"¡Ya casi amanece! El tótem no tendría efecto.","example":"src/server/Systems/Crafting.luau","source":"¡Ya casi amanece! El tótem no tendría efecto.","values":{"en":"Dawn is almost here! The totem would have no effect."}},{"key":"¡{pass} activado!","example":"src/server/Systems/Monetization.luau","source":"¡{pass} activado!","values":{"en":"{pass} activated!"}}]</string>
+        <string name="Contents">[{"key":"+35% de velocidad mientras la sostienes.","example":"src/shared/Config.luau","source":"+35% de velocidad mientras la sostienes.","values":{"en":"+35% speed while you hold it."}},{"key":"+HP","example":"src/shared/Config.luau","source":"+HP","values":{"en":"+HP"}},{"key":"+{amount} monedas ({reason})","example":"src/server/Systems/Coins.luau","source":"+{amount} monedas ({reason})","values":{"en":"+{amount} coins ({reason})"}},{"key":"2x Probabilidad","example":"src/shared/Config.luau","source":"2x Probabilidad","values":{"en":"2x Chance"}},{"key":"3x Probabilidad","example":"src/shared/Config.luau","source":"3x Probabilidad","values":{"en":"3x Chance"}},{"key":"Abrir tienda","example":"src/world/Lobby.model.json","source":"Abrir tienda","values":{"en":"Open shop"}},{"key":"Adquirido","example":"src/client/Controllers/Shop.luau","source":"Adquirido","values":{"en":"Owned"}},{"key":"Agacharse","example":"src/client/Controllers/HUD.luau","source":"Agacharse","values":{"en":"Crouch"}},{"key":"Atrapar","example":"src/client/Controllers/HUD.luau","source":"Atrapar","values":{"en":"Grab"}},{"key":"atrapar","example":"src/server/Systems/Round.luau","source":"atrapar","values":{"en":"grab"}},{"key":"Banco","example":"map","source":"Banco","values":{"en":"Bank"}},{"key":"Bebida energética","example":"src/shared/Config.luau","source":"Bebida energética","values":{"en":"Energy Drink"}},{"key":"Bengala","example":"src/shared/Config.luau","source":"Bengala","values":{"en":"Flare"}},{"key":"Bloque de oro","example":"src/server/Systems/Crafting.luau","source":"Bloque de oro","values":{"en":"Gold block"}},{"key":"BNG","example":"src/shared/Config.luau","source":"BNG","values":{"en":"FLR"}},{"key":"Bobina de fusión","example":"src/shared/Config.luau","source":"Bobina de fusión","values":{"en":"Fusion Coil"}},{"key":"Bobina de gravedad","example":"src/shared/Config.luau","source":"Bobina de gravedad","values":{"en":"Gravity Coil"}},{"key":"Bobina de velocidad","example":"src/shared/Config.luau","source":"Bobina de velocidad","values":{"en":"Speed Coil"}},{"key":"Bosque Nocturno","example":"map","source":"Bosque Nocturno","values":{"en":"Night Forest"}},{"key":"Botiquín","example":"src/shared/Config.luau","source":"Botiquín","values":{"en":"Medkit"}},{"key":"Brillo radiactivo verde.","example":"src/shared/Config.luau","source":"Brillo radiactivo verde.","values":{"en":"Green radioactive glow."}},{"key":"Capa fantasma","example":"src/shared/Config.luau","source":"Capa fantasma","values":{"en":"Ghost Cloak"}},{"key":"Cementerio","example":"map","source":"Cementerio","values":{"en":"Graveyard"}},{"key":"Cepo","example":"src/shared/Config.luau","source":"Cepo","values":{"en":"Bear Trap"}},{"key":"Cepo colocado.","example":"src/server/Systems/Items.luau","source":"Cepo colocado.","values":{"en":"Trap placed."}},{"key":"Clic: casi invisible durante 6 s. Recarga 40 s.","example":"src/shared/Config.luau","source":"Clic: casi invisible durante 6 s. Recarga 40 s.","values":{"en":"Click: nearly invisible for 6 s. Cooldown 40 s."}},{"key":"Clic: coloca un cepo (máx. 2) que inmoviliza 3 s a Verity si lo pisa.","example":"src/shared/Config.luau","source":"Clic: coloca un cepo (máx. 2) que inmoviliza 3 s a Verity si lo pisa.","values":{"en":"Click: place a trap (max 2) that holds Verity for 3 s if she steps on it."}},{"key":"Clic: cura 50 de vida. Recarga 20 s.","example":"src/shared/Config.luau","source":"Clic: cura 50 de vida. Recarga 20 s.","values":{"en":"Click: heals 50 health. Cooldown 20 s."}},{"key":"Clic: deja en el suelo una bengala roja que ilumina la zona 20 s. Recarga 30 s.","example":"src/shared/Config.luau","source":"Clic: deja en el suelo una bengala roja que ilumina la zona 20 s. Recarga 30 s.","values":{"en":"Click: drop a red flare that lights up the area for 20 s. Cooldown 30 s."}},{"key":"Clic: empuja con fuerza a Verity si la tienes delante. Recarga 8 s.","example":"src/shared/Config.luau","source":"Clic: empuja con fuerza a Verity si la tienes delante. Recarga 8 s.","values":{"en":"Click: shove Verity hard if she is in front of you. Cooldown 8 s."}},{"key":"Clic: estamina llena e infinita durante 6 s. Recarga 30 s.","example":"src/shared/Config.luau","source":"Clic: estamina llena e infinita durante 6 s. Recarga 30 s.","values":{"en":"Click: full, unlimited stamina for 6 s. Cooldown 30 s."}},{"key":"Clic: ves a Verity a través de las paredes 6 s. Recarga 30 s.","example":"src/shared/Config.luau","source":"Clic: ves a Verity a través de las paredes 6 s. Recarga 30 s.","values":{"en":"Click: see Verity through walls for 6 s. Cooldown 30 s."}},{"key":"Clásica","example":"src/shared/Config.luau","source":"Clásica","values":{"en":"Classic"}},{"key":"Comprar","example":"src/client/Controllers/Shop.luau","source":"Comprar","values":{"en":"Buy"}},{"key":"Comprar · {price}","example":"src/client/Controllers/Shop.luau","source":"Comprar · {price}","values":{"en":"Buy · {price}"}},{"key":"Compraste {item}.","example":"src/server/Systems/Shop.luau","source":"Compraste {item}.","values":{"en":"You bought {item}."}},{"key":"Correr","example":"src/client/Controllers/HUD.luau","source":"Correr","values":{"en":"Sprint"}},{"key":"CPO","example":"src/shared/Config.luau","source":"CPO","values":{"en":"TRP"}},{"key":"Craftear tótem","example":"src/server/Systems/Crafting.luau","source":"Craftear tótem","values":{"en":"Craft totem"}},{"key":"Depositar oro","example":"src/server/Systems/Crafting.luau","source":"Depositar oro","values":{"en":"Deposit gold"}},{"key":"Despierta y atrápalos a todos","example":"src/client/Controllers/Cinematics.luau","source":"Despierta y atrápalos a todos","values":{"en":"Wake up and catch them all"}},{"key":"Doble probabilidad de ser Verity en cada ronda.","example":"src/shared/Config.luau","source":"Doble probabilidad de ser Verity en cada ronda.","values":{"en":"Double chance to be Verity every round."}},{"key":"Dorada","example":"src/shared/Config.luau","source":"Dorada","values":{"en":"Golden"}},{"key":"El radar no detecta a nadie.","example":"src/server/Systems/Items.luau","source":"El radar no detecta a nadie.","values":{"en":"The radar detects no one."}},{"key":"El reloj ya no puede acelerarse más esta ronda.","example":"src/server/Systems/Crafting.luau","source":"El reloj ya no puede acelerarse más esta ronda.","values":{"en":"The clock can't be sped up any further this round."}},{"key":"Entró otro jugador. La próxima ronda es entre jugadores reales.","example":"src/client/Controllers/HUD.luau","source":"Entró otro jugador. La próxima ronda es entre jugadores reales.","values":{"en":"Another player joined. The next round is between real players."}},{"key":"Entró otro jugador: se acabó la partida contra NPCs.","example":"src/server/Systems/Round.luau","source":"Entró otro jugador: se acabó la partida contra NPCs.","values":{"en":"Another player joined: the match against NPCs is over."}},{"key":"Equipada","example":"src/client/Controllers/Shop.luau","source":"Equipada","values":{"en":"Equipped"}},{"key":"Equipado (quitar)","example":"src/client/Controllers/Shop.luau","source":"Equipado (quitar)","values":{"en":"Equipped (remove)"}},{"key":"Equipar","example":"src/client/Controllers/Shop.luau","source":"Equipar","values":{"en":"Equip"}},{"key":"Eres una bola sonriente... por ahora. Ves en la oscuridad. Al despertar: Q atrapar · Shift correr · C agacharse","example":"src/client/Controllers/HUD.luau","source":"Eres una bola sonriente... por ahora. Ves en la oscuridad. Al despertar: Q atrapar · Shift correr · C agacharse","values":{"en":"You are a smiling ball... for now. You can see in the dark. Once awake: Q grab · Shift sprint · C crouch"}},{"key":"ERES VERITY","example":"src/client/Controllers/HUD.luau","source":"ERES VERITY","values":{"en":"YOU ARE VERITY"}},{"key":"Esconderse","example":"src/client/Controllers/HUD.luau","source":"Esconderse","values":{"en":"Hide"}},{"key":"Escondido","example":"src/server/Systems/Hiding.luau","source":"Escondido","values":{"en":"Hidden"}},{"key":"Escondite","example":"src/server/Systems/Hiding.luau","source":"Escondite","values":{"en":"Hiding spot"}},{"key":"Escuela Nocturna","example":"map","source":"Escuela Nocturna","values":{"en":"Night School"}},{"key":"Espectral","example":"src/shared/Config.luau","source":"Espectral","values":{"en":"Spectral"}},{"key":"ESPERANDO JUGADORES","example":"src/client/Controllers/HUD.luau","source":"ESPERANDO JUGADORES","values":{"en":"WAITING FOR PLAYERS"}},{"key":"FIN DE LA RONDA","example":"src/client/Controllers/HUD.luau","source":"FIN DE LA RONDA","values":{"en":"ROUND OVER"}},{"key":"FUS","example":"src/shared/Config.luau","source":"FUS","values":{"en":"FUS"}},{"key":"Fábrica","example":"map","source":"Fábrica","values":{"en":"Factory"}},{"key":"Gotea sangre al caminar.","example":"src/shared/Config.luau","source":"Gotea sangre al caminar.","values":{"en":"Drips blood as she walks."}},{"key":"GRV","example":"src/shared/Config.luau","source":"GRV","values":{"en":"GRV"}},{"key":"Has caído. La ronda termina en {seconds} s.","example":"src/server/Systems/Round.luau","source":"Has caído. La ronda termina en {seconds} s.","values":{"en":"You fell. The round ends in {seconds} s."}},{"key":"Hospital","example":"map","source":"Hospital","values":{"en":"Hospital"}},{"key":"Hotel","example":"map","source":"Hotel","values":{"en":"Hotel"}},{"key":"IMN","example":"src/shared/Config.luau","source":"IMN","values":{"en":"MAG"}},{"key":"Imán de monedas","example":"src/shared/Config.luau","source":"Imán de monedas","values":{"en":"Coin Magnet"}},{"key":"INTERMEDIO","example":"src/client/Controllers/HUD.luau","source":"INTERMEDIO","values":{"en":"INTERMISSION"}},{"key":"INV","example":"src/shared/Config.luau","source":"INV","values":{"en":"INV"}},{"key":"La Verity de siempre.","example":"src/shared/Config.luau","source":"La Verity de siempre.","values":{"en":"The Verity you know."}},{"key":"Linterna","example":"src/client/Controllers/HUD.luau","source":"Linterna","values":{"en":"Flashlight"}},{"key":"Los cepos solo funcionan durante la ronda.","example":"src/server/Systems/Items.luau","source":"Los cepos solo funcionan durante la ronda.","values":{"en":"Traps only work during the round."}},{"key":"Los supervivientes están marcados en rojo.","example":"src/server/Systems/Round.luau","source":"Los supervivientes están marcados en rojo.","values":{"en":"The survivors are marked in red."}},{"key":"Mansión","example":"map","source":"Mansión","values":{"en":"Mansion"}},{"key":"Mapa: {map}","example":"src/server/Systems/Round.luau","source":"Mapa: {map}","values":{"en":"Map: {map}"}},{"key":"Martillo de empuje","example":"src/shared/Config.luau","source":"Martillo de empuje","values":{"en":"Push Hammer"}},{"key":"Mesa de crafteo","example":"src/server/Systems/Crafting.luau","source":"Mesa de crafteo","values":{"en":"Crafting table"}},{"key":"Morada, con un aura del más allá.","example":"src/shared/Config.luau","source":"Morada, con un aura del más allá.","values":{"en":"Purple, with an otherworldly aura."}},{"key":"MRT","example":"src/shared/Config.luau","source":"MRT","values":{"en":"HMR"}},{"key":"nadie","example":"src/client/Controllers/HUD.luau","source":"nadie","values":{"en":"no one"}},{"key":"Necesitas bloques de oro. ¡Búscalos por el mapa!","example":"src/server/Systems/Crafting.luau","source":"Necesitas bloques de oro. ¡Búscalos por el mapa!","values":{"en":"You need gold blocks. Look for them around the map!"}},{"key":"Negra como la noche, contorno rojo.","example":"src/shared/Config.luau","source":"Negra como la noche, contorno rojo.","values":{"en":"Black as night, red outline."}},{"key":"NRG","example":"src/shared/Config.luau","source":"NRG","values":{"en":"NRG"}},{"key":"obby completado","example":"src/server/Systems/Lobby.luau","source":"obby completado","values":{"en":"obby completed"}},{"key":"Objetos","example":"src/client/Controllers/Shop.luau","source":"Objetos","values":{"en":"Items"}},{"key":"Objetos equipados: {count}/{max} · solo los usan los supervivientes durante la ronda","example":"src/client/Controllers/Shop.luau","source":"Objetos equipados: {count}/{max} · solo los usan los supervivientes durante la ronda","values":{"en":"Equipped items: {count}/{max} · only survivors use them, during the round"}},{"key":"Oficina","example":"map","source":"Oficina","values":{"en":"Office"}},{"key":"Oro / tótem","example":"src/client/Controllers/HUD.luau","source":"Oro / tótem","values":{"en":"Gold / totem"}},{"key":"Oro {gold}/{max}","example":"src/client/Controllers/HUD.luau","source":"Oro {gold}/{max}","values":{"en":"Gold {gold}/{max}"}},{"key":"Partida en solitario con NPCs","example":"src/client/Controllers/HUD.luau","source":"Partida en solitario con NPCs","values":{"en":"Solo match with NPCs"}},{"key":"Pases","example":"src/client/Controllers/Shop.luau","source":"Pases","values":{"en":"Passes"}},{"key":"Piel blanca como la cera.","example":"src/shared/Config.luau","source":"Piel blanca como la cera.","values":{"en":"Skin as white as wax."}},{"key":"Poción de Verity","example":"src/shared/Config.luau","source":"Poción de Verity","values":{"en":"Verity Potion"}},{"key":"premio al final","example":"src/world/Lobby.model.json","source":"premio al final","values":{"en":"prize at the end"}},{"key":"PREPARANDO","example":"src/client/Controllers/HUD.luau","source":"PREPARANDO","values":{"en":"GETTING READY"}},{"key":"Probabilidad de Verity: {chance}","example":"src/client/Controllers/HUD.luau","source":"Probabilidad de Verity: {chance}","values":{"en":"Verity chance: {chance}"}},{"key":"Pronto","example":"src/client/Controllers/Shop.luau","source":"Pronto","values":{"en":"Soon"}},{"key":"Próxima ronda: {role}","example":"src/client/Controllers/HUD.luau","source":"Próxima ronda: {role}","values":{"en":"Next round: {role}"}},{"key":"Pálida","example":"src/shared/Config.luau","source":"Pálida","values":{"en":"Pale"}},{"key":"RAD","example":"src/shared/Config.luau","source":"RAD","values":{"en":"RAD"}},{"key":"Radar de almas","example":"src/shared/Config.luau","source":"Radar de almas","values":{"en":"Soul Radar"}},{"key":"Recargando... {seconds} s","example":"src/server/Systems/Items.luau","source":"Recargando... {seconds} s","values":{"en":"Recharging... {seconds} s"}},{"key":"Recoger oro","example":"src/server/Systems/Crafting.luau","source":"Recoger oro","values":{"en":"Pick up gold"}},{"key":"Reluce como el oro.","example":"src/shared/Config.luau","source":"Reluce como el oro.","values":{"en":"Shines like gold."}},{"key":"RESULTADOS","example":"src/client/Controllers/HUD.luau","source":"RESULTADOS","values":{"en":"RESULTS"}},{"key":"Revelación en {seconds}","example":"src/client/Controllers/HUD.luau","source":"Revelación en {seconds}","values":{"en":"Reveal in {seconds}"}},{"key":"RONDA CANCELADA","example":"src/client/Controllers/HUD.luau","source":"RONDA CANCELADA","values":{"en":"ROUND CANCELLED"}},{"key":"ronda en curso","example":"src/client/Controllers/HUD.luau","source":"ronda en curso","values":{"en":"round in progress"}},{"key":"Rotación: {done}/{total} ya fueron Verity","example":"src/client/Controllers/HUD.luau","source":"Rotación: {done}/{total} ya fueron Verity","values":{"en":"Rotation: {done}/{total} have been Verity"}},{"key":"Salir","example":"src/server/Systems/Hiding.luau","source":"Salir","values":{"en":"Leave"}},{"key":"Saltos enormes: la gravedad te afecta mucho menos.","example":"src/shared/Config.luau","source":"Saltos enormes: la gravedad te afecta mucho menos.","values":{"en":"Huge jumps: gravity affects you much less."}},{"key":"Sangrienta","example":"src/shared/Config.luau","source":"Sangrienta","values":{"en":"Bloody"}},{"key":"Semitransparente, como un fantasma.","example":"src/shared/Config.luau","source":"Semitransparente, como un fantasma.","values":{"en":"See-through, like a ghost."}},{"key":"Skin {skin} comprada y equipada.","example":"src/server/Systems/Shop.luau","source":"Skin {skin} comprada y equipada.","values":{"en":"Skin {skin} bought and equipped."}},{"key":"Skins de Verity","example":"src/client/Controllers/Shop.luau","source":"Skins de Verity","values":{"en":"Verity skins"}},{"key":"SOBREVIVE","example":"src/client/Controllers/HUD.luau","source":"SOBREVIVE","values":{"en":"SURVIVE"}},{"key":"Sobrevive hasta el amanecer","example":"src/client/Controllers/Cinematics.luau","source":"Sobrevive hasta el amanecer","values":{"en":"Survive until dawn"}},{"key":"Sobrevivieron: {names}. Tótems: {totems}","example":"src/client/Controllers/HUD.luau","source":"Sobrevivieron: {names}. Tótems: {totems}","values":{"en":"Survived: {names}. Totems: {totems}"}},{"key":"sobrevivir","example":"src/server/Systems/Round.luau","source":"sobrevivir","values":{"en":"survive"}},{"key":"Solo puedes llevar {count} bloques. ¡Llévalos a una mesa!","example":"src/server/Systems/Crafting.luau","source":"Solo puedes llevar {count} bloques. ¡Llévalos a una mesa!","values":{"en":"You can only carry {count} blocks. Take them to a table!"}},{"key":"Solo puedes llevar {count} objetos por ronda. Quita uno primero.","example":"src/server/Systems/Shop.luau","source":"Solo puedes llevar {count} objetos por ronda. Quita uno primero.","values":{"en":"You can only bring {count} items per round. Remove one first."}},{"key":"Sombra","example":"src/shared/Config.luau","source":"Sombra","values":{"en":"Shadow"}},{"key":"Sostenlo para recoger monedas desde el triple de distancia.","example":"src/shared/Config.luau","source":"Sostenlo para recoger monedas desde el triple de distancia.","values":{"en":"Hold it to collect coins from three times as far."}},{"key":"SUPERVIVIENTE","example":"src/client/Controllers/HUD.luau","source":"SUPERVIVIENTE","values":{"en":"SURVIVOR"}},{"key":"Superviviente","example":"src/client/Controllers/HUD.luau","source":"Superviviente","values":{"en":"Survivor"}},{"key":"SUPERVIVIENTES GANAN","example":"src/client/Controllers/HUD.luau","source":"SUPERVIVIENTES GANAN","values":{"en":"SURVIVORS WIN"}},{"key":"Te faltan {coins} monedas.","example":"src/server/Systems/Shop.luau","source":"Te faltan {coins} monedas.","values":{"en":"You need {coins} more coins."}},{"key":"Tienda","example":"src/client/Controllers/Shop.luau","source":"Tienda","values":{"en":"Shop"}},{"key":"TIENDA","example":"src/client/Controllers/Shop.luau","source":"TIENDA","values":{"en":"SHOP"}},{"key":"Triple probabilidad de ser Verity en cada ronda.","example":"src/shared/Config.luau","source":"Triple probabilidad de ser Verity en cada ronda.","values":{"en":"Triple chance to be Verity every round."}},{"key":"TU ROL","example":"src/client/Controllers/HUD.luau","source":"TU ROL","values":{"en":"YOUR ROLE"}},{"key":"Tótems {totems}  ·  Vivos {alive}","example":"src/client/Controllers/HUD.luau","source":"Tótems {totems}  ·  Vivos {alive}","values":{"en":"Totems {totems}  ·  Alive {alive}"}},{"key":"Tóxica","example":"src/shared/Config.luau","source":"Tóxica","values":{"en":"Toxic"}},{"key":"Vacío","example":"src/shared/Config.luau","source":"Vacío","values":{"en":"Void"}},{"key":"VEL","example":"src/shared/Config.luau","source":"VEL","values":{"en":"SPD"}},{"key":"Velocidad y gravedad baja a la vez.","example":"src/shared/Config.luau","source":"Velocidad y gravedad baja a la vez.","values":{"en":"Speed and low gravity at once."}},{"key":"Verity","example":"src/client/Controllers/HUD.luau","source":"Verity","values":{"en":"Verity"}},{"key":"Verity abandonó la partida.","example":"src/server/Systems/Round.luau","source":"Verity abandonó la partida.","values":{"en":"Verity left the game."}},{"key":"Verity atrapó a {name}","example":"src/server/Systems/Round.luau","source":"Verity atrapó a {name}","values":{"en":"Verity caught {name}"}},{"key":"Verity despierta en {seconds}","example":"src/client/Controllers/HUD.luau","source":"Verity despierta en {seconds}","values":{"en":"Verity wakes up in {seconds}"}},{"key":"Verity es {name}. F linterna, R esconderse, E oro y tótems. Cada minuto Verity te verá en rojo: ¡muévete!","example":"src/client/Controllers/HUD.luau","source":"Verity es {name}. F linterna, R esconderse, E oro y tótems. Cada minuto Verity te verá en rojo: ¡muévete!","values":{"en":"Verity is {name}. F flashlight, R hide, E gold and totems. Every minute Verity sees you in red: keep moving!"}},{"key":"VERITY GANA","example":"src/client/Controllers/HUD.luau","source":"VERITY GANA","values":{"en":"VERITY WINS"}},{"key":"Verity ha caído.","example":"src/server/Systems/Round.luau","source":"Verity ha caído.","values":{"en":"Verity has fallen."}},{"key":"victoria","example":"src/server/Systems/Round.luau","source":"victoria","values":{"en":"victory"}},{"key":"x5 de probabilidad en tu próxima ronda.","example":"src/shared/Config.luau","source":"x5 de probabilidad en tu próxima ronda.","values":{"en":"x5 chance in your next round."}},{"key":"Ya fuiste Verity en esta rotación","example":"src/client/Controllers/HUD.luau","source":"Ya fuiste Verity en esta rotación","values":{"en":"You were already Verity this rotation"}},{"key":"Ya tienes 2 cepos colocados.","example":"src/server/Systems/Items.luau","source":"Ya tienes 2 cepos colocados.","values":{"en":"You already have 2 traps placed."}},{"key":"{coins} monedas · Verity {chance}%","example":"src/client/Controllers/Shop.luau","source":"{coins} monedas · Verity {chance}%","values":{"en":"{coins} coins · Verity {chance}%"}},{"key":"{count} supervivientes","example":"src/client/Controllers/HUD.luau","source":"{count} supervivientes","values":{"en":"{count} survivors"}},{"key":"{name} atrapó a todos. Tótems crafteados: {totems}","example":"src/client/Controllers/HUD.luau","source":"{name} atrapó a todos. Tótems crafteados: {totems}","values":{"en":"{name} caught everyone. Totems crafted: {totems}"}},{"key":"{name} crafteó un tótem: -{seconds}s","example":"src/server/Systems/Round.luau","source":"{name} crafteó un tótem: -{seconds}s","values":{"en":"{name} crafted a totem: -{seconds}s"}},{"key":"{product} activada: x{multiplier} en tus próximas {rounds} ronda(s).","example":"src/server/Systems/Monetization.luau","source":"{product} activada: x{multiplier} en tus próximas {rounds} ronda(s).","values":{"en":"{product} active: x{multiplier} for your next {rounds} round(s)."}},{"key":"¡Bolsa de monedas llena!","example":"src/server/Systems/Coins.luau","source":"¡Bolsa de monedas llena!","values":{"en":"Coin bag full!"}},{"key":"¡Estamina infinita durante {seconds} s!","example":"src/server/Systems/Items.luau","source":"¡Estamina infinita durante {seconds} s!","values":{"en":"Unlimited stamina for {seconds} s!"}},{"key":"¡Listo para craftear!","example":"src/server/Systems/Crafting.luau","source":"¡Listo para craftear!","values":{"en":"Ready to craft!"}},{"key":"¡Revelados!","example":"src/client/Controllers/HUD.luau","source":"¡Revelados!","values":{"en":"Revealed!"}},{"key":"¡Verity ha sido liberada!","example":"src/server/Systems/Round.luau","source":"¡Verity ha sido liberada!","values":{"en":"Verity has been released!"}},{"key":"¡Verity puede verte! Cambia de sitio.","example":"src/server/Systems/Round.luau","source":"¡Verity puede verte! Cambia de sitio.","values":{"en":"Verity can see you! Move somewhere else."}},{"key":"¡Ya casi amanece! El tótem no tendría efecto.","example":"src/server/Systems/Crafting.luau","source":"¡Ya casi amanece! El tótem no tendría efecto.","values":{"en":"Dawn is almost here! The totem would have no effect."}},{"key":"¡{pass} activado!","example":"src/server/Systems/Monetization.luau","source":"¡{pass} activado!","values":{"en":"{pass} activated!"}}]</string>
         <string name="SourceLocaleId">es-es</string>
       </Properties>
     </Item>
@@ -64,8 +64,13 @@ return {
 local Config = {}
 
 Config.Round = {
-	MinPlayers = 2,
+	MinPlayers = 2, -- jugadores reales para una partida sin NPCs
 	MaxPlayers = 10, -- jugadores por servidor (pon lo mismo en Game Settings > Places)
+	-- Partida en solitario: si hay un solo jugador en el servidor, NPCs
+	-- completan la partida hasta MaxPlayers y el jugador alterna entre ser
+	-- Verity y superviviente (contra una Verity NPC). Si entra alguien más
+	-- durante esa ronda, los NPCs desaparecen y la ronda se cancela.
+	SoloBots = true,
 	IntermissionTime = 23,
 	Duration = 270, -- segundos de una partida si nadie craftea tótems
 	KillerReleaseDelay = 20, -- Verity es una bola sonriente durante este tiempo
@@ -77,18 +82,6 @@ Config.Round = {
 	-- RevealDuration segundos; ellos reciben un aviso para cambiar de sitio.
 	RevealInterval = 60,
 	RevealDuration = 5,
-}
-
--- MODO PRUEBA: permite jugar solo. El primer jugador del servidor elige en
--- el lobby si en la próxima ronda es Verity o superviviente (botón "Rol de
--- prueba"); si elige superviviente, Verity la maneja la IA. NPCs completan
--- la partida hasta Config.Round.MaxPlayers participantes.
--- Ponlo en false antes de publicar el juego.
-Config.Testing = {
-	Enabled = true,
-	FillWithBots = true, -- NPCs hasta completar MaxPlayers
-	IntermissionTime = 23,
-	StartingCoins = 0, -- todos empiezan sin monedas
 }
 
 -- Modelo de Verity. Orden de prioridad al arrancar el servidor:
@@ -3544,7 +3537,6 @@ return Monetization
 --   C:     agacharse (solo Verity)
 --   Q:     atrapar (solo Verity, lo resuelve Killer)
 --   F:     linterna de los supervivientes (sin batería; la ven todos)
---   TestRole: en modo prueba, elegir ser Verity o superviviente en la próxima ronda
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -3630,9 +3622,6 @@ local function onAction(player: Player, action: unknown, value: unknown)
 		local character = player.Character
 		local on = not (character and character:GetAttribute("Flashlight"))
 		setFlashlight(player, on and role == "Survivor")
-	elseif action == "TestRole" and Config.Testing.Enabled and (value == "Verity" or value == "Survivor") then
-		-- botón del lobby (modo prueba): rol en la próxima ronda
-		player:SetAttribute("TestRole", value)
 	end
 end
 
@@ -3750,6 +3739,12 @@ return Movement
 -- Datos persistentes (suerte, pociones, victorias, monedas, objetos y skins)
 -- y cálculo de la probabilidad de ser Verity.
 --
+-- Guardado: al salir, al cerrar el servidor, al terminar cada ronda y cada
+-- AUTOSAVE_INTERVAL segundos. Bloqueo de sesión: solo un servidor escribe los
+-- datos de un jugador a la vez (si cambia de servidor muy rápido, el nuevo
+-- espera a que el anterior termine de guardar, así no se pierden monedas ni
+-- victorias ni se duplican).
+--
 -- Si el DataStore no está disponible (archivo local sin publicar o sin
 -- "Enable Studio Access to API Services"), todo funciona en memoria y se
 -- avisa una vez en Output. Antes, el error de GetDataStore detenía el
@@ -3778,6 +3773,9 @@ export type Data = {
 
 local MAX_STORED_RECEIPTS = 50
 local STORE_NAME = "MurderMysteryButVerity_v1"
+local AUTOSAVE_INTERVAL = 60
+local LOCK_TTL = AUTOSAVE_INTERVAL * 3 -- un bloqueo sin renovar tanto tiempo es de un servidor caído
+local LOCK_RETRIES = 6 -- esperas de 5 s a que el servidor anterior suelte la sesión
 
 local PlayerData = {}
 
@@ -3785,6 +3783,7 @@ local store: DataStore? = nil
 local memoryOnly = false
 local sessions: { [Player]: Data } = {}
 local passMultiplier: { [Player]: number } = {}
+local saving: { [Player]: boolean } = {}
 
 local function key(player: Player): string
 	return "u_" .. player.UserId
@@ -3945,7 +3944,32 @@ function PlayerData.isMemoryOnly(): boolean
 	return memoryOnly
 end
 
-function PlayerData.save(player: Player): boolean
+-- ¿La sesión de estos datos la tiene otro servidor que sigue vivo?
+local function lockedByOther(stored: any): boolean
+	if typeof(stored) ~= "table" or typeof(stored.lock) ~= "table" then
+		return false
+	end
+	local lock = stored.lock
+	return lock.job ~= game.JobId and typeof(lock.time) == "number" and os.time() - lock.time < LOCK_TTL
+end
+
+local function write(player: Player, data: Data, release: boolean): boolean
+	local ok = call(function(ds)
+		return ds:UpdateAsync(key(player), function(stored)
+			if lockedByOther(stored) then
+				return nil -- otro servidor tiene la sesión: no se pisan sus datos
+			end
+			local value: { [string]: any } = table.clone(data) :: any
+			value.lock = if release then nil else { job = game.JobId, time = os.time() }
+			return value
+		end)
+	end)
+	return ok or memoryOnly
+end
+
+-- Guarda los datos del jugador. `release` suelta la sesión (al salir o al
+-- cerrar el servidor). Nunca hay dos guardados del mismo jugador a la vez.
+function PlayerData.save(player: Player, release: boolean?): boolean
 	local data = sessions[player]
 	if not data then
 		return false
@@ -3953,12 +3977,13 @@ function PlayerData.save(player: Player): boolean
 	if memoryOnly then
 		return true
 	end
-	local ok = call(function(ds)
-		return ds:UpdateAsync(key(player), function()
-			return data
-		end)
-	end)
-	return ok or memoryOnly
+	while saving[player] do
+		task.wait(0.1)
+	end
+	saving[player] = true
+	local ok = write(player, data, release == true)
+	saving[player] = nil
+	return ok
 end
 
 -- Monedas -----------------------------------------------------------------
@@ -4065,6 +4090,17 @@ function PlayerData.refreshChances()
 	publishRotation()
 end
 
+-- Partida en solitario: el jugador alterna entre ser Verity y superviviente
+-- (contra una Verity NPC). Devuelve nil cuando le toca a la NPC.
+function PlayerData.pickSoloKiller(player: Player): Player?
+	if rotationDone[player.UserId] then
+		rotationDone[player.UserId] = nil
+		return nil
+	end
+	rotationDone[player.UserId] = true
+	return player
+end
+
 function PlayerData.pickKiller(candidates: { Player }): Player?
 	if #candidates == 0 then
 		return nil
@@ -4165,19 +4201,42 @@ local function onPlayerAdded(player: Player)
 	wins.Parent = leaderstats
 	leaderstats.Parent = player
 
-	local ok, raw = call(function(ds)
-		return ds:GetAsync(key(player))
-	end)
+	-- Carga y reclama la sesión en una sola operación. Si otro servidor aún
+	-- la tiene (el jugador acaba de salir de allí), se espera a que la suelte.
+	local ok, raw, locked = false, nil :: any, false
+	for attempt = 1, LOCK_RETRIES do
+		ok = call(function(ds)
+			return ds:UpdateAsync(key(player), function(stored)
+				raw = stored
+				locked = lockedByOther(stored)
+				if locked then
+					return nil
+				end
+				local value = if typeof(stored) == "table" then stored else {}
+				value.lock = { job = game.JobId, time = os.time() }
+				return value
+			end)
+		end)
+		if not (ok and locked) or not player.Parent then
+			break
+		end
+		task.wait(5)
+	end
 	if not player.Parent then
+		if ok and not locked then
+			write(player, sanitize(raw), true) -- salió mientras cargaba: suelta la sesión
+		end
+		return
+	end
+	if ok and locked then
+		-- Cargar igualmente podría duplicar o perder monedas y victorias.
+		player:Kick("Tus datos aún se están guardando. Vuelve a entrar en unos segundos. / Your data is still saving. Please rejoin in a few seconds.")
 		return
 	end
 	local data = sanitize(if ok then raw else nil)
 	if not ok and not memoryOnly then
 		-- El DataStore existe pero falló: no guardamos para no pisar datos reales.
 		player:SetAttribute("DataUnsaved", true)
-	end
-	if Config.Testing.Enabled and data.coins < Config.Testing.StartingCoins then
-		data.coins = Config.Testing.StartingCoins
 	end
 	sessions[player] = data
 	publish(player)
@@ -4186,11 +4245,28 @@ end
 
 local function onPlayerRemoving(player: Player)
 	if not player:GetAttribute("DataUnsaved") then
-		PlayerData.save(player)
+		PlayerData.save(player, true)
 	end
 	sessions[player] = nil
 	passMultiplier[player] = nil
 	PlayerData.refreshChances()
+end
+
+-- Autoguardado escalonado (también renueva el bloqueo de sesión).
+local function autosave()
+	while true do
+		task.wait(AUTOSAVE_INTERVAL)
+		local list = {}
+		for player in sessions do
+			table.insert(list, player)
+		end
+		for _, player in list do
+			if sessions[player] and player.Parent and not player:GetAttribute("DataUnsaved") and not saving[player] then
+				task.spawn(PlayerData.save, player)
+				task.wait(1)
+			end
+		end
+	end
 end
 
 function PlayerData.init()
@@ -4199,6 +4275,7 @@ function PlayerData.init()
 	for _, player in Players:GetPlayers() do
 		task.spawn(onPlayerAdded, player)
 	end
+	task.spawn(autosave)
 	game:BindToClose(function()
 		if memoryOnly then
 			return
@@ -4208,7 +4285,7 @@ function PlayerData.init()
 			if not player:GetAttribute("DataUnsaved") then
 				pending += 1
 				task.spawn(function()
-					PlayerData.save(player)
+					PlayerData.save(player, true)
 					pending -= 1
 				end)
 			end
@@ -4232,7 +4309,7 @@ return PlayerData
 -- El estado se replica con atributos de Workspace:
 --   Phase, PhaseEndsAt (GetServerTimeNow), Totems, MaxTotems, SurvivorsAlive,
 --   MapName, KillerReleaseAt
--- Los supervivientes pueden ser jugadores o NPCs (modo prueba).
+-- Los supervivientes pueden ser jugadores o NPCs (partida en solitario).
 
 local CollectionService = game:GetService("CollectionService")
 local Players = game:GetService("Players")
@@ -4255,7 +4332,6 @@ local PlayerData = require(script.Parent.PlayerData)
 local VerityBot = require(script.Parent.VerityBot)
 
 local R = Config.Round
-local T_ = Config.Testing
 local T = Locale.t -- marca los textos para traducirlos en el cliente
 
 local Round = {}
@@ -4267,10 +4343,6 @@ local currentMap: Model? = nil
 
 local function now(): number
 	return Workspace:GetServerTimeNow()
-end
-
-local function minPlayers(): number
-	return if T_.Enabled then 1 else R.MinPlayers
 end
 
 local function setPhase(phase: string, duration: number?)
@@ -4342,19 +4414,30 @@ local function onTotem(who: Instance): boolean
 	return true
 end
 
+-- Un solo jugador en todo el servidor: la partida se completa con NPCs.
+local function isSolo(): boolean
+	return R.SoloBots and #Players:GetPlayers() == 1
+end
+
+-- Se puede jugar con MinPlayers jugadores reales, o en solitario con NPCs.
+-- Si alguien acaba de entrar y aún carga, se espera por él.
+local function ready(): boolean
+	local count = #eligiblePlayers()
+	return count >= R.MinPlayers or (count == 1 and isSolo())
+end
+
 local function waitForPlayers()
 	setPhase("Waiting")
-	while #eligiblePlayers() < minPlayers() do
+	while not ready() do
 		task.wait(1)
 	end
 end
 
 local function intermission(): boolean
-	local duration = if T_.Enabled then T_.IntermissionTime else R.IntermissionTime
-	setPhase("Intermission", duration)
-	local deadline = os.clock() + duration
+	setPhase("Intermission", R.IntermissionTime)
+	local deadline = os.clock() + R.IntermissionTime
 	while os.clock() < deadline do
-		if #eligiblePlayers() < minPlayers() then
+		if not ready() then
 			return false
 		end
 		task.wait(0.5)
@@ -4362,15 +4445,11 @@ local function intermission(): boolean
 	return true
 end
 
--- Devuelve el jugador que será Verity, o nil si la maneja la IA (modo prueba:
--- el primer jugador eligió ser superviviente con el botón del lobby).
-local function chooseKiller(participants: { Player }): Player?
-	if T_.Enabled then
-		local first = participants[1]
-		if first and first:GetAttribute("TestRole") == "Survivor" then
-			return nil
-		end
-		return first
+-- Devuelve el jugador que será Verity, o nil si la maneja la IA (en
+-- solitario, el jugador alterna entre Verity y superviviente).
+local function chooseKiller(participants: { Player }, solo: boolean): Player?
+	if solo then
+		return PlayerData.pickSoloKiller(participants[1])
 	end
 	return PlayerData.pickKiller(participants)
 end
@@ -4436,8 +4515,12 @@ local function playRound()
 	if #participants == 0 then
 		return
 	end
-	local killerPlayer = chooseKiller(participants)
-	if not killerPlayer and not T_.Enabled then
+	local solo = #participants == 1 and isSolo()
+	if #participants < R.MinPlayers and not solo then
+		return
+	end
+	local killerPlayer = chooseKiller(participants, solo)
+	if not killerPlayer and not solo then
 		return
 	end
 	PlayerData.applyRoundRoles(killerPlayer, participants)
@@ -4540,10 +4623,10 @@ local function playRound()
 		end,
 	})
 
-	-- NPCs hasta completar la partida (modo prueba)
+	-- En solitario, NPCs hasta completar la partida
 	local bots: { Model } = {}
 	local slots = R.MaxPlayers - #participants - (if killerPlayer then 0 else 1)
-	if T_.Enabled and T_.FillWithBots and slots > 0 then
+	if solo and slots > 0 then
 		local botCtx = {
 			parent = map.model,
 			killerRoot = function(): BasePart?
@@ -4599,6 +4682,26 @@ local function playRound()
 	local winner: string
 	while true do
 		task.wait(0.25)
+		-- Partida en solitario y entra otro jugador: fuera NPCs, se cancela la
+		-- ronda (sin premios) y la siguiente ya es entre jugadores reales.
+		if solo and #Players:GetPlayers() > 1 then
+			winner = "Cancelled"
+			VerityBot.stop()
+			Bots.stop()
+			for _, bot in bots do
+				survivors[bot] = nil
+				if Hiding.isHidden(bot) then
+					Hiding.unhide(bot)
+				end
+				bot:Destroy()
+			end
+			if not killerPlayer and killerCharacter then
+				killerCharacter:Destroy()
+			end
+			publishAlive()
+			notifyAll(T("Entró otro jugador: se acabó la partida contra NPCs."), "info")
+			break
+		end
 		if not released and (Workspace:GetAttribute("KillerReleaseAt") :: number) <= now() then
 			released = true
 			Killer.release()
@@ -4637,8 +4740,8 @@ local function playRound()
 			winner = "Verity"
 			break
 		end
-		-- modo prueba con Verity NPC: si caen todos los jugadores, no hace
-		-- falta esperar el reloj entero mirando a los NPCs
+		-- Verity NPC: si caen todos los jugadores, no hace falta esperar el
+		-- reloj entero mirando a los NPCs
 		if humansWereAlive and not killerPlayer and humanSurvivorsAlive() == 0 then
 			humansWereAlive = false
 			local shortened = math.min(endsAt, now() + 20)
@@ -4664,7 +4767,7 @@ local function playRound()
 			end
 			table.insert(survivorNames, Entity.name(who))
 		end
-	elseif killerPlayer and killerPlayer.Parent then
+	elseif winner == "Verity" and killerPlayer and killerPlayer.Parent then
 		PlayerData.addWin(killerPlayer)
 		Coins.award(killerPlayer, Config.Coins.RewardWin, T("victoria"))
 	end
@@ -4715,15 +4818,10 @@ end
 function Round.init()
 	Workspace:SetAttribute("Totems", 0)
 	Workspace:SetAttribute("MaxTotems", Config.Crafting.MaxTotemsPerRound)
-	Workspace:SetAttribute("TestMode", T_.Enabled)
 	local function setup(player: Player)
 		player:SetAttribute("Role", "Lobby")
 		player:SetAttribute("Gold", 0)
 		player.CameraMaxZoomDistance = Config.Camera.LobbyMaxZoom
-		-- modo prueba: el botón del lobby alterna entre "Verity" y "Survivor"
-		if player:GetAttribute("TestRole") == nil then
-			player:SetAttribute("TestRole", "Verity")
-		end
 	end
 	Players.PlayerAdded:Connect(setup)
 	for _, player in Players:GetPlayers() do
@@ -15364,7 +15462,6 @@ local coinLabel: TextLabel
 local staminaBar: Frame
 local staminaFill: Frame
 local toastList: Frame
-local testRoleButton: TextButton
 local roleCard: CanvasGroup
 local resultCard: CanvasGroup
 
@@ -15507,27 +15604,6 @@ local function build()
 		Music.setEnabled(not Music.isEnabled())
 		musicButton.TextColor3 = if Music.isEnabled() then C.Text else C.Muted
 		musicButton.BackgroundTransparency = if Music.isEnabled() then 0.3 else 0.6
-	end)
-
-	-- Modo prueba: elegir el rol de la próxima ronda (ver los dos lados)
-	testRoleButton = UI.new("TextButton", {
-		Name = "TestRole",
-		AnchorPoint = Vector2.new(0, 0.5),
-		Position = UDim2.new(0, 14, 0.5, 74),
-		Size = UDim2.fromOffset(0, 32),
-		AutomaticSize = Enum.AutomaticSize.X,
-		BackgroundColor3 = C.Panel,
-		BackgroundTransparency = 0.2,
-		FontFace = UI.FontBold,
-		TextSize = 13,
-		TextColor3 = C.Text,
-		RichText = true,
-		Visible = false,
-		Parent = gui,
-	}, { UI.corner(10), UI.stroke(0.6), UI.new("UIPadding", { PaddingLeft = UDim.new(0, 12), PaddingRight = UDim.new(0, 12) }) })
-	testRoleButton.Activated:Connect(function()
-		local nextRole = if player:GetAttribute("TestRole") == "Survivor" then "Verity" else "Survivor"
-		Net.get("Action"):FireServer("TestRole", nextRole)
 	end)
 
 	-- Controles y estamina (abajo al centro, discretos)
@@ -15695,6 +15771,8 @@ end
 local function onRoundResult(winner: string, killerName: string, survivors: { string }, totems: number)
 	if winner == "Verity" then
 		showCard(resultCard, T("FIN DE LA RONDA"), T("VERITY GANA"), C.Verity, T("{name} atrapó a todos. Tótems crafteados: {totems}", { name = killerName, totems = totems }), Config.Round.ResultsTime - 0.5)
+	elseif winner == "Cancelled" then
+		showCard(resultCard, T("FIN DE LA RONDA"), T("RONDA CANCELADA"), C.Muted, T("Entró otro jugador. La próxima ronda es entre jugadores reales."), Config.Round.ResultsTime - 0.5)
 	else
 		local names = if #survivors > 0 then table.concat(survivors, ", ") else T("nadie")
 		if #names > 70 then
@@ -15713,8 +15791,7 @@ local function update()
 
 	phaseLabel.Text = T(PHASE_TEXT[phase] or phase)
 	if phase == "Waiting" then
-		local needed = if Workspace:GetAttribute("TestMode") then 1 else Config.Round.MinPlayers
-		timerLabel.Text = `{#Players:GetPlayers()}/{needed}`
+		timerLabel.Text = `{#Players:GetPlayers()}/{Config.Round.MinPlayers}`
 	elseif endsAt > 0 then
 		timerLabel.Text = formatTime(remaining)
 	else
@@ -15725,11 +15802,14 @@ local function update()
 
 	-- Línea de información contextual
 	local info = ""
-	local testMode = Workspace:GetAttribute("TestMode") == true
 	if phase == "Waiting" or phase == "Intermission" or role == "Lobby" then
-		if testMode then
-			local nextRole = if player:GetAttribute("TestRole") == "Survivor" then T("Superviviente") else T("Verity")
-			info = T("Próxima ronda: {role}", { role = `<font color="#ff3b4e"><b>{nextRole}</b></font>` })
+		if #Players:GetPlayers() == 1 and Config.Round.SoloBots then
+			-- en solitario se alterna: una ronda Verity, otra superviviente
+			local isVerity = not player:GetAttribute("RotationDone")
+			local nextRole = if isVerity then T("Verity") else T("Superviviente")
+			local color = if isVerity then "#ff3b4e" else "#46dcbe"
+			info = T("Próxima ronda: {role}", { role = `<font color="{color}"><b>{nextRole}</b></font>` })
+				.. "  ·  " .. T("Partida en solitario con NPCs")
 		else
 			local chance = (player:GetAttribute("VerityChance") :: number?) or 0
 			info = T("Probabilidad de Verity: {chance}", { chance = `<font color="#ff3b4e"><b>{chance}%</b></font>` })
@@ -15799,14 +15879,6 @@ local function update()
 	if showGold then
 		local gold = (player:GetAttribute("Gold") :: number?) or 0
 		goldLabel.Text = T("Oro {gold}/{max}", { gold = gold, max = Config.Crafting.MaxGoldCarried })
-	end
-
-	testRoleButton.Visible = testMode and not inRound and role ~= "Dead"
-	if testRoleButton.Visible then
-		local isSurvivor = player:GetAttribute("TestRole") == "Survivor"
-		local label = if isSurvivor then T("Superviviente") else T("Verity")
-		local color = if isSurvivor then "#46dcbe" else "#ff3b4e"
-		testRoleButton.Text = T("Rol de prueba: {role}", { role = `<font color="{color}">{label}</font>` }) .. `  <font color="#a59cb2">⇄</font>`
 	end
 end
 

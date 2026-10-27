@@ -4,7 +4,6 @@
 --   C:     agacharse (solo Verity)
 --   Q:     atrapar (solo Verity, lo resuelve Killer)
 --   F:     linterna de los supervivientes (sin batería; la ven todos)
---   TestRole: en modo prueba, elegir ser Verity o superviviente en la próxima ronda
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -90,9 +89,6 @@ local function onAction(player: Player, action: unknown, value: unknown)
 		local character = player.Character
 		local on = not (character and character:GetAttribute("Flashlight"))
 		setFlashlight(player, on and role == "Survivor")
-	elseif action == "TestRole" and Config.Testing.Enabled and (value == "Verity" or value == "Survivor") then
-		-- botón del lobby (modo prueba): rol en la próxima ronda
-		player:SetAttribute("TestRole", value)
 	end
 end
 

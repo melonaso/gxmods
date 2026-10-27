@@ -44,6 +44,8 @@ Doble probabilidad de ser Verity en cada ronda.,Doble probabilidad de ser Verity
 Dorada,Dorada,,src/shared/Config.luau,Golden
 El radar no detecta a nadie.,El radar no detecta a nadie.,,src/server/Systems/Items.luau,The radar detects no one.
 El reloj ya no puede acelerarse más esta ronda.,El reloj ya no puede acelerarse más esta ronda.,,src/server/Systems/Crafting.luau,The clock can't be sped up any further this round.
+Entró otro jugador. La próxima ronda es entre jugadores reales.,Entró otro jugador. La próxima ronda es entre jugadores reales.,,src/client/Controllers/HUD.luau,Another player joined. The next round is between real players.
+Entró otro jugador: se acabó la partida contra NPCs.,Entró otro jugador: se acabó la partida contra NPCs.,,src/server/Systems/Round.luau,Another player joined: the match against NPCs is over.
 Equipada,Equipada,,src/client/Controllers/Shop.luau,Equipped
 Equipado (quitar),Equipado (quitar),,src/client/Controllers/Shop.luau,Equipped (remove)
 Equipar,Equipar,,src/client/Controllers/Shop.luau,Equip
@@ -87,6 +89,7 @@ Objetos equipados: {count}/{max} · solo los usan los supervivientes durante la 
 Oficina,Oficina,,map,Office
 Oro / tótem,Oro / tótem,,src/client/Controllers/HUD.luau,Gold / totem
 Oro {gold}/{max},Oro {gold}/{max},,src/client/Controllers/HUD.luau,Gold {gold}/{max}
+Partida en solitario con NPCs,Partida en solitario con NPCs,,src/client/Controllers/HUD.luau,Solo match with NPCs
 Pases,Pases,,src/client/Controllers/Shop.luau,Passes
 Piel blanca como la cera.,Piel blanca como la cera.,,src/shared/Config.luau,Skin as white as wax.
 Poción de Verity,Poción de Verity,,src/shared/Config.luau,Verity Potion
@@ -103,7 +106,7 @@ Recoger oro,Recoger oro,,src/server/Systems/Crafting.luau,Pick up gold
 Reluce como el oro.,Reluce como el oro.,,src/shared/Config.luau,Shines like gold.
 RESULTADOS,RESULTADOS,,src/client/Controllers/HUD.luau,RESULTS
 Revelación en {seconds},Revelación en {seconds},,src/client/Controllers/HUD.luau,Reveal in {seconds}
-Rol de prueba: {role},Rol de prueba: {role},,src/client/Controllers/HUD.luau,Test role: {role}
+RONDA CANCELADA,RONDA CANCELADA,,src/client/Controllers/HUD.luau,ROUND CANCELLED
 ronda en curso,ronda en curso,,src/client/Controllers/HUD.luau,round in progress
 Rotación: {done}/{total} ya fueron Verity,Rotación: {done}/{total} ya fueron Verity,,src/client/Controllers/HUD.luau,Rotation: {done}/{total} have been Verity
 Salir,Salir,,src/server/Systems/Hiding.luau,Leave

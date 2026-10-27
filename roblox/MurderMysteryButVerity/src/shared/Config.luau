@@ -5,8 +5,13 @@
 local Config = {}
 
 Config.Round = {
-	MinPlayers = 2,
+	MinPlayers = 2, -- jugadores reales para una partida sin NPCs
 	MaxPlayers = 10, -- jugadores por servidor (pon lo mismo en Game Settings > Places)
+	-- Partida en solitario: si hay un solo jugador en el servidor, NPCs
+	-- completan la partida hasta MaxPlayers y el jugador alterna entre ser
+	-- Verity y superviviente (contra una Verity NPC). Si entra alguien más
+	-- durante esa ronda, los NPCs desaparecen y la ronda se cancela.
+	SoloBots = true,
 	IntermissionTime = 23,
 	Duration = 270, -- segundos de una partida si nadie craftea tótems
 	KillerReleaseDelay = 20, -- Verity es una bola sonriente durante este tiempo
@@ -18,18 +23,6 @@ Config.Round = {
 	-- RevealDuration segundos; ellos reciben un aviso para cambiar de sitio.
 	RevealInterval = 60,
 	RevealDuration = 5,
-}
-
--- MODO PRUEBA: permite jugar solo. El primer jugador del servidor elige en
--- el lobby si en la próxima ronda es Verity o superviviente (botón "Rol de
--- prueba"); si elige superviviente, Verity la maneja la IA. NPCs completan
--- la partida hasta Config.Round.MaxPlayers participantes.
--- Ponlo en false antes de publicar el juego.
-Config.Testing = {
-	Enabled = true,
-	FillWithBots = true, -- NPCs hasta completar MaxPlayers
-	IntermissionTime = 23,
-	StartingCoins = 0, -- todos empiezan sin monedas
 }
 
 -- Modelo de Verity. Orden de prioridad al arrancar el servidor:

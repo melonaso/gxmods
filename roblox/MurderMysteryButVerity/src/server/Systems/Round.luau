@@ -3,7 +3,7 @@
 -- El estado se replica con atributos de Workspace:
 --   Phase, PhaseEndsAt (GetServerTimeNow), Totems, MaxTotems, SurvivorsAlive,
 --   MapName, KillerReleaseAt
--- Los supervivientes pueden ser jugadores o NPCs (modo prueba).
+-- Los supervivientes pueden ser jugadores o NPCs (partida en solitario).
 
 local CollectionService = game:GetService("CollectionService")
 local Players = game:GetService("Players")
@@ -26,7 +26,6 @@ local PlayerData = require(script.Parent.PlayerData)
 local VerityBot = require(script.Parent.VerityBot)
 
 local R = Config.Round
-local T_ = Config.Testing
 local T = Locale.t -- marca los textos para traducirlos en el cliente
 
 local Round = {}
@@ -38,10 +37,6 @@ local currentMap: Model? = nil
 
 local function now(): number
 	return Workspace:GetServerTimeNow()
-end
-
-local function minPlayers(): number
-	return if T_.Enabled then 1 else R.MinPlayers
 end
 
 local function setPhase(phase: string, duration: number?)
@@ -113,19 +108,30 @@ local function onTotem(who: Instance): boolean
 	return true
 end
 
+-- Un solo jugador en todo el servidor: la partida se completa con NPCs.
+local function isSolo(): boolean
+	return R.SoloBots and #Players:GetPlayers() == 1
+end
+
+-- Se puede jugar con MinPlayers jugadores reales, o en solitario con NPCs.
+-- Si alguien acaba de entrar y aún carga, se espera por él.
+local function ready(): boolean
+	local count = #eligiblePlayers()
+	return count >= R.MinPlayers or (count == 1 and isSolo())
+end
+
 local function waitForPlayers()
 	setPhase("Waiting")
-	while #eligiblePlayers() < minPlayers() do
+	while not ready() do
 		task.wait(1)
 	end
 end
 
 local function intermission(): boolean
-	local duration = if T_.Enabled then T_.IntermissionTime else R.IntermissionTime
-	setPhase("Intermission", duration)
-	local deadline = os.clock() + duration
+	setPhase("Intermission", R.IntermissionTime)
+	local deadline = os.clock() + R.IntermissionTime
 	while os.clock() < deadline do
-		if #eligiblePlayers() < minPlayers() then
+		if not ready() then
 			return false
 		end
 		task.wait(0.5)
@@ -133,15 +139,11 @@ local function intermission(): boolean
 	return true
 end
 
--- Devuelve el jugador que será Verity, o nil si la maneja la IA (modo prueba:
--- el primer jugador eligió ser superviviente con el botón del lobby).
-local function chooseKiller(participants: { Player }): Player?
-	if T_.Enabled then
-		local first = participants[1]
-		if first and first:GetAttribute("TestRole") == "Survivor" then
-			return nil
-		end
-		return first
+-- Devuelve el jugador que será Verity, o nil si la maneja la IA (en
+-- solitario, el jugador alterna entre Verity y superviviente).
+local function chooseKiller(participants: { Player }, solo: boolean): Player?
+	if solo then
+		return PlayerData.pickSoloKiller(participants[1])
 	end
 	return PlayerData.pickKiller(participants)
 end
@@ -207,8 +209,12 @@ local function playRound()
 	if #participants == 0 then
 		return
 	end
-	local killerPlayer = chooseKiller(participants)
-	if not killerPlayer and not T_.Enabled then
+	local solo = #participants == 1 and isSolo()
+	if #participants < R.MinPlayers and not solo then
+		return
+	end
+	local killerPlayer = chooseKiller(participants, solo)
+	if not killerPlayer and not solo then
 		return
 	end
 	PlayerData.applyRoundRoles(killerPlayer, participants)
@@ -311,10 +317,10 @@ local function playRound()
 		end,
 	})
 
-	-- NPCs hasta completar la partida (modo prueba)
+	-- En solitario, NPCs hasta completar la partida
 	local bots: { Model } = {}
 	local slots = R.MaxPlayers - #participants - (if killerPlayer then 0 else 1)
-	if T_.Enabled and T_.FillWithBots and slots > 0 then
+	if solo and slots > 0 then
 		local botCtx = {
 			parent = map.model,
 			killerRoot = function(): BasePart?
@@ -370,6 +376,26 @@ local function playRound()
 	local winner: string
 	while true do
 		task.wait(0.25)
+		-- Partida en solitario y entra otro jugador: fuera NPCs, se cancela la
+		-- ronda (sin premios) y la siguiente ya es entre jugadores reales.
+		if solo and #Players:GetPlayers() > 1 then
+			winner = "Cancelled"
+			VerityBot.stop()
+			Bots.stop()
+			for _, bot in bots do
+				survivors[bot] = nil
+				if Hiding.isHidden(bot) then
+					Hiding.unhide(bot)
+				end
+				bot:Destroy()
+			end
+			if not killerPlayer and killerCharacter then
+				killerCharacter:Destroy()
+			end
+			publishAlive()
+			notifyAll(T("Entró otro jugador: se acabó la partida contra NPCs."), "info")
+			break
+		end
 		if not released and (Workspace:GetAttribute("KillerReleaseAt") :: number) <= now() then
 			released = true
 			Killer.release()
@@ -408,8 +434,8 @@ local function playRound()
 			winner = "Verity"
 			break
 		end
-		-- modo prueba con Verity NPC: si caen todos los jugadores, no hace
-		-- falta esperar el reloj entero mirando a los NPCs
+		-- Verity NPC: si caen todos los jugadores, no hace falta esperar el
+		-- reloj entero mirando a los NPCs
 		if humansWereAlive and not killerPlayer and humanSurvivorsAlive() == 0 then
 			humansWereAlive = false
 			local shortened = math.min(endsAt, now() + 20)
@@ -435,7 +461,7 @@ local function playRound()
 			end
 			table.insert(survivorNames, Entity.name(who))
 		end
-	elseif killerPlayer and killerPlayer.Parent then
+	elseif winner == "Verity" and killerPlayer and killerPlayer.Parent then
 		PlayerData.addWin(killerPlayer)
 		Coins.award(killerPlayer, Config.Coins.RewardWin, T("victoria"))
 	end
@@ -486,15 +512,10 @@ end
 function Round.init()
 	Workspace:SetAttribute("Totems", 0)
 	Workspace:SetAttribute("MaxTotems", Config.Crafting.MaxTotemsPerRound)
-	Workspace:SetAttribute("TestMode", T_.Enabled)
 	local function setup(player: Player)
 		player:SetAttribute("Role", "Lobby")
 		player:SetAttribute("Gold", 0)
 		player.CameraMaxZoomDistance = Config.Camera.LobbyMaxZoom
-		-- modo prueba: el botón del lobby alterna entre "Verity" y "Survivor"
-		if player:GetAttribute("TestRole") == nil then
-			player:SetAttribute("TestRole", "Verity")
-		end
 	end
 	Players.PlayerAdded:Connect(setup)
 	for _, player in Players:GetPlayers() do

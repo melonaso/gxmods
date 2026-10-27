@@ -2,6 +2,12 @@
 -- Datos persistentes (suerte, pociones, victorias, monedas, objetos y skins)
 -- y cálculo de la probabilidad de ser Verity.
 --
+-- Guardado: al salir, al cerrar el servidor, al terminar cada ronda y cada
+-- AUTOSAVE_INTERVAL segundos. Bloqueo de sesión: solo un servidor escribe los
+-- datos de un jugador a la vez (si cambia de servidor muy rápido, el nuevo
+-- espera a que el anterior termine de guardar, así no se pierden monedas ni
+-- victorias ni se duplican).
+--
 -- Si el DataStore no está disponible (archivo local sin publicar o sin
 -- "Enable Studio Access to API Services"), todo funciona en memoria y se
 -- avisa una vez en Output. Antes, el error de GetDataStore detenía el
@@ -30,6 +36,9 @@ export type Data = {
 
 local MAX_STORED_RECEIPTS = 50
 local STORE_NAME = "MurderMysteryButVerity_v1"
+local AUTOSAVE_INTERVAL = 60
+local LOCK_TTL = AUTOSAVE_INTERVAL * 3 -- un bloqueo sin renovar tanto tiempo es de un servidor caído
+local LOCK_RETRIES = 6 -- esperas de 5 s a que el servidor anterior suelte la sesión
 
 local PlayerData = {}
 
@@ -37,6 +46,7 @@ local store: DataStore? = nil
 local memoryOnly = false
 local sessions: { [Player]: Data } = {}
 local passMultiplier: { [Player]: number } = {}
+local saving: { [Player]: boolean } = {}
 
 local function key(player: Player): string
 	return "u_" .. player.UserId
@@ -197,7 +207,32 @@ function PlayerData.isMemoryOnly(): boolean
 	return memoryOnly
 end
 
-function PlayerData.save(player: Player): boolean
+-- ¿La sesión de estos datos la tiene otro servidor que sigue vivo?
+local function lockedByOther(stored: any): boolean
+	if typeof(stored) ~= "table" or typeof(stored.lock) ~= "table" then
+		return false
+	end
+	local lock = stored.lock
+	return lock.job ~= game.JobId and typeof(lock.time) == "number" and os.time() - lock.time < LOCK_TTL
+end
+
+local function write(player: Player, data: Data, release: boolean): boolean
+	local ok = call(function(ds)
+		return ds:UpdateAsync(key(player), function(stored)
+			if lockedByOther(stored) then
+				return nil -- otro servidor tiene la sesión: no se pisan sus datos
+			end
+			local value: { [string]: any } = table.clone(data) :: any
+			value.lock = if release then nil else { job = game.JobId, time = os.time() }
+			return value
+		end)
+	end)
+	return ok or memoryOnly
+end
+
+-- Guarda los datos del jugador. `release` suelta la sesión (al salir o al
+-- cerrar el servidor). Nunca hay dos guardados del mismo jugador a la vez.
+function PlayerData.save(player: Player, release: boolean?): boolean
 	local data = sessions[player]
 	if not data then
 		return false
@@ -205,12 +240,13 @@ function PlayerData.save(player: Player): boolean
 	if memoryOnly then
 		return true
 	end
-	local ok = call(function(ds)
-		return ds:UpdateAsync(key(player), function()
-			return data
-		end)
-	end)
-	return ok or memoryOnly
+	while saving[player] do
+		task.wait(0.1)
+	end
+	saving[player] = true
+	local ok = write(player, data, release == true)
+	saving[player] = nil
+	return ok
 end
 
 -- Monedas -----------------------------------------------------------------
@@ -317,6 +353,17 @@ function PlayerData.refreshChances()
 	publishRotation()
 end
 
+-- Partida en solitario: el jugador alterna entre ser Verity y superviviente
+-- (contra una Verity NPC). Devuelve nil cuando le toca a la NPC.
+function PlayerData.pickSoloKiller(player: Player): Player?
+	if rotationDone[player.UserId] then
+		rotationDone[player.UserId] = nil
+		return nil
+	end
+	rotationDone[player.UserId] = true
+	return player
+end
+
 function PlayerData.pickKiller(candidates: { Player }): Player?
 	if #candidates == 0 then
 		return nil
@@ -417,19 +464,42 @@ local function onPlayerAdded(player: Player)
 	wins.Parent = leaderstats
 	leaderstats.Parent = player
 
-	local ok, raw = call(function(ds)
-		return ds:GetAsync(key(player))
-	end)
+	-- Carga y reclama la sesión en una sola operación. Si otro servidor aún
+	-- la tiene (el jugador acaba de salir de allí), se espera a que la suelte.
+	local ok, raw, locked = false, nil :: any, false
+	for attempt = 1, LOCK_RETRIES do
+		ok = call(function(ds)
+			return ds:UpdateAsync(key(player), function(stored)
+				raw = stored
+				locked = lockedByOther(stored)
+				if locked then
+					return nil
+				end
+				local value = if typeof(stored) == "table" then stored else {}
+				value.lock = { job = game.JobId, time = os.time() }
+				return value
+			end)
+		end)
+		if not (ok and locked) or not player.Parent then
+			break
+		end
+		task.wait(5)
+	end
 	if not player.Parent then
+		if ok and not locked then
+			write(player, sanitize(raw), true) -- salió mientras cargaba: suelta la sesión
+		end
+		return
+	end
+	if ok and locked then
+		-- Cargar igualmente podría duplicar o perder monedas y victorias.
+		player:Kick("Tus datos aún se están guardando. Vuelve a entrar en unos segundos. / Your data is still saving. Please rejoin in a few seconds.")
 		return
 	end
 	local data = sanitize(if ok then raw else nil)
 	if not ok and not memoryOnly then
 		-- El DataStore existe pero falló: no guardamos para no pisar datos reales.
 		player:SetAttribute("DataUnsaved", true)
-	end
-	if Config.Testing.Enabled and data.coins < Config.Testing.StartingCoins then
-		data.coins = Config.Testing.StartingCoins
 	end
 	sessions[player] = data
 	publish(player)
@@ -438,11 +508,28 @@ end
 
 local function onPlayerRemoving(player: Player)
 	if not player:GetAttribute("DataUnsaved") then
-		PlayerData.save(player)
+		PlayerData.save(player, true)
 	end
 	sessions[player] = nil
 	passMultiplier[player] = nil
 	PlayerData.refreshChances()
+end
+
+-- Autoguardado escalonado (también renueva el bloqueo de sesión).
+local function autosave()
+	while true do
+		task.wait(AUTOSAVE_INTERVAL)
+		local list = {}
+		for player in sessions do
+			table.insert(list, player)
+		end
+		for _, player in list do
+			if sessions[player] and player.Parent and not player:GetAttribute("DataUnsaved") and not saving[player] then
+				task.spawn(PlayerData.save, player)
+				task.wait(1)
+			end
+		end
+	end
 end
 
 function PlayerData.init()
@@ -451,6 +538,7 @@ function PlayerData.init()
 	for _, player in Players:GetPlayers() do
 		task.spawn(onPlayerAdded, player)
 	end
+	task.spawn(autosave)
 	game:BindToClose(function()
 		if memoryOnly then
 			return
@@ -460,7 +548,7 @@ function PlayerData.init()
 			if not player:GetAttribute("DataUnsaved") then
 				pending += 1
 				task.spawn(function()
-					PlayerData.save(player)
+					PlayerData.save(player, true)
 					pending -= 1
 				end)
 			end

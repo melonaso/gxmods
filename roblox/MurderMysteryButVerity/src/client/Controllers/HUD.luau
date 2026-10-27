@@ -43,7 +43,6 @@ local coinLabel: TextLabel
 local staminaBar: Frame
 local staminaFill: Frame
 local toastList: Frame
-local testRoleButton: TextButton
 local roleCard: CanvasGroup
 local resultCard: CanvasGroup
 
@@ -186,27 +185,6 @@ local function build()
 		Music.setEnabled(not Music.isEnabled())
 		musicButton.TextColor3 = if Music.isEnabled() then C.Text else C.Muted
 		musicButton.BackgroundTransparency = if Music.isEnabled() then 0.3 else 0.6
-	end)
-
-	-- Modo prueba: elegir el rol de la próxima ronda (ver los dos lados)
-	testRoleButton = UI.new("TextButton", {
-		Name = "TestRole",
-		AnchorPoint = Vector2.new(0, 0.5),
-		Position = UDim2.new(0, 14, 0.5, 74),
-		Size = UDim2.fromOffset(0, 32),
-		AutomaticSize = Enum.AutomaticSize.X,
-		BackgroundColor3 = C.Panel,
-		BackgroundTransparency = 0.2,
-		FontFace = UI.FontBold,
-		TextSize = 13,
-		TextColor3 = C.Text,
-		RichText = true,
-		Visible = false,
-		Parent = gui,
-	}, { UI.corner(10), UI.stroke(0.6), UI.new("UIPadding", { PaddingLeft = UDim.new(0, 12), PaddingRight = UDim.new(0, 12) }) })
-	testRoleButton.Activated:Connect(function()
-		local nextRole = if player:GetAttribute("TestRole") == "Survivor" then "Verity" else "Survivor"
-		Net.get("Action"):FireServer("TestRole", nextRole)
 	end)
 
 	-- Controles y estamina (abajo al centro, discretos)
@@ -374,6 +352,8 @@ end
 local function onRoundResult(winner: string, killerName: string, survivors: { string }, totems: number)
 	if winner == "Verity" then
 		showCard(resultCard, T("FIN DE LA RONDA"), T("VERITY GANA"), C.Verity, T("{name} atrapó a todos. Tótems crafteados: {totems}", { name = killerName, totems = totems }), Config.Round.ResultsTime - 0.5)
+	elseif winner == "Cancelled" then
+		showCard(resultCard, T("FIN DE LA RONDA"), T("RONDA CANCELADA"), C.Muted, T("Entró otro jugador. La próxima ronda es entre jugadores reales."), Config.Round.ResultsTime - 0.5)
 	else
 		local names = if #survivors > 0 then table.concat(survivors, ", ") else T("nadie")
 		if #names > 70 then
@@ -392,8 +372,7 @@ local function update()
 
 	phaseLabel.Text = T(PHASE_TEXT[phase] or phase)
 	if phase == "Waiting" then
-		local needed = if Workspace:GetAttribute("TestMode") then 1 else Config.Round.MinPlayers
-		timerLabel.Text = `{#Players:GetPlayers()}/{needed}`
+		timerLabel.Text = `{#Players:GetPlayers()}/{Config.Round.MinPlayers}`
 	elseif endsAt > 0 then
 		timerLabel.Text = formatTime(remaining)
 	else
@@ -404,11 +383,14 @@ local function update()
 
 	-- Línea de información contextual
 	local info = ""
-	local testMode = Workspace:GetAttribute("TestMode") == true
 	if phase == "Waiting" or phase == "Intermission" or role == "Lobby" then
-		if testMode then
-			local nextRole = if player:GetAttribute("TestRole") == "Survivor" then T("Superviviente") else T("Verity")
-			info = T("Próxima ronda: {role}", { role = `<font color="#ff3b4e"><b>{nextRole}</b></font>` })
+		if #Players:GetPlayers() == 1 and Config.Round.SoloBots then
+			-- en solitario se alterna: una ronda Verity, otra superviviente
+			local isVerity = not player:GetAttribute("RotationDone")
+			local nextRole = if isVerity then T("Verity") else T("Superviviente")
+			local color = if isVerity then "#ff3b4e" else "#46dcbe"
+			info = T("Próxima ronda: {role}", { role = `<font color="{color}"><b>{nextRole}</b></font>` })
+				.. "  ·  " .. T("Partida en solitario con NPCs")
 		else
 			local chance = (player:GetAttribute("VerityChance") :: number?) or 0
 			info = T("Probabilidad de Verity: {chance}", { chance = `<font color="#ff3b4e"><b>{chance}%</b></font>` })
@@ -478,14 +460,6 @@ local function update()
 	if showGold then
 		local gold = (player:GetAttribute("Gold") :: number?) or 0
 		goldLabel.Text = T("Oro {gold}/{max}", { gold = gold, max = Config.Crafting.MaxGoldCarried })
-	end
-
-	testRoleButton.Visible = testMode and not inRound and role ~= "Dead"
-	if testRoleButton.Visible then
-		local isSurvivor = player:GetAttribute("TestRole") == "Survivor"
-		local label = if isSurvivor then T("Superviviente") else T("Verity")
-		local color = if isSurvivor then "#46dcbe" else "#ff3b4e"
-		testRoleButton.Text = T("Rol de prueba: {role}", { role = `<font color="{color}">{label}</font>` }) .. `  <font color="#a59cb2">⇄</font>`
 	end
 end
 
