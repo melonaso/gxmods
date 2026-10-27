@@ -48,9 +48,9 @@ Config.Verity = {
 -- El servidor lo fija al cambiar de rol y cada cliente lo vuelve a aplicar
 -- (CameraLimits), así nunca se puede alejar más de esto.
 Config.Camera = {
-	LobbyMaxZoom = 12,
-	SurvivorMaxZoom = 10,
-	VerityMaxZoom = 16, -- Verity mide 18 studs: necesita algo más de margen
+	LobbyMaxZoom = 30,
+	SurvivorMaxZoom = 22,
+	VerityMaxZoom = 30, -- Verity mide 18 studs: necesita algo más de margen
 }
 
 Config.Killer = {

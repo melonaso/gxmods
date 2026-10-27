@@ -43,7 +43,7 @@ Ponlo en `false` antes de publicar y pon **10 jugadores máximo** en Game Settin
 7. **Anti-campeo:** cada **60 s** (desde que Verity despierta) todos los supervivientes se **resaltan en rojo para Verity durante 5 s**, a través de las paredes (si estás en un escondite, se resalta el escondite). Los supervivientes reciben un pulso rojo en pantalla, tres latidos y el aviso "¡Verity puede verte! Cambia de sitio". El HUD muestra la cuenta atrás ("Revelación en 42s").
 
 ## Cámara
-La cámara se aleja muy poco del personaje para que no se vea detrás de las esquinas: 10 studs como superviviente, 16 como Verity (es mucho más alta) y 12 en el lobby (`Config.Camera`). Lo fija el servidor y cada cliente lo vuelve a aplicar (`CameraLimits.luau`).
+La cámara se aleja muy poco del personaje para que no se vea detrás de las esquinas: 22 studs como superviviente, 30 como Verity (es mucho más alta) y 30 en el lobby (`Config.Camera`). Lo fija el servidor y cada cliente lo vuelve a aplicar (`CameraLimits.luau`).
 
 ## Controles
 | Tecla | Verity | Superviviente |
