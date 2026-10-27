@@ -3034,7 +3034,7 @@ local function buildLobby(): Model
 	local label = Instance.new("TextLabel")
 	label.Size = UDim2.fromScale(1, 1)
 	label.BackgroundTransparency = 1
-	label.Text = "MURDER MYSTERY\nbut <font color=\"#ff3b4e\">VERITY</font>"
+	label.Text = "SURVIVE A\n<font color=\"#ff3b4e\">VERITY</font>"
 	label.RichText = true
 	label.TextScaled = true
 	label.Font = Enum.Font.GothamBlack
@@ -3772,7 +3772,7 @@ export type Data = {
 }
 
 local MAX_STORED_RECEIPTS = 50
-local STORE_NAME = "MurderMysteryButVerity_v1"
+local STORE_NAME = "SurviveAVerity_v1"
 local AUTOSAVE_INTERVAL = 60
 local LOCK_TTL = AUTOSAVE_INTERVAL * 3 -- un bloqueo sin renovar tanto tiempo es de un servidor caído
 local LOCK_RETRIES = 6 -- esperas de 5 s a que el servidor anterior suelte la sesión
@@ -27789,8 +27789,8 @@ return UI
                 <YS>1</YS>
                 <YO>0</YO>
               </UDim2>
-              <string name="Text">MURDER MYSTERY
-but &lt;font color="#ff3b4e">VERITY&lt;/font></string>
+              <string name="Text">SURVIVE A
+&lt;font color="#ff3b4e">VERITY&lt;/font></string>
               <Color3 name="TextColor3">
                 <R>1</R>
                 <G>1</G>

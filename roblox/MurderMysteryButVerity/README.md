@@ -1,9 +1,9 @@
-# Murder Mystery but Verity
+# Survive A Verity
 
 Juego de Roblox estilo *Murder Mystery 2* (lobby → ronda → resultados) con gameplay de *Survive the Killer*: un jugador es **Verity** (la criatura asesina) y el resto son supervivientes. No hay sheriff.
 
 ## Abrir y probar
-1. Abre `MurderMysteryButVerity.rbxlx` en Roblox Studio.
+1. Abre `SurviveAVerity.rbxlx` en Roblox Studio.
 2. **(Recomendado) Importa el modelo realista de Verity** pegando esta línea en la barra de comandos de Studio (abajo, "Ejecutar un comando") y pulsando Enter:
    ```lua
    local id=107080030600115 local m=game:GetObjects("rbxassetid://"..id)[1] local old=game.ServerStorage:FindFirstChild("VerityCharacter") if old then old:Destroy() end m.Name="VerityCharacter" m.Parent=game.ServerStorage print("Verity importado:",m:GetFullName(),#m:GetDescendants(),"objetos")
@@ -149,7 +149,7 @@ Se guardan por jugador en DataStore: **monedas, victorias**, objetos y skins com
 - En el juego publicado funciona solo. Para que también guarde al probar en Studio: Game Settings → Security → **Enable Studio Access to API Services**. En un archivo local sin publicar, todo funciona en memoria (se avisa en Output).
 
 ## Publicar en Roblox
-1. Abre `MurderMysteryButVerity.rbxlx` en Roblox Studio → **File → Publish to Roblox** → *Create new experience* (nombre, descripción, género **Horror**, dispositivos).
+1. Abre `SurviveAVerity.rbxlx` en Roblox Studio → **File → Publish to Roblox** → *Create new experience*: nombre **Survive A Verity**, descripción, género **Horror** y dispositivos.
 2. **Game Settings** (pestaña Home):
    - **Places → Max Players: 10.**
    - **Avatar → R15** (Verity y los NPCs son R15).

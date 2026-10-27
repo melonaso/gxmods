@@ -1409,7 +1409,7 @@ def build_lobby():
 
     # cartel en la pared del fondo, detrás de la estatua, visible desde el spawn
     c.append(part("Sign", (0, top + 20, -53.6), (46, 9, 0.6), (20, 14, 20), "SmoothPlastic",
-                  children=[surface_text("Back", "MURDER MYSTERY\nbut <font color=\"#ff3b4e\">VERITY</font>")]))
+                  children=[surface_text("Back", "SURVIVE A\n<font color=\"#ff3b4e\">VERITY</font>")]))
 
     # puesto de tienda (izquierda)
     shop = [

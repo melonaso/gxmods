@@ -35,7 +35,7 @@ export type Data = {
 }
 
 local MAX_STORED_RECEIPTS = 50
-local STORE_NAME = "MurderMysteryButVerity_v1"
+local STORE_NAME = "SurviveAVerity_v1"
 local AUTOSAVE_INTERVAL = 60
 local LOCK_TTL = AUTOSAVE_INTERVAL * 3 -- un bloqueo sin renovar tanto tiempo es de un servidor caído
 local LOCK_RETRIES = 6 -- esperas de 5 s a que el servidor anterior suelte la sesión
