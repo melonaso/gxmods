@@ -2,6 +2,8 @@
 -- Tienda: pestañas Objetos (monedas), Skins de Verity (monedas) y Pases
 -- (Robux). Se abre con el botón "Tienda" (fuera de partida) o desde el
 -- mostrador del lobby. Las compras las valida el servidor (ShopRequest).
+-- Animada: el panel entra con rebote, las pestañas se deslizan, las tarjetas
+-- se iluminan al pasar el ratón y el contador de monedas sube poco a poco.
 
 local HttpService = game:GetService("HttpService")
 local MarketplaceService = game:GetService("MarketplaceService")
@@ -27,7 +29,13 @@ local gui: ScreenGui
 local openButton: TextButton
 local openChance: TextLabel
 local panel: CanvasGroup
+local panelScale: UIScale
+local fitScale = 1 -- escala para que el panel quepa en pantallas pequeñas
+local currentTab: Tab? = nil
+local coinPill: Frame
 local coinsLabel: TextLabel
+local coinCounter: NumberValue
+local shownCoins: number? = nil
 local footer: TextLabel
 local pages: { [Tab]: ScrollingFrame } = {}
 local tabButtons: { [Tab]: TextButton } = {}
@@ -48,25 +56,44 @@ local function coins(): number
 	return (player:GetAttribute("Coins") :: number?) or 0
 end
 
+local PAGE_HOME = UDim2.fromOffset(14, 90)
+
 local function setTab(tab: Tab)
+	local changed = currentTab ~= nil and currentTab ~= tab
+	currentTab = tab
 	for name, page in pages do
 		page.Visible = name == tab
 		local button = tabButtons[name]
-		button.BackgroundColor3 = if name == tab then C.Verity else C.PanelLight
-		button.TextColor3 = if name == tab then Color3.new(1, 1, 1) else C.Muted
+		UI.tween(button, 0.2, {
+			BackgroundColor3 = if name == tab then C.Verity else C.PanelLight,
+			TextColor3 = if name == tab then Color3.new(1, 1, 1) else C.Muted,
+		})
+		if name == tab and changed then
+			-- la página nueva entra deslizándose desde abajo
+			page.Position = PAGE_HOME + UDim2.fromOffset(0, 18)
+			UI.tween(page, 0.35, { Position = PAGE_HOME }, Enum.EasingStyle.Back)
+			UI.pulse(button, 1.1)
+		end
 	end
 	footer.Visible = tab == "Items"
 end
 
 local function setOpen(open: boolean, tab: Tab?)
+	if open == isOpen and not tab then
+		return
+	end
+	local wasOpen = isOpen
 	isOpen = open
 	if tab then
 		setTab(tab)
 	end
-	if open then
+	if open and not wasOpen then
 		panel.Visible = true
+		panelScale.Scale = fitScale * 0.85
 		UI.tween(panel, 0.25, { GroupTransparency = 0 })
-	else
+		UI.tween(panelScale, 0.4, { Scale = fitScale }, Enum.EasingStyle.Back)
+	elseif not open and wasOpen then
+		UI.tween(panelScale, 0.2, { Scale = fitScale * 0.9 })
 		UI.tween(panel, 0.2, { GroupTransparency = 1 }).Completed:Connect(function()
 			if not isOpen then
 				panel.Visible = false
@@ -90,12 +117,26 @@ local function styleButton(button: TextButton, text: string, kind: "buy" | "neut
 end
 
 local function card(parent: Instance, order: number): (Frame, TextButton)
+	local stroke = UI.stroke(1, C.Gold)
 	local frame = UI.new("Frame", {
 		LayoutOrder = order,
 		BackgroundColor3 = C.PanelLight,
 		BackgroundTransparency = 0.15,
 		Parent = parent,
-	}, { UI.corner(12) })
+	}, { UI.corner(12), stroke })
+	-- se ilumina con un borde dorado al pasar el ratón
+	frame.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement then
+			UI.tween(frame, 0.2, { BackgroundTransparency = 0 })
+			UI.tween(stroke, 0.2, { Transparency = 0.45 })
+		end
+	end)
+	frame.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement then
+			UI.tween(frame, 0.3, { BackgroundTransparency = 0.15 })
+			UI.tween(stroke, 0.3, { Transparency = 1 })
+		end
+	end)
 	local button: TextButton = UI.new("TextButton", {
 		AnchorPoint = Vector2.new(0.5, 1),
 		Position = UDim2.new(0.5, 0, 1, -10),
@@ -288,12 +329,13 @@ local function build()
 		Visible = false,
 		Parent = gui,
 	}, { UI.corner(18), UI.stroke(0.8) })
-	local scale = UI.new("UIScale", { Parent = panel })
+	panelScale = UI.new("UIScale", { Parent = panel })
 	local function fit()
 		local camera = Workspace.CurrentCamera
 		if camera then
 			local view = camera.ViewportSize
-			scale.Scale = math.min(1, (view.X - 24) / 620, (view.Y - 60) / 450)
+			fitScale = math.min(1, (view.X - 24) / 620, (view.Y - 60) / 450)
+			panelScale.Scale = fitScale
 		end
 	end
 	fit()
@@ -304,7 +346,7 @@ local function build()
 	-- cabecera
 	UI.label({ Position = UDim2.fromOffset(18, 14), Size = UDim2.fromOffset(200, 26), TextXAlignment = Enum.TextXAlignment.Left,
 		FontFace = UI.FontHeavy, TextSize = 22, Text = T("TIENDA"), Parent = panel })
-	local coinPill = UI.new("Frame", {
+	coinPill = UI.new("Frame", {
 		Position = UDim2.fromOffset(130, 14),
 		Size = UDim2.fromOffset(0, 26),
 		AutomaticSize = Enum.AutomaticSize.X,
@@ -313,6 +355,11 @@ local function build()
 	}, { UI.corner(13), UI.new("UIPadding", { PaddingLeft = UDim.new(0, 30), PaddingRight = UDim.new(0, 12) }) })
 	UI.new("Frame", { Position = UDim2.new(0, -22, 0.5, -8), Size = UDim2.fromOffset(16, 16), BackgroundColor3 = C.Gold, Parent = coinPill }, { UI.corner(8) })
 	coinsLabel = UI.label({ Size = UDim2.fromScale(0, 1), AutomaticSize = Enum.AutomaticSize.X, FontFace = UI.FontBold, TextSize = 14, TextColor3 = C.Gold, Parent = coinPill })
+	-- el número sube (o baja) poco a poco hasta el valor real
+	coinCounter = Instance.new("NumberValue")
+	coinCounter.Changed:Connect(function(value)
+		coinsLabel.Text = tostring(math.floor(value + 0.5))
+	end)
 	local close: TextButton = UI.new("TextButton", {
 		AnchorPoint = Vector2.new(1, 0),
 		Position = UDim2.new(1, -14, 0, 12),
@@ -386,12 +433,27 @@ local function build()
 	openButton.Activated:Connect(function()
 		setOpen(not isOpen)
 	end)
+
+	UI.animateButtons(gui)
 end
 
 local function refresh()
 	local chance = (player:GetAttribute("VerityChance") :: number?) or 0
 	openChance.Text = T("{coins} monedas · Verity {chance}%", { coins = coins(), chance = chance })
-	coinsLabel.Text = tostring(coins())
+	local now = coins()
+	if shownCoins == nil then
+		coinCounter.Value = now
+		coinsLabel.Text = tostring(now)
+	elseif now ~= shownCoins then
+		UI.tween(coinCounter, 0.7, { Value = now }, Enum.EasingStyle.Quad)
+		if now > shownCoins then
+			UI.pulse(coinPill, 1.2)
+			if openButton.Visible then
+				UI.pulse(openButton, 1.1)
+			end
+		end
+	end
+	shownCoins = now
 	footer.Text = T("Objetos equipados: {count}/{max} · solo los usan los supervivientes durante la ronda",
 		{ count = #decode("EquippedItems"), max = Config.MaxEquipped })
 	for _, fn in refreshers do
@@ -399,7 +461,7 @@ local function refresh()
 	end
 	local role = player:GetAttribute("Role")
 	local inRound = role == "Survivor" or role == "Verity"
-	openButton.Visible = not inRound
+	UI.show(openButton, not inRound)
 	if inRound and isOpen then
 		setOpen(false)
 	end

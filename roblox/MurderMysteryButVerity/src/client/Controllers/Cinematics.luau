@@ -35,7 +35,9 @@ local titleLabel: TextLabel
 local subtitleLabel: TextLabel
 local busy = false
 local TITLE_TIME = 5 -- segundos que el nombre del mapa queda en pantalla
+local TITLE_HOME = UDim2.new(0.5, 0, 0.9, -12)
 local titleShownAt: number? = nil
+local titleToken = 0
 
 local function tween(inst: Instance, time: number, goal: { [string]: any })
 	local t = TweenService:Create(inst, TweenInfo.new(time, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), goal)
@@ -100,7 +102,7 @@ local function build()
 	})
 	title = UI.new("CanvasGroup", {
 		AnchorPoint = Vector2.new(0.5, 1),
-		Position = UDim2.new(0.5, 0, 0.9, -12),
+		Position = TITLE_HOME,
 		Size = UDim2.fromOffset(600, 80),
 		BackgroundTransparency = 1,
 		GroupTransparency = 1,
@@ -190,19 +192,38 @@ end
 
 -- Muestra u oculta el título. No basta con GroupTransparency: en algunos
 -- equipos Roblox dibuja el CanvasGroup como un Frame normal y la ignora, así
--- que también se funden los textos y al final se oculta con Visible.
+-- que también se funden los textos y, al acabar el tiempo, se oculta con
+-- Visible por temporizador (pase lo que pase con las animaciones).
+-- Animación: entra subiendo desde abajo mientras crece hasta su tamaño y se
+-- va subiendo un poco más mientras se desvanece.
 local function fadeTitle(show: boolean, time: number)
+	titleToken += 1
+	local token = titleToken
 	local alpha = if show then 0 else 1
+	local scale = title:FindFirstChildOfClass("UIScale") or UI.new("UIScale", { Parent = title })
 	if show then
 		title.Visible = true
+		title.Position = TITLE_HOME + UDim2.fromOffset(0, 18)
+		scale.Scale = 0.94
+		tween(title, time + 0.4, { Position = TITLE_HOME })
+		tween(scale, time + 0.6, { Scale = 1 })
+	else
+		tween(title, time, { Position = TITLE_HOME + UDim2.fromOffset(0, -14) })
+		tween(scale, time, { Scale = 1.04 })
 	end
 	tween(title, time, { GroupTransparency = alpha })
 	tween(titleLabel, time, { TextTransparency = alpha })
-	tween(subtitleLabel, time, { TextTransparency = alpha }).Completed:Connect(function(state)
-		if not show and state == Enum.PlaybackState.Completed and titleShownAt == nil then
-			title.Visible = false
-		end
-	end)
+	tween(subtitleLabel, time, { TextTransparency = alpha })
+	if not show then
+		task.delay(time, function()
+			if titleToken == token then
+				title.Visible = false
+				titleLabel.TextTransparency = 1
+				subtitleLabel.TextTransparency = 1
+				title.Position = TITLE_HOME
+			end
+		end)
+	end
 end
 
 -- Oculta el título del mapa (también al volver al lobby, pase lo que pase).
@@ -231,8 +252,15 @@ local function facingAngle(): number
 end
 
 local function roundIntro(mapName: string)
-	-- el título se oculta solo a los TITLE_TIME segundos (lo vigila start())
-	titleShownAt = os.clock()
+	-- el título se oculta solo a los TITLE_TIME segundos (temporizador propio
+	-- y, por si acaso, la vigilancia de start())
+	local shownAt = os.clock()
+	titleShownAt = shownAt
+	task.delay(TITLE_TIME, function()
+		if titleShownAt == shownAt then
+			hideTitle()
+		end
+	end)
 	titleLabel.Text = upper(T(mapName))
 	local role = player:GetAttribute("Role")
 	subtitleLabel.Text = if role == "Verity" then T("Despierta y atrápalos a todos") else T("Sobrevive hasta el amanecer")

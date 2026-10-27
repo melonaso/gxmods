@@ -15120,7 +15120,9 @@ local titleLabel: TextLabel
 local subtitleLabel: TextLabel
 local busy = false
 local TITLE_TIME = 5 -- segundos que el nombre del mapa queda en pantalla
+local TITLE_HOME = UDim2.new(0.5, 0, 0.9, -12)
 local titleShownAt: number? = nil
+local titleToken = 0
 
 local function tween(inst: Instance, time: number, goal: { [string]: any })
 	local t = TweenService:Create(inst, TweenInfo.new(time, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), goal)
@@ -15185,7 +15187,7 @@ local function build()
 	})
 	title = UI.new("CanvasGroup", {
 		AnchorPoint = Vector2.new(0.5, 1),
-		Position = UDim2.new(0.5, 0, 0.9, -12),
+		Position = TITLE_HOME,
 		Size = UDim2.fromOffset(600, 80),
 		BackgroundTransparency = 1,
 		GroupTransparency = 1,
@@ -15275,19 +15277,38 @@ end
 
 -- Muestra u oculta el título. No basta con GroupTransparency: en algunos
 -- equipos Roblox dibuja el CanvasGroup como un Frame normal y la ignora, así
--- que también se funden los textos y al final se oculta con Visible.
+-- que también se funden los textos y, al acabar el tiempo, se oculta con
+-- Visible por temporizador (pase lo que pase con las animaciones).
+-- Animación: entra subiendo desde abajo mientras crece hasta su tamaño y se
+-- va subiendo un poco más mientras se desvanece.
 local function fadeTitle(show: boolean, time: number)
+	titleToken += 1
+	local token = titleToken
 	local alpha = if show then 0 else 1
+	local scale = title:FindFirstChildOfClass("UIScale") or UI.new("UIScale", { Parent = title })
 	if show then
 		title.Visible = true
+		title.Position = TITLE_HOME + UDim2.fromOffset(0, 18)
+		scale.Scale = 0.94
+		tween(title, time + 0.4, { Position = TITLE_HOME })
+		tween(scale, time + 0.6, { Scale = 1 })
+	else
+		tween(title, time, { Position = TITLE_HOME + UDim2.fromOffset(0, -14) })
+		tween(scale, time, { Scale = 1.04 })
 	end
 	tween(title, time, { GroupTransparency = alpha })
 	tween(titleLabel, time, { TextTransparency = alpha })
-	tween(subtitleLabel, time, { TextTransparency = alpha }).Completed:Connect(function(state)
-		if not show and state == Enum.PlaybackState.Completed and titleShownAt == nil then
-			title.Visible = false
-		end
-	end)
+	tween(subtitleLabel, time, { TextTransparency = alpha })
+	if not show then
+		task.delay(time, function()
+			if titleToken == token then
+				title.Visible = false
+				titleLabel.TextTransparency = 1
+				subtitleLabel.TextTransparency = 1
+				title.Position = TITLE_HOME
+			end
+		end)
+	end
 end
 
 -- Oculta el título del mapa (también al volver al lobby, pase lo que pase).
@@ -15316,8 +15337,15 @@ local function facingAngle(): number
 end
 
 local function roundIntro(mapName: string)
-	-- el título se oculta solo a los TITLE_TIME segundos (lo vigila start())
-	titleShownAt = os.clock()
+	-- el título se oculta solo a los TITLE_TIME segundos (temporizador propio
+	-- y, por si acaso, la vigilancia de start())
+	local shownAt = os.clock()
+	titleShownAt = shownAt
+	task.delay(TITLE_TIME, function()
+		if titleShownAt == shownAt then
+			hideTitle()
+		end
+	end)
 	titleLabel.Text = upper(T(mapName))
 	local role = player:GetAttribute("Role")
 	subtitleLabel.Text = if role == "Verity" then T("Despierta y atrápalos a todos") else T("Sobrevive hasta el amanecer")
@@ -15419,8 +15447,10 @@ return Cinematics
               <string name="Name">HUD</string>
               <string name="Source"><![CDATA[--!strict
 -- HUD discreto: píldora superior con fase y reloj, chip de oro, avisos
--- pequeños, tarjeta de rol, banner de resultados y (en modo prueba) el botón
--- para elegir si en la próxima ronda eres Verity o superviviente.
+-- pequeños, tarjeta de rol y banner de resultados. Todo animado: los
+-- elementos aparecen con rebote y se encogen al irse, el reloj late en los
+-- últimos segundos, los chips laten al ganar oro o monedas y las tarjetas
+-- entran con un destello.
 -- Todos los textos pasan por Locale.t (traducibles a cualquier idioma).
 
 local Players = game:GetService("Players")
@@ -15449,6 +15479,7 @@ local PHASE_TEXT = {
 }
 
 local gui: ScreenGui
+local pill: Frame
 local phaseLabel: TextLabel
 local timerLabel: TextLabel
 local infoPill: Frame
@@ -15479,7 +15510,7 @@ local function build()
 	})
 
 	-- Píldora superior
-	local pill = UI.new("Frame", {
+	pill = UI.new("Frame", {
 		Name = "TopPill",
 		AnchorPoint = Vector2.new(0.5, 0),
 		Position = UDim2.new(0.5, 0, 0, 8),
@@ -15498,8 +15529,9 @@ local function build()
 		Parent = pill,
 	})
 	timerLabel = UI.label({
+		AnchorPoint = Vector2.new(0.5, 0.5), -- late desde el centro
 		Size = UDim2.new(1, 0, 0, 26),
-		Position = UDim2.fromOffset(0, 19),
+		Position = UDim2.new(0.5, 0, 0, 32),
 		TextSize = 24,
 		FontFace = UI.FontHeavy,
 		Text = "",
@@ -15683,6 +15715,8 @@ local function build()
 		Visible = false,
 		Parent = gui,
 	}, { UI.corner(18), UI.stroke(0.8) })
+
+	UI.animateButtons(gui)
 end
 
 local toastOrder = 0
@@ -15717,7 +15751,14 @@ local function toast(text: string, kind: string?, args: { [string]: any }?)
 		Text = text,
 		Parent = frame,
 	})
+	-- entra con rebote; los avisos malos además dan una sacudida
+	local scale = UI.new("UIScale", { Scale = 0.5, Parent = frame })
 	UI.tween(frame, 0.25, { GroupTransparency = 0 })
+	UI.tween(scale, 0.4, { Scale = 1 }, Enum.EasingStyle.Back)
+	if kind == "bad" then
+		frame.Rotation = 4
+		UI.tween(frame, 0.5, { Rotation = 0 }, Enum.EasingStyle.Elastic)
+	end
 	-- máximo 4 avisos visibles
 	local toasts = {}
 	for _, child in toastList:GetChildren() do
@@ -15733,29 +15774,70 @@ local function toast(text: string, kind: string?, args: { [string]: any }?)
 	end
 	task.delay(4, function()
 		if frame.Parent then
-			UI.tween(frame, 0.4, { GroupTransparency = 1 }).Completed:Wait()
+			UI.tween(scale, 0.3, { Scale = 0.7 })
+			UI.tween(frame, 0.3, { GroupTransparency = 1 }).Completed:Wait()
 			frame:Destroy()
 		end
 	end)
 end
 HUD.toast = toast
 
+local cardHome: { [CanvasGroup]: UDim2 } = {}
+local cardToken: { [CanvasGroup]: number } = {}
+
 local function showCard(card: CanvasGroup, title: string, headline: string, color: Color3, body: string, duration: number)
+	local home = cardHome[card] or card.Position
+	cardHome[card] = home
+	local token = (cardToken[card] or 0) + 1
+	cardToken[card] = token
+
 	card:ClearAllChildren()
 	UI.corner(18).Parent = card
 	UI.stroke(0.5, color).Parent = card
 	UI.label({ Size = UDim2.new(1, 0, 0, 16), Position = UDim2.fromOffset(0, 14), TextSize = 12, FontFace = UI.FontBold, TextColor3 = C.Muted, Text = title, Parent = card })
-	UI.label({ Size = UDim2.new(1, 0, 0, 40), Position = UDim2.fromOffset(0, 32), TextSize = 34, FontFace = UI.FontHeavy, TextColor3 = color, Text = headline, Parent = card })
+	local headlineLabel = UI.label({ AnchorPoint = Vector2.new(0.5, 0.5), Size = UDim2.new(1, 0, 0, 40), Position = UDim2.new(0.5, 0, 0, 52), TextSize = 34,
+		FontFace = UI.FontHeavy, TextColor3 = color, Text = headline, Parent = card })
 	UI.label({ Size = UDim2.new(1, -40, 0, 36), Position = UDim2.fromOffset(20, 76), TextSize = 14, TextWrapped = true, TextColor3 = C.Text, Text = body, Parent = card })
+	-- destello que cruza la tarjeta
+	local shine = UI.new("UIGradient", {
+		Rotation = 20,
+		Offset = Vector2.new(-1, 0),
+		Transparency = NumberSequence.new({
+			NumberSequenceKeypoint.new(0, 1),
+			NumberSequenceKeypoint.new(0.42, 1),
+			NumberSequenceKeypoint.new(0.5, 0.8),
+			NumberSequenceKeypoint.new(0.58, 1),
+			NumberSequenceKeypoint.new(1, 1),
+		}),
+	})
+	UI.new("Frame", { Size = UDim2.fromScale(1, 1), BackgroundColor3 = Color3.new(1, 1, 1), ZIndex = 5, Parent = card }, { UI.corner(18), shine })
 
+	-- entrada: baja con rebote, el titular se asienta y pasa el destello
 	card.Visible = true
 	card.GroupTransparency = 1
-	local scale = UI.new("UIScale", { Scale = 0.92, Parent = card })
+	card.Position = home + UDim2.fromOffset(0, -26)
+	local scale = UI.new("UIScale", { Scale = 0.9, Parent = card })
+	local headlineScale = UI.new("UIScale", { Scale = 1.4, Parent = headlineLabel })
 	UI.tween(card, 0.35, { GroupTransparency = 0 })
-	UI.tween(scale, 0.45, { Scale = 1 }, Enum.EasingStyle.Back)
+	UI.tween(card, 0.5, { Position = home }, Enum.EasingStyle.Back)
+	UI.tween(scale, 0.5, { Scale = 1 }, Enum.EasingStyle.Back)
+	UI.tween(headlineScale, 0.6, { Scale = 1 }, Enum.EasingStyle.Back)
+	task.delay(0.25, function()
+		UI.tween(shine, 0.9, { Offset = Vector2.new(1, 0) }, Enum.EasingStyle.Sine)
+	end)
+
+	-- salida: sube un poco, se encoge y se desvanece
 	task.delay(duration, function()
-		UI.tween(card, 0.5, { GroupTransparency = 1 }).Completed:Wait()
-		card.Visible = false
+		if cardToken[card] ~= token then
+			return -- ya se mostró otra tarjeta en su lugar
+		end
+		UI.tween(card, 0.4, { Position = home + UDim2.fromOffset(0, -14) })
+		UI.tween(scale, 0.4, { Scale = 0.94 })
+		UI.tween(card, 0.4, { GroupTransparency = 1 }).Completed:Wait()
+		if cardToken[card] == token then
+			card.Visible = false
+			card.Position = home
+		end
 	end)
 end
 
@@ -15782,12 +15864,34 @@ local function onRoundResult(winner: string, killerName: string, survivors: { st
 	end
 end
 
+local lastPhase: string? = nil
+local lastSecond = -1
+local lastRoundCoins = 0
+local lastGold = 0
+local wasRevealed = false
+
 local function update()
 	local phase = (Workspace:GetAttribute("Phase") :: string?) or "Waiting"
 	local endsAt = (Workspace:GetAttribute("PhaseEndsAt") :: number?) or 0
 	local now = Workspace:GetServerTimeNow()
 	local remaining = endsAt - now
 	local role = (player:GetAttribute("Role") :: string?) or "Lobby"
+
+	-- la píldora late al cambiar de fase; el reloj, cada segundo de los últimos
+	if phase ~= lastPhase then
+		if lastPhase ~= nil then
+			UI.pulse(pill, 1.12)
+		end
+		lastPhase = phase
+	end
+	local second = math.ceil(remaining)
+	if second ~= lastSecond then
+		lastSecond = second
+		local finalCountdown = (phase == "Playing" and second <= 10) or (phase == "Intermission" and second <= 5)
+		if finalCountdown and second > 0 and endsAt > 0 then
+			UI.pulse(timerLabel, if phase == "Playing" then 1.3 else 1.18)
+		end
+	end
 
 	phaseLabel.Text = T(PHASE_TEXT[phase] or phase)
 	if phase == "Waiting" then
@@ -15840,6 +15944,9 @@ local function update()
 			info = T("Tótems {totems}  ·  Vivos {alive}", { totems = `<font color="#ffc83c"><b>{totems}/{maxTotems}</b></font>`, alive = `<b>{alive}</b>` })
 			if revealUntil > now then
 				info ..= "  ·  " .. `<font color="#ff3b4e"><b>{T("¡Revelados!")}</b></font>`
+				if not wasRevealed then
+					UI.pulse(infoPill, 1.2)
+				end
 			elseif nextReveal > now then
 				local seconds = math.ceil(nextReveal - now)
 				local color = if seconds <= 10 then "#ff3b4e" else "#a59cb2"
@@ -15847,8 +15954,9 @@ local function update()
 			end
 		end
 	end
+	wasRevealed = phase == "Playing" and ((Workspace:GetAttribute("RevealUntil") :: number?) or 0) > now
 	infoLabel.Text = info
-	infoPill.Visible = info ~= ""
+	UI.show(infoPill, info ~= "")
 
 	local inRound = phase == "Playing" or phase == "Starting"
 	local key = function(k: string, text: string)
@@ -15861,25 +15969,34 @@ local function update()
 	else
 		controlsLabel.Text = ""
 	end
-	controls.Visible = controlsLabel.Text ~= ""
+	UI.show(controls, controlsLabel.Text ~= "")
 
 	local stamina = (player:GetAttribute("Stamina") :: number?) or Config.Movement.StaminaMax
-	staminaBar.Visible = inRound and role == "Survivor" and stamina < Config.Movement.StaminaMax
-	staminaFill.Size = UDim2.fromScale(stamina / Config.Movement.StaminaMax, 1)
+	UI.show(staminaBar, inRound and role == "Survivor" and stamina < Config.Movement.StaminaMax)
+	UI.tween(staminaFill, 0.12, { Size = UDim2.fromScale(stamina / Config.Movement.StaminaMax, 1) }, Enum.EasingStyle.Linear)
 	staminaFill.BackgroundColor3 = if stamina < 25 then C.Warn else C.Survivor
 
-	coinChip.Visible = phase == "Playing" and (role == "Survivor" or role == "Verity")
-	if coinChip.Visible then
-		local got = (player:GetAttribute("RoundCoins") :: number?) or 0
+	local showCoins = phase == "Playing" and (role == "Survivor" or role == "Verity")
+	UI.show(coinChip, showCoins)
+	local got = (player:GetAttribute("RoundCoins") :: number?) or 0
+	if showCoins then
 		coinLabel.Text = `{got}/{Config.Coins.MaxPerRound}`
+		if got > lastRoundCoins then
+			UI.pulse(coinChip, 1.18)
+		end
 	end
+	lastRoundCoins = got
 
 	local showGold = phase == "Playing" and role == "Survivor"
-	goldChip.Visible = showGold
+	UI.show(goldChip, showGold)
+	local gold = (player:GetAttribute("Gold") :: number?) or 0
 	if showGold then
-		local gold = (player:GetAttribute("Gold") :: number?) or 0
 		goldLabel.Text = T("Oro {gold}/{max}", { gold = gold, max = Config.Crafting.MaxGoldCarried })
+		if gold > lastGold then
+			UI.pulse(goldChip, 1.18)
+		end
 	end
+	lastGold = gold
 end
 
 function HUD.init()
@@ -16467,6 +16584,8 @@ return NightVision
 -- Tienda: pestañas Objetos (monedas), Skins de Verity (monedas) y Pases
 -- (Robux). Se abre con el botón "Tienda" (fuera de partida) o desde el
 -- mostrador del lobby. Las compras las valida el servidor (ShopRequest).
+-- Animada: el panel entra con rebote, las pestañas se deslizan, las tarjetas
+-- se iluminan al pasar el ratón y el contador de monedas sube poco a poco.
 
 local HttpService = game:GetService("HttpService")
 local MarketplaceService = game:GetService("MarketplaceService")
@@ -16492,7 +16611,13 @@ local gui: ScreenGui
 local openButton: TextButton
 local openChance: TextLabel
 local panel: CanvasGroup
+local panelScale: UIScale
+local fitScale = 1 -- escala para que el panel quepa en pantallas pequeñas
+local currentTab: Tab? = nil
+local coinPill: Frame
 local coinsLabel: TextLabel
+local coinCounter: NumberValue
+local shownCoins: number? = nil
 local footer: TextLabel
 local pages: { [Tab]: ScrollingFrame } = {}
 local tabButtons: { [Tab]: TextButton } = {}
@@ -16513,25 +16638,44 @@ local function coins(): number
 	return (player:GetAttribute("Coins") :: number?) or 0
 end
 
+local PAGE_HOME = UDim2.fromOffset(14, 90)
+
 local function setTab(tab: Tab)
+	local changed = currentTab ~= nil and currentTab ~= tab
+	currentTab = tab
 	for name, page in pages do
 		page.Visible = name == tab
 		local button = tabButtons[name]
-		button.BackgroundColor3 = if name == tab then C.Verity else C.PanelLight
-		button.TextColor3 = if name == tab then Color3.new(1, 1, 1) else C.Muted
+		UI.tween(button, 0.2, {
+			BackgroundColor3 = if name == tab then C.Verity else C.PanelLight,
+			TextColor3 = if name == tab then Color3.new(1, 1, 1) else C.Muted,
+		})
+		if name == tab and changed then
+			-- la página nueva entra deslizándose desde abajo
+			page.Position = PAGE_HOME + UDim2.fromOffset(0, 18)
+			UI.tween(page, 0.35, { Position = PAGE_HOME }, Enum.EasingStyle.Back)
+			UI.pulse(button, 1.1)
+		end
 	end
 	footer.Visible = tab == "Items"
 end
 
 local function setOpen(open: boolean, tab: Tab?)
+	if open == isOpen and not tab then
+		return
+	end
+	local wasOpen = isOpen
 	isOpen = open
 	if tab then
 		setTab(tab)
 	end
-	if open then
+	if open and not wasOpen then
 		panel.Visible = true
+		panelScale.Scale = fitScale * 0.85
 		UI.tween(panel, 0.25, { GroupTransparency = 0 })
-	else
+		UI.tween(panelScale, 0.4, { Scale = fitScale }, Enum.EasingStyle.Back)
+	elseif not open and wasOpen then
+		UI.tween(panelScale, 0.2, { Scale = fitScale * 0.9 })
 		UI.tween(panel, 0.2, { GroupTransparency = 1 }).Completed:Connect(function()
 			if not isOpen then
 				panel.Visible = false
@@ -16555,12 +16699,26 @@ local function styleButton(button: TextButton, text: string, kind: "buy" | "neut
 end
 
 local function card(parent: Instance, order: number): (Frame, TextButton)
+	local stroke = UI.stroke(1, C.Gold)
 	local frame = UI.new("Frame", {
 		LayoutOrder = order,
 		BackgroundColor3 = C.PanelLight,
 		BackgroundTransparency = 0.15,
 		Parent = parent,
-	}, { UI.corner(12) })
+	}, { UI.corner(12), stroke })
+	-- se ilumina con un borde dorado al pasar el ratón
+	frame.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement then
+			UI.tween(frame, 0.2, { BackgroundTransparency = 0 })
+			UI.tween(stroke, 0.2, { Transparency = 0.45 })
+		end
+	end)
+	frame.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement then
+			UI.tween(frame, 0.3, { BackgroundTransparency = 0.15 })
+			UI.tween(stroke, 0.3, { Transparency = 1 })
+		end
+	end)
 	local button: TextButton = UI.new("TextButton", {
 		AnchorPoint = Vector2.new(0.5, 1),
 		Position = UDim2.new(0.5, 0, 1, -10),
@@ -16753,12 +16911,13 @@ local function build()
 		Visible = false,
 		Parent = gui,
 	}, { UI.corner(18), UI.stroke(0.8) })
-	local scale = UI.new("UIScale", { Parent = panel })
+	panelScale = UI.new("UIScale", { Parent = panel })
 	local function fit()
 		local camera = Workspace.CurrentCamera
 		if camera then
 			local view = camera.ViewportSize
-			scale.Scale = math.min(1, (view.X - 24) / 620, (view.Y - 60) / 450)
+			fitScale = math.min(1, (view.X - 24) / 620, (view.Y - 60) / 450)
+			panelScale.Scale = fitScale
 		end
 	end
 	fit()
@@ -16769,7 +16928,7 @@ local function build()
 	-- cabecera
 	UI.label({ Position = UDim2.fromOffset(18, 14), Size = UDim2.fromOffset(200, 26), TextXAlignment = Enum.TextXAlignment.Left,
 		FontFace = UI.FontHeavy, TextSize = 22, Text = T("TIENDA"), Parent = panel })
-	local coinPill = UI.new("Frame", {
+	coinPill = UI.new("Frame", {
 		Position = UDim2.fromOffset(130, 14),
 		Size = UDim2.fromOffset(0, 26),
 		AutomaticSize = Enum.AutomaticSize.X,
@@ -16778,6 +16937,11 @@ local function build()
 	}, { UI.corner(13), UI.new("UIPadding", { PaddingLeft = UDim.new(0, 30), PaddingRight = UDim.new(0, 12) }) })
 	UI.new("Frame", { Position = UDim2.new(0, -22, 0.5, -8), Size = UDim2.fromOffset(16, 16), BackgroundColor3 = C.Gold, Parent = coinPill }, { UI.corner(8) })
 	coinsLabel = UI.label({ Size = UDim2.fromScale(0, 1), AutomaticSize = Enum.AutomaticSize.X, FontFace = UI.FontBold, TextSize = 14, TextColor3 = C.Gold, Parent = coinPill })
+	-- el número sube (o baja) poco a poco hasta el valor real
+	coinCounter = Instance.new("NumberValue")
+	coinCounter.Changed:Connect(function(value)
+		coinsLabel.Text = tostring(math.floor(value + 0.5))
+	end)
 	local close: TextButton = UI.new("TextButton", {
 		AnchorPoint = Vector2.new(1, 0),
 		Position = UDim2.new(1, -14, 0, 12),
@@ -16851,12 +17015,27 @@ local function build()
 	openButton.Activated:Connect(function()
 		setOpen(not isOpen)
 	end)
+
+	UI.animateButtons(gui)
 end
 
 local function refresh()
 	local chance = (player:GetAttribute("VerityChance") :: number?) or 0
 	openChance.Text = T("{coins} monedas · Verity {chance}%", { coins = coins(), chance = chance })
-	coinsLabel.Text = tostring(coins())
+	local now = coins()
+	if shownCoins == nil then
+		coinCounter.Value = now
+		coinsLabel.Text = tostring(now)
+	elseif now ~= shownCoins then
+		UI.tween(coinCounter, 0.7, { Value = now }, Enum.EasingStyle.Quad)
+		if now > shownCoins then
+			UI.pulse(coinPill, 1.2)
+			if openButton.Visible then
+				UI.pulse(openButton, 1.1)
+			end
+		end
+	end
+	shownCoins = now
 	footer.Text = T("Objetos equipados: {count}/{max} · solo los usan los supervivientes durante la ronda",
 		{ count = #decode("EquippedItems"), max = Config.MaxEquipped })
 	for _, fn in refreshers do
@@ -16864,7 +17043,7 @@ local function refresh()
 	end
 	local role = player:GetAttribute("Role")
 	local inRound = role == "Survivor" or role == "Verity"
-	openButton.Visible = not inRound
+	UI.show(openButton, not inRound)
 	if inRound and isOpen then
 		setOpen(false)
 	end
@@ -17932,6 +18111,107 @@ function UI.tween(inst: Instance, time: number, goal: { [string]: any }, style: 
 	local tween = TweenService:Create(inst, TweenInfo.new(time, style or Enum.EasingStyle.Quint, Enum.EasingDirection.Out), goal)
 	tween:Play()
 	return tween
+end
+
+-- Animaciones -------------------------------------------------------------
+-- Todas usan UIScale y posiciones (no solo transparencias): así se ven
+-- también en equipos donde Roblox ignora la transparencia de CanvasGroup.
+-- UIScale escala alrededor del AnchorPoint del objeto.
+
+-- UIScale del objeto (lo crea si no tiene).
+function UI.scaleOf(inst: GuiObject): UIScale
+	local scale = inst:FindFirstChildOfClass("UIScale")
+	if scale then
+		return scale
+	end
+	return UI.new("UIScale", { Parent = inst })
+end
+
+-- Latido: crece de golpe y vuelve a su tamaño con un pequeño rebote.
+function UI.pulse(inst: GuiObject, amount: number?)
+	local scale = UI.scaleOf(inst)
+	scale.Scale = amount or 1.12
+	UI.tween(scale, 0.4, { Scale = 1 }, Enum.EasingStyle.Back)
+end
+
+-- Muestra u oculta con animación: aparece con rebote y desaparece
+-- encogiéndose. Se puede llamar en cada actualización: solo anima cuando el
+-- estado cambia.
+local shownState: { [GuiObject]: boolean } = setmetatable({}, { __mode = "k" }) :: any
+
+function UI.show(inst: GuiObject, visible: boolean)
+	local current = shownState[inst]
+	if current == nil then
+		current = inst.Visible
+	end
+	shownState[inst] = visible
+	if current == visible then
+		return
+	end
+	local scale = UI.scaleOf(inst)
+	if visible then
+		inst.Visible = true
+		scale.Scale = 0.6
+		UI.tween(scale, 0.35, { Scale = 1 }, Enum.EasingStyle.Back)
+	else
+		TweenService:Create(scale, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.In), { Scale = 0 }):Play()
+		-- se oculta por tiempo, no al acabar la animación: si otra animación
+		-- (un latido, el ratón encima) la interrumpe, igualmente desaparece
+		task.delay(0.16, function()
+			if shownState[inst] == false then
+				inst.Visible = false
+			end
+		end)
+	end
+end
+
+-- Botón vivo: crece al pasar el ratón por encima y se hunde al pulsarlo
+-- (ratón o pantalla táctil).
+function UI.animateButton(button: GuiButton)
+	if button:GetAttribute("Animated") then
+		return
+	end
+	button:SetAttribute("Animated", true)
+	local scale = UI.scaleOf(button)
+	local hovered, pressed = false, false
+	local function refresh()
+		local target = if pressed then 0.92 elseif hovered then 1.06 else 1
+		UI.tween(scale, if pressed then 0.08 else 0.25, { Scale = target }, if pressed then Enum.EasingStyle.Quad else Enum.EasingStyle.Back)
+	end
+	button.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement then
+			hovered = true
+		elseif input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			pressed = true
+		else
+			return
+		end
+		refresh()
+	end)
+	button.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement then
+			hovered = false
+		elseif input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			pressed = false
+		else
+			return
+		end
+		refresh()
+	end)
+end
+
+-- Anima todos los botones de `root`, también los que se creen después.
+function UI.animateButtons(root: Instance)
+	for _, inst in root:GetDescendants() do
+		if inst:IsA("GuiButton") then
+			UI.animateButton(inst)
+		end
+	end
+	root.DescendantAdded:Connect(function(inst)
+		if inst:IsA("GuiButton") then
+			UI.animateButton(inst)
+		end
+	end)
 end
 
 return UI

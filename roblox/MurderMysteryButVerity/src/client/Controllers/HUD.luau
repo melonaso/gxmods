@@ -1,7 +1,9 @@
 --!strict
 -- HUD discreto: píldora superior con fase y reloj, chip de oro, avisos
--- pequeños, tarjeta de rol, banner de resultados y (en modo prueba) el botón
--- para elegir si en la próxima ronda eres Verity o superviviente.
+-- pequeños, tarjeta de rol y banner de resultados. Todo animado: los
+-- elementos aparecen con rebote y se encogen al irse, el reloj late en los
+-- últimos segundos, los chips laten al ganar oro o monedas y las tarjetas
+-- entran con un destello.
 -- Todos los textos pasan por Locale.t (traducibles a cualquier idioma).
 
 local Players = game:GetService("Players")
@@ -30,6 +32,7 @@ local PHASE_TEXT = {
 }
 
 local gui: ScreenGui
+local pill: Frame
 local phaseLabel: TextLabel
 local timerLabel: TextLabel
 local infoPill: Frame
@@ -60,7 +63,7 @@ local function build()
 	})
 
 	-- Píldora superior
-	local pill = UI.new("Frame", {
+	pill = UI.new("Frame", {
 		Name = "TopPill",
 		AnchorPoint = Vector2.new(0.5, 0),
 		Position = UDim2.new(0.5, 0, 0, 8),
@@ -79,8 +82,9 @@ local function build()
 		Parent = pill,
 	})
 	timerLabel = UI.label({
+		AnchorPoint = Vector2.new(0.5, 0.5), -- late desde el centro
 		Size = UDim2.new(1, 0, 0, 26),
-		Position = UDim2.fromOffset(0, 19),
+		Position = UDim2.new(0.5, 0, 0, 32),
 		TextSize = 24,
 		FontFace = UI.FontHeavy,
 		Text = "",
@@ -264,6 +268,8 @@ local function build()
 		Visible = false,
 		Parent = gui,
 	}, { UI.corner(18), UI.stroke(0.8) })
+
+	UI.animateButtons(gui)
 end
 
 local toastOrder = 0
@@ -298,7 +304,14 @@ local function toast(text: string, kind: string?, args: { [string]: any }?)
 		Text = text,
 		Parent = frame,
 	})
+	-- entra con rebote; los avisos malos además dan una sacudida
+	local scale = UI.new("UIScale", { Scale = 0.5, Parent = frame })
 	UI.tween(frame, 0.25, { GroupTransparency = 0 })
+	UI.tween(scale, 0.4, { Scale = 1 }, Enum.EasingStyle.Back)
+	if kind == "bad" then
+		frame.Rotation = 4
+		UI.tween(frame, 0.5, { Rotation = 0 }, Enum.EasingStyle.Elastic)
+	end
 	-- máximo 4 avisos visibles
 	local toasts = {}
 	for _, child in toastList:GetChildren() do
@@ -314,29 +327,70 @@ local function toast(text: string, kind: string?, args: { [string]: any }?)
 	end
 	task.delay(4, function()
 		if frame.Parent then
-			UI.tween(frame, 0.4, { GroupTransparency = 1 }).Completed:Wait()
+			UI.tween(scale, 0.3, { Scale = 0.7 })
+			UI.tween(frame, 0.3, { GroupTransparency = 1 }).Completed:Wait()
 			frame:Destroy()
 		end
 	end)
 end
 HUD.toast = toast
 
+local cardHome: { [CanvasGroup]: UDim2 } = {}
+local cardToken: { [CanvasGroup]: number } = {}
+
 local function showCard(card: CanvasGroup, title: string, headline: string, color: Color3, body: string, duration: number)
+	local home = cardHome[card] or card.Position
+	cardHome[card] = home
+	local token = (cardToken[card] or 0) + 1
+	cardToken[card] = token
+
 	card:ClearAllChildren()
 	UI.corner(18).Parent = card
 	UI.stroke(0.5, color).Parent = card
 	UI.label({ Size = UDim2.new(1, 0, 0, 16), Position = UDim2.fromOffset(0, 14), TextSize = 12, FontFace = UI.FontBold, TextColor3 = C.Muted, Text = title, Parent = card })
-	UI.label({ Size = UDim2.new(1, 0, 0, 40), Position = UDim2.fromOffset(0, 32), TextSize = 34, FontFace = UI.FontHeavy, TextColor3 = color, Text = headline, Parent = card })
+	local headlineLabel = UI.label({ AnchorPoint = Vector2.new(0.5, 0.5), Size = UDim2.new(1, 0, 0, 40), Position = UDim2.new(0.5, 0, 0, 52), TextSize = 34,
+		FontFace = UI.FontHeavy, TextColor3 = color, Text = headline, Parent = card })
 	UI.label({ Size = UDim2.new(1, -40, 0, 36), Position = UDim2.fromOffset(20, 76), TextSize = 14, TextWrapped = true, TextColor3 = C.Text, Text = body, Parent = card })
+	-- destello que cruza la tarjeta
+	local shine = UI.new("UIGradient", {
+		Rotation = 20,
+		Offset = Vector2.new(-1, 0),
+		Transparency = NumberSequence.new({
+			NumberSequenceKeypoint.new(0, 1),
+			NumberSequenceKeypoint.new(0.42, 1),
+			NumberSequenceKeypoint.new(0.5, 0.8),
+			NumberSequenceKeypoint.new(0.58, 1),
+			NumberSequenceKeypoint.new(1, 1),
+		}),
+	})
+	UI.new("Frame", { Size = UDim2.fromScale(1, 1), BackgroundColor3 = Color3.new(1, 1, 1), ZIndex = 5, Parent = card }, { UI.corner(18), shine })
 
+	-- entrada: baja con rebote, el titular se asienta y pasa el destello
 	card.Visible = true
 	card.GroupTransparency = 1
-	local scale = UI.new("UIScale", { Scale = 0.92, Parent = card })
+	card.Position = home + UDim2.fromOffset(0, -26)
+	local scale = UI.new("UIScale", { Scale = 0.9, Parent = card })
+	local headlineScale = UI.new("UIScale", { Scale = 1.4, Parent = headlineLabel })
 	UI.tween(card, 0.35, { GroupTransparency = 0 })
-	UI.tween(scale, 0.45, { Scale = 1 }, Enum.EasingStyle.Back)
+	UI.tween(card, 0.5, { Position = home }, Enum.EasingStyle.Back)
+	UI.tween(scale, 0.5, { Scale = 1 }, Enum.EasingStyle.Back)
+	UI.tween(headlineScale, 0.6, { Scale = 1 }, Enum.EasingStyle.Back)
+	task.delay(0.25, function()
+		UI.tween(shine, 0.9, { Offset = Vector2.new(1, 0) }, Enum.EasingStyle.Sine)
+	end)
+
+	-- salida: sube un poco, se encoge y se desvanece
 	task.delay(duration, function()
-		UI.tween(card, 0.5, { GroupTransparency = 1 }).Completed:Wait()
-		card.Visible = false
+		if cardToken[card] ~= token then
+			return -- ya se mostró otra tarjeta en su lugar
+		end
+		UI.tween(card, 0.4, { Position = home + UDim2.fromOffset(0, -14) })
+		UI.tween(scale, 0.4, { Scale = 0.94 })
+		UI.tween(card, 0.4, { GroupTransparency = 1 }).Completed:Wait()
+		if cardToken[card] == token then
+			card.Visible = false
+			card.Position = home
+		end
 	end)
 end
 
@@ -363,12 +417,34 @@ local function onRoundResult(winner: string, killerName: string, survivors: { st
 	end
 end
 
+local lastPhase: string? = nil
+local lastSecond = -1
+local lastRoundCoins = 0
+local lastGold = 0
+local wasRevealed = false
+
 local function update()
 	local phase = (Workspace:GetAttribute("Phase") :: string?) or "Waiting"
 	local endsAt = (Workspace:GetAttribute("PhaseEndsAt") :: number?) or 0
 	local now = Workspace:GetServerTimeNow()
 	local remaining = endsAt - now
 	local role = (player:GetAttribute("Role") :: string?) or "Lobby"
+
+	-- la píldora late al cambiar de fase; el reloj, cada segundo de los últimos
+	if phase ~= lastPhase then
+		if lastPhase ~= nil then
+			UI.pulse(pill, 1.12)
+		end
+		lastPhase = phase
+	end
+	local second = math.ceil(remaining)
+	if second ~= lastSecond then
+		lastSecond = second
+		local finalCountdown = (phase == "Playing" and second <= 10) or (phase == "Intermission" and second <= 5)
+		if finalCountdown and second > 0 and endsAt > 0 then
+			UI.pulse(timerLabel, if phase == "Playing" then 1.3 else 1.18)
+		end
+	end
 
 	phaseLabel.Text = T(PHASE_TEXT[phase] or phase)
 	if phase == "Waiting" then
@@ -421,6 +497,9 @@ local function update()
 			info = T("Tótems {totems}  ·  Vivos {alive}", { totems = `<font color="#ffc83c"><b>{totems}/{maxTotems}</b></font>`, alive = `<b>{alive}</b>` })
 			if revealUntil > now then
 				info ..= "  ·  " .. `<font color="#ff3b4e"><b>{T("¡Revelados!")}</b></font>`
+				if not wasRevealed then
+					UI.pulse(infoPill, 1.2)
+				end
 			elseif nextReveal > now then
 				local seconds = math.ceil(nextReveal - now)
 				local color = if seconds <= 10 then "#ff3b4e" else "#a59cb2"
@@ -428,8 +507,9 @@ local function update()
 			end
 		end
 	end
+	wasRevealed = phase == "Playing" and ((Workspace:GetAttribute("RevealUntil") :: number?) or 0) > now
 	infoLabel.Text = info
-	infoPill.Visible = info ~= ""
+	UI.show(infoPill, info ~= "")
 
 	local inRound = phase == "Playing" or phase == "Starting"
 	local key = function(k: string, text: string)
@@ -442,25 +522,34 @@ local function update()
 	else
 		controlsLabel.Text = ""
 	end
-	controls.Visible = controlsLabel.Text ~= ""
+	UI.show(controls, controlsLabel.Text ~= "")
 
 	local stamina = (player:GetAttribute("Stamina") :: number?) or Config.Movement.StaminaMax
-	staminaBar.Visible = inRound and role == "Survivor" and stamina < Config.Movement.StaminaMax
-	staminaFill.Size = UDim2.fromScale(stamina / Config.Movement.StaminaMax, 1)
+	UI.show(staminaBar, inRound and role == "Survivor" and stamina < Config.Movement.StaminaMax)
+	UI.tween(staminaFill, 0.12, { Size = UDim2.fromScale(stamina / Config.Movement.StaminaMax, 1) }, Enum.EasingStyle.Linear)
 	staminaFill.BackgroundColor3 = if stamina < 25 then C.Warn else C.Survivor
 
-	coinChip.Visible = phase == "Playing" and (role == "Survivor" or role == "Verity")
-	if coinChip.Visible then
-		local got = (player:GetAttribute("RoundCoins") :: number?) or 0
+	local showCoins = phase == "Playing" and (role == "Survivor" or role == "Verity")
+	UI.show(coinChip, showCoins)
+	local got = (player:GetAttribute("RoundCoins") :: number?) or 0
+	if showCoins then
 		coinLabel.Text = `{got}/{Config.Coins.MaxPerRound}`
+		if got > lastRoundCoins then
+			UI.pulse(coinChip, 1.18)
+		end
 	end
+	lastRoundCoins = got
 
 	local showGold = phase == "Playing" and role == "Survivor"
-	goldChip.Visible = showGold
+	UI.show(goldChip, showGold)
+	local gold = (player:GetAttribute("Gold") :: number?) or 0
 	if showGold then
-		local gold = (player:GetAttribute("Gold") :: number?) or 0
 		goldLabel.Text = T("Oro {gold}/{max}", { gold = gold, max = Config.Crafting.MaxGoldCarried })
+		if gold > lastGold then
+			UI.pulse(goldChip, 1.18)
+		end
 	end
+	lastGold = gold
 end
 
 function HUD.init()
