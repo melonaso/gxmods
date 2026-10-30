@@ -100,10 +100,18 @@ Config.Chance = {
 -- también Verity, con solo acercarse).
 -- Obby del lobby (ver Lobby.luau y el cliente Obby.luau)
 Config.Obby = {
-	BlinkSolid = 2.2, -- segundos que las plataformas que parpadean están firmes
+	BlinkSolid = 2.6, -- segundos que las plataformas que parpadean están firmes
 	BlinkWarn = 0.6, -- parpadean avisando antes de desaparecer
-	BlinkGone = 1.4, -- segundos que no están
-	SweeperSpeed = 144, -- grados por segundo de la barra de lava (una vuelta cada 2,5 s)
+	BlinkGone = 1.2, -- segundos que no están
+	SweeperSpeed = 100, -- grados por segundo de la barra de lava (una vuelta cada 3,6 s)
+}
+
+-- Martillo de fuerza del lobby (Arcade.luau / Striker.luau): una aguja va y
+-- viene; pulsa en el momento justo. Solo por diversión (sin monedas).
+Config.Striker = {
+	NeedlePeriod = 1.1, -- segundos de ida y vuelta de la aguja
+	Window = 6, -- segundos para golpear tras empezar
+	BellAt = 95, -- fuerza (0-100) que hace sonar la campana
 }
 
 -- Tragamonedas del lobby: solo para pasar el rato. No se apuesta nada y no
@@ -159,18 +167,19 @@ Config.Skins = {
 	{ Key = "Void", Title = "Vacío", Price = 6000, Tint = Color3.fromRGB(40, 0, 70), Amount = 0.75, Outline = Color3.fromRGB(190, 90, 255), Aura = Color3.fromRGB(150, 60, 255), Description = "Morada, con un aura del más allá." },
 }
 
--- Música (licenciada para uso en experiencias: DistroKid / APM oficiales).
--- Encontradas con ForgeGUI (toolbox_search).
+-- Audio licenciado para uso en experiencias (DistroKid / APM / Pro Sound
+-- Effects oficiales), encontrado con ForgeGUI (toolbox_search).
+-- Música: solo en el lobby (las pistas de partida). Durante la ronda no hay
+-- música: solo ambiente (zumbido metálico y retumbar), el latido y, cuando
+-- Verity está cerca, la persecución industrial que el cliente monta por capas
+-- (Music.luau): el zumbido metálico acelerado y distorsionado, golpes de
+-- prensa hidráulica cada vez más rápidos y chirridos de metal.
 Config.Music = {
-	Lobby = { 134959834418523, 1836009626, 133838630142849 }, -- Liminal Space, Halloween Horrors Waltz (APM), Scary Place
-	Round = { 138890398994853, 98165789328752, 135768960171473 }, -- Horror Cinematic Ambience, Beneath the Dread Moon, Creepy Scary
-	Outdoor = { 98165789328752, 1846999567, 138890398994853 }, -- Beneath the Dread Moon, Creepy Night (APM), Horror Cinematic Ambience
-	Results = { 9041745502 }, -- 80s Horror Throwback Scary Creeper Bed (APM)
-	Chase = 1848090337, -- Intense Chase (APM): suena cuando Verity está cerca de alguien
-	Drone = 9043360237, -- METALLIC DRONE 03 (APM): capa de tensión durante la ronda (sube de volumen y tono)
+	Lobby = { 138890398994853, 98165789328752, 135768960171473 }, -- Horror Cinematic Ambience, Beneath the Dread Moon, Creepy Scary
+	Drone = 9043360237, -- METALLIC DRONE 03 (APM, "Metallic Hanging Grinding Drone"): ambiente de la ronda y base de la persecución
 	Rumble = 9112775175, -- Eerie Ambience 1 (Pro Sound Effects): retumbar grave de fondo en la ronda
-	FinalMinute = 1847683499, -- Running Faster A (APM): sustituye a la música en el último minuto
-	HeartbeatHit = 12221944, -- bass.wav (Roblox): golpe grave del latido cuando Verity se acerca
+	HeartbeatHit = 12221944, -- bass.wav (Roblox): latido y, distorsionado, golpes de prensa de la persecución
+	ChaseScrape = "rbxasset://sounds/swordslash.wav", -- muy grave y distorsionado: chirrido de metal
 	DeathScream = 9043345732, -- HORROR SCREAM 07 (APM): al ser agarrado; la explosión lo corta
 	Volume = 0.35,
 }

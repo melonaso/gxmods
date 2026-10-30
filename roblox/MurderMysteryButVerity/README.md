@@ -54,6 +54,8 @@ La cámara se aleja muy poco del personaje para que no se vea detrás de las esq
 | `R` | — | Esconderse en armarios, taquillas, ataúdes, confesionarios y arbustos (Verity puede sacarte con `Q` si te encuentra) |
 | `1`–`2` | — | Objetos de la tienda (solo en la ronda) |
 
+**Ajustes (⚙, junto al botón de música):** ver hitboxes (la caja de cada personaje y el alcance real de Verity: anillo de 12 studs, cono frontal y círculo de 5), calidad baja (sin sombras, partículas ni efectos), volumen de música y de efectos, y **modo AFK** (no entras en las rondas hasta quitarlo; el modo solitario con NPCs no cuenta a los AFK). Los ajustes se guardan con tus datos; el modo AFK dura la sesión.
+
 **Espectar:** si estás en el lobby (esperando o eliminado) mientras se juega una ronda, el botón **👁 Espectar** (abajo al centro) te deja mirar la partida. `◀` `▶` (o las flechas del teclado) cambian entre supervivientes, NPCs y Verity, y **Salir** vuelve a tu personaje. Mientras espectas ves la luz del mapa, no la del lobby.
 
 ## Monedas y tienda
@@ -87,8 +89,10 @@ Durante la ronda nadie muestra la etiqueta de nombre, así que no delata a quien
 
 El **lobby** tiene una plaza con bancos, el puesto de la **tienda**, un rincón de **casino** y un **obby** sobre lava con un cofre de monedas al final. Lo iluminan apliques fijos en las paredes (encima de las ventanas, simétricos) y una lámpara de araña colgada del techo con una cadena.
 - **Sentarse:** los tableros de los bancos y los taburetes del casino son asientos (`Seat`): te sientas al tocarlos y te levantas saltando.
-- **Casino:** 4 tragamonedas de palanca (`E` cerca de la máquina). Tres rodillos, palanca animada, sonidos y luces de colores con jackpot. **Solo por diversión:** no se apuesta nada ni se ganan monedas; así no entra en las reglas de Roblox sobre juegos de azar ni sube la clasificación de edad. Símbolos, pesos y probabilidad de jackpot en `Config.Slots` (servidor: `Slots.luau`, animación: `Casino.luau`).
-- **Obby (difícil):** 17 plataformas pequeñas y separadas, dos vigas estrechas, 4 plataformas de cristal que parpadean y desaparecen 1,4 s, y una barra de lava giratoria que hay que saltar. Caer a la lava o tocar la barra te devuelve al inicio. Tiempos y velocidad en `Config.Obby`.
+- **Casino:** 8 tragamonedas de palanca (4 contra la pared delantera y 4 contra la izquierda, `E` cerca de la máquina). Tres rodillos, palanca animada, sonidos y luces de colores con jackpot. Símbolos, pesos y probabilidad de jackpot en `Config.Slots` (servidor: `Slots.luau`, animación: `Casino.luau`).
+- **Martillo de fuerza** (2 máquinas junto al casino): pulsa `E` y aparece una aguja que va y viene; golpea (botón, `E` o `Espacio`) en el momento justo. El disco sube por la torre hasta tu fuerza y, si llega a 95 o más, suena la campana. Encima se ve el récord del servidor (`Config.Striker`, servidor: `Arcade.luau`, cliente: `Striker.luau`).
+- Las máquinas son **solo por diversión:** no se apuesta nada ni se ganan monedas; así no entran en las reglas de Roblox sobre juegos de azar ni suben la clasificación de edad.
+- **Obby grande:** empieza dentro, junto a la plaza, sube por la lava interior y **sale por una puerta de la pared derecha** a un recorrido largo al aire libre sobre un lago de lava, con una viga, 3 plataformas de cristal que parpadean, una barra de lava lenta que gira y una isla final con el cofre y farolas. Dificultad normal (plataformas de 3,5-4 studs, huecos de 4-6). Caer a la lava o tocar la barra te devuelve al inicio. Tiempos y velocidad en `Config.Obby`.
 
 Para regenerarlos: `python3 tools/generate_world.py`. Para un mapa propio, copia la estructura `SurvivorSpawns` / `KillerSpawn` / `GoldSpawns` / `CraftingTables`.
 
@@ -115,13 +119,12 @@ Roblox no tiene crujidos de huesos públicos y ForgeGUI necesita un plan de pago
 Mientras sea `0`, el juego usa un sustituto con sonidos internos de Roblox.
 
 ## Música y efectos
-- Música de terror por capas (pistas oficiales de **DistroKid**, **APM** y **Pro Sound Effects**, licenciadas para experiencias de Roblox), pensada para que la tensión no baje:
-  - pista principal distinta en lobby, interiores, exteriores y resultados;
-  - en la ronda, un **zumbido metálico** y un **retumbar grave** de fondo; el zumbido sube de volumen y de tono con la tensión (Verity cerca, los segundos antes de que despierte, la revelación de cada minuto);
-  - **persecución** (*Intense Chase*, APM) que sube cuando Verity está cerca de alguien, mientras la música principal se agacha;
+- Audio de terror (pistas oficiales de **DistroKid**, **APM** y **Pro Sound Effects**, licenciadas para experiencias de Roblox):
+  - **la música solo suena en el lobby** (las pistas de partida); en el mapa no hay música;
+  - en la ronda, un **zumbido metálico** y un **retumbar grave** de ambiente; el zumbido sube de volumen y de tono con la tensión (Verity cerca, los segundos antes de que despierte, la revelación de cada minuto, el último minuto);
+  - **persecución industrial** cuando Verity está cerca de alguien, montada por capas en el cliente: el zumbido metálico (*METALLIC DRONE 03*, APM) acelerado, distorsionado y con temblor mecánico, **golpes de prensa hidráulica** distorsionados que se aceleran al acercarse y **chirridos de metal** al azar;
   - **latido** grave para los supervivientes cuando Verity está a menos de ~55 studs, cada vez más rápido;
-  - en el **último minuto**, la música cambia a una pista más urgente (*Running Faster*, APM).
-  - Se puede silenciar todo con el botón ♪.
+  - se puede silenciar todo con el botón ♪, y el volumen de música y efectos está en Ajustes.
 - Grito de muerte: *HORROR SCREAM 07* (APM).
 - Texturas de VFX generadas con **ForgeGUI**: destello, orbe, onda, salpicadura de líquido y gota (sangre).
 

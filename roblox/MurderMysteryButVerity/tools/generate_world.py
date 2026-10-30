@@ -1321,15 +1321,21 @@ LOBBY_Y = 300
 
 
 def build_obby(top):
-    """Recorrido de saltos sobre lava. Devuelve (piezas, plataformas)."""
+    """Obby grande sobre lava: empieza dentro del lobby, sale por una puerta de
+    la pared derecha (x=75) y sigue por un recorrido largo al aire libre hasta
+    una isla con el cofre. Dificultad normal: plataformas de 3,5-4 studs con
+    huecos de 4-6, unas pocas que parpadean (ObbyBlink = desfase en segundos)
+    y una barra de lava lenta que gira (ObbySweeper). Caer a la lava o tocar
+    la barra te devuelve al inicio (Lobby.luau)."""
     parts = []
-    # suelo de lava (te devuelve al inicio)
-    parts.append(part("Lava", (61, top + 0.15, -4), (26, 0.3, 92), (255, 70, 30), "Neon",
-                      attributes={"ObbyLava": True}))
+    lava = (255, 70, 30)
+    # lava de dentro (te devuelve al inicio) y borde que la separa de la plaza
+    parts.append(part("Lava", (61, top + 0.15, -4), (26, 0.3, 92), lava, "Neon", attributes={"ObbyLava": True}))
     parts.append(part("LavaGlow", (61, top + 3, -4), (0.5, 0.5, 0.5), (255, 90, 40), "Neon", Transparency=1, CanCollide=False,
                       children=[point_light((255, 90, 40), 40, 1.2)]))
-    # borde bajo que separa la lava de la plaza
     parts.append(part("Curb", (47.5, top + 0.75, -4), (1, 1.5, 92), (60, 50, 55), "Brick"))
+    # lago de lava de fuera, debajo de todo el recorrido exterior
+    parts.append(part("LavaLake", (141, top + 0.15, 6), (130, 0.3, 140), lava, "Neon", attributes={"ObbyLava": True}))
     # inicio
     parts.append(part("ObbyStart", (44, top + 0.5, 40), (6, 1, 6), (80, 220, 120), "Neon",
                       attributes={"ObbyStart": True}))
@@ -1339,18 +1345,20 @@ def build_obby(top):
     parts.append(part("ObbySign", (44, top + 7, 46.6), (10, 4, 0.5), (20, 14, 20), "SmoothPlastic",
                       children=[surface_text("Front", "OBBY\n<font color=\"#ffc83c\">premio al final</font>", 40,
                                                    translate="premio al final", wrap="OBBY\n<font color=\"#ffc83c\">{text}</font>")]))
-    # Recorrido difícil (de z=40 a z=-46, subiendo hasta 17 studs): plataformas
-    # pequeñas y separadas (~7-8 studs entre centros), dos vigas estrechas,
-    # plataformas que parpadean (ObbyBlink = desfase en segundos) y una barra
-    # de lava que gira sobre una plataforma ancha (ObbySweeper). Caer a la
-    # lava o tocar la barra te devuelve al inicio (Lobby.luau).
     # (x, z, altura, tamaño (lado o (x, y, z)), tipo)
     steps = [
-        (52, 40, 1.5, 2.5, ""), (58, 35, 2.5, 2.2, ""), (65, 31, 3.5, 2, ""), (70, 25, 4.5, 2, "blink"),
-        (64, 20, 5.5, 2, ""), (57, 14, 6, (1, 0.6, 7), "beam"), (57, 4, 7, 2, ""), (63, -1, 8, 2, "blink"),
-        (69, -6, 9, 1.8, ""), (63, -12, 10, 4.5, "sweeper"), (56, -16, 11, 2, ""), (51, -22, 12, 1.8, "blink"),
-        (56, -28, 13, 1.8, ""), (62, -32, 14, 1.6, ""), (68.5, -36, 15, (7, 0.6, 1), "beam"), (71, -42, 16, 1.6, "blink"),
-        (65.5, -45, 17, 1.6, ""),
+        # dentro: de la salida hacia la puerta, subiendo poco a poco
+        (52, 40, 1.5, 4, ""), (59, 35, 2.5, 4, ""), (66, 30, 3.5, 4, ""), (66, 22, 4, 3.5, ""), (60, 16, 4.5, 3.5, ""),
+        (60, 8, 5, 3.5, ""), (66, 2, 5.5, 3.5, ""),
+        # puente que cruza la puerta
+        (78, -6, 6, (12, 1, 4), "bridge"),
+        # fuera
+        (90, -6, 6.5, 4, ""), (97, -12, 7, 4, ""), (104, -18, 7.5, 3.5, ""), (111, -24, 8, 3.5, ""),
+        (122, -24, 8.5, (12, 0.8, 1.8), "beam"),
+        (133, -18, 9, 4, "blink"), (139, -11, 9.5, 4, "blink"), (145, -4, 10, 4, "blink"),
+        (155, 2, 10.5, (9, 1, 9), "sweeper"),
+        (165, 10, 11, 3.5, ""), (171, 17, 11.5, 3.5, ""), (165, 24, 12, 3.5, ""), (171, 31, 12.5, 3.5, ""),
+        (178, 38, 13, 3.5, ""), (186, 42, 13.5, 3.5, ""), (194, 38, 14, 3.5, ""),
     ]
     colors = [(255, 80, 120), (255, 180, 60), (90, 200, 255), (160, 110, 255)]
     blink_n = 0
@@ -1359,24 +1367,34 @@ def build_obby(top):
         name = f"Step{i + 1}"
         if kind == "blink":
             parts.append(part(name, (x, top + y, z), dims, (120, 230, 255), "Glass", Transparency=0.15,
-                              attributes={"ObbyBlink": blink_n * 0.9}))
+                              attributes={"ObbyBlink": blink_n * 1.2}))
             blink_n += 1
-        elif kind == "beam":
-            parts.append(part(name, (x, top + y, z), dims, (200, 200, 210), "Metal"))
+        elif kind in ("beam", "bridge"):
+            parts.append(part(name, (x, top + y, z), dims, (110, 74, 50), "WoodPlanks"))
         else:
             parts.append(part(name, (x, top + y, z), dims, colors[i % 4], "SmoothPlastic"))
         if kind == "sweeper":
-            # barra de lava que gira a ras de la plataforma: hay que saltarla
-            parts.append(part("Sweeper", (x, top + y + 1.2, z), (9, 0.6, 0.6), (255, 70, 30), "Neon", CanCollide=False,
+            # barra de lava que gira lenta a ras de la plataforma: hay que saltarla
+            parts.append(part("Sweeper", (x, top + y + 1.2, z), (9, 0.6, 0.6), lava, "Neon", CanCollide=False,
                               attributes={"ObbySweeper": True, "ObbyLava": True}))
             parts.append(part("SweeperHub", (x, top + y + 1.2, z), (1, 1.2, 1), (60, 60, 66), "Metal", CanCollide=False))
-    # meta con cofre
-    parts.append(part("GoalPad", (59, top + 17.5, -46), (6, 1, 6), (255, 200, 60), "Neon"))
-    chest = [
-        part("Chest", (59, top + 19, -48), (4, 2, 2.6), (120, 80, 45), "WoodPlanks", attributes={"ObbyGoal": True}),
-        part("ChestLid", (59, top + 20.3, -48), (4.1, 0.6, 2.7), (255, 200, 60), "Foil", attributes={"ObbyGoal": True}),
+    # isla final con el cofre y farolas (luces sobre postes, nada flota)
+    gx, gz, gy = 202, 28, 14.5
+    parts.append(part("GoalIsland", (gx, top + gy, gz), (12, 1, 12), (70, 110, 60), "Grass"))
+    parts.append(part("GoalPad", (gx, top + gy + 0.55, gz), (6, 0.1, 6), (255, 200, 60), "Neon", CanCollide=False))
+    parts += [
+        part("Chest", (gx, top + gy + 1.5, gz - 2), (4, 2, 2.6), (120, 80, 45), "WoodPlanks", attributes={"ObbyGoal": True}),
+        part("ChestLid", (gx, top + gy + 2.8, gz - 2), (4.1, 0.6, 2.7), (255, 200, 60), "Foil", attributes={"ObbyGoal": True}),
     ]
-    parts += chest
+    for lx, lz in ((gx - 5, gz + 5), (gx + 5, gz + 5), (gx - 5, gz - 5), (gx + 5, gz - 5)):
+        parts.append(part("GoalPole", (lx, top + gy + 3.5, lz), (0.4, 6, 0.4), (30, 30, 34), "Metal"))
+        parts.append(part("GoalLamp", (lx, top + gy + 6.9, lz), (1, 1, 1), (255, 200, 120), "Neon", CanCollide=False,
+                          children=[point_light((255, 190, 120), 18, 0.9)]))
+    # farolas en el puente de salida
+    for lz in (-8.6, -3.4):
+        parts.append(part("BridgePole", (82, top + 8.5, lz), (0.3, 4, 0.3), (30, 30, 34), "Metal"))
+        parts.append(part("BridgeLamp", (82, top + 10.8, lz), (0.8, 0.8, 0.8), (255, 200, 120), "Neon", CanCollide=False,
+                          children=[point_light((255, 190, 120), 14, 0.8)]))
     return parts
 
 
@@ -1400,11 +1418,24 @@ def sconce(x, z, nx, nz, y):
     ])
 
 
-def slot_machine(cx, cz, top):
-    """Tragamonedas de palanca mirando a -Z (hacia la sala), con taburete
-    delante. Solo por diversión: no se apuesta nada (Slots.luau / Casino.luau).
-    La palanca está a la derecha de quien juega (-X)."""
-    front = cz - 1.5
+def oriented(cx, cz, top, yaw):
+    """Coloca piezas en coordenadas locales de un objeto girado `yaw` sobre Y
+    (su frente mira a -Z local). El tamaño de cada pieza va en sus ejes."""
+    R = ry(yaw)
+
+    def at(name, lx, ly, lz, size, color, mat="SmoothPlastic", orient=None, **props):
+        x = cx + R[0][0] * lx + R[0][2] * lz
+        z = cz + R[2][0] * lx + R[2][2] * lz
+        return part(name, (x, top + ly, z), size, color, mat, orientation=matmul(R, orient) if orient else R, **props)
+    return at
+
+
+def slot_machine(cx, cz, top, yaw=0.0):
+    """Tragamonedas de palanca con taburete delante. Su frente mira a -Z local
+    (yaw lo gira). Solo por diversión: no se apuesta nada (Slots.luau /
+    Casino.luau). La palanca está a la derecha de quien juega (-X local)."""
+    at = oriented(cx, cz, top, yaw)
+    front = -1.5
     prompt = {
         "className": "ProximityPrompt",
         "properties": {"ActionText": "Tirar de la palanca", "ObjectText": "Tragamonedas", "HoldDuration": 0,
@@ -1412,28 +1443,56 @@ def slot_machine(cx, cz, top):
         "attributes": {"SlotLever": True},
     }
     parts = [
-        part("Cabinet", (cx, top + 3, cz), (4, 6, 3), (120, 16, 30), "SmoothPlastic", children=[prompt]),
-        part("TrimL", (cx - 2.05, top + 3, cz), (0.15, 6, 3.05), GOLD, "Metal"),
-        part("TrimR", (cx + 2.05, top + 3, cz), (0.15, 6, 3.05), GOLD, "Metal"),
-        part("TopSign", (cx, top + 6.7, cz), (4.2, 1.4, 3.2), (30, 20, 30), "SmoothPlastic",
-             children=[surface_text("Front", "<font color=\"#ffc83c\">7</font> <font color=\"#ff3b4e\">7</font> <font color=\"#ffc83c\">7</font>", 40)]),
-        part("TopLight", (cx, top + 7.55, cz), (4.2, 0.3, 3.2), (255, 200, 60), "Neon",
-             children=[point_light((255, 190, 100), 10, 0.8)]),
-        part("Bezel", (cx, top + 4.2, front + 0.07), (3.6, 2.8, 0.15), GOLD, "Metal"),
-        part("Screen", (cx, top + 4.2, front - 0.1), (3.2, 2.4, 0.2), (10, 8, 14), "SmoothPlastic"),
-        part("Panel", (cx, top + 2.6, front - 0.6), (4, 0.4, 1.2), (40, 30, 40), "SmoothPlastic"),
-        part("Button", (cx + 0.9, top + 2.88, front - 0.6), (0.6, 0.16, 0.6), (255, 60, 70), "Neon"),
-        part("Tray", (cx, top + 1.2, front - 0.3), (2.4, 0.5, 0.6), (60, 60, 66), "Metal"),
-        part("LeverBase", (cx - 2.3, top + 4, cz), (0.6, 0.8, 0.8), (60, 60, 66), "Metal"),
-        part("LeverArm", (cx - 2.45, top + 5.2, cz), (0.25, 2.4, 0.25), (200, 200, 210), "Metal", CanCollide=False),
-        part("LeverKnob", (cx - 2.45, top + 6.5, cz), (0.8, 0.8, 0.8), (220, 30, 40), "SmoothPlastic", Shape="Ball", CanCollide=False),
+        at("Cabinet", 0, 3, 0, (4, 6, 3), (120, 16, 30), children=[prompt]),
+        at("TrimL", -2.05, 3, 0, (0.15, 6, 3.05), GOLD, "Metal"),
+        at("TrimR", 2.05, 3, 0, (0.15, 6, 3.05), GOLD, "Metal"),
+        at("TopSign", 0, 6.7, 0, (4.2, 1.4, 3.2), (30, 20, 30),
+           children=[surface_text("Front", "<font color=\"#ffc83c\">7</font> <font color=\"#ff3b4e\">7</font> <font color=\"#ffc83c\">7</font>", 40)]),
+        at("TopLight", 0, 7.55, 0, (4.2, 0.3, 3.2), (255, 200, 60), "Neon", children=[point_light((255, 190, 100), 10, 0.8)]),
+        at("Bezel", 0, 4.2, front + 0.07, (3.6, 2.8, 0.15), GOLD, "Metal"),
+        at("Screen", 0, 4.2, front - 0.1, (3.2, 2.4, 0.2), (10, 8, 14)),
+        at("Panel", 0, 2.6, front - 0.6, (4, 0.4, 1.2), (40, 30, 40)),
+        at("Button", 0.9, 2.88, front - 0.6, (0.6, 0.16, 0.6), (255, 60, 70), "Neon"),
+        at("Tray", 0, 1.2, front - 0.3, (2.4, 0.5, 0.6), (60, 60, 66), "Metal"),
+        at("LeverBase", -2.3, 4, 0, (0.6, 0.8, 0.8), (60, 60, 66), "Metal"),
+        at("LeverArm", -2.45, 5.2, 0, (0.25, 2.4, 0.25), (200, 200, 210), "Metal", CanCollide=False),
+        at("LeverKnob", -2.45, 6.5, 0, (0.8, 0.8, 0.8), (220, 30, 40), Shape="Ball", CanCollide=False),
         # taburete: un Seat (al tocarlo te sientas; salta para levantarte)
-        part("StoolFoot", (cx, top + 0.1, cz - 4), (1.4, 0.2, 1.4), (40, 32, 30), "Metal"),
-        part("StoolPole", (cx, top + 1.15, cz - 4), (0.4, 1.9, 0.4), (40, 32, 30), "Metal"),
-        part("Stool", (cx, top + 2.3, cz - 4), (1.8, 0.4, 1.8), (200, 30, 45), "Fabric", class_name="Seat", orientation=YAW180),
+        at("StoolFoot", 0, 0.1, -4, (1.4, 0.2, 1.4), (40, 32, 30), "Metal"),
+        at("StoolPole", 0, 1.15, -4, (0.4, 1.9, 0.4), (40, 32, 30), "Metal"),
+        at("Stool", 0, 2.3, -4, (1.8, 0.4, 1.8), (200, 30, 45), "Fabric", orient=YAW180, class_name="Seat"),
     ]
     node = container("Model", "SlotMachine", parts)
     node["attributes"] = {"SlotMachine": True}
+    return node
+
+
+def striker(cx, cz, top, yaw=0.0):
+    """Martillo de fuerza de feria: torre con escala, disco que sube por un
+    riel y campana arriba. Se juega con E (Arcade.luau / Striker.luau)."""
+    at = oriented(cx, cz, top, yaw)
+    prompt = {
+        "className": "ProximityPrompt",
+        "properties": {"ActionText": "Golpear", "ObjectText": "Martillo de fuerza", "HoldDuration": 0,
+                       "MaxActivationDistance": 8, "RequiresLineOfSight": False},
+        "attributes": {"StrikerPrompt": True},
+    }
+    parts = [
+        at("Base", 0, 0.2, 0, (4.5, 0.4, 4), (70, 46, 32), "WoodPlanks", children=[prompt]),
+        at("Pad", 0, 0.65, -0.6, (1.6, 0.5, 1.6), (200, 30, 40)),
+        at("Tower", 0, 8, 1.4, (1.4, 15, 0.6), (240, 236, 225)),
+        at("Rail", 0, 8, 1.0, (0.2, 15, 0.2), (150, 155, 165), "Metal"),
+        at("Puck", 0, 1.6, 0.85, (0.9, 0.6, 0.5), (255, 200, 60), "Neon", CanCollide=False),
+        at("Bell", 0, 16.4, 1.4, (2.2, 2.2, 2.2), (255, 200, 60), "Foil", Shape="Ball"),
+        at("TopSign", 0, 18.6, 1.4, (5, 1.6, 0.4), (20, 14, 20),
+           children=[surface_text("Front", "<font color=\"#ffc83c\">¡PRUEBA TU FUERZA!</font>", 40,
+                                  translate="¡PRUEBA TU FUERZA!", wrap="<font color=\"#ffc83c\">{text}</font>")]),
+        # martillo apoyado junto a la base
+        at("HammerHandle", 1.9, 1.9, -0.6, (0.3, 3.4, 0.3), (110, 74, 50), "Wood"),
+        at("HammerHead", 1.9, 3.7, -0.6, (1.4, 0.9, 0.9), (60, 60, 66), "Metal"),
+    ]
+    node = container("Model", "Striker", parts)
+    node["attributes"] = {"Striker": True}
     return node
 
 
@@ -1446,11 +1505,17 @@ def build_lobby():
     c.append(part("Plaza", (0, top + 0.03, 0), (44, 0.06, 56), (150, 140, 130), "Marble", CanCollide=False))
     c.append(part("Rug", (0, top + 0.08, 8), (14, 0.06, 30), (110, 22, 32), "Fabric", CanCollide=False))
     wall_c, wall_m = (58, 44, 56), "Plaster"
-    for (px, pz, sx, sz) in [(0, -55, 150, 2), (0, 55, 150, 2), (-75, 0, 2, 110), (75, 0, 2, 110)]:
+    # pared derecha partida por la puerta del obby (z de -14 a 2)
+    walls = [(0, -55, 150, 2), (0, 55, 150, 2), (-75, 0, 2, 110), (75, -34.5, 2, 41), (75, 28.5, 2, 53)]
+    for (px, pz, sx, sz) in walls:
         c.append(part("WallLow", (px, top + 3, pz), (sx, 6, sz), wall_c, wall_m))
         c.append(part("WallHigh", (px, top + 22, pz), (sx, 16, sz), wall_c, wall_m))
         c.append(part("Window", (px, top + 10, pz), (sx * 0.98 if sx > 2 else 0.4, 8, sz * 0.98 if sz > 2 else 0.4),
                       (90, 70, 140), "Glass", Transparency=0.55))
+    c.append(part("DoorLintel", (75, top + 23, -6), (2, 14, 16), wall_c, wall_m))
+    for dz in (-14.4, 2.4):
+        c.append(part("DoorPost", (75, top + 8, dz), (2.6, 16, 0.8), DARK_WOOD, "Wood"))
+    c.append(part("DoorHeader", (75, top + 16.4, -6), (2.6, 0.8, 17.6), DARK_WOOD, "Wood"))
     for x in (-74, -37, 37, 74):
         for z in (-54, 54):
             c.append(part("Pillar", (x, top + H / 2, z), (3, H, 3), (40, 30, 38), "Marble"))
@@ -1474,7 +1539,8 @@ def build_lobby():
         c.append(sconce(x, 54, 0, -1, lamp_y))
     for z in (-27, 0, 27):  # paredes laterales (la derecha ilumina el obby)
         c.append(sconce(-74, z, 1, 0, lamp_y))
-        c.append(sconce(74, z, -1, 0, lamp_y))
+        # en la derecha, el del centro va encima de la puerta del obby
+        c.append(sconce(74, -6 if z == 0 else z, -1, 0, lamp_y + 1.5 if z == 0 else lamp_y))
     # bancos alrededor de la plaza: el tablero son tres asientos (Seat), te
     # sientas al tocarlos mirando a la plaza y te levantas saltando
     for x in (-18, 18):
@@ -1493,8 +1559,14 @@ def build_lobby():
     c.append(part("CasinoCarpet", (-53, top + 0.05, 47.5), (30, 0.06, 12), (90, 15, 30), "Fabric", CanCollide=False))
     c.append(part("CasinoSign", (-53, top + 10.2, 53.6), (16, 3, 0.4), (20, 14, 20), "SmoothPlastic",
                   children=[surface_text("Front", "<font color=\"#ffc83c\">★</font> CASINO <font color=\"#ffc83c\">★</font>", 40)]))
-    for x in (-62, -56, -50, -44):
+    for x in (-62, -56, -50, -44):  # fila contra la pared delantera
         c.append(slot_machine(x, 51, top))
+    c.append(part("CasinoCarpet2", (-68, top + 0.02, 34), (10, 0.06, 26), (90, 15, 30), "Fabric", CanCollide=False))
+    for z in (44, 38, 32, 26):  # fila contra la pared izquierda, mirando a la sala (+X)
+        c.append(slot_machine(-71.5, z, top, yaw=-math.pi / 2))
+    # dos martillos de fuerza junto al casino
+    for x in (-33, -23):
+        c.append(striker(x, 50, top))
 
     # cartel en la pared del fondo, visible desde el spawn
     c.append(part("Sign", (0, top + 20, -53.6), (46, 9, 0.6), (20, 14, 20), "SmoothPlastic",

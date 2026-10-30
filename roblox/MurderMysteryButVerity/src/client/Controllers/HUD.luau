@@ -448,7 +448,13 @@ local function update()
 
 	phaseLabel.Text = T(PHASE_TEXT[phase] or phase)
 	if phase == "Waiting" then
-		timerLabel.Text = `{#Players:GetPlayers()}/{Config.Round.MinPlayers}`
+		local ready = 0
+		for _, other in Players:GetPlayers() do
+			if not other:GetAttribute("AFK") then
+				ready += 1
+			end
+		end
+		timerLabel.Text = `{ready}/{Config.Round.MinPlayers}`
 	elseif endsAt > 0 then
 		timerLabel.Text = formatTime(remaining)
 	else
@@ -459,8 +465,16 @@ local function update()
 
 	-- Línea de información contextual
 	local info = ""
-	if phase == "Waiting" or phase == "Intermission" or role == "Lobby" then
-		if #Players:GetPlayers() == 1 and Config.Round.SoloBots then
+	local active = 0 -- jugadores que no están AFK
+	for _, other in Players:GetPlayers() do
+		if not other:GetAttribute("AFK") then
+			active += 1
+		end
+	end
+	if (phase == "Waiting" or phase == "Intermission" or role == "Lobby") and player:GetAttribute("AFK") then
+		info = `<font color="#ffbe5a"><b>{T("Modo AFK")}</b></font>  ·  ` .. T("No entrarás en las rondas hasta quitarlo")
+	elseif phase == "Waiting" or phase == "Intermission" or role == "Lobby" then
+		if active == 1 and Config.Round.SoloBots then
 			-- en solitario se alterna: una ronda Verity, otra superviviente
 			local isVerity = not player:GetAttribute("RotationDone")
 			local nextRole = if isVerity then T("Verity") else T("Superviviente")

@@ -44,10 +44,21 @@ local function setPhase(phase: string, duration: number?)
 	Workspace:SetAttribute("PhaseEndsAt", if duration then now() + duration else 0)
 end
 
+-- Jugadores que no están en modo AFK (botón de ajustes).
+local function activeCount(): number
+	local count = 0
+	for _, player in Players:GetPlayers() do
+		if not player:GetAttribute("AFK") then
+			count += 1
+		end
+	end
+	return count
+end
+
 local function eligiblePlayers(): { Player }
 	local list = {}
 	for _, player in Players:GetPlayers() do
-		if PlayerData.isLoaded(player) and player.Character then
+		if PlayerData.isLoaded(player) and player.Character and not player:GetAttribute("AFK") then
 			table.insert(list, player)
 		end
 	end
@@ -108,9 +119,9 @@ local function onTotem(who: Instance): boolean
 	return true
 end
 
--- Un solo jugador en todo el servidor: la partida se completa con NPCs.
+-- Un solo jugador (sin contar a los AFK): la partida se completa con NPCs.
 local function isSolo(): boolean
-	return R.SoloBots and #Players:GetPlayers() == 1
+	return R.SoloBots and activeCount() == 1
 end
 
 -- Se puede jugar con MinPlayers jugadores reales, o en solitario con NPCs.
@@ -378,7 +389,7 @@ local function playRound()
 		task.wait(0.25)
 		-- Partida en solitario y entra otro jugador: fuera NPCs, se cancela la
 		-- ronda (sin premios) y la siguiente ya es entre jugadores reales.
-		if solo and #Players:GetPlayers() > 1 then
+		if solo and activeCount() > 1 then
 			winner = "Cancelled"
 			VerityBot.stop()
 			Bots.stop()

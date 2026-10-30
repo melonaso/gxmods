@@ -6,11 +6,12 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 
--- Remotes cliente -> servidor: "Action" (Shift, C, Q) y "ShopRequest"
--- (comprar/equipar). El servidor valida rol, precio y límites.
-export type RemoteName = "Notify" | "RoleReveal" | "RoundResult" | "Effect" | "Action" | "ShopRequest"
+-- Remotes cliente -> servidor: "Action" (Shift, C, Q), "ShopRequest"
+-- (comprar/equipar), "Settings" (ajustes y AFK) y "Minigame" (máquinas del
+-- lobby; también servidor -> cliente). El servidor valida todo.
+export type RemoteName = "Notify" | "RoleReveal" | "RoundResult" | "Effect" | "Action" | "ShopRequest" | "Settings" | "Minigame"
 
-local NAMES: { RemoteName } = { "Notify", "RoleReveal", "RoundResult", "Effect", "Action", "ShopRequest" }
+local NAMES: { RemoteName } = { "Notify", "RoleReveal", "RoundResult", "Effect", "Action", "ShopRequest", "Settings", "Minigame" }
 local FOLDER_NAME = "Remotes"
 
 local Net = {}

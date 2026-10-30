@@ -7,6 +7,7 @@ Key,Source,Context,Example,en
 Abrir tienda,Abrir tienda,,src/world/Lobby.model.json,Open shop
 Adquirido,Adquirido,,src/client/Controllers/Shop.luau,Owned
 Agacharse,Agacharse,,src/client/Controllers/HUD.luau,Crouch
+AJUSTES,AJUSTES,,src/client/Controllers/Settings.luau,SETTINGS
 Atrapar,Atrapar,,src/client/Controllers/HUD.luau,Grab
 atrapar,atrapar,,src/server/Systems/Round.luau,grab
 Banco,Banco,,map,Bank
@@ -20,6 +21,8 @@ Bobina de velocidad,Bobina de velocidad,,src/shared/Config.luau,Speed Coil
 Bosque Nocturno,Bosque Nocturno,,map,Night Forest
 Botiquín,Botiquín,,src/shared/Config.luau,Medkit
 Brillo radiactivo verde.,Brillo radiactivo verde.,,src/shared/Config.luau,Green radioactive glow.
+Cajas de los jugadores y alcance de Verity,Cajas de los jugadores y alcance de Verity,,src/client/Controllers/Settings.luau,Player boxes and Verity's reach
+Calidad baja,Calidad baja,,src/client/Controllers/Settings.luau,Low quality
 Capa fantasma,Capa fantasma,,src/shared/Config.luau,Ghost Cloak
 Cementerio,Cementerio,,map,Graveyard
 Cepo,Cepo,,src/shared/Config.luau,Bear Trap
@@ -42,6 +45,7 @@ Depositar oro,Depositar oro,,src/server/Systems/Crafting.luau,Deposit gold
 Despierta y atrápalos a todos,Despierta y atrápalos a todos,,src/client/Controllers/Cinematics.luau,Wake up and catch them all
 Doble probabilidad de ser Verity en cada ronda.,Doble probabilidad de ser Verity en cada ronda.,,src/shared/Config.luau,Double chance to be Verity every round.
 Dorada,Dorada,,src/shared/Config.luau,Golden
+Efectos,Efectos,,src/client/Controllers/Settings.luau,Effects
 El radar no detecta a nadie.,El radar no detecta a nadie.,,src/server/Systems/Items.luau,The radar detects no one.
 El reloj ya no puede acelerarse más esta ronda.,El reloj ya no puede acelerarse más esta ronda.,,src/server/Systems/Crafting.luau,The clock can't be sped up any further this round.
 Entró otro jugador. La próxima ronda es entre jugadores reales.,Entró otro jugador. La próxima ronda es entre jugadores reales.,,src/client/Controllers/HUD.luau,Another player joined. The next round is between real players.
@@ -60,8 +64,10 @@ Espectar,Espectar,,src/client/Controllers/Spectate.luau,Spectate
 Espectral,Espectral,,src/shared/Config.luau,Spectral
 ESPERANDO JUGADORES,ESPERANDO JUGADORES,,src/client/Controllers/HUD.luau,WAITING FOR PLAYERS
 FIN DE LA RONDA,FIN DE LA RONDA,,src/client/Controllers/HUD.luau,ROUND OVER
+Fuerza: {power},Fuerza: {power},,src/server/Systems/Arcade.luau,Strength: {power}
 FUS,FUS,,src/shared/Config.luau,FUS
 Fábrica,Fábrica,,map,Factory
+Golpear,Golpear,,src/world/Lobby.model.json,Strike
 Gotea sangre al caminar.,Gotea sangre al caminar.,,src/shared/Config.luau,Drips blood as she walks.
 GRV,GRV,,src/shared/Config.luau,GRV
 Has caído. La ronda termina en {seconds} s.,Has caído. La ronda termina en {seconds} s.,,src/server/Systems/Round.luau,You fell. The round ends in {seconds} s.
@@ -78,12 +84,16 @@ Los supervivientes están marcados en rojo.,Los supervivientes están marcados e
 Mansión,Mansión,,map,Mansion
 Mapa: {map},Mapa: {map},,src/server/Systems/Round.luau,Map: {map}
 Martillo de empuje,Martillo de empuje,,src/shared/Config.luau,Push Hammer
+Martillo de fuerza,Martillo de fuerza,,src/world/Lobby.model.json,Strength tester
 Mesa de crafteo,Mesa de crafteo,,src/server/Systems/Crafting.luau,Crafting table
+Modo AFK,Modo AFK,,src/client/Controllers/HUD.luau,AFK mode
 "Morada, con un aura del más allá.","Morada, con un aura del más allá.",,src/shared/Config.luau,"Purple, with an otherworldly aura."
 MRT,MRT,,src/shared/Config.luau,HMR
+Música,Música,,src/client/Controllers/Settings.luau,Music
 nadie,nadie,,src/client/Controllers/HUD.luau,no one
 Necesitas bloques de oro. ¡Búscalos por el mapa!,Necesitas bloques de oro. ¡Búscalos por el mapa!,,src/server/Systems/Crafting.luau,You need gold blocks. Look for them around the map!
 "Negra como la noche, contorno rojo.","Negra como la noche, contorno rojo.",,src/shared/Config.luau,"Black as night, red outline."
+No entrarás en las rondas hasta quitarlo,No entrarás en las rondas hasta quitarlo,,src/client/Controllers/HUD.luau,You won't join rounds until you turn it off
 NRG,NRG,,src/shared/Config.luau,NRG
 obby completado,obby completado,,src/server/Systems/Lobby.luau,obby completed
 Objetos,Objetos,,src/client/Controllers/Shop.luau,Items
@@ -112,10 +122,14 @@ Revelación en {seconds},Revelación en {seconds},,src/client/Controllers/HUD.lu
 RONDA CANCELADA,RONDA CANCELADA,,src/client/Controllers/HUD.luau,ROUND CANCELLED
 ronda en curso,ronda en curso,,src/client/Controllers/HUD.luau,round in progress
 Rotación: {done}/{total} ya fueron Verity,Rotación: {done}/{total} ya fueron Verity,,src/client/Controllers/HUD.luau,Rotation: {done}/{total} have been Verity
+Récord: {name} ({power}),Récord: {name} ({power}),,src/client/Controllers/Striker.luau,Record: {name} ({power})
 Salir,Salir,,src/client/Controllers/Spectate.luau,Leave
 Saltos enormes: la gravedad te afecta mucho menos.,Saltos enormes: la gravedad te afecta mucho menos.,,src/shared/Config.luau,Huge jumps: gravity affects you much less.
 Sangrienta,Sangrienta,,src/shared/Config.luau,Bloody
+Se guardan automáticamente,Se guardan automáticamente,,src/client/Controllers/Settings.luau,Saved automatically
 "Semitransparente, como un fantasma.","Semitransparente, como un fantasma.",,src/shared/Config.luau,"See-through, like a ghost."
+Sin récord todavía,Sin récord todavía,,src/client/Controllers/Striker.luau,No record yet
+"Sin sombras, partículas ni efectos: más FPS","Sin sombras, partículas ni efectos: más FPS",,src/client/Controllers/Settings.luau,"No shadows, particles or effects: more FPS"
 Skin {skin} comprada y equipada.,Skin {skin} comprada y equipada.,,src/server/Systems/Shop.luau,Skin {skin} bought and equipped.
 Skins de Verity,Skins de Verity,,src/client/Controllers/Shop.luau,Verity skins
 SOBREVIVE,SOBREVIVE,,src/client/Controllers/HUD.luau,SURVIVE
@@ -142,6 +156,7 @@ Tóxica,Tóxica,,src/shared/Config.luau,Toxic
 Vacío,Vacío,,src/shared/Config.luau,Void
 VEL,VEL,,src/shared/Config.luau,SPD
 Velocidad y gravedad baja a la vez.,Velocidad y gravedad baja a la vez.,,src/shared/Config.luau,Speed and low gravity at once.
+Ver hitboxes,Ver hitboxes,,src/client/Controllers/Settings.luau,Show hitboxes
 Verity,Verity,,src/client/Controllers/HUD.luau,Verity
 Verity abandonó la partida.,Verity abandonó la partida.,,src/server/Systems/Round.luau,Verity left the game.
 Verity atrapó a {name},Verity atrapó a {name},,src/server/Systems/Round.luau,Verity caught {name}
@@ -161,10 +176,14 @@ Ya tienes 2 cepos colocados.,Ya tienes 2 cepos colocados.,,src/server/Systems/It
 ¡Bolsa de monedas llena!,¡Bolsa de monedas llena!,,src/server/Systems/Coins.luau,Coin bag full!
 ¡Casi!,¡Casi!,,src/client/Controllers/Casino.luau,So close!
 ¡Casi! Dos iguales,¡Casi! Dos iguales,,src/server/Systems/Slots.luau,So close! Two of a kind
+¡DING! Fuerza {power},¡DING! Fuerza {power},,src/server/Systems/Arcade.luau,DING! Strength {power}
 ¡Estamina infinita durante {seconds} s!,¡Estamina infinita durante {seconds} s!,,src/server/Systems/Items.luau,Unlimited stamina for {seconds} s!
+¡GOLPEAR!,¡GOLPEAR!,,src/client/Controllers/Striker.luau,STRIKE!
 ¡JACKPOT!,¡JACKPOT!,,src/client/Controllers/Casino.luau,JACKPOT!
 ¡JACKPOT! Tres {symbol} (solo por diversión),¡JACKPOT! Tres {symbol} (solo por diversión),,src/server/Systems/Slots.luau,JACKPOT! Three {symbol} (just for fun)
 ¡Listo para craftear!,¡Listo para craftear!,,src/server/Systems/Crafting.luau,Ready to craft!
+¡PRUEBA TU FUERZA!,¡PRUEBA TU FUERZA!,,src/world/Lobby.model.json,TEST YOUR STRENGTH!
+¡Pulsa en el momento justo!,¡Pulsa en el momento justo!,,src/client/Controllers/Striker.luau,Hit at the right moment!
 ¡Revelados!,¡Revelados!,,src/client/Controllers/HUD.luau,Revealed!
 ¡Suerte!,¡Suerte!,,src/client/Controllers/Casino.luau,Good luck!
 ¡Verity ha sido liberada!,¡Verity ha sido liberada!,,src/server/Systems/Round.luau,Verity has been released!

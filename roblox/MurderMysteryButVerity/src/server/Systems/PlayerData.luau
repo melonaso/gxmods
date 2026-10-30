@@ -32,7 +32,10 @@ export type Data = {
 	skins: { string }, -- skins de Verity compradas
 	skin: string, -- skin equipada
 	receipts: { string },
+	settings: Settings, -- ajustes del jugador (volumen, calidad, hitboxes)
 }
+
+export type Settings = { music: number, effects: number, lowQuality: boolean, hitboxes: boolean }
 
 local MAX_STORED_RECEIPTS = 50
 local STORE_NAME = "SurviveAVerity_v1"
@@ -121,7 +124,20 @@ local function defaults(): Data
 		skins = { "Classic" },
 		skin = "Classic",
 		receipts = {},
+		settings = { music = 1, effects = 1, lowQuality = false, hitboxes = false },
 	}
+end
+
+-- Ajustes válidos a partir de lo que mande el cliente o haya guardado.
+local function sanitizeSettings(raw: any): Settings
+	local s = { music = 1, effects = 1, lowQuality = false, hitboxes = false }
+	if typeof(raw) == "table" then
+		s.music = math.clamp(tonumber(raw.music) or 1, 0, 1)
+		s.effects = math.clamp(tonumber(raw.effects) or 1, 0, 1)
+		s.lowQuality = raw.lowQuality == true
+		s.hitboxes = raw.hitboxes == true
+	end
+	return s
 end
 
 local function stringList(raw: any): { string }
@@ -165,6 +181,7 @@ local function sanitize(raw: any): Data
 		end
 		data.skin = if typeof(raw.skin) == "string" and table.find(data.skins, raw.skin) then raw.skin else "Classic"
 		data.receipts = stringList(raw.receipts)
+		data.settings = sanitizeSettings(raw.settings)
 	end
 	return data
 end
@@ -181,6 +198,7 @@ local function publish(player: Player)
 	player:SetAttribute("EquippedItems", HttpService:JSONEncode(data.equipped))
 	player:SetAttribute("OwnedSkins", HttpService:JSONEncode(data.skins))
 	player:SetAttribute("Skin", data.skin)
+	player:SetAttribute("Settings", HttpService:JSONEncode(data.settings))
 	local leaderstats = player:FindFirstChild("leaderstats")
 	if leaderstats then
 		local wins = leaderstats:FindFirstChild("Victorias")
@@ -247,6 +265,14 @@ function PlayerData.save(player: Player, release: boolean?): boolean
 	local ok = write(player, data, release == true)
 	saving[player] = nil
 	return ok
+end
+
+function PlayerData.setSettings(player: Player, raw: any)
+	local data = sessions[player]
+	if data then
+		data.settings = sanitizeSettings(raw)
+		publish(player)
+	end
 end
 
 -- Monedas -----------------------------------------------------------------
