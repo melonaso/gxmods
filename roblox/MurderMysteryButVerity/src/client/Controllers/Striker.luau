@@ -150,8 +150,9 @@ local function watch(machine: Instance)
 		UI.new("Frame", { AnchorPoint = Vector2.new(0, 0.5), Position = UDim2.fromScale(0, 1 - k / 10), Size = UDim2.new(0.35, 0, 0, 2),
 			BackgroundColor3 = Color3.new(0, 0, 0), BackgroundTransparency = 0.4, BorderSizePixel = 0, Parent = scale })
 	end
-	local record = UI.new("BillboardGui", { Adornee = bell, Size = UDim2.fromOffset(220, 30), StudsOffset = Vector3.new(0, 4.6, 0),
-		MaxDistance = 70, LightInfluence = 0, Parent = bell })
+	-- solo se ve de cerca (no tapa la pantalla desde el otro lado del lobby)
+	local record = UI.new("BillboardGui", { Adornee = bell, Size = UDim2.fromOffset(170, 24), StudsOffset = Vector3.new(0, 4.4, 0),
+		MaxDistance = 28, LightInfluence = 0, Parent = bell })
 	local recordLabel = UI.label({ Size = UDim2.fromScale(1, 1), TextScaled = true, FontFace = UI.FontBold, TextColor3 = C.Gold,
 		TextStrokeTransparency = 0.4, Parent = record })
 	local function showRecord()

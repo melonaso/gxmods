@@ -25,9 +25,22 @@ local VERITY = Color3.fromRGB(200, 50, 60)
 
 local Hitboxes = {}
 
+type Drawn = {
+	model: Model,
+	root: BasePart,
+	humanoid: Humanoid,
+	width: number,
+	depth: number,
+	box: BoxHandleAdornment,
+	ring: CylinderHandleAdornment?,
+	close: CylinderHandleAdornment?,
+	lines: { BoxHandleAdornment },
+	all: { Instance },
+}
+
 local enabled = false
 local folder: Folder? = nil
-local drawn: { [Model]: { Instance } } = {}
+local drawn: { [Model]: Drawn } = {}
 
 local function clear()
 	if folder then
@@ -63,7 +76,7 @@ local function wanted(): { [Model]: boolean }
 	return list
 end
 
-local function new(className: string, props: { [string]: any }): Instance
+local function new(className: string, props: { [string]: any }): any
 	local inst = Instance.new(className)
 	for k, v in props do
 		(inst :: any)[k] = v
@@ -73,45 +86,68 @@ local function new(className: string, props: { [string]: any }): Instance
 	return inst
 end
 
--- Caja tenue del personaje, pegada a su HumanoidRootPart.
-local function drawBox(model: Model, root: BasePart, color: Color3, parts: { Instance })
-	local cf, size = model:GetBoundingBox()
-	table.insert(parts, new("BoxHandleAdornment", {
-		Adornee = root,
-		CFrame = root.CFrame:ToObjectSpace(cf),
-		Size = size,
-		Color3 = color,
-		Transparency = 0.85,
-		ZIndex = 0,
-	}))
+local function draw(model: Model, root: BasePart, humanoid: Humanoid, isVerity: boolean): Drawn
+	local color = if isVerity then VERITY else SELF
+	local d: Drawn = {
+		model = model,
+		root = root,
+		humanoid = humanoid,
+		width = if isVerity then 4 else 3,
+		depth = if isVerity then 2.5 else 1.6,
+		box = new("BoxHandleAdornment", { Adornee = root, Color3 = color, Transparency = 0.85, ZIndex = 0 }),
+		ring = nil,
+		close = nil,
+		lines = {},
+		all = {},
+	}
+	table.insert(d.all, d.box)
+	if isVerity then
+		local ring = new("CylinderHandleAdornment", { Adornee = root, Radius = K.KillRange, Height = 0.08, Color3 = VERITY,
+			Transparency = 0.7, ZIndex = 0 })
+		pcall(function()
+			ring.InnerRadius = K.KillRange - 0.3 -- solo el borde
+		end)
+		local close = new("CylinderHandleAdornment", { Adornee = root, Radius = K.KillCloseRange, Height = 0.06, Color3 = VERITY,
+			Transparency = 0.82, ZIndex = 0 })
+		d.ring = ring
+		d.close = close
+		table.insert(d.all, ring)
+		table.insert(d.all, close)
+		for _ = 1, 2 do
+			local line = new("BoxHandleAdornment", { Adornee = root, Size = Vector3.new(0.2, 0.08, K.KillRange), Color3 = VERITY,
+				Transparency = 0.65, ZIndex = 0 })
+			table.insert(d.lines, line)
+			table.insert(d.all, line)
+		end
+	end
+	return d
 end
 
--- Alcance de Verity dibujado en el suelo.
-local function drawReach(model: Model, root: BasePart, parts: { Instance })
-	local humanoid = model:FindFirstChildOfClass("Humanoid")
-	if not humanoid then
-		return
-	end
-	local ground = CFrame.new(0, -(root.Size.Y / 2 + humanoid.HipHeight) + 0.15, 0)
+-- Cada fotograma: la caja va de los pies a la cabeza (se encoge al agacharse
+-- y baja al correr a cuatro patas) y el alcance se pega al suelo.
+local HALF_CONE = math.acos(K.KillConeDot)
+
+local function update(d: Drawn)
+	local root, humanoid = d.root, d.humanoid
+	local feet = -(root.Size.Y / 2 + humanoid.HipHeight)
+	local head = d.model:FindFirstChild("Head")
+	local top = if head and head:IsA("BasePart")
+		then root.CFrame:PointToObjectSpace(head.Position).Y + head.Size.Y / 2
+		else root.Size.Y / 2 + 2
+	top = math.max(top, feet + 1)
+	d.box.Size = Vector3.new(d.width, top - feet, d.depth)
+	d.box.CFrame = CFrame.new(0, (top + feet) / 2, 0)
+	local ground = CFrame.new(0, feet + 0.15, 0)
 	local flat = ground * CFrame.Angles(math.rad(90), 0, 0) -- el cilindro crece a lo largo de Z
-	local ring = new("CylinderHandleAdornment", { Adornee = root, CFrame = flat, Radius = K.KillRange, Height = 0.08,
-		Color3 = VERITY, Transparency = 0.7, ZIndex = 0 })
-	pcall(function()
-		(ring :: any).InnerRadius = K.KillRange - 0.3 -- solo el borde
-	end)
-	table.insert(parts, ring)
-	table.insert(parts, new("CylinderHandleAdornment", { Adornee = root, CFrame = flat, Radius = K.KillCloseRange, Height = 0.06,
-		Color3 = VERITY, Transparency = 0.82, ZIndex = 0 }))
-	local half = math.acos(K.KillConeDot)
-	for _, side in { 1, -1 } do
-		table.insert(parts, new("BoxHandleAdornment", {
-			Adornee = root,
-			CFrame = ground * CFrame.Angles(0, side * half, 0) * CFrame.new(0, 0, -K.KillRange / 2),
-			Size = Vector3.new(0.2, 0.08, K.KillRange),
-			Color3 = VERITY,
-			Transparency = 0.65,
-			ZIndex = 0,
-		}))
+	if d.ring then
+		d.ring.CFrame = flat
+	end
+	if d.close then
+		d.close.CFrame = flat
+	end
+	for k, line in d.lines do
+		local side = if k == 1 then 1 else -1
+		line.CFrame = ground * CFrame.Angles(0, side * HALF_CONE, 0) * CFrame.new(0, 0, -K.KillRange / 2)
 	end
 end
 
@@ -123,9 +159,9 @@ local function refresh()
 		folder = f
 	end
 	local list = wanted()
-	for model, parts in drawn do
-		if list[model] == nil or not model.Parent then
-			for _, inst in parts do
+	for model, d in drawn do
+		if list[model] == nil or not model.Parent or not d.root.Parent then
+			for _, inst in d.all do
 				inst:Destroy()
 			end
 			drawn[model] = nil
@@ -133,13 +169,9 @@ local function refresh()
 	end
 	for model, isVerity in list do
 		local root = rootOf(model)
-		if root and not drawn[model] then
-			local parts: { Instance } = {}
-			drawBox(model, root, if isVerity then VERITY else SELF, parts)
-			if isVerity then
-				drawReach(model, root, parts)
-			end
-			drawn[model] = parts
+		local humanoid = model:FindFirstChildOfClass("Humanoid")
+		if root and humanoid and not drawn[model] then
+			drawn[model] = draw(model, root, humanoid, isVerity)
 		end
 	end
 end
@@ -164,6 +196,13 @@ function Hitboxes.start()
 		end
 		accumulator = 0
 		refresh()
+	end)
+	RunService.RenderStepped:Connect(function()
+		if enabled then
+			for _, d in drawn do
+				update(d)
+			end
+		end
 	end)
 end
 

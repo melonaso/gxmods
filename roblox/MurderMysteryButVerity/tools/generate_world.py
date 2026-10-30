@@ -1496,6 +1496,47 @@ def striker(cx, cz, top, yaw=0.0):
     return node
 
 
+def lounge(top):
+    """Chimenea en la pared delantera con dos sofás (asientos) y una alfombra."""
+    stone, wood = (70, 66, 72), DARK_WOOD
+    fx, fz = -30, 53
+    fire = {
+        "className": "Fire",
+        "properties": {"Size": 4, "Heat": 6, "Color": rgb(255, 140, 50), "SecondaryColor": rgb(255, 60, 20)},
+    }
+    parts = [
+        part("Hearth", (fx, top + 0.3, fz - 0.8), (8, 0.6, 3), stone, "Slate"),
+        part("FireBack", (fx, top + 3, fz + 0.6), (6, 6, 1), (20, 16, 18), "Slate"),
+        part("PillarL", (fx - 3.5, top + 3.5, fz), (1, 7, 2), stone, "Slate"),
+        part("PillarR", (fx + 3.5, top + 3.5, fz), (1, 7, 2), stone, "Slate"),
+        part("Mantel", (fx, top + 7.3, fz - 0.2), (8.6, 0.6, 2.6), wood, "Wood"),
+        part("Chimney", (fx, top + 10.8, fz + 0.4), (6, 6.4, 1.2), stone, "Slate"),
+        part("Logs", (fx, top + 0.9, fz - 0.2), (3, 0.6, 1), (90, 60, 40), "Wood"),
+        part("Embers", (fx, top + 1.3, fz - 0.2), (2.6, 0.4, 0.8), (255, 120, 40), "Neon", CanCollide=False,
+             children=[fire, point_light((255, 150, 70), 24, 1.6, True)]),
+        part("LoungeRug", (fx - 1, top + 0.05, 46), (14, 0.06, 11), (60, 40, 70), "Fabric", CanCollide=False),
+        part("CoffeeTable", (fx, top + 0.9, 47.6), (3.4, 0.3, 2), wood, "Wood"),
+        part("CoffeeLeg", (fx, top + 0.4, 47.6), (0.6, 0.8, 0.6), wood, "Wood"),
+    ]
+
+    def sofa(cx, cz, yaw):
+        at = oriented(cx, cz, top, yaw)
+        color = (110, 30, 40)
+        out = [
+            at("SofaBase", 0, 0.6, 0, (8, 1.2, 3), color, "Fabric"),
+            at("SofaBack", 0, 2.1, 1.2, (8, 2.4, 0.7), color, "Fabric"),
+            at("SofaArmL", -4.2, 1.3, 0, (0.6, 1.4, 3), color, "Fabric"),
+            at("SofaArmR", 4.2, 1.3, 0, (0.6, 1.4, 3), color, "Fabric"),
+        ]
+        for lx in (-2, 2):  # te sientas mirando al frente del sofá (-Z local)
+            out.append(at("Seat", lx, 1.45, -0.2, (3.6, 0.5, 2.4), color, "Fabric", class_name="Seat"))
+        return container("Model", "Sofa", out)
+
+    parts.append(sofa(fx, 43.5, math.pi))  # de frente a la chimenea
+    parts.append(sofa(-36.6, 47.5, -math.pi / 2))  # de lado, mirando a la plaza
+    return container("Model", "Lounge", parts)
+
+
 def build_lobby():
     y = LOBBY_Y
     top = y + 1
@@ -1563,8 +1604,19 @@ def build_lobby():
     for x in (-46, -40, -34, -28):
         c.append(slot_machine(x, -50.5, top, yaw=math.pi))  # fila contra la pared del fondo
         c.append(slot_machine(x, -36, top, yaw=math.pi))  # segunda fila, delante
-    for z in (-24, -16):  # martillos de fuerza en el lado de la tienda, mirando a la plaza
-        c.append(striker(-46, z, top, yaw=-math.pi / 2))
+
+    # rincón delantero izquierdo: salón de la fama, martillos de fuerza y una
+    # chimenea con sofás para esperar la ronda
+    for z, kind in ((22, "Wins"), (42, "Coins")):  # tablones (los rellena Leaderboards.luau)
+        board = part("Board", (-73.6, top + 9.5, z), (0.4, 10, 14), (24, 16, 22), "SmoothPlastic")
+        c.append(container("Model", "Leaderboard", [
+            board,
+            part("BoardFrame", (-73.75, top + 9.5, z), (0.2, 10.8, 14.8), DARK_WOOD, "Wood"),
+        ]))
+        c[-1]["attributes"] = {"Leaderboard": kind}
+    for x in (-60, -51):  # martillos de fuerza contra la pared delantera
+        c.append(striker(x, 50, top))
+    c.append(lounge(top))
 
     # cartel en la pared del fondo, visible desde el spawn
     c.append(part("Sign", (0, top + 20, -53.6), (46, 9, 0.6), (20, 14, 20), "SmoothPlastic",
