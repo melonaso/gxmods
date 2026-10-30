@@ -1,6 +1,8 @@
 --!strict
 -- ¿Está mi personaje en el lobby? Se mide con la caja que ocupa el modelo
 -- Workspace.Lobby (sirve igual con el lobby generado o con el de respaldo).
+-- Mientras espectas, la cámara está en el mapa: cuenta como fuera del lobby
+-- (luz y viñeta de la ronda).
 
 local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
@@ -12,6 +14,15 @@ local Location = {}
 type Box = { cf: CFrame, half: Vector3 }
 
 local box: Box? = nil
+local spectating = false
+
+function Location.setSpectating(value: boolean)
+	spectating = value
+end
+
+function Location.isSpectating(): boolean
+	return spectating
+end
 
 local function lobbyBox(): Box?
 	if box then
@@ -26,6 +37,9 @@ local function lobbyBox(): Box?
 end
 
 function Location.inLobby(): boolean
+	if spectating then
+		return false
+	end
 	local character = player.Character
 	local root = character and character:FindFirstChild("HumanoidRootPart")
 	local b = lobbyBox()

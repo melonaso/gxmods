@@ -1339,22 +1339,42 @@ def build_obby(top):
     parts.append(part("ObbySign", (44, top + 7, 46.6), (10, 4, 0.5), (20, 14, 20), "SmoothPlastic",
                       children=[surface_text("Front", "OBBY\n<font color=\"#ffc83c\">premio al final</font>", 40,
                                                    translate="premio al final", wrap="OBBY\n<font color=\"#ffc83c\">{text}</font>")]))
-    # plataformas: (x, z, altura, tamaño)
+    # Recorrido difícil (de z=40 a z=-46, subiendo hasta 17 studs): plataformas
+    # pequeñas y separadas (~7-8 studs entre centros), dos vigas estrechas,
+    # plataformas que parpadean (ObbyBlink = desfase en segundos) y una barra
+    # de lava que gira sobre una plataforma ancha (ObbySweeper). Caer a la
+    # lava o tocar la barra te devuelve al inicio (Lobby.luau).
+    # (x, z, altura, tamaño (lado o (x, y, z)), tipo)
     steps = [
-        (52, 40, 1.5, 4), (57, 34, 3, 4), (63, 29, 4.5, 3.5), (68, 23, 6, 3.5), (63, 17, 7.5, 3),
-        (57, 12, 9, 3), (57, 5, 10, 2.5), (63, 0, 11.5, 3), (69, -6, 12.5, 2.5), (69, -13, 13.5, 2.5),
-        (63, -18, 14.5, 2.5), (56, -23, 15.5, 3), (56, -30, 16.5, 2.5), (62, -35, 17.5, 3),
+        (52, 40, 1.5, 2.5, ""), (58, 35, 2.5, 2.2, ""), (65, 31, 3.5, 2, ""), (70, 25, 4.5, 2, "blink"),
+        (64, 20, 5.5, 2, ""), (57, 14, 6, (1, 0.6, 7), "beam"), (57, 4, 7, 2, ""), (63, -1, 8, 2, "blink"),
+        (69, -6, 9, 1.8, ""), (63, -12, 10, 4.5, "sweeper"), (56, -16, 11, 2, ""), (51, -22, 12, 1.8, "blink"),
+        (56, -28, 13, 1.8, ""), (62, -32, 14, 1.6, ""), (68.5, -36, 15, (7, 0.6, 1), "beam"), (71, -42, 16, 1.6, "blink"),
+        (65.5, -45, 17, 1.6, ""),
     ]
     colors = [(255, 80, 120), (255, 180, 60), (90, 200, 255), (160, 110, 255)]
-    for i, (x, z, y, s) in enumerate(steps):
-        parts.append(part(f"Step{i + 1}", (x, top + y, z), (s, 1, s), colors[i % 4], "Neon" if i % 4 == 0 else "SmoothPlastic"))
-    # escalera de mano final
-    parts.append(part("Truss", (66, top + 20, -40), (2, 8, 2), (90, 90, 95), "Metal", class_name="TrussPart"))
+    blink_n = 0
+    for i, (x, z, y, size, kind) in enumerate(steps):
+        dims = size if isinstance(size, tuple) else (size, 1, size)
+        name = f"Step{i + 1}"
+        if kind == "blink":
+            parts.append(part(name, (x, top + y, z), dims, (120, 230, 255), "Glass", Transparency=0.15,
+                              attributes={"ObbyBlink": blink_n * 0.9}))
+            blink_n += 1
+        elif kind == "beam":
+            parts.append(part(name, (x, top + y, z), dims, (200, 200, 210), "Metal"))
+        else:
+            parts.append(part(name, (x, top + y, z), dims, colors[i % 4], "SmoothPlastic"))
+        if kind == "sweeper":
+            # barra de lava que gira a ras de la plataforma: hay que saltarla
+            parts.append(part("Sweeper", (x, top + y + 1.2, z), (9, 0.6, 0.6), (255, 70, 30), "Neon", CanCollide=False,
+                              attributes={"ObbySweeper": True, "ObbyLava": True}))
+            parts.append(part("SweeperHub", (x, top + y + 1.2, z), (1, 1.2, 1), (60, 60, 66), "Metal", CanCollide=False))
     # meta con cofre
-    parts.append(part("GoalPad", (66, top + 23.5, -45), (8, 1, 8), (255, 200, 60), "Neon"))
+    parts.append(part("GoalPad", (59, top + 17.5, -46), (6, 1, 6), (255, 200, 60), "Neon"))
     chest = [
-        part("Chest", (66, top + 25, -47), (4, 2, 2.6), (120, 80, 45), "WoodPlanks", attributes={"ObbyGoal": True}),
-        part("ChestLid", (66, top + 26.3, -47), (4.1, 0.6, 2.7), (255, 200, 60), "Foil", attributes={"ObbyGoal": True}),
+        part("Chest", (59, top + 19, -48), (4, 2, 2.6), (120, 80, 45), "WoodPlanks", attributes={"ObbyGoal": True}),
+        part("ChestLid", (59, top + 20.3, -48), (4.1, 0.6, 2.7), (255, 200, 60), "Foil", attributes={"ObbyGoal": True}),
     ]
     parts += chest
     return parts
@@ -1378,6 +1398,43 @@ def sconce(x, z, nx, nz, y):
              children=[point_light((255, 190, 130), 34, 1.1)]),
         part("Shade", (bulb_x, y + 0.8, bulb_z), (1.5, 0.5, 1.5), (40, 32, 30), "Metal", CanCollide=False),
     ])
+
+
+def slot_machine(cx, cz, top):
+    """Tragamonedas de palanca mirando a -Z (hacia la sala), con taburete
+    delante. Solo por diversión: no se apuesta nada (Slots.luau / Casino.luau).
+    La palanca está a la derecha de quien juega (-X)."""
+    front = cz - 1.5
+    prompt = {
+        "className": "ProximityPrompt",
+        "properties": {"ActionText": "Tirar de la palanca", "ObjectText": "Tragamonedas", "HoldDuration": 0,
+                       "MaxActivationDistance": 8, "RequiresLineOfSight": False},
+        "attributes": {"SlotLever": True},
+    }
+    parts = [
+        part("Cabinet", (cx, top + 3, cz), (4, 6, 3), (120, 16, 30), "SmoothPlastic", children=[prompt]),
+        part("TrimL", (cx - 2.05, top + 3, cz), (0.15, 6, 3.05), GOLD, "Metal"),
+        part("TrimR", (cx + 2.05, top + 3, cz), (0.15, 6, 3.05), GOLD, "Metal"),
+        part("TopSign", (cx, top + 6.7, cz), (4.2, 1.4, 3.2), (30, 20, 30), "SmoothPlastic",
+             children=[surface_text("Front", "<font color=\"#ffc83c\">7</font> <font color=\"#ff3b4e\">7</font> <font color=\"#ffc83c\">7</font>", 40)]),
+        part("TopLight", (cx, top + 7.55, cz), (4.2, 0.3, 3.2), (255, 200, 60), "Neon",
+             children=[point_light((255, 190, 100), 10, 0.8)]),
+        part("Bezel", (cx, top + 4.2, front + 0.07), (3.6, 2.8, 0.15), GOLD, "Metal"),
+        part("Screen", (cx, top + 4.2, front - 0.1), (3.2, 2.4, 0.2), (10, 8, 14), "SmoothPlastic"),
+        part("Panel", (cx, top + 2.6, front - 0.6), (4, 0.4, 1.2), (40, 30, 40), "SmoothPlastic"),
+        part("Button", (cx + 0.9, top + 2.88, front - 0.6), (0.6, 0.16, 0.6), (255, 60, 70), "Neon"),
+        part("Tray", (cx, top + 1.2, front - 0.3), (2.4, 0.5, 0.6), (60, 60, 66), "Metal"),
+        part("LeverBase", (cx - 2.3, top + 4, cz), (0.6, 0.8, 0.8), (60, 60, 66), "Metal"),
+        part("LeverArm", (cx - 2.45, top + 5.2, cz), (0.25, 2.4, 0.25), (200, 200, 210), "Metal", CanCollide=False),
+        part("LeverKnob", (cx - 2.45, top + 6.5, cz), (0.8, 0.8, 0.8), (220, 30, 40), "SmoothPlastic", Shape="Ball", CanCollide=False),
+        # taburete: un Seat (al tocarlo te sientas; salta para levantarte)
+        part("StoolFoot", (cx, top + 0.1, cz - 4), (1.4, 0.2, 1.4), (40, 32, 30), "Metal"),
+        part("StoolPole", (cx, top + 1.15, cz - 4), (0.4, 1.9, 0.4), (40, 32, 30), "Metal"),
+        part("Stool", (cx, top + 2.3, cz - 4), (1.8, 0.4, 1.8), (200, 30, 45), "Fabric", class_name="Seat", orientation=YAW180),
+    ]
+    node = container("Model", "SlotMachine", parts)
+    node["attributes"] = {"SlotMachine": True}
+    return node
 
 
 def build_lobby():
@@ -1418,12 +1475,26 @@ def build_lobby():
     for z in (-27, 0, 27):  # paredes laterales (la derecha ilumina el obby)
         c.append(sconce(-74, z, 1, 0, lamp_y))
         c.append(sconce(74, z, -1, 0, lamp_y))
-    # bancos alrededor de la plaza
+    # bancos alrededor de la plaza: el tablero son tres asientos (Seat), te
+    # sientas al tocarlos mirando a la plaza y te levantas saltando
     for x in (-18, 18):
         for z in (-4, 18):
-            c.append(place("Bench", [(0, 1.2, 0, 3, 0.5, 10, (90, 60, 40), "Wood"), (0, 0, -4, 2.5, 1.2, 0.6, (50, 40, 38), "Metal"),
-                                     (0, 0, 4, 2.5, 1.2, 0.6, (50, 40, 38), "Metal"), (1.3 if x > 0 else -1.3, 1.7, 0, 0.4, 2.4, 10, (90, 60, 40), "Wood")],
-                           x, z, 0, base_y=top))
+            bench = place("Bench", [(0, 0, -4, 2.5, 1.2, 0.6, (50, 40, 38), "Metal"), (0, 0, 4, 2.5, 1.2, 0.6, (50, 40, 38), "Metal"),
+                                    (1.3 if x > 0 else -1.3, 1.7, 0, 0.4, 2.4, 10, (90, 60, 40), "Wood")],
+                          x, z, 0, base_y=top)
+            facing = ry(math.pi / 2) if x > 0 else ry(-math.pi / 2)  # respaldo detrás, mirando a la plaza
+            for i, dz in enumerate((-10 / 3, 0, 10 / 3)):
+                bench["children"].append(part(f"Seat{i + 1}", (x, top + 1.45, z + dz), (10 / 3, 0.5, 3), (90, 60, 40), "Wood",
+                                              class_name="Seat", orientation=facing))
+            c.append(bench)
+
+    # rincón de casino (delante a la izquierda): tragamonedas de palanca para
+    # pasar el rato mientras esperas; solo por diversión, sin apuestas
+    c.append(part("CasinoCarpet", (-53, top + 0.05, 47.5), (30, 0.06, 12), (90, 15, 30), "Fabric", CanCollide=False))
+    c.append(part("CasinoSign", (-53, top + 10.2, 53.6), (16, 3, 0.4), (20, 14, 20), "SmoothPlastic",
+                  children=[surface_text("Front", "<font color=\"#ffc83c\">★</font> CASINO <font color=\"#ffc83c\">★</font>", 40)]))
+    for x in (-62, -56, -50, -44):
+        c.append(slot_machine(x, 51, top))
 
     # cartel en la pared del fondo, visible desde el spawn
     c.append(part("Sign", (0, top + 20, -53.6), (46, 9, 0.6), (20, 14, 20), "SmoothPlastic",

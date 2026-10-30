@@ -54,6 +54,8 @@ La cámara se aleja muy poco del personaje para que no se vea detrás de las esq
 | `R` | — | Esconderse en armarios, taquillas, ataúdes, confesionarios y arbustos (Verity puede sacarte con `Q` si te encuentra) |
 | `1`–`2` | — | Objetos de la tienda (solo en la ronda) |
 
+**Espectar:** si estás en el lobby (esperando o eliminado) mientras se juega una ronda, el botón **👁 Espectar** (abajo al centro) te deja mirar la partida. `◀` `▶` (o las flechas del teclado) cambian entre supervivientes, NPCs y Verity, y **Salir** vuelve a tu personaje. Mientras espectas ves la luz del mapa, no la del lobby.
+
 ## Monedas y tienda
 - **Monedas** repartidas por cada mapa (45). Se recogen con solo acercarse; Verity tiene más alcance. Máximo 40 por ronda.
 - **Premios:** **ganar la ronda +150** (seas Verity o superviviente), atrapar +6, completar el obby del lobby +15 (cada 2 min).
@@ -83,7 +85,10 @@ Mapas **inspirados** en los clásicos de MM2 (construcciones propias, no copias 
 
 Durante la ronda nadie muestra la etiqueta de nombre, así que no delata a quien se esconde. Están en `Workspace/Maps` para verlos en Studio; al iniciar se mueven a `ServerStorage/Maps` y cada ronda usa uno al azar.
 
-El **lobby** tiene una plaza con bancos, el puesto de la **tienda** y un **obby** sobre lava con un cofre de monedas al final. Lo iluminan apliques fijos en las paredes (encima de las ventanas, simétricos) y una lámpara de araña colgada del techo con una cadena.
+El **lobby** tiene una plaza con bancos, el puesto de la **tienda**, un rincón de **casino** y un **obby** sobre lava con un cofre de monedas al final. Lo iluminan apliques fijos en las paredes (encima de las ventanas, simétricos) y una lámpara de araña colgada del techo con una cadena.
+- **Sentarse:** los tableros de los bancos y los taburetes del casino son asientos (`Seat`): te sientas al tocarlos y te levantas saltando.
+- **Casino:** 4 tragamonedas de palanca (`E` cerca de la máquina). Tres rodillos, palanca animada, sonidos y luces de colores con jackpot. **Solo por diversión:** no se apuesta nada ni se ganan monedas; así no entra en las reglas de Roblox sobre juegos de azar ni sube la clasificación de edad. Símbolos, pesos y probabilidad de jackpot en `Config.Slots` (servidor: `Slots.luau`, animación: `Casino.luau`).
+- **Obby (difícil):** 17 plataformas pequeñas y separadas, dos vigas estrechas, 4 plataformas de cristal que parpadean y desaparecen 1,4 s, y una barra de lava giratoria que hay que saltar. Caer a la lava o tocar la barra te devuelve al inicio. Tiempos y velocidad en `Config.Obby`.
 
 Para regenerarlos: `python3 tools/generate_world.py`. Para un mapa propio, copia la estructura `SurvivorSpawns` / `KillerSpawn` / `GoldSpawns` / `CraftingTables`.
 

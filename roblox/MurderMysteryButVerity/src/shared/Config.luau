@@ -98,6 +98,24 @@ Config.Chance = {
 
 -- Monedas repartidas por el mapa en cada ronda (las recogen los jugadores,
 -- también Verity, con solo acercarse).
+-- Obby del lobby (ver Lobby.luau y el cliente Obby.luau)
+Config.Obby = {
+	BlinkSolid = 2.2, -- segundos que las plataformas que parpadean están firmes
+	BlinkWarn = 0.6, -- parpadean avisando antes de desaparecer
+	BlinkGone = 1.4, -- segundos que no están
+	SweeperSpeed = 144, -- grados por segundo de la barra de lava (una vuelta cada 2,5 s)
+}
+
+-- Tragamonedas del lobby: solo para pasar el rato. No se apuesta nada y no
+-- dan monedas (Slots.luau decide el resultado, Casino.luau lo anima).
+Config.Slots = {
+	Symbols = { "🍒", "🍋", "🔔", "⭐", "💎", "7", "😁" },
+	Weights = { 26, 22, 18, 14, 9, 6, 5 }, -- más alto = sale más
+	JackpotChance = 0.07, -- además del azar normal, a veces salen tres iguales
+	SpinTime = 2.4, -- hasta que para el último rodillo
+	Cooldown = 3.2, -- por máquina
+}
+
 Config.Coins = {
 	PerMap = 80,
 	MaxPerRound = 40, -- bolsa llena

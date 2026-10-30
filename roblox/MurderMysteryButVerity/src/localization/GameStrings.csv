@@ -55,6 +55,8 @@ Esconderse,Esconderse,,src/client/Controllers/HUD.luau,Hide
 Escondido,Escondido,,src/server/Systems/Hiding.luau,Hidden
 Escondite,Escondite,,src/server/Systems/Hiding.luau,Hiding spot
 Escuela Nocturna,Escuela Nocturna,,map,Night School
+ESPECTANDO,ESPECTANDO,,src/client/Controllers/Spectate.luau,SPECTATING
+Espectar,Espectar,,src/client/Controllers/Spectate.luau,Spectate
 Espectral,Espectral,,src/shared/Config.luau,Spectral
 ESPERANDO JUGADORES,ESPERANDO JUGADORES,,src/client/Controllers/HUD.luau,WAITING FOR PLAYERS
 FIN DE LA RONDA,FIN DE LA RONDA,,src/client/Controllers/HUD.luau,ROUND OVER
@@ -89,6 +91,7 @@ Objetos equipados: {count}/{max} · solo los usan los supervivientes durante la 
 Oficina,Oficina,,map,Office
 Oro / tótem,Oro / tótem,,src/client/Controllers/HUD.luau,Gold / totem
 Oro {gold}/{max},Oro {gold}/{max},,src/client/Controllers/HUD.luau,Gold {gold}/{max}
+Otra vez,Otra vez,,src/client/Controllers/Casino.luau,Try again
 Partida en solitario con NPCs,Partida en solitario con NPCs,,src/client/Controllers/HUD.luau,Solo match with NPCs
 Pases,Pases,,src/client/Controllers/Shop.luau,Passes
 Piel blanca como la cera.,Piel blanca como la cera.,,src/shared/Config.luau,Skin as white as wax.
@@ -109,7 +112,7 @@ Revelación en {seconds},Revelación en {seconds},,src/client/Controllers/HUD.lu
 RONDA CANCELADA,RONDA CANCELADA,,src/client/Controllers/HUD.luau,ROUND CANCELLED
 ronda en curso,ronda en curso,,src/client/Controllers/HUD.luau,round in progress
 Rotación: {done}/{total} ya fueron Verity,Rotación: {done}/{total} ya fueron Verity,,src/client/Controllers/HUD.luau,Rotation: {done}/{total} have been Verity
-Salir,Salir,,src/server/Systems/Hiding.luau,Leave
+Salir,Salir,,src/client/Controllers/Spectate.luau,Leave
 Saltos enormes: la gravedad te afecta mucho menos.,Saltos enormes: la gravedad te afecta mucho menos.,,src/shared/Config.luau,Huge jumps: gravity affects you much less.
 Sangrienta,Sangrienta,,src/shared/Config.luau,Bloody
 "Semitransparente, como un fantasma.","Semitransparente, como un fantasma.",,src/shared/Config.luau,"See-through, like a ghost."
@@ -129,6 +132,9 @@ SUPERVIVIENTES GANAN,SUPERVIVIENTES GANAN,,src/client/Controllers/HUD.luau,SURVI
 Te faltan {coins} monedas.,Te faltan {coins} monedas.,,src/server/Systems/Shop.luau,You need {coins} more coins.
 Tienda,Tienda,,src/client/Controllers/Shop.luau,Shop
 TIENDA,TIENDA,,src/client/Controllers/Shop.luau,SHOP
+Tira de la palanca,Tira de la palanca,,src/client/Controllers/Casino.luau,Pull the lever
+Tirar de la palanca,Tirar de la palanca,,src/world/Lobby.model.json,Pull the lever
+Tragamonedas,Tragamonedas,,src/world/Lobby.model.json,Slot machine
 Triple probabilidad de ser Verity en cada ronda.,Triple probabilidad de ser Verity en cada ronda.,,src/shared/Config.luau,Triple chance to be Verity every round.
 TU ROL,TU ROL,,src/client/Controllers/HUD.luau,YOUR ROLE
 Tótems {totems}  ·  Vivos {alive},Tótems {totems}  ·  Vivos {alive},,src/client/Controllers/HUD.luau,Totems {totems}  ·  Alive {alive}
@@ -153,9 +159,14 @@ Ya tienes 2 cepos colocados.,Ya tienes 2 cepos colocados.,,src/server/Systems/It
 {name} crafteó un tótem: -{seconds}s,{name} crafteó un tótem: -{seconds}s,,src/server/Systems/Round.luau,{name} crafted a totem: -{seconds}s
 {product} activada: x{multiplier} en tus próximas {rounds} ronda(s).,{product} activada: x{multiplier} en tus próximas {rounds} ronda(s).,,src/server/Systems/Monetization.luau,{product} active: x{multiplier} for your next {rounds} round(s).
 ¡Bolsa de monedas llena!,¡Bolsa de monedas llena!,,src/server/Systems/Coins.luau,Coin bag full!
+¡Casi!,¡Casi!,,src/client/Controllers/Casino.luau,So close!
+¡Casi! Dos iguales,¡Casi! Dos iguales,,src/server/Systems/Slots.luau,So close! Two of a kind
 ¡Estamina infinita durante {seconds} s!,¡Estamina infinita durante {seconds} s!,,src/server/Systems/Items.luau,Unlimited stamina for {seconds} s!
+¡JACKPOT!,¡JACKPOT!,,src/client/Controllers/Casino.luau,JACKPOT!
+¡JACKPOT! Tres {symbol} (solo por diversión),¡JACKPOT! Tres {symbol} (solo por diversión),,src/server/Systems/Slots.luau,JACKPOT! Three {symbol} (just for fun)
 ¡Listo para craftear!,¡Listo para craftear!,,src/server/Systems/Crafting.luau,Ready to craft!
 ¡Revelados!,¡Revelados!,,src/client/Controllers/HUD.luau,Revealed!
+¡Suerte!,¡Suerte!,,src/client/Controllers/Casino.luau,Good luck!
 ¡Verity ha sido liberada!,¡Verity ha sido liberada!,,src/server/Systems/Round.luau,Verity has been released!
 ¡Verity puede verte! Cambia de sitio.,¡Verity puede verte! Cambia de sitio.,,src/server/Systems/Round.luau,Verity can see you! Move somewhere else.
 ¡Ya casi amanece! El tótem no tendría efecto.,¡Ya casi amanece! El tótem no tendría efecto.,,src/server/Systems/Crafting.luau,Dawn is almost here! The totem would have no effect.
