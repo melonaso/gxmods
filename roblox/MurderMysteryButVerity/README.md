@@ -89,7 +89,7 @@ Para regenerarlos: `python3 tools/generate_world.py`. Para un mapa propio, copia
 
 ## Aspecto cinematográfico
 - Iluminación **Future** (sombras reales de cada lámpara), corrección de color, bloom, profundidad de campo y niebla atmosférica.
-- Lobby al atardecer y, en los mapas, una **noche de invierno cinematográfica**: sombras azul marino (se distinguen las formas, no los detalles), niebla oscura que se traga lo lejano, superficies claras atenuadas y lámparas cálidas que dejan charcos de luz anaranjada con mucho contraste y bloom. Los bordes de la pantalla se oscurecen durante la ronda. Un 10 % de habitaciones queda sin luz.
+- Lobby al atardecer y, en los mapas, una **noche de invierno cinematográfica**: penumbra azul marino en la que se distinguen paredes, suelo y muebles (como en Survive the Killer), niebla que suaviza lo lejano, superficies claras atenuadas y lámparas cálidas que dejan charcos de luz anaranjada con mucho contraste y bloom. Los bordes de la pantalla se oscurecen durante la ronda. Un 10 % de habitaciones queda sin luz.
 - **El lobby nunca se oscurece:** la iluminación de Roblox es una sola para todo el servidor, así que quien está en el lobby durante una ronda (esperando o eliminado) recupera en su pantalla la luz cálida del lobby, sin viñeta ni barras de cine (`LobbyAtmosphere.luau`). Los ambientes están en [`src/shared/Atmosphere.luau`](src/shared/Atmosphere.luau).
 
 ## Animaciones de Verity
