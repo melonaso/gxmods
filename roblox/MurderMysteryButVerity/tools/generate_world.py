@@ -1554,19 +1554,17 @@ def build_lobby():
                                               class_name="Seat", orientation=facing))
             c.append(bench)
 
-    # rincón de casino (delante a la izquierda): tragamonedas de palanca para
-    # pasar el rato mientras esperas; solo por diversión, sin apuestas
-    c.append(part("CasinoCarpet", (-53, top + 0.05, 47.5), (30, 0.06, 12), (90, 15, 30), "Fabric", CanCollide=False))
-    c.append(part("CasinoSign", (-53, top + 10.2, 53.6), (16, 3, 0.4), (20, 14, 20), "SmoothPlastic",
-                  children=[surface_text("Front", "<font color=\"#ffc83c\">★</font> CASINO <font color=\"#ffc83c\">★</font>", 40)]))
-    for x in (-62, -56, -50, -44):  # fila contra la pared delantera
-        c.append(slot_machine(x, 51, top))
-    c.append(part("CasinoCarpet2", (-68, top + 0.02, 34), (10, 0.06, 26), (90, 15, 30), "Fabric", CanCollide=False))
-    for z in (44, 38, 32, 26):  # fila contra la pared izquierda, mirando a la sala (+X)
-        c.append(slot_machine(-71.5, z, top, yaw=-math.pi / 2))
-    # dos martillos de fuerza junto al casino
-    for x in (-33, -23):
-        c.append(striker(x, 50, top))
+    # casino (al fondo a la izquierda, entre la tienda y la plaza, a la vista
+    # desde el spawn): tragamonedas de palanca y martillos de fuerza para pasar
+    # el rato mientras esperas; solo por diversión, sin apuestas
+    c.append(part("CasinoCarpet", (-36, top + 0.05, -32), (26, 0.06, 40), (90, 15, 30), "Fabric", CanCollide=False))
+    c.append(part("CasinoSign", (-46, top + 10.2, -53.6), (14, 3, 0.4), (20, 14, 20), "SmoothPlastic",
+                  children=[surface_text("Back", "<font color=\"#ffc83c\">★</font> CASINO <font color=\"#ffc83c\">★</font>", 40)]))
+    for x in (-46, -40, -34, -28):
+        c.append(slot_machine(x, -50.5, top, yaw=math.pi))  # fila contra la pared del fondo
+        c.append(slot_machine(x, -36, top, yaw=math.pi))  # segunda fila, delante
+    for z in (-24, -16):  # martillos de fuerza en el lado de la tienda, mirando a la plaza
+        c.append(striker(-46, z, top, yaw=-math.pi / 2))
 
     # cartel en la pared del fondo, visible desde el spawn
     c.append(part("Sign", (0, top + 20, -53.6), (46, 9, 0.6), (20, 14, 20), "SmoothPlastic",
