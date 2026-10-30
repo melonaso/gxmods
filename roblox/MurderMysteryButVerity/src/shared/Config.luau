@@ -48,8 +48,9 @@ Config.Camera = {
 
 Config.Killer = {
 	Name = "Verity",
-	KillRange = 10, -- distancia máxima para atrapar con Q (brazos larguísimos)
-	KillConeDot = 0.2, -- el objetivo debe estar más o menos al frente
+	KillRange = 12, -- distancia máxima para atrapar con Q (brazos larguísimos)
+	KillConeDot = 0.1, -- el objetivo debe estar más o menos al frente (~84° a cada lado)
+	KillCloseRange = 5, -- tan cerca, atrapa en cualquier dirección
 	KillCooldown = 1,
 }
 

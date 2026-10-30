@@ -407,26 +407,6 @@ function VerityModel.create(skin: string?): (Model?, Pose.RigData?)
 	return model, Pose.read(model)
 end
 
--- Copia anclada para la estatua del lobby.
-function VerityModel.statue(): Model?
-	if not template then
-		return nil
-	end
-	local model = template:Clone()
-	CollectionService:RemoveTag(model, "VerityRig")
-	local humanoid = model:FindFirstChildOfClass("Humanoid")
-	if humanoid then
-		humanoid:Destroy()
-	end
-	for _, inst in model:GetDescendants() do
-		if inst:IsA("BasePart") then
-			inst.Anchored = true
-			inst.CanCollide = false
-		end
-	end
-	return model
-end
-
 function VerityModel.source(): string
 	return sourceName
 end

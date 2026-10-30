@@ -8,9 +8,11 @@
 --   GoldSpawns (Folder de Parts), CraftingTables (Folder de Parts: la mesa
 --   se coloca encima de cada Part). Si no hay ninguno, se genera una mansión.
 
-local Lighting = game:GetService("Lighting")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ServerStorage = game:GetService("ServerStorage")
 local Workspace = game:GetService("Workspace")
+
+local Atmosphere = require(ReplicatedStorage.Shared.Atmosphere)
 
 export type MapInfo = {
 	model: Model,
@@ -58,9 +60,11 @@ local function buildLobby(): Model
 		local cf = CFrame.new(0, y, 0) * CFrame.Angles(0, angle, 0) * CFrame.new(0, 7, -45)
 		part({ Name = "Wall", Size = Vector3.new(90, 12, 2), CFrame = cf, Material = Enum.Material.Brick, Color = Color3.fromRGB(60, 46, 58) }, lobby)
 	end
-	for _, x in { -30, 30 } do
-		for _, z in { -30, 30 } do
-			local lamp = part({ Name = "Lamp", Size = Vector3.new(1.5, 1.5, 1.5), Shape = Enum.PartType.Ball, CFrame = CFrame.new(x, y + 10, z), Material = Enum.Material.Neon, Color = Color3.fromRGB(255, 196, 120), CanCollide = false }, lobby)
+	-- lámparas pegadas a las paredes (cara interior a 44 studs del centro)
+	for _, x in { -25, 25 } do
+		for _, z in { -43, 43 } do
+			part({ Name = "LampPlate", Size = Vector3.new(1.4, 2.4, 0.3), CFrame = CFrame.new(x, y + 9, z + math.sign(z) * 0.85), Material = Enum.Material.Metal, Color = Color3.fromRGB(40, 32, 30) }, lobby)
+			local lamp = part({ Name = "Lamp", Size = Vector3.new(1.2, 1.2, 1.2), Shape = Enum.PartType.Ball, CFrame = CFrame.new(x, y + 9, z), Material = Enum.Material.Neon, Color = Color3.fromRGB(255, 196, 120), CanCollide = false }, lobby)
 			local light = Instance.new("PointLight")
 			light.Range = 40
 			light.Brightness = 1.4
@@ -367,84 +371,13 @@ end
 
 -- Ambientación ----------------------------------------------------------------
 
--- Tres ambientes cinematográficos: lobby (atardecer cálido), interiores de
--- noche (oscuro, frío, contraste alto) y exteriores de noche (luna y niebla).
--- Con Lighting.Technology = Future (en default.project.json) las luces de
--- cada habitación proyectan sombras reales.
-type Preset = {
-	lighting: { [string]: any },
-	atmosphere: { [string]: any },
-	color: { [string]: any },
-	bloom: { [string]: any },
-	dof: { [string]: any },
-	rays: number,
-}
-
-local PRESETS: { [string]: Preset } = {
-	Lobby = {
-		lighting = { ClockTime = 18.6, Brightness = 1.6, ExposureCompensation = 0, Ambient = Color3.fromRGB(70, 58, 66), OutdoorAmbient = Color3.fromRGB(110, 90, 110),
-			ColorShift_Top = Color3.new(0, 0, 0), ColorShift_Bottom = Color3.new(0, 0, 0) },
-		atmosphere = { Density = 0.28, Offset = 0.1, Color = Color3.fromRGB(199, 160, 180), Decay = Color3.fromRGB(110, 80, 110), Glare = 0.4, Haze = 1.2 },
-		color = { Brightness = 0, Contrast = 0.1, Saturation = 0.05, TintColor = Color3.fromRGB(255, 240, 228) },
-		bloom = { Intensity = 0.6, Size = 24, Threshold = 1.4 },
-		dof = { FarIntensity = 0.12, FocusDistance = 45, InFocusRadius = 50, NearIntensity = 0 },
-		rays = 0.06,
-	},
-	-- Noche de invierno cinematográfica: sombras azul marino (se distinguen
-	-- las formas, no los detalles), niebla oscura que se traga lo lejano y
-	-- lámparas cálidas que dejan "charcos" de luz anaranjada con mucho
-	-- contraste. Los bordes de la pantalla se oscurecen (Cinematics).
-	Indoor = {
-		lighting = { ClockTime = 0, Brightness = 0.4, ExposureCompensation = 0.1, Ambient = Color3.fromRGB(40, 50, 88), OutdoorAmbient = Color3.fromRGB(34, 44, 78),
-			ColorShift_Top = Color3.fromRGB(40, 60, 110), ColorShift_Bottom = Color3.fromRGB(10, 14, 30) },
-		atmosphere = { Density = 0.36, Offset = 0, Color = Color3.fromRGB(38, 48, 84), Decay = Color3.fromRGB(12, 16, 34), Glare = 0, Haze = 1.5 },
-		color = { Brightness = -0.03, Contrast = 0.28, Saturation = -0.05, TintColor = Color3.fromRGB(190, 205, 255) },
-		bloom = { Intensity = 1, Size = 32, Threshold = 1 },
-		dof = { FarIntensity = 0.2, FocusDistance = 34, InFocusRadius = 46, NearIntensity = 0 },
-		rays = 0,
-	},
-	Outdoor = {
-		lighting = { ClockTime = 0.3, Brightness = 0.8, ExposureCompensation = 0.1, Ambient = Color3.fromRGB(36, 46, 84), OutdoorAmbient = Color3.fromRGB(52, 66, 114),
-			ColorShift_Top = Color3.fromRGB(60, 90, 160), ColorShift_Bottom = Color3.fromRGB(14, 18, 40) },
-		atmosphere = { Density = 0.38, Offset = 0.05, Color = Color3.fromRGB(44, 58, 100), Decay = Color3.fromRGB(14, 18, 40), Glare = 0.1, Haze = 1.8 },
-		color = { Brightness = -0.03, Contrast = 0.28, Saturation = -0.05, TintColor = Color3.fromRGB(185, 200, 255) },
-		bloom = { Intensity = 1, Size = 32, Threshold = 1 },
-		dof = { FarIntensity = 0.2, FocusDistance = 40, InFocusRadius = 56, NearIntensity = 0 },
-		rays = 0,
-	},
-}
-
-local function effect(className: string, name: string): Instance
-	local existing = Lighting:FindFirstChild(name)
-	if existing then
-		return existing
-	end
-	local inst = Instance.new(className)
-	inst.Name = name
-	inst.Parent = Lighting
-	return inst
-end
-
-local function apply(target: Instance, props: { [string]: any })
-	for k, v in props do
-		(target :: any)[k] = v
-	end
-end
-
+-- Pone para todos el ambiente del lobby o el de la ronda (ver Atmosphere).
+-- El atributo Atmosphere le dice al cliente cuál es, para que en el lobby
+-- pueda volver a poner el del lobby solo en su pantalla.
 function MapService.setAtmosphere(inRound: boolean, outdoor: boolean?)
-	local preset = PRESETS[if not inRound then "Lobby" elseif outdoor then "Outdoor" else "Indoor"]
-	apply(Lighting, preset.lighting)
-	apply(effect("Atmosphere", "CinematicAtmosphere"), preset.atmosphere)
-	apply(effect("ColorCorrectionEffect", "CinematicGrade"), preset.color)
-	apply(effect("BloomEffect", "CinematicBloom"), preset.bloom)
-	apply(effect("DepthOfFieldEffect", "CinematicDepth"), preset.dof)
-	local rays = effect("SunRaysEffect", "CinematicRays") :: SunRaysEffect
-	rays.Intensity = preset.rays
-	rays.Spread = 0.6
-	local sky = effect("Sky", "NightSky") :: Sky
-	sky.StarCount = 3000
-	sky.MoonAngularSize = 14
-	sky.CelestialBodiesShown = true
+	local name = if not inRound then "Lobby" elseif outdoor then "Outdoor" else "Indoor"
+	Atmosphere.apply(name, true)
+	Workspace:SetAttribute("Atmosphere", name)
 end
 
 -- Mueve los mapas visibles en el editor fuera de Workspace.

@@ -46,7 +46,7 @@ La cámara se aleja muy poco del personaje para que no se vea detrás de las esq
 ## Controles
 | Tecla | Verity | Superviviente |
 | --- | --- | --- |
-| `Q` | Atrapar: levanta a la víctima y la aplasta | — |
+| `Q` | Atrapar (hasta 12 studs al frente, 5 en cualquier dirección): levanta a la víctima y la aplasta | — |
 | `Shift` | Correr (40, sin límite; camina a 26) | Correr (40, igual que Verity; gasta estamina: ~6,7 s seguidos, se recarga en ~5,5 s) |
 | `F` | — | **Linterna** sin batería (la ven todos, también Verity) |
 | `C` | Agacharse (alterna) | — |
@@ -83,13 +83,14 @@ Mapas **inspirados** en los clásicos de MM2 (construcciones propias, no copias 
 
 Durante la ronda nadie muestra la etiqueta de nombre, así que no delata a quien se esconde. Están en `Workspace/Maps` para verlos en Studio; al iniciar se mueven a `ServerStorage/Maps` y cada ronda usa uno al azar.
 
-El **lobby** tiene la estatua de Verity mirando al spawn, el puesto de la **tienda** y un **obby** sobre lava con un cofre de monedas al final.
+El **lobby** tiene una plaza con bancos, el puesto de la **tienda** y un **obby** sobre lava con un cofre de monedas al final. Lo iluminan apliques fijos en las paredes (encima de las ventanas, simétricos) y una lámpara de araña colgada del techo con una cadena.
 
 Para regenerarlos: `python3 tools/generate_world.py`. Para un mapa propio, copia la estructura `SurvivorSpawns` / `KillerSpawn` / `GoldSpawns` / `CraftingTables`.
 
 ## Aspecto cinematográfico
 - Iluminación **Future** (sombras reales de cada lámpara), corrección de color, bloom, profundidad de campo y niebla atmosférica.
 - Lobby al atardecer y, en los mapas, una **noche de invierno cinematográfica**: sombras azul marino (se distinguen las formas, no los detalles), niebla oscura que se traga lo lejano, superficies claras atenuadas y lámparas cálidas que dejan charcos de luz anaranjada con mucho contraste y bloom. Los bordes de la pantalla se oscurecen durante la ronda. Un 10 % de habitaciones queda sin luz.
+- **El lobby nunca se oscurece:** la iluminación de Roblox es una sola para todo el servidor, así que quien está en el lobby durante una ronda (esperando o eliminado) recupera en su pantalla la luz cálida del lobby, sin viñeta ni barras de cine (`LobbyAtmosphere.luau`). Los ambientes están en [`src/shared/Atmosphere.luau`](src/shared/Atmosphere.luau).
 
 ## Animaciones de Verity
 Procedurales, en `VerityAnimator.luau`, con andares de monstruo:

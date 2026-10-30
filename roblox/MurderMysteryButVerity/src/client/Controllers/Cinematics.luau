@@ -7,6 +7,8 @@
 --     la bola se convierte en el monstruo
 --   - ataque: pequeño zoom (campo de visión) mientras Verity levanta a la víctima
 --   - viñeta: los bordes de la pantalla se oscurecen durante la ronda
+-- Nada de esto se ve en el lobby (ni la viñeta ni las barras): solo quien
+-- está en el mapa jugando la ronda.
 
 local CollectionService = game:GetService("CollectionService")
 local Players = game:GetService("Players")
@@ -19,6 +21,7 @@ local Config = require(ReplicatedStorage.Shared.Config)
 local Locale = require(ReplicatedStorage.Shared.Locale)
 local Net = require(ReplicatedStorage.Shared.Net)
 local Pose = require(ReplicatedStorage.Shared.VerityPose)
+local Location = require(script.Parent.Parent.Lib.Location)
 local UI = require(script.Parent.Parent.Lib.UI)
 
 local player = Players.LocalPlayer
@@ -34,6 +37,7 @@ local title: CanvasGroup
 local titleLabel: TextLabel
 local subtitleLabel: TextLabel
 local busy = false
+local barsShown = false
 local TITLE_TIME = 5 -- segundos que el nombre del mapa queda en pantalla
 local TITLE_HOME = UDim2.new(0.5, 0, 0.9, -12)
 local titleShownAt: number? = nil
@@ -46,6 +50,7 @@ local function tween(inst: Instance, time: number, goal: { [string]: any })
 end
 
 local function letterbox(show: boolean)
+	barsShown = show
 	local h = if show then 0.09 else 0
 	tween(topBar, 0.6, { Size = UDim2.fromScale(1, h) })
 	tween(bottomBar, 0.6, { Size = UDim2.fromScale(1, h) })
@@ -230,7 +235,7 @@ end
 local function hideTitle()
 	titleShownAt = nil
 	fadeTitle(false, 0.6)
-	letterbox(Workspace:GetAttribute("Phase") == "Results")
+	letterbox(Workspace:GetAttribute("Phase") == "Results" and not Location.inLobby())
 end
 
 -- Mayúsculas que respetan tildes y eñes (string.upper solo cambia ASCII).
@@ -322,14 +327,17 @@ function Cinematics.start()
 		local name = Workspace:GetAttribute("MapName")
 		if typeof(name) == "string" then
 			task.wait(0.6) -- deja que el personaje llegue al mapa
-			roundIntro(name)
+			-- solo para quien juega la ronda (no para quien espera en el lobby)
+			local role = player:GetAttribute("Role")
+			if role == "Survivor" or role == "Verity" then
+				roundIntro(name)
+			end
 		else
 			hideTitle()
 		end
 	end)
 	local function onPhase()
 		local phase = Workspace:GetAttribute("Phase")
-		vignetteGui.Enabled = phase == "Starting" or phase == "Playing" or phase == "Results"
 		if phase ~= "Starting" and phase ~= "Playing" then
 			hideTitle()
 		end
@@ -340,8 +348,15 @@ function Cinematics.start()
 		if shownAt and os.clock() - shownAt >= TITLE_TIME then
 			hideTitle()
 		end
+		-- viñeta y barras solo en el mapa: en el lobby se quitan (al reaparecer
+		-- tras caer, al volver en los resultados...)
+		local phase = Workspace:GetAttribute("Phase")
+		local inLobby = Location.inLobby()
+		vignetteGui.Enabled = (phase == "Starting" or phase == "Playing" or phase == "Results") and not inLobby
+		if inLobby and barsShown and not busy and titleShownAt == nil then
+			letterbox(false)
+		end
 	end)
-	vignetteGui.Enabled = Workspace:GetAttribute("Phase") == "Playing"
 	Net.get("Effect").OnClientEvent:Connect(function(kind)
 		if kind == "Transform" then
 			transformShot()

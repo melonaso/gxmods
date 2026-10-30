@@ -1312,8 +1312,9 @@ def build_ball():
 
 
 # ---------------------------------------------------------------------------
-# Lobby al estilo MM2: plaza central con la estatua de Verity mirando al
-# spawn, puesto de tienda a la izquierda y un obby a la derecha.
+# Lobby al estilo MM2: plaza central con bancos, puesto de tienda a la
+# izquierda y un obby a la derecha. Luces fijas: apliques en las paredes y una
+# lámpara de araña colgada del techo (nada flota en el aire).
 # ---------------------------------------------------------------------------
 
 LOBBY_Y = 300
@@ -1359,6 +1360,26 @@ def build_obby(top):
     return parts
 
 
+def sconce(x, z, nx, nz, y):
+    """Aplique de pared: placa pegada a la pared en (x, z), brazo hacia dentro
+    de la sala (normal nx, nz) y una bombilla cálida con pantalla."""
+    along_x = nz != 0  # la pared corre a lo largo de X (pared norte/sur)
+    def at(d):
+        return (x + nx * d, z + nz * d)
+    def size(w, h, depth):
+        return (w, h, depth) if along_x else (depth, h, w)
+    plate_x, plate_z = at(0.15)
+    arm_x, arm_z = at(0.8)
+    bulb_x, bulb_z = at(1.5)
+    return container("Model", "Sconce", [
+        part("Plate", (plate_x, y, plate_z), size(1.4, 2.4, 0.3), (40, 32, 30), "Metal"),
+        part("Arm", (arm_x, y - 0.4, arm_z), size(0.3, 0.3, 1.3), (40, 32, 30), "Metal"),
+        part("Bulb", (bulb_x, y + 0.1, bulb_z), (1.1, 1.1, 1.1), (255, 190, 120), "Neon", Shape="Ball", CanCollide=False,
+             children=[point_light((255, 190, 130), 34, 1.1)]),
+        part("Shade", (bulb_x, y + 0.8, bulb_z), (1.5, 0.5, 1.5), (40, 32, 30), "Metal", CanCollide=False),
+    ])
+
+
 def build_lobby():
     y = LOBBY_Y
     top = y + 1
@@ -1377,13 +1398,26 @@ def build_lobby():
         for z in (-54, 54):
             c.append(part("Pillar", (x, top + H / 2, z), (3, H, 3), (40, 30, 38), "Marble"))
     c.append(part("Ceiling", (0, top + H + 0.5, 0), (150, 1, 110), (34, 26, 34), "WoodPlanks"))
-    c.append(part("Chandelier", (0, top + H - 3, 8), (6, 0.6, 6), (200, 160, 80), "Metal"))
-    c.append(part("ChandelierGlow", (0, top + H - 3.8, 8), (2.5, 1, 2.5), (255, 200, 140), "Neon", Shape="Ball", CanCollide=False,
-                  children=[point_light((255, 200, 140), 60, 1.6, True)]))
-    for x in (-40, 0, 40):
-        for z in (-38, 38):
-            c.append(part("WallLamp", (x, top + 14, z), (1.6, 1.6, 1.6), (255, 190, 120), "Neon", Shape="Ball", CanCollide=False,
-                          children=[point_light((255, 190, 130), 40, 1.0)]))
+    # lámpara de araña colgada del techo con una cadena
+    chandelier = [
+        part("Chain", (0, top + H - 1.35, 8), (0.3, 2.7, 0.3), (40, 32, 30), "Metal", CanCollide=False),
+        part("Ring", (0, top + H - 3, 8), (6, 0.6, 6), (200, 160, 80), "Metal", CanCollide=False),
+        part("Glow", (0, top + H - 3.8, 8), (2.5, 1, 2.5), (255, 200, 140), "Neon", Shape="Ball", CanCollide=False,
+             children=[point_light((255, 200, 140), 60, 1.6, True)]),
+    ]
+    for i in range(8):  # velas alrededor del aro
+        a = i * math.pi / 4
+        chandelier.append(part("Candle", (2.6 * math.cos(a), top + H - 2.35, 8 + 2.6 * math.sin(a)), (0.5, 0.7, 0.5),
+                               (255, 200, 130), "Neon", CanCollide=False))
+    c.append(container("Model", "Chandelier", chandelier))
+    # apliques en las paredes, simétricos (entre columnas, encima de las ventanas)
+    lamp_y = top + 17
+    for x in (-55.5, -28, 28, 55.5):  # a los lados del cartel en la pared del fondo
+        c.append(sconce(x, -54, 0, 1, lamp_y))
+        c.append(sconce(x, 54, 0, -1, lamp_y))
+    for z in (-27, 0, 27):  # paredes laterales (la derecha ilumina el obby)
+        c.append(sconce(-74, z, 1, 0, lamp_y))
+        c.append(sconce(74, z, -1, 0, lamp_y))
     # bancos alrededor de la plaza
     for x in (-18, 18):
         for z in (-4, 18):
@@ -1391,23 +1425,7 @@ def build_lobby():
                                      (0, 0, 4, 2.5, 1.2, 0.6, (50, 40, 38), "Metal"), (1.3 if x > 0 else -1.3, 1.7, 0, 0.4, 2.4, 10, (90, 60, 40), "Wood")],
                            x, z, 0, base_y=top))
 
-    # estatua de Verity mirando al spawn (+Z). En el juego se reemplaza por el
-    # modelo real de Verity (ver VerityModel / Lobby.luau).
-    sx, sz = 0, -18
-    statue = [
-        part("Pedestal", (sx, top + 1.5, sz), (9, 3, 9), (30, 26, 32), "Marble"),
-        part("PedestalTrim", (sx, top + 3.1, sz), (7.5, 0.2, 7.5), (200, 160, 80), "Metal"),
-        part("StatueSpot", (sx, top + 3.2, sz), (1, 0.1, 1), (255, 0, 0), Transparency=1, CanCollide=False, CanQuery=False,
-             orientation=YAW180),
-        part("StatueLight", (sx, top + 4, sz + 7), (0.5, 0.5, 0.5), (255, 230, 150), "Neon", Transparency=1, CanCollide=False,
-             children=[point_light((255, 220, 140), 24, 1.6)]),
-        part("StatuePlaque", (sx, top + 1.5, sz + 4.55), (5, 1.4, 0.1), (200, 160, 80), "Metal",
-             children=[surface_text("Back", "VERITY", 40, (0.1, 0.06, 0.04))]),
-    ]
-    statue += verity_rig.build(part, offset=(sx, top + 3.2, sz), statue=True, yaw180=True)
-    c.append(container("Model", "VerityStatue", statue))
-
-    # cartel en la pared del fondo, detrás de la estatua, visible desde el spawn
+    # cartel en la pared del fondo, visible desde el spawn
     c.append(part("Sign", (0, top + 20, -53.6), (46, 9, 0.6), (20, 14, 20), "SmoothPlastic",
                   children=[surface_text("Back", "SURVIVE A\n<font color=\"#ff3b4e\">VERITY</font>")]))
 

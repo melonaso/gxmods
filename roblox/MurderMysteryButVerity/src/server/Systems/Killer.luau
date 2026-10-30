@@ -189,7 +189,7 @@ local function findVictim(root: BasePart, ctx: Context): Instance?
 			local offset = (targetRoot.Position - root.Position) * Vector3.new(1, 0, 1)
 			local distance = offset.Magnitude
 			local facing = if distance > 0.01 then offset.Unit:Dot(forward) else 1
-			if distance <= bestDistance and (facing >= K.KillConeDot or distance < 4) then
+			if distance <= bestDistance and (facing >= K.KillConeDot or distance < K.KillCloseRange) then
 				best = survivor
 				bestDistance = distance
 			end
