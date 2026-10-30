@@ -1,5 +1,5 @@
 {
- "+35% de velocidad mientras la sostienes.": "+35 % Tempo, solange du sie hältst.",
+ "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido.": "+35 % Tempo, solange du sie hältst, aber deine Ausdauer sinkt doppelt so schnell.",
  "+HP": "+LP",
  "+{amount} monedas ({reason})": "+{amount} Münzen ({reason})",
  "2x Probabilidad": "2x Chance",
@@ -153,7 +153,7 @@
  "VEL": "SPD",
  "VERITY GANA": "VERITY GEWINNT",
  "Vacío": "Leere",
- "Velocidad y gravedad baja a la vez.": "Tempo und niedrige Schwerkraft zugleich.",
+ "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido.": "Tempo und niedrige Schwerkraft zugleich; deine Ausdauer sinkt doppelt so schnell.",
  "Ver hitboxes": "Hitboxen anzeigen",
  "Verity": "Verity",
  "Verity abandonó la partida.": "Verity hat das Spiel verlassen.",

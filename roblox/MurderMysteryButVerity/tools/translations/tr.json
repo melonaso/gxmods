@@ -1,5 +1,5 @@
 {
- "+35% de velocidad mientras la sostienes.": "Tutarken %35 hız.",
+ "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido.": "Tutarken %35 hız, ama dayanıklılığın iki kat hızlı biter.",
  "+HP": "+CAN",
  "+{amount} monedas ({reason})": "+{amount} jeton ({reason})",
  "2x Probabilidad": "2x Şans",
@@ -153,7 +153,7 @@
  "VEL": "SPD",
  "VERITY GANA": "VERITY KAZANDI",
  "Vacío": "Boşluk",
- "Velocidad y gravedad baja a la vez.": "Hem hız hem düşük yerçekimi.",
+ "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido.": "Hem hız hem düşük yerçekimi; dayanıklılığın iki kat hızlı biter.",
  "Ver hitboxes": "Hitbox'ları göster",
  "Verity": "Verity",
  "Verity abandonó la partida.": "Verity oyundan ayrıldı.",

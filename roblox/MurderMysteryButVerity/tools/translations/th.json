@@ -1,5 +1,5 @@
 {
- "+35% de velocidad mientras la sostienes.": "ความเร็ว +35% ขณะถือไว้",
+ "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido.": "ความเร็ว +35% ขณะถือไว้ แต่สตามินาลดเร็วขึ้นสองเท่า",
  "+HP": "+HP",
  "+{amount} monedas ({reason})": "+{amount} เหรียญ ({reason})",
  "2x Probabilidad": "โอกาส x2",
@@ -153,7 +153,7 @@
  "VEL": "SPD",
  "VERITY GANA": "VERITY ชนะ",
  "Vacío": "ความว่างเปล่า",
- "Velocidad y gravedad baja a la vez.": "ความเร็วและแรงโน้มถ่วงต่ำพร้อมกัน",
+ "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido.": "ความเร็วและแรงโน้มถ่วงต่ำพร้อมกัน แต่สตามินาลดเร็วขึ้นสองเท่า",
  "Ver hitboxes": "แสดงฮิตบ็อกซ์",
  "Verity": "Verity",
  "Verity abandonó la partida.": "Verity ออกจากเกมแล้ว",

@@ -1,5 +1,5 @@
 {
- "+35% de velocidad mientras la sostienes.": "+35% к скорости, пока держишь её.",
+ "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido.": "+35% к скорости, пока держишь её, но выносливость тратится вдвое быстрее.",
  "+HP": "+HP",
  "+{amount} monedas ({reason})": "+{amount} монет ({reason})",
  "2x Probabilidad": "Шанс x2",
@@ -153,7 +153,7 @@
  "VEL": "SPD",
  "VERITY GANA": "VERITY ПОБЕДИЛА",
  "Vacío": "Пустота",
- "Velocidad y gravedad baja a la vez.": "Скорость и низкая гравитация сразу.",
+ "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido.": "Скорость и низкая гравитация сразу; выносливость тратится вдвое быстрее.",
  "Ver hitboxes": "Показывать хитбоксы",
  "Verity": "Verity",
  "Verity abandonó la partida.": "Verity покинула игру.",

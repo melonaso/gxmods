@@ -1,5 +1,5 @@
 {
- "+35% de velocidad mientras la sostienes.": "+35% de velocidade enquanto você o segura.",
+ "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido.": "+35% de velocidade enquanto você o segura, mas a estamina gasta o dobro de rápido.",
  "+HP": "+HP",
  "+{amount} monedas ({reason})": "+{amount} moedas ({reason})",
  "2x Probabilidad": "2x Chance",
@@ -153,7 +153,7 @@
  "VEL": "SPD",
  "VERITY GANA": "VERITY VENCE",
  "Vacío": "Vazio",
- "Velocidad y gravedad baja a la vez.": "Velocidade e gravidade baixa ao mesmo tempo.",
+ "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido.": "Velocidade e gravidade baixa ao mesmo tempo; a estamina gasta o dobro de rápido.",
  "Ver hitboxes": "Ver hitboxes",
  "Verity": "Verity",
  "Verity abandonó la partida.": "A Verity saiu da partida.",

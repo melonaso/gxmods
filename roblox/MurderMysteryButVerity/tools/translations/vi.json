@@ -1,5 +1,5 @@
 {
- "+35% de velocidad mientras la sostienes.": "+35% tốc độ khi bạn cầm nó.",
+ "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido.": "+35% tốc độ khi bạn cầm nó, nhưng thể lực tiêu hao nhanh gấp đôi.",
  "+HP": "+HP",
  "+{amount} monedas ({reason})": "+{amount} xu ({reason})",
  "2x Probabilidad": "Cơ hội x2",
@@ -153,7 +153,7 @@
  "VEL": "SPD",
  "VERITY GANA": "VERITY THẮNG",
  "Vacío": "Hư không",
- "Velocidad y gravedad baja a la vez.": "Tốc độ và trọng lực thấp cùng lúc.",
+ "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido.": "Tốc độ và trọng lực thấp cùng lúc; thể lực tiêu hao nhanh gấp đôi.",
  "Ver hitboxes": "Hiện hitbox",
  "Verity": "Verity",
  "Verity abandonó la partida.": "Verity đã rời trận.",

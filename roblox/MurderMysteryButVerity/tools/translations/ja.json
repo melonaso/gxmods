@@ -1,5 +1,5 @@
 {
- "+35% de velocidad mientras la sostienes.": "持っている間、スピード+35%。",
+ "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido.": "持っている間、スピード+35%。ただしスタミナの減りが2倍になる。",
  "+HP": "+HP",
  "+{amount} monedas ({reason})": "+{amount}コイン（{reason}）",
  "2x Probabilidad": "確率2倍",
@@ -153,7 +153,7 @@
  "VEL": "SPD",
  "VERITY GANA": "VERITYの勝利",
  "Vacío": "ヴォイド",
- "Velocidad y gravedad baja a la vez.": "スピードと低重力を同時に。",
+ "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido.": "スピードと低重力を同時に。ただしスタミナの減りが2倍になる。",
  "Ver hitboxes": "当たり判定を表示",
  "Verity": "Verity",
  "Verity abandonó la partida.": "Verityがゲームを抜けた。",

@@ -65,9 +65,9 @@ La cámara se aleja muy poco del personaje para que no se vea detrás de las esq
 
 | Objeto | Precio | Efecto |
 | --- | --- | --- |
-| Bobina de velocidad | 250 | +35 % de velocidad |
+| Bobina de velocidad | 250 | +35 % de velocidad; la estamina se gasta el doble de rápido |
 | Bobina de gravedad | 250 | Saltos enormes |
-| Bobina de fusión | 650 | Las dos anteriores |
+| Bobina de fusión | 650 | Las dos anteriores (también gasta la estamina al doble) |
 | Botiquín | 150 | Cura 50 (recarga 20 s) |
 | Bebida energética | 200 | Estamina infinita 6 s |
 | Bengala | 100 | Bengala roja en el suelo que ilumina la zona 20 s |

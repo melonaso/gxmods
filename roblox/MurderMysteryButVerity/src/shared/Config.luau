@@ -63,6 +63,7 @@ Config.Movement = {
 	SurvivorSprint = SPRINT, -- Shift, gasta estamina
 	StaminaMax = 100,
 	StaminaDrain = 15, -- por segundo corriendo (~6,7 s de carrera con la barra llena)
+	FastStaminaDrain = 2, -- con una bobina de velocidad o de fusión en la mano se gasta el doble
 	StaminaRegen = 18, -- se llena en ~5,5 s
 	StaminaRegenDelay = 0.6,
 	VerityWalk = 26,
@@ -142,9 +143,9 @@ Config.Coins = {
 -- equipados (máx. MaxEquipped).
 Config.MaxEquipped = 2
 Config.Items = {
-	{ Key = "SpeedCoil", Title = "Bobina de velocidad", Price = 250, Badge = "VEL", Color = Color3.fromRGB(70, 160, 255), Description = "+35% de velocidad mientras la sostienes." },
+	{ Key = "SpeedCoil", Title = "Bobina de velocidad", Price = 250, Badge = "VEL", Color = Color3.fromRGB(70, 160, 255), Description = "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido." },
 	{ Key = "GravityCoil", Title = "Bobina de gravedad", Price = 250, Badge = "GRV", Color = Color3.fromRGB(170, 90, 255), Description = "Saltos enormes: la gravedad te afecta mucho menos." },
-	{ Key = "FusionCoil", Title = "Bobina de fusión", Price = 650, Badge = "FUS", Color = Color3.fromRGB(255, 120, 200), Description = "Velocidad y gravedad baja a la vez." },
+	{ Key = "FusionCoil", Title = "Bobina de fusión", Price = 650, Badge = "FUS", Color = Color3.fromRGB(255, 120, 200), Description = "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido." },
 	{ Key = "Medkit", Title = "Botiquín", Price = 150, Badge = "+HP", Color = Color3.fromRGB(230, 60, 70), Description = "Clic: cura 50 de vida. Recarga 20 s." },
 	{ Key = "EnergyDrink", Title = "Bebida energética", Price = 200, Badge = "NRG", Color = Color3.fromRGB(120, 230, 80), Description = "Clic: estamina llena e infinita durante 6 s. Recarga 30 s." },
 	{ Key = "Flare", Title = "Bengala", Price = 100, Badge = "BNG", Color = Color3.fromRGB(255, 70, 50), Description = "Clic: deja en el suelo una bengala roja que ilumina la zona 20 s. Recarga 30 s." },

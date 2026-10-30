@@ -1,5 +1,5 @@
 {
- "+35% de velocidad mientras la sostienes.": "들고 있는 동안 속도 +35%.",
+ "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido.": "들고 있는 동안 속도 +35%. 대신 스태미나가 두 배 빨리 닳는다.",
  "+HP": "+HP",
  "+{amount} monedas ({reason})": "+{amount} 코인 ({reason})",
  "2x Probabilidad": "확률 2배",
@@ -153,7 +153,7 @@
  "VEL": "SPD",
  "VERITY GANA": "VERITY 승리",
  "Vacío": "공허",
- "Velocidad y gravedad baja a la vez.": "속도와 저중력을 동시에.",
+ "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido.": "속도와 저중력을 동시에. 대신 스태미나가 두 배 빨리 닳는다.",
  "Ver hitboxes": "히트박스 보기",
  "Verity": "Verity",
  "Verity abandonó la partida.": "Verity가 게임을 나갔다.",

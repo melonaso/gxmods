@@ -133,7 +133,9 @@ local function update(dt: number)
 			end
 			if s.sprint and moving and s.stamina > 0 then
 				if not energized then
-					s.stamina = math.max(0, s.stamina - M.StaminaDrain * dt)
+					-- las bobinas de velocidad dan +35 %: a cambio, la estamina dura la mitad
+					local drain = M.StaminaDrain * (if mult > 1 then M.FastStaminaDrain else 1)
+					s.stamina = math.max(0, s.stamina - drain * dt)
 				end
 				s.lastDrain = clock
 				humanoid.WalkSpeed = M.SurvivorSprint * mult

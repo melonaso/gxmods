@@ -1,5 +1,5 @@
 {
- "+35% de velocidad mientras la sostienes.": "+35% szybkości, gdy ją trzymasz.",
+ "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido.": "+35% szybkości, gdy ją trzymasz, ale wytrzymałość spada dwa razy szybciej.",
  "+HP": "+HP",
  "+{amount} monedas ({reason})": "+{amount} monet ({reason})",
  "2x Probabilidad": "Szansa x2",
@@ -153,7 +153,7 @@
  "VEL": "SPD",
  "VERITY GANA": "VERITY WYGRYWA",
  "Vacío": "Pustka",
- "Velocidad y gravedad baja a la vez.": "Szybkość i niska grawitacja naraz.",
+ "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido.": "Szybkość i niska grawitacja naraz; wytrzymałość spada dwa razy szybciej.",
  "Ver hitboxes": "Pokaż hitboxy",
  "Verity": "Verity",
  "Verity abandonó la partida.": "Verity opuściła grę.",

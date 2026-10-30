@@ -1,5 +1,5 @@
 {
- "+35% de velocidad mientras la sostienes.": "+35% سرعة أثناء حملها.",
+ "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido.": "+35% سرعة أثناء حملها، لكن قدرة التحمّل تنفد بضعف السرعة.",
  "+HP": "+HP",
  "+{amount} monedas ({reason})": "+{amount} عملة ({reason})",
  "2x Probabilidad": "فرصة ×2",
@@ -153,7 +153,7 @@
  "VEL": "SPD",
  "VERITY GANA": "VERITY تفوز",
  "Vacío": "الفراغ",
- "Velocidad y gravedad baja a la vez.": "سرعة وجاذبية منخفضة معًا.",
+ "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido.": "سرعة وجاذبية منخفضة معًا؛ لكن قدرة التحمّل تنفد بضعف السرعة.",
  "Ver hitboxes": "إظهار مربعات الإصابة",
  "Verity": "Verity",
  "Verity abandonó la partida.": "غادرت Verity اللعبة.",

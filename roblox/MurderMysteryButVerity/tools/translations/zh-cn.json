@@ -1,5 +1,5 @@
 {
- "+35% de velocidad mientras la sostienes.": "手持时速度+35%。",
+ "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido.": "手持时速度+35%，但体力消耗速度翻倍。",
  "+HP": "+HP",
  "+{amount} monedas ({reason})": "+{amount} 金币（{reason}）",
  "2x Probabilidad": "2倍几率",
@@ -153,7 +153,7 @@
  "VEL": "SPD",
  "VERITY GANA": "VERITY获胜",
  "Vacío": "虚空",
- "Velocidad y gravedad baja a la vez.": "同时拥有速度和低重力。",
+ "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido.": "同时拥有速度和低重力，但体力消耗速度翻倍。",
  "Ver hitboxes": "显示判定框",
  "Verity": "Verity",
  "Verity abandonó la partida.": "Verity离开了游戏。",

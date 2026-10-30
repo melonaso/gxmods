@@ -1,5 +1,5 @@
 {
- "+35% de velocidad mientras la sostienes.": "+35% kecepatan saat kamu memegangnya.",
+ "+35% de velocidad mientras la sostienes, pero gastas la estamina el doble de rápido.": "+35% kecepatan saat kamu memegangnya, tapi stamina habis dua kali lebih cepat.",
  "+HP": "+HP",
  "+{amount} monedas ({reason})": "+{amount} koin ({reason})",
  "2x Probabilidad": "Peluang 2x",
@@ -153,7 +153,7 @@
  "VEL": "SPD",
  "VERITY GANA": "VERITY MENANG",
  "Vacío": "Hampa",
- "Velocidad y gravedad baja a la vez.": "Kecepatan dan gravitasi rendah sekaligus.",
+ "Velocidad y gravedad baja a la vez; gastas la estamina el doble de rápido.": "Kecepatan dan gravitasi rendah sekaligus; stamina habis dua kali lebih cepat.",
  "Ver hitboxes": "Tampilkan hitbox",
  "Verity": "Verity",
  "Verity abandonó la partida.": "Verity keluar dari permainan.",
