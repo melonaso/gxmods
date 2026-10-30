@@ -232,6 +232,10 @@ local function watch(model: Instance)
 	if not m then
 		return
 	end
+	Locale.changed:Connect(function()
+		m.token += 1 -- corta la animación en curso
+		m.status.Text = T(IDLE_TEXT)
+	end)
 	model:GetAttributeChangedSignal("SpinId"):Connect(function()
 		local raw = model:GetAttribute("SpinResult")
 		if typeof(raw) ~= "string" then

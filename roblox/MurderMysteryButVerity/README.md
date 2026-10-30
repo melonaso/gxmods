@@ -54,7 +54,7 @@ La cámara se aleja muy poco del personaje para que no se vea detrás de las esq
 | `R` | — | Esconderse en armarios, taquillas, ataúdes, confesionarios y arbustos (Verity puede sacarte con `Q` si te encuentra) |
 | `1`–`2` | — | Objetos de la tienda (solo en la ronda) |
 
-**Ajustes (⚙, junto al botón de música):** ver hitboxes (tu propia caja y, cuando Verity está a menos de 40 studs, la suya con su alcance real: anillo de 12 studs, cono frontal y círculo de 5; tenue, tapado por las paredes y nunca marca a otros supervivientes ni a nadie escondido, para que no dé ventaja), calidad baja (sin sombras, partículas ni efectos), volumen de música y de efectos, y **modo AFK** (no entras en las rondas hasta quitarlo; el modo solitario con NPCs no cuenta a los AFK). Los ajustes se guardan con tus datos; el modo AFK dura la sesión.
+**Ajustes (⚙, junto al botón de música):** ver hitboxes (tu propia caja y, cuando Verity está a menos de 40 studs, la suya con su alcance real: anillo de 12 studs, cono frontal y círculo de 5; tenue, tapado por las paredes y nunca marca a otros supervivientes ni a nadie escondido, para que no dé ventaja), calidad baja (sin sombras, partículas ni efectos), volumen de música y de efectos, **modo AFK** (no entras en las rondas hasta quitarlo; el modo solitario con NPCs no cuenta a los AFK) e **idioma** (automático o cualquiera de los 24 del juego). Los ajustes se guardan con tus datos; el modo AFK dura la sesión.
 
 **Espectar:** si estás en el lobby (esperando o eliminado) mientras se juega una ronda, el botón **👁 Espectar** (abajo al centro) te deja mirar la partida. `◀` `▶` (o las flechas del teclado) cambian entre supervivientes, NPCs y Verity, y **Salir** vuelve a tu personaje. Mientras espectas ves la luz del mapa, no la del lobby.
 
@@ -144,9 +144,10 @@ Entre los que aún no lo han sido, el orden lo deciden la suerte y los pases. Ca
 ## Traducción a todos los idiomas
 El juego está escrito en **español** y todos los textos (HUD, tienda, avisos, carteles, mesas de crafteo, escondites, nombres de mapas y objetos) pasan por [`Locale.luau`](src/shared/Locale.luau), que los traduce con el `Translator` de cada jugador. Los textos con números o nombres usan parámetros (`"Verity atrapó a {name}"`), así una sola entrada sirve para cualquier valor.
 
-- `tools/extract_strings.py` reúne los 191 textos en [`src/localization/GameStrings.csv`](src/localization/GameStrings.csv), que va dentro del place como `LocalizationService.GameStrings` (idioma de origen `es-es`).
-- **16 idiomas ya traducidos** dentro del juego (funcionan sin configurar nada, también en Studio): español, inglés, portugués, francés, alemán, italiano, ruso, turco, polaco, indonesio, vietnamita, tailandés, japonés, coreano, chino simplificado y árabe (`tools/translations/<idioma>.json`). Cada jugador ve el juego en el idioma de su cuenta de Roblox.
-- Para el resto de idiomas (chino tradicional, filipino...), Roblox puede traducir automáticamente:
+- `tools/extract_strings.py` reúne los 196 textos en [`src/localization/GameStrings.csv`](src/localization/GameStrings.csv), que va dentro del place como `LocalizationService.GameStrings` (idioma de origen `es-es`).
+- **24 idiomas ya traducidos** dentro del juego (funcionan sin configurar nada, también en Studio): español, inglés, portugués, francés, alemán, italiano, neerlandés, sueco, polaco, checo, rumano, turco, ruso, ucraniano, árabe, indonesio, malayo, filipino, vietnamita, tailandés, japonés, coreano, chino simplificado y chino tradicional (`tools/translations/<idioma>.json`).
+- **Idioma:** por defecto, el de la cuenta de Roblox de cada jugador (si el juego no lo trae, inglés). En **Ajustes → Idioma** se puede elegir cualquiera de los 24; cambia al momento (la interfaz se vuelve a dibujar) y se guarda con sus datos. La lista está en `Locale.Languages`.
+- Para otros idiomas, Roblox puede traducir automáticamente:
   1. Publica el juego.
   2. En el **Creator Dashboard** → tu experiencia → **Localization**: pon el **idioma de origen en Español**, activa **Automatic Text Capture** y **Automatic Translation**.
   3. En la tabla de traducciones de esa misma página, **importa** `GameStrings.csv` (así entran todas las frases con sus traducciones).

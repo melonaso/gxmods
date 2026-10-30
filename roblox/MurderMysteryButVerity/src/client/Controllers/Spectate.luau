@@ -240,6 +240,19 @@ function Spectate.start()
 	player.CharacterAdded:Connect(function()
 		stop()
 	end)
+	-- otro idioma: se vuelve a construir (y se sigue mirando al mismo)
+	Locale.changed:Connect(function()
+		local watching = current
+		gui:Destroy()
+		build()
+		if spectating then
+			for _, target in targets() do
+				if target.model == watching then
+					focus(target)
+				end
+			end
+		end
+	end)
 end
 
 return Spectate

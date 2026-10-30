@@ -1,8 +1,10 @@
 --!strict
 -- Botón ⚙ (junto al de la música) con el panel de ajustes:
---   Ver hitboxes, Calidad baja, volumen de Música y de Efectos, Modo AFK.
--- Los cuatro primeros se guardan con tus datos (remote "Settings" ->
--- PlayerData) y se aplican al volver a entrar. El modo AFK dura la sesión:
+--   Ver hitboxes, Calidad baja, volumen de Música y de Efectos, Modo AFK e
+--   Idioma (automático = el de tu cuenta de Roblox, o cualquiera de los que
+--   trae el juego; se aplica al momento).
+-- Todo menos el modo AFK se guarda con tus datos (remote "Settings" ->
+-- PlayerData) y se aplica al volver a entrar. El modo AFK dura la sesión:
 -- mientras está activo no entras en las rondas.
 
 local HttpService = game:GetService("HttpService")
@@ -24,12 +26,14 @@ local T = Locale.t
 
 local Settings = {}
 
-type Values = { music: number, effects: number, lowQuality: boolean, hitboxes: boolean }
+type Values = { music: number, effects: number, lowQuality: boolean, hitboxes: boolean, language: string }
 
-local values: Values = { music = 1, effects = 1, lowQuality = false, hitboxes = false }
+local values: Values = { music = 1, effects = 1, lowQuality = false, hitboxes = false, language = "auto" }
 local loaded = false -- ¿ya llegaron los ajustes guardados?
 local saveToken = 0
+local gui: ScreenGui
 local panel: CanvasGroup
+local languageList: ScrollingFrame
 local panelScale: UIScale
 local fitScale = 1
 local isOpen = false
@@ -158,8 +162,82 @@ local function slider(text: string, y: number, get: () -> number, set: (number) 
 	render()
 end
 
+local function languageName(code: string): string
+	local entry = Locale.findLanguage(code)
+	return if entry then entry.name else T("Automático")
+end
+
+-- Fila "Idioma": botón con el idioma actual que abre una lista.
+local function languageRow(y: number)
+	rowLabel(T("Idioma"), y)
+	local button: TextButton = UI.new("TextButton", {
+		AnchorPoint = Vector2.new(1, 0),
+		Position = UDim2.new(1, -20, 0, y - 4),
+		Size = UDim2.fromOffset(170, 28),
+		BackgroundColor3 = C.PanelLight,
+		FontFace = UI.FontBold,
+		TextSize = 13,
+		TextColor3 = C.Text,
+		TextTruncate = Enum.TextTruncate.AtEnd,
+		Text = `{languageName(values.language)}  ▾`,
+		Parent = panel,
+	}, { UI.corner(10) })
+	languageList = UI.new("ScrollingFrame", {
+		Name = "Languages",
+		AnchorPoint = Vector2.new(1, 1),
+		Position = UDim2.new(1, -20, 0, y - 8),
+		Size = UDim2.fromOffset(200, 236),
+		BackgroundColor3 = C.Panel,
+		BorderSizePixel = 0,
+		ScrollBarThickness = 4,
+		ScrollBarImageColor3 = C.Muted,
+		CanvasSize = UDim2.new(),
+		AutomaticCanvasSize = Enum.AutomaticSize.Y,
+		ZIndex = 10,
+		Visible = false,
+		Parent = panel,
+	}, {
+		UI.corner(10),
+		UI.stroke(0.6),
+		UI.new("UIListLayout", { Padding = UDim.new(0, 2), SortOrder = Enum.SortOrder.LayoutOrder }),
+		UI.new("UIPadding", { PaddingTop = UDim.new(0, 4), PaddingBottom = UDim.new(0, 4), PaddingLeft = UDim.new(0, 4), PaddingRight = UDim.new(0, 8) }),
+	})
+	local options = { "auto" }
+	for _, entry in Locale.Languages do
+		table.insert(options, entry.code)
+	end
+	for i, code in options do
+		local selected = code == values.language
+		local option: TextButton = UI.new("TextButton", {
+			LayoutOrder = i,
+			Size = UDim2.new(1, 0, 0, 26),
+			BackgroundColor3 = if selected then C.Survivor else C.PanelLight,
+			BackgroundTransparency = if selected then 0.2 else 0.5,
+			FontFace = if selected then UI.FontBold else UI.Font,
+			TextSize = 13,
+			TextColor3 = C.Text,
+			Text = languageName(code),
+			ZIndex = 11,
+			Parent = languageList,
+		}, { UI.corner(6) })
+		option.Activated:Connect(function()
+			languageList.Visible = false
+			if code == values.language then
+				return
+			end
+			values.language = code
+			changed()
+			-- cambia al momento: la interfaz se vuelve a dibujar en ese idioma
+			task.spawn(Locale.setLanguage, if code == "auto" then nil else code)
+		end)
+	end
+	button.Activated:Connect(function()
+		languageList.Visible = not languageList.Visible
+	end)
+end
+
 local function build()
-	local gui = UI.new("ScreenGui", {
+	gui = UI.new("ScreenGui", {
 		Name = "Settings",
 		ResetOnSpawn = false,
 		ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
@@ -188,7 +266,7 @@ local function build()
 		Name = "Panel",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.fromScale(0.5, 0.5),
-		Size = UDim2.fromOffset(360, 360),
+		Size = UDim2.fromOffset(360, 400),
 		BackgroundColor3 = C.Panel,
 		BackgroundTransparency = 0.05,
 		GroupTransparency = 1,
@@ -199,7 +277,7 @@ local function build()
 	local function fit()
 		local camera = Workspace.CurrentCamera
 		if camera then
-			fitScale = math.min(1, (camera.ViewportSize.X - 24) / 360, (camera.ViewportSize.Y - 40) / 360)
+			fitScale = math.min(1, (camera.ViewportSize.X - 24) / 360, (camera.ViewportSize.Y - 40) / 400)
 			panelScale.Scale = fitScale
 		end
 	end
@@ -255,6 +333,7 @@ local function build()
 		Net.get("Settings"):FireServer("AFK", v)
 		player:SetAttribute("AFK", v) -- se ve al instante; el servidor lo confirma
 	end)
+	languageRow(316)
 	UI.label({ AnchorPoint = Vector2.new(0.5, 1), Position = UDim2.new(0.5, 0, 1, -12), Size = UDim2.new(1, -40, 0, 14), TextSize = 11,
 		TextColor3 = C.Muted, Text = T("Se guardan automáticamente"), Parent = panel })
 	UI.animateButtons(gui)
@@ -275,7 +354,26 @@ local function load()
 	values.effects = math.clamp(tonumber(data.effects) or 1, 0, 1)
 	values.lowQuality = data.lowQuality == true
 	values.hitboxes = data.hitboxes == true
+	values.language = if typeof(data.language) == "string" and Locale.findLanguage(data.language) then data.language else "auto"
 	apply()
+	if values.language ~= "auto" then
+		task.spawn(Locale.setLanguage, values.language)
+	end
+end
+
+-- Al cambiar de idioma se vuelve a dibujar el panel (abierto si lo estaba).
+local function rebuild()
+	local wasOpen = isOpen
+	gui:Destroy()
+	table.clear(refreshers)
+	isOpen = false
+	build()
+	if wasOpen then
+		panel.Visible = true
+		panel.GroupTransparency = 0
+		panelScale.Scale = fitScale
+		isOpen = true
+	end
 end
 
 function Settings.init()
@@ -292,6 +390,7 @@ function Settings.start()
 			fn()
 		end
 	end)
+	Locale.changed:Connect(rebuild)
 end
 
 return Settings

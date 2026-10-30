@@ -20,6 +20,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 
 local Config = require(ReplicatedStorage.Shared.Config)
+local Locale = require(ReplicatedStorage.Shared.Locale)
 
 export type Data = {
 	luck: number,
@@ -35,7 +36,7 @@ export type Data = {
 	settings: Settings, -- ajustes del jugador (volumen, calidad, hitboxes)
 }
 
-export type Settings = { music: number, effects: number, lowQuality: boolean, hitboxes: boolean }
+export type Settings = { music: number, effects: number, lowQuality: boolean, hitboxes: boolean, language: string }
 
 local MAX_STORED_RECEIPTS = 50
 local STORE_NAME = "SurviveAVerity_v1"
@@ -124,18 +125,20 @@ local function defaults(): Data
 		skins = { "Classic" },
 		skin = "Classic",
 		receipts = {},
-		settings = { music = 1, effects = 1, lowQuality = false, hitboxes = false },
+		settings = { music = 1, effects = 1, lowQuality = false, hitboxes = false, language = "auto" },
 	}
 end
 
 -- Ajustes válidos a partir de lo que mande el cliente o haya guardado.
 local function sanitizeSettings(raw: any): Settings
-	local s = { music = 1, effects = 1, lowQuality = false, hitboxes = false }
+	local s = { music = 1, effects = 1, lowQuality = false, hitboxes = false, language = "auto" }
 	if typeof(raw) == "table" then
 		s.music = math.clamp(tonumber(raw.music) or 1, 0, 1)
 		s.effects = math.clamp(tonumber(raw.effects) or 1, 0, 1)
 		s.lowQuality = raw.lowQuality == true
 		s.hitboxes = raw.hitboxes == true
+		-- "auto" (idioma de la cuenta) o uno de los idiomas del juego
+		s.language = if typeof(raw.language) == "string" and Locale.findLanguage(raw.language) then raw.language else "auto"
 	end
 	return s
 end

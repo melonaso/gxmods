@@ -512,6 +512,21 @@ function Shop.start()
 			setOpen(true, "Items")
 		end
 	end)
+	-- otro idioma: la tienda se vuelve a construir con los textos nuevos
+	Locale.changed:Connect(function()
+		local wasOpen, tab = isOpen, currentTab
+		gui:Destroy()
+		table.clear(pages)
+		table.clear(tabButtons)
+		table.clear(refreshers)
+		currentTab, shownCoins, isOpen = nil, nil, false
+		build()
+		refresh()
+		if wasOpen then
+			setOpen(true, tab)
+		end
+		task.spawn(watchBackpack) -- nombres de los objetos de la mochila
+	end)
 	refresh()
 end
 

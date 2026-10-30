@@ -164,6 +164,7 @@ local function watch(machine: Instance)
 	end
 	showRecord()
 	machine:GetAttributeChangedSignal("RecordPower"):Connect(showRecord)
+	Locale.changed:Connect(showRecord)
 
 	local home = puck.CFrame
 	local bellColor = bell.Color
@@ -204,6 +205,13 @@ function Striker.init()
 end
 
 function Striker.start()
+	Locale.changed:Connect(function()
+		if playing then
+			finish()
+		end
+		gui:Destroy()
+		build()
+	end)
 	Net.get("Minigame").OnClientEvent:Connect(function(kind, machine)
 		if kind == "StrikerStart" and typeof(machine) == "Instance" then
 			begin(machine)

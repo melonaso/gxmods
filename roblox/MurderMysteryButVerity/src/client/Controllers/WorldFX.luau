@@ -470,24 +470,49 @@ function WorldFX.start()
 
 	-- textos de los ProximityPrompt (esconderse, oro, tienda...) en mi idioma;
 	-- si el servidor los cambia, se vuelven a traducir
-	local hooked: { [ProximityPrompt]: boolean } = setmetatable({}, { __mode = "k" }) :: any
+	-- se guarda el texto original (español) para poder cambiar de idioma
+	type PromptText = { action: string, object: string, shownAction: string, shownObject: string }
+	local hooked: { [ProximityPrompt]: PromptText } = setmetatable({}, { __mode = "k" }) :: any
+	local function applyPrompt(prompt: ProximityPrompt)
+		local texts = hooked[prompt]
+		if prompt.ActionText ~= texts.shownAction then
+			texts.action = prompt.ActionText -- el servidor lo cambió
+		end
+		if prompt.ObjectText ~= texts.shownObject then
+			texts.object = prompt.ObjectText
+		end
+		texts.shownAction, texts.shownObject = Locale.t(texts.action), Locale.t(texts.object)
+		if prompt.ActionText ~= texts.shownAction then
+			prompt.ActionText = texts.shownAction
+		end
+		if prompt.ObjectText ~= texts.shownObject then
+			prompt.ObjectText = texts.shownObject
+		end
+	end
 	ProximityPromptService.PromptShown:Connect(function(prompt)
 		if hooked[prompt] then
 			return
 		end
-		hooked[prompt] = true
-		local function apply()
-			local action, object = Locale.t(prompt.ActionText), Locale.t(prompt.ObjectText)
-			if prompt.ActionText ~= action then
-				prompt.ActionText = action
-			end
-			if prompt.ObjectText ~= object then
-				prompt.ObjectText = object
+		hooked[prompt] = { action = prompt.ActionText, object = prompt.ObjectText, shownAction = "", shownObject = "" }
+		applyPrompt(prompt)
+		prompt:GetPropertyChangedSignal("ActionText"):Connect(function()
+			applyPrompt(prompt)
+		end)
+		prompt:GetPropertyChangedSignal("ObjectText"):Connect(function()
+			applyPrompt(prompt)
+		end)
+	end)
+	Locale.changed:Connect(function()
+		for prompt, texts in hooked do
+			prompt.ActionText, prompt.ObjectText = texts.action, texts.object
+			texts.shownAction, texts.shownObject = texts.action, texts.object
+			applyPrompt(prompt)
+		end
+		for _, inst in CollectionService:GetTagged("WorldText") do
+			if inst:IsA("TextLabel") then
+				Locale.renderWorldText(inst)
 			end
 		end
-		apply()
-		prompt:GetPropertyChangedSignal("ActionText"):Connect(apply)
-		prompt:GetPropertyChangedSignal("ObjectText"):Connect(apply)
 	end)
 
 	-- textos del mundo creados en el servidor (mesas de crafteo...), traducidos
