@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>WhatIf Studio</title>
+<script type="importmap">
+  { "imports": { "three": "../node_modules/three/build/three.module.js" } }
+</script>
+<style>
+  @font-face { font-family: Inter; font-weight: 700; src: url(../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2); }
+  @font-face { font-family: Inter; font-weight: 800; src: url(../node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2); }
+  @font-face { font-family: Inter; font-weight: 900; src: url(../node_modules/@fontsource/inter/files/inter-latin-900-normal.woff2); }
+  html, body { margin: 0; background: #000; }
+  #out { width: 100vw; height: auto; display: block; }
+</style>
+</head>
+<body>
+<canvas id="out"></canvas>
+<script type="module">
+  import { createStudio } from './timeline.js';
+  const q = new URLSearchParams(location.search);
+  const episode = q.get('ep') || 'ep01-crecer';
+  const W = +(q.get('w') || 1920), H = +(q.get('h') || 1080);
+  await Promise.all([700, 800, 900].map((w) => document.fonts.load(`${w} 40px Inter`)));
+  const studio = await createStudio({ episode, W, H });
+  window.studio = studio;
+  if (q.has('play')) {
+    // Vista previa en tiempo real en el navegador (sin audio).
+    const t0 = performance.now() - (+(q.get('t') || 0)) * 1000;
+    const loop = () => { studio.renderFrame(((performance.now() - t0) / 1000) % studio.duration); requestAnimationFrame(loop); };
+    loop();
+  }
+  window.studioReady = true;
+</script>
+</body>
+</html>
