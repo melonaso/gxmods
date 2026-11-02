@@ -12,12 +12,15 @@ export async function createStudio({ episode, W = 1920, H = 1080 }) {
   try { timing = await (await fetch(base + 'build/timing.json')).json(); } catch { /* sin audio aún */ }
   const ep = await import(base + 'episode.js');
 
-  // Línea de tiempo: duración = audio real de la escena + pausa; si no hay audio, estimación por palabras.
+  // Línea de tiempo: duración = audio real de la escena + pausa.
+  // Sin narración ("narration": false) o sin audio, se usa el tiempo de lectura: palabras / wps.
   const gap = script.gap ?? 0.35;
+  const wps = script.wps ?? 2.6; // palabras por segundo
+  if (script.narration === false) timing = null;
   let acc = 0;
   const scenes = script.scenes.map((s, i) => {
     const words = (s.text || '').split(/\s+/).filter(Boolean).length;
-    const audio = timing?.[i]?.duration ?? words / 2.6;
+    const audio = timing?.[i]?.duration ?? words / wps;
     const dur = Math.max(s.min ?? 0, audio + gap + (s.hold ?? 0));
     const sc = { ...s, index: i, start: acc, audio, dur };
     acc += dur;

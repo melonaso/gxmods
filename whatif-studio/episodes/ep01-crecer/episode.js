@@ -45,7 +45,7 @@ export function setup({ THREE, world, actors }) {
   for (let i = 0; i < 70; i++) {
     const a = rng() * Math.PI * 2, r = 80 + rng() * 520;
     const x = Math.sin(a) * r, z = Math.cos(a) * r;
-    if (inFront(x, z) && r < 300) continue;
+    if (inFront(x, z)) continue; // nunca entre la cámara y el gigante
     const h = 18 + rng() * (r > 250 ? 90 : 30);
     add(actors.createBuilding(h, 12 + rng() * 10, bColors[i % 6]), x, z, rng());
   }
@@ -113,9 +113,10 @@ export function update({ world, scenes }, { t, scene: s, local, p }) {
     const a = s.id === 'intro'
       ? Math.min(1, Math.max(0, (local - 0.3) / 0.5)) * (1 - Math.max(0, (local - (s.dur - 0.5)) / 0.5))
       : Math.min(1, Math.max(0, (p - 0.55) / 0.08));
-    title = { lines: s.titleCard, alpha: a };
+    // Tarjeta en el tercio superior para no tapar la cara del protagonista.
+    title = { lines: s.titleCard, alpha: a, y: s.titleY ?? 0.3 };
   }
   const ov = { counter, chip, title };
-  if (title && title.alpha > 0.5) ov.subtitle = null; // la tarjeta ya muestra el texto
+  if (s.id === 'intro' && title.alpha > 0.5) ov.subtitle = null; // la tarjeta ya muestra la pregunta
   return ov;
 }

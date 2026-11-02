@@ -3,72 +3,132 @@
   "fps": 30,
   "gap": 0.4,
   "tail": 2.5,
-  "voice": { "edge": "es-MX-JorgeNeural", "piper": "es-mls_9972-low" },
+  "voice": {
+    "edge": "es-MX-JorgeNeural",
+    "piper": "es-mls_9972-low"
+  },
   "scenes": [
     {
       "id": "intro",
-      "text": "¿Qué pasaría si crecieras un centímetro cada día... y no pudieras parar?",
-      "d0": 0, "d1": 0, "hold": 0.8,
-      "cam": { "dist": 2.8, "yaw": 0.0, "lift": 0.8 },
+      "text": "¿Qué pasaría si crecieras 1 cm cada día... y no pudieras parar?",
+      "d0": 0,
+      "d1": 0,
+      "hold": 0.8,
+      "cam": {
+        "dist": 2.8,
+        "yaw": 0.0,
+        "lift": 0.8
+      },
       "pose": "wave",
-      "titleCard": ["¿QUÉ PASARÍA SI CRECIERAS", "1 CM CADA DÍA?"]
+      "titleCard": [
+        "¿QUÉ PASARÍA SI CRECIERAS",
+        "1 CM CADA DÍA?"
+      ]
     },
     {
       "id": "dia1",
-      "text": "El primer día, nadie lo nota. Un centímetro es más o menos el ancho de tu dedo meñique.",
-      "d0": 0, "d1": 1,
-      "cam": { "dist": 2.2, "yaw": -0.35, "lift": 0.8 }
+      "text": "El primer día, nadie lo nota. 1 cm es más o menos el ancho de tu dedo meñique.",
+      "d0": 0,
+      "d1": 1,
+      "cam": {
+        "dist": 2.2,
+        "yaw": -0.35,
+        "lift": 0.8
+      }
     },
     {
       "id": "mes1",
-      "text": "Pero la cuenta no se detiene. Treinta días por un centímetro son treinta centímetros. En un mes ya mides dos metros, y las puertas empiezan a ser un problema.",
-      "d0": 1, "d1": 30,
-      "cam": { "dist": 3.2, "yaw": 0.55, "lift": 0.7 }
+      "text": "Pero la cuenta no se detiene. 30 días × 1 cm = 30 cm. En un mes ya mides 2 metros, y las puertas empiezan a ser un problema.",
+      "d0": 1,
+      "d1": 30,
+      "cam": {
+        "dist": 3.2,
+        "yaw": 0.55,
+        "lift": 0.7
+      }
     },
     {
       "id": "anio1",
-      "text": "Al cumplir un año, la cuenta es simple: trescientos sesenta y cinco días por un centímetro dan tres metros sesenta y cinco. Sumados a tu estatura original, ya mides cinco metros y medio.",
-      "d0": 30, "d1": 365,
-      "cam": { "dist": 3.4, "yaw": 0.15, "lift": 0.6 },
+      "text": "Al cumplir un año, la cuenta es simple: 365 días × 1 cm = 3.65 m. Sumados a tu estatura original (1.70 m), ya mides 5.35 metros.",
+      "d0": 30,
+      "d1": 365,
+      "cam": {
+        "dist": 3.4,
+        "yaw": 0.15,
+        "lift": 0.6
+      },
       "crowd": "lookUp"
     },
     {
       "id": "fisica",
-      "text": "Y aquí aparece el verdadero problema. Si tu altura se duplica, tu peso se multiplica por ocho, porque creces a lo alto, a lo ancho y a lo profundo: dos por dos por dos. Pero tus huesos solo se vuelven cuatro veces más fuertes. Con cinco metros y medio, ya pesas más de dos toneladas.",
-      "d0": 365, "d1": 400,
-      "cam": { "dist": 3.0, "yaw": -0.6, "lift": 0.55 },
+      "text": "Y aquí aparece el verdadero problema. Si tu altura se duplica, tu peso se multiplica por 8, porque creces a lo alto, a lo ancho y a lo profundo: 2 × 2 × 2. Pero tus huesos solo se vuelven 4 veces más fuertes (2 × 2). Con 5.35 m, ya pesas más de 2 toneladas.",
+      "d0": 365,
+      "d1": 400,
+      "cam": {
+        "dist": 3.0,
+        "yaw": -0.6,
+        "lift": 0.55
+      },
       "counter": "weight",
       "crowd": "lookUp"
     },
     {
       "id": "anio10",
-      "text": "Diez años después, mides treinta y ocho metros. Eres más alto que un edificio de diez pisos, pesas casi ochocientas toneladas, y la gente viaja desde otras ciudades solo para verte.",
-      "d0": 400, "d1": 3650,
-      "cam": { "dist": 3.0, "yaw": 0.4, "lift": 0.55 },
+      "text": "10 años después, mides 38 metros. Eres más alto que un edificio de 10 pisos, pesas casi 800 toneladas, y la gente viaja desde otras ciudades solo para verte.",
+      "d0": 400,
+      "d1": 3650,
+      "cam": {
+        "dist": 3.0,
+        "yaw": 0.4,
+        "lift": 0.55
+      },
       "crowd": "cheer"
     },
     {
       "id": "anio50",
-      "text": "A los cincuenta años alcanzas ciento ochenta y cuatro metros. En la vida real, tus huesos se habrían roto hace mucho. Pero en este mundo sigues de pie, y cada paso sacude las ventanas de toda la ciudad.",
-      "d0": 3650, "d1": 18250,
-      "cam": { "dist": 2.8, "yaw": -0.3, "lift": 0.5 },
+      "text": "A los 50 años alcanzas 184 metros. En la vida real, tus huesos se habrían roto hace mucho. Pero en este mundo sigues de pie, y cada paso sacude las ventanas de toda la ciudad.",
+      "d0": 3650,
+      "d1": 18250,
+      "cam": {
+        "dist": 2.8,
+        "yaw": -0.3,
+        "lift": 0.5
+      },
       "crowd": "lookUp"
     },
     {
       "id": "anio100",
-      "text": "Y si llegas a los cien años, medirás trescientos sesenta y seis metros. Más que la Torre Eiffel. Todo por un solo centímetro al día.",
-      "d0": 18250, "d1": 36500, "hold": 0.6,
-      "cam": { "dist": 2.6, "yaw": 0.65, "lift": 0.45 },
+      "text": "Y si llegas a los 100 años, medirás casi 367 metros. Más que la Torre Eiffel (330 m). Todo por un solo centímetro al día.",
+      "d0": 18250,
+      "d1": 36500,
+      "hold": 0.6,
+      "cam": {
+        "dist": 2.6,
+        "yaw": 0.65,
+        "lift": 0.45
+      },
       "crowd": "lookUp"
     },
     {
       "id": "outro",
-      "text": "Un centímetro parece nada. Pero repetido treinta y seis mil quinientas veces, lo cambia todo. ¿Qué otro qué pasaría si quieres ver? Déjalo en los comentarios.",
-      "d0": 36500, "d1": 36500, "hold": 1.0,
-      "cam": { "dist": 3.4, "yaw": 0.1, "lift": 0.55 },
+      "text": "1 cm parece nada. Pero repetido 36,500 veces, lo cambia todo. ¿Qué otro \"qué pasaría si\" quieres ver? Déjalo en los comentarios.",
+      "d0": 36500,
+      "d1": 36500,
+      "hold": 1.0,
+      "cam": {
+        "dist": 3.4,
+        "yaw": 0.1,
+        "lift": 0.55
+      },
       "pose": "wave",
       "crowd": "cheer",
-      "titleCard": ["36,500 DÍAS DESPUÉS", "366 METROS"]
+      "titleCard": [
+        "36,500 DÍAS DESPUÉS",
+        "367 METROS"
+      ],
+      "titleY": 0.17
     }
-  ]
+  ],
+  "narration": false,
+  "wps": 2.3
 }

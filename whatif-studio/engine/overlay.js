@@ -45,15 +45,16 @@ export function drawOverlay(ctx, W, H, ov) {
   if (ov.title && ov.title.alpha > 0) {
     ctx.save();
     ctx.globalAlpha = ov.title.alpha;
-    ctx.fillStyle = 'rgba(0,0,0,0.35)';
+    ctx.fillStyle = 'rgba(0,0,0,0.2)';
     ctx.fillRect(0, 0, W, H);
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     const lines = ov.title.lines;
+    const cy = H * (ov.title.y ?? 0.5); // posición vertical (fracción de la altura)
     lines.forEach((ln, i) => {
       const big = i === lines.length - 1;
       ctx.font = `900 ${(big ? 104 : 60) * u}px ${FONT}`;
-      const y = H / 2 + (i - (lines.length - 1) / 2) * 120 * u;
+      const y = cy + (i - (lines.length - 1) / 2) * 120 * u;
       stroked(ctx, ln, W / 2, y, big ? '#ffd34d' : '#ffffff', 14 * u, 'center');
     });
     ctx.restore();

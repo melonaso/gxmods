@@ -16,8 +16,15 @@ done
 B="episodes/$EP/build"
 mkdir -p out "$B"
 
-echo "== 1/4 Narración"
-python3 tools/tts.py "$EP" "${TTS_ARGS[@]}"
+# "narration": false en script.json -> video solo con música y textos en pantalla.
+NARRATION=$(python3 -c "import json;print(json.load(open('episodes/$EP/script.json')).get('narration', True))")
+
+if [[ "$NARRATION" == "True" ]]; then
+  echo "== 1/4 Narración"
+  python3 tools/tts.py "$EP" "${TTS_ARGS[@]}"
+else
+  echo "== 1/4 Narración: desactivada (solo música)"
+fi
 
 echo "== 2/4 Video"
 node tools/render.mjs --ep "$EP" --out "out/$EP-video.mp4" "${RENDER_ARGS[@]}"
@@ -28,10 +35,17 @@ python3 tools/music.py "$DUR" "$B/music.wav"
 
 echo "== 4/4 Mezcla"
 # Cada escena se retrasa (adelay) hasta su inicio; la música baja de volumen cuando hay voz (sidechain).
-python3 - "$EP" <<'PY'
+python3 - "$EP" "$NARRATION" <<'PY'
 import json, subprocess, sys
 ep = sys.argv[1]; b = f'episodes/{ep}/build'
-st = json.load(open(f'{b}/starts.json')); tm = json.load(open(f'{b}/timing.json'))
+st = json.load(open(f'{b}/starts.json'))
+if sys.argv[2] != 'True':
+    # Sin voz: solo música, normalizada a volumen estándar de YouTube.
+    subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'out/{ep}-video.mp4', '-i', f'{b}/music.wav',
+        '-filter_complex', '[1:a]loudnorm=I=-16:TP=-1.5[aout]', '-map', '0:v', '-map', '[aout]',
+        '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-ac', '2', '-shortest', f'out/{ep}.mp4'])
+    sys.exit(0)
+tm = json.load(open(f'{b}/timing.json'))
 inputs, filt, labels = [], [], []
 for i, (s, t) in enumerate(zip(st['starts'], tm)):
     inputs += ['-i', f'{b}/{t["file"]}']
