@@ -13,6 +13,7 @@ type Session = {
 	canSave: boolean,
 	goldValue: IntValue,
 	killsValue: IntValue,
+	rebirthValue: IntValue,
 }
 
 local PlayerData = {}
@@ -31,11 +32,14 @@ end
 local function sync(session: Session)
 	session.goldValue.Value = math.floor(session.profile.Gold)
 	session.killsValue.Value = session.profile.VerityKills
+	session.rebirthValue.Value = session.profile.Rebirths
 end
 
 local function load(player: Player)
-	local profile: Types.Profile = { Gold = Config.StartingGold, Owned = {}, VerityKills = 0 }
+	local profile: Types.Profile = { Gold = Config.StartingGold, Owned = {}, VerityKills = 0, Rebirths = 0 }
 	local canSave = false
+	-- SaveStatus (lo muestra el HUD): "ok" se guarda | "off" sin DataStore | "error" no se pudo leer
+	local status = "off"
 
 	if store then
 		local ok, data = false, nil
@@ -50,9 +54,11 @@ local function load(player: Player)
 		end
 		if ok then
 			canSave = true
+			status = "ok"
 			if typeof(data) == "table" then
 				profile.Gold = math.max(0, tonumber(data.Gold) or profile.Gold)
 				profile.VerityKills = math.max(0, tonumber(data.VerityKills) or 0)
+				profile.Rebirths = math.max(0, math.floor(tonumber(data.Rebirths) or 0))
 				if typeof(data.Owned) == "table" then
 					for id, value in data.Owned do
 						if typeof(id) == "string" and value == true then
@@ -62,6 +68,7 @@ local function load(player: Player)
 				end
 			end
 		else
+			status = "error"
 			-- No sobrescribimos datos que no pudimos leer.
 			warn("[PlayerData] No se pudo cargar a " .. player.Name .. "; esta sesion no se guardara.")
 		end
@@ -79,9 +86,13 @@ local function load(player: Player)
 	local killsValue = Instance.new("IntValue")
 	killsValue.Name = "Verity"
 	killsValue.Parent = leaderstats
+	local rebirthValue = Instance.new("IntValue")
+	rebirthValue.Name = "Renacer"
+	rebirthValue.Parent = leaderstats
 	leaderstats.Parent = player
+	player:SetAttribute("SaveStatus", status)
 
-	local session: Session = { profile = profile, canSave = canSave, goldValue = goldValue, killsValue = killsValue }
+	local session: Session = { profile = profile, canSave = canSave, goldValue = goldValue, killsValue = killsValue, rebirthValue = rebirthValue }
 	sessions[player] = session
 	sync(session)
 	loadedEvent:Fire(player)
@@ -95,6 +106,7 @@ local function save(player: Player)
 	local snapshot = {
 		Gold = math.floor(session.profile.Gold),
 		VerityKills = session.profile.VerityKills,
+		Rebirths = session.profile.Rebirths,
 		Owned = table.clone(session.profile.Owned),
 	}
 	local ok, err = pcall(function()
@@ -153,6 +165,32 @@ function PlayerData.addVerityKill(player: Player)
 		s.profile.VerityKills += 1
 		sync(s)
 	end
+end
+
+function PlayerData.getRebirths(player: Player): number
+	local s = sessions[player]
+	return if s then s.profile.Rebirths else 0
+end
+
+-- Cuanto oro extra gana por sus renacimientos (1 = nada extra).
+function PlayerData.rebirthMultiplier(player: Player?): number
+	if not player then
+		return 1
+	end
+	return 1 + Config.Rebirth.BonusPerRebirth * PlayerData.getRebirths(player)
+end
+
+-- Renacer: campamento y oro desde cero, +1 renacimiento. Se guarda al momento.
+function PlayerData.rebirth(player: Player)
+	local s = sessions[player]
+	if not s then
+		return
+	end
+	s.profile.Owned = {}
+	s.profile.Gold = Config.StartingGold
+	s.profile.Rebirths += 1
+	sync(s)
+	task.spawn(save, player)
 end
 
 function PlayerData.init()

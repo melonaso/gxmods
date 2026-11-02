@@ -2,6 +2,7 @@
 -- Construye la estepa: suelo, spawn central, estandarte del Khan,
 -- cuevas del chaman (refugios publicos) y el portal por donde llega Verity.
 local Lighting = game:GetService("Lighting")
+local ServerStorage = game:GetService("ServerStorage")
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
@@ -50,12 +51,14 @@ function World.getHidingFolder(): Folder
 end
 
 -- ===== Terreno y paisaje =====
--- El suelo visible es Terrain de Roblox (pasto 3D animado con Decoration,
--- colinas, montanas, rio). Debajo hay piezas invisibles (grupo Ground) que
--- son el suelo de Verity, que solo choca con ese grupo.
+-- El suelo es una placa base de pasto (como la "Grass Baseplate" de Roblox)
+-- con matas de pasto 3D encima. La placa es tambien el suelo de Verity
+-- (grupo Ground). El terreno de Roblox solo se usa para el rio y para las
+-- colinas y montanas del horizonte, lejos de todo edificio.
 
 local RIVER_Z = 239 -- el rio Onon cruza el sur del mapa
 local RIVER_HALF = 7
+local GRASS = Color3.fromRGB(88, 140, 62)
 
 local function plotCenters(): { CFrame }
 	local list = {}
@@ -67,89 +70,145 @@ local function plotCenters(): { CFrame }
 	return list
 end
 
-local function invisibleFloor(name: string, size: Vector3, cf: CFrame, parent: Instance)
-	local p = Build.part({ Name = name, Size = size, CFrame = cf, Transparency = 1, Parent = parent })
-	p.CanQuery = false
-	Build.markGround(p)
-end
-
 local function buildGround(map: Folder)
 	local old = workspace:FindFirstChild("Baseplate")
 	if old then
 		old:Destroy()
 	end
 	local terrain = workspace.Terrain
-	terrain:SetMaterialColor(Enum.Material.Grass, Color3.fromRGB(118, 134, 64)) -- estepa verde-amarilla
-	terrain:SetMaterialColor(Enum.Material.Ground, Color3.fromRGB(112, 96, 72))
-	terrain:SetMaterialColor(Enum.Material.Sand, Color3.fromRGB(205, 182, 135))
+	terrain:SetMaterialColor(Enum.Material.Grass, Color3.fromRGB(96, 138, 60))
 	terrain:SetMaterialColor(Enum.Material.Rock, Color3.fromRGB(108, 102, 96))
-	terrain:SetMaterialColor(Enum.Material.Cobblestone, Color3.fromRGB(130, 120, 105))
-	terrain:SetMaterialColor(Enum.Material.Mud, Color3.fromRGB(70, 58, 45))
 	terrain:SetMaterialColor(Enum.Material.Snow, Color3.fromRGB(235, 238, 245))
-	pcall(function()
-		terrain.Decoration = true -- hojas de pasto 3D que se mueven con el viento
-	end)
+	terrain:SetMaterialColor(Enum.Material.Sand, Color3.fromRGB(205, 182, 135))
 	terrain.WaterColor = Color3.fromRGB(45, 85, 100)
 	terrain.WaterTransparency = 0.45
 	terrain.WaterWaveSize = 0.12
 	terrain.WaterWaveSpeed = 6
 	terrain.WaterReflectance = 0.6
 
-	-- llanura (superficie en y = 0)
-	terrain:FillBlock(CFrame.new(0, -6, 0), Vector3.new(1100, 12, 1100), Enum.Material.Grass)
-
-	local rng = Random.new(1206) -- 1206: Temujin es proclamado Gengis Khan
-	-- colinas suaves alrededor
-	for _ = 1, 28 do
-		local angle = rng:NextNumber(0, math.pi * 2)
-		local dist = rng:NextNumber(275, 340)
-		local pos = Vector3.new(math.cos(angle) * dist, 0, math.sin(angle) * dist)
-		if math.abs(pos.Z - RIVER_Z) > 30 then
-			local r = rng:NextNumber(20, 42)
-			terrain:FillBall(pos - Vector3.new(0, r * 0.55, 0), r, Enum.Material.Grass)
-		end
+	-- placa base de pasto (como la "Grass Baseplate" de Roblox), partida por el rio.
+	-- Tambien es el suelo de Verity (grupo Ground).
+	local HALF = 550
+	local function plate(name: string, zFrom: number, zTo: number)
+		local p = Build.part({
+			Name = name,
+			Size = Vector3.new(HALF * 2, 2, zTo - zFrom),
+			CFrame = CFrame.new(0, -1, (zFrom + zTo) / 2),
+			Color = GRASS,
+			Material = Enum.Material.Grass,
+			Parent = map,
+		})
+		p.CanQuery = false
+		Build.markGround(p)
 	end
-	-- montanas lejanas con nieve
-	for i = 1, 14 do
-		local angle = (i / 14) * math.pi * 2 + rng:NextNumber(-0.15, 0.15)
-		local dist = rng:NextNumber(470, 520)
-		local pos = Vector3.new(math.cos(angle) * dist, 0, math.sin(angle) * dist)
-		local r = rng:NextNumber(70, 110)
-		terrain:FillBall(pos - Vector3.new(0, r * 0.35, 0), r, Enum.Material.Rock)
-		terrain:FillBall(pos + Vector3.new(0, r * 0.45, 0), r * 0.3, Enum.Material.Snow)
-	end
+	plate("Steppe", -HALF, RIVER_Z - RIVER_HALF)
+	plate("SteppeSouth", RIVER_Z + RIVER_HALF, HALF)
 
-	-- rio Onon: orillas de arena y agua
-	terrain:FillBlock(CFrame.new(0, -2, RIVER_Z), Vector3.new(1100, 4, RIVER_HALF * 2 + 10), Enum.Material.Sand)
-	terrain:FillBlock(CFrame.new(0, -3, RIVER_Z), Vector3.new(1100, 6, RIVER_HALF * 2), Enum.Material.Water)
+	-- rio Onon: agua de terreno en el hueco entre las placas, con lecho y orillas de arena
+	terrain:FillBlock(CFrame.new(0, -9, RIVER_Z), Vector3.new(HALF * 2, 6, RIVER_HALF * 2 + 4), Enum.Material.Sand)
+	terrain:FillBlock(CFrame.new(0, -3, RIVER_Z), Vector3.new(HALF * 2, 6, RIVER_HALF * 2), Enum.Material.Water)
+	for _, side in { -1, 1 } do
+		Build.part({
+			Name = "RiverBank",
+			Size = Vector3.new(HALF * 2, 0.3, 4),
+			CFrame = CFrame.new(0, 0.1, RIVER_Z + side * (RIVER_HALF + 2)),
+			Color = Color3.fromRGB(205, 182, 135),
+			Material = Enum.Material.Sand,
+			Parent = map,
+		}).CanCollide = false
+	end
 	local riverSign = Build.part({ Name = "RiverSign", Size = Vector3.new(1, 1, 1), CFrame = CFrame.new(0, 8, RIVER_Z), Transparency = 1, CanCollide = false, Parent = map })
 	Build.billboard(riverSign, "Rio Onon", 0, 220).TextColor3 = Color3.fromRGB(180, 220, 255)
 
-	-- suelos de materiales: plaza empedrada, arena bajo los campamentos, tierra en cuevas y portal
-	terrain:FillCylinder(CFrame.new(0, -1, 0), 2, 28, Enum.Material.Cobblestone)
-	for _, cf in plotCenters() do
-		terrain:FillBlock(cf * CFrame.new(0, -1, 0), Vector3.new(92, 2, 92), Enum.Material.Sand)
+	-- suelos especiales: plaza empedrada, tierra en las cuevas y barro en el portal
+	local function disc(name: string, center: Vector3, radius: number, color: Color3, material: Enum.Material)
+		local d = Build.part({
+			Name = name,
+			Shape = Enum.PartType.Cylinder,
+			Size = Vector3.new(0.2, radius * 2, radius * 2),
+			CFrame = CFrame.new(center + Vector3.new(0, 0.05, 0)) * CFrame.Angles(0, 0, math.pi / 2),
+			Color = color,
+			Material = material,
+			CanCollide = false,
+			Parent = map,
+		})
+		d.CanQuery = false
 	end
+	disc("Plaza", Vector3.zero, 28, Color3.fromRGB(130, 120, 105), Enum.Material.Cobblestone)
 	for i = 0, 3 do
 		local angle = math.pi / 4 + i * math.pi / 2
-		terrain:FillCylinder(CFrame.new(math.cos(angle) * 75, -1, math.sin(angle) * 75), 2, 18, Enum.Material.Ground)
+		disc("CaveGround", Vector3.new(math.cos(angle) * 75, 0, math.sin(angle) * 75), 18, Color3.fromRGB(112, 96, 72), Enum.Material.Ground)
 	end
-	terrain:FillCylinder(CFrame.new(World.PortalPosition + Vector3.new(0, -1, 0)), 2, 26, Enum.Material.Mud)
+	disc("PortalMud", World.PortalPosition, 26, Color3.fromRGB(70, 58, 45), Enum.Material.Mud)
 
-	-- suelo de Verity (invisible): sin cubrir el rio, para que el agua se pueda cruzar nadando
-	local north = RIVER_Z - RIVER_HALF - (-320)
-	invisibleFloor("Steppe", Vector3.new(640, 2, north), CFrame.new(0, -1, -320 + north / 2), map)
-	local south = 320 - (RIVER_Z + RIVER_HALF)
-	invisibleFloor("SteppeSouth", Vector3.new(640, 2, south), CFrame.new(0, -1, 320 - south / 2), map)
+	-- horizonte: colinas y montanas nevadas SOLO lejos (nada toca edificios, campamentos ni el portal)
+	local rng = Random.new(1206) -- 1206: Temujin es proclamado Gengis Khan
+	for _ = 1, 26 do
+		local angle = rng:NextNumber(0, math.pi * 2)
+		local dist = rng:NextNumber(400, 440)
+		local pos = Vector3.new(math.cos(angle) * dist, 0, math.sin(angle) * dist)
+		if math.abs(pos.Z - RIVER_Z) > 40 then
+			local r = rng:NextNumber(18, 32) -- borde interior >= 368
+			terrain:FillBall(pos - Vector3.new(0, r * 0.55, 0), r, Enum.Material.Grass)
+		end
+	end
+	for i = 1, 14 do
+		local angle = (i / 14) * math.pi * 2 + rng:NextNumber(-0.15, 0.15)
+		local dist = rng:NextNumber(500, 540)
+		local pos = Vector3.new(math.cos(angle) * dist, 0, math.sin(angle) * dist)
+		local r = rng:NextNumber(70, 100) -- borde interior >= 400
+		terrain:FillBall(pos - Vector3.new(0, r * 0.35, 0), r, Enum.Material.Rock)
+		terrain:FillBall(pos + Vector3.new(0, r * 0.45, 0), r * 0.3, Enum.Material.Snow)
+	end
 end
 
--- Arbustos, rocas, ovoos (altares de piedras con seda azul), yurtas nomadas,
+-- Pasto 3D: matas de 3 a 5 hojas finas e inclinadas. Si pones un modelo de
+-- pasto de la Toolbox en ServerStorage.GrassTuft, se usa ese en su lugar.
+local function grassTuft(parent: Instance, pos: Vector3, rng: Random)
+	local custom = ServerStorage:FindFirstChild("GrassTuft")
+	if custom and (custom:IsA("Model") or custom:IsA("BasePart")) then
+		local clone = custom:Clone()
+		for _, inst in clone:GetDescendants() do
+			if inst:IsA("BasePart") then
+				inst.Anchored = true
+				inst.CanCollide = false
+			end
+		end
+		if clone:IsA("BasePart") then
+			clone.Anchored = true
+			clone.CanCollide = false
+		end
+		clone:PivotTo(CFrame.new(pos) * CFrame.Angles(0, rng:NextNumber(0, math.pi * 2), 0))
+		clone.Parent = parent
+		return
+	end
+	local shades = { Color3.fromRGB(82, 130, 50), Color3.fromRGB(104, 146, 58), Color3.fromRGB(70, 112, 44), Color3.fromRGB(132, 150, 70) }
+	for _ = 1, rng:NextInteger(3, 5) do
+		local h = rng:NextNumber(1.2, 2.6)
+		local blade = Build.part({
+			Name = "Blade",
+			Size = Vector3.new(0.12, h, 0.45),
+			CFrame = CFrame.new(pos + Vector3.new(rng:NextNumber(-0.5, 0.5), 0, rng:NextNumber(-0.5, 0.5)))
+				* CFrame.Angles(0, rng:NextNumber(0, math.pi * 2), 0)
+				* CFrame.Angles(rng:NextNumber(-0.35, 0.35), 0, rng:NextNumber(-0.35, 0.35))
+				* CFrame.new(0, h / 2, 0),
+			Color = shades[rng:NextInteger(1, #shades)],
+			Material = Enum.Material.SmoothPlastic,
+			CanCollide = false,
+			Parent = parent,
+		})
+		blade.CanQuery = false
+		blade.CanTouch = false
+		blade.CastShadow = false
+	end
+end
+
+-- Arbustos, pasto 3D, ovoos (altares de piedras con seda azul), yurtas nomadas,
 -- fogata en la plaza y caballos salvajes pastando.
 local function buildScenery(map: Folder)
 	local scenery = Instance.new("Folder")
 	scenery.Name = "Scenery"
 	scenery.Parent = map
-	local terrain = workspace.Terrain
 	local rng = Random.new(1162) -- 1162: nace Temujin
 	local plots = plotCenters()
 
@@ -205,11 +264,14 @@ local function buildScenery(map: Folder)
 			bush.CanQuery = false
 		end
 	end
-	-- rocas
-	for _ = 1, 45 do
-		local pos = randomSpot(40, 320, 4)
+	-- pasto 3D por toda la estepa (lejos de edificios)
+	local grass = Instance.new("Folder")
+	grass.Name = "Grass3D"
+	grass.Parent = scenery
+	for _ = 1, 650 do
+		local pos = randomSpot(32, 340, 2)
 		if pos then
-			terrain:FillBall(pos, rng:NextNumber(2, 5), Enum.Material.Rock)
+			grassTuft(grass, pos, rng)
 		end
 	end
 
@@ -412,14 +474,32 @@ local function buildArena(map: Folder)
 	local arena = Instance.new("Folder")
 	arena.Name = "FinalArena"
 	arena.Parent = map
-	invisibleFloor("ArenaGround", Vector3.new(half * 2 + 20, 2, half * 2 + 20), CFrame.new(center + Vector3.new(0, -1, 0)), arena)
 	-- campo de batalla: tierra pisoteada con manchas de pasto
-	local terrain = workspace.Terrain
-	terrain:FillBlock(CFrame.new(center + Vector3.new(0, -6, 0)), Vector3.new(half * 2 + 120, 12, half * 2 + 120), Enum.Material.Ground)
+	local ground = Build.part({
+		Name = "ArenaGround",
+		Size = Vector3.new(half * 2 + 20, 2, half * 2 + 20),
+		CFrame = CFrame.new(center + Vector3.new(0, -1, 0)),
+		Color = Color3.fromRGB(105, 90, 66),
+		Material = Enum.Material.Ground,
+		Parent = arena,
+	})
+	ground.CanQuery = false
+	Build.markGround(ground)
 	local arenaRng = Random.new(1227) -- 1227: muere Gengis Khan
 	for _ = 1, 40 do
-		local p = center + Vector3.new(arenaRng:NextNumber(-half, half), 0, arenaRng:NextNumber(-half, half))
-		terrain:FillCylinder(CFrame.new(p + Vector3.new(0, -1, 0)), 2, arenaRng:NextNumber(12, 30), Enum.Material.Grass)
+		local p = center + Vector3.new(arenaRng:NextNumber(-half + 30, half - 30), 0, arenaRng:NextNumber(-half + 30, half - 30))
+		local r = arenaRng:NextNumber(12, 30)
+		local patch = Build.part({
+			Name = "GrassPatch",
+			Shape = Enum.PartType.Cylinder,
+			Size = Vector3.new(0.2, r * 2, r * 2),
+			CFrame = CFrame.new(p + Vector3.new(0, 0.05, 0)) * CFrame.Angles(0, 0, math.pi / 2),
+			Color = GRASS,
+			Material = Enum.Material.Grass,
+			CanCollide = false,
+			Parent = arena,
+		})
+		patch.CanQuery = false
 	end
 	for i = 0, 3 do
 		local angle = i * math.pi / 2

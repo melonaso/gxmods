@@ -5,6 +5,7 @@ export type Profile = {
 	Gold: number,
 	Owned: { [string]: boolean },
 	VerityKills: number,
+	Rebirths: number,
 }
 
 export type ButtonKind = "Dropper" | "Weapon" | "Multiplier" | "Shelter" | "Decor" | "Wall" | "Floor"

@@ -384,6 +384,20 @@ function Weapons.grant(player: Player, id: string)
 	end
 end
 
+-- Quita todas las armas (al renacer): mochila, mano y StarterGear.
+function Weapons.revoke(player: Player)
+	local places: { Instance? } = { player:FindFirstChild("StarterGear"), player:FindFirstChildOfClass("Backpack"), player.Character }
+	for _, place in places do
+		if place then
+			for _, item in place:GetChildren() do
+				if item:IsA("Tool") and item:GetAttribute("WeaponId") ~= nil then
+					item:Destroy()
+				end
+			end
+		end
+	end
+end
+
 function Weapons.init()
 	local function watchBackpack(player: Player)
 		local backpack = player:WaitForChild("Backpack")

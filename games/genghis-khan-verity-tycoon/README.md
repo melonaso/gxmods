@@ -39,12 +39,19 @@ local id=107080030600115 local m=game:GetObjects("rbxassetid://"..id)[1] local o
 
 El juego busca el modelo en este orden: `ServerStorage.VerityCharacter` → asset `Config.Verity.AssetId` → `ServerStorage.VerityFallback`. A cualquiera de los tres le quita los scripts (los modelos gratuitos pueden traer virus), lo escala a 18 studs y lo deja listo para animarlo. En Output aparece `[VerityModel] usando el modelo de ...`.
 
-Para el guardado: *Game Settings → Security → Enable Studio Access to API Services*. Sin eso se juega igual, pero no se guarda nada.
+### Guardado del progreso
+
+El juego guarda en un DataStore de Roblox el oro, las compras, las muertes de Verity y los renacimientos de cada jugador (al salir, cada 2 minutos, al renacer y al cerrar el servidor). Roblox **solo** permite guardar si:
+
+1. El lugar está **publicado**: *Archivo → Publicar en Roblox*.
+2. En *Inicio → Game Settings → Security* está activado **Enable Studio Access to API Services** (para que también guarde al probar en Studio).
+
+Abajo a la izquierda el juego dice **"Progreso: se guarda"** (verde) o **"Progreso: NO se guarda"** (rojo) para que sepas si funciona.
 
 ## Cómo se juega
 
 1. Al entrar ves una **introducción**: año 1206, el kurultai junto al río Onón te proclama Gengis Khan ante el estandarte blanco de nueve colas... y los chamanes hablan de la sonrisa amarilla que despierta cada noche en el círculo de piedras negras (se puede saltar; `Config.Intro.Enabled = false` la quita).
-   Apareces en el **spawn del centro**. Elige un **campamento** libre (6 alrededor del estandarte) pisando su círculo azul **RECLAMAR CAMPAMENTO**. El contador de Verity no aparece hasta que reclamas tu campamento (y el ciclo empieza con el primer campamento del servidor).
+   Apareces en el **spawn del centro**. Caminos con **flechas** salen de la plaza hacia los 6 campamentos (azules = libre, grises = con dueño) y, mientras no tengas campamento, un **haz azul** te señala el círculo libre más cercano. Elige un **campamento** libre (6 alrededor del estandarte) pisando su círculo azul **RECLAMAR CAMPAMENTO**. El contador de Verity no aparece hasta que reclamas tu campamento (y el ciclo empieza con el primer campamento del servidor).
 2. Pisa los **botones rojos** para comprar. Cada compra desbloquea la siguiente:
 
 | Botón | Costo | Qué hace |
@@ -103,7 +110,14 @@ Roblox solo reproduce audio subido a su plataforma, así que estos archivos de `
 1. En Studio: **Ventana → Asset Manager → Importar** (puedes elegir los 5 a la vez), o Creator Hub → Development Items → Audio → Upload.
 2. Copia el ID de cada uno y pégalo en **`Config.Uploads`** (al principio de `ReplicatedStorage.Shared.Config`).
 
-**El mundo:** terreno de Roblox con **pasto 3D** que se mueve con el viento, colinas, montañas nevadas a lo lejos, el **río Onón** al sur (se puede cruzar nadando), plaza empedrada con yurtas nómadas y una fogata, **ovoos** (altares de piedras con seda azul), arbustos, rocas, **caballos salvajes** pastando, atmósfera con bruma, nubes, rayos de sol y bloom. En la noche de Verity la atmósfera y las nubes se oscurecen; en la batalla final se tiñen de rojo.
+**Batalla final:** cuando alguien compra **todo** su tycoon aparece un círculo dorado "BATALLA FINAL" en su campamento.
+- Al pisarlo convoca la batalla: todos ven durante 20 s un botón **"Unirse a la batalla final"** (las noches normales se pausan).
+- Los que se unen viajan al **Campo de la Batalla Final** montados a **caballo** (más rápidos que Verity, con galope animado).
+- Allí despierta la **forma final de Verity**: 1,7 veces más grande, con aura de fuego, más rápida, brazos de 20 studs de alcance y rugidos de 60 studs. Vida: 12 000 + 6 000 por jinete extra. Tienen 6 minutos.
+- Si la matan, se retuerce y se hunde en la tierra: 60 000 de oro repartidos por daño + 10 000 a cada participante. Si caen todos o se acaba el tiempo, resiste. Al terminar, todos vuelven a su campamento.
+- **Renacer (si quieres):** si ganan, a cada jinete le aparece una ventana "¿Renacer?". Renacer reinicia tu campamento y tu oro desde cero, pero ganas **+50 % de oro para siempre** por cada renacimiento (x1.5, x2, x2.5...). Si eliges "Ahora no", queda un botón "Renacer..." abajo a la izquierda mientras sigas en el servidor. Tus muertes de Verity y tus renacimientos (columna "Renacer" en la tabla) se conservan.
+
+**El mundo:** placa base de **pasto** (como la "Grass Baseplate" de Roblox) cubierta de **matas de pasto 3D** (si prefieres un modelo de pasto de la Toolbox, ponlo en `ServerStorage` con el nombre `GrassTuft` y se usa ese), colinas y montañas nevadas solo en el horizonte (lejos de todo edificio), el **río Onón** al sur (se puede cruzar nadando), plaza empedrada con yurtas nómadas y una fogata, **ovoos** (altares de piedras con seda azul), arbustos, **caballos salvajes** pastando, atmósfera con bruma, nubes, rayos de sol y bloom. En la noche de Verity la atmósfera y las nubes se oscurecen; en la batalla final se tiñen de rojo.
 
 Prueba rápida: en Studio Verity llega cada **90 s** (`Config.Verity.StudioIntervalSeconds`) y el comando de chat `/verity` lo invoca al instante y `/final` convoca la batalla final sin tener el tycoon completo (solo en Studio o para el creador del juego). Abajo a la izquierda se ve la versión (`Config.Version`) para comprobar que abriste el archivo más nuevo.
 

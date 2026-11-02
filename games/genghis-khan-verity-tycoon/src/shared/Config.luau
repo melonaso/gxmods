@@ -6,7 +6,7 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v11"
+Config.Version = "v12"
 
 -- Introduccion cinematografica al entrar (historia de Gengis Khan). false = sin intro.
 Config.Intro = { Enabled = true }
@@ -87,6 +87,12 @@ Config.Bow = {
 	StringTop = Vector3.new(-0.85, 0, 3.6), -- puntas donde se ata la cuerda
 	StringBottom = Vector3.new(-0.85, 0, -3.6),
 	ArrowLength = 3.4,
+}
+
+-- Renacer: tras ganar la batalla final, quien quiera reinicia su campamento
+-- y su oro, y gana este extra de oro para siempre por cada renacimiento.
+Config.Rebirth = {
+	BonusPerRebirth = 0.5, -- +50 % por renacimiento (x1.5, x2, x2.5...)
 }
 
 -- Canto de garganta mongol (khöömei): tecla G / boton en pantalla.

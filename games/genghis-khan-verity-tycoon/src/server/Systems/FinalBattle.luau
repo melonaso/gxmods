@@ -32,6 +32,7 @@ local FinalBattle = {}
 
 local state: State = "Idle"
 local joined: { [Player]: boolean } = {}
+local riders: { Player } = {} -- todos los que empezaron la batalla (para ofrecer renacer)
 local deathConns: { RBXScriptConnection } = {}
 
 local function now(): number
@@ -77,7 +78,7 @@ local function begin()
 	if state ~= "Lobby" then
 		return
 	end
-	local riders: { Player } = {}
+	riders = {}
 	for player in joined do
 		if player.Parent and player.Character then
 			table.insert(riders, player)
@@ -181,6 +182,14 @@ local function onEnded(victory: boolean)
 	setPhase("Ending")
 	workspace:SetAttribute("FinalVictory", victory)
 	clearDeathConns()
+	if victory then
+		-- cada jinete que empezo la batalla puede renacer si quiere (HUD le pregunta)
+		for _, player in riders do
+			if player.Parent then
+				player:SetAttribute("CanRebirth", true)
+			end
+		end
+	end
 	task.delay(8, function()
 		-- todos de vuelta a su campamento, a pie (Tycoon los lleva a casa al reaparecer)
 		for player in joined do

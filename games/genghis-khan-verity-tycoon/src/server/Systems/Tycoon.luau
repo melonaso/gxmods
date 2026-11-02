@@ -36,6 +36,8 @@ type Plot = {
 	signLabel: TextLabel,
 	spawn: BasePart,
 	spawnConn: RBXScriptConnection?,
+	arrows: { BasePart },
+	guideLabel: TextLabel,
 	wall: Model?,
 	weaponTable: CFrame,
 	gate: { left: BasePart, right: BasePart, open: boolean, y: number }?,
@@ -125,7 +127,7 @@ local function buildLine(plot: Plot, parent: Instance, floor: number)
 		local value = hit:GetAttribute("OreValue")
 		hit:Destroy()
 		if plot.owner and typeof(value) == "number" then
-			plot.pending += value * plot.multiplier
+			plot.pending += value * plot.multiplier * PlayerData.rebirthMultiplier(plot.owner :: Player)
 			updateCash(plot)
 		end
 	end)
@@ -492,6 +494,21 @@ end
 
 -- ===== Plots =====
 
+-- Camino con flechas desde la plaza: azul si el campamento esta libre, gris si tiene dueno.
+local function setGuide(plot: Plot)
+	local owner = plot.owner
+	local color = if owner then Color3.fromRGB(150, 150, 150) else Color3.fromRGB(70, 150, 255)
+	for _, arrow in plot.arrows do
+		arrow.Color = color
+		arrow.Material = if owner then Enum.Material.SmoothPlastic else Enum.Material.Neon
+	end
+	plot.guideLabel.Text = if owner
+		then string.format("Campamento %d: de %s", plot.index, owner.DisplayName)
+		else string.format("Campamento %d: LIBRE", plot.index)
+	plot.guideLabel.TextColor3 = if owner then Color3.fromRGB(220, 220, 220) else Color3.fromRGB(170, 210, 255)
+end
+
+
 -- Declarada aqui porque el circulo "Reclamar" de buildPlot la llama y se
 -- define mas abajo (una funcion local solo existe desde su linea).
 local assign: (Player, Plot) -> ()
@@ -531,6 +548,8 @@ local function buildPlot(index: number): Plot
 		signLabel = signLabel,
 		spawn = spawn,
 		spawnConn = nil,
+		arrows = {},
+		guideLabel = nil :: any, -- se asigna abajo
 		wall = nil,
 		weaponTable = cf * CFrame.new(4, 3.8, 6),
 		gate = nil,
@@ -587,6 +606,37 @@ local function buildPlot(index: number): Plot
 	end)
 	plot.claimPad = claimPad
 
+	-- camino de tierra con flechas desde la plaza hasta la entrada del campamento
+	local dir = Vector3.new(pos.X, 0, pos.Z).Unit
+	local from = dir * 30
+	local to = dir * (Config.PlotRingRadius - 47)
+	local length = (to - from).Magnitude
+	local path = Build.part({
+		Name = "Path",
+		Size = Vector3.new(7, 0.2, length),
+		CFrame = CFrame.lookAt((from + to) / 2 + Vector3.new(0, 0.08, 0), to + Vector3.new(0, 0.08, 0)),
+		Color = Color3.fromRGB(135, 110, 75),
+		Material = Enum.Material.Ground,
+		CanCollide = false,
+		Parent = model,
+	})
+	path.CanQuery = false
+	for d = 6, length - 4, 20 do
+		local at = CFrame.lookAt(from + dir * d + Vector3.new(0, 0.25, 0), to + Vector3.new(0, 0.25, 0))
+		local shaft = Build.part({ Name = "ArrowShaft", Size = Vector3.new(1.4, 0.15, 5), CFrame = at, Color = Color3.new(1, 1, 1), Material = Enum.Material.Neon, CanCollide = false, Parent = model })
+		-- punta: cuadrado girado 45 grados en la parte delantera
+		local tip = Build.part({ Name = "ArrowTip", Size = Vector3.new(3, 0.15, 3), CFrame = at * CFrame.new(0, 0, -2.6) * CFrame.Angles(0, math.rad(45), 0), Color = Color3.new(1, 1, 1), Material = Enum.Material.Neon, CanCollide = false, Parent = model })
+		for _, p in { shaft, tip } do
+			p.CanQuery = false
+			p.CanTouch = false
+			table.insert(plot.arrows, p)
+		end
+	end
+	local guidePost = Build.part({ Name = "GuideSign", Size = Vector3.new(1, 1, 1), CFrame = CFrame.new(from + dir * 6 + Vector3.new(0, 6, 0)), Transparency = 1, CanCollide = false, Parent = model })
+	guidePost.CanQuery = false
+	plot.guideLabel = Build.billboard(guidePost, "", 0, 260)
+	setGuide(plot)
+
 	-- botones en dos filas de 6, entre la cinta y la entrada
 	local perFloor = { 0, 0 }
 	for _, def in Config.Buttons do
@@ -627,10 +677,9 @@ local function buildPlot(index: number): Plot
 	return plot
 end
 
-local function release(plot: Plot)
-	local owner = plot.owner
+-- Borra todo lo construido (al irse el dueno o al renacer).
+local function resetBuilds(plot: Plot)
 	plot.generation += 1
-	plot.owner = nil
 	plot.pending = 0
 	plot.multiplier = 1
 	for _, inst in plot.built do
@@ -640,8 +689,16 @@ local function release(plot: Plot)
 	plot.wall = nil
 	plot.gate = nil
 	plot.floor2 = nil
+	updateCash(plot)
+end
+
+local function release(plot: Plot)
+	local owner = plot.owner
+	resetBuilds(plot)
+	plot.owner = nil
 	plot.signLabel.Text = "Campamento libre"
 	plot.claimPad.Parent = plot.model
+	setGuide(plot)
 	if plot.spawnConn then
 		plot.spawnConn:Disconnect()
 		plot.spawnConn = nil
@@ -671,6 +728,7 @@ function assign(player: Player, p: Plot)
 	p.signLabel.Text = "Campamento de " .. player.DisplayName
 	p.claimPad.Parent = nil
 	player:SetAttribute("HasPlot", true)
+	setGuide(p)
 
 	-- reconstruye lo que ya habia comprado (en orden de la lista)
 	for _, def in Config.Buttons do
@@ -703,6 +761,7 @@ function Tycoon.init()
 		table.insert(plots, buildPlot(i))
 	end
 
+	Net.onServer("Rebirth", rebirth)
 	local function onJoin(player: Player)
 		player:SetAttribute("HasPlot", false)
 	end
@@ -717,6 +776,24 @@ function Tycoon.init()
 		end
 		lastWarn[player] = nil
 	end)
+end
+
+-- Renacer (tras ganar la batalla final, si el jugador quiere): empieza de
+-- cero con mas oro para siempre. Lo ofrece FinalBattle con CanRebirth.
+local function rebirth(player: Player)
+	if not player:GetAttribute("CanRebirth") then
+		return
+	end
+	player:SetAttribute("CanRebirth", false)
+	PlayerData.rebirth(player)
+	Weapons.revoke(player)
+	local plot = plotOf[player]
+	if plot then
+		resetBuilds(plot)
+		refreshButtons(plot)
+	end
+	Sfx.play(Config.Sounds.Victory, workspace, { Volume = 0.8 })
+	Net.fireClient(player, "Notify", string.format("RENACISTE (x%d). Tu campamento empieza de cero, pero ahora ganas x%.1f de oro.", PlayerData.getRebirths(player), PlayerData.rebirthMultiplier(player)), "reward")
 end
 
 function Tycoon.start()

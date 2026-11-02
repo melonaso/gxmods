@@ -33,6 +33,10 @@ local introDone = false
 function HUD.setIntroDone()
 	introDone = true
 end
+
+function HUD.isIntroDone(): boolean
+	return introDone
+end
 local toast: TextLabel
 local toastToken = 0
 
@@ -116,6 +120,33 @@ function HUD.init()
 	version.TextStrokeTransparency = 0.6
 	version.Text = "Genghis Khan Verity Tycoon " .. Config.Version
 	version.Parent = gui
+
+	-- si tu progreso se guarda o no (lo decide el servidor al cargar tus datos)
+	local saveLabel = Instance.new("TextLabel")
+	saveLabel.Size = UDim2.fromOffset(520, 18)
+	saveLabel.Position = UDim2.new(0, 16, 1, -70)
+	saveLabel.AnchorPoint = Vector2.new(0, 1)
+	saveLabel.BackgroundTransparency = 1
+	saveLabel.Font = Enum.Font.GothamBold
+	saveLabel.TextSize = 13
+	saveLabel.TextXAlignment = Enum.TextXAlignment.Left
+	saveLabel.TextStrokeTransparency = 0.5
+	saveLabel.Parent = gui
+	local function showSave()
+		local status = player:GetAttribute("SaveStatus")
+		if status == "ok" then
+			saveLabel.Text = "Progreso: se guarda"
+			saveLabel.TextColor3 = Color3.fromRGB(120, 230, 130)
+		elseif status == nil then
+			saveLabel.Text = "Progreso: cargando..."
+			saveLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+		else
+			saveLabel.Text = "Progreso: NO se guarda (publica el juego y activa el acceso a API en Game Settings > Security)"
+			saveLabel.TextColor3 = Color3.fromRGB(255, 110, 90)
+		end
+	end
+	player:GetAttributeChangedSignal("SaveStatus"):Connect(showSave)
+	showSave()
 
 	joinButton = Instance.new("TextButton")
 	joinButton.Size = UDim2.fromOffset(420, 54)
