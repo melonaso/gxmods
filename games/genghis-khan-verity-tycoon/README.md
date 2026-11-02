@@ -1,6 +1,6 @@
 # Genghis Khan Verity Tycoon (Roblox)
 
-Tycoon con temática de Gengis Khan. Cada **20 minutos** llega **Verity** y todo el servidor tiene que **pelear** contra él con las armas que compró, o **esconderse** hasta que se vaya (3 minutos).
+Tycoon con temática de Gengis Khan. Cada **5 minutos** llega **Verity** y todo el servidor tiene que **pelear** contra él con las armas que compró, o **esconderse** hasta que se vaya (3 minutos).
 
 Verity usa el **mismo modelo y animaciones** del proyecto *Survive A Verity* (rama `claude/keen-galileo-at0rx6`, carpeta `roblox/MurderMysteryButVerity`):
 `Lib/VerityModel.luau`, `Lib/VerityRig.luau`, `shared/VerityPose.luau`, `Controllers/VerityAnimator.luau` y `world/VerityFallback.model.json` (rig orgánico de unas 210 piezas).
@@ -117,9 +117,9 @@ Roblox solo reproduce audio subido a su plataforma, así que estos archivos de `
 - Si la matan, se retuerce y se hunde en la tierra: 60 000 de oro repartidos por daño + 10 000 a cada participante. Si caen todos o se acaba el tiempo, resiste. Al terminar, todos vuelven a su campamento.
 - **Renacer (si quieres):** si ganan, a cada jinete le aparece una ventana "¿Renacer?". Renacer reinicia tu campamento y tu oro desde cero, pero ganas **+50 % de oro para siempre** por cada renacimiento (x1.5, x2, x2.5...). Si eliges "Ahora no", queda un botón "Renacer..." abajo a la izquierda mientras sigas en el servidor. Tus muertes de Verity y tus renacimientos (columna "Renacer" en la tabla) se conservan.
 
-**El mundo:** placa base de **pasto** (como la "Grass Baseplate" de Roblox) cubierta de **matas de pasto 3D** (si prefieres un modelo de pasto de la Toolbox, ponlo en `ServerStorage` con el nombre `GrassTuft` y se usa ese), colinas y montañas nevadas solo en el horizonte (lejos de todo edificio), el **río Onón** al sur (se puede cruzar nadando), plaza empedrada con yurtas nómadas y una fogata, **ovoos** (altares de piedras con seda azul), arbustos, **caballos salvajes** pastando, atmósfera con bruma, nubes, rayos de sol y bloom. En la noche de Verity la atmósfera y las nubes se oscurecen; en la batalla final se tiñen de rojo.
+**El mundo:** el **pasto natural** del terreno de Roblox (hojas largas que se mueven con el viento, `Terrain.Decoration` con `GrassLength = 1`; se ve con calidad gráfica media o alta), colinas y montañas nevadas solo en el horizonte (lejos de todo edificio), el **río Onón** al sur (se puede cruzar nadando), plaza empedrada con yurtas nómadas y una fogata, caminos de tierra hacia los campamentos, **ovoos** (altares de piedras con seda azul), **caballos salvajes** pastando, atmósfera con bruma, nubes, rayos de sol y bloom. En la noche de Verity la atmósfera y las nubes se oscurecen; en la batalla final se tiñen de rojo.
 
-Prueba rápida: en Studio Verity llega cada **90 s** (`Config.Verity.StudioIntervalSeconds`) y el comando de chat `/verity` lo invoca al instante y `/final` convoca la batalla final sin tener el tycoon completo (solo en Studio o para el creador del juego). Abajo a la izquierda se ve la versión (`Config.Version`) para comprobar que abriste el archivo más nuevo.
+Prueba rápida: Verity llega cada **5 minutos** (`Config.Verity.IntervalSeconds`, también en Studio) y el comando de chat `/verity` lo invoca al instante y `/final` convoca la batalla final sin tener el tycoon completo (solo en Studio o para el creador del juego). Abajo a la izquierda se ve la versión (`Config.Version`) para comprobar que abriste el archivo más nuevo.
 
 ## Estructura
 

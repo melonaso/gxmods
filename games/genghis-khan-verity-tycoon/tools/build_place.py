@@ -33,8 +33,8 @@ ENUMS = {
     "DisplayDistanceType": {"Viewer": 0, "Subject": 1, "None": 2},
     "HealthDisplayType": {"DisplayWhenDamaged": 0, "AlwaysOn": 1, "AlwaysOff": 2},
 }
-BOOLS = {"Shadows", "GlobalShadows", "Anchored", "CanCollide", "CanQuery", "CanTouch", "Massless", "BreakJointsOnDeath", "RequiresNeck", "AutomaticScalingEnabled"}
-FLOATS = {"Range", "ShadowSoftness", "EnvironmentDiffuseScale", "EnvironmentSpecularScale", "Brightness", "Transparency", "HipHeight", "WalkSpeed", "Reflectance", "RespawnTime"}
+BOOLS = {"Decoration", "Shadows", "GlobalShadows", "Anchored", "CanCollide", "CanQuery", "CanTouch", "Massless", "BreakJointsOnDeath", "RequiresNeck", "AutomaticScalingEnabled"}
+FLOATS = {"GrassLength", "Range", "ShadowSoftness", "EnvironmentDiffuseScale", "EnvironmentSpecularScale", "Brightness", "Transparency", "HipHeight", "WalkSpeed", "Reflectance", "RespawnTime"}
 
 _ref = 0
 

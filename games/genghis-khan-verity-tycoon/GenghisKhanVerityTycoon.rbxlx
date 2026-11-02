@@ -1,8 +1,4 @@
 <roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
-<Item class="Workspace" referent="RBX000001DB"><Properties>
-<string name="Name">Workspace</string>
-</Properties>
-</Item>
 <Item class="ReplicatedStorage" referent="RBX00000008"><Properties>
 <string name="Name">ReplicatedStorage</string>
 </Properties>
@@ -35,7 +31,7 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v12"
+Config.Version = "v13"
 
 -- Introduccion cinematografica al entrar (historia de Gengis Khan). false = sin intro.
 Config.Intro = { Enabled = true }
@@ -55,8 +51,8 @@ Config.Verity = {
 	Height = 18,
 	TransformTime = 2.6, -- lo usa VerityAnimator si algun dia se pone TransformStart
 	AttackAnimTime = 2.4, -- duracion de la animacion "levantar y aplastar"
-	IntervalSeconds = 20 * 60, -- cada 20 minutos
-	StudioIntervalSeconds = 90, -- en Studio llega antes para poder probar
+	IntervalSeconds = 5 * 60, -- cada 5 minutos
+	StudioIntervalSeconds = 5 * 60, -- igual en Studio (para probar ya: /verity en el chat)
 	DurationSeconds = 180, -- si nadie lo mata, se va a los 3 minutos
 	BaseHealth = 5000,
 	HealthPerPlayer = 1500,
@@ -73,7 +69,7 @@ Config.Verity = {
 	RewardPool = 6000, -- se reparte segun el dano que hizo cada uno
 	ParticipationReward = 500,
 	WallDamage = 200, -- dano por golpe a una muralla que le cierra el paso
-	WarningTimes = { 300, 60, 10 },
+	WarningTimes = { 120, 60, 10 },
 	-- Al matarlo en una noche normal no desaparece: huye herido hacia el portal.
 	FleeSpeed = 34,
 	FleeTimeout = 30,
@@ -4044,7 +4040,6 @@ return Weapons
 -- Construye la estepa: suelo, spawn central, estandarte del Khan,
 -- cuevas del chaman (refugios publicos) y el portal por donde llega Verity.
 local Lighting = game:GetService("Lighting")
-local ServerStorage = game:GetService("ServerStorage")
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
@@ -4093,14 +4088,13 @@ function World.getHidingFolder(): Folder
 end
 
 -- ===== Terreno y paisaje =====
--- El suelo es una placa base de pasto (como la "Grass Baseplate" de Roblox)
--- con matas de pasto 3D encima. La placa es tambien el suelo de Verity
--- (grupo Ground). El terreno de Roblox solo se usa para el rio y para las
--- colinas y montanas del horizonte, lejos de todo edificio.
+-- El suelo es el pasto natural del terreno de Roblox (hojas largas con
+-- Decoration). Donde no debe salir pasto (plaza, campamentos, caminos,
+-- cuevas, portal) el terreno es de otro material. Debajo hay piezas
+-- invisibles (grupo Ground) que son el suelo de Verity.
 
 local RIVER_Z = 239 -- el rio Onon cruza el sur del mapa
 local RIVER_HALF = 7
-local GRASS = Color3.fromRGB(88, 140, 62)
 
 local function plotCenters(): { CFrame }
 	local list = {}
@@ -4112,76 +4106,72 @@ local function plotCenters(): { CFrame }
 	return list
 end
 
+-- Pasto natural de Roblox: Terrain con material Grass y Decoration (las hojas
+-- largas que se mueven con el viento). GrassLength = 1 es el largo maximo.
+-- Las hojas solo se dibujan con calidad grafica media o alta.
+local function naturalGrass(terrain: Terrain)
+	terrain:SetMaterialColor(Enum.Material.Grass, Color3.fromRGB(96, 140, 58))
+	pcall(function()
+		terrain.Decoration = true
+	end)
+	pcall(function()
+		(terrain :: any).GrassLength = 1
+	end)
+end
+
+-- Suelo invisible de Verity (solo choca con el grupo Ground): coincide con la
+-- superficie del terreno (y = 0).
+local function verityFloor(name: string, size: Vector3, cf: CFrame, parent: Instance)
+	local p = Build.part({ Name = name, Size = size, CFrame = cf, Transparency = 1, Parent = parent })
+	p.CanQuery = false
+	Build.markGround(p)
+end
+
 local function buildGround(map: Folder)
 	local old = workspace:FindFirstChild("Baseplate")
 	if old then
 		old:Destroy()
 	end
 	local terrain = workspace.Terrain
-	terrain:SetMaterialColor(Enum.Material.Grass, Color3.fromRGB(96, 138, 60))
-	terrain:SetMaterialColor(Enum.Material.Rock, Color3.fromRGB(108, 102, 96))
-	terrain:SetMaterialColor(Enum.Material.Snow, Color3.fromRGB(235, 238, 245))
+	naturalGrass(terrain)
+	terrain:SetMaterialColor(Enum.Material.Ground, Color3.fromRGB(118, 98, 70))
 	terrain:SetMaterialColor(Enum.Material.Sand, Color3.fromRGB(205, 182, 135))
+	terrain:SetMaterialColor(Enum.Material.Rock, Color3.fromRGB(108, 102, 96))
+	terrain:SetMaterialColor(Enum.Material.Cobblestone, Color3.fromRGB(130, 120, 105))
+	terrain:SetMaterialColor(Enum.Material.Mud, Color3.fromRGB(70, 58, 45))
+	terrain:SetMaterialColor(Enum.Material.Snow, Color3.fromRGB(235, 238, 245))
 	terrain.WaterColor = Color3.fromRGB(45, 85, 100)
 	terrain.WaterTransparency = 0.45
 	terrain.WaterWaveSize = 0.12
 	terrain.WaterWaveSpeed = 6
 	terrain.WaterReflectance = 0.6
 
-	-- placa base de pasto (como la "Grass Baseplate" de Roblox), partida por el rio.
-	-- Tambien es el suelo de Verity (grupo Ground).
+	-- pradera de pasto natural (superficie en y = 0)
 	local HALF = 550
-	local function plate(name: string, zFrom: number, zTo: number)
-		local p = Build.part({
-			Name = name,
-			Size = Vector3.new(HALF * 2, 2, zTo - zFrom),
-			CFrame = CFrame.new(0, -1, (zFrom + zTo) / 2),
-			Color = GRASS,
-			Material = Enum.Material.Grass,
-			Parent = map,
-		})
-		p.CanQuery = false
-		Build.markGround(p)
-	end
-	plate("Steppe", -HALF, RIVER_Z - RIVER_HALF)
-	plate("SteppeSouth", RIVER_Z + RIVER_HALF, HALF)
+	terrain:FillBlock(CFrame.new(0, -6, 0), Vector3.new(HALF * 2, 12, HALF * 2), Enum.Material.Grass)
 
-	-- rio Onon: agua de terreno en el hueco entre las placas, con lecho y orillas de arena
-	terrain:FillBlock(CFrame.new(0, -9, RIVER_Z), Vector3.new(HALF * 2, 6, RIVER_HALF * 2 + 4), Enum.Material.Sand)
+	-- rio Onon: lecho y orillas de arena, agua encima
+	terrain:FillBlock(CFrame.new(0, -2, RIVER_Z), Vector3.new(HALF * 2, 4, RIVER_HALF * 2 + 10), Enum.Material.Sand)
 	terrain:FillBlock(CFrame.new(0, -3, RIVER_Z), Vector3.new(HALF * 2, 6, RIVER_HALF * 2), Enum.Material.Water)
-	for _, side in { -1, 1 } do
-		Build.part({
-			Name = "RiverBank",
-			Size = Vector3.new(HALF * 2, 0.3, 4),
-			CFrame = CFrame.new(0, 0.1, RIVER_Z + side * (RIVER_HALF + 2)),
-			Color = Color3.fromRGB(205, 182, 135),
-			Material = Enum.Material.Sand,
-			Parent = map,
-		}).CanCollide = false
-	end
 	local riverSign = Build.part({ Name = "RiverSign", Size = Vector3.new(1, 1, 1), CFrame = CFrame.new(0, 8, RIVER_Z), Transparency = 1, CanCollide = false, Parent = map })
 	Build.billboard(riverSign, "Rio Onon", 0, 220).TextColor3 = Color3.fromRGB(180, 220, 255)
 
-	-- suelos especiales: plaza empedrada, tierra en las cuevas y barro en el portal
-	local function disc(name: string, center: Vector3, radius: number, color: Color3, material: Enum.Material)
-		local d = Build.part({
-			Name = name,
-			Shape = Enum.PartType.Cylinder,
-			Size = Vector3.new(0.2, radius * 2, radius * 2),
-			CFrame = CFrame.new(center + Vector3.new(0, 0.05, 0)) * CFrame.Angles(0, 0, math.pi / 2),
-			Color = color,
-			Material = material,
-			CanCollide = false,
-			Parent = map,
-		})
-		d.CanQuery = false
+	-- donde NO debe salir pasto: plaza empedrada, arena bajo los campamentos,
+	-- tierra en los caminos y las cuevas, barro en el portal
+	terrain:FillCylinder(CFrame.new(0, -1, 0), 2, 30, Enum.Material.Cobblestone)
+	for _, cf in plotCenters() do
+		terrain:FillBlock(cf * CFrame.new(0, -1, 0), Vector3.new(96, 2, 96), Enum.Material.Sand)
+		-- camino de la plaza a la entrada (mismo trazado que las flechas de Tycoon)
+		local dir = Vector3.new(cf.Position.X, 0, cf.Position.Z).Unit
+		local from = dir * 28
+		local to = dir * (Config.PlotRingRadius - 45)
+		terrain:FillBlock(CFrame.lookAt((from + to) / 2, to) * CFrame.new(0, -1, 0), Vector3.new(8, 2, (to - from).Magnitude), Enum.Material.Ground)
 	end
-	disc("Plaza", Vector3.zero, 28, Color3.fromRGB(130, 120, 105), Enum.Material.Cobblestone)
 	for i = 0, 3 do
 		local angle = math.pi / 4 + i * math.pi / 2
-		disc("CaveGround", Vector3.new(math.cos(angle) * 75, 0, math.sin(angle) * 75), 18, Color3.fromRGB(112, 96, 72), Enum.Material.Ground)
+		terrain:FillCylinder(CFrame.new(math.cos(angle) * 75, -1, math.sin(angle) * 75), 2, 18, Enum.Material.Ground)
 	end
-	disc("PortalMud", World.PortalPosition, 26, Color3.fromRGB(70, 58, 45), Enum.Material.Mud)
+	terrain:FillCylinder(CFrame.new(World.PortalPosition + Vector3.new(0, -1, 0)), 2, 28, Enum.Material.Mud)
 
 	-- horizonte: colinas y montanas nevadas SOLO lejos (nada toca edificios, campamentos ni el portal)
 	local rng = Random.new(1206) -- 1206: Temujin es proclamado Gengis Khan
@@ -4202,50 +4192,15 @@ local function buildGround(map: Folder)
 		terrain:FillBall(pos - Vector3.new(0, r * 0.35, 0), r, Enum.Material.Rock)
 		terrain:FillBall(pos + Vector3.new(0, r * 0.45, 0), r * 0.3, Enum.Material.Snow)
 	end
+
+	-- suelo de Verity: sin cubrir el rio (el agua se cruza nadando)
+	local north = RIVER_Z - RIVER_HALF + HALF
+	verityFloor("Steppe", Vector3.new(HALF * 2, 2, north), CFrame.new(0, -1, -HALF + north / 2), map)
+	local south = HALF - (RIVER_Z + RIVER_HALF)
+	verityFloor("SteppeSouth", Vector3.new(HALF * 2, 2, south), CFrame.new(0, -1, HALF - south / 2), map)
 end
 
--- Pasto 3D: matas de 3 a 5 hojas finas e inclinadas. Si pones un modelo de
--- pasto de la Toolbox en ServerStorage.GrassTuft, se usa ese en su lugar.
-local function grassTuft(parent: Instance, pos: Vector3, rng: Random)
-	local custom = ServerStorage:FindFirstChild("GrassTuft")
-	if custom and (custom:IsA("Model") or custom:IsA("BasePart")) then
-		local clone = custom:Clone()
-		for _, inst in clone:GetDescendants() do
-			if inst:IsA("BasePart") then
-				inst.Anchored = true
-				inst.CanCollide = false
-			end
-		end
-		if clone:IsA("BasePart") then
-			clone.Anchored = true
-			clone.CanCollide = false
-		end
-		clone:PivotTo(CFrame.new(pos) * CFrame.Angles(0, rng:NextNumber(0, math.pi * 2), 0))
-		clone.Parent = parent
-		return
-	end
-	local shades = { Color3.fromRGB(82, 130, 50), Color3.fromRGB(104, 146, 58), Color3.fromRGB(70, 112, 44), Color3.fromRGB(132, 150, 70) }
-	for _ = 1, rng:NextInteger(3, 5) do
-		local h = rng:NextNumber(1.2, 2.6)
-		local blade = Build.part({
-			Name = "Blade",
-			Size = Vector3.new(0.12, h, 0.45),
-			CFrame = CFrame.new(pos + Vector3.new(rng:NextNumber(-0.5, 0.5), 0, rng:NextNumber(-0.5, 0.5)))
-				* CFrame.Angles(0, rng:NextNumber(0, math.pi * 2), 0)
-				* CFrame.Angles(rng:NextNumber(-0.35, 0.35), 0, rng:NextNumber(-0.35, 0.35))
-				* CFrame.new(0, h / 2, 0),
-			Color = shades[rng:NextInteger(1, #shades)],
-			Material = Enum.Material.SmoothPlastic,
-			CanCollide = false,
-			Parent = parent,
-		})
-		blade.CanQuery = false
-		blade.CanTouch = false
-		blade.CastShadow = false
-	end
-end
-
--- Arbustos, pasto 3D, ovoos (altares de piedras con seda azul), yurtas nomadas,
+-- Ovoos (altares de piedras con seda azul), yurtas nomadas,
 -- fogata en la plaza y caballos salvajes pastando.
 local function buildScenery(map: Folder)
 	local scenery = Instance.new("Folder")
@@ -4284,37 +4239,6 @@ local function buildScenery(map: Folder)
 			end
 		end
 		return nil
-	end
-
-	-- arbustos de la estepa
-	local bushColors = { Color3.fromRGB(88, 104, 48), Color3.fromRGB(104, 112, 56), Color3.fromRGB(76, 90, 44), Color3.fromRGB(120, 112, 64) }
-	for _ = 1, 140 do
-		local pos = randomSpot(40, 300, 0)
-		if pos then
-			local size = rng:NextNumber(2, 4.5)
-			local bush = Build.part({
-				Name = "Bush",
-				Shape = Enum.PartType.Ball,
-				Size = Vector3.new(size * 1.3, size, size * 1.3),
-				CFrame = CFrame.new(pos + Vector3.new(0, size * 0.3, 0)),
-				Color = bushColors[rng:NextInteger(1, #bushColors)],
-				Material = Enum.Material.Grass,
-				CanCollide = false,
-				Parent = scenery,
-			})
-			bush.CastShadow = true
-			bush.CanQuery = false
-		end
-	end
-	-- pasto 3D por toda la estepa (lejos de edificios)
-	local grass = Instance.new("Folder")
-	grass.Name = "Grass3D"
-	grass.Parent = scenery
-	for _ = 1, 650 do
-		local pos = randomSpot(32, 340, 2)
-		if pos then
-			grassTuft(grass, pos, rng)
-		end
 	end
 
 	-- ovoos: monton de piedras con un palo y cintas de seda azul (khadag)
@@ -4516,33 +4440,15 @@ local function buildArena(map: Folder)
 	local arena = Instance.new("Folder")
 	arena.Name = "FinalArena"
 	arena.Parent = map
-	-- campo de batalla: tierra pisoteada con manchas de pasto
-	local ground = Build.part({
-		Name = "ArenaGround",
-		Size = Vector3.new(half * 2 + 20, 2, half * 2 + 20),
-		CFrame = CFrame.new(center + Vector3.new(0, -1, 0)),
-		Color = Color3.fromRGB(105, 90, 66),
-		Material = Enum.Material.Ground,
-		Parent = arena,
-	})
-	ground.CanQuery = false
-	Build.markGround(ground)
+	-- campo de batalla: pasto natural con manchas de tierra pisoteada
+	local terrain = workspace.Terrain
+	terrain:FillBlock(CFrame.new(center + Vector3.new(0, -6, 0)), Vector3.new(half * 2 + 120, 12, half * 2 + 120), Enum.Material.Grass)
 	local arenaRng = Random.new(1227) -- 1227: muere Gengis Khan
-	for _ = 1, 40 do
+	for _ = 1, 30 do
 		local p = center + Vector3.new(arenaRng:NextNumber(-half + 30, half - 30), 0, arenaRng:NextNumber(-half + 30, half - 30))
-		local r = arenaRng:NextNumber(12, 30)
-		local patch = Build.part({
-			Name = "GrassPatch",
-			Shape = Enum.PartType.Cylinder,
-			Size = Vector3.new(0.2, r * 2, r * 2),
-			CFrame = CFrame.new(p + Vector3.new(0, 0.05, 0)) * CFrame.Angles(0, 0, math.pi / 2),
-			Color = GRASS,
-			Material = Enum.Material.Grass,
-			CanCollide = false,
-			Parent = arena,
-		})
-		patch.CanQuery = false
+		terrain:FillCylinder(CFrame.new(p + Vector3.new(0, -1, 0)), 2, arenaRng:NextNumber(10, 26), Enum.Material.Ground)
 	end
+	verityFloor("ArenaGround", Vector3.new(half * 2 + 20, 2, half * 2 + 20), CFrame.new(center + Vector3.new(0, -1, 0)), arena)
 	for i = 0, 3 do
 		local angle = i * math.pi / 2
 		local dir = Vector3.new(math.cos(angle), 0, math.sin(angle))
@@ -11257,5 +11163,15 @@ return VerityFX
 <string name="Name">TextChatService</string>
 <token name="ChatVersion">1</token>
 </Properties>
+</Item>
+<Item class="Workspace" referent="RBX000001DC"><Properties>
+<string name="Name">Workspace</string>
+</Properties>
+<Item class="Terrain" referent="RBX000001DB"><Properties>
+<string name="Name">Terrain</string>
+<bool name="Decoration">true</bool>
+<float name="GrassLength">1.0</float>
+</Properties>
+</Item>
 </Item>
 </roblox>

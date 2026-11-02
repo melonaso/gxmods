@@ -46,6 +46,14 @@
       "$properties": {
         "ChatVersion": "TextChatService"
       }
+    },
+    "Workspace": {
+      "Terrain": {
+        "$properties": {
+          "Decoration": true,
+          "GrassLength": 1
+        }
+      }
     }
   }
 }

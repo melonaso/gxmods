@@ -6,7 +6,7 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v12"
+Config.Version = "v13"
 
 -- Introduccion cinematografica al entrar (historia de Gengis Khan). false = sin intro.
 Config.Intro = { Enabled = true }
@@ -26,8 +26,8 @@ Config.Verity = {
 	Height = 18,
 	TransformTime = 2.6, -- lo usa VerityAnimator si algun dia se pone TransformStart
 	AttackAnimTime = 2.4, -- duracion de la animacion "levantar y aplastar"
-	IntervalSeconds = 20 * 60, -- cada 20 minutos
-	StudioIntervalSeconds = 90, -- en Studio llega antes para poder probar
+	IntervalSeconds = 5 * 60, -- cada 5 minutos
+	StudioIntervalSeconds = 5 * 60, -- igual en Studio (para probar ya: /verity en el chat)
 	DurationSeconds = 180, -- si nadie lo mata, se va a los 3 minutos
 	BaseHealth = 5000,
 	HealthPerPlayer = 1500,
@@ -44,7 +44,7 @@ Config.Verity = {
 	RewardPool = 6000, -- se reparte segun el dano que hizo cada uno
 	ParticipationReward = 500,
 	WallDamage = 200, -- dano por golpe a una muralla que le cierra el paso
-	WarningTimes = { 300, 60, 10 },
+	WarningTimes = { 120, 60, 10 },
 	-- Al matarlo en una noche normal no desaparece: huye herido hacia el portal.
 	FleeSpeed = 34,
 	FleeTimeout = 30,
