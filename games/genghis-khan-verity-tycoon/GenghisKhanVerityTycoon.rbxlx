@@ -31,7 +31,7 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v13"
+Config.Version = "v14"
 
 -- Introduccion cinematografica al entrar (historia de Gengis Khan). false = sin intro.
 Config.Intro = { Enabled = true }
@@ -4156,22 +4156,25 @@ local function buildGround(map: Folder)
 	local riverSign = Build.part({ Name = "RiverSign", Size = Vector3.new(1, 1, 1), CFrame = CFrame.new(0, 8, RIVER_Z), Transparency = 1, CanCollide = false, Parent = map })
 	Build.billboard(riverSign, "Rio Onon", 0, 220).TextColor3 = Color3.fromRGB(180, 220, 255)
 
-	-- donde NO debe salir pasto: plaza empedrada, arena bajo los campamentos,
-	-- tierra en los caminos y las cuevas, barro en el portal
-	terrain:FillCylinder(CFrame.new(0, -1, 0), 2, 30, Enum.Material.Cobblestone)
+	-- donde NO debe salir pasto: plaza empedrada (con sus yurtas), arena bajo los
+	-- campamentos, tierra en los caminos y las cuevas, barro en el portal.
+	-- Se rellena TODA la profundidad del terreno (12 studs): el terreno va en
+	-- bloques de 4 studs y una capa fina no reemplaza el pasto, cuyas hojas
+	-- largas atravesarian los suelos y los botones.
+	terrain:FillCylinder(CFrame.new(0, -6, 0), 12, 50, Enum.Material.Cobblestone)
 	for _, cf in plotCenters() do
-		terrain:FillBlock(cf * CFrame.new(0, -1, 0), Vector3.new(96, 2, 96), Enum.Material.Sand)
+		terrain:FillBlock(cf * CFrame.new(0, -6, 0), Vector3.new(100, 12, 100), Enum.Material.Sand)
 		-- camino de la plaza a la entrada (mismo trazado que las flechas de Tycoon)
 		local dir = Vector3.new(cf.Position.X, 0, cf.Position.Z).Unit
 		local from = dir * 28
 		local to = dir * (Config.PlotRingRadius - 45)
-		terrain:FillBlock(CFrame.lookAt((from + to) / 2, to) * CFrame.new(0, -1, 0), Vector3.new(8, 2, (to - from).Magnitude), Enum.Material.Ground)
+		terrain:FillBlock(CFrame.lookAt((from + to) / 2, to) * CFrame.new(0, -6, 0), Vector3.new(10, 12, (to - from).Magnitude), Enum.Material.Ground)
 	end
 	for i = 0, 3 do
 		local angle = math.pi / 4 + i * math.pi / 2
-		terrain:FillCylinder(CFrame.new(math.cos(angle) * 75, -1, math.sin(angle) * 75), 2, 18, Enum.Material.Ground)
+		terrain:FillCylinder(CFrame.new(math.cos(angle) * 75, -6, math.sin(angle) * 75), 12, 20, Enum.Material.Ground)
 	end
-	terrain:FillCylinder(CFrame.new(World.PortalPosition + Vector3.new(0, -1, 0)), 2, 28, Enum.Material.Mud)
+	terrain:FillCylinder(CFrame.new(World.PortalPosition + Vector3.new(0, -6, 0)), 12, 30, Enum.Material.Mud)
 
 	-- horizonte: colinas y montanas nevadas SOLO lejos (nada toca edificios, campamentos ni el portal)
 	local rng = Random.new(1206) -- 1206: Temujin es proclamado Gengis Khan
@@ -4446,7 +4449,7 @@ local function buildArena(map: Folder)
 	local arenaRng = Random.new(1227) -- 1227: muere Gengis Khan
 	for _ = 1, 30 do
 		local p = center + Vector3.new(arenaRng:NextNumber(-half + 30, half - 30), 0, arenaRng:NextNumber(-half + 30, half - 30))
-		terrain:FillCylinder(CFrame.new(p + Vector3.new(0, -1, 0)), 2, arenaRng:NextNumber(10, 26), Enum.Material.Ground)
+		terrain:FillCylinder(CFrame.new(p + Vector3.new(0, -6, 0)), 12, arenaRng:NextNumber(10, 26), Enum.Material.Ground)
 	end
 	verityFloor("ArenaGround", Vector3.new(half * 2 + 20, 2, half * 2 + 20), CFrame.new(center + Vector3.new(0, -1, 0)), arena)
 	for i = 0, 3 do
