@@ -9,6 +9,7 @@ local Shared = ReplicatedStorage:WaitForChild("Shared")
 local Config = require(Shared.Config)
 
 local Build = require(script.Parent.Parent.Lib.Build)
+local Sfx = require(script.Parent.Parent.Lib.Sfx)
 local Verity = require(script.Parent.Verity)
 
 type Visual = { Size: Vector3, Color: Color3, Material: Enum.Material, Tip: Color3? }
@@ -79,8 +80,15 @@ local function onActivated(tool: Tool)
 	end
 	uses[id] = t
 
+	local handlePart = tool:FindFirstChild("Handle")
+	local soundAt: Instance = if handlePart then handlePart else tool
 	if not def.Ranged then
 		playAnim(tool, if id == "Lanza" then "Lunge" else "Slash")
+		Sfx.play(if id == "Lanza" then Config.Sounds.Lunge else Config.Sounds.Slash, soundAt, { Volume = 0.8 })
+	elseif id == "Trueno" then
+		Sfx.play(Config.Sounds.Bass, soundAt, { Volume = 1.5, Speed = 0.6 })
+	else
+		Sfx.play(Config.Sounds.Lunge, soundAt, { Volume = 0.6, Speed = 1.8 })
 	end
 
 	local bossPos = Verity.getPosition()

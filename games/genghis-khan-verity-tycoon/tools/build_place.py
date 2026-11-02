@@ -23,15 +23,17 @@ OUT = os.path.join(ROOT, "GenghisKhanVerityTycoon.rbxlx")
 # Enums que aparecen en el modelo de Verity (valor numerico en el XML)
 ENUMS = {
     "Material": {"SmoothPlastic": 272, "Plastic": 256, "Neon": 288, "Fabric": 1312, "Metal": 1088, "Wood": 512, "Slate": 800},
+    "Technology": {"Legacy": 0, "Voxel": 1, "Compatibility": 2, "ShadowMap": 3, "Future": 4},
     "TopSurface": {"Smooth": 0},
+    "Shape": {"Ball": 0, "Block": 1, "Cylinder": 2},
     "BottomSurface": {"Smooth": 0},
     "MeshType": {"Head": 0, "Torso": 1, "Wedge": 2, "Sphere": 3, "Cylinder": 4, "Brick": 6},
     "RigType": {"R6": 0, "R15": 1},
     "DisplayDistanceType": {"Viewer": 0, "Subject": 1, "None": 2},
     "HealthDisplayType": {"DisplayWhenDamaged": 0, "AlwaysOn": 1, "AlwaysOff": 2},
 }
-BOOLS = {"Anchored", "CanCollide", "CanQuery", "CanTouch", "Massless", "BreakJointsOnDeath", "RequiresNeck", "AutomaticScalingEnabled"}
-FLOATS = {"Transparency", "HipHeight", "WalkSpeed", "Reflectance", "RespawnTime"}
+BOOLS = {"Shadows", "GlobalShadows", "Anchored", "CanCollide", "CanQuery", "CanTouch", "Massless", "BreakJointsOnDeath", "RequiresNeck", "AutomaticScalingEnabled"}
+FLOATS = {"Range", "ShadowSoftness", "EnvironmentDiffuseScale", "EnvironmentSpecularScale", "Brightness", "Transparency", "HipHeight", "WalkSpeed", "Reflectance", "RespawnTime"}
 
 _ref = 0
 
@@ -86,15 +88,19 @@ def encode_attributes(attrs):
     return base64.b64encode(bytes(out)).decode("ascii")
 
 
-def xml_property(name, value):
+def xml_property(name, value, cls="Part"):
     if isinstance(value, dict) and "CFrame" in value:
         return xml_cframe(name, value["CFrame"])
     if name == "CFrame" and isinstance(value, dict):
         return xml_cframe(name, value)
     if name == "Size":
         return f'<Vector3 name="size"><X>{value[0]}</X><Y>{value[1]}</Y><Z>{value[2]}</Z></Vector3>'
-    if name == "Color":
+    if name == "Color" and cls in ("Part", "MeshPart", "WedgePart", "TrussPart"):
         return xml_color3uint8(value)
+    if name == "Color":
+        return f'<Color3 name="Color"><R>{value[0]}</R><G>{value[1]}</G><B>{value[2]}</B></Color3>'
+    if name == "Shape":
+        return f'<token name="shape">{ENUMS["Shape"][value]}</token>'
     if name in ENUMS:
         return f'<token name="{name}">{ENUMS[name][value]}</token>'
     if name in BOOLS:
@@ -127,7 +133,7 @@ def item(cls, name, props_xml=(), children=(), source=None, attributes=None):
 
 
 def model_json(node, name=None):
-    props = [xml_property(k, v) for k, v in (node.get("properties") or {}).items()]
+    props = [xml_property(k, v, node["className"]) for k, v in (node.get("properties") or {}).items()]
     if node["className"] == "Model":
         props.append('<bool name="NeedsPivotMigration">false</bool>')
     children = [model_json(c) for c in node.get("children", [])]

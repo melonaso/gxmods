@@ -11,6 +11,18 @@ World.PortalPosition = Vector3.new(0, 0, -260)
 
 local mapFolder: Folder? = nil
 local hidingFolder: Folder? = nil
+local wallFolder: Folder? = nil
+
+-- Murallas compradas (Model con atributos HP, MaxHP, OwnerUserId, Broken).
+function World.getWallFolder(): Folder
+	if not wallFolder then
+		local f = Instance.new("Folder")
+		f.Name = "Walls"
+		f.Parent = workspace
+		wallFolder = f
+	end
+	return wallFolder :: Folder
+end
 
 function World.getMapFolder(): Folder
 	if not mapFolder then
@@ -100,6 +112,7 @@ local function buildCaves(map: Folder)
 		local cf = CFrame.lookAt(pos, Vector3.new(0, 0, 0))
 		local cave = Build.boxShelter(map, cf, 22, 22, 11, Color3.fromRGB(95, 90, 85), Enum.Material.Slate)
 		cave.Name = "ShamanCave"
+		Build.markSolid(cave)
 		Build.hidingZone(hiding, cf * CFrame.new(0, 5, 0), Vector3.new(19, 10, 19), nil)
 		local sign = Build.part({ Name = "Sign", Size = Vector3.new(1, 1, 1), CFrame = cf * CFrame.new(0, 14, -11), Transparency = 1, CanCollide = false, Parent = cave })
 		Build.billboard(sign, "Cueva del Chaman (refugio)", 0, 260)

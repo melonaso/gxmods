@@ -7,7 +7,7 @@ export type Profile = {
 	VerityKills: number,
 }
 
-export type ButtonKind = "Dropper" | "Weapon" | "Multiplier" | "Shelter" | "Decor"
+export type ButtonKind = "Dropper" | "Weapon" | "Multiplier" | "Shelter" | "Decor" | "Wall" | "Floor"
 
 export type ButtonDef = {
 	Id: string,
@@ -15,6 +15,7 @@ export type ButtonDef = {
 	Cost: number,
 	Kind: ButtonKind,
 	Requires: string?,
+	Floor: number?, -- 1 (planta baja, por defecto) o 2 (segundo piso)
 	-- Dropper
 	Slot: number?,
 	Value: number?,
@@ -24,6 +25,11 @@ export type ButtonDef = {
 	WeaponId: string?,
 	-- Multiplier
 	Multiplier: number?,
+	-- Wall
+	WallHP: number?,
+	WallHeight: number?,
+	WallColor: Color3?,
+	WallMaterial: Enum.Material?,
 }
 
 export type WeaponDef = {

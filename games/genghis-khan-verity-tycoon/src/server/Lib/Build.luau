@@ -7,13 +7,15 @@ local Build = {}
 -- Verity atraviesa paredes y vallas: solo choca con el suelo.
 Build.GROUND_GROUP = "Ground"
 Build.VERITY_GROUP = "VerityGhost"
+Build.WALL_GROUP = "VerityWall" -- murallas: frenan a Verity, los jugadores pasan
+Build.SOLID_GROUP = "Solid" -- refugios: nadie los atraviesa, ni Verity
 local groupsReady = false
 function Build.ensureGroups()
 	if groupsReady then
 		return
 	end
 	groupsReady = true
-	for _, name in { Build.GROUND_GROUP, Build.VERITY_GROUP } do
+	for _, name in { Build.GROUND_GROUP, Build.VERITY_GROUP, Build.WALL_GROUP, Build.SOLID_GROUP } do
 		if not PhysicsService:IsCollisionGroupRegistered(name) then
 			PhysicsService:RegisterCollisionGroup(name)
 		end
@@ -21,6 +23,19 @@ function Build.ensureGroups()
 	PhysicsService:CollisionGroupSetCollidable(Build.VERITY_GROUP, "Default", false)
 	PhysicsService:CollisionGroupSetCollidable(Build.VERITY_GROUP, Build.VERITY_GROUP, false)
 	PhysicsService:CollisionGroupSetCollidable(Build.VERITY_GROUP, Build.GROUND_GROUP, true)
+	PhysicsService:CollisionGroupSetCollidable(Build.WALL_GROUP, "Default", false)
+	PhysicsService:CollisionGroupSetCollidable(Build.WALL_GROUP, Build.VERITY_GROUP, true)
+	PhysicsService:CollisionGroupSetCollidable(Build.SOLID_GROUP, Build.VERITY_GROUP, true)
+end
+
+-- Todas las piezas del modelo pasan a ser solidas tambien para Verity.
+function Build.markSolid(model: Instance)
+	Build.ensureGroups()
+	for _, inst in model:GetDescendants() do
+		if inst:IsA("BasePart") then
+			inst.CollisionGroup = Build.SOLID_GROUP
+		end
+	end
 end
 
 function Build.markGround(part: BasePart)

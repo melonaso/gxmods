@@ -40,6 +40,14 @@ function Net.fireAll(name: Remotes.RemoteName, ...: any)
 	get(name):FireAllClients(...)
 end
 
+function Net.fireServer(name: Remotes.RemoteName, ...: any)
+	get(name):FireServer(...)
+end
+
+function Net.onServer(name: Remotes.RemoteName, handler: (Player, ...any) -> ()): RBXScriptConnection
+	return get(name).OnServerEvent:Connect(handler)
+end
+
 function Net.onClient(name: Remotes.RemoteName, handler: (...any) -> ()): RBXScriptConnection
 	return get(name).OnClientEvent:Connect(handler)
 end

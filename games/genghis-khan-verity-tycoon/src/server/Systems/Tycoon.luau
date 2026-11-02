@@ -1,6 +1,7 @@
 --!strict
 -- Plots del tycoon: botones de compra, droppers (animales/caravanas),
--- cinta, colector, caja para recoger oro, empalizada y Gran Yurta.
+-- cinta, colector, caja para recoger oro, empalizada, Gran Yurta,
+-- murallas contra Verity y segundo piso.
 local Debris = game:GetService("Debris")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -11,6 +12,7 @@ local Net = require(Shared.Net)
 local Types = require(Shared.Types)
 
 local Build = require(script.Parent.Parent.Lib.Build)
+local Sfx = require(script.Parent.Parent.Lib.Sfx)
 local PlayerData = require(script.Parent.PlayerData)
 local Weapons = require(script.Parent.Weapons)
 local World = require(script.Parent.World)
@@ -29,11 +31,19 @@ type Plot = {
 	signLabel: TextLabel,
 	spawn: BasePart,
 	spawnConn: RBXScriptConnection?,
+	wall: Model?,
+	floor2: Model?,
 }
 
 local Tycoon = {}
 
 local SLOT_X = { -21, -9, 3, 15 }
+local H2 = Config.Floor2Height
+-- posicion de la fila de droppers/cinta en cada piso (local al plot)
+local LINE = {
+	[1] = { y = 0, z = 0 },
+	[2] = { y = H2, z = 14 },
+}
 local SAND = Color3.fromRGB(214, 190, 140)
 
 local plots: { Plot } = {}
@@ -63,7 +73,13 @@ local function isOwnerTouch(plot: Plot, hit: BasePart): Player?
 end
 
 local function updateCash(plot: Plot)
-	plot.cashLabel.Text = string.format("Recoger: %d oro", math.floor(plot.pending))
+	local text = string.format("Recoger: %d oro", math.floor(plot.pending))
+	plot.cashLabel.Text = text
+	local floor2 = plot.floor2
+	local label2 = floor2 and floor2:FindFirstChild("Floor2Cash", true)
+	if label2 and label2:IsA("TextLabel") then
+		label2.Text = text
+	end
 end
 
 local function available(plot: Plot, def: Types.ButtonDef): boolean
@@ -82,11 +98,49 @@ end
 
 -- ===== Construcciones =====
 
+-- Cinta + barandas + colector de un piso. El colector suma al oro pendiente del plot.
+local function buildLine(plot: Plot, parent: Instance, floor: number)
+	local line = LINE[floor]
+	local cf = plot.cframe * CFrame.new(0, line.y, line.z)
+	local conveyor = Build.part({ Name = "Conveyor", Size = Vector3.new(50, 1, 5), CFrame = cf * CFrame.new(-2, 1.5, 0), Color = Color3.fromRGB(40, 35, 30), Material = Enum.Material.Fabric, Parent = parent })
+	-- una pieza anclada con velocidad mueve lo que cae encima
+	conveyor.AssemblyLinearVelocity = plot.cframe.RightVector * Config.ConveyorSpeed
+	Build.part({ Name = "RailA", Size = Vector3.new(50, 1.5, 0.5), CFrame = cf * CFrame.new(-2, 2.75, 2.75), Color = Color3.fromRGB(110, 70, 35), Material = Enum.Material.Wood, Parent = parent })
+	Build.part({ Name = "RailB", Size = Vector3.new(50, 1.5, 0.5), CFrame = cf * CFrame.new(-2, 2.75, -2.75), Color = Color3.fromRGB(110, 70, 35), Material = Enum.Material.Wood, Parent = parent })
+	local collector = Build.part({ Name = "Collector", Size = Vector3.new(4, 4, 7), CFrame = cf * CFrame.new(25, 3, 0), Color = Color3.fromRGB(230, 190, 60), Material = Enum.Material.Neon, Parent = parent })
+	collector.Touched:Connect(function(hit)
+		if hit:GetAttribute("PlotIndex") ~= plot.index then
+			return
+		end
+		local value = hit:GetAttribute("OreValue")
+		hit:Destroy()
+		if plot.owner and typeof(value) == "number" then
+			plot.pending += value * plot.multiplier
+			updateCash(plot)
+		end
+	end)
+end
+
+local function buildCashPad(plot: Plot, parent: Instance, offset: Vector3): TextLabel
+	local cashPad = Build.part({ Name = "CashPad", Size = Vector3.new(6, 1, 6), CFrame = plot.cframe * CFrame.new(offset), Color = Color3.fromRGB(60, 200, 90), Material = Enum.Material.Neon, Parent = parent })
+	cashPad.Touched:Connect(function(hit)
+		local player = isOwnerTouch(plot, hit)
+		if player and plot.pending > 0 then
+			Sfx.play(Config.Sounds.Collect, cashPad, { Volume = 0.8, Speed = 1.4 })
+			PlayerData.addGold(player, math.floor(plot.pending))
+			plot.pending = 0
+			updateCash(plot)
+		end
+	end)
+	return Build.billboard(cashPad, "Recoger: 0 oro", 4, 220)
+end
+
 local function buildDropper(plot: Plot, def: Types.ButtonDef)
 	local owner = plot.owner :: Player
 	local generation = plot.generation
 	local x = SLOT_X[def.Slot or 1]
-	local cf = plot.cframe
+	local line = LINE[def.Floor or 1]
+	local cf = plot.cframe * CFrame.new(0, line.y, line.z)
 	local model = Instance.new("Model")
 	model.Name = "Dropper_" .. def.Id
 	Build.part({ Name = "Pillar", Size = Vector3.new(1, 10, 1), CFrame = cf * CFrame.new(x, 6, -5), Color = Color3.fromRGB(110, 70, 35), Material = Enum.Material.Wood, Parent = model })
@@ -141,9 +195,97 @@ local function buildShelter(plot: Plot)
 	-- la puerta de la yurta mira hacia el frente del plot
 	local cf = plot.cframe * CFrame.new(-26, 0, 26)
 	local yurt = Build.yurt(plot.model, cf, 9, 10)
+	Build.markSolid(yurt)
 	table.insert(plot.built, yurt)
 	local zone = Build.hidingZone(World.getHidingFolder(), cf * CFrame.new(0, 5, 0), Vector3.new(14, 10, 14), owner.UserId)
 	table.insert(plot.built, zone)
+end
+
+-- Muralla alrededor del plot. Grupo de colision VerityWall: los jugadores (y el
+-- oro) la atraviesan, Verity no. Verity.luau la golpea y la repara al irse.
+local function buildWall(plot: Plot, def: Types.ButtonDef)
+	local owner = plot.owner :: Player
+	if plot.wall then
+		plot.wall:Destroy() -- el nivel nuevo reemplaza al anterior
+		plot.wall = nil
+	end
+	Build.ensureGroups()
+	local h = def.WallHeight or 14
+	local maxHp = def.WallHP or 500
+	local model = Instance.new("Model")
+	model.Name = "Wall_" .. plot.index
+	local function seg(size: Vector3, offset: Vector3)
+		local p = Build.part({ Name = "WallSegment", Size = size, CFrame = plot.cframe * CFrame.new(offset), Color = def.WallColor, Material = def.WallMaterial, Parent = model })
+		p.CollisionGroup = Build.WALL_GROUP
+	end
+	seg(Vector3.new(86, h, 2), Vector3.new(0, h / 2 + 1, 42))
+	seg(Vector3.new(86, h, 2), Vector3.new(0, h / 2 + 1, -42))
+	seg(Vector3.new(2, h, 82), Vector3.new(42, h / 2 + 1, 0))
+	seg(Vector3.new(2, h, 82), Vector3.new(-42, h / 2 + 1, 0))
+	local sign = Build.part({ Name = "WallSign", Size = Vector3.new(1, 1, 1), CFrame = plot.cframe * CFrame.new(0, h + 4, -42), Transparency = 1, CanCollide = false, Parent = model })
+	sign.CanQuery = false
+	sign.CanTouch = false
+	local label = Build.billboard(sign, "", 0, 260)
+	local function refresh()
+		local hp = (model:GetAttribute("HP") :: number?) or 0
+		if model:GetAttribute("Broken") then
+			label.Text = def.Name .. ": ROTA"
+			label.TextColor3 = Color3.fromRGB(255, 80, 80)
+		else
+			label.Text = string.format("%s: %d / %d", def.Name, hp, maxHp)
+			label.TextColor3 = Color3.new(1, 1, 1)
+		end
+	end
+	model:SetAttribute("MaxHP", maxHp)
+	model:SetAttribute("HP", maxHp)
+	model:SetAttribute("Broken", false)
+	model:SetAttribute("OwnerUserId", owner.UserId)
+	model:GetAttributeChangedSignal("HP"):Connect(refresh)
+	model:GetAttributeChangedSignal("Broken"):Connect(refresh)
+	refresh()
+	model.Parent = World.getWallFolder()
+	plot.wall = model
+	table.insert(plot.built, model)
+end
+
+-- Segundo piso: losa sobre la mitad trasera, escalera, cinta, colector y caja.
+local function buildFloor2(plot: Plot)
+	if plot.floor2 then
+		return
+	end
+	local model = Instance.new("Model")
+	model.Name = "Floor2"
+	local cf = plot.cframe
+	local wood = Color3.fromRGB(150, 105, 60)
+	Build.part({ Name = "Slab", Size = Vector3.new(80, 1, 40), CFrame = cf * CFrame.new(0, H2, 20), Color = wood, Material = Enum.Material.WoodPlanks, Parent = model })
+	for _, x in { -39, 39 } do
+		for _, z in { 1, 39 } do
+			Build.part({ Name = "Column", Size = Vector3.new(2, H2, 2), CFrame = cf * CFrame.new(x, H2 / 2, z), Color = Color3.fromRGB(170, 30, 30), Material = Enum.Material.Wood, Parent = model })
+		end
+	end
+	-- baranda del borde delantero (deja libre la llegada de la escalera)
+	Build.part({ Name = "Railing", Size = Vector3.new(73, 3, 0.6), CFrame = cf * CFrame.new(3.5, H2 + 2, 0.3), Color = Color3.fromRGB(170, 30, 30), Material = Enum.Material.Wood, Parent = model })
+	-- escalera: escalones macizos de ~1 stud por el lado izquierdo, subiendo hacia atras
+	local steps = 19
+	local rise = (H2 + 0.5 - 1) / steps
+	for i = 1, steps do
+		local height = rise * i
+		Build.part({
+			Name = "Step",
+			Size = Vector3.new(5, height, 2),
+			CFrame = cf * CFrame.new(-36, 1 + height / 2, -38 + 2 * (i - 1) + 1),
+			Color = wood,
+			Material = Enum.Material.WoodPlanks,
+			Parent = model,
+		})
+	end
+	buildLine(plot, model, 2)
+	local label2 = buildCashPad(plot, model, Vector3.new(25, H2 + 1.2, 30))
+	label2.Name = "Floor2Cash"
+	model.Parent = plot.model
+	plot.floor2 = model
+	table.insert(plot.built, model)
+	updateCash(plot)
 end
 
 local function applyBuild(plot: Plot, def: Types.ButtonDef)
@@ -161,10 +303,14 @@ local function applyBuild(plot: Plot, def: Types.ButtonDef)
 		buildShelter(plot)
 	elseif def.Kind == "Decor" then
 		buildFence(plot)
+	elseif def.Kind == "Wall" then
+		buildWall(plot, def)
+	elseif def.Kind == "Floor" then
+		buildFloor2(plot)
 	end
 end
 
-local function tryBuy(plot: Plot, def: Types.ButtonDef, player: Player)
+local function tryBuy(plot: Plot, def: Types.ButtonDef, player: Player, button: BasePart)
 	if not available(plot, def) then
 		return
 	end
@@ -177,6 +323,11 @@ local function tryBuy(plot: Plot, def: Types.ButtonDef, player: Player)
 		return
 	end
 	PlayerData.setOwned(player, def.Id)
+	if def.Kind == "Weapon" then
+		Sfx.play(Config.Sounds.WeaponUnlock, button, { Volume = 1 })
+	else
+		Sfx.play(Config.Sounds.Purchase, button, { Volume = 0.8, Speed = 0.8 })
+	end
 	applyBuild(plot, def)
 	refreshButtons(plot)
 	Net.fireClient(player, "Notify", "Comprado: " .. def.Name, "reward")
@@ -198,19 +349,8 @@ local function buildPlot(index: number): Plot
 	local post = Build.part({ Name = "SignPost", Size = Vector3.new(1, 10, 1), CFrame = cf * CFrame.new(0, 5, -38), Color = Color3.fromRGB(110, 70, 35), Material = Enum.Material.Wood, Parent = model })
 	local signLabel = Build.billboard(post, "Plot libre", 7, 260)
 
-	-- cinta transportadora: una pieza anclada con velocidad mueve lo que cae encima
-	local conveyor = Build.part({ Name = "Conveyor", Size = Vector3.new(50, 1, 5), CFrame = cf * CFrame.new(-2, 1.5, 0), Color = Color3.fromRGB(40, 35, 30), Material = Enum.Material.Fabric, Parent = model })
-	conveyor.AssemblyLinearVelocity = cf.RightVector * 10
-	Build.part({ Name = "RailA", Size = Vector3.new(50, 1.5, 0.5), CFrame = cf * CFrame.new(-2, 2.75, 2.75), Color = Color3.fromRGB(110, 70, 35), Material = Enum.Material.Wood, Parent = model })
-	Build.part({ Name = "RailB", Size = Vector3.new(50, 1.5, 0.5), CFrame = cf * CFrame.new(-2, 2.75, -2.75), Color = Color3.fromRGB(110, 70, 35), Material = Enum.Material.Wood, Parent = model })
-
-	local collector = Build.part({ Name = "Collector", Size = Vector3.new(4, 4, 7), CFrame = cf * CFrame.new(25, 3, 0), Color = Color3.fromRGB(230, 190, 60), Material = Enum.Material.Neon, Parent = model })
-
-	local cashPad = Build.part({ Name = "CashPad", Size = Vector3.new(6, 1, 6), CFrame = cf * CFrame.new(25, 1.2, -12), Color = Color3.fromRGB(60, 200, 90), Material = Enum.Material.Neon, Parent = model })
-	local cashLabel = Build.billboard(cashPad, "Recoger: 0 oro", 4, 220)
-
 	-- punto de aparicion del dueno (lo teletransportamos al reaparecer)
-	local spawn = Build.part({ Name = "HomePad", Size = Vector3.new(6, 1, 6), CFrame = cf * CFrame.new(0, 1.2, -28), Color = Color3.fromRGB(170, 30, 30), Material = Enum.Material.Slate, Parent = model })
+	local spawn = Build.part({ Name = "HomePad", Size = Vector3.new(6, 1, 6), CFrame = cf * CFrame.new(28, 1.2, -30), Color = Color3.fromRGB(170, 30, 30), Material = Enum.Material.Slate, Parent = model })
 
 	model.Parent = tycoonFolder
 
@@ -224,20 +364,31 @@ local function buildPlot(index: number): Plot
 		multiplier = 1,
 		built = {},
 		buttons = {},
-		cashLabel = cashLabel,
+		cashLabel = nil :: any, -- se asigna abajo
 		signLabel = signLabel,
 		spawn = spawn,
 		spawnConn = nil,
+		wall = nil,
+		floor2 = nil,
 	}
+	buildLine(plot, model, 1)
+	plot.cashLabel = buildCashPad(plot, model, Vector3.new(25, 1.2, -12))
 
 	-- botones en dos filas de 6, entre la cinta y la entrada
-	for i, def in Config.Buttons do
+	local perFloor = { 0, 0 }
+	for _, def in Config.Buttons do
+		local floor = def.Floor or 1
+		perFloor[floor] += 1
+		local i = perFloor[floor]
 		local col = (i - 1) % 6
 		local row = (i - 1) // 6
+		local offset = if floor == 1
+			then Vector3.new(-25 + col * 8, 1.2, -12 - row * 9)
+			else Vector3.new(-25 + col * 8, H2 + 1.2, 30 - row * 7)
 		local button = Build.part({
 			Name = "Button_" .. def.Id,
 			Size = Vector3.new(5, 1, 5),
-			CFrame = cf * CFrame.new(-25 + col * 8, 1.2, -12 - row * 9),
+			CFrame = cf * CFrame.new(offset),
 			Color = Color3.fromRGB(200, 40, 40),
 			Material = Enum.Material.Neon,
 		})
@@ -251,7 +402,7 @@ local function buildPlot(index: number): Plot
 			local player = isOwnerTouch(plot, hit)
 			if player then
 				debounce = true
-				tryBuy(plot, def, player)
+				tryBuy(plot, def, player, button)
 				task.delay(0.5, function()
 					debounce = false
 				end)
@@ -259,27 +410,6 @@ local function buildPlot(index: number): Plot
 		end)
 		plot.buttons[def.Id] = button
 	end
-
-	collector.Touched:Connect(function(hit)
-		if hit:GetAttribute("PlotIndex") ~= plot.index then
-			return
-		end
-		local value = hit:GetAttribute("OreValue")
-		hit:Destroy()
-		if plot.owner and typeof(value) == "number" then
-			plot.pending += value * plot.multiplier
-			updateCash(plot)
-		end
-	end)
-
-	cashPad.Touched:Connect(function(hit)
-		local player = isOwnerTouch(plot, hit)
-		if player and plot.pending > 0 then
-			PlayerData.addGold(player, math.floor(plot.pending))
-			plot.pending = 0
-			updateCash(plot)
-		end
-	end)
 
 	return plot
 end
@@ -294,6 +424,8 @@ local function release(plot: Plot)
 		inst:Destroy()
 	end
 	plot.built = {}
+	plot.wall = nil
+	plot.floor2 = nil
 	plot.signLabel.Text = "Plot libre"
 	if plot.spawnConn then
 		plot.spawnConn:Disconnect()

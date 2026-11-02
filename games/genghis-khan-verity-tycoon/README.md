@@ -60,15 +60,34 @@ Para el guardado: *Game Settings → Security → Enable Studio Access to API Se
 | Lanza del Khan | 16 000 | Arma cuerpo a cuerpo (65 de daño) |
 | Tributo Imperial | 30 000 | Todo el oro x3 (reemplaza al x2) |
 | Trueno de Tengri | 50 000 | Arma a distancia (140 de daño) |
+| Muralla de Madera / Piedra / Gran Muralla | 2 500 / 12 000 / 45 000 | Rodea tu campamento: **los jugadores la atraviesan, Verity no**. Verity la golpea (200 por golpe) hasta romperla (800 / 2 500 / 6 000 de vida) y se repara sola cuando se va |
+| Segundo Piso | 20 000 | Losa con escalera, cinta, colector y caja propios |
+| Yaks / Camellos / Halcones / Tesoro de Karakorum | 25 000 – 90 000 | Droppers del segundo piso: 120 / 200 / 320 / 500 oro |
 
 3. Los productos caen en la cinta → llegan al **colector dorado** → pisa el **cuadro verde** para cobrar.
 4. **Verity** (avisos a los 5 min, 1 min y 10 s):
-   - Sale del portal negro del norte, atraviesa paredes y persigue al jugador **visible** más cercano.
+   - Mientras espera es la **bola sonriente** original flotando en el portal negro del norte. Al llegar la hora se retuerce y se transforma en el monstruo.
+   - Persigue al jugador **visible** más cercano. Atraviesa vallas y edificios, pero no las cuevas, la Gran Yurta ni las murallas.
    - Ataca levantando y aplastando (45 de daño) y **grita** cada 15 s (20 de daño en 35 studs).
    - Con menos del 30 % de vida se enfurece y corre más que tú.
    - Vida: 2 500 + 1 500 por cada jugador extra.
    - **Pelear:** si lo matan, se reparten 6 000 de oro según el daño de cada uno, más 500 por participar.
    - **Esconderse:** dentro de las 4 **Cuevas del Chamán** (públicas) o de tu Gran Yurta, Verity no te ve. A los 3 minutos se va.
+
+5. **Canto de garganta (khöömei)** — tecla **G** (botón Y del mando o botón "Canto" en móvil), cada 25 s:
+   - Verity a menos de 45 studs queda **aturdido** 4 s (lento y sin atacar) y recibe 60 de daño.
+   - Cura 25 de vida a ti y a los jugadores a menos de 30 studs.
+   - Suena el canto y salen ondas azules.
+6. **Música y sonido:** música tranquila mientras construyes, de tensión en el último minuto y de batalla cuando llega Verity (botón "Música" abajo a la izquierda para silenciarla). Hay efectos de compra, cobro, armas, golpes, gritos de Verity y victoria. Todo el audio es de APM / Pro Sound Effects / DistroKid / Roblox, con licencia para experiencias.
+
+### Subir el canto de garganta (una vez)
+
+En la biblioteca de Roblox no hay ningún canto de garganta, así que viene sintetizado en `assets/audio/khoomei.ogg` (generado con `tools/synth_khoomei.py`: nota grave de 110 Hz con un armónico silbado que hace la melodía, como el khöömei real). Para usarlo:
+
+1. En Studio: **Ventana → Asset Manager → Importar** (o Creator Hub → Development Items → Audio → Upload) y elige `khoomei.ogg`.
+2. Copia su ID y pégalo en `Config.Sounds.ThroatSing` (en `ReplicatedStorage.Shared.Config`).
+
+Mientras sea `0` suena un sustituto: el zumbido grave de APM más una capa aguda.
 
 Prueba rápida: en Studio Verity llega cada **90 s** (`Config.Verity.StudioIntervalSeconds`) y el comando de chat `/verity` lo invoca al instante (solo en Studio o para el creador del juego).
 

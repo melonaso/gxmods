@@ -22,12 +22,24 @@
     "ServerStorage": {
       "VerityFallback": {
         "$path": "src/world/VerityFallback.model.json"
+      },
+      "VerityBall": {
+        "$path": "src/world/VerityBall.model.json"
       }
     },
     "Players": {
       "$properties": {
         "MaxPlayers": 6,
         "RespawnTime": 4
+      }
+    },
+    "Lighting": {
+      "$properties": {
+        "Technology": "Future",
+        "GlobalShadows": true,
+        "ShadowSoftness": 0.15,
+        "EnvironmentDiffuseScale": 0.5,
+        "EnvironmentSpecularScale": 1
       }
     }
   }
