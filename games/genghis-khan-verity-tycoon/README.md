@@ -7,7 +7,15 @@ Verity usa el **mismo modelo y animaciones** del proyecto *Survive A Verity* (ra
 
 ## Cómo abrirlo en Studio
 
-Se necesita [Rojo](https://rojo.space) (herramienta que sincroniza estos archivos `.luau` con Roblox Studio).
+**Lo más fácil:** abre `GenghisKhanVerityTycoon.rbxlx` en Roblox Studio (Archivo → Abrir desde archivo). Trae todo: scripts, módulos y el modelo de Verity en `ServerStorage`.
+
+Si cambias el código, regenera ese archivo con:
+
+```bash
+python3 tools/build_place.py
+```
+
+Opción para desarrollo con sincronización en vivo: [Rojo](https://rojo.space) (herramienta que sincroniza estos archivos `.luau` con Roblox Studio).
 
 ```bash
 cd games/genghis-khan-verity-tycoon
