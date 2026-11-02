@@ -6,7 +6,10 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v9"
+Config.Version = "v10"
+
+-- Introduccion cinematografica al entrar (historia de Gengis Khan). false = sin intro.
+Config.Intro = { Enabled = true }
 
 Config.StartingGold = 50
 Config.PlotCount = 6 -- pon MaxPlayers = 6 en Game Settings
@@ -104,11 +107,11 @@ Config.ThroatSing = {
 -- o Creator Hub > Audio) y pega aqui el ID que te da Roblox a cada uno.
 -- Roblox solo reproduce audio subido a su plataforma: con 0 se usa lo indicado.
 Config.Uploads = {
-	ThroatSing = 0, -- khoomei.ogg       canto de garganta (con 0: no suena, solo salen las ondas)
-	VerityRoar = 0, -- verity_roar.ogg   rugido (con 0: alarido de Pro Sound Effects grave + bajo)
-	MusicCalm = 0, -- music_calm.ogg     "Estepa": morin khuur, laud, flauta (con 0: biblioteca)
-	MusicWarning = 0, -- music_warning.ogg "Presagio": ultimo minuto antes de Verity
-	MusicBattle = 0, -- music_battle.ogg  "Batalla": galope de tambores y morin khuur
+	ThroatSing = 137028063493385, -- khoomei.ogg       canto de garganta (con 0: no suena, solo salen las ondas)
+	VerityRoar = 102375748179588, -- verity_roar.ogg   rugido (con 0: alarido de Pro Sound Effects grave + bajo)
+	MusicCalm = 95189348267659, -- music_calm.ogg     "Estepa": morin khuur, laud, flauta (con 0: biblioteca)
+	MusicWarning = 118401977155603, -- music_warning.ogg "Presagio": ultimo minuto antes de Verity
+	MusicBattle = 125761599387414, -- music_battle.ogg  "Batalla": galope de tambores y morin khuur
 }
 
 -- Musica de respaldo (biblioteca con licencia de Roblox) mientras los temas

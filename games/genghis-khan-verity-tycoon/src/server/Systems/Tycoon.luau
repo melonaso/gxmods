@@ -15,6 +15,7 @@ local Types = require(Shared.Types)
 local Build = require(script.Parent.Parent.Lib.Build)
 local Sfx = require(script.Parent.Parent.Lib.Sfx)
 local FinalBattle = require(script.Parent.FinalBattle)
+local Verity = require(script.Parent.Verity)
 local PlayerData = require(script.Parent.PlayerData)
 local Weapons = require(script.Parent.Weapons)
 local World = require(script.Parent.World)
@@ -30,6 +31,7 @@ type Plot = {
 	built: { Instance },
 	buttons: { [string]: BasePart },
 	finalPad: BasePart,
+	claimPad: BasePart,
 	cashLabel: TextLabel,
 	signLabel: TextLabel,
 	spawn: BasePart,
@@ -471,7 +473,7 @@ local function buildPlot(index: number): Plot
 	Build.markGround(Build.part({ Name = "Base", Size = Vector3.new(80, 1, 80), CFrame = cf * CFrame.new(0, 0.5, 0), Color = SAND, Material = Enum.Material.Sand, Parent = model }))
 
 	local post = Build.part({ Name = "SignPost", Size = Vector3.new(1, 10, 1), CFrame = cf * CFrame.new(0, 5, -38), Color = Color3.fromRGB(110, 70, 35), Material = Enum.Material.Wood, Parent = model })
-	local signLabel = Build.billboard(post, "Plot libre", 7, 260)
+	local signLabel = Build.billboard(post, "Campamento libre", 7, 260)
 
 	-- punto de aparicion del dueno (lo teletransportamos al reaparecer)
 	local spawn = Build.part({ Name = "HomePad", Size = Vector3.new(6, 1, 6), CFrame = cf * CFrame.new(28, 1.2, -30), Color = Color3.fromRGB(170, 30, 30), Material = Enum.Material.Slate, Parent = model })
@@ -490,6 +492,7 @@ local function buildPlot(index: number): Plot
 		buttons = {},
 		cashLabel = nil :: any, -- se asigna abajo
 		finalPad = nil :: any, -- se asigna abajo
+		claimPad = nil :: any, -- se asigna abajo
 		signLabel = signLabel,
 		spawn = spawn,
 		spawnConn = nil,
@@ -526,6 +529,26 @@ local function buildPlot(index: number): Plot
 		end
 	end)
 	plot.finalPad = finalPad
+
+	-- circulo azul para reclamar el campamento (visible mientras este libre)
+	local claimPad = Build.part({
+		Name = "ClaimPad",
+		Shape = Enum.PartType.Cylinder,
+		Size = Vector3.new(1, 9, 9),
+		CFrame = cf * CFrame.new(0, 1.2, -36) * CFrame.Angles(0, 0, math.pi / 2), -- alrededor del poste del estandarte
+		Color = Color3.fromRGB(70, 150, 255),
+		Material = Enum.Material.Neon,
+		Parent = model,
+	})
+	Build.billboard(claimPad, "RECLAMAR CAMPAMENTO\npisa aqui", 5, 260).TextColor3 = Color3.fromRGB(170, 210, 255)
+	claimPad.Touched:Connect(function(hit)
+		local character = hit.Parent
+		local player = character and Players:GetPlayerFromCharacter(character)
+		if player then
+			assign(player, plot)
+		end
+	end)
+	plot.claimPad = claimPad
 
 	-- botones en dos filas de 6, entre la cinta y la entrada
 	local perFloor = { 0, 0 }
@@ -580,7 +603,8 @@ local function release(plot: Plot)
 	plot.wall = nil
 	plot.gate = nil
 	plot.floor2 = nil
-	plot.signLabel.Text = "Plot libre"
+	plot.signLabel.Text = "Campamento libre"
+	plot.claimPad.Parent = plot.model
 	if plot.spawnConn then
 		plot.spawnConn:Disconnect()
 		plot.spawnConn = nil
@@ -592,25 +616,16 @@ local function release(plot: Plot)
 	end
 end
 
-local function assign(player: Player)
-	if plotOf[player] or not player.Parent then
+-- El jugador reclama un campamento libre pisando su circulo "Reclamar".
+local function assign(player: Player, p: Plot)
+	if plotOf[player] or not player.Parent or p.owner or not PlayerData.isLoaded(player) then
 		return
 	end
-	local plot: Plot? = nil
-	for _, p in plots do
-		if not p.owner then
-			plot = p
-			break
-		end
-	end
-	if not plot then
-		Net.fireClient(player, "Notify", "No hay plots libres en este servidor.", "warning")
-		return
-	end
-	local p = plot :: Plot
 	p.owner = player
 	plotOf[player] = p
 	p.signLabel.Text = "Campamento de " .. player.DisplayName
+	p.claimPad.Parent = nil
+	player:SetAttribute("HasPlot", true)
 
 	-- reconstruye lo que ya habia comprado (en orden de la lista)
 	for _, def in Config.Buttons do
@@ -620,15 +635,15 @@ local function assign(player: Player)
 	end
 	refreshButtons(p)
 
-	local function sendHome(character: Model)
+	-- desde ahora reaparece en su campamento
+	p.spawnConn = player.CharacterAdded:Connect(function(character: Model)
 		task.wait(0.1)
 		character:PivotTo(p.spawn.CFrame + Vector3.new(0, 4, 0))
-	end
-	p.spawnConn = player.CharacterAdded:Connect(sendHome)
-	if player.Character then
-		task.spawn(sendHome, player.Character)
-	end
-	Net.fireClient(player, "Notify", "Bienvenido, Khan. Compra animales para ganar oro y armas para enfrentar a Verity.", "info")
+	end)
+	Sfx.play(Config.Sounds.WeaponUnlock, p.spawn, { Volume = 1, Speed = 0.7 })
+	Net.fireClient(player, "Notify", "Has levantado tu campamento, Khan. Reune rebanos y armas antes de que caiga la noche.", "reward")
+	-- el ciclo de Verity empieza con el primer campamento del servidor
+	Verity.startCycle()
 end
 
 function Tycoon.init()
@@ -643,7 +658,13 @@ function Tycoon.init()
 		table.insert(plots, buildPlot(i))
 	end
 
-	PlayerData.Loaded:Connect(assign)
+	local function onJoin(player: Player)
+		player:SetAttribute("HasPlot", false)
+	end
+	Players.PlayerAdded:Connect(onJoin)
+	for _, player in Players:GetPlayers() do
+		onJoin(player)
+	end
 	Players.PlayerRemoving:Connect(function(player)
 		local plot = plotOf[player]
 		if plot then
@@ -654,12 +675,6 @@ function Tycoon.init()
 end
 
 function Tycoon.start()
-	-- por si alguien cargo antes de conectar Loaded
-	for _, player in Players:GetPlayers() do
-		if PlayerData.isLoaded(player) then
-			assign(player)
-		end
-	end
 	while true do
 		task.wait(0.2)
 		updateGates()

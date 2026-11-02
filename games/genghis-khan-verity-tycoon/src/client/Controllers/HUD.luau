@@ -27,6 +27,12 @@ local hpText: TextLabel
 local hiddenLabel: TextLabel
 local joinButton: TextButton
 local joinedFinal = false
+local introDone = false
+
+-- Controllers/Intro avisa cuando termina la introduccion
+function HUD.setIntroDone()
+	introDone = true
+end
 local toast: TextLabel
 local toastToken = 0
 
@@ -188,10 +194,16 @@ function HUD.start()
 			timerLabel.TextColor3 = COLORS.warning
 			hpFrame.Visible = false
 			hiddenLabel.Visible = false
+		elseif not player:GetAttribute("HasPlot") then
+			-- aun no tiene campamento: sin contador, solo el objetivo
+			timerLabel.Text = if introDone then "Elige tu campamento: pisa un circulo azul RECLAMAR" else ""
+			timerLabel.TextColor3 = Color3.fromRGB(170, 210, 255)
+			hpFrame.Visible = false
+			hiddenLabel.Visible = false
 		else
-			local nextAt = (workspace:GetAttribute("VerityNextAt") :: number?) or t
-			local remaining = nextAt - t
-			timerLabel.Text = "Verity llega en " .. format(remaining)
+			local nextAt = workspace:GetAttribute("VerityNextAt") :: number?
+			local remaining = if nextAt then nextAt - t else math.huge
+			timerLabel.Text = if nextAt then "Verity llega en " .. format(remaining) else ""
 			timerLabel.TextColor3 = if remaining <= 60 then COLORS.warning else COLORS.info
 			hpFrame.Visible = false
 			hiddenLabel.Visible = false

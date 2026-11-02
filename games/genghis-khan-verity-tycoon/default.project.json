@@ -41,6 +41,11 @@
         "EnvironmentDiffuseScale": 0.5,
         "EnvironmentSpecularScale": 1
       }
+    },
+    "TextChatService": {
+      "$properties": {
+        "ChatVersion": "TextChatService"
+      }
     }
   }
 }

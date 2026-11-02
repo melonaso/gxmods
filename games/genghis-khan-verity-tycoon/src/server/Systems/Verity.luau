@@ -44,6 +44,7 @@ local P: any = V -- parametros del modo actual (Config.Verity o Config.FinalBatt
 local home = World.PortalPosition -- adonde vuelve / ronda
 local participants: { [Player]: boolean }? = nil -- modo Final: solo estos son objetivo
 local hold = false -- FinalBattle pausa las noches mientras convoca / pelea
+local cycleStarted = false -- el contador empieza con el primer campamento reclamado
 local nextAt = 0
 local endsAt = 0
 local health = 0
@@ -79,7 +80,7 @@ end
 
 local function publish()
 	workspace:SetAttribute("VerityPhase", phase)
-	workspace:SetAttribute("VerityNextAt", nextAt)
+	workspace:SetAttribute("VerityNextAt", if cycleStarted then nextAt else nil)
 	workspace:SetAttribute("VerityEndsAt", endsAt)
 	workspace:SetAttribute("VerityHP", math.max(0, math.floor(health)))
 	workspace:SetAttribute("VerityMaxHP", maxHealth)
@@ -580,6 +581,17 @@ function Verity.stun(seconds: number)
 	flash(Color3.fromRGB(80, 180, 255))
 end
 
+-- Tycoon: alguien reclamo un campamento. La primera vez arranca el contador.
+function Verity.startCycle()
+	if cycleStarted then
+		return
+	end
+	cycleStarted = true
+	nextAt = now() + interval()
+	warned = {}
+	publish()
+end
+
 -- FinalBattle: mientras convoca o pelea, las noches normales se posponen.
 function Verity.setHold(value: boolean)
 	hold = value
@@ -700,6 +712,7 @@ function Verity.spawn()
 	if phase ~= "Waiting" then
 		return
 	end
+	cycleStarted = true
 	mode = "Night"
 	P = V
 	home = World.PortalPosition
@@ -826,7 +839,7 @@ function Verity.start()
 			end
 		end
 
-		if phase == "Waiting" then
+		if phase == "Waiting" and cycleStarted then
 			if hold then
 				-- batalla final en marcha: la noche se pospone
 				nextAt = math.max(nextAt, now() + 90)

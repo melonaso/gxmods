@@ -26,6 +26,7 @@ ENUMS = {
     "Technology": {"Legacy": 0, "Voxel": 1, "Compatibility": 2, "ShadowMap": 3, "Future": 4},
     "TopSurface": {"Smooth": 0},
     "Shape": {"Ball": 0, "Block": 1, "Cylinder": 2},
+    "ChatVersion": {"LegacyChatService": 0, "TextChatService": 1},
     "BottomSurface": {"Smooth": 0},
     "MeshType": {"Head": 0, "Torso": 1, "Wedge": 2, "Sphere": 3, "Cylinder": 4, "Brick": 6},
     "RigType": {"R6": 0, "R15": 1},
