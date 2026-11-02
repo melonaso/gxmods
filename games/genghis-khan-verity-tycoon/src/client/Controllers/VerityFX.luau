@@ -8,9 +8,42 @@ local TweenService = game:GetService("TweenService")
 
 local VerityFX = {}
 
-local DAY = { ClockTime = 15, FogEnd = 1500, FogColor = Color3.fromRGB(200, 210, 220), Brightness = 2 }
-local NIGHT = { ClockTime = 0.5, FogEnd = 160, FogColor = Color3.fromRGB(15, 5, 5), Brightness = 1 }
-local FINAL = { ClockTime = 0.2, FogEnd = 320, FogColor = Color3.fromRGB(60, 10, 0), Brightness = 1.5 }
+-- Con Atmosphere en Lighting, la niebla clasica (FogEnd) no hace nada: la
+-- noche se hace oscureciendo la atmosfera y las nubes. El dia se lee del
+-- servidor la primera vez (World.buildLighting).
+local NIGHT = { ClockTime = 0.5, Brightness = 1 }
+local FINAL = { ClockTime = 0.2, Brightness = 1.5 }
+local NIGHT_ATMOS = { Density = 0.55, Color = Color3.fromRGB(30, 12, 12), Decay = Color3.fromRGB(10, 0, 0), Haze = 2.5, Glare = 0 }
+local FINAL_ATMOS = { Density = 0.5, Color = Color3.fromRGB(110, 35, 10), Decay = Color3.fromRGB(70, 10, 0), Haze = 2.2, Glare = 0.2 }
+local NIGHT_CLOUDS = { Cover = 0.85, Color = Color3.fromRGB(40, 32, 32) }
+local FINAL_CLOUDS = { Cover = 0.8, Color = Color3.fromRGB(120, 40, 20) }
+
+local day: { [string]: any }? = nil
+local dayAtmos: { [string]: any }? = nil
+local dayClouds: { [string]: any }? = nil
+
+local function atmosphere(): Atmosphere?
+	return Lighting:FindFirstChildOfClass("Atmosphere")
+end
+
+local function clouds(): Clouds?
+	return workspace.Terrain:FindFirstChildOfClass("Clouds")
+end
+
+local function captureDay()
+	if day then
+		return
+	end
+	day = { ClockTime = Lighting.ClockTime, Brightness = Lighting.Brightness }
+	local a = atmosphere()
+	if a then
+		dayAtmos = { Density = a.Density, Color = a.Color, Decay = a.Decay, Haze = a.Haze, Glare = a.Glare }
+	end
+	local c = clouds()
+	if c then
+		dayClouds = { Cover = c.Cover, Color = c.Color }
+	end
+end
 
 local correction: ColorCorrectionEffect
 local active = false
@@ -23,8 +56,19 @@ local function apply(look: string)
 	end
 	current = look
 	active = look ~= "Day"
+	captureDay()
 	local info = TweenInfo.new(if active then 3 else 6)
-	TweenService:Create(Lighting, info, if look == "Final" then FINAL elseif look == "Night" then NIGHT else DAY):Play()
+	TweenService:Create(Lighting, info, if look == "Final" then FINAL elseif look == "Night" then NIGHT else day :: any):Play()
+	local a = atmosphere()
+	local atmosGoal = if look == "Final" then FINAL_ATMOS elseif look == "Night" then NIGHT_ATMOS else dayAtmos
+	if a and atmosGoal then
+		TweenService:Create(a, info, atmosGoal):Play()
+	end
+	local c = clouds()
+	local cloudGoal = if look == "Final" then FINAL_CLOUDS elseif look == "Night" then NIGHT_CLOUDS else dayClouds
+	if c and cloudGoal then
+		TweenService:Create(c, info, cloudGoal):Play()
+	end
 	TweenService:Create(correction, info, {
 		TintColor = if look == "Final" then Color3.fromRGB(255, 170, 140) elseif look == "Night" then Color3.fromRGB(255, 200, 200) else Color3.new(1, 1, 1),
 		Saturation = if active then -0.35 else 0,
@@ -48,6 +92,9 @@ function VerityFX.init()
 end
 
 function VerityFX.start()
+	-- espera a que el servidor ponga la luz del dia antes de guardarla
+	Lighting:WaitForChild("SteppeAtmosphere", 10)
+	workspace.Terrain:WaitForChild("SteppeClouds", 10)
 	workspace:GetAttributeChangedSignal("VerityPhase"):Connect(function()
 		apply(lookFor(workspace:GetAttribute("VerityPhase")))
 	end)

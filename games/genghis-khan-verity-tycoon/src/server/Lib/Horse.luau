@@ -27,15 +27,12 @@ function Horse.isMounted(character: Model): boolean
 	return character:FindFirstChild("Horse") ~= nil
 end
 
-function Horse.mount(character: Model, speed: number)
-	local root = character:FindFirstChild("HumanoidRootPart")
-	local humanoid = character:FindFirstChildOfClass("Humanoid")
-	if not (root and root:IsA("BasePart") and humanoid) or Horse.isMounted(character) then
-		return
-	end
+-- Construye el caballo alrededor de "base" (la posicion de la raiz del jinete).
+-- Devuelve el modelo y el cuerpo (a donde se suelda todo lo demas).
+local function buildHorse(base: CFrame, coat: Color3?): (Model, Part)
 	local horse = Instance.new("Model")
 	horse.Name = "Horse"
-	local base = root.CFrame
+	local brown = coat or BROWN
 
 	local function part(name: string, size: Vector3, offset: CFrame, color: Color3, material: Enum.Material?): Part
 		local p = Build.part({ Name = name, Size = size, CFrame = base * offset, Color = color, Material = material or Enum.Material.SmoothPlastic, Anchored = false, CanCollide = false })
@@ -52,21 +49,15 @@ function Horse.mount(character: Model, speed: number)
 		w.Parent = p1
 	end
 
-	local body = part("Body", Vector3.new(2.4, 2.4, 6.4), CFrame.new(0, BODY_Y, 0.3), BROWN)
-	local mount = Instance.new("Weld")
-	mount.Name = "MountWeld"
-	mount.Part0 = root
-	mount.Part1 = body
-	mount.C0 = CFrame.new(0, BODY_Y, 0.3)
-	mount.Parent = body
+	local body = part("Body", Vector3.new(2.4, 2.4, 6.4), CFrame.new(0, BODY_Y, 0.3), brown)
 
 	-- cuello, cabeza, orejas, crin, cola, montura
-	weldTo(body, part("Neck", Vector3.new(1.2, 3.2, 1.5), CFrame.new(0, BODY_Y + 1.4, -3.2) * CFrame.Angles(math.rad(-35), 0, 0), BROWN))
+	weldTo(body, part("Neck", Vector3.new(1.2, 3.2, 1.5), CFrame.new(0, BODY_Y + 1.4, -3.2) * CFrame.Angles(math.rad(-35), 0, 0), brown))
 	weldTo(body, part("Mane", Vector3.new(0.35, 3, 0.7), CFrame.new(0, BODY_Y + 1.7, -2.8) * CFrame.Angles(math.rad(-35), 0, 0), DARK))
-	weldTo(body, part("Head", Vector3.new(1.1, 1.2, 2.6), CFrame.new(0, BODY_Y + 2.6, -4.6) * CFrame.Angles(math.rad(-25), 0, 0), BROWN))
+	weldTo(body, part("Head", Vector3.new(1.1, 1.2, 2.6), CFrame.new(0, BODY_Y + 2.6, -4.6) * CFrame.Angles(math.rad(-25), 0, 0), brown))
 	weldTo(body, part("Muzzle", Vector3.new(1, 1, 0.6), CFrame.new(0, BODY_Y + 2.05, -5.85) * CFrame.Angles(math.rad(-25), 0, 0), DARK))
-	weldTo(body, part("EarL", Vector3.new(0.25, 0.6, 0.25), CFrame.new(-0.35, BODY_Y + 3.4, -4.0), BROWN))
-	weldTo(body, part("EarR", Vector3.new(0.25, 0.6, 0.25), CFrame.new(0.35, BODY_Y + 3.4, -4.0), BROWN))
+	weldTo(body, part("EarL", Vector3.new(0.25, 0.6, 0.25), CFrame.new(-0.35, BODY_Y + 3.4, -4.0), brown))
+	weldTo(body, part("EarR", Vector3.new(0.25, 0.6, 0.25), CFrame.new(0.35, BODY_Y + 3.4, -4.0), brown))
 	weldTo(body, part("Tail", Vector3.new(0.45, 2.8, 0.45), CFrame.new(0, BODY_Y - 0.4, 3.9) * CFrame.Angles(math.rad(30), 0, 0), DARK))
 	weldTo(body, part("Saddle", Vector3.new(2.6, 0.45, 2.4), CFrame.new(0, BODY_Y + 1.3, 0.1), RED, Enum.Material.Fabric))
 	weldTo(body, part("Blanket", Vector3.new(2.65, 1.2, 2.2), CFrame.new(0, BODY_Y + 0.6, 0.1), Color3.fromRGB(30, 70, 140), Enum.Material.Fabric))
@@ -74,7 +65,7 @@ function Horse.mount(character: Model, speed: number)
 	-- patas articuladas (Motor6D en la cadera del caballo)
 	for _, leg in LEGS do
 		local hip = CFrame.new(leg.x, -1.2, leg.z) -- borde de abajo del cuerpo
-		local legPart = part(leg.name, Vector3.new(0.6, LEG_LEN, 0.6), CFrame.new(0, BODY_Y, 0.3) * hip * CFrame.new(0, -LEG_LEN / 2, 0), BROWN)
+		local legPart = part(leg.name, Vector3.new(0.6, LEG_LEN, 0.6), CFrame.new(0, BODY_Y, 0.3) * hip * CFrame.new(0, -LEG_LEN / 2, 0), brown)
 		local motor = Instance.new("Motor6D")
 		motor.Name = leg.name
 		motor.Part0 = body
@@ -85,12 +76,48 @@ function Horse.mount(character: Model, speed: number)
 		weldTo(legPart, part("Hoof", Vector3.new(0.7, 0.4, 0.7), CFrame.new(0, BODY_Y, 0.3) * hip * CFrame.new(0, -LEG_LEN + 0.1, 0), DARK))
 	end
 
+	return horse, body
+end
+
+function Horse.mount(character: Model, speed: number)
+	local root = character:FindFirstChild("HumanoidRootPart")
+	local humanoid = character:FindFirstChildOfClass("Humanoid")
+	if not (root and root:IsA("BasePart") and humanoid) or Horse.isMounted(character) then
+		return
+	end
+	local horse, body = buildHorse(root.CFrame)
+	local mount = Instance.new("Weld")
+	mount.Name = "MountWeld"
+	mount.Part0 = root
+	mount.Part1 = body
+	mount.C0 = CFrame.new(0, BODY_Y, 0.3)
+	mount.Parent = body
 	horse.Parent = character
 	character:SetAttribute("BaseHipHeight", humanoid.HipHeight)
 	character:SetAttribute("BaseWalkSpeed", humanoid.WalkSpeed)
 	humanoid.HipHeight = ROOT_HEIGHT - root.Size.Y / 2
 	humanoid.WalkSpeed = speed
 	character:SetAttribute("Mounted", true)
+end
+
+-- Caballo salvaje decorativo, de pie en "ground" (posicion en el suelo) mirando a yaw.
+function Horse.statue(ground: Vector3, yaw: number, coat: Color3, parent: Instance): Model
+	local base = CFrame.new(ground + Vector3.new(0, ROOT_HEIGHT, 0)) * CFrame.Angles(0, yaw, 0)
+	local horse = buildHorse(base, coat)
+	for _, name in { "Saddle", "Blanket" } do -- salvaje: sin montura
+		local p = horse:FindFirstChild(name)
+		if p then
+			p:Destroy()
+		end
+	end
+	for _, inst in horse:GetDescendants() do
+		if inst:IsA("BasePart") then
+			inst.Anchored = true
+		end
+	end
+	horse.Name = "WildHorse"
+	horse.Parent = parent
+	return horse
 end
 
 function Horse.dismount(character: Model)

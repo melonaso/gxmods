@@ -334,6 +334,33 @@ local function buildTool(id: string): Tool?
 	return tool
 end
 
+-- Copia decorativa del arma (anclada, sin Tool) para la mesa de la armeria.
+-- Queda tumbada: su eje largo (Z) en horizontal y centrada en la empunadura.
+function Weapons.displayModel(id: string): Model?
+	local tool = buildTool(id)
+	if not tool then
+		return nil
+	end
+	local model = Instance.new("Model")
+	model.Name = "Display_" .. id
+	for _, inst in tool:GetChildren() do
+		if inst:IsA("BasePart") then
+			inst.Anchored = true
+			inst.CanCollide = false
+			inst.CanTouch = false
+			inst.CanQuery = false
+			inst.Parent = model
+		end
+	end
+	tool:Destroy()
+	local grip = model:FindFirstChild("Handle")
+	if grip and grip:IsA("BasePart") then
+		grip.Name = "Grip"
+		model.PrimaryPart = grip
+	end
+	return model
+end
+
 function Weapons.grant(player: Player, id: string)
 	local gear = player:FindFirstChild("StarterGear")
 	if not gear then

@@ -7,6 +7,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Config = require(ReplicatedStorage:WaitForChild("Shared").Config)
 local Build = require(script.Parent.Parent.Lib.Build)
+local Horse = require(script.Parent.Parent.Lib.Horse)
 
 local World = {}
 
@@ -48,35 +49,279 @@ function World.getHidingFolder(): Folder
 	return hidingFolder :: Folder
 end
 
+-- ===== Terreno y paisaje =====
+-- El suelo visible es Terrain de Roblox (pasto 3D animado con Decoration,
+-- colinas, montanas, rio). Debajo hay piezas invisibles (grupo Ground) que
+-- son el suelo de Verity, que solo choca con ese grupo.
+
+local RIVER_Z = 239 -- el rio Onon cruza el sur del mapa
+local RIVER_HALF = 7
+
+local function plotCenters(): { CFrame }
+	local list = {}
+	for i = 1, Config.PlotCount do
+		local angle = (i - 1) / Config.PlotCount * math.pi * 2
+		local pos = Vector3.new(math.cos(angle) * Config.PlotRingRadius, 0, math.sin(angle) * Config.PlotRingRadius)
+		table.insert(list, CFrame.lookAt(pos, Vector3.zero))
+	end
+	return list
+end
+
+local function invisibleFloor(name: string, size: Vector3, cf: CFrame, parent: Instance)
+	local p = Build.part({ Name = name, Size = size, CFrame = cf, Transparency = 1, Parent = parent })
+	p.CanQuery = false
+	Build.markGround(p)
+end
+
 local function buildGround(map: Folder)
 	local old = workspace:FindFirstChild("Baseplate")
 	if old then
 		old:Destroy()
 	end
-	Build.markGround(Build.part({
-		Name = "Steppe",
-		Size = Vector3.new(640, 2, 640),
-		CFrame = CFrame.new(0, -1, 0),
-		Color = Color3.fromRGB(124, 140, 72),
-		Material = Enum.Material.Grass,
-		Parent = map,
-	}))
-	-- colinas de fondo
+	local terrain = workspace.Terrain
+	terrain:SetMaterialColor(Enum.Material.Grass, Color3.fromRGB(118, 134, 64)) -- estepa verde-amarilla
+	terrain:SetMaterialColor(Enum.Material.Ground, Color3.fromRGB(112, 96, 72))
+	terrain:SetMaterialColor(Enum.Material.Sand, Color3.fromRGB(205, 182, 135))
+	terrain:SetMaterialColor(Enum.Material.Rock, Color3.fromRGB(108, 102, 96))
+	terrain:SetMaterialColor(Enum.Material.Cobblestone, Color3.fromRGB(130, 120, 105))
+	terrain:SetMaterialColor(Enum.Material.Mud, Color3.fromRGB(70, 58, 45))
+	terrain:SetMaterialColor(Enum.Material.Snow, Color3.fromRGB(235, 238, 245))
+	pcall(function()
+		terrain.Decoration = true -- hojas de pasto 3D que se mueven con el viento
+	end)
+	terrain.WaterColor = Color3.fromRGB(45, 85, 100)
+	terrain.WaterTransparency = 0.45
+	terrain.WaterWaveSize = 0.12
+	terrain.WaterWaveSpeed = 6
+	terrain.WaterReflectance = 0.6
+
+	-- llanura (superficie en y = 0)
+	terrain:FillBlock(CFrame.new(0, -6, 0), Vector3.new(1100, 12, 1100), Enum.Material.Grass)
+
 	local rng = Random.new(1206) -- 1206: Temujin es proclamado Gengis Khan
-	for _ = 1, 24 do
+	-- colinas suaves alrededor
+	for _ = 1, 28 do
 		local angle = rng:NextNumber(0, math.pi * 2)
-		local dist = rng:NextNumber(280, 310)
-		local size = rng:NextNumber(30, 70)
-		Build.part({
-			Name = "Hill",
-			Shape = Enum.PartType.Ball,
-			Size = Vector3.new(size, size, size),
-			CFrame = CFrame.new(math.cos(angle) * dist, -size * 0.25, math.sin(angle) * dist),
-			Color = Color3.fromRGB(104, 120, 62),
-			Material = Enum.Material.Grass,
-			Parent = map,
-		})
+		local dist = rng:NextNumber(275, 340)
+		local pos = Vector3.new(math.cos(angle) * dist, 0, math.sin(angle) * dist)
+		if math.abs(pos.Z - RIVER_Z) > 30 then
+			local r = rng:NextNumber(20, 42)
+			terrain:FillBall(pos - Vector3.new(0, r * 0.55, 0), r, Enum.Material.Grass)
+		end
 	end
+	-- montanas lejanas con nieve
+	for i = 1, 14 do
+		local angle = (i / 14) * math.pi * 2 + rng:NextNumber(-0.15, 0.15)
+		local dist = rng:NextNumber(470, 520)
+		local pos = Vector3.new(math.cos(angle) * dist, 0, math.sin(angle) * dist)
+		local r = rng:NextNumber(70, 110)
+		terrain:FillBall(pos - Vector3.new(0, r * 0.35, 0), r, Enum.Material.Rock)
+		terrain:FillBall(pos + Vector3.new(0, r * 0.45, 0), r * 0.3, Enum.Material.Snow)
+	end
+
+	-- rio Onon: orillas de arena y agua
+	terrain:FillBlock(CFrame.new(0, -2, RIVER_Z), Vector3.new(1100, 4, RIVER_HALF * 2 + 10), Enum.Material.Sand)
+	terrain:FillBlock(CFrame.new(0, -3, RIVER_Z), Vector3.new(1100, 6, RIVER_HALF * 2), Enum.Material.Water)
+	local riverSign = Build.part({ Name = "RiverSign", Size = Vector3.new(1, 1, 1), CFrame = CFrame.new(0, 8, RIVER_Z), Transparency = 1, CanCollide = false, Parent = map })
+	Build.billboard(riverSign, "Rio Onon", 0, 220).TextColor3 = Color3.fromRGB(180, 220, 255)
+
+	-- suelos de materiales: plaza empedrada, arena bajo los campamentos, tierra en cuevas y portal
+	terrain:FillCylinder(CFrame.new(0, -1, 0), 2, 28, Enum.Material.Cobblestone)
+	for _, cf in plotCenters() do
+		terrain:FillBlock(cf * CFrame.new(0, -1, 0), Vector3.new(92, 2, 92), Enum.Material.Sand)
+	end
+	for i = 0, 3 do
+		local angle = math.pi / 4 + i * math.pi / 2
+		terrain:FillCylinder(CFrame.new(math.cos(angle) * 75, -1, math.sin(angle) * 75), 2, 18, Enum.Material.Ground)
+	end
+	terrain:FillCylinder(CFrame.new(World.PortalPosition + Vector3.new(0, -1, 0)), 2, 26, Enum.Material.Mud)
+
+	-- suelo de Verity (invisible): sin cubrir el rio, para que el agua se pueda cruzar nadando
+	local north = RIVER_Z - RIVER_HALF - (-320)
+	invisibleFloor("Steppe", Vector3.new(640, 2, north), CFrame.new(0, -1, -320 + north / 2), map)
+	local south = 320 - (RIVER_Z + RIVER_HALF)
+	invisibleFloor("SteppeSouth", Vector3.new(640, 2, south), CFrame.new(0, -1, 320 - south / 2), map)
+end
+
+-- Arbustos, rocas, ovoos (altares de piedras con seda azul), yurtas nomadas,
+-- fogata en la plaza y caballos salvajes pastando.
+local function buildScenery(map: Folder)
+	local scenery = Instance.new("Folder")
+	scenery.Name = "Scenery"
+	scenery.Parent = map
+	local terrain = workspace.Terrain
+	local rng = Random.new(1162) -- 1162: nace Temujin
+	local plots = plotCenters()
+
+	local function free(pos: Vector3, margin: number): boolean
+		if pos.Magnitude < 34 or math.abs(pos.Z - RIVER_Z) < RIVER_HALF + 8 then
+			return false
+		end
+		if (pos - World.PortalPosition).Magnitude < 40 then
+			return false
+		end
+		for _, cf in plots do
+			if (pos - cf.Position).Magnitude < 66 + margin then
+				return false
+			end
+		end
+		for i = 0, 3 do
+			local angle = math.pi / 4 + i * math.pi / 2
+			if (pos - Vector3.new(math.cos(angle) * 75, 0, math.sin(angle) * 75)).Magnitude < 22 + margin then
+				return false
+			end
+		end
+		return true
+	end
+	local function randomSpot(minR: number, maxR: number, margin: number): Vector3?
+		for _ = 1, 30 do
+			local angle = rng:NextNumber(0, math.pi * 2)
+			local dist = rng:NextNumber(minR, maxR)
+			local pos = Vector3.new(math.cos(angle) * dist, 0, math.sin(angle) * dist)
+			if free(pos, margin) then
+				return pos
+			end
+		end
+		return nil
+	end
+
+	-- arbustos de la estepa
+	local bushColors = { Color3.fromRGB(88, 104, 48), Color3.fromRGB(104, 112, 56), Color3.fromRGB(76, 90, 44), Color3.fromRGB(120, 112, 64) }
+	for _ = 1, 140 do
+		local pos = randomSpot(40, 300, 0)
+		if pos then
+			local size = rng:NextNumber(2, 4.5)
+			local bush = Build.part({
+				Name = "Bush",
+				Shape = Enum.PartType.Ball,
+				Size = Vector3.new(size * 1.3, size, size * 1.3),
+				CFrame = CFrame.new(pos + Vector3.new(0, size * 0.3, 0)),
+				Color = bushColors[rng:NextInteger(1, #bushColors)],
+				Material = Enum.Material.Grass,
+				CanCollide = false,
+				Parent = scenery,
+			})
+			bush.CastShadow = true
+			bush.CanQuery = false
+		end
+	end
+	-- rocas
+	for _ = 1, 45 do
+		local pos = randomSpot(40, 320, 4)
+		if pos then
+			terrain:FillBall(pos, rng:NextNumber(2, 5), Enum.Material.Rock)
+		end
+	end
+
+	-- ovoos: monton de piedras con un palo y cintas de seda azul (khadag)
+	local function ovoo(pos: Vector3)
+		local model = Instance.new("Model")
+		model.Name = "Ovoo"
+		for layer = 0, 3 do
+			local r = 6 - layer * 1.4
+			for k = 0, 7 - layer do
+				local a = k / (8 - layer) * math.pi * 2 + layer
+				local s = rng:NextNumber(1.6, 2.6)
+				Build.part({ Name = "Stone", Size = Vector3.new(s, s * 0.8, s), CFrame = CFrame.new(pos + Vector3.new(math.cos(a) * r, 0.6 + layer * 1.3, math.sin(a) * r)) * CFrame.Angles(rng:NextNumber(0, 1), rng:NextNumber(0, 6), 0), Color = Color3.fromRGB(120, 115, 108), Material = Enum.Material.Slate, Parent = model })
+			end
+		end
+		Build.part({ Name = "Pole", Size = Vector3.new(0.6, 12, 0.6), CFrame = CFrame.new(pos + Vector3.new(0, 6, 0)), Color = Color3.fromRGB(110, 75, 40), Material = Enum.Material.Wood, Parent = model })
+		for k = 0, 5 do
+			local a = k / 6 * math.pi * 2
+			local ribbon = Build.part({
+				Name = "Khadag",
+				Size = Vector3.new(0.1, 3, 0.7),
+				CFrame = CFrame.new(pos + Vector3.new(math.cos(a) * 1.2, 10, math.sin(a) * 1.2)) * CFrame.Angles(0, -a, math.rad(25)),
+				Color = Color3.fromRGB(40, 110, 200),
+				Material = Enum.Material.Fabric,
+				CanCollide = false,
+				Parent = model,
+			})
+			ribbon.CanQuery = false
+		end
+		model.Parent = scenery
+	end
+	ovoo(Vector3.new(235, 0, -70))
+	ovoo(Vector3.new(-235, 0, 70))
+	ovoo(Vector3.new(120, 0, -235))
+
+	-- yurtas nomadas alrededor de la plaza, con la puerta hacia el estandarte
+	for _, angle in { 0, math.pi, -math.pi / 2 } do
+		local pos = Vector3.new(math.cos(angle) * 40, 0, math.sin(angle) * 40)
+		local yurt = Build.yurt(scenery, CFrame.lookAt(pos, Vector3.zero), 6, 7)
+		Build.markSolid(yurt)
+	end
+
+	-- fogata de la plaza
+	local fireCf = CFrame.new(10, 0, -10)
+	for k = 0, 3 do
+		Build.part({ Name = "Log", Size = Vector3.new(0.8, 0.8, 4), CFrame = fireCf * CFrame.Angles(0, k * math.pi / 4, 0) * CFrame.new(0, 0.4, 0), Color = Color3.fromRGB(80, 55, 35), Material = Enum.Material.Wood, Parent = scenery })
+	end
+	local ember = Build.part({ Name = "Embers", Size = Vector3.new(2, 0.6, 2), CFrame = fireCf * CFrame.new(0, 0.6, 0), Color = Color3.fromRGB(255, 120, 40), Material = Enum.Material.Neon, CanCollide = false, Parent = scenery })
+	local fire = Instance.new("Fire")
+	fire.Size = 6
+	fire.Heat = 12
+	fire.Parent = ember
+	local smoke = Instance.new("Smoke")
+	smoke.Opacity = 0.08
+	smoke.RiseVelocity = 4
+	smoke.Size = 3
+	smoke.Parent = ember
+	local light = Instance.new("PointLight")
+	light.Color = Color3.fromRGB(255, 150, 70)
+	light.Range = 22
+	light.Brightness = 1.5
+	light.Parent = ember
+
+	-- caballos salvajes pastando en grupos
+	local coats = { Color3.fromRGB(115, 72, 40), Color3.fromRGB(70, 45, 30), Color3.fromRGB(190, 170, 140), Color3.fromRGB(40, 32, 28) }
+	for _, herd in { Vector3.new(220, 0, 165), Vector3.new(-230, 0, -160), Vector3.new(0, 0, 205), Vector3.new(-240, 0, 180) } do
+		for k = 1, 3 do
+			local pos = herd + Vector3.new(rng:NextNumber(-12, 12), 0, rng:NextNumber(-12, 12))
+			Horse.statue(pos, rng:NextNumber(0, math.pi * 2), coats[rng:NextInteger(1, #coats)], scenery)
+		end
+	end
+end
+
+-- Luz de la estepa: atmosfera con bruma, nubes, sol con rayos y un leve grading.
+local function buildLighting()
+	Lighting.ClockTime = 14.5
+	Lighting.Brightness = 3
+	Lighting.Ambient = Color3.fromRGB(70, 70, 80)
+	Lighting.OutdoorAmbient = Color3.fromRGB(140, 135, 125)
+	Lighting.ExposureCompensation = 0.1
+	local function ensure(className: string, name: string, parent: Instance): Instance
+		local existing = parent:FindFirstChild(name)
+		if existing then
+			return existing
+		end
+		local inst = Instance.new(className)
+		inst.Name = name
+		inst.Parent = parent
+		return inst
+	end
+	local atmosphere = ensure("Atmosphere", "SteppeAtmosphere", Lighting) :: Atmosphere
+	atmosphere.Density = 0.3
+	atmosphere.Offset = 0.15
+	atmosphere.Color = Color3.fromRGB(199, 186, 160)
+	atmosphere.Decay = Color3.fromRGB(120, 110, 95)
+	atmosphere.Glare = 0.3
+	atmosphere.Haze = 1.4
+	ensure("Sky", "SteppeSky", Lighting)
+	local bloom = ensure("BloomEffect", "SteppeBloom", Lighting) :: BloomEffect
+	bloom.Intensity = 0.5
+	bloom.Size = 24
+	bloom.Threshold = 1.6
+	local rays = ensure("SunRaysEffect", "SteppeSunRays", Lighting) :: SunRaysEffect
+	rays.Intensity = 0.08
+	rays.Spread = 0.8
+	local grade = ensure("ColorCorrectionEffect", "SteppeGrade", Lighting) :: ColorCorrectionEffect
+	grade.Saturation = 0.12
+	grade.Contrast = 0.08
+	grade.TintColor = Color3.fromRGB(255, 248, 235)
+	local clouds = ensure("Clouds", "SteppeClouds", workspace.Terrain) :: Clouds
+	clouds.Cover = 0.55
+	clouds.Density = 0.55
 end
 
 local function buildCenter(map: Folder)
@@ -167,14 +412,15 @@ local function buildArena(map: Folder)
 	local arena = Instance.new("Folder")
 	arena.Name = "FinalArena"
 	arena.Parent = map
-	Build.markGround(Build.part({
-		Name = "ArenaGround",
-		Size = Vector3.new(half * 2 + 20, 2, half * 2 + 20),
-		CFrame = CFrame.new(center + Vector3.new(0, -1, 0)),
-		Color = Color3.fromRGB(70, 60, 45),
-		Material = Enum.Material.Ground,
-		Parent = arena,
-	}))
+	invisibleFloor("ArenaGround", Vector3.new(half * 2 + 20, 2, half * 2 + 20), CFrame.new(center + Vector3.new(0, -1, 0)), arena)
+	-- campo de batalla: tierra pisoteada con manchas de pasto
+	local terrain = workspace.Terrain
+	terrain:FillBlock(CFrame.new(center + Vector3.new(0, -6, 0)), Vector3.new(half * 2 + 120, 12, half * 2 + 120), Enum.Material.Ground)
+	local arenaRng = Random.new(1227) -- 1227: muere Gengis Khan
+	for _ = 1, 40 do
+		local p = center + Vector3.new(arenaRng:NextNumber(-half, half), 0, arenaRng:NextNumber(-half, half))
+		terrain:FillCylinder(CFrame.new(p + Vector3.new(0, -1, 0)), 2, arenaRng:NextNumber(12, 30), Enum.Material.Grass)
+	end
 	for i = 0, 3 do
 		local angle = i * math.pi / 2
 		local dir = Vector3.new(math.cos(angle), 0, math.sin(angle))
@@ -216,11 +462,9 @@ function World.init()
 	buildCaves(map)
 	buildPortal(map)
 	buildArena(map)
+	buildScenery(map)
+	buildLighting()
 
-	Lighting.ClockTime = 15
-	Lighting.Brightness = 2
-	Lighting.FogColor = Color3.fromRGB(200, 210, 220)
-	Lighting.FogEnd = 1500
 end
 
 return World

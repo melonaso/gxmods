@@ -37,6 +37,7 @@ type Plot = {
 	spawn: BasePart,
 	spawnConn: RBXScriptConnection?,
 	wall: Model?,
+	weaponTable: CFrame,
 	gate: { left: BasePart, right: BasePart, open: boolean, y: number }?,
 	floor2: Model?,
 }
@@ -47,7 +48,7 @@ local SLOT_X = { -21, -9, 3, 15 }
 local H2 = Config.Floor2Height
 -- posicion de la fila de droppers/cinta en cada piso (local al plot)
 local LINE = {
-	[1] = { y = 0, z = 0 },
+	[1] = { y = 0, z = 30 }, -- al fondo del campamento: deja libre el centro
 	[2] = { y = H2, z = 14 },
 }
 local SAND = Color3.fromRGB(214, 190, 140)
@@ -202,7 +203,7 @@ end
 local function buildShelter(plot: Plot)
 	local owner = plot.owner :: Player
 	-- la puerta de la yurta mira hacia el frente del plot
-	local cf = plot.cframe * CFrame.new(-26, 0, 26)
+	local cf = plot.cframe * CFrame.new(-29, 0, 10) -- lado izquierdo, puerta hacia la entrada
 	local yurt = Build.yurt(plot.model, cf, 9, 10)
 	Build.markSolid(yurt)
 	table.insert(plot.built, yurt)
@@ -414,6 +415,35 @@ local function buildFloor2(plot: Plot)
 	updateCash(plot)
 end
 
+-- Armeria: las armas compradas se exhiben tumbadas sobre la mesa del centro.
+local WEAPON_SLOT = { Sable = -6, Arco = -2, Lanza = 2, Trueno = 6 }
+local function displayWeapon(plot: Plot, id: string)
+	local x = WEAPON_SLOT[id]
+	if not x or plot.model:FindFirstChild("Display_" .. id) then
+		return
+	end
+	local display = Weapons.displayModel(id)
+	if display then
+		display:PivotTo(plot.weaponTable * CFrame.new(x, 0.35, 0))
+		display.Parent = plot.model
+		table.insert(plot.built, display)
+	end
+end
+
+local function buildWeaponTable(model: Model, top: CFrame)
+	local wood = Color3.fromRGB(105, 68, 38)
+	Build.part({ Name = "TableTop", Size = Vector3.new(17, 0.6, 10), CFrame = top * CFrame.new(0, -0.3, 0), Color = wood, Material = Enum.Material.WoodPlanks, Parent = model })
+	Build.part({ Name = "TableRunner", Size = Vector3.new(16, 0.05, 3), CFrame = top * CFrame.new(0, 0.02, 0), Color = Color3.fromRGB(150, 30, 30), Material = Enum.Material.Fabric, Parent = model })
+	for _, x in { -7.8, 7.8 } do
+		for _, z in { -4.3, 4.3 } do
+			Build.part({ Name = "TableLeg", Size = Vector3.new(0.8, 3.2, 0.8), CFrame = top * CFrame.new(x, -2.2, z), Color = wood, Material = Enum.Material.Wood, Parent = model })
+		end
+	end
+	local sign = Build.part({ Name = "ArmorySign", Size = Vector3.new(1, 1, 1), CFrame = top * CFrame.new(0, 4.5, 0), Transparency = 1, CanCollide = false, Parent = model })
+	sign.CanQuery = false
+	Build.billboard(sign, "Armeria del Khan", 0, 220).TextColor3 = Color3.fromRGB(240, 210, 140)
+end
+
 local function applyBuild(plot: Plot, def: Types.ButtonDef)
 	local owner = plot.owner
 	if not owner then
@@ -423,6 +453,7 @@ local function applyBuild(plot: Plot, def: Types.ButtonDef)
 		buildDropper(plot, def)
 	elseif def.Kind == "Weapon" and def.WeaponId then
 		Weapons.grant(owner, def.WeaponId)
+		displayWeapon(plot, def.WeaponId)
 	elseif def.Kind == "Multiplier" then
 		plot.multiplier = math.max(plot.multiplier, def.Multiplier or 1)
 	elseif def.Kind == "Shelter" then
@@ -461,6 +492,10 @@ end
 
 -- ===== Plots =====
 
+-- Declarada aqui porque el circulo "Reclamar" de buildPlot la llama y se
+-- define mas abajo (una funcion local solo existe desde su linea).
+local assign: (Player, Plot) -> ()
+
 local function buildPlot(index: number): Plot
 	local angle = (index - 1) / Config.PlotCount * math.pi * 2
 	local pos = Vector3.new(math.cos(angle) * Config.PlotRingRadius, 0, math.sin(angle) * Config.PlotRingRadius)
@@ -497,11 +532,13 @@ local function buildPlot(index: number): Plot
 		spawn = spawn,
 		spawnConn = nil,
 		wall = nil,
+		weaponTable = cf * CFrame.new(4, 3.8, 6),
 		gate = nil,
 		floor2 = nil,
 	}
 	buildLine(plot, model, 1)
 	plot.cashLabel = buildCashPad(plot, model, Vector3.new(25, 1.2, -12))
+	buildWeaponTable(model, plot.weaponTable)
 
 	-- circulo dorado de la batalla final (oculto hasta completar el tycoon)
 	local finalPad = Build.part({
@@ -617,8 +654,16 @@ local function release(plot: Plot)
 end
 
 -- El jugador reclama un campamento libre pisando su circulo "Reclamar".
-local function assign(player: Player, p: Plot)
-	if plotOf[player] or not player.Parent or p.owner or not PlayerData.isLoaded(player) then
+function assign(player: Player, p: Plot)
+	if plotOf[player] or not player.Parent or p.owner then
+		return
+	end
+	if not PlayerData.isLoaded(player) then
+		local t = os.clock()
+		if t - (lastWarn[player] or 0) > 2 then
+			lastWarn[player] = t
+			Net.fireClient(player, "Notify", "Cargando tus datos... pisa el circulo otra vez en un momento.", "info")
+		end
 		return
 	end
 	p.owner = player

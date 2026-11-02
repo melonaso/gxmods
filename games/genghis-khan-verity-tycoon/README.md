@@ -65,6 +65,7 @@ Para el guardado: *Game Settings → Security → Enable Studio Access to API Se
 | Segundo Piso | 20 000 | Losa con escalera, cinta, colector y caja propios |
 | Yaks / Camellos / Halcones / Tesoro de Karakorum | 25 000 – 90 000 | Droppers del segundo piso: 120 / 200 / 320 / 500 oro |
 
+   - La cinta y los animales están al fondo del campamento; en el centro está la **Armería del Khan**: cada arma que compras aparece tumbada sobre la mesa.
 3. Los productos caen en la cinta → llegan al **colector dorado** → pisa el **cuadro verde** para cobrar.
    - Las **murallas** son sólidas, con una **puerta** al frente que se abre sola cuando te acercas. Los jugadores siempre pasan por la puerta; Verity no (la golpea como al resto). Encima de la puerta hay una **barra de vida** de la muralla.
 4. **Verity** (avisos a los 5 min, 1 min y 10 s):
@@ -101,6 +102,8 @@ Roblox solo reproduce audio subido a su plataforma, así que estos archivos de `
 
 1. En Studio: **Ventana → Asset Manager → Importar** (puedes elegir los 5 a la vez), o Creator Hub → Development Items → Audio → Upload.
 2. Copia el ID de cada uno y pégalo en **`Config.Uploads`** (al principio de `ReplicatedStorage.Shared.Config`).
+
+**El mundo:** terreno de Roblox con **pasto 3D** que se mueve con el viento, colinas, montañas nevadas a lo lejos, el **río Onón** al sur (se puede cruzar nadando), plaza empedrada con yurtas nómadas y una fogata, **ovoos** (altares de piedras con seda azul), arbustos, rocas, **caballos salvajes** pastando, atmósfera con bruma, nubes, rayos de sol y bloom. En la noche de Verity la atmósfera y las nubes se oscurecen; en la batalla final se tiñen de rojo.
 
 Prueba rápida: en Studio Verity llega cada **90 s** (`Config.Verity.StudioIntervalSeconds`) y el comando de chat `/verity` lo invoca al instante y `/final` convoca la batalla final sin tener el tycoon completo (solo en Studio o para el creador del juego). Abajo a la izquierda se ve la versión (`Config.Version`) para comprobar que abriste el archivo más nuevo.
 
