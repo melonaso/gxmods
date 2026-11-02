@@ -1,0 +1,136 @@
+{
+  "title": "¿Qué pasaría si cada paso te hiciera 1% más rápido?",
+  "fps": 30,
+  "gap": 0.4,
+  "tail": 2.5,
+  "narration": false,
+  "cps": 13,
+  "cueMin": 2.4,
+  "cueChars": 90,
+  "voice": {
+    "edge": "es-MX-JorgeNeural",
+    "piper": "es-mls_9972-low"
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "text": "¿Qué pasaría si cada paso que das te hiciera 1% más rápido... y no pudieras parar?",
+      "n0": 0,
+      "n1": 0,
+      "cam": {
+        "dist": 5,
+        "h": 1.6,
+        "yaw": 0.35
+      },
+      "hold": 0.8,
+      "titleCard": [
+        "¿QUÉ PASARÍA SI CADA PASO",
+        "FUERAS 1% MÁS RÁPIDO?"
+      ],
+      "titleY": 0.18
+    },
+    {
+      "id": "paso1",
+      "text": "Empiezas caminando a 1.4 m/s, unos 5 km/h. Un paso después: 1.4 × 1.01 = 1.414 m/s. Nadie notaría la diferencia.",
+      "n0": 0,
+      "n1": 1,
+      "cam": {
+        "dist": 6,
+        "h": 1.8,
+        "yaw": 1.2
+      }
+    },
+    {
+      "id": "compuesto",
+      "text": "Pero cada 1% se calcula sobre tu velocidad nueva, no sobre la original. Es interés compuesto. Después de 70 pasos: 1.01⁷⁰ ≈ 2. Ya vas al doble.",
+      "n0": 1,
+      "n1": 70,
+      "cam": {
+        "dist": 7,
+        "h": 2.2,
+        "yaw": 1.5
+      },
+      "reach": "all"
+    },
+    {
+      "id": "auto",
+      "text": "Al paso 230 vas a 50 km/h, como un auto en la ciudad. Y apenas has caminado 230 × 0.75 m = 172 metros.",
+      "n0": 70,
+      "n1": 230,
+      "cam": {
+        "dist": 8,
+        "h": 2.0,
+        "yaw": 1.75
+      }
+    },
+    {
+      "id": "guepardo",
+      "text": "Al paso 310 superas los 110 km/h: más rápido que un guepardo, el animal terrestre más veloz.",
+      "n0": 230,
+      "n1": 310,
+      "cam": {
+        "dist": 9,
+        "h": 1.5,
+        "yaw": 2.4
+      }
+    },
+    {
+      "id": "sonido",
+      "text": "Al paso 553 rompes la barrera del sonido: 343 m/s. Cada paso tuyo suena como una explosión y rompe ventanas.",
+      "n0": 310,
+      "n1": 553,
+      "cam": {
+        "dist": 12,
+        "h": 3.0,
+        "yaw": 1.35
+      },
+      "cone": true
+    },
+    {
+      "id": "calor",
+      "text": "Al paso 750 vas a Mach 7, siete veces la velocidad del sonido. El aire frente a ti se comprime tanto que se calienta a casi 3,000 °C.",
+      "n0": 553,
+      "n1": 750,
+      "cam": {
+        "dist": 10,
+        "h": 2.5,
+        "yaw": 0.6
+      },
+      "cone": true,
+      "heat": true
+    },
+    {
+      "id": "escape",
+      "text": "Al paso 904 alcanzas 11.2 km/s: la velocidad de escape. A partir de aquí, la gravedad de la Tierra ya no puede detenerte.",
+      "n0": 750,
+      "n1": 904,
+      "cam": {
+        "dist": 14,
+        "h": 4.0,
+        "yaw": 1.2
+      },
+      "cone": true,
+      "heat": true,
+      "lift": 0.15
+    },
+    {
+      "id": "outro",
+      "text": "904 pasos × 0.75 m = 678 metros. Menos de 1 km de caminata... y saliste del planeta. Así de poderoso es crecer 1% a la vez. ¿Qué otro quieres ver? Déjalo en los comentarios.",
+      "n0": 904,
+      "n1": 904,
+      "cam": {
+        "dist": 26,
+        "h": -6,
+        "yaw": 2.2
+      },
+      "hold": 1.0,
+      "heat": true,
+      "lift": 1.0,
+      "titleCard": [
+        "904 PASOS",
+        "11.2 KM/S"
+      ],
+      "titleY": 0.68
+    }
+  ]
+}
