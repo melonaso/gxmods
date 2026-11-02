@@ -1,8 +1,10 @@
 --!strict
--- Musica de fondo segun el momento:
---   Calma   -> construyendo el tycoon
---   Aviso   -> ultimo minuto antes de que llegue Verity
---   Batalla -> Verity esta aqui (con una capa de zumbido grave de tension)
+-- Musica de fondo segun el momento (temas tradicionales mongoles de
+-- tools/compose_music.py si estan subidos en Config.Uploads; si no, la
+-- musica de respaldo de Config.Music):
+--   Calma   -> construyendo el tycoon ("Estepa")
+--   Aviso   -> ultimo minuto antes de que llegue Verity ("Presagio")
+--   Batalla -> Verity aqui, huyendo o batalla final ("Batalla")
 -- Boton "Musica" abajo a la izquierda para silenciarla.
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -21,8 +23,17 @@ local Music = {}
 
 local mode: Mode? = nil
 local track: Sound? = nil
-local drone: Sound
 local muted = false
+
+-- tema propio si esta subido; si no, la lista de respaldo
+local UPLOAD_KEY = { Calm = "MusicCalm", Warning = "MusicWarning", Battle = "MusicBattle" }
+local function playlist(m: Mode): { number }
+	local id = (Config.Uploads :: any)[UPLOAD_KEY[m]]
+	if typeof(id) == "number" and id ~= 0 then
+		return { id }
+	end
+	return M[m] :: { number }
+end
 local index: { [string]: number } = { Calm = 0, Warning = 0, Battle = 0 }
 
 local musicGroup: SoundGroup
@@ -47,7 +58,7 @@ end
 local playNext: (Mode) -> ()
 
 function playNext(m: Mode)
-	local list = M[m] :: { number }
+	local list = playlist(m)
 	if #list == 0 then
 		return
 	end
@@ -81,8 +92,6 @@ local function setMode(m: Mode)
 		track = nil
 	end
 	playNext(m)
-	local droneVolume = if m == "Battle" and not muted then M.Volume * 0.6 else 0
-	TweenService:Create(drone, TweenInfo.new(2), { Volume = droneVolume }):Play()
 end
 
 local function currentMode(): Mode
@@ -102,9 +111,6 @@ function Music.init()
 	musicGroup = Instance.new("SoundGroup")
 	musicGroup.Name = "Music"
 	musicGroup.Parent = SoundService
-	drone = newSound(M.Drone, true)
-	drone.PlaybackSpeed = 0.8
-	drone:Play()
 
 	local gui = Instance.new("ScreenGui")
 	gui.Name = "MusicToggle"
@@ -129,7 +135,6 @@ function Music.init()
 		if track then
 			track.Volume = if muted then 0 else M.Volume
 		end
-		drone.Volume = if not muted and mode == "Battle" then M.Volume * 0.6 else 0
 	end)
 	gui.Parent = Players.LocalPlayer:WaitForChild("PlayerGui")
 end

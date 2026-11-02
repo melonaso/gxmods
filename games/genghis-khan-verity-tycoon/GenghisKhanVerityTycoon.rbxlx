@@ -35,7 +35,7 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v8"
+Config.Version = "v9"
 
 Config.StartingGold = 50
 Config.PlotCount = 6 -- pon MaxPlayers = 6 en Game Settings
@@ -128,21 +128,29 @@ Config.ThroatSing = {
 	DuckVolume = 0.2, -- volumen que queda en musica y efectos mientras suena
 }
 
--- Audio con licencia para experiencias (APM / Pro Sound Effects / DistroKid /
--- Roblox), el mismo catalogo que usa "Survive A Verity".
+-- ===== AUDIOS PROPIOS PARA SUBIR A ROBLOX =====
+-- Estan en assets/audio. Subelos (Studio > Ventana > Asset Manager > Importar,
+-- o Creator Hub > Audio) y pega aqui el ID que te da Roblox a cada uno.
+-- Roblox solo reproduce audio subido a su plataforma: con 0 se usa lo indicado.
+Config.Uploads = {
+	ThroatSing = 0, -- khoomei.ogg       canto de garganta (con 0: no suena, solo salen las ondas)
+	VerityRoar = 0, -- verity_roar.ogg   rugido (con 0: alarido de Pro Sound Effects grave + bajo)
+	MusicCalm = 0, -- music_calm.ogg     "Estepa": morin khuur, laud, flauta (con 0: biblioteca)
+	MusicWarning = 0, -- music_warning.ogg "Presagio": ultimo minuto antes de Verity
+	MusicBattle = 0, -- music_battle.ogg  "Batalla": galope de tambores y morin khuur
+}
+
+-- Musica de respaldo (biblioteca con licencia de Roblox) mientras los temas
+-- tradicionales no esten subidos. No hay musica mongola en la biblioteca.
 Config.Music = {
-	Calm = { 140722099430139, 9047876673, 93932484780481 }, -- Morning, Happy Adventure, Winds of Fjords
+	Calm = { 93932484780481, 140722099430139 }, -- Winds of Fjords, Morning
 	Warning = { 138890398994853, 98165789328752 }, -- Horror Cinematic Ambience, Beneath the Dread Moon
-	Battle = { 1836963388, 1845149698, 1836334472 }, -- Into Battle, Seek & Destroy, Sword Fight (APM)
-	Drone = 9043360237, -- METALLIC DRONE 03 (APM): capa de tension mientras Verity esta
+	Battle = { 1836963388, 1836334472 }, -- Into Battle, Sword Fight (APM)
 	Volume = 0.35,
 }
 
 Config.Sounds = {
-	-- Sube assets/audio/khoomei.ogg (Studio > Asset Manager > Importar) y pega su ID aqui.
-	-- Con 0 suena un sustituto: el zumbido grave de APM.
-	ThroatSing = 0,
-	ThroatSingFallback = 9043360237,
+	ThroatSing = Config.Uploads.ThroatSing,
 	Purchase = "rbxasset://sounds/electronicpingshort.wav",
 	Collect = "rbxasset://sounds/electronicpingshort.wav",
 	WeaponUnlock = "rbxasset://sounds/unsheath.wav",
@@ -150,9 +158,7 @@ Config.Sounds = {
 	Slash = "rbxasset://sounds/swordslash.wav",
 	Lunge = "rbxasset://sounds/swordlunge.wav",
 	Bass = 12221944, -- bass.wav (Roblox): golpes, truenos, impactos
-	-- Rugido de Verity. Sube assets/audio/verity_roar.ogg y pega su ID aqui para usar
-	-- el rugido sintetizado. Con 0 se usa RoarSource muy grave (rugido gutural) + un golpe de bajo.
-	VerityRoar = 0,
+	VerityRoar = Config.Uploads.VerityRoar,
 	RoarSource = 9125712561, -- Nightmare Yelling Bursts Of Distorted Scream (Pro Sound Effects)
 	PlayerScream = 9043345732, -- HORROR SCREAM 07 (APM)
 	Victory = 12222253, -- victory.wav (Roblox)
@@ -1719,6 +1725,7 @@ return PlayerData
 --   - ondas de sonido visibles y el canto, que oyen todos
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
 local TweenService = game:GetService("TweenService")
 
 local Shared = ReplicatedStorage:WaitForChild("Shared")
@@ -1778,20 +1785,19 @@ local function sing(player: Player)
 	readyAt[player] = t + T.Cooldown
 	player:SetAttribute("SingReadyAt", workspace:GetServerTimeNow() + T.Cooldown)
 
-	-- el canto (grupo "Song": no se ensordece; fuerte hasta MinDistance)
-	local song = { Group = "Song", MinDistance = 40, MaxDistance = T.DuckRadius, Lifetime = T.Duration + 1 }
+	-- el canto (grupo "Song": no se ensordece; fuerte hasta MinDistance).
+	-- Sin el audio subido no suena nada: ningun sonido de la biblioteca se
+	-- parece a un canto, y el sustituto metalico sonaba a hierro doblandose.
 	local sound: Sound?
 	if Config.Sounds.ThroatSing ~= 0 then
-		sound = Sfx.play(Config.Sounds.ThroatSing, root, { Volume = 2, Group = song.Group, MinDistance = song.MinDistance, MaxDistance = song.MaxDistance, Lifetime = song.Lifetime })
-	else
-		-- sustituto: zumbido grave de APM mas una capa aguda (el "silbido" de los armonicos)
-		sound = Sfx.play(Config.Sounds.ThroatSingFallback, root, { Volume = 1.8, Speed = 0.7, Group = song.Group, MinDistance = song.MinDistance, MaxDistance = song.MaxDistance, Lifetime = song.Lifetime })
-		Sfx.play(Config.Sounds.ThroatSingFallback, root, { Volume = 0.7, Speed = 1.9, Group = song.Group, MinDistance = song.MinDistance, MaxDistance = song.MaxDistance, Lifetime = T.Duration })
+		sound = Sfx.play(Config.Sounds.ThroatSing, root, { Volume = 2, Group = "Song", MinDistance = 40, MaxDistance = T.DuckRadius, Lifetime = T.Duration + 1 })
+		-- los clientes cercanos ensordecen todo lo demas mientras dure (Controllers/SoundDuck)
+		local songUntil = workspace:GetServerTimeNow() + T.Duration
+		workspace:SetAttribute("SongUntil", math.max((workspace:GetAttribute("SongUntil") :: number?) or 0, songUntil))
+		workspace:SetAttribute("SongPos", root.Position)
+	elseif RunService:IsStudio() then
+		Net.fireClient(player, "Notify", "El canto aun no tiene audio: sube assets/audio/khoomei.ogg y pega su ID en Config.Uploads.ThroatSing", "warning")
 	end
-	-- los clientes cercanos ensordecen todo lo demas mientras dure (Controllers/SoundDuck)
-	local songUntil = workspace:GetServerTimeNow() + T.Duration
-	workspace:SetAttribute("SongUntil", math.max((workspace:GetAttribute("SongUntil") :: number?) or 0, songUntil))
-	workspace:SetAttribute("SongPos", root.Position)
 	if sound then
 		task.delay(T.Duration, function()
 			if sound.Parent then
@@ -4617,10 +4623,12 @@ return HorseAnimator
 <Item class="ModuleScript" referent="RBX0000001D"><Properties>
 <string name="Name">Music</string>
 <string name="Source"><![CDATA[--!strict
--- Musica de fondo segun el momento:
---   Calma   -> construyendo el tycoon
---   Aviso   -> ultimo minuto antes de que llegue Verity
---   Batalla -> Verity esta aqui (con una capa de zumbido grave de tension)
+-- Musica de fondo segun el momento (temas tradicionales mongoles de
+-- tools/compose_music.py si estan subidos en Config.Uploads; si no, la
+-- musica de respaldo de Config.Music):
+--   Calma   -> construyendo el tycoon ("Estepa")
+--   Aviso   -> ultimo minuto antes de que llegue Verity ("Presagio")
+--   Batalla -> Verity aqui, huyendo o batalla final ("Batalla")
 -- Boton "Musica" abajo a la izquierda para silenciarla.
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -4639,8 +4647,17 @@ local Music = {}
 
 local mode: Mode? = nil
 local track: Sound? = nil
-local drone: Sound
 local muted = false
+
+-- tema propio si esta subido; si no, la lista de respaldo
+local UPLOAD_KEY = { Calm = "MusicCalm", Warning = "MusicWarning", Battle = "MusicBattle" }
+local function playlist(m: Mode): { number }
+	local id = (Config.Uploads :: any)[UPLOAD_KEY[m]]
+	if typeof(id) == "number" and id ~= 0 then
+		return { id }
+	end
+	return M[m] :: { number }
+end
 local index: { [string]: number } = { Calm = 0, Warning = 0, Battle = 0 }
 
 local musicGroup: SoundGroup
@@ -4665,7 +4682,7 @@ end
 local playNext: (Mode) -> ()
 
 function playNext(m: Mode)
-	local list = M[m] :: { number }
+	local list = playlist(m)
 	if #list == 0 then
 		return
 	end
@@ -4699,8 +4716,6 @@ local function setMode(m: Mode)
 		track = nil
 	end
 	playNext(m)
-	local droneVolume = if m == "Battle" and not muted then M.Volume * 0.6 else 0
-	TweenService:Create(drone, TweenInfo.new(2), { Volume = droneVolume }):Play()
 end
 
 local function currentMode(): Mode
@@ -4720,9 +4735,6 @@ function Music.init()
 	musicGroup = Instance.new("SoundGroup")
 	musicGroup.Name = "Music"
 	musicGroup.Parent = SoundService
-	drone = newSound(M.Drone, true)
-	drone.PlaybackSpeed = 0.8
-	drone:Play()
 
 	local gui = Instance.new("ScreenGui")
 	gui.Name = "MusicToggle"
@@ -4747,7 +4759,6 @@ function Music.init()
 		if track then
 			track.Volume = if muted then 0 else M.Volume
 		end
-		drone.Volume = if not muted and mode == "Battle" then M.Volume * 0.6 else 0
 	end)
 	gui.Parent = Players.LocalPlayer:WaitForChild("PlayerGui")
 end

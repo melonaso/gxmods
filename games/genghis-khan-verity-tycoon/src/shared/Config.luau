@@ -6,7 +6,7 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v8"
+Config.Version = "v9"
 
 Config.StartingGold = 50
 Config.PlotCount = 6 -- pon MaxPlayers = 6 en Game Settings
@@ -99,21 +99,29 @@ Config.ThroatSing = {
 	DuckVolume = 0.2, -- volumen que queda en musica y efectos mientras suena
 }
 
--- Audio con licencia para experiencias (APM / Pro Sound Effects / DistroKid /
--- Roblox), el mismo catalogo que usa "Survive A Verity".
+-- ===== AUDIOS PROPIOS PARA SUBIR A ROBLOX =====
+-- Estan en assets/audio. Subelos (Studio > Ventana > Asset Manager > Importar,
+-- o Creator Hub > Audio) y pega aqui el ID que te da Roblox a cada uno.
+-- Roblox solo reproduce audio subido a su plataforma: con 0 se usa lo indicado.
+Config.Uploads = {
+	ThroatSing = 0, -- khoomei.ogg       canto de garganta (con 0: no suena, solo salen las ondas)
+	VerityRoar = 0, -- verity_roar.ogg   rugido (con 0: alarido de Pro Sound Effects grave + bajo)
+	MusicCalm = 0, -- music_calm.ogg     "Estepa": morin khuur, laud, flauta (con 0: biblioteca)
+	MusicWarning = 0, -- music_warning.ogg "Presagio": ultimo minuto antes de Verity
+	MusicBattle = 0, -- music_battle.ogg  "Batalla": galope de tambores y morin khuur
+}
+
+-- Musica de respaldo (biblioteca con licencia de Roblox) mientras los temas
+-- tradicionales no esten subidos. No hay musica mongola en la biblioteca.
 Config.Music = {
-	Calm = { 140722099430139, 9047876673, 93932484780481 }, -- Morning, Happy Adventure, Winds of Fjords
+	Calm = { 93932484780481, 140722099430139 }, -- Winds of Fjords, Morning
 	Warning = { 138890398994853, 98165789328752 }, -- Horror Cinematic Ambience, Beneath the Dread Moon
-	Battle = { 1836963388, 1845149698, 1836334472 }, -- Into Battle, Seek & Destroy, Sword Fight (APM)
-	Drone = 9043360237, -- METALLIC DRONE 03 (APM): capa de tension mientras Verity esta
+	Battle = { 1836963388, 1836334472 }, -- Into Battle, Sword Fight (APM)
 	Volume = 0.35,
 }
 
 Config.Sounds = {
-	-- Sube assets/audio/khoomei.ogg (Studio > Asset Manager > Importar) y pega su ID aqui.
-	-- Con 0 suena un sustituto: el zumbido grave de APM.
-	ThroatSing = 0,
-	ThroatSingFallback = 9043360237,
+	ThroatSing = Config.Uploads.ThroatSing,
 	Purchase = "rbxasset://sounds/electronicpingshort.wav",
 	Collect = "rbxasset://sounds/electronicpingshort.wav",
 	WeaponUnlock = "rbxasset://sounds/unsheath.wav",
@@ -121,9 +129,7 @@ Config.Sounds = {
 	Slash = "rbxasset://sounds/swordslash.wav",
 	Lunge = "rbxasset://sounds/swordlunge.wav",
 	Bass = 12221944, -- bass.wav (Roblox): golpes, truenos, impactos
-	-- Rugido de Verity. Sube assets/audio/verity_roar.ogg y pega su ID aqui para usar
-	-- el rugido sintetizado. Con 0 se usa RoarSource muy grave (rugido gutural) + un golpe de bajo.
-	VerityRoar = 0,
+	VerityRoar = Config.Uploads.VerityRoar,
 	RoarSource = 9125712561, -- Nightmare Yelling Bursts Of Distorted Scream (Pro Sound Effects)
 	PlayerScream = 9043345732, -- HORROR SCREAM 07 (APM)
 	Victory = 12222253, -- victory.wav (Roblox)

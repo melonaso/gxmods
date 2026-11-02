@@ -6,6 +6,7 @@
 --   - ondas de sonido visibles y el canto, que oyen todos
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
 local TweenService = game:GetService("TweenService")
 
 local Shared = ReplicatedStorage:WaitForChild("Shared")
@@ -65,20 +66,19 @@ local function sing(player: Player)
 	readyAt[player] = t + T.Cooldown
 	player:SetAttribute("SingReadyAt", workspace:GetServerTimeNow() + T.Cooldown)
 
-	-- el canto (grupo "Song": no se ensordece; fuerte hasta MinDistance)
-	local song = { Group = "Song", MinDistance = 40, MaxDistance = T.DuckRadius, Lifetime = T.Duration + 1 }
+	-- el canto (grupo "Song": no se ensordece; fuerte hasta MinDistance).
+	-- Sin el audio subido no suena nada: ningun sonido de la biblioteca se
+	-- parece a un canto, y el sustituto metalico sonaba a hierro doblandose.
 	local sound: Sound?
 	if Config.Sounds.ThroatSing ~= 0 then
-		sound = Sfx.play(Config.Sounds.ThroatSing, root, { Volume = 2, Group = song.Group, MinDistance = song.MinDistance, MaxDistance = song.MaxDistance, Lifetime = song.Lifetime })
-	else
-		-- sustituto: zumbido grave de APM mas una capa aguda (el "silbido" de los armonicos)
-		sound = Sfx.play(Config.Sounds.ThroatSingFallback, root, { Volume = 1.8, Speed = 0.7, Group = song.Group, MinDistance = song.MinDistance, MaxDistance = song.MaxDistance, Lifetime = song.Lifetime })
-		Sfx.play(Config.Sounds.ThroatSingFallback, root, { Volume = 0.7, Speed = 1.9, Group = song.Group, MinDistance = song.MinDistance, MaxDistance = song.MaxDistance, Lifetime = T.Duration })
+		sound = Sfx.play(Config.Sounds.ThroatSing, root, { Volume = 2, Group = "Song", MinDistance = 40, MaxDistance = T.DuckRadius, Lifetime = T.Duration + 1 })
+		-- los clientes cercanos ensordecen todo lo demas mientras dure (Controllers/SoundDuck)
+		local songUntil = workspace:GetServerTimeNow() + T.Duration
+		workspace:SetAttribute("SongUntil", math.max((workspace:GetAttribute("SongUntil") :: number?) or 0, songUntil))
+		workspace:SetAttribute("SongPos", root.Position)
+	elseif RunService:IsStudio() then
+		Net.fireClient(player, "Notify", "El canto aun no tiene audio: sube assets/audio/khoomei.ogg y pega su ID en Config.Uploads.ThroatSing", "warning")
 	end
-	-- los clientes cercanos ensordecen todo lo demas mientras dure (Controllers/SoundDuck)
-	local songUntil = workspace:GetServerTimeNow() + T.Duration
-	workspace:SetAttribute("SongUntil", math.max((workspace:GetAttribute("SongUntil") :: number?) or 0, songUntil))
-	workspace:SetAttribute("SongPos", root.Position)
 	if sound then
 		task.delay(T.Duration, function()
 			if sound.Parent then
