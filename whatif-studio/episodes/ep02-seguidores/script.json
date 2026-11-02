@@ -1,0 +1,148 @@
+{
+  "title": "¿Qué pasaría si cada hora te siguiera 1 persona más?",
+  "fps": 30,
+  "gap": 0.4,
+  "tail": 2.5,
+  "narration": false,
+  "cps": 13,
+  "cueMin": 2.4,
+  "cueChars": 80,
+  "voice": {
+    "edge": "es-MX-JorgeNeural",
+    "piper": "es-mls_9972-low"
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "text": "¿Qué pasaría si cada hora apareciera 1 persona nueva siguiéndote... y nunca se fuera?",
+      "c0": 0,
+      "c1": 0,
+      "cam": {
+        "h": 1.9,
+        "front": 5.5,
+        "side": 1.2,
+        "look": 0
+      },
+      "hold": 0.8,
+      "titleCard": [
+        "¿QUÉ PASARÍA SI CADA HORA",
+        "TE SIGUIERA 1 PERSONA MÁS?"
+      ],
+      "titleY": 0.17
+    },
+    {
+      "id": "hora1",
+      "text": "En la primera hora, alguien empieza a caminar detrás de ti. No habla. No se cansa. Solo te sigue.",
+      "c0": 0,
+      "c1": 1,
+      "cam": {
+        "h": 2.4,
+        "front": 6.5,
+        "side": 2.5,
+        "look": -1.5
+      }
+    },
+    {
+      "id": "dia1",
+      "text": "Un día tiene 24 horas: 24 × 1 = 24 personas. Te siguen al trabajo, a la tienda y hasta la puerta del baño.",
+      "c0": 1,
+      "c1": 24,
+      "cam": {
+        "h": 4.5,
+        "front": 11,
+        "side": 7,
+        "look": -6
+      }
+    },
+    {
+      "id": "semana",
+      "text": "En una semana: 7 días × 24 horas = 168 seguidores. Ya no caben en la banqueta.",
+      "c0": 24,
+      "c1": 168,
+      "cam": {
+        "h": 11,
+        "front": 20,
+        "side": 16,
+        "look": -18
+      }
+    },
+    {
+      "id": "mes",
+      "text": "Al mes son 30 × 24 = 720. Solo para darles 3 comidas al día necesitas 720 × 3 = 2,160 platos diarios.",
+      "c0": 168,
+      "c1": 720,
+      "cam": {
+        "h": 26,
+        "front": 35,
+        "side": 35,
+        "look": -60
+      }
+    },
+    {
+      "id": "anio1",
+      "text": "Al cumplir un año: 365 días × 24 horas = 8,760 personas. Es la población de un pueblo entero caminando detrás de ti.",
+      "c0": 720,
+      "c1": 8760,
+      "cam": {
+        "h": 30,
+        "front": 25,
+        "side": 28,
+        "look": -120
+      }
+    },
+    {
+      "id": "espacio",
+      "text": "Si cada persona ocupa medio metro cuadrado: 8,760 × 0.5 = 4,380 m². Es más de la mitad de una cancha de fútbol (7,140 m²), llena de gente que solo te mira a ti.",
+      "c0": 8760,
+      "c1": 8800,
+      "cam": {
+        "h": 55,
+        "front": 30,
+        "side": -70,
+        "look": -400
+      }
+    },
+    {
+      "id": "anio10",
+      "text": "A los 10 años: 87,600 seguidores. Más que la capacidad de casi cualquier estadio del mundo. Si entras a un partido, el estadio lo llenan ellos.",
+      "c0": 8800,
+      "c1": 87600,
+      "cam": {
+        "h": 45,
+        "front": 30,
+        "side": 35,
+        "look": -700
+      }
+    },
+    {
+      "id": "anio50",
+      "text": "A los 50 años: 438,000. En filas de 5, son 438,000 ÷ 5 = 87,600 filas. Con 1 metro entre fila y fila, la columna detrás de ti mide 87.6 km.",
+      "c0": 87600,
+      "c1": 438000,
+      "cam": {
+        "h": 70,
+        "front": 40,
+        "side": 45,
+        "look": -1500
+      }
+    },
+    {
+      "id": "outro",
+      "text": "1 persona por hora parece nada. Pero el tiempo nunca se detiene. ¿Tú qué harías con casi medio millón de seguidores reales? Déjalo en los comentarios.",
+      "c0": 438000,
+      "c1": 438000,
+      "cam": {
+        "h": 160,
+        "front": 80,
+        "side": 90,
+        "look": -3000
+      },
+      "hold": 1.0,
+      "titleCard": [
+        "50 AÑOS DESPUÉS",
+        "438,000 SEGUIDORES"
+      ],
+      "titleY": 0.22
+    }
+  ]
+}
