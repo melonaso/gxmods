@@ -53,7 +53,7 @@ Para el guardado: *Game Settings → Security → Enable Studio Access to API Se
 | Rebaño de Cabras | 300 | Dropper: 8 oro |
 | Empalizada | 500 | Valla decorativa |
 | Manada de Caballos | 1 200 | Dropper: 20 oro |
-| Arco Compuesto | 1 800 | Arma a distancia (20 de daño, alcance 90) |
+| Arco Compuesto | 1 800 | Arco recurvo mongol con animación: tensa la cuerda, suelta la flecha y la cuerda vibra (20 de daño, alcance 90) |
 | Ruta de la Seda | 4 000 | Todo el oro x2 |
 | Caravana de Seda | 7 500 | Dropper: 55 oro |
 | Gran Yurta | 9 000 | **Refugio privado**: solo tú puedes esconderte dentro |
@@ -70,7 +70,7 @@ Para el guardado: *Game Settings → Security → Enable Studio Access to API Se
    - Persigue al jugador **visible** más cercano. Atraviesa vallas y edificios, pero no las cuevas, la Gran Yurta ni las murallas.
    - Ataca levantando y aplastando (45 de daño) y **grita** cada 15 s (20 de daño en 35 studs).
    - Con menos del 30 % de vida se enfurece y corre más que tú.
-   - Vida: 2 500 + 1 500 por cada jugador extra.
+   - Vida: 5 000 + 1 500 por cada jugador extra (`Config.Verity.BaseHealth` / `HealthPerPlayer`).
    - **Pelear:** si lo matan, se reparten 6 000 de oro según el daño de cada uno, más 500 por participar.
    - **Esconderse:** dentro de las 4 **Cuevas del Chamán** (públicas) o de tu Gran Yurta, Verity no te ve. A los 3 minutos se va.
 

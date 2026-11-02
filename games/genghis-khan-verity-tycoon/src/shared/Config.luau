@@ -23,7 +23,7 @@ Config.Verity = {
 	IntervalSeconds = 20 * 60, -- cada 20 minutos
 	StudioIntervalSeconds = 90, -- en Studio llega antes para poder probar
 	DurationSeconds = 180, -- si nadie lo mata, se va a los 3 minutos
-	BaseHealth = 2500,
+	BaseHealth = 5000,
 	HealthPerPlayer = 1500,
 	WalkSpeed = 14, -- los jugadores corren a 16
 	EnragedSpeed = 19, -- por debajo del umbral de vida ya no se le puede huir
@@ -39,6 +39,18 @@ Config.Verity = {
 	ParticipationReward = 500,
 	WallDamage = 200, -- dano por golpe a una muralla que le cierra el paso
 	WarningTimes = { 300, 60, 10 },
+}
+
+-- Arco compuesto mongol (recurvo). Espacio del mango: +Z arriba, +X hacia el
+-- objetivo (asi queda con el agarre de la espada clasica y el brazo al frente).
+-- El servidor marca ShotAt; cada cliente anima tensar -> soltar -> vibrar.
+Config.Bow = {
+	DrawTime = 0.35, -- tensar; la flecha sale al terminar
+	RecoverTime = 0.45, -- cuerda vibrando, sin flecha
+	DrawDistance = 2.0, -- cuanto se tensa la cuerda hacia el arquero
+	StringTop = Vector3.new(-0.85, 0, 3.6), -- puntas donde se ata la cuerda
+	StringBottom = Vector3.new(-0.85, 0, -3.6),
+	ArrowLength = 3.4,
 }
 
 -- Canto de garganta mongol (khöömei): tecla G / boton en pantalla.
@@ -70,6 +82,7 @@ Config.Sounds = {
 	Purchase = "rbxasset://sounds/electronicpingshort.wav",
 	Collect = "rbxasset://sounds/electronicpingshort.wav",
 	WeaponUnlock = "rbxasset://sounds/unsheath.wav",
+	BowDraw = "rbxasset://sounds/unsheath.wav", -- muy grave: cuerda tensandose
 	Slash = "rbxasset://sounds/swordslash.wav",
 	Lunge = "rbxasset://sounds/swordlunge.wav",
 	Bass = 12221944, -- bass.wav (Roblox): golpes, truenos, impactos
