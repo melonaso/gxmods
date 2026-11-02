@@ -25,8 +25,11 @@ local drone: Sound
 local muted = false
 local index: { [string]: number } = { Calm = 0, Warning = 0, Battle = 0 }
 
+local musicGroup: SoundGroup
+
 local function newSound(id: number, looped: boolean): Sound
 	local s = Instance.new("Sound")
+	s.SoundGroup = musicGroup -- lo ensordece Controllers/SoundDuck durante el canto
 	s.SoundId = "rbxassetid://" .. id
 	s.Looped = looped
 	s.Volume = 0
@@ -94,6 +97,10 @@ local function currentMode(): Mode
 end
 
 function Music.init()
+	-- grupo local (solo en este cliente)
+	musicGroup = Instance.new("SoundGroup")
+	musicGroup.Name = "Music"
+	musicGroup.Parent = SoundService
 	drone = newSound(M.Drone, true)
 	drone.PlaybackSpeed = 0.8
 	drone:Play()

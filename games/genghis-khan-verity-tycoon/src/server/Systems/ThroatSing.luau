@@ -65,15 +65,20 @@ local function sing(player: Player)
 	readyAt[player] = t + T.Cooldown
 	player:SetAttribute("SingReadyAt", workspace:GetServerTimeNow() + T.Cooldown)
 
-	-- el canto
+	-- el canto (grupo "Song": no se ensordece; fuerte hasta MinDistance)
+	local song = { Group = "Song", MinDistance = 40, MaxDistance = T.DuckRadius, Lifetime = T.Duration + 1 }
 	local sound: Sound?
 	if Config.Sounds.ThroatSing ~= 0 then
-		sound = Sfx.play(Config.Sounds.ThroatSing, root, { Volume = 1.6, MaxDistance = 160 })
+		sound = Sfx.play(Config.Sounds.ThroatSing, root, { Volume = 2, Group = song.Group, MinDistance = song.MinDistance, MaxDistance = song.MaxDistance, Lifetime = song.Lifetime })
 	else
 		-- sustituto: zumbido grave de APM mas una capa aguda (el "silbido" de los armonicos)
-		sound = Sfx.play(Config.Sounds.ThroatSingFallback, root, { Volume = 1.4, Speed = 0.7, MaxDistance = 160 })
-		Sfx.play(Config.Sounds.ThroatSingFallback, root, { Volume = 0.5, Speed = 1.9, MaxDistance = 160, Lifetime = T.Duration })
+		sound = Sfx.play(Config.Sounds.ThroatSingFallback, root, { Volume = 1.8, Speed = 0.7, Group = song.Group, MinDistance = song.MinDistance, MaxDistance = song.MaxDistance, Lifetime = song.Lifetime })
+		Sfx.play(Config.Sounds.ThroatSingFallback, root, { Volume = 0.7, Speed = 1.9, Group = song.Group, MinDistance = song.MinDistance, MaxDistance = song.MaxDistance, Lifetime = T.Duration })
 	end
+	-- los clientes cercanos ensordecen todo lo demas mientras dure (Controllers/SoundDuck)
+	local songUntil = workspace:GetServerTimeNow() + T.Duration
+	workspace:SetAttribute("SongUntil", math.max((workspace:GetAttribute("SongUntil") :: number?) or 0, songUntil))
+	workspace:SetAttribute("SongPos", root.Position)
 	if sound then
 		task.delay(T.Duration, function()
 			if sound.Parent then

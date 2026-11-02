@@ -68,7 +68,7 @@ Para el guardado: *Game Settings → Security → Enable Studio Access to API Se
 4. **Verity** (avisos a los 5 min, 1 min y 10 s):
    - Mientras espera es la **bola sonriente** original flotando en el portal negro del norte. Al llegar la hora se retuerce y se transforma en el monstruo.
    - Persigue al jugador **visible** más cercano. Atraviesa vallas y edificios, pero no las cuevas, la Gran Yurta ni las murallas.
-   - Ataca levantando y aplastando (45 de daño) y **grita** cada 15 s (20 de daño en 35 studs).
+   - Ataca levantando y aplastando (45 de daño) y **ruge** cada 15 s (20 de daño en 35 studs).
    - Con menos del 30 % de vida se enfurece y corre más que tú.
    - Vida: 5 000 + 1 500 por cada jugador extra (`Config.Verity.BaseHealth` / `HealthPerPlayer`).
    - **Pelear:** si lo matan, se reparten 6 000 de oro según el daño de cada uno, más 500 por participar.
@@ -77,17 +77,21 @@ Para el guardado: *Game Settings → Security → Enable Studio Access to API Se
 5. **Canto de garganta (khöömei)** — tecla **G** (botón Y del mando o botón "Canto" en móvil), cada 25 s:
    - Verity a menos de 45 studs queda **aturdido** 4 s (lento y sin atacar) y recibe 60 de daño.
    - Cura 25 de vida a ti y a los jugadores a menos de 30 studs.
-   - Suena el canto y salen ondas azules.
-6. **Música y sonido:** música tranquila mientras construyes, de tensión en el último minuto y de batalla cuando llega Verity (botón "Música" abajo a la izquierda para silenciarla). Hay efectos de compra, cobro, armas, golpes, gritos de Verity y victoria. Todo el audio es de APM / Pro Sound Effects / DistroKid / Roblox, con licencia para experiencias.
+   - Suena el canto y salen ondas azules. Mientras dura (6,5 s), a quien esté a menos de 160 studs **se le ensordece todo lo demás** (música y efectos bajan y pierden los agudos) para que el canto se oiga claro.
+6. **Música y sonido:** música tranquila mientras construyes, de tensión en el último minuto y de batalla cuando llega Verity (botón "Música" abajo a la izquierda para silenciarla). Hay efectos de compra, cobro, armas, golpes, rugidos de Verity y victoria. Todo el audio es de APM / Pro Sound Effects / DistroKid / Roblox, con licencia para experiencias.
 
 ### Subir el canto de garganta (una vez)
 
-En la biblioteca de Roblox no hay ningún canto de garganta, así que viene sintetizado en `assets/audio/khoomei.ogg` (generado con `tools/synth_khoomei.py`: nota grave de 110 Hz con un armónico silbado que hace la melodía, como el khöömei real). Para usarlo:
+En la biblioteca de Roblox no hay ningún canto de garganta, así que viene sintetizado en `assets/audio/khoomei.ogg` (generado con `tools/synth_khoomei.py`). Imita una voz real: toma de aire, nota grave en Do con temblor natural del tono y del volumen, vibrato, aire de la respiración, resonancias de boca (vocal "o"), un armónico silbado que hace la melodía (Do-Re-Mi-Sol, armónicos 8-9-10-12) y eco de estepa. Para usarlo:
 
 1. En Studio: **Ventana → Asset Manager → Importar** (o Creator Hub → Development Items → Audio → Upload) y elige `khoomei.ogg`.
 2. Copia su ID y pégalo en `Config.Sounds.ThroatSing` (en `ReplicatedStorage.Shared.Config`).
 
 Mientras sea `0` suena un sustituto: el zumbido grave de APM más una capa aguda.
+
+### Rugido de Verity (opcional)
+
+Verity ruge (no grita) al despertar y en su ataque de área. Sin subir nada ya suena un rugido: el alarido de Pro Sound Effects a mitad de velocidad más un golpe de bajo. Si prefieres el rugido sintetizado (`assets/audio/verity_roar.ogg`, hecho con `tools/synth_roar.py`), súbelo igual que el canto y pega su ID en `Config.Sounds.VerityRoar`.
 
 Prueba rápida: en Studio Verity llega cada **90 s** (`Config.Verity.StudioIntervalSeconds`) y el comando de chat `/verity` lo invoca al instante (solo en Studio o para el creador del juego).
 

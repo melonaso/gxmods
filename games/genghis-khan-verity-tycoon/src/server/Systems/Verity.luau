@@ -180,6 +180,18 @@ end
 
 -- ===== Efectos =====
 
+-- Rugido de monstruo (no grito): el asset propio si esta subido; si no, el
+-- alarido de Pro Sound Effects a mitad de velocidad suena grave y gutural,
+-- con un golpe de bajo muy lento debajo para darle cuerpo.
+local function roar(parent: Instance, volume: number, maxDistance: number?)
+	if S.VerityRoar ~= 0 then
+		Sfx.play(S.VerityRoar, parent, { Volume = volume, MaxDistance = maxDistance })
+	else
+		Sfx.play(S.RoarSource, parent, { Volume = volume, Speed = 0.5, MaxDistance = maxDistance })
+		Sfx.play(S.Bass, parent, { Volume = volume, Speed = 0.3, MaxDistance = maxDistance })
+	end
+end
+
 local function flash(color: Color3)
 	local h = highlight
 	if not h then
@@ -377,7 +389,7 @@ local function step(_dt: number)
 		end
 	end
 
-	-- grito: dana a todos los que esten a la vista y cerca
+	-- rugido: dana a todos los que esten a la vista y cerca
 	if not stunned and t - lastScream >= V.ScreamCooldown then
 		local victims = {}
 		for _, player in Players:GetPlayers() do
@@ -389,11 +401,11 @@ local function step(_dt: number)
 		if #victims > 0 then
 			lastScream = t
 			screamFx(position)
-			Sfx.play(S.VerityScream, r, { Volume = 2, MaxDistance = 220 })
+			roar(r, 2, 220)
 			for _, ph in victims do
 				ph:TakeDamage(V.ScreamDamage)
 			end
-			Net.fireAll("Notify", "Verity GRITA", "danger")
+			Net.fireAll("Notify", "Verity RUGE", "danger")
 		end
 	end
 
@@ -545,9 +557,8 @@ function Verity.spawn()
 		releasing = false
 		lastScream = now()
 		heartbeatConn = RunService.Heartbeat:Connect(step)
-		-- alarido de liberacion: lo oyen todos
-		Sfx.play(S.VerityScream, workspace, { Volume = 1.6, Speed = 0.85 })
-		Sfx.play(S.Bass, workspace, { Volume = 2, Speed = 0.4 })
+		-- rugido de liberacion: lo oyen todos
+		roar(workspace, 1.8)
 		Net.fireAll("Notify", "VERITY HA DESPERTADO. Pelea con tus armas o escondete hasta que se vaya.", "danger")
 	end)
 end

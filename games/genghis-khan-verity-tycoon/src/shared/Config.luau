@@ -32,7 +32,7 @@ Config.Verity = {
 	MeleeRange = 11, -- brazos larguisimos
 	MeleeDamage = 45,
 	MeleeCooldown = 2.8, -- debe ser >= AttackAnimTime
-	ScreamCooldown = 15,
+	ScreamCooldown = 15, -- rugido: dana a todos los que esten a la vista y cerca
 	ScreamRadius = 35,
 	ScreamDamage = 20,
 	RewardPool = 6000, -- se reparte segun el dano que hizo cada uno
@@ -56,12 +56,14 @@ Config.Bow = {
 -- Canto de garganta mongol (khöömei): tecla G / boton en pantalla.
 Config.ThroatSing = {
 	Cooldown = 25,
-	Duration = 5,
+	Duration = 6.5, -- largo de assets/audio/khoomei.ogg
 	StunRadius = 45, -- Verity a esta distancia queda aturdido
 	StunSeconds = 4,
 	Damage = 60,
 	HealRadius = 30, -- cura a los aliados cercanos (y a ti)
 	Heal = 25,
+	DuckRadius = 160, -- a esta distancia del cantante se oye el canto y se ensordece lo demas
+	DuckVolume = 0.2, -- volumen que queda en musica y efectos mientras suena
 }
 
 -- Audio con licencia para experiencias (APM / Pro Sound Effects / DistroKid /
@@ -86,7 +88,10 @@ Config.Sounds = {
 	Slash = "rbxasset://sounds/swordslash.wav",
 	Lunge = "rbxasset://sounds/swordlunge.wav",
 	Bass = 12221944, -- bass.wav (Roblox): golpes, truenos, impactos
-	VerityScream = 9125712561, -- Nightmare Yelling Bursts Of Distorted Scream (Pro Sound Effects)
+	-- Rugido de Verity. Sube assets/audio/verity_roar.ogg y pega su ID aqui para usar
+	-- el rugido sintetizado. Con 0 se usa RoarSource muy grave (rugido gutural) + un golpe de bajo.
+	VerityRoar = 0,
+	RoarSource = 9125712561, -- Nightmare Yelling Bursts Of Distorted Scream (Pro Sound Effects)
 	PlayerScream = 9043345732, -- HORROR SCREAM 07 (APM)
 	Victory = 12222253, -- victory.wav (Roblox)
 }
