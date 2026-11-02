@@ -13,16 +13,20 @@ export async function createStudio({ episode, W = 1920, H = 1080 }) {
   const ep = await import(base + 'episode.js');
 
   // Línea de tiempo: duración = audio real de la escena + pausa.
-  // Sin narración ("narration": false) o sin audio, se usa el tiempo de lectura: palabras / wps.
+  // Sin narración ("narration": false) o sin audio, se usa el tiempo de lectura de sus subtítulos.
   const gap = script.gap ?? 0.35;
-  const wps = script.wps ?? 2.6; // palabras por segundo
   if (script.narration === false) timing = null;
   let acc = 0;
   const scenes = script.scenes.map((s, i) => {
-    const words = (s.text || '').split(/\s+/).filter(Boolean).length;
-    const audio = timing?.[i]?.duration ?? words / wps;
+    const cues = splitCues(s.text || '', script.cueChars ?? 80);
+    const reading = cues.map((c) => readTime(c, script.cps ?? 14, script.cueMin ?? 2.2));
+    const audio = timing?.[i]?.duration ?? reading.reduce((a, b) => a + b, 0);
+    // Reparto del tiempo de la escena entre subtítulos, proporcional a su tiempo de lectura.
+    const total = reading.reduce((a, b) => a + b, 0) || 1;
+    let c0 = 0;
+    const cueTimes = reading.map((r) => { const st = c0; c0 += (r / total) * audio; return [st, c0]; });
     const dur = Math.max(s.min ?? 0, audio + gap + (s.hold ?? 0));
-    const sc = { ...s, index: i, start: acc, audio, dur };
+    const sc = { ...s, index: i, start: acc, audio, dur, cues, cueTimes };
     acc += dur;
     return sc;
   });
@@ -43,17 +47,20 @@ export async function createStudio({ episode, W = 1920, H = 1080 }) {
     return scenes[scenes.length - 1];
   }
 
-  /** Subtítulo: la narración en bloques de ~9 palabras repartidos según el audio. */
+  /** Subtítulo activo: una oración (o cláusula) completa, con fundido corto al entrar y salir. */
   function subtitleAt(s, local) {
-    if (!s.text || local > s.audio + 0.2) return null;
-    const words = s.text.split(/\s+/);
-    const chunks = [];
-    for (let i = 0; i < words.length; i += 9) chunks.push(words.slice(i, i + 9).join(' '));
-    const lens = chunks.map((c) => c.length);
-    const total = lens.reduce((a, b) => a + b, 0);
-    let pos = (local / Math.max(s.audio, 0.01)) * total;
-    for (let i = 0; i < chunks.length; i++) { if (pos < lens[i]) return chunks[i]; pos -= lens[i]; }
-    return chunks[chunks.length - 1];
+    if (!s.cues.length) return null;
+    const F = 0.18;
+    for (let i = 0; i < s.cues.length; i++) {
+      const [a, b0] = s.cueTimes[i];
+      // El último subtítulo se queda hasta que termina la escena (más tiempo para leer).
+      const b = i === s.cues.length - 1 ? s.dur : b0;
+      if (local >= a && local < b) {
+        const alpha = Math.min(1, (local - a) / F, (b - local) / F);
+        return { text: s.cues[i], alpha: Math.max(0, alpha) };
+      }
+    }
+    return null;
   }
 
   function renderFrame(t) {
@@ -71,6 +78,39 @@ export async function createStudio({ episode, W = 1920, H = 1080 }) {
   }
 
   return { renderFrame, duration, scenes, fps: script.fps ?? 30, frame: (t, q = 0.92) => { renderFrame(t); return out.toDataURL('image/jpeg', q); } };
+}
+
+/**
+ * Divide un texto en subtítulos legibles:
+ * 1) por oraciones (. ! ? …), sin romper números como 3.65;
+ * 2) si una oración supera maxChars, la parte en la coma/dos puntos más cercana a la mitad.
+ */
+export function splitCues(text, maxChars = 80) {
+  const sentences = text.trim().split(/(?<=[.!?…])\s+(?=[¿¡"«(A-ZÁÉÍÓÚÑ0-9])/u).filter(Boolean);
+  const out = [];
+  const cut = (str) => {
+    if (str.length <= maxChars) return out.push(str);
+    const mid = str.length / 2;
+    let best = -1;
+    for (const m of str.matchAll(/[,;:](?=\s)/g)) {
+      if (best < 0 || Math.abs(m.index - mid) < Math.abs(best - mid)) best = m.index;
+    }
+    if (best < 0) { // sin comas: corta en el espacio más cercano a la mitad
+      const sp = [...str.matchAll(/\s/g)].map((m) => m.index);
+      best = sp.reduce((a, b) => (Math.abs(b - mid) < Math.abs(a - mid) ? b : a), sp[0] ?? -1);
+      if (best < 0) return out.push(str);
+      cut(str.slice(0, best).trim()); cut(str.slice(best).trim());
+      return;
+    }
+    cut(str.slice(0, best + 1).trim()); cut(str.slice(best + 1).trim());
+  };
+  sentences.forEach(cut);
+  return out;
+}
+
+/** Tiempo para leer un subtítulo: caracteres / velocidad (cps), con un mínimo en pantalla. */
+export function readTime(cue, cps = 14, min = 2.2) {
+  return Math.max(min, cue.length / cps + 0.4);
 }
 
 // Utilidades de animación para los episodios.

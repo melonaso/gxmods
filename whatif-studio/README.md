@@ -41,6 +41,13 @@ node tools/render.mjs --ep ep01-crecer --preview 2,30,60,90
 ```
 Vista previa en vivo (sin audio): sirve la carpeta y abre `engine/index.html?ep=ep01-crecer&play`.
 
+## Subtítulos
+- Se dividen **por oraciones completas**. Si una oración pasa de `cueChars` caracteres (80 por defecto), se parte en la coma o los dos puntos más cercanos a la mitad, nunca a media idea.
+- Cada subtítulo dura según su largo: `caracteres / cps + 0.4 s`, con un mínimo de `cueMin` segundos. `cps` son los caracteres por segundo de lectura; 13–15 es cómodo para el público general.
+- Sin narración (`"narration": false`), la duración de cada escena es la suma de esos tiempos de lectura. Con narración, el tiempo del audio se reparte entre los subtítulos en la misma proporción.
+- Se dibujan sobre una caja oscura semitransparente, en 1 o 2 líneas de largo parecido, con un fundido corto al entrar y salir.
+- Para controlar los cortes a mano, escribe oraciones más cortas en `text`.
+
 ## Crear un episodio nuevo
 1. Copia `episodes/ep01-crecer/` a `episodes/ep02-<tema>/`.
 2. Edita `script.json`: una entrada por escena con `text` (narración; escribe los números con letra para que la voz los lea bien) y los parámetros que use tu `episode.js` (en el piloto: `d0/d1` días, `cam`, `crowd`, `counter`, `titleCard`).

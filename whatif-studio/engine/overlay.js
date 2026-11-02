@@ -61,14 +61,22 @@ export function drawOverlay(ctx, W, H, ov) {
   }
 
   if (ov.subtitle) {
+    // Acepta texto plano o { text, alpha }. Caja oscura detrás para leer sobre cualquier fondo.
+    const sub = typeof ov.subtitle === 'string' ? { text: ov.subtitle, alpha: 1 } : ov.subtitle;
     ctx.save();
-    ctx.font = `700 ${46 * u}px ${FONT}`;
+    ctx.globalAlpha = sub.alpha ?? 1;
+    ctx.font = `700 ${48 * u}px ${FONT}`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    const lines = wrap(ctx, ov.subtitle, W * 0.72);
-    const lh = 60 * u;
-    const y0 = H - 110 * u - (lines.length - 1) * lh;
-    lines.forEach((ln, i) => stroked(ctx, ln, W / 2, y0 + i * lh, '#ffffff', 10 * u, 'center'));
+    const lines = balance(ctx, sub.text, W * 0.62);
+    const lh = 64 * u;
+    const y0 = H - 120 * u - (lines.length - 1) * lh;
+    const bw = Math.max(...lines.map((l) => ctx.measureText(l).width)) + 64 * u;
+    const bh = lines.length * lh + 36 * u;
+    ctx.fillStyle = 'rgba(10,14,25,0.62)';
+    roundRect(ctx, W / 2 - bw / 2, y0 - lh / 2 - 18 * u, bw, bh, 20 * u);
+    ctx.fill();
+    lines.forEach((ln, i) => stroked(ctx, ln, W / 2, y0 + i * lh, '#ffffff', 6 * u, 'center'));
     ctx.restore();
   }
 
@@ -96,6 +104,19 @@ function roundRect(ctx, x, y, w, h, r) {
   ctx.arcTo(x, y + h, x, y, r);
   ctx.arcTo(x, y, x + w, y, r);
   ctx.closePath();
+}
+
+/** Reparte el texto en líneas de largo parecido (evita una línea larga y otra de 1 palabra). */
+function balance(ctx, text, maxW) {
+  const lines = wrap(ctx, text, maxW);
+  if (lines.length < 2) return lines;
+  const total = ctx.measureText(text).width;
+  let lo = total / lines.length, hi = maxW, best = lines;
+  for (let k = 0; k < 12; k++) {
+    const m = (lo + hi) / 2, t = wrap(ctx, text, m);
+    if (t.length <= lines.length) { best = t; hi = m; } else lo = m;
+  }
+  return best;
 }
 
 function wrap(ctx, text, maxW) {

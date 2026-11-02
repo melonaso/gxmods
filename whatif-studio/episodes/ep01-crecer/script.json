@@ -130,5 +130,7 @@
     }
   ],
   "narration": false,
-  "wps": 2.3
+  "cps": 13,
+  "cueMin": 2.4,
+  "cueChars": 80
 }
