@@ -5,6 +5,9 @@ local Types = require(script.Parent.Types)
 
 local Config = {}
 
+-- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
+Config.Version = "v7"
+
 Config.StartingGold = 50
 Config.PlotCount = 6 -- pon MaxPlayers = 6 en Game Settings
 Config.PlotRingRadius = 150

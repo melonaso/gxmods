@@ -6,6 +6,7 @@ local RunService = game:GetService("RunService")
 local TweenService = game:GetService("TweenService")
 
 local Shared = ReplicatedStorage:WaitForChild("Shared")
+local Config = require(Shared.Config)
 local Net = require(Shared.Net)
 
 local player = Players.LocalPlayer
@@ -94,6 +95,19 @@ function HUD.init()
 	hiddenLabel.TextColor3 = Color3.fromRGB(140, 220, 255)
 	hiddenLabel.Text = "ESCONDIDO - Verity no puede verte"
 	hiddenLabel.Visible = false
+
+	local version = Instance.new("TextLabel")
+	version.Size = UDim2.fromOffset(260, 18)
+	version.Position = UDim2.new(0, 16, 1, -52)
+	version.AnchorPoint = Vector2.new(0, 1)
+	version.BackgroundTransparency = 1
+	version.Font = Enum.Font.Gotham
+	version.TextSize = 13
+	version.TextXAlignment = Enum.TextXAlignment.Left
+	version.TextColor3 = Color3.fromRGB(200, 200, 200)
+	version.TextStrokeTransparency = 0.6
+	version.Text = "Genghis Khan Verity Tycoon " .. Config.Version
+	version.Parent = gui
 
 	toast = label(gui, UDim2.fromOffset(620, 60), UDim2.new(0.5, 0, 0, 80), 22)
 	toast.TextTransparency = 1

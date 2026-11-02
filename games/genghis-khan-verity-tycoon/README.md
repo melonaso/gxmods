@@ -65,6 +65,7 @@ Para el guardado: *Game Settings → Security → Enable Studio Access to API Se
 | Yaks / Camellos / Halcones / Tesoro de Karakorum | 25 000 – 90 000 | Droppers del segundo piso: 120 / 200 / 320 / 500 oro |
 
 3. Los productos caen en la cinta → llegan al **colector dorado** → pisa el **cuadro verde** para cobrar.
+   - Las **murallas** son sólidas, con una **puerta** al frente que se abre sola cuando te acercas. Los jugadores siempre pasan por la puerta; Verity no (la golpea como al resto). Encima de la puerta hay una **barra de vida** de la muralla.
 4. **Verity** (avisos a los 5 min, 1 min y 10 s):
    - Mientras espera es la **bola sonriente** original flotando en el portal negro del norte. Al llegar la hora se retuerce y se transforma en el monstruo.
    - Persigue al jugador **visible** más cercano. Atraviesa vallas y edificios, pero no las cuevas, la Gran Yurta ni las murallas.

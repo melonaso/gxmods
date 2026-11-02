@@ -165,7 +165,9 @@ local function setWallBroken(wall: Model, broken: boolean)
 	wall:SetAttribute("Broken", broken)
 	for _, seg in wallSegments(wall) do
 		seg.CanCollide = not broken
-		seg.Transparency = if broken then 0.85 else 0
+		if not seg:GetAttribute("Invisible") then -- la barrera de la puerta siempre es invisible
+			seg.Transparency = if broken then 0.85 else 0
+		end
 	end
 end
 

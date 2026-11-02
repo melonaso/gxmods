@@ -34,6 +34,9 @@ local Types = require(script.Parent.Types)
 
 local Config = {}
 
+-- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
+Config.Version = "v7"
+
 Config.StartingGold = 50
 Config.PlotCount = 6 -- pon MaxPlayers = 6 en Game Settings
 Config.PlotRingRadius = 150
@@ -1456,6 +1459,7 @@ return ThroatSing
 local Debris = game:GetService("Debris")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TweenService = game:GetService("TweenService")
 
 local Shared = ReplicatedStorage:WaitForChild("Shared")
 local Config = require(Shared.Config)
@@ -1483,6 +1487,7 @@ type Plot = {
 	spawn: BasePart,
 	spawnConn: RBXScriptConnection?,
 	wall: Model?,
+	gate: { left: BasePart, right: BasePart, open: boolean, y: number }?,
 	floor2: Model?,
 }
 
@@ -1652,39 +1657,120 @@ local function buildShelter(plot: Plot)
 	table.insert(plot.built, zone)
 end
 
--- Muralla alrededor del plot. Grupo de colision VerityWall: los jugadores (y el
--- oro) la atraviesan, Verity no. Verity.luau la golpea y la repara al irse.
+-- Muralla alrededor del plot con una puerta en el frente.
+--   - los muros son solidos para todos (grupo Solid)
+--   - la puerta tiene una barrera invisible que solo frena a Verity (grupo
+--     VerityWall): los jugadores siempre pasan; las hojas se abren solas
+--     cuando alguien se acerca (updateGates)
+--   - barra de vida encima de la puerta
+-- Verity.luau golpea los WallSegment hasta romperlos y los repara al irse.
+local GATE_HALF = 6 -- media anchura de la puerta
+
 local function buildWall(plot: Plot, def: Types.ButtonDef)
 	local owner = plot.owner :: Player
 	if plot.wall then
 		plot.wall:Destroy() -- el nivel nuevo reemplaza al anterior
 		plot.wall = nil
+		plot.gate = nil
 	end
 	Build.ensureGroups()
 	local h = def.WallHeight or 14
 	local maxHp = def.WallHP or 500
 	local model = Instance.new("Model")
 	model.Name = "Wall_" .. plot.index
-	local function seg(size: Vector3, offset: Vector3)
+	local function seg(size: Vector3, offset: Vector3, group: string): Part
 		local p = Build.part({ Name = "WallSegment", Size = size, CFrame = plot.cframe * CFrame.new(offset), Color = def.WallColor, Material = def.WallMaterial, Parent = model })
-		p.CollisionGroup = Build.WALL_GROUP
+		p.CollisionGroup = group
+		return p
 	end
-	seg(Vector3.new(86, h, 2), Vector3.new(0, h / 2 + 1, 42))
-	seg(Vector3.new(86, h, 2), Vector3.new(0, h / 2 + 1, -42))
-	seg(Vector3.new(2, h, 82), Vector3.new(42, h / 2 + 1, 0))
-	seg(Vector3.new(2, h, 82), Vector3.new(-42, h / 2 + 1, 0))
-	local sign = Build.part({ Name = "WallSign", Size = Vector3.new(1, 1, 1), CFrame = plot.cframe * CFrame.new(0, h + 4, -42), Transparency = 1, CanCollide = false, Parent = model })
+	local y = h / 2 + 1
+	local side = (86 - GATE_HALF * 2) / 2
+	seg(Vector3.new(86, h, 2), Vector3.new(0, y, 42), Build.SOLID_GROUP) -- fondo
+	seg(Vector3.new(2, h, 82), Vector3.new(42, y, 0), Build.SOLID_GROUP)
+	seg(Vector3.new(2, h, 82), Vector3.new(-42, y, 0), Build.SOLID_GROUP)
+	seg(Vector3.new(side, h, 2), Vector3.new(-(GATE_HALF + side / 2), y, -42), Build.SOLID_GROUP) -- frente izq.
+	seg(Vector3.new(side, h, 2), Vector3.new(GATE_HALF + side / 2, y, -42), Build.SOLID_GROUP) -- frente der.
+	-- barrera invisible de la puerta: solo para Verity
+	local barrier = seg(Vector3.new(GATE_HALF * 2, h, 2), Vector3.new(0, y, -42), Build.WALL_GROUP)
+	barrier.Transparency = 1
+	barrier:SetAttribute("Invisible", true)
+	-- dintel
+	Build.part({ Name = "Lintel", Size = Vector3.new(GATE_HALF * 2 + 4, 2, 3), CFrame = plot.cframe * CFrame.new(0, h + 2, -42), Color = Color3.fromRGB(170, 30, 30), Material = Enum.Material.Wood, Parent = model }).CollisionGroup = Build.SOLID_GROUP
+
+	-- hojas de la puerta (decorativas: no chocan con nadie)
+	local function leaf(hingeX: number, dir: number): Part
+		local p = Build.part({
+			Name = "GateLeaf",
+			Size = Vector3.new(GATE_HALF, h, 0.8),
+			CFrame = plot.cframe * CFrame.new(hingeX, y, -42) * CFrame.new(dir * GATE_HALF / 2, 0, 0),
+			Color = Color3.fromRGB(110, 70, 35),
+			Material = Enum.Material.WoodPlanks,
+			CanCollide = false,
+			Parent = model,
+		})
+		p.CanQuery = false
+		p.CanTouch = false
+		return p
+	end
+	local left = leaf(-GATE_HALF, 1)
+	local right = leaf(GATE_HALF, -1)
+	plot.gate = { left = left, right = right, open = false, y = y }
+
+	-- barra de vida encima de la puerta
+	local sign = Build.part({ Name = "WallSign", Size = Vector3.new(1, 1, 1), CFrame = plot.cframe * CFrame.new(0, h + 6, -42), Transparency = 1, CanCollide = false, Parent = model })
 	sign.CanQuery = false
 	sign.CanTouch = false
-	local label = Build.billboard(sign, "", 0, 260)
+	local gui = Instance.new("BillboardGui")
+	gui.Size = UDim2.fromOffset(320, 58)
+	gui.MaxDistance = 250
+	gui.Adornee = sign
+	local title = Instance.new("TextLabel")
+	title.Size = UDim2.new(1, 0, 0, 24)
+	title.BackgroundTransparency = 1
+	title.Font = Enum.Font.GothamBlack
+	title.TextScaled = true
+	title.TextColor3 = Color3.new(1, 1, 1)
+	title.TextStrokeTransparency = 0.3
+	title.Parent = gui
+	local bar = Instance.new("Frame")
+	bar.Size = UDim2.new(1, 0, 0, 26)
+	bar.Position = UDim2.fromOffset(0, 30)
+	bar.BackgroundColor3 = Color3.fromRGB(25, 10, 10)
+	bar.BorderSizePixel = 0
+	bar.Parent = gui
+	local fill = Instance.new("Frame")
+	fill.Size = UDim2.fromScale(1, 1)
+	fill.BorderSizePixel = 0
+	fill.Parent = bar
+	local amount = Instance.new("TextLabel")
+	amount.Size = UDim2.fromScale(1, 1)
+	amount.BackgroundTransparency = 1
+	amount.Font = Enum.Font.GothamBold
+	amount.TextScaled = true
+	amount.TextColor3 = Color3.new(1, 1, 1)
+	amount.TextStrokeTransparency = 0.3
+	amount.ZIndex = 2
+	amount.Parent = bar
+	for _, frame in { bar, fill } do
+		local corner = Instance.new("UICorner")
+		corner.CornerRadius = UDim.new(0, 6)
+		corner.Parent = frame
+	end
+	gui.Parent = sign
+
 	local function refresh()
 		local hp = (model:GetAttribute("HP") :: number?) or 0
+		local ratio = math.clamp(hp / maxHp, 0, 1)
+		title.Text = def.Name
+		fill.Size = UDim2.fromScale(ratio, 1)
+		-- verde con vida llena, rojo cuando se esta rompiendo
+		fill.BackgroundColor3 = Color3.fromRGB(220, 50, 40):Lerp(Color3.fromRGB(60, 200, 80), ratio)
 		if model:GetAttribute("Broken") then
-			label.Text = def.Name .. ": ROTA"
-			label.TextColor3 = Color3.fromRGB(255, 80, 80)
+			amount.Text = "ROTA - se repara cuando Verity se vaya"
+			title.TextColor3 = Color3.fromRGB(255, 80, 80)
 		else
-			label.Text = string.format("%s: %d / %d", def.Name, hp, maxHp)
-			label.TextColor3 = Color3.new(1, 1, 1)
+			amount.Text = string.format("%d / %d", hp, maxHp)
+			title.TextColor3 = Color3.new(1, 1, 1)
 		end
 	end
 	model:SetAttribute("MaxHP", maxHp)
@@ -1697,6 +1783,42 @@ local function buildWall(plot: Plot, def: Types.ButtonDef)
 	model.Parent = World.getWallFolder()
 	plot.wall = model
 	table.insert(plot.built, model)
+end
+
+-- Abre las puertas cuando hay un jugador vivo a menos de 14 studs y las cierra si no.
+local GATE_TWEEN = TweenInfo.new(0.5, Enum.EasingStyle.Quad)
+local function updateGates()
+	local roots: { Vector3 } = {}
+	for _, player in Players:GetPlayers() do
+		local character = player.Character
+		local root = character and character:FindFirstChild("HumanoidRootPart")
+		local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+		if root and root:IsA("BasePart") and humanoid and humanoid.Health > 0 then
+			table.insert(roots, root.Position)
+		end
+	end
+	for _, plot in plots do
+		local gate = plot.gate
+		if gate and gate.left.Parent then
+			local center = (plot.cframe * CFrame.new(0, gate.y, -42)).Position
+			local near = false
+			for _, pos in roots do
+				if (pos - center).Magnitude <= 14 then
+					near = true
+					break
+				end
+			end
+			if near ~= gate.open then
+				gate.open = near
+				local angle = if near then math.rad(100) else 0
+				local hingeL = plot.cframe * CFrame.new(-GATE_HALF, gate.y, -42)
+				local hingeR = plot.cframe * CFrame.new(GATE_HALF, gate.y, -42)
+				-- se abren hacia fuera del campamento (-Z local)
+				TweenService:Create(gate.left, GATE_TWEEN, { CFrame = hingeL * CFrame.Angles(0, angle, 0) * CFrame.new(GATE_HALF / 2, 0, 0) }):Play()
+				TweenService:Create(gate.right, GATE_TWEEN, { CFrame = hingeR * CFrame.Angles(0, -angle, 0) * CFrame.new(-GATE_HALF / 2, 0, 0) }):Play()
+			end
+		end
+	end
 end
 
 -- Segundo piso: losa sobre la mitad trasera, escalera, cinta, colector y caja.
@@ -1820,6 +1942,7 @@ local function buildPlot(index: number): Plot
 		spawn = spawn,
 		spawnConn = nil,
 		wall = nil,
+		gate = nil,
 		floor2 = nil,
 	}
 	buildLine(plot, model, 1)
@@ -1876,6 +1999,7 @@ local function release(plot: Plot)
 	end
 	plot.built = {}
 	plot.wall = nil
+	plot.gate = nil
 	plot.floor2 = nil
 	plot.signLabel.Text = "Plot libre"
 	if plot.spawnConn then
@@ -1956,6 +2080,10 @@ function Tycoon.start()
 		if PlayerData.isLoaded(player) then
 			assign(player)
 		end
+	end
+	while true do
+		task.wait(0.2)
+		updateGates()
 	end
 end
 
@@ -2132,7 +2260,9 @@ local function setWallBroken(wall: Model, broken: boolean)
 	wall:SetAttribute("Broken", broken)
 	for _, seg in wallSegments(wall) do
 		seg.CanCollide = not broken
-		seg.Transparency = if broken then 0.85 else 0
+		if not seg:GetAttribute("Invisible") then -- la barrera de la puerta siempre es invisible
+			seg.Transparency = if broken then 0.85 else 0
+		end
 	end
 end
 
@@ -3504,6 +3634,7 @@ local RunService = game:GetService("RunService")
 local TweenService = game:GetService("TweenService")
 
 local Shared = ReplicatedStorage:WaitForChild("Shared")
+local Config = require(Shared.Config)
 local Net = require(Shared.Net)
 
 local player = Players.LocalPlayer
@@ -3592,6 +3723,19 @@ function HUD.init()
 	hiddenLabel.TextColor3 = Color3.fromRGB(140, 220, 255)
 	hiddenLabel.Text = "ESCONDIDO - Verity no puede verte"
 	hiddenLabel.Visible = false
+
+	local version = Instance.new("TextLabel")
+	version.Size = UDim2.fromOffset(260, 18)
+	version.Position = UDim2.new(0, 16, 1, -52)
+	version.AnchorPoint = Vector2.new(0, 1)
+	version.BackgroundTransparency = 1
+	version.Font = Enum.Font.Gotham
+	version.TextSize = 13
+	version.TextXAlignment = Enum.TextXAlignment.Left
+	version.TextColor3 = Color3.fromRGB(200, 200, 200)
+	version.TextStrokeTransparency = 0.6
+	version.Text = "Genghis Khan Verity Tycoon " .. Config.Version
+	version.Parent = gui
 
 	toast = label(gui, UDim2.fromOffset(620, 60), UDim2.new(0.5, 0, 0, 80), 22)
 	toast.TextTransparency = 1
