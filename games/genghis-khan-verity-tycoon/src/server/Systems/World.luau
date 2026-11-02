@@ -3,6 +3,9 @@
 -- cuevas del chaman (refugios publicos) y el portal por donde llega Verity.
 local Lighting = game:GetService("Lighting")
 
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Config = require(ReplicatedStorage:WaitForChild("Shared").Config)
 local Build = require(script.Parent.Parent.Lib.Build)
 
 local World = {}
@@ -155,12 +158,64 @@ local function buildPortal(map: Folder)
 	Build.billboard(sign, "Aqui despierta Verity", 0, 260).TextColor3 = Color3.fromRGB(255, 80, 80)
 end
 
+-- Campo de la batalla final: llanura aparte, lejos del mapa principal, con
+-- piedras, braseros y paredes invisibles en el borde (para no caerse a caballo).
+local function buildArena(map: Folder)
+	local F = Config.FinalBattle
+	local center = F.Arena
+	local half = F.ArenaHalfSize
+	local arena = Instance.new("Folder")
+	arena.Name = "FinalArena"
+	arena.Parent = map
+	Build.markGround(Build.part({
+		Name = "ArenaGround",
+		Size = Vector3.new(half * 2 + 20, 2, half * 2 + 20),
+		CFrame = CFrame.new(center + Vector3.new(0, -1, 0)),
+		Color = Color3.fromRGB(70, 60, 45),
+		Material = Enum.Material.Ground,
+		Parent = arena,
+	}))
+	for i = 0, 3 do
+		local angle = i * math.pi / 2
+		local dir = Vector3.new(math.cos(angle), 0, math.sin(angle))
+		local edge = Build.part({
+			Name = "ArenaEdge",
+			Size = Vector3.new(half * 2 + 20, 60, 4),
+			CFrame = CFrame.lookAt(center + dir * (half + 8) + Vector3.new(0, 30, 0), center + Vector3.new(0, 30, 0)),
+			Transparency = 1,
+			Parent = arena,
+		})
+		edge.CanQuery = false
+	end
+	-- anillo de piedras y braseros
+	for i = 0, 15 do
+		local angle = i / 16 * math.pi * 2
+		local pos = center + Vector3.new(math.cos(angle), 0, math.sin(angle)) * (half - 30)
+		local h = 14 + (i % 3) * 6
+		Build.part({ Name = "Stone", Size = Vector3.new(5, h, 5), CFrame = CFrame.new(pos + Vector3.new(0, h / 2, 0)) * CFrame.Angles(0, angle, math.rad(5)), Color = Color3.fromRGB(40, 38, 40), Material = Enum.Material.Basalt, Parent = arena })
+		if i % 2 == 0 then
+			local brazier = Build.part({ Name = "Brazier", Size = Vector3.new(4, 3, 4), CFrame = CFrame.new(pos + Vector3.new(0, 1.5, 0) - (pos - center).Unit * 10), Color = Color3.fromRGB(60, 40, 25), Material = Enum.Material.Metal, Parent = arena })
+			local fire = Instance.new("Fire")
+			fire.Size = 8
+			fire.Parent = brazier
+			local light = Instance.new("PointLight")
+			light.Color = Color3.fromRGB(255, 140, 60)
+			light.Range = 40
+			light.Brightness = 2
+			light.Parent = brazier
+		end
+	end
+	local sign = Build.part({ Name = "ArenaSign", Size = Vector3.new(1, 1, 1), CFrame = CFrame.new(center + Vector3.new(0, 70, 0)), Transparency = 1, CanCollide = false, Parent = arena })
+	Build.billboard(sign, "CAMPO DE LA BATALLA FINAL", 0, 500).TextColor3 = Color3.fromRGB(255, 120, 60)
+end
+
 function World.init()
 	local map = World.getMapFolder()
 	buildGround(map)
 	buildCenter(map)
 	buildCaves(map)
 	buildPortal(map)
+	buildArena(map)
 
 	Lighting.ClockTime = 15
 	Lighting.Brightness = 2

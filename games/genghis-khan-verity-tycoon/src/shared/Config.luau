@@ -6,7 +6,7 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v7"
+Config.Version = "v8"
 
 Config.StartingGold = 50
 Config.PlotCount = 6 -- pon MaxPlayers = 6 en Game Settings
@@ -42,6 +42,36 @@ Config.Verity = {
 	ParticipationReward = 500,
 	WallDamage = 200, -- dano por golpe a una muralla que le cierra el paso
 	WarningTimes = { 300, 60, 10 },
+	-- Al matarlo en una noche normal no desaparece: huye herido hacia el portal.
+	FleeSpeed = 34,
+	FleeTimeout = 30,
+}
+
+-- Batalla final: se desbloquea al comprar TODO el tycoon (aparece un circulo
+-- dorado en el campamento). Los que se unen pelean a caballo contra la forma
+-- final de Verity en un campo aparte.
+Config.FinalBattle = {
+	Arena = Vector3.new(0, 0, 1500), -- lejos del mapa principal
+	ArenaHalfSize = 310,
+	StartRadius = 140, -- los jinetes aparecen en un anillo alrededor de Verity
+	LobbySeconds = 20, -- tiempo para unirse
+	Duration = 360,
+	Scale = 1.7, -- ~31 studs de alto
+	BaseHealth = 12000,
+	HealthPerPlayer = 6000,
+	WalkSpeed = 30,
+	EnragedSpeed = 38,
+	EnrageThreshold = 0.3,
+	HorseSpeed = 44, -- los caballos son mas rapidos que la forma final
+	MeleeRange = 20,
+	MeleeDamage = 40,
+	MeleeCooldown = 2.8,
+	AttackAnimTime = 2.4,
+	ScreamCooldown = 10,
+	ScreamRadius = 60,
+	ScreamDamage = 25,
+	RewardPool = 60000,
+	ParticipationReward = 10000,
 }
 
 -- Arco compuesto mongol (recurvo). Espacio del mango: +Z arriba, +X hacia el

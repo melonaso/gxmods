@@ -72,7 +72,7 @@ Para el guardado: *Game Settings → Security → Enable Studio Access to API Se
    - Ataca levantando y aplastando (45 de daño) y **ruge** cada 15 s (20 de daño en 35 studs).
    - Con menos del 30 % de vida se enfurece y corre más que tú.
    - Vida: 5 000 + 1 500 por cada jugador extra (`Config.Verity.BaseHealth` / `HealthPerPlayer`).
-   - **Pelear:** si lo matan, se reparten 6 000 de oro según el daño de cada uno, más 500 por participar.
+   - **Pelear:** si lo matan, se reparten 6 000 de oro según el daño de cada uno, más 500 por participar. Verity **no muere**: herido, huye corriendo hacia la oscuridad del portal y la bola vuelve a aparecer.
    - **Esconderse:** dentro de las 4 **Cuevas del Chamán** (públicas) o de tu Gran Yurta, Verity no te ve. A los 3 minutos se va.
 
 5. **Canto de garganta (khöömei)** — tecla **G** (botón Y del mando o botón "Canto" en móvil), cada 25 s:
@@ -94,7 +94,14 @@ Mientras sea `0` suena un sustituto: el zumbido grave de APM más una capa aguda
 
 Verity ruge (no grita) al despertar y en su ataque de área. Sin subir nada ya suena un rugido: el alarido de Pro Sound Effects a mitad de velocidad más un golpe de bajo. Si prefieres el rugido sintetizado (`assets/audio/verity_roar.ogg`, hecho con `tools/synth_roar.py`), súbelo igual que el canto y pega su ID en `Config.Sounds.VerityRoar`.
 
-Prueba rápida: en Studio Verity llega cada **90 s** (`Config.Verity.StudioIntervalSeconds`) y el comando de chat `/verity` lo invoca al instante (solo en Studio o para el creador del juego).
+7. **Batalla final** — cuando alguien compra **todo** su tycoon aparece un círculo dorado "BATALLA FINAL" en su campamento:
+   - Al pisarlo convoca la batalla: todos ven durante 20 s un botón **"Unirse a la batalla final"** (las noches normales se pausan).
+   - Los que se unen viajan al **Campo de la Batalla Final** montados a **caballo** (más rápidos que Verity, con galope animado).
+   - Allí despierta la **forma final de Verity**: 1,7 veces más grande (~31 studs), con aura de fuego, más rápida, brazos de 20 studs de alcance y rugidos de 60 studs. Vida: 12 000 + 6 000 por jinete extra. Tienen 6 minutos.
+   - Si la matan, se retuerce y se hunde en la tierra: 60 000 de oro repartidos por daño + 10 000 a cada participante. Si caen todos o se acaba el tiempo, resiste.
+   - Al terminar, todos vuelven a su campamento.
+
+Prueba rápida: en Studio Verity llega cada **90 s** (`Config.Verity.StudioIntervalSeconds`) y el comando de chat `/verity` lo invoca al instante y `/final` convoca la batalla final sin tener el tycoon completo (solo en Studio o para el creador del juego). Abajo a la izquierda se ve la versión (`Config.Version`) para comprobar que abriste el archivo más nuevo.
 
 ## Estructura
 

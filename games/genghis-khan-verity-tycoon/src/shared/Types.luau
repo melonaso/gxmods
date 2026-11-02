@@ -42,6 +42,6 @@ export type WeaponDef = {
 
 export type NotifyKind = "info" | "warning" | "danger" | "reward"
 
-export type VerityPhase = "Waiting" | "Active"
+export type VerityPhase = "Waiting" | "Active" | "Fleeing" | "Final"
 
 return nil

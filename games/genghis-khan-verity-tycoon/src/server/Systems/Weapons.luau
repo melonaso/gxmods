@@ -112,7 +112,7 @@ local function shootBow(tool: Tool, player: Player, character: Model, def: Types
 		local bossPos = Verity.getPosition()
 		local to: Vector3
 		local hit = false
-		if bossPos and Vector3.new(bossPos.X - root.Position.X, 0, bossPos.Z - root.Position.Z).Magnitude - Config.Verity.HitRadius <= def.Range then
+		if bossPos and Vector3.new(bossPos.X - root.Position.X, 0, bossPos.Z - root.Position.Z).Magnitude - Verity.getHitRadius() <= def.Range then
 			to = bossPos
 			hit = true
 		else
@@ -174,7 +174,7 @@ local function onActivated(tool: Tool)
 	end
 
 	local flat = Vector3.new(bossPos.X - root.Position.X, 0, bossPos.Z - root.Position.Z)
-	if flat.Magnitude - Config.Verity.HitRadius > def.Range then
+	if flat.Magnitude - Verity.getHitRadius() > def.Range then
 		return
 	end
 

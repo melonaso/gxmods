@@ -86,7 +86,8 @@ local function setMode(m: Mode)
 end
 
 local function currentMode(): Mode
-	if workspace:GetAttribute("VerityPhase") == "Active" then
+	local phase = workspace:GetAttribute("VerityPhase")
+	if phase == "Active" or phase == "Final" or phase == "Fleeing" then
 		return "Battle"
 	end
 	local nextAt = (workspace:GetAttribute("VerityNextAt") :: number?) or math.huge

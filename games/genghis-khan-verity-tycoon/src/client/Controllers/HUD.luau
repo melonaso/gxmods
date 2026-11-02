@@ -25,6 +25,8 @@ local hpFrame: Frame
 local hpFill: Frame
 local hpText: TextLabel
 local hiddenLabel: TextLabel
+local joinButton: TextButton
+local joinedFinal = false
 local toast: TextLabel
 local toastToken = 0
 
@@ -109,6 +111,25 @@ function HUD.init()
 	version.Text = "Genghis Khan Verity Tycoon " .. Config.Version
 	version.Parent = gui
 
+	joinButton = Instance.new("TextButton")
+	joinButton.Size = UDim2.fromOffset(420, 54)
+	joinButton.Position = UDim2.new(0.5, 0, 0.7, 0)
+	joinButton.AnchorPoint = Vector2.new(0.5, 0.5)
+	joinButton.BackgroundColor3 = Color3.fromRGB(200, 120, 20)
+	joinButton.Font = Enum.Font.GothamBlack
+	joinButton.TextSize = 20
+	joinButton.TextColor3 = Color3.new(1, 1, 1)
+	joinButton.Visible = false
+	joinButton.Parent = gui
+	local joinCorner = Instance.new("UICorner")
+	joinCorner.CornerRadius = UDim.new(0, 10)
+	joinCorner.Parent = joinButton
+	joinButton.Activated:Connect(function()
+		joinedFinal = true
+		joinButton.Visible = false
+		Net.fireServer("FinalJoin")
+	end)
+
 	toast = label(gui, UDim2.fromOffset(620, 60), UDim2.new(0.5, 0, 0, 80), 22)
 	toast.TextTransparency = 1
 	toast.TextStrokeTransparency = 1
@@ -132,16 +153,41 @@ function HUD.start()
 		acc = 0
 		local t = workspace:GetServerTimeNow()
 		local phase = workspace:GetAttribute("VerityPhase")
-		if phase == "Active" then
-			local hp = (workspace:GetAttribute("VerityHP") :: number?) or 0
-			local maxHp = math.max(1, (workspace:GetAttribute("VerityMaxHP") :: number?) or 1)
-			local ends = (workspace:GetAttribute("VerityEndsAt") :: number?) or t
-			timerLabel.Text = "VERITY ESTA AQUI - se ira en " .. format(ends - t)
+		local finalPhase = workspace:GetAttribute("FinalPhase")
+
+		-- convocatoria de la batalla final: boton para unirse
+		if finalPhase == "Lobby" then
+			local startsAt = (workspace:GetAttribute("FinalStartsAt") :: number?) or t
+			joinButton.Visible = not joinedFinal
+			joinButton.Text = string.format("UNIRSE A LA BATALLA FINAL (%ds)", math.max(0, math.ceil(startsAt - t)))
+		else
+			joinButton.Visible = false
+			joinedFinal = false
+		end
+
+		local hp = (workspace:GetAttribute("VerityHP") :: number?) or 0
+		local maxHp = math.max(1, (workspace:GetAttribute("VerityMaxHP") :: number?) or 1)
+		local ends = (workspace:GetAttribute("VerityEndsAt") :: number?) or t
+		if phase == "Active" or phase == "Final" then
+			timerLabel.Text = if phase == "Final"
+				then "BATALLA FINAL - quedan " .. format(ends - t)
+				else "VERITY ESTA AQUI - se ira en " .. format(ends - t)
 			timerLabel.TextColor3 = COLORS.danger
 			hpFrame.Visible = true
 			hpFill.Size = UDim2.fromScale(math.clamp(hp / maxHp, 0, 1), 1)
-			hpText.Text = string.format("VERITY  %d / %d", hp, maxHp)
-			hiddenLabel.Visible = player:GetAttribute("Hidden") == true
+			hpFill.BackgroundColor3 = if phase == "Final" then Color3.fromRGB(255, 90, 20) else Color3.fromRGB(200, 20, 20)
+			hpText.Text = string.format("%s  %d / %d", if phase == "Final" then "FORMA FINAL DE VERITY" else "VERITY", hp, maxHp)
+			hiddenLabel.Visible = phase == "Active" and player:GetAttribute("Hidden") == true
+		elseif phase == "Fleeing" then
+			timerLabel.Text = "VERITY HUYE HERIDO HACIA LA OSCURIDAD"
+			timerLabel.TextColor3 = COLORS.reward
+			hpFrame.Visible = false
+			hiddenLabel.Visible = false
+		elseif finalPhase == "Lobby" then
+			timerLabel.Text = string.format("%s convoca la BATALLA FINAL", tostring(workspace:GetAttribute("FinalCaller") or "Un Khan"))
+			timerLabel.TextColor3 = COLORS.warning
+			hpFrame.Visible = false
+			hiddenLabel.Visible = false
 		else
 			local nextAt = (workspace:GetAttribute("VerityNextAt") :: number?) or t
 			local remaining = nextAt - t

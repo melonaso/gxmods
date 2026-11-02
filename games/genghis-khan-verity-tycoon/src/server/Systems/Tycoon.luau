@@ -14,6 +14,7 @@ local Types = require(Shared.Types)
 
 local Build = require(script.Parent.Parent.Lib.Build)
 local Sfx = require(script.Parent.Parent.Lib.Sfx)
+local FinalBattle = require(script.Parent.FinalBattle)
 local PlayerData = require(script.Parent.PlayerData)
 local Weapons = require(script.Parent.Weapons)
 local World = require(script.Parent.World)
@@ -28,6 +29,7 @@ type Plot = {
 	multiplier: number,
 	built: { Instance },
 	buttons: { [string]: BasePart },
+	finalPad: BasePart,
 	cashLabel: TextLabel,
 	signLabel: TextLabel,
 	spawn: BasePart,
@@ -96,6 +98,9 @@ local function refreshButtons(plot: Plot)
 	for id, button in plot.buttons do
 		button.Parent = if available(plot, defsById[id]) then plot.model else nil
 	end
+	-- tycoon completo: aparece el circulo de la batalla final
+	local owner = plot.owner
+	plot.finalPad.Parent = if owner and FinalBattle.isUnlocked(owner) then plot.model else nil
 end
 
 -- ===== Construcciones =====
@@ -484,6 +489,7 @@ local function buildPlot(index: number): Plot
 		built = {},
 		buttons = {},
 		cashLabel = nil :: any, -- se asigna abajo
+		finalPad = nil :: any, -- se asigna abajo
 		signLabel = signLabel,
 		spawn = spawn,
 		spawnConn = nil,
@@ -493,6 +499,33 @@ local function buildPlot(index: number): Plot
 	}
 	buildLine(plot, model, 1)
 	plot.cashLabel = buildCashPad(plot, model, Vector3.new(25, 1.2, -12))
+
+	-- circulo dorado de la batalla final (oculto hasta completar el tycoon)
+	local finalPad = Build.part({
+		Name = "FinalPad",
+		Shape = Enum.PartType.Cylinder,
+		Size = Vector3.new(1, 8, 8),
+		CFrame = cf * CFrame.new(14, 1.2, -30) * CFrame.Angles(0, 0, math.pi / 2),
+		Color = Color3.fromRGB(255, 190, 40),
+		Material = Enum.Material.Neon,
+	})
+	local finalLabel = Build.billboard(finalPad, "BATALLA FINAL\npisa aqui para convocarla", 5, 260)
+	finalLabel.TextColor3 = Color3.fromRGB(255, 120, 60)
+	local finalDebounce = false
+	finalPad.Touched:Connect(function(hit)
+		if finalDebounce then
+			return
+		end
+		local player = isOwnerTouch(plot, hit)
+		if player then
+			finalDebounce = true
+			FinalBattle.request(player)
+			task.delay(3, function()
+				finalDebounce = false
+			end)
+		end
+	end)
+	plot.finalPad = finalPad
 
 	-- botones en dos filas de 6, entre la cinta y la entrada
 	local perFloor = { 0, 0 }

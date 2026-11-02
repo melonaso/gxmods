@@ -1,9 +1,14 @@
 --!strict
--- Verity: mientras espera es la bola sonriente (su diseno original) flotando
--- en el portal. Cada N minutos la bola se retuerce, se transforma en el
--- monstruo y persigue al jugador visible mas cercano. Atraviesa todo salvo el
--- suelo, los refugios y las murallas compradas (que golpea hasta romperlas).
--- Se va si se acaba el tiempo o si lo matan.
+-- Verity tiene dos modos:
+--   Noche (cada N minutos): la bola sonriente del portal se retuerce y se
+--     transforma en el monstruo, que persigue al jugador visible mas cercano.
+--     Atraviesa todo salvo el suelo, los refugios y las murallas (que golpea
+--     hasta romperlas). Si lo matan, NO desaparece: huye herido hacia el
+--     portal y se pierde en la oscuridad. Si nadie lo mata, se va al acabarse
+--     el tiempo.
+--   Final (Systems/FinalBattle): forma final mas grande y fuerte en el campo
+--     de batalla, contra los jinetes que se unieron. Si muere, se hunde en la
+--     tierra para siempre (hasta la proxima batalla final).
 -- Modelo/rig y animaciones: los de "Survive A Verity" (Lib/VerityModel,
 -- Controllers/VerityAnimator y Controllers/BallFX).
 local CollectionService = game:GetService("CollectionService")
@@ -26,11 +31,19 @@ local PlayerData = require(script.Parent.PlayerData)
 local World = require(script.Parent.World)
 
 local V = Config.Verity
+local F = Config.FinalBattle
 local S = Config.Sounds
+
+type Mode = "Night" | "Final"
 
 local Verity = {}
 
 local phase: Types.VerityPhase = "Waiting"
+local mode: Mode = "Night"
+local P: any = V -- parametros del modo actual (Config.Verity o Config.FinalBattle)
+local home = World.PortalPosition -- adonde vuelve / ronda
+local participants: { [Player]: boolean }? = nil -- modo Final: solo estos son objetivo
+local hold = false -- FinalBattle pausa las noches mientras convoca / pelea
 local nextAt = 0
 local endsAt = 0
 local health = 0
@@ -40,16 +53,21 @@ local root: BasePart? = nil
 local humanoid: Humanoid? = nil
 local highlight: Highlight? = nil
 local ball: Model? = nil
-local releasing = false -- durante la transformacion la IA esta apagada
+local releasing = false -- transformacion o muerte: la IA esta apagada
 local rootY = 8
 local attackUntil = 0
 local stunnedUntil = 0
 local lastScream = 0
 local lastMoveOrder = 0
 local lastHurtSound = 0
+local fleeStart = 0
 local contributions: { [number]: number } = {}
 local heartbeatConn: RBXScriptConnection? = nil
 local warned: { [number]: boolean } = {}
+
+local finalEnded = Instance.new("BindableEvent")
+-- (victory: boolean) cuando termina la batalla final
+Verity.FinalEnded = finalEnded.Event
 
 local function now(): number
 	return workspace:GetServerTimeNow()
@@ -98,6 +116,14 @@ local function rootOf(player: Player): (BasePart?, Humanoid?)
 		return r, h
 	end
 	return nil, nil
+end
+
+-- ¿Puede Verity ir a por este jugador?
+local function eligible(player: Player): boolean
+	if mode == "Final" then
+		return participants ~= nil and participants[player] == true
+	end
+	return not player:GetAttribute("Hidden")
 end
 
 local function flat(v: Vector3): Vector3
@@ -185,12 +211,13 @@ end
 -- Rugido de monstruo (no grito): el asset propio si esta subido; si no, el
 -- alarido de Pro Sound Effects a mitad de velocidad suena grave y gutural,
 -- con un golpe de bajo muy lento debajo para darle cuerpo.
-local function roar(parent: Instance, volume: number, maxDistance: number?)
+local function roar(parent: Instance, volume: number, maxDistance: number?, pitch: number?)
+	local k = pitch or 1
 	if S.VerityRoar ~= 0 then
-		Sfx.play(S.VerityRoar, parent, { Volume = volume, MaxDistance = maxDistance })
+		Sfx.play(S.VerityRoar, parent, { Volume = volume, Speed = k, MaxDistance = maxDistance })
 	else
-		Sfx.play(S.RoarSource, parent, { Volume = volume, Speed = 0.5, MaxDistance = maxDistance })
-		Sfx.play(S.Bass, parent, { Volume = volume, Speed = 0.3, MaxDistance = maxDistance })
+		Sfx.play(S.RoarSource, parent, { Volume = volume, Speed = 0.5 * k, MaxDistance = maxDistance })
+		Sfx.play(S.Bass, parent, { Volume = volume, Speed = 0.3 * k, MaxDistance = maxDistance })
 	end
 end
 
@@ -208,9 +235,9 @@ local function flash(color: Color3)
 	end)
 end
 
-local function screamFx(at: Vector3)
+local function screamFx(at: Vector3, radius: number)
 	local ring = Build.part({
-		Name = "Scream",
+		Name = "Roar",
 		Shape = Enum.PartType.Ball,
 		Size = Vector3.new(2, 2, 2),
 		CFrame = CFrame.new(at + Vector3.new(0, 8, 0)),
@@ -221,7 +248,7 @@ local function screamFx(at: Vector3)
 	})
 	ring.CanQuery = false
 	ring.CanTouch = false
-	local d = V.ScreamRadius * 2
+	local d = radius * 2
 	TweenService:Create(ring, TweenInfo.new(0.6), { Size = Vector3.new(d, d, d), Transparency = 1 }):Play()
 	task.delay(0.7, function()
 		ring:Destroy()
@@ -241,6 +268,10 @@ local function despawn()
 	model, root, humanoid, highlight = nil, nil, nil, nil
 	releasing = false
 	phase = "Waiting"
+	mode = "Night"
+	P = V
+	home = World.PortalPosition
+	participants = nil
 	nextAt = now() + interval()
 	endsAt = 0
 	health = 0
@@ -251,7 +282,7 @@ local function despawn()
 	task.delay(3, placeBall) -- la bola vuelve al portal
 end
 
-local function defeat()
+local function giveRewards()
 	local total = 0
 	for _, dmg in contributions do
 		total += dmg
@@ -259,19 +290,81 @@ local function defeat()
 	for userId, dmg in contributions do
 		local player = Players:GetPlayerByUserId(userId)
 		if player and total > 0 then
-			local reward = V.ParticipationReward + math.floor(V.RewardPool * dmg / total)
+			local reward = P.ParticipationReward + math.floor(P.RewardPool * dmg / total)
 			PlayerData.addGold(player, reward)
 			PlayerData.addVerityKill(player)
 			Net.fireClient(player, "Notify", string.format("Recompensa por tu valor: +%d oro", reward), "reward")
 		end
 	end
+end
+
+-- Noche normal: herido, deja de pelear y corre de vuelta al portal.
+local function startFlee()
+	local r, h, m = root, humanoid, model
+	if not r or not h or not m then
+		despawn()
+		return
+	end
+	phase = "Fleeing"
+	fleeStart = now()
+	attackUntil = 0
+	m:SetAttribute("KillStart", nil)
+	m:SetAttribute("Sprinting", true)
+	h.WalkSpeed = V.FleeSpeed
+	h:MoveTo(home)
+	roar(r, 2.2, 260, 0.8)
 	Sfx.play(S.Victory, workspace, { Volume = 1.2 })
-	Net.fireAll("Notify", "VERITY HA SIDO DERROTADO. La estepa vuelve a ser del Khan.", "reward")
-	despawn()
+	Net.fireAll("Notify", "VERITY, HERIDO, HUYE HACIA LA OSCURIDAD. Volvera...", "reward")
+	publish()
+end
+
+-- Batalla final: se retuerce y se hunde en la tierra.
+local function finalDeath()
+	local m, r = model, root
+	if not m or not r then
+		finalEnded:Fire(true)
+		despawn()
+		return
+	end
+	releasing = true
+	if heartbeatConn then
+		heartbeatConn:Disconnect()
+		heartbeatConn = nil
+	end
+	m:SetAttribute("KillStart", nil)
+	m:SetAttribute("TransformStart", now()) -- la pose de transformacion sirve de agonia
+	r.Anchored = true
+	roar(r, 3, 600, 0.7)
+	Sfx.play(S.Victory, workspace, { Volume = 1.5 })
+	Net.fireAll("Notify", "LA FORMA FINAL DE VERITY HA CAIDO. El imperio del Khan es eterno.", "reward")
+	task.spawn(function()
+		local start = m:GetPivot()
+		local depth = rootY * 2.2
+		for i = 1, 70 do
+			if not m.Parent then
+				break
+			end
+			local a = i / 70
+			local shake = (1 - a) * 0.8
+			m:PivotTo(start * CFrame.new((math.random() - 0.5) * shake, -depth * a * a, (math.random() - 0.5) * shake))
+			task.wait(0.05)
+		end
+		finalEnded:Fire(true)
+		despawn()
+	end)
+end
+
+local function defeat()
+	giveRewards()
+	if mode == "Final" then
+		finalDeath()
+	else
+		startFlee()
+	end
 end
 
 local function canAttack(t: number): boolean
-	return t >= attackUntil + V.MeleeCooldown - V.AttackAnimTime and t >= stunnedUntil
+	return t >= attackUntil + P.MeleeCooldown - P.AttackAnimTime and t >= stunnedUntil
 end
 
 -- Animacion "levantar y aplastar" (el cliente la ve via KillStart).
@@ -282,16 +375,16 @@ local function swing(onImpact: () -> ())
 		return
 	end
 	local t = now()
-	attackUntil = t + V.AttackAnimTime
+	attackUntil = t + P.AttackAnimTime
 	m:SetAttribute("KillStart", t)
 	task.delay(Pose.KillImpact, function()
-		if model == m and root then
+		if model == m and root and phase ~= "Fleeing" then
 			flash(Color3.fromRGB(255, 0, 0))
 			Sfx.play(S.Bass, root, { Volume = 2, Speed = 0.5, MaxDistance = 120 })
 			onImpact()
 		end
 	end)
-	task.delay(V.AttackAnimTime, function()
+	task.delay(P.AttackAnimTime, function()
 		if model == m then
 			m:SetAttribute("KillStart", nil)
 		end
@@ -301,8 +394,8 @@ end
 local function attackPlayer(targetPlayer: Player)
 	swing(function()
 		local r, h = rootOf(targetPlayer)
-		if r and h and root and not targetPlayer:GetAttribute("Hidden") and flat(r.Position - root.Position).Magnitude <= V.MeleeRange + 3 then
-			h:TakeDamage(V.MeleeDamage)
+		if r and h and root and eligible(targetPlayer) and flat(r.Position - root.Position).Magnitude <= P.MeleeRange + 3 then
+			h:TakeDamage(P.MeleeDamage)
 			Sfx.play(S.PlayerScream, r, { Volume = 0.7 })
 		end
 	end)
@@ -328,6 +421,17 @@ local function attackWall(wall: Model)
 	end)
 end
 
+local function stepFlee(r: BasePart, h: Humanoid, t: number)
+	if t - lastMoveOrder >= 0.2 then
+		lastMoveOrder = t
+		h:MoveTo(home)
+	end
+	if flat(home - r.Position).Magnitude < 10 or t - fleeStart > V.FleeTimeout then
+		Net.fireAll("Notify", "Verity se perdio en la oscuridad del portal.", "warning")
+		despawn()
+	end
+end
+
 local function step(_dt: number)
 	local r, h = root, humanoid
 	if not model or not r or not h or releasing then
@@ -335,23 +439,34 @@ local function step(_dt: number)
 	end
 	local t = now()
 
+	if r.Position.Y < home.Y - 40 then -- por si cae del mapa
+		model:PivotTo(CFrame.new(home + Vector3.new(0, rootY, 0)))
+	end
+
+	if phase == "Fleeing" then
+		stepFlee(r, h, t)
+		return
+	end
+
 	if t >= endsAt then
-		Net.fireAll("Notify", "Verity se desvanece en la niebla... por ahora.", "warning")
+		if mode == "Final" then
+			Net.fireAll("Notify", "La forma final de Verity resistio. Volved mas fuertes.", "danger")
+			finalEnded:Fire(false)
+		else
+			Net.fireAll("Notify", "Verity se desvanece en la niebla... por ahora.", "warning")
+		end
 		despawn()
 		return
 	end
-	if r.Position.Y < -40 then -- por si cae del mapa
-		model:PivotTo(CFrame.new(World.PortalPosition + Vector3.new(0, rootY, 0)))
-	end
 
-	-- objetivo: el jugador visible y vivo mas cercano
+	-- objetivo: el jugador valido y vivo mas cercano
 	local position = r.Position
 	local target: BasePart? = nil
 	local targetPlayer: Player? = nil
 	local bestDist = math.huge
 	for _, player in Players:GetPlayers() do
 		local pr = rootOf(player)
-		if pr and not player:GetAttribute("Hidden") then
+		if pr and eligible(player) then
 			local d = flat(pr.Position - position).Magnitude
 			if d < bestDist then
 				bestDist = d
@@ -362,10 +477,10 @@ local function step(_dt: number)
 	end
 
 	local stunned = t < stunnedUntil
-	local enraged = health / maxHealth <= V.EnrageThreshold
-	local speed = if enraged then V.EnragedSpeed else V.WalkSpeed
+	local enraged = health / maxHealth <= P.EnrageThreshold
+	local speed = if enraged then P.EnragedSpeed else P.WalkSpeed
 	h.WalkSpeed = if stunned then speed * 0.3 else speed
-	model:SetAttribute("Sprinting", enraged and target ~= nil and not stunned)
+	model:SetAttribute("Sprinting", (enraged or mode == "Final") and target ~= nil and not stunned)
 
 	-- moverse (quieto mientras ataca)
 	if t - lastMoveOrder >= 0.1 then
@@ -374,15 +489,15 @@ local function step(_dt: number)
 			h:MoveTo(position)
 		elseif target then
 			h:MoveTo(target.Position)
-		elseif flat(World.PortalPosition - position).Magnitude > 6 then
-			h:MoveTo(World.PortalPosition) -- nadie a la vista: vuelve a rondar el portal
+		elseif flat(home - position).Magnitude > 6 then
+			h:MoveTo(home) -- nadie a la vista: vuelve a rondar su sitio
 		end
 	end
 
 	if canAttack(t) then
-		if targetPlayer and bestDist <= V.MeleeRange then
+		if targetPlayer and bestDist <= P.MeleeRange then
 			attackPlayer(targetPlayer)
-		elseif target and flat(r.AssemblyLinearVelocity).Magnitude < 3 then
+		elseif mode == "Night" and target and flat(r.AssemblyLinearVelocity).Magnitude < 3 then
 			-- frenado por una muralla: la golpea
 			local wall = blockingWall(position)
 			if wall then
@@ -391,21 +506,21 @@ local function step(_dt: number)
 		end
 	end
 
-	-- rugido: dana a todos los que esten a la vista y cerca
-	if not stunned and t - lastScream >= V.ScreamCooldown then
+	-- rugido: dana a todos los que esten a tiro
+	if not stunned and t - lastScream >= P.ScreamCooldown then
 		local victims = {}
 		for _, player in Players:GetPlayers() do
 			local pr, ph = rootOf(player)
-			if pr and ph and not player:GetAttribute("Hidden") and flat(pr.Position - position).Magnitude <= V.ScreamRadius then
+			if pr and ph and eligible(player) and flat(pr.Position - position).Magnitude <= P.ScreamRadius then
 				table.insert(victims, ph)
 			end
 		end
 		if #victims > 0 then
 			lastScream = t
-			screamFx(position)
-			roar(r, 2, 220)
+			screamFx(position, P.ScreamRadius)
+			roar(r, if mode == "Final" then 3 else 2, if mode == "Final" then 400 else 220, if mode == "Final" then 0.8 else 1)
 			for _, ph in victims do
-				ph:TakeDamage(V.ScreamDamage)
+				ph:TakeDamage(P.ScreamDamage)
 			end
 			Net.fireAll("Notify", "Verity RUGE", "danger")
 		end
@@ -414,8 +529,17 @@ local function step(_dt: number)
 	publish()
 end
 
+function Verity.getPhase(): Types.VerityPhase
+	return phase
+end
+
 function Verity.isActive(): boolean
-	return phase == "Active" and model ~= nil and root ~= nil and not releasing
+	return (phase == "Active" or phase == "Final") and model ~= nil and root ~= nil and not releasing
+end
+
+-- "Grosor" de Verity para el alcance de las armas (la forma final es mas grande).
+function Verity.getHitRadius(): number
+	return V.HitRadius * (if mode == "Final" then F.Scale else 1)
 end
 
 function Verity.getPosition(): Vector3?
@@ -439,6 +563,8 @@ function Verity.damage(player: Player, amount: number)
 		Sfx.play(S.Bass, root, { Volume = 0.8, Speed = 1.8 })
 	end
 	if health <= 0 then
+		health = 0
+		publish()
 		defeat()
 	else
 		publish()
@@ -454,24 +580,45 @@ function Verity.stun(seconds: number)
 	flash(Color3.fromRGB(80, 180, 255))
 end
 
--- La bola se retuerce y se convierte en el monstruo (TransformTime segundos).
-function Verity.spawn()
-	if phase == "Active" then
-		return
+-- FinalBattle: mientras convoca o pelea, las noches normales se posponen.
+function Verity.setHold(value: boolean)
+	hold = value
+end
+
+-- FinalBattle: un jinete murio o se fue; deja de ser objetivo.
+function Verity.removeParticipant(player: Player)
+	if participants then
+		participants[player] = nil
 	end
+end
+
+-- FinalBattle: ya no queda nadie peleando.
+function Verity.abortFinal()
+	if mode == "Final" and phase == "Final" and not releasing then
+		Net.fireAll("Notify", "Los jinetes cayeron. La forma final de Verity resistio.", "danger")
+		finalEnded:Fire(false)
+		despawn()
+	end
+end
+
+-- Crea el monstruo invisible y lo revela con la animacion de transformacion.
+-- scale: 1 en la noche, F.Scale en la batalla final.
+local function emerge(at: Vector3, scale: number, onReleased: () -> ()): boolean
 	local m, rig = VerityModel.create()
 	if not m or not rig then
-		warn("[Verity] No hay modelo de Verity (falta ServerStorage.VerityFallback); se salta este ataque.")
-		nextAt = now() + interval()
-		publish()
-		return
+		warn("[Verity] No hay modelo de Verity (falta ServerStorage.VerityFallback).")
+		return false
+	end
+	if scale ~= 1 then
+		m:ScaleTo(m:GetScale() * scale)
 	end
 	local r = m.PrimaryPart
 	local h = m:FindFirstChildOfClass("Humanoid")
 	if not r or not h then
 		m:Destroy()
-		return
+		return false
 	end
+	h.HipHeight = rig.hipHeight * scale
 
 	Build.ensureGroups()
 	local hiddenParts: { [BasePart]: number } = {}
@@ -500,35 +647,23 @@ function Verity.spawn()
 	align.AlignType = Enum.AlignType.PrimaryAxisParallel
 	align.Attachment0 = upright
 	align.PrimaryAxis = Vector3.yAxis
-	align.MaxTorque = 1e7
+	align.MaxTorque = 1e8
 	align.Responsiveness = 60
 	align.Parent = r
 
-	rootY = rig.rootY
+	rootY = rig.rootY * scale
 	r.Anchored = true
-	m:PivotTo(CFrame.new(World.PortalPosition + Vector3.new(0, rootY + 0.5, 0)) * CFrame.Angles(0, math.pi, 0))
-	h.WalkSpeed = V.WalkSpeed
+	m:PivotTo(CFrame.new(at + Vector3.new(0, rootY + 0.5, 0)) * CFrame.Angles(0, math.pi, 0))
+	h.WalkSpeed = P.WalkSpeed
 	m.Parent = workspace
 
 	model, root, humanoid, highlight = m, r, h, hl
-	local count = math.max(1, #Players:GetPlayers())
-	maxHealth = V.BaseHealth + V.HealthPerPlayer * (count - 1)
-	health = maxHealth
-	contributions = {}
 	attackUntil = 0
 	stunnedUntil = 0
+	contributions = {}
 	releasing = true
-	phase = "Active"
-	endsAt = now() + V.DurationSeconds + V.TransformTime
-	publish()
-	Net.fireAll("Notify", "La bola sonriente se retuerce...", "danger")
 
-	-- transformacion: la bola se retuerce (BallFX) y el monstruo aparece poco a poco
-	placeBall()
 	local start = now()
-	if ball then
-		ball:SetAttribute("TransformStart", start)
-	end
 	m:SetAttribute("TransformStart", start)
 	Sfx.play(S.Bass, workspace, { Volume = 1.5, Speed = 0.35 })
 
@@ -549,20 +684,96 @@ function Verity.spawn()
 		if model ~= m then
 			return
 		end
-		if ball then
-			ball:Destroy()
-			ball = nil
-		end
 		m:SetAttribute("TransformStart", nil)
 		r.Anchored = false
 		r:SetNetworkOwner(nil) -- el servidor mueve a Verity
 		releasing = false
 		lastScream = now()
 		heartbeatConn = RunService.Heartbeat:Connect(step)
+		onReleased()
+	end)
+	return true
+end
+
+-- Noche normal: la bola sonriente se retuerce y se convierte en el monstruo.
+function Verity.spawn()
+	if phase ~= "Waiting" then
+		return
+	end
+	mode = "Night"
+	P = V
+	home = World.PortalPosition
+	participants = nil
+	local ok = emerge(home, 1, function()
 		-- rugido de liberacion: lo oyen todos
 		roar(workspace, 1.8)
 		Net.fireAll("Notify", "VERITY HA DESPERTADO. Pelea con tus armas o escondete hasta que se vaya.", "danger")
 	end)
+	if not ok then
+		nextAt = now() + interval()
+		publish()
+		return
+	end
+	if ball then
+		ball:SetAttribute("TransformStart", now()) -- BallFX: se retuerce y se hunde en el monstruo
+		task.delay(V.TransformTime, function()
+			if ball then
+				ball:Destroy()
+				ball = nil
+			end
+		end)
+	end
+	local count = math.max(1, #Players:GetPlayers())
+	maxHealth = V.BaseHealth + V.HealthPerPlayer * (count - 1)
+	health = maxHealth
+	phase = "Active"
+	endsAt = now() + V.DurationSeconds + V.TransformTime
+	publish()
+	Net.fireAll("Notify", "La bola sonriente se retuerce...", "danger")
+end
+
+-- Batalla final: forma final en el centro del campo contra los jinetes.
+function Verity.spawnFinal(center: Vector3, riders: { Player }): boolean
+	if phase ~= "Waiting" then
+		return false
+	end
+	mode = "Final"
+	P = F
+	home = center
+	participants = {}
+	for _, player in riders do
+		(participants :: { [Player]: boolean })[player] = true
+	end
+	local ok = emerge(center, F.Scale, function()
+		roar(workspace, 2.5, nil, 0.8)
+		Net.fireAll("Notify", "LA FORMA FINAL DE VERITY HA DESPERTADO", "danger")
+	end)
+	if not ok then
+		mode, P, home, participants = "Night", V, World.PortalPosition, nil
+		return false
+	end
+	local m = model :: Model
+	-- aura de fuego de la forma final
+	local aura = Instance.new("Highlight")
+	aura.Name = "FinalAura"
+	aura.FillColor = Color3.fromRGB(90, 0, 0)
+	aura.FillTransparency = 0.7
+	aura.OutlineColor = Color3.fromRGB(255, 60, 0)
+	aura.OutlineTransparency = 0
+	aura.Parent = m
+	local fire = Instance.new("Fire")
+	fire.Size = 18
+	fire.Heat = 20
+	fire.Color = Color3.fromRGB(255, 80, 20)
+	fire.SecondaryColor = Color3.fromRGB(120, 0, 0)
+	fire.Parent = root
+
+	maxHealth = F.BaseHealth + F.HealthPerPlayer * (math.max(1, #riders) - 1)
+	health = maxHealth
+	phase = "Final"
+	endsAt = now() + F.Duration + V.TransformTime
+	publish()
+	return true
 end
 
 function Verity.init()
@@ -579,7 +790,7 @@ function Verity.init()
 		command.Name = "VerityCommand"
 		command.PrimaryAlias = "/verity"
 		command.Triggered:Connect(function(source: TextSource)
-			if allowed(Players:GetPlayerByUserId(source.UserId)) then
+			if allowed(Players:GetPlayerByUserId(source.UserId)) and not hold then
 				Verity.spawn()
 			end
 		end)
@@ -587,7 +798,7 @@ function Verity.init()
 	end)
 	local function hook(player: Player) -- chat clasico
 		player.Chatted:Connect(function(message)
-			if message:lower() == "/verity" and allowed(player) then
+			if message:lower() == "/verity" and allowed(player) and not hold then
 				Verity.spawn()
 			end
 		end)
@@ -596,6 +807,9 @@ function Verity.init()
 	for _, player in Players:GetPlayers() do
 		hook(player)
 	end
+	Players.PlayerRemoving:Connect(function(player)
+		Verity.removeParticipant(player)
+	end)
 end
 
 function Verity.start()
@@ -613,19 +827,26 @@ function Verity.start()
 		end
 
 		if phase == "Waiting" then
-			local remaining = nextAt - now()
-			for _, mark in V.WarningTimes do
-				-- solo avisa al cruzar la marca (no si el intervalo ya empezo por debajo)
-				if remaining <= mark and remaining > mark - 2 and not warned[mark] then
-					warned[mark] = true
-					local text = if mark >= 60
-						then string.format("Verity despierta en %d minuto(s)...", mark // 60)
-						else string.format("Verity despierta en %d segundos. Prepara tus armas o busca refugio.", mark)
-					Net.fireAll("Notify", text, "warning")
+			if hold then
+				-- batalla final en marcha: la noche se pospone
+				nextAt = math.max(nextAt, now() + 90)
+				warned = {}
+				publish()
+			else
+				local remaining = nextAt - now()
+				for _, mark in V.WarningTimes do
+					-- solo avisa al cruzar la marca (no si el intervalo ya empezo por debajo)
+					if remaining <= mark and remaining > mark - 2 and not warned[mark] then
+						warned[mark] = true
+						local text = if mark >= 60
+							then string.format("Verity despierta en %d minuto(s)...", mark // 60)
+							else string.format("Verity despierta en %d segundos. Prepara tus armas o busca refugio.", mark)
+						Net.fireAll("Notify", text, "warning")
+					end
 				end
-			end
-			if remaining <= 0 then
-				Verity.spawn()
+				if remaining <= 0 then
+					Verity.spawn()
+				end
 			end
 		end
 	end
