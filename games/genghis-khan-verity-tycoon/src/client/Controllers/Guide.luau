@@ -1,9 +1,9 @@
 --!strict
 -- Mientras no tengas campamento (y ya acabo la intro), un haz azul en arco
 -- sale de tu personaje hacia el circulo RECLAMAR libre mas cercano.
--- Cuando ya tienes campamento, las flechas de los caminos y sus letreros
--- ("Campamento N: LIBRE") desaparecen de TU pantalla (los demas jugadores
--- sin campamento los siguen viendo).
+-- Las flechas de los caminos y sus letreros ("Campamento N: LIBRE") solo se
+-- ven en TU pantalla cuando ya termino la intro y aun no tienes campamento
+-- (los demas jugadores sin campamento los siguen viendo).
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 
@@ -90,10 +90,13 @@ function Guide.start()
 		local character = player.Character
 		local root = character and character:FindFirstChild("HumanoidRootPart")
 		local hasPlot = player:GetAttribute("HasPlot") == true
-		if guidesHidden ~= hasPlot then
-			setGuidesHidden(hasPlot)
+		local introDone = HUD.isIntroDone()
+		-- las flechas solo aparecen al terminar la intro y mientras no tengas campamento
+		local hide = hasPlot or not introDone
+		if guidesHidden ~= hide then
+			setGuidesHidden(hide)
 		end
-		local wanted = HUD.isIntroDone() and not hasPlot
+		local wanted = introDone and not hasPlot
 		local pad = if wanted and root and root:IsA("BasePart") then nearestFreePad(root.Position) else nil
 		if pad and root and root:IsA("BasePart") then
 			fromAttachment.Parent = root
