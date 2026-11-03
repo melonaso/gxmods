@@ -6,7 +6,7 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v19"
+Config.Version = "v20"
 
 -- Introduccion cinematografica al entrar (historia de Gengis Khan). false = sin intro.
 Config.Intro = { Enabled = true }
@@ -93,6 +93,11 @@ Config.Bow = {
 -- y su oro, y gana este extra de oro para siempre por cada renacimiento.
 Config.Rebirth = {
 	BonusPerRebirth = 0.5, -- +50 % por renacimiento (x1.5, x2, x2.5...)
+}
+
+-- Trueno de Tengri: el rayo sale al bajar el baculo (sincronizado con la animacion).
+Config.Staff = {
+	CastTime = 0.3,
 }
 
 -- Canto de garganta mongol (khöömei): tecla G / boton en pantalla.

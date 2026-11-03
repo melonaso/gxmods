@@ -32,24 +32,79 @@ local function playAnim(tool: Tool, name: string)
 	anim.Parent = tool
 end
 
-local function projectile(from: Vector3, to: Vector3, color: Color3)
-	local dist = (to - from).Magnitude
-	local bolt = Build.part({
-		Name = "Projectile",
-		Size = Vector3.new(0.3, 0.3, 2),
-		CFrame = CFrame.lookAt(from, to),
-		Color = color,
-		Material = Enum.Material.Neon,
-		CanCollide = false,
-		Parent = workspace,
-	})
-	bolt.CanQuery = false
-	bolt.CanTouch = false
-	local time = math.clamp(dist / 220, 0.05, 0.5)
-	TweenService:Create(bolt, TweenInfo.new(time, Enum.EasingStyle.Linear), { CFrame = CFrame.lookAt(to, to + (to - from)) }):Play()
-	task.delay(time + 0.05, function()
-		bolt:Destroy()
+-- Rayo en zigzag (Trueno de Tengri): segmentos de neon que se apagan rapido.
+local function lightningBolt(from: Vector3, to: Vector3)
+	local folder = Instance.new("Folder")
+	folder.Name = "Lightning"
+	local points = { from }
+	local segments = 7
+	local dir = to - from
+	-- dos ejes perpendiculares al rayo para el zigzag
+	local side = dir:Cross(Vector3.yAxis)
+	side = if side.Magnitude > 0.01 then side.Unit else Vector3.xAxis
+	local up = side:Cross(dir).Unit
+	for i = 1, segments - 1 do
+		local k = i / segments
+		local spread = 2.6 * math.sin(math.pi * k) -- mas abierto en el medio
+		table.insert(points, from + dir * k + side * (math.random() - 0.5) * 2 * spread + up * (math.random() - 0.5) * spread)
+	end
+	table.insert(points, to)
+	local parts = {}
+	for i = 1, #points - 1 do
+		local a, b = points[i], points[i + 1]
+		local p = Build.part({
+			Name = "Bolt",
+			Size = Vector3.new(0.35, 0.35, (b - a).Magnitude + 0.2),
+			CFrame = CFrame.lookAt((a + b) / 2, b),
+			Color = TRUENO_COLOR,
+			Material = Enum.Material.Neon,
+			CanCollide = false,
+			Parent = folder,
+		})
+		p.CanQuery = false
+		p.CanTouch = false
+		table.insert(parts, p)
+	end
+	local flash = Build.part({ Name = "Flash", Size = Vector3.new(1, 1, 1), CFrame = CFrame.new(to), Transparency = 1, CanCollide = false, Parent = folder })
+	flash.CanQuery = false
+	local light = Instance.new("PointLight")
+	light.Color = TRUENO_COLOR
+	light.Range = 30
+	light.Brightness = 6
+	light.Parent = flash
+	folder.Parent = workspace
+	for _, p in parts do
+		TweenService:Create(p, TweenInfo.new(0.3), { Transparency = 1 }):Play()
+	end
+	TweenService:Create(light, TweenInfo.new(0.3), { Brightness = 0 }):Play()
+	task.delay(0.35, function()
+		folder:Destroy()
 	end)
+end
+
+-- Trueno de Tengri: el rayo sale al bajar el baculo (CastTime despues del clic,
+-- en sincronia con Controllers/WeaponAnimator). Sin Verity a tiro, el rayo
+-- golpea el suelo delante.
+local function castLightning(tool: Tool, player: Player, character: Model, def: Types.WeaponDef)
+	if tool.Parent ~= character then
+		return
+	end
+	local root = character:FindFirstChild("HumanoidRootPart")
+	local humanoid = character:FindFirstChildOfClass("Humanoid")
+	if not (root and root:IsA("BasePart") and humanoid and humanoid.Health > 0) then
+		return
+	end
+	local orb = tool:FindFirstChild("Orb") or tool:FindFirstChild("Handle")
+	local from = if orb and orb:IsA("BasePart") then orb.Position else root.Position + Vector3.new(0, 3, 0)
+	local bossPos = Verity.getPosition()
+	if bossPos and Vector3.new(bossPos.X - root.Position.X, 0, bossPos.Z - root.Position.Z).Magnitude - Verity.getHitRadius() <= def.Range then
+		lightningBolt(from, bossPos)
+		Sfx.play(Config.Sounds.Bass, workspace, { Volume = 1.6, Speed = 0.55 })
+		Verity.damage(player, def.Damage)
+	else
+		lightningBolt(from, root.Position + root.CFrame.LookVector * 25 - Vector3.new(0, 2.5, 0))
+		Sfx.play(Config.Sounds.Bass, root, { Volume = 1.2, Speed = 0.7 })
+	end
 end
 
 -- ===== Arco compuesto: disparo =====
@@ -157,29 +212,33 @@ local function onActivated(tool: Tool)
 
 	local handleInst = tool:FindFirstChild("Handle")
 	local soundAt: Instance = if handleInst then handleInst else tool
-	if not def.Ranged then
-		playAnim(tool, if id == "Lanza" then "Lunge" else "Slash")
-		Sfx.play(if id == "Lanza" then Config.Sounds.Lunge else Config.Sounds.Slash, soundAt, { Volume = 0.8 })
+	if id == "Trueno" then
+		-- alza el baculo y lo baja: el rayo sale al bajar (castLightning)
+		tool:SetAttribute("AttackAt", workspace:GetServerTimeNow())
+		Sfx.play(Config.Sounds.Bass, soundAt, { Volume = 0.9, Speed = 1.1 })
+		task.delay(Config.Staff.CastTime, function()
+			castLightning(tool, player, character :: Model, def)
+		end)
+		return
+	elseif id == "Lanza" then
+		-- estocada: la animan los clientes (Controllers/WeaponAnimator) con AttackAt
+		tool:SetAttribute("AttackAt", workspace:GetServerTimeNow())
+		Sfx.play(Config.Sounds.Lunge, soundAt, { Volume = 0.9 })
 	else
-		Sfx.play(Config.Sounds.Bass, soundAt, { Volume = 1.5, Speed = 0.6 })
+		playAnim(tool, "Slash")
+		Sfx.play(Config.Sounds.Slash, soundAt, { Volume = 0.8 })
 	end
 
+	-- cuerpo a cuerpo: dano si Verity esta al alcance
 	local bossPos = Verity.getPosition()
 	local root = (character :: Model):FindFirstChild("HumanoidRootPart")
 	local humanoid = (character :: Model):FindFirstChildOfClass("Humanoid")
 	if not bossPos or not root or not root:IsA("BasePart") or not humanoid or humanoid.Health <= 0 then
 		return
 	end
-
 	local flat = Vector3.new(bossPos.X - root.Position.X, 0, bossPos.Z - root.Position.Z)
 	if flat.Magnitude - Verity.getHitRadius() > def.Range then
 		return
-	end
-
-	if def.Ranged then
-		local handle = tool:FindFirstChild("Handle")
-		local from = if handle and handle:IsA("BasePart") then handle.Position else root.Position
-		projectile(from, bossPos, TRUENO_COLOR)
 	end
 	Verity.damage(player, def.Damage)
 end

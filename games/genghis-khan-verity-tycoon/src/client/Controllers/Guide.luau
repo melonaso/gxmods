@@ -30,6 +30,31 @@ local function setGuidesHidden(hidden: boolean)
 	end
 	guidesHidden = hidden
 end
+
+-- Circulos azules RECLAMAR de las demas bases: una vez que tienes campamento
+-- desaparecen de TU pantalla (los jugadores sin campamento los siguen viendo).
+local claimHidden: boolean? = nil
+
+local function setClaimPadsHidden(hidden: boolean)
+	local folder = workspace:FindFirstChild("Tycoons")
+	if not folder then
+		return
+	end
+	for _, plot in folder:GetChildren() do
+		local pad = plot:FindFirstChild("ClaimPad")
+		if pad and pad:IsA("BasePart") then
+			pad.LocalTransparencyModifier = if hidden then 1 else 0
+			for _, inst in pad:GetDescendants() do
+				if inst:IsA("BillboardGui") then
+					inst.Enabled = not hidden
+				elseif inst:IsA("Light") or inst:IsA("ParticleEmitter") then
+					inst.Enabled = not hidden
+				end
+			end
+		end
+	end
+	claimHidden = hidden
+end
 local fromAttachment: Attachment
 local toAttachment: Attachment
 
@@ -95,6 +120,11 @@ function Guide.start()
 		local hide = hasPlot or not introDone
 		if guidesHidden ~= hide then
 			setGuidesHidden(hide)
+		end
+		-- los circulos libres pueden reaparecer (otro jugador sale y su base se
+		-- libera): se revisa en cada paso mientras tengas campamento
+		if hasPlot or claimHidden ~= hasPlot then
+			setClaimPadsHidden(hasPlot)
 		end
 		local wanted = introDone and not hasPlot
 		local pad = if wanted and root and root:IsA("BasePart") then nearestFreePad(root.Position) else nil

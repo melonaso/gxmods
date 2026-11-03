@@ -51,7 +51,7 @@ Abajo a la izquierda el juego dice **"Progreso: se guarda"** (verde) o **"Progre
 ## Cómo se juega
 
 1. Al entrar ves una **introducción**: año 1206, el kurultai junto al río Onón te proclama Gengis Khan ante el estandarte blanco de nueve colas... y los chamanes hablan de la sonrisa amarilla que despierta cada noche en el círculo de piedras negras (se puede saltar; `Config.Intro.Enabled = false` la quita).
-   Apareces en el **spawn del centro**. Caminos con **flechas** salen de la plaza hacia los 6 campamentos (azules = libre, grises = con dueño); aparecen al terminar la introducción y desaparecen de tu pantalla cuando reclamas tu campamento y, mientras no tengas campamento, un **haz azul** te señala el círculo libre más cercano. Elige un **campamento** libre (6 alrededor del estandarte) pisando su círculo azul **RECLAMAR CAMPAMENTO**. El contador de Verity no aparece hasta que reclamas tu campamento (y el ciclo empieza con el primer campamento del servidor).
+   Apareces en el **spawn del centro**. Caminos con **flechas** salen de la plaza hacia los 6 campamentos (azules = libre, grises = con dueño); aparecen al terminar la introducción y desaparecen de tu pantalla cuando reclamas tu campamento y, mientras no tengas campamento, un **haz azul** te señala el círculo libre más cercano. Elige un **campamento** libre (6 alrededor del estandarte) pisando su círculo azul **RECLAMAR CAMPAMENTO**; en cuanto tienes uno, los círculos azules de las demás bases desaparecen de tu pantalla. El contador de Verity no aparece hasta que reclamas tu campamento (y el ciclo empieza con el primer campamento del servidor).
 2. Pisa los **botones rojos** para comprar. Cada compra desbloquea la siguiente:
 
 | Botón | Costo | Qué hace |
@@ -65,9 +65,9 @@ Abajo a la izquierda el juego dice **"Progreso: se guarda"** (verde) o **"Progre
 | Ruta de la Seda | 4 000 | Todo el oro x2 |
 | Caravana de Seda | 7 500 | Dropper: 55 oro |
 | Gran Yurta | 9 000 | **Refugio privado**: solo tú puedes esconderte dentro |
-| Lanza del Khan | 16 000 | Lanza con punta de hoja de acero y borla de crin roja (65 de daño) |
+| Lanza del Khan | 16 000 | Lanza con punta de hoja de acero y borla de crin roja, con animación: baja la lanza a horizontal y lanza una estocada al frente (65 de daño, alcance 14) |
 | Tributo Imperial | 30 000 | Todo el oro x3 (reemplaza al x2) |
-| Trueno de Tengri | 50 000 | Báculo con anillos de oro y un orbe que brilla; dispara rayos (140 de daño) |
+| Trueno de Tengri | 50 000 | Báculo con anillos de oro y un orbe que brilla, con animación: lo alza sobre la cabeza y al bajarlo cae un **rayo en zigzag** sobre Verity (o al suelo delante si no está a tiro) y el orbe destella (140 de daño, alcance 70) |
 | Muralla de Madera / Piedra / Gran Muralla | 2 500 / 12 000 / 45 000 | Rodea tu campamento: **los jugadores la atraviesan, Verity no**. Verity la golpea (200 por golpe) hasta romperla (800 / 2 500 / 6 000 de vida) y se repara sola cuando se va |
 | Segundo Piso | 20 000 | Losa con escalera, cinta, colector y caja propios |
 | Yaks / Camellos / Halcones / Tesoro de Karakorum | 25 000 – 90 000 | Droppers del segundo piso: 120 / 200 / 320 / 500 oro |
