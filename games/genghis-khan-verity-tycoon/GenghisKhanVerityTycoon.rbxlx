@@ -31,7 +31,7 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v17"
+Config.Version = "v18"
 
 -- Introduccion cinematografica al entrar (historia de Gengis Khan). false = sin intro.
 Config.Intro = { Enabled = true }
@@ -5008,6 +5008,9 @@ return BowAnimator
 <string name="Source"><![CDATA[--!strict
 -- Mientras no tengas campamento (y ya acabo la intro), un haz azul en arco
 -- sale de tu personaje hacia el circulo RECLAMAR libre mas cercano.
+-- Cuando ya tienes campamento, las flechas de los caminos y sus letreros
+-- ("Campamento N: LIBRE") desaparecen de TU pantalla (los demas jugadores
+-- sin campamento los siguen viendo).
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 
@@ -5018,6 +5021,22 @@ local player = Players.LocalPlayer
 local Guide = {}
 
 local beam: Beam
+local guidesHidden: boolean? = nil
+
+local function setGuidesHidden(hidden: boolean)
+	local folder = workspace:FindFirstChild("Tycoons")
+	if not folder then
+		return
+	end
+	for _, inst in folder:GetDescendants() do
+		if inst:IsA("BasePart") and (inst.Name == "ArrowShaft" or inst.Name == "ArrowTip") then
+			inst.LocalTransparencyModifier = if hidden then 1 else 0
+		elseif inst:IsA("BillboardGui") and inst.Parent and inst.Parent.Name == "GuideSign" then
+			inst.Enabled = not hidden
+		end
+	end
+	guidesHidden = hidden
+end
 local fromAttachment: Attachment
 local toAttachment: Attachment
 
@@ -5077,7 +5096,11 @@ function Guide.start()
 		acc = 0
 		local character = player.Character
 		local root = character and character:FindFirstChild("HumanoidRootPart")
-		local wanted = HUD.isIntroDone() and not player:GetAttribute("HasPlot")
+		local hasPlot = player:GetAttribute("HasPlot") == true
+		if guidesHidden ~= hasPlot then
+			setGuidesHidden(hasPlot)
+		end
+		local wanted = HUD.isIntroDone() and not hasPlot
 		local pad = if wanted and root and root:IsA("BasePart") then nearestFreePad(root.Position) else nil
 		if pad and root and root:IsA("BasePart") then
 			fromAttachment.Parent = root

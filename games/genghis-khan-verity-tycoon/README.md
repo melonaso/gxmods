@@ -51,7 +51,7 @@ Abajo a la izquierda el juego dice **"Progreso: se guarda"** (verde) o **"Progre
 ## Cómo se juega
 
 1. Al entrar ves una **introducción**: año 1206, el kurultai junto al río Onón te proclama Gengis Khan ante el estandarte blanco de nueve colas... y los chamanes hablan de la sonrisa amarilla que despierta cada noche en el círculo de piedras negras (se puede saltar; `Config.Intro.Enabled = false` la quita).
-   Apareces en el **spawn del centro**. Caminos con **flechas** salen de la plaza hacia los 6 campamentos (azules = libre, grises = con dueño) y, mientras no tengas campamento, un **haz azul** te señala el círculo libre más cercano. Elige un **campamento** libre (6 alrededor del estandarte) pisando su círculo azul **RECLAMAR CAMPAMENTO**. El contador de Verity no aparece hasta que reclamas tu campamento (y el ciclo empieza con el primer campamento del servidor).
+   Apareces en el **spawn del centro**. Caminos con **flechas** salen de la plaza hacia los 6 campamentos (azules = libre, grises = con dueño); cuando reclamas tu campamento, las flechas y sus letreros desaparecen de tu pantalla y, mientras no tengas campamento, un **haz azul** te señala el círculo libre más cercano. Elige un **campamento** libre (6 alrededor del estandarte) pisando su círculo azul **RECLAMAR CAMPAMENTO**. El contador de Verity no aparece hasta que reclamas tu campamento (y el ciclo empieza con el primer campamento del servidor).
 2. Pisa los **botones rojos** para comprar. Cada compra desbloquea la siguiente:
 
 | Botón | Costo | Qué hace |
