@@ -31,7 +31,7 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v14"
+Config.Version = "v15"
 
 -- Introduccion cinematografica al entrar (historia de Gengis Khan). false = sin intro.
 Config.Intro = { Enabled = true }
@@ -4106,6 +4106,66 @@ local function plotCenters(): { CFrame }
 	return list
 end
 
+-- ===== Rellenos de terreno alineados a la rejilla =====
+-- El terreno de Roblox va en celdas de 4x4x4 studs. Un relleno girado o
+-- redondo (FillBlock con rotacion, FillCylinder) deja el borde de arriba
+-- "suavizado" y levanta el suelo unos 2 studs, tapando pisos y botones.
+-- Por eso todo se rellena con bloques SIN girar, alineados a la rejilla y con
+-- la cara de arriba exactamente en y = 0. Las formas giradas o redondas se
+-- arman fila a fila con tramos rectos.
+local VOXEL = 4
+
+local function fillRect(terrain: Terrain, x0: number, x1: number, z0: number, z1: number, material: Enum.Material)
+	local ax0 = math.floor(math.min(x0, x1) / VOXEL) * VOXEL
+	local ax1 = math.ceil(math.max(x0, x1) / VOXEL) * VOXEL
+	local az0 = math.floor(math.min(z0, z1) / VOXEL) * VOXEL
+	local az1 = math.ceil(math.max(z0, z1) / VOXEL) * VOXEL
+	if ax1 > ax0 and az1 > az0 then
+		terrain:FillBlock(CFrame.new((ax0 + ax1) / 2, -6, (az0 + az1) / 2), Vector3.new(ax1 - ax0, 12, az1 - az0), material)
+	end
+end
+
+-- Recorre la rejilla por filas y rellena los tramos de celdas cuyo centro esta dentro.
+local function fillShape(terrain: Terrain, minX: number, maxX: number, minZ: number, maxZ: number, inside: (Vector3) -> boolean, material: Enum.Material)
+	local x0 = math.floor(minX / VOXEL) * VOXEL
+	local x1 = math.ceil(maxX / VOXEL) * VOXEL
+	local z0 = math.floor(minZ / VOXEL) * VOXEL
+	local z1 = math.ceil(maxZ / VOXEL) * VOXEL
+	for z = z0, z1 - VOXEL, VOXEL do
+		local runStart: number? = nil
+		for x = x0, x1, VOXEL do
+			local cellInside = x < x1 and inside(Vector3.new(x + VOXEL / 2, 0, z + VOXEL / 2))
+			if cellInside and runStart == nil then
+				runStart = x
+			elseif not cellInside and runStart ~= nil then
+				fillRect(terrain, runStart, x, z, z + VOXEL, material)
+				runStart = nil
+			end
+		end
+	end
+end
+
+local function fillDisc(terrain: Terrain, center: Vector3, radius: number, material: Enum.Material)
+	fillShape(terrain, center.X - radius, center.X + radius, center.Z - radius, center.Z + radius, function(p)
+		return Vector3.new(p.X - center.X, 0, p.Z - center.Z).Magnitude <= radius
+	end, material)
+end
+
+-- Rectangulo girado (cf a nivel del suelo, tamano en sus ejes X y Z locales).
+local function fillRotatedRect(terrain: Terrain, cf: CFrame, sizeX: number, sizeZ: number, material: Enum.Material)
+	local hx, hz = sizeX / 2, sizeZ / 2
+	local minX, maxX, minZ, maxZ = math.huge, -math.huge, math.huge, -math.huge
+	for _, corner in { Vector3.new(-hx, 0, -hz), Vector3.new(hx, 0, -hz), Vector3.new(-hx, 0, hz), Vector3.new(hx, 0, hz) } do
+		local w = cf:PointToWorldSpace(corner)
+		minX, maxX = math.min(minX, w.X), math.max(maxX, w.X)
+		minZ, maxZ = math.min(minZ, w.Z), math.max(maxZ, w.Z)
+	end
+	fillShape(terrain, minX, maxX, minZ, maxZ, function(p)
+		local l = cf:PointToObjectSpace(Vector3.new(p.X, cf.Position.Y, p.Z))
+		return math.abs(l.X) <= hx and math.abs(l.Z) <= hz
+	end, material)
+end
+
 -- Pasto natural de Roblox: Terrain con material Grass y Decoration (las hojas
 -- largas que se mueven con el viento). GrassLength = 1 es el largo maximo.
 -- Las hojas solo se dibujan con calidad grafica media o alta.
@@ -4158,23 +4218,23 @@ local function buildGround(map: Folder)
 
 	-- donde NO debe salir pasto: plaza empedrada (con sus yurtas), arena bajo los
 	-- campamentos, tierra en los caminos y las cuevas, barro en el portal.
-	-- Se rellena TODA la profundidad del terreno (12 studs): el terreno va en
-	-- bloques de 4 studs y una capa fina no reemplaza el pasto, cuyas hojas
-	-- largas atravesarian los suelos y los botones.
-	terrain:FillCylinder(CFrame.new(0, -6, 0), 12, 50, Enum.Material.Cobblestone)
+	-- Se rellena toda la profundidad (12 studs, superficie en y = 0) con
+	-- bloques alineados a la rejilla (ver fillRect): asi ni salen hojas ni el
+	-- suelo se levanta sobre los pisos y los botones.
+	fillDisc(terrain, Vector3.zero, 50, Enum.Material.Cobblestone)
 	for _, cf in plotCenters() do
-		terrain:FillBlock(cf * CFrame.new(0, -6, 0), Vector3.new(100, 12, 100), Enum.Material.Sand)
+		fillRotatedRect(terrain, cf, 100, 100, Enum.Material.Sand)
 		-- camino de la plaza a la entrada (mismo trazado que las flechas de Tycoon)
 		local dir = Vector3.new(cf.Position.X, 0, cf.Position.Z).Unit
 		local from = dir * 28
 		local to = dir * (Config.PlotRingRadius - 45)
-		terrain:FillBlock(CFrame.lookAt((from + to) / 2, to) * CFrame.new(0, -6, 0), Vector3.new(10, 12, (to - from).Magnitude), Enum.Material.Ground)
+		fillRotatedRect(terrain, CFrame.lookAt((from + to) / 2, to), 10, (to - from).Magnitude, Enum.Material.Ground)
 	end
 	for i = 0, 3 do
 		local angle = math.pi / 4 + i * math.pi / 2
-		terrain:FillCylinder(CFrame.new(math.cos(angle) * 75, -6, math.sin(angle) * 75), 12, 20, Enum.Material.Ground)
+		fillDisc(terrain, Vector3.new(math.cos(angle) * 75, 0, math.sin(angle) * 75), 20, Enum.Material.Ground)
 	end
-	terrain:FillCylinder(CFrame.new(World.PortalPosition + Vector3.new(0, -6, 0)), 12, 30, Enum.Material.Mud)
+	fillDisc(terrain, World.PortalPosition, 30, Enum.Material.Mud)
 
 	-- horizonte: colinas y montanas nevadas SOLO lejos (nada toca edificios, campamentos ni el portal)
 	local rng = Random.new(1206) -- 1206: Temujin es proclamado Gengis Khan
@@ -4449,7 +4509,7 @@ local function buildArena(map: Folder)
 	local arenaRng = Random.new(1227) -- 1227: muere Gengis Khan
 	for _ = 1, 30 do
 		local p = center + Vector3.new(arenaRng:NextNumber(-half + 30, half - 30), 0, arenaRng:NextNumber(-half + 30, half - 30))
-		terrain:FillCylinder(CFrame.new(p + Vector3.new(0, -6, 0)), 12, arenaRng:NextNumber(10, 26), Enum.Material.Ground)
+		fillDisc(terrain, p, arenaRng:NextNumber(10, 26), Enum.Material.Ground)
 	end
 	verityFloor("ArenaGround", Vector3.new(half * 2 + 20, 2, half * 2 + 20), CFrame.new(center + Vector3.new(0, -1, 0)), arena)
 	for i = 0, 3 do
