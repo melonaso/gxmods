@@ -57,7 +57,7 @@ Abajo a la izquierda el juego dice **"Progreso: se guarda"** (verde) o **"Progre
 | Botón | Costo | Qué hace |
 | --- | --- | --- |
 | Corral de Ovejas | 25 | Dropper: 3 oro cada 2 s |
-| Sable Mongol | 120 | Arma cuerpo a cuerpo (25 de daño) |
+| Sable Mongol | 120 | Sable de hoja curva, guarda de bronce y empuñadura de cuero (25 de daño) |
 | Rebaño de Cabras | 300 | Dropper: 8 oro |
 | Empalizada | 500 | Valla decorativa |
 | Manada de Caballos | 1 200 | Dropper: 20 oro |
@@ -65,9 +65,9 @@ Abajo a la izquierda el juego dice **"Progreso: se guarda"** (verde) o **"Progre
 | Ruta de la Seda | 4 000 | Todo el oro x2 |
 | Caravana de Seda | 7 500 | Dropper: 55 oro |
 | Gran Yurta | 9 000 | **Refugio privado**: solo tú puedes esconderte dentro |
-| Lanza del Khan | 16 000 | Arma cuerpo a cuerpo (65 de daño) |
+| Lanza del Khan | 16 000 | Lanza con punta de hoja de acero y borla de crin roja (65 de daño) |
 | Tributo Imperial | 30 000 | Todo el oro x3 (reemplaza al x2) |
-| Trueno de Tengri | 50 000 | Arma a distancia (140 de daño) |
+| Trueno de Tengri | 50 000 | Báculo con anillos de oro y un orbe que brilla; dispara rayos (140 de daño) |
 | Muralla de Madera / Piedra / Gran Muralla | 2 500 / 12 000 / 45 000 | Rodea tu campamento: **los jugadores la atraviesan, Verity no**. Verity la golpea (200 por golpe) hasta romperla (800 / 2 500 / 6 000 de vida) y se repara sola cuando se va |
 | Segundo Piso | 20 000 | Losa con escalera, cinta, colector y caja propios |
 | Yaks / Camellos / Halcones / Tesoro de Karakorum | 25 000 – 90 000 | Droppers del segundo piso: 120 / 200 / 320 / 500 oro |

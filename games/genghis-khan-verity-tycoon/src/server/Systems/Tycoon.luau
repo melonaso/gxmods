@@ -749,6 +749,24 @@ function assign(player: Player, p: Plot)
 	Verity.startCycle()
 end
 
+-- Renacer (tras ganar la batalla final, si el jugador quiere): empieza de
+-- cero con mas oro para siempre. Lo ofrece FinalBattle con CanRebirth.
+local function rebirth(player: Player)
+	if not player:GetAttribute("CanRebirth") then
+		return
+	end
+	player:SetAttribute("CanRebirth", false)
+	PlayerData.rebirth(player)
+	Weapons.revoke(player)
+	local plot = plotOf[player]
+	if plot then
+		resetBuilds(plot)
+		refreshButtons(plot)
+	end
+	Sfx.play(Config.Sounds.Victory, workspace, { Volume = 0.8 })
+	Net.fireClient(player, "Notify", string.format("RENACISTE (x%d). Tu campamento empieza de cero, pero ahora ganas x%.1f de oro.", PlayerData.getRebirths(player), PlayerData.rebirthMultiplier(player)), "reward")
+end
+
 function Tycoon.init()
 	tycoonFolder = Instance.new("Folder")
 	tycoonFolder.Name = "Tycoons"
@@ -776,24 +794,6 @@ function Tycoon.init()
 		end
 		lastWarn[player] = nil
 	end)
-end
-
--- Renacer (tras ganar la batalla final, si el jugador quiere): empieza de
--- cero con mas oro para siempre. Lo ofrece FinalBattle con CanRebirth.
-local function rebirth(player: Player)
-	if not player:GetAttribute("CanRebirth") then
-		return
-	end
-	player:SetAttribute("CanRebirth", false)
-	PlayerData.rebirth(player)
-	Weapons.revoke(player)
-	local plot = plotOf[player]
-	if plot then
-		resetBuilds(plot)
-		refreshButtons(plot)
-	end
-	Sfx.play(Config.Sounds.Victory, workspace, { Volume = 0.8 })
-	Net.fireClient(player, "Notify", string.format("RENACISTE (x%d). Tu campamento empieza de cero, pero ahora ganas x%.1f de oro.", PlayerData.getRebirths(player), PlayerData.rebirthMultiplier(player)), "reward")
 end
 
 function Tycoon.start()

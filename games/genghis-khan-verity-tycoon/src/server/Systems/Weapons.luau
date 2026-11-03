@@ -13,15 +13,13 @@ local Build = require(script.Parent.Parent.Lib.Build)
 local Sfx = require(script.Parent.Parent.Lib.Sfx)
 local Verity = require(script.Parent.Verity)
 
-type Visual = { Size: Vector3, Color: Color3, Material: Enum.Material, Tip: Color3? }
-
-local VISUALS: { [string]: Visual } = {
-	Sable = { Size = Vector3.new(0.3, 0.3, 4.5), Color = Color3.fromRGB(205, 205, 215), Material = Enum.Material.Metal },
-	Lanza = { Size = Vector3.new(0.4, 0.4, 7.5), Color = Color3.fromRGB(110, 70, 35), Material = Enum.Material.Wood, Tip = Color3.fromRGB(220, 220, 230) },
-	Trueno = { Size = Vector3.new(0.5, 0.5, 6), Color = Color3.fromRGB(40, 60, 120), Material = Enum.Material.Metal, Tip = Color3.fromRGB(120, 200, 255) },
-}
-
 local Weapons = {}
+
+-- colores de las armas (arriba: tambien los usa onActivated)
+local STEEL = Color3.fromRGB(205, 208, 215)
+local BRONZE = Color3.fromRGB(190, 140, 60)
+local LEATHER = Color3.fromRGB(70, 42, 25)
+local TRUENO_COLOR = Color3.fromRGB(120, 200, 255)
 
 local bound: { [Tool]: boolean } = setmetatable({}, { __mode = "k" }) :: any
 local lastUse: { [Player]: { [string]: number } } = {}
@@ -157,8 +155,8 @@ local function onActivated(tool: Tool)
 		return
 	end
 
-	local handlePart = tool:FindFirstChild("Handle")
-	local soundAt: Instance = if handlePart then handlePart else tool
+	local handleInst = tool:FindFirstChild("Handle")
+	local soundAt: Instance = if handleInst then handleInst else tool
 	if not def.Ranged then
 		playAnim(tool, if id == "Lanza" then "Lunge" else "Slash")
 		Sfx.play(if id == "Lanza" then Config.Sounds.Lunge else Config.Sounds.Slash, soundAt, { Volume = 0.8 })
@@ -181,8 +179,7 @@ local function onActivated(tool: Tool)
 	if def.Ranged then
 		local handle = tool:FindFirstChild("Handle")
 		local from = if handle and handle:IsA("BasePart") then handle.Position else root.Position
-		local visual = VISUALS[id]
-		projectile(from, bossPos, if visual and visual.Tip then visual.Tip else Color3.new(1, 1, 1))
+		projectile(from, bossPos, TRUENO_COLOR)
 	end
 	Verity.damage(player, def.Damage)
 end
@@ -195,6 +192,114 @@ local function bind(tool: Instance)
 	tool.Activated:Connect(function()
 		onActivated(tool)
 	end)
+end
+
+-- ===== Armas cuerpo a cuerpo y baculo (modelos hechos con piezas) =====
+-- Convencion del agarre (la misma que el arco): la mano queda en GripPos
+-- (espacio del mango), +Z apunta hacia arriba / hacia la punta y +X hacia
+-- delante (el filo). Todas las piezas se sueldan al mango.
+
+
+local function newTool(id: string, def: Types.WeaponDef, gripPos: Vector3): Tool
+	local tool = Instance.new("Tool")
+	tool.Name = def.DisplayName
+	tool.CanBeDropped = false
+	tool.RequiresHandle = true
+	tool.ToolTip = string.format("Dano %d | Alcance %d", def.Damage, def.Range)
+	tool:SetAttribute("WeaponId", id)
+	tool.GripPos = gripPos
+	tool.GripForward = Vector3.new(-1, 0, 0)
+	tool.GripRight = Vector3.new(0, 1, 0)
+	tool.GripUp = Vector3.new(0, 0, 1)
+	return tool
+end
+
+local function handlePart(tool: Tool, size: Vector3, color: Color3, material: Enum.Material): Part
+	local handle = Build.part({ Name = "Handle", Size = size, CFrame = CFrame.new(), Color = color, Material = material, Anchored = false, CanCollide = false })
+	handle.Massless = true
+	handle.Parent = tool
+	return handle
+end
+
+-- Pieza decorativa soldada al mango (cf en el espacio del mango).
+local function attach(tool: Tool, handle: BasePart, name: string, size: Vector3, cf: CFrame, color: Color3, material: Enum.Material, shape: Enum.PartType?): Part
+	local p = Build.part({ Name = name, Size = size, CFrame = cf, Color = color, Material = material, Shape = shape, Anchored = false, CanCollide = false })
+	p.Massless = true
+	p.CanQuery = false
+	p.CanTouch = false
+	local weld = Instance.new("WeldConstraint")
+	weld.Part0 = handle
+	weld.Part1 = p
+	weld.Parent = p
+	p.Parent = tool
+	return p
+end
+
+-- Cilindro con su eje a lo largo de Z (el eje propio del cilindro de Roblox es X).
+local ALONG_Z = CFrame.Angles(0, math.rad(90), 0)
+
+-- Sable mongol: hoja curva de acero (se curva hacia atras), guarda redonda de
+-- bronce con gavilanes, empunadura de cuero y pomo.
+local function buildSaber(def: Types.WeaponDef): Tool
+	local tool = newTool("Sable", def, Vector3.zero)
+	local handle = handlePart(tool, Vector3.new(0.3, 0.36, 1.3), LEATHER, Enum.Material.Fabric)
+	attach(tool, handle, "Pommel", Vector3.new(0.5, 0.5, 0.5), CFrame.new(0, 0, -0.8), BRONZE, Enum.Material.Metal, Enum.PartType.Ball)
+	attach(tool, handle, "Guard", Vector3.new(0.2, 1.0, 1.0), CFrame.new(0, 0, 0.75) * ALONG_Z, BRONZE, Enum.Material.Metal, Enum.PartType.Cylinder)
+	attach(tool, handle, "Quillons", Vector3.new(1.5, 0.16, 0.16), CFrame.new(0, 0, 0.78), BRONZE, Enum.Material.Metal)
+	-- hoja: segmentos que giran 5 grados cada uno hacia -X y se van afinando
+	local point = Vector3.new(0, 0, 0.88)
+	local widths = { 0.34, 0.33, 0.31, 0.29, 0.26, 0.22, 0.14 }
+	local lengths = { 0.72, 0.72, 0.72, 0.72, 0.72, 0.6, 0.45 }
+	for k = 1, #widths do
+		local angle = math.rad(5 * (k - 1))
+		local dir = Vector3.new(-math.sin(angle), 0, math.cos(angle))
+		local nextPoint = point + dir * lengths[k]
+		local blade = attach(tool, handle, "Blade", Vector3.new(widths[k], 0.07, lengths[k] + 0.05), CFrame.lookAt((point + nextPoint) / 2, nextPoint), STEEL, Enum.Material.Metal)
+		blade.Reflectance = 0.25
+		point = nextPoint
+	end
+	return tool
+end
+
+-- Lanza del Khan: asta larga, punta de hoja de acero, anillo de bronce, borla
+-- de crin roja (tipica de las lanzas mongolas) y regaton en la base.
+local function buildSpear(def: Types.WeaponDef): Tool
+	local tool = newTool("Lanza", def, Vector3.new(0, 0, -1.5))
+	local handle = handlePart(tool, Vector3.new(0.3, 0.3, 9), Color3.fromRGB(95, 62, 32), Enum.Material.Wood)
+	attach(tool, handle, "Butt", Vector3.new(0.4, 0.4, 0.45), CFrame.new(0, 0, -4.65), BRONZE, Enum.Material.Metal)
+	attach(tool, handle, "Collar", Vector3.new(0.4, 0.46, 0.46), CFrame.new(0, 0, 4.6) * ALONG_Z, BRONZE, Enum.Material.Metal, Enum.PartType.Cylinder)
+	local head = { { z = 5.3, w = 0.55, l = 1.0 }, { z = 6.2, w = 0.32, l = 0.9 }, { z = 6.85, w = 0.12, l = 0.5 } }
+	for _, seg in head do
+		local p = attach(tool, handle, "SpearHead", Vector3.new(seg.w, 0.08, seg.l), CFrame.new(0, 0, seg.z), STEEL, Enum.Material.Metal)
+		p.Reflectance = 0.25
+	end
+	for k = 0, 7 do
+		local a = k / 8 * math.pi * 2
+		attach(tool, handle, "Tassel", Vector3.new(0.09, 0.09, 1.5), CFrame.new(math.cos(a) * 0.22, math.sin(a) * 0.22, 3.85) * CFrame.Angles(math.sin(a) * 0.35, -math.cos(a) * 0.35, 0), Color3.fromRGB(170, 25, 25), Enum.Material.Fabric)
+	end
+	return tool
+end
+
+-- Trueno de Tengri: baculo de metal azul con anillos de oro, puntas de rayo y
+-- un orbe que brilla (Tengri, el cielo eterno).
+local function buildThunderStaff(def: Types.WeaponDef): Tool
+	local tool = newTool("Trueno", def, Vector3.new(0, 0, -1.2))
+	local handle = handlePart(tool, Vector3.new(0.34, 0.34, 6.5), Color3.fromRGB(40, 60, 120), Enum.Material.Metal)
+	attach(tool, handle, "Cap", Vector3.new(0.45, 0.45, 0.3), CFrame.new(0, 0, -3.35), BRONZE, Enum.Material.Metal)
+	for _, z in { 1.6, 2.4, 3.0 } do
+		attach(tool, handle, "Ring", Vector3.new(0.18, 0.55, 0.55), CFrame.new(0, 0, z) * ALONG_Z, Color3.fromRGB(230, 190, 60), Enum.Material.Metal, Enum.PartType.Cylinder)
+	end
+	for k = 0, 2 do
+		local a = k / 3 * math.pi * 2
+		attach(tool, handle, "Prong", Vector3.new(0.12, 0.12, 1.3), CFrame.new(math.cos(a) * 0.35, math.sin(a) * 0.35, 3.75) * CFrame.Angles(-math.sin(a) * 0.4, math.cos(a) * 0.4, 0), Color3.fromRGB(230, 190, 60), Enum.Material.Metal)
+	end
+	local orb = attach(tool, handle, "Orb", Vector3.new(0.95, 0.95, 0.95), CFrame.new(0, 0, 3.75), TRUENO_COLOR, Enum.Material.Neon, Enum.PartType.Ball)
+	local light = Instance.new("PointLight")
+	light.Color = TRUENO_COLOR
+	light.Range = 10
+	light.Brightness = 1.5
+	light.Parent = orb
+	return tool
 end
 
 -- Arco recurvo mongol: mango forrado, palas curvas con las puntas (siyah)
@@ -291,47 +396,19 @@ end
 
 local function buildTool(id: string): Tool?
 	local def = Config.Weapons[id]
-	if id == "Arco" and def then
-		return buildBow(def)
-	end
-	local visual = VISUALS[id]
-	if not def or not visual then
+	if not def then
 		return nil
 	end
-	local tool = Instance.new("Tool")
-	tool.Name = def.DisplayName
-	tool.CanBeDropped = false
-	tool.RequiresHandle = true
-	tool.ToolTip = string.format("Dano %d | Alcance %d", def.Damage, def.Range)
-	tool:SetAttribute("WeaponId", id)
-	-- empunadura vertical, como la espada clasica
-	tool.GripPos = Vector3.new(0, 0, -visual.Size.Z / 2 + 0.6)
-	tool.GripForward = Vector3.new(-1, 0, 0)
-	tool.GripRight = Vector3.new(0, 1, 0)
-	tool.GripUp = Vector3.new(0, 0, 1)
-
-	local handle = Build.part({ Name = "Handle", Size = visual.Size, CFrame = CFrame.new(), Color = visual.Color, Material = visual.Material, Anchored = false, CanCollide = false })
-	handle.Massless = true
-	handle.Parent = tool
-
-	if visual.Tip then
-		local tip = Build.part({
-			Name = "Tip",
-			Size = Vector3.new(0.7, 0.7, 1.2),
-			CFrame = handle.CFrame * CFrame.new(0, 0, -visual.Size.Z / 2 - 0.4),
-			Color = visual.Tip,
-			Material = if def.Ranged then Enum.Material.Neon else Enum.Material.Metal,
-			Anchored = false,
-			CanCollide = false,
-		})
-		tip.Massless = true
-		local weld = Instance.new("WeldConstraint")
-		weld.Part0 = handle
-		weld.Part1 = tip
-		weld.Parent = tip
-		tip.Parent = tool
+	if id == "Arco" then
+		return buildBow(def)
+	elseif id == "Sable" then
+		return buildSaber(def)
+	elseif id == "Lanza" then
+		return buildSpear(def)
+	elseif id == "Trueno" then
+		return buildThunderStaff(def)
 	end
-	return tool
+	return nil
 end
 
 -- Copia decorativa del arma (anclada, sin Tool) para la mesa de la armeria.
