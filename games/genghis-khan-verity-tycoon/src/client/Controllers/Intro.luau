@@ -65,6 +65,7 @@ local HOLD = 2.2 -- segundos que se queda cada frase
 local Intro = {}
 
 local skip = false
+local cameraTween: Tween? = nil -- el movimiento de la toma en curso (se cancela al saltar)
 local gui: ScreenGui
 local blackout: Frame
 local story: TextLabel
@@ -188,6 +189,11 @@ local function buildGui(player: Player)
 	corner.Parent = skipButton
 	skipButton.Activated:Connect(function()
 		skip = true
+		-- corta ya el movimiento de camara de la toma; si no, sigue moviendo la
+		-- camara un rato y pelea con la camara normal
+		if cameraTween then
+			cameraTween:Cancel()
+		end
 	end)
 
 	blackout = Instance.new("Frame")
@@ -233,7 +239,9 @@ function Intro.start()
 			break
 		end
 		camera.CFrame = shot.from
-		TweenService:Create(camera, TweenInfo.new(shotDuration(shot), Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), { CFrame = shot.to }):Play()
+		local tween = TweenService:Create(camera, TweenInfo.new(shotDuration(shot), Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), { CFrame = shot.to })
+		cameraTween = tween
+		tween:Play()
 		if i == 1 then
 			fade(1, 2)
 		end
@@ -249,6 +257,10 @@ function Intro.start()
 	end
 
 	-- vuelta al jugador, en el spawn del centro
+	if cameraTween then
+		cameraTween:Cancel()
+		cameraTween = nil
+	end
 	skip = false
 	story.Text = ""
 	fade(0, 0.6)

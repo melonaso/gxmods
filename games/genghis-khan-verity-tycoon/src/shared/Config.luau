@@ -6,7 +6,7 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v15"
+Config.Version = "v16"
 
 -- Introduccion cinematografica al entrar (historia de Gengis Khan). false = sin intro.
 Config.Intro = { Enabled = true }

@@ -73,9 +73,14 @@ end
 -- redondo (FillBlock con rotacion, FillCylinder) deja el borde de arriba
 -- "suavizado" y levanta el suelo unos 2 studs, tapando pisos y botones.
 -- Por eso todo se rellena con bloques SIN girar, alineados a la rejilla y con
--- la cara de arriba exactamente en y = 0. Las formas giradas o redondas se
+-- la cara de arriba en FILL_TOP. Las formas giradas o redondas se
 -- arman fila a fila con tramos rectos.
 local VOXEL = 4
+-- Roblox dibuja la superficie del terreno unos 2 studs POR ENCIMA del borde
+-- de arriba del relleno (visto en el juego: con rellenos hasta y = 0 el suelo
+-- tapaba los botones y el spawn). Por eso todo se rellena hasta y = -2 y la
+-- superficie visible queda a ras de los pisos (y = 0).
+local FILL_TOP = -2
 
 local function fillRect(terrain: Terrain, x0: number, x1: number, z0: number, z1: number, material: Enum.Material)
 	local ax0 = math.floor(math.min(x0, x1) / VOXEL) * VOXEL
@@ -83,7 +88,7 @@ local function fillRect(terrain: Terrain, x0: number, x1: number, z0: number, z1
 	local az0 = math.floor(math.min(z0, z1) / VOXEL) * VOXEL
 	local az1 = math.ceil(math.max(z0, z1) / VOXEL) * VOXEL
 	if ax1 > ax0 and az1 > az0 then
-		terrain:FillBlock(CFrame.new((ax0 + ax1) / 2, -6, (az0 + az1) / 2), Vector3.new(ax1 - ax0, 12, az1 - az0), material)
+		terrain:FillBlock(CFrame.new((ax0 + ax1) / 2, FILL_TOP - 6, (az0 + az1) / 2), Vector3.new(ax1 - ax0, 12, az1 - az0), material)
 	end
 end
 
@@ -170,11 +175,11 @@ local function buildGround(map: Folder)
 
 	-- pradera de pasto natural (superficie en y = 0)
 	local HALF = 550
-	terrain:FillBlock(CFrame.new(0, -6, 0), Vector3.new(HALF * 2, 12, HALF * 2), Enum.Material.Grass)
+	terrain:FillBlock(CFrame.new(0, FILL_TOP - 6, 0), Vector3.new(HALF * 2, 12, HALF * 2), Enum.Material.Grass)
 
 	-- rio Onon: lecho y orillas de arena, agua encima
-	terrain:FillBlock(CFrame.new(0, -2, RIVER_Z), Vector3.new(HALF * 2, 4, RIVER_HALF * 2 + 10), Enum.Material.Sand)
-	terrain:FillBlock(CFrame.new(0, -3, RIVER_Z), Vector3.new(HALF * 2, 6, RIVER_HALF * 2), Enum.Material.Water)
+	terrain:FillBlock(CFrame.new(0, FILL_TOP - 2, RIVER_Z), Vector3.new(HALF * 2, 4, RIVER_HALF * 2 + 10), Enum.Material.Sand)
+	terrain:FillBlock(CFrame.new(0, FILL_TOP - 3, RIVER_Z), Vector3.new(HALF * 2, 6, RIVER_HALF * 2), Enum.Material.Water)
 	local riverSign = Build.part({ Name = "RiverSign", Size = Vector3.new(1, 1, 1), CFrame = CFrame.new(0, 8, RIVER_Z), Transparency = 1, CanCollide = false, Parent = map })
 	Build.billboard(riverSign, "Rio Onon", 0, 220).TextColor3 = Color3.fromRGB(180, 220, 255)
 
@@ -467,7 +472,7 @@ local function buildArena(map: Folder)
 	arena.Parent = map
 	-- campo de batalla: pasto natural con manchas de tierra pisoteada
 	local terrain = workspace.Terrain
-	terrain:FillBlock(CFrame.new(center + Vector3.new(0, -6, 0)), Vector3.new(half * 2 + 120, 12, half * 2 + 120), Enum.Material.Grass)
+	terrain:FillBlock(CFrame.new(center + Vector3.new(0, FILL_TOP - 6, 0)), Vector3.new(half * 2 + 120, 12, half * 2 + 120), Enum.Material.Grass)
 	local arenaRng = Random.new(1227) -- 1227: muere Gengis Khan
 	for _ = 1, 30 do
 		local p = center + Vector3.new(arenaRng:NextNumber(-half + 30, half - 30), 0, arenaRng:NextNumber(-half + 30, half - 30))
