@@ -36,23 +36,66 @@ local KEYS = {
 	{ 2.40, 0, 0, 0 },
 }
 
+-- Patada (batalla final): recoge la rodilla y estira la pierna derecha.
+-- tiempo, cadera derecha (adelante +), rodilla (doblar -), cintura (atras +)
+Pose.KickImpact = 0.47
+Pose.KickDuration = 1.1
+local KICK_KEYS = {
+	{ 0.00, 0, 0, 0 },
+	{ 0.30, rad(70), rad(-110), rad(8) }, -- recoge la rodilla
+	{ 0.45, rad(95), rad(-5), rad(20) }, -- estira: patada
+	{ 0.62, rad(95), rad(-5), rad(20) },
+	{ 1.10, 0, 0, 0 },
+}
+
+-- Lanzar roca (batalla final): se agacha, arranca la roca del suelo, la
+-- sube por detras de la cabeza y la lanza con el brazo derecho.
+-- tiempo, hombro derecho (adelante +), codo, cintura (adelante -)
+Pose.ThrowGrab = 0.5 -- la roca aparece en la mano
+Pose.ThrowRelease = 1.36 -- la roca sale volando
+Pose.ThrowDuration = 2.0
+local THROW_KEYS = {
+	{ 0.00, 0, 0, 0 },
+	{ 0.45, rad(75), rad(15), rad(-50) }, -- alcanza el suelo
+	{ 0.60, rad(75), rad(15), rad(-50) },
+	{ 1.10, rad(200), rad(35), rad(14) }, -- la sube por detras de la cabeza
+	{ 1.25, rad(208), rad(40), rad(18) }, -- tensa
+	{ 1.42, rad(45), rad(0), rad(-28) }, -- lanza
+	{ 2.00, 0, 0, 0 },
+}
+
 local function smooth(a: number): number
 	return a * a * (3 - 2 * a)
 end
 
--- Devuelve (hombro, codo, cintura) en radianes para el instante t.
-function Pose.killAngles(t: number): (number, number, number)
+-- Interpola una tabla de claves {tiempo, a, b, c} en el instante t.
+local function sample(keys: { { number } }, t: number): (number, number, number)
 	if t <= 0 then
 		return 0, 0, 0
 	end
-	for i = 1, #KEYS - 1 do
-		local a, b = KEYS[i], KEYS[i + 1]
+	for i = 1, #keys - 1 do
+		local a, b = keys[i], keys[i + 1]
 		if t <= b[1] then
 			local alpha = smooth((t - a[1]) / (b[1] - a[1]))
 			return a[2] + (b[2] - a[2]) * alpha, a[3] + (b[3] - a[3]) * alpha, a[4] + (b[4] - a[4]) * alpha
 		end
 	end
 	return 0, 0, 0
+end
+
+-- Devuelve (hombro, codo, cintura) en radianes para el instante t.
+function Pose.killAngles(t: number): (number, number, number)
+	return sample(KEYS, t)
+end
+
+-- (cadera, rodilla, cintura) de la patada.
+function Pose.kickAngles(t: number): (number, number, number)
+	return sample(KICK_KEYS, t)
+end
+
+-- (hombro derecho, codo derecho, cintura) del lanzamiento de roca.
+function Pose.throwAngles(t: number): (number, number, number)
+	return sample(THROW_KEYS, t)
 end
 
 -- Lee las medidas que VerityModel guardó en el modelo.

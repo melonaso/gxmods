@@ -1,8 +1,10 @@
 --!strict
 -- Armas: se crean por codigo, se guardan en StarterGear (se conservan al morir)
 -- y el dano se valida en el servidor (alcance + cooldown). Solo danan a Verity.
+local Debris = game:GetService("Debris")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
 local TweenService = game:GetService("TweenService")
 
 local Shared = ReplicatedStorage:WaitForChild("Shared")
@@ -20,6 +22,8 @@ local STEEL = Color3.fromRGB(205, 208, 215)
 local BRONZE = Color3.fromRGB(190, 140, 60)
 local LEATHER = Color3.fromRGB(70, 42, 25)
 local TRUENO_COLOR = Color3.fromRGB(120, 200, 255)
+local IRON = Color3.fromRGB(78, 80, 86)
+local CLAY = Color3.fromRGB(150, 88, 52)
 
 local bound: { [Tool]: boolean } = setmetatable({}, { __mode = "k" }) :: any
 local lastUse: { [Player]: { [string]: number } } = {}
@@ -105,6 +109,115 @@ local function castLightning(tool: Tool, player: Player, character: Model, def: 
 		lightningBolt(from, root.Position + root.CFrame.LookVector * 25 - Vector3.new(0, 2.5, 0))
 		Sfx.play(Config.Sounds.Bass, root, { Volume = 1.2, Speed = 0.7 })
 	end
+end
+
+-- Distancia horizontal de Verity al jugador (descontando su grosor) o nil.
+local function verityInRange(root: BasePart, range: number): Vector3?
+	local bossPos = Verity.getPosition()
+	if bossPos and Vector3.new(bossPos.X - root.Position.X, 0, bossPos.Z - root.Position.Z).Magnitude - Verity.getHitRadius() <= range then
+		return bossPos
+	end
+	return nil
+end
+
+-- Onda en el suelo (golpe de la maza).
+local function groundWave(at: Vector3, radius: number, color: Color3)
+	local ring = Build.part({
+		Name = "Wave",
+		Shape = Enum.PartType.Cylinder,
+		Size = Vector3.new(0.4, 1, 1),
+		CFrame = CFrame.new(at) * CFrame.Angles(0, 0, math.pi / 2),
+		Color = color,
+		Material = Enum.Material.Neon,
+		CanCollide = false,
+		Transparency = 0.3,
+		Parent = workspace,
+	})
+	ring.CanQuery = false
+	ring.CanTouch = false
+	TweenService:Create(ring, TweenInfo.new(0.35, Enum.EasingStyle.Quad), { Size = Vector3.new(0.4, radius * 2, radius * 2), Transparency = 1 }):Play()
+	Debris:AddItem(ring, 0.4)
+end
+
+-- Maza de Hierro: el golpe llega al bajar la maza (ImpactTime, en sincronia
+-- con Controllers/WeaponAnimator). Si Verity esta al alcance, dano y lo aturde.
+local function maceImpact(tool: Tool, player: Player, character: Model, def: Types.WeaponDef)
+	if tool.Parent ~= character then
+		return
+	end
+	local root = character:FindFirstChild("HumanoidRootPart")
+	local humanoid = character:FindFirstChildOfClass("Humanoid")
+	if not (root and root:IsA("BasePart") and humanoid and humanoid.Health > 0) then
+		return
+	end
+	groundWave(root.Position + root.CFrame.LookVector * 4 - Vector3.new(0, 2.8, 0), 7, Color3.fromRGB(255, 200, 120))
+	Sfx.play(Config.Sounds.Bass, root, { Volume = 1.3, Speed = 0.9 })
+	if verityInRange(root, def.Range) then
+		Verity.damage(player, def.Damage)
+		Verity.stun(Config.Mace.StunSeconds)
+	end
+end
+
+-- Bomba de Polvora: vuela en arco con la mecha encendida y explota al caer.
+-- La explosion es solo visual (no rompe ni empuja nada); el dano lo calcula
+-- el servidor: Verity dentro del radio.
+local function throwBomb(tool: Tool, player: Player, character: Model, def: Types.WeaponDef)
+	if tool.Parent ~= character then
+		return
+	end
+	local root = character:FindFirstChild("HumanoidRootPart")
+	local humanoid = character:FindFirstChildOfClass("Humanoid")
+	if not (root and root:IsA("BasePart") and humanoid and humanoid.Health > 0) then
+		return
+	end
+	local handle = tool:FindFirstChild("Handle")
+	local from = if handle and handle:IsA("BasePart") then handle.Position + Vector3.new(0, 1.5, 0) else root.Position + Vector3.new(0, 3, 0)
+	local target = verityInRange(root, def.Range)
+	local to = if target then Vector3.new(target.X, root.Position.Y - 2.5, target.Z) else root.Position + root.CFrame.LookVector * 35 - Vector3.new(0, 2.5, 0)
+	local bomb = Build.part({ Name = "ThrownBomb", Shape = Enum.PartType.Ball, Size = Vector3.new(1.2, 1.2, 1.2), CFrame = CFrame.new(from), Color = CLAY, Material = Enum.Material.Slate, CanCollide = false, Parent = workspace })
+	bomb.CanQuery = false
+	bomb.CanTouch = false
+	local sparks = Instance.new("Sparkles")
+	sparks.SparkleColor = Color3.fromRGB(255, 170, 60)
+	sparks.Parent = bomb
+	Sfx.play(Config.Sounds.Lunge, bomb, { Volume = 0.8, Speed = 0.7 })
+	local dist = Vector3.new(to.X - from.X, 0, to.Z - from.Z).Magnitude
+	local duration = math.clamp(dist / Config.Bomb.FlightSpeed, 0.35, 1.2)
+	local apex = math.max(5, dist * 0.25)
+	task.spawn(function()
+		local start = os.clock()
+		while true do
+			local a = math.min(1, (os.clock() - start) / duration)
+			bomb.CFrame = CFrame.new(from:Lerp(to, a) + Vector3.new(0, 4 * apex * a * (1 - a), 0)) * CFrame.Angles(a * 12, a * 5, 0)
+			if a >= 1 then
+				break
+			end
+			RunService.Heartbeat:Wait()
+		end
+		bomb:Destroy()
+		local blast = Instance.new("Explosion")
+		blast.Position = to
+		blast.BlastRadius = Config.Bomb.Radius
+		blast.BlastPressure = 0 -- no empuja
+		blast.DestroyJointRadiusPercent = 0 -- no mata a nadie
+		blast.ExplosionType = Enum.ExplosionType.NoCraters -- no rompe el terreno
+		blast.Parent = workspace
+		local flashPart = Build.part({ Name = "BombFlash", Size = Vector3.new(1, 1, 1), CFrame = CFrame.new(to + Vector3.new(0, 2, 0)), Transparency = 1, CanCollide = false, Parent = workspace })
+		flashPart.CanQuery = false
+		flashPart.CanTouch = false
+		local light = Instance.new("PointLight")
+		light.Color = Color3.fromRGB(255, 150, 60)
+		light.Range = 40
+		light.Brightness = 8
+		light.Parent = flashPart
+		TweenService:Create(light, TweenInfo.new(0.5), { Brightness = 0 }):Play()
+		Debris:AddItem(flashPart, 0.6)
+		Sfx.play(Config.Sounds.Bass, flashPart, { Volume = 2, Speed = 0.45 })
+		local bossPos = Verity.getPosition()
+		if bossPos and Vector3.new(bossPos.X - to.X, 0, bossPos.Z - to.Z).Magnitude <= Config.Bomb.Radius + Verity.getHitRadius() then
+			Verity.damage(player, def.Damage)
+		end
+	end)
 end
 
 -- ===== Arco compuesto: disparo =====
@@ -212,7 +325,23 @@ local function onActivated(tool: Tool)
 
 	local handleInst = tool:FindFirstChild("Handle")
 	local soundAt: Instance = if handleInst then handleInst else tool
-	if id == "Trueno" then
+	if id == "Maza" then
+		-- alza la maza y la baja de golpe (maceImpact)
+		tool:SetAttribute("AttackAt", workspace:GetServerTimeNow())
+		Sfx.play(Config.Sounds.Slash, soundAt, { Volume = 0.9, Speed = 0.6 })
+		task.delay(Config.Mace.ImpactTime, function()
+			maceImpact(tool, player, character :: Model, def)
+		end)
+		return
+	elseif id == "Bomba" then
+		-- la lanza por encima del hombro (throwBomb); el cliente esconde la bomba
+		-- de la mano hasta que "recarga"
+		tool:SetAttribute("AttackAt", workspace:GetServerTimeNow())
+		task.delay(Config.Bomb.ThrowTime, function()
+			throwBomb(tool, player, character :: Model, def)
+		end)
+		return
+	elseif id == "Trueno" then
 		-- alza el baculo y lo baja: el rayo sale al bajar (castLightning)
 		tool:SetAttribute("AttackAt", workspace:GetServerTimeNow())
 		Sfx.play(Config.Sounds.Bass, soundAt, { Volume = 0.9, Speed = 1.1 })
@@ -361,6 +490,46 @@ local function buildThunderStaff(def: Types.WeaponDef): Tool
 	return tool
 end
 
+-- Maza de Hierro (shestopior): mango de madera con forro de cuero, collar de
+-- bronce y cabeza de hierro con seis alas (aletas) alrededor y remate en punta.
+local function buildMace(def: Types.WeaponDef): Tool
+	local tool = newTool("Maza", def, Vector3.new(0, 0, -0.9))
+	local handle = handlePart(tool, Vector3.new(0.28, 0.28, 3.6), Color3.fromRGB(85, 55, 30), Enum.Material.Wood)
+	attach(tool, handle, "Wrap", Vector3.new(0.34, 0.34, 1.1), CFrame.new(0, 0, -0.9), LEATHER, Enum.Material.Fabric)
+	attach(tool, handle, "Pommel", Vector3.new(0.45, 0.45, 0.45), CFrame.new(0, 0, -1.9), BRONZE, Enum.Material.Metal, Enum.PartType.Ball)
+	attach(tool, handle, "Collar", Vector3.new(0.25, 0.48, 0.48), CFrame.new(0, 0, 1.75) * ALONG_Z, BRONZE, Enum.Material.Metal, Enum.PartType.Cylinder)
+	local core = attach(tool, handle, "HeadCore", Vector3.new(1.3, 0.55, 0.55), CFrame.new(0, 0, 2.5) * ALONG_Z, IRON, Enum.Material.Metal, Enum.PartType.Cylinder)
+	core.Reflectance = 0.15
+	for k = 0, 5 do
+		local a = k / 6 * math.pi * 2
+		local dir = Vector3.new(math.cos(a), math.sin(a), 0)
+		-- ala: placa radial, mas ancha en el centro (dos piezas)
+		local wing = attach(tool, handle, "Flange", Vector3.new(0.5, 0.1, 1.15), CFrame.new(dir * 0.45 + Vector3.new(0, 0, 2.5)) * CFrame.Angles(0, 0, a), IRON, Enum.Material.Metal)
+		wing.Reflectance = 0.15
+		attach(tool, handle, "FlangeTip", Vector3.new(0.22, 0.1, 0.6), CFrame.new(dir * 0.78 + Vector3.new(0, 0, 2.5)) * CFrame.Angles(0, 0, a), IRON, Enum.Material.Metal)
+	end
+	attach(tool, handle, "Finial", Vector3.new(0.36, 0.36, 0.36), CFrame.new(0, 0, 3.2), BRONZE, Enum.Material.Metal, Enum.PartType.Ball)
+	attach(tool, handle, "Spike", Vector3.new(0.16, 0.16, 0.5), CFrame.new(0, 0, 3.55), IRON, Enum.Material.Metal)
+	return tool
+end
+
+-- Bomba de Polvora (tetsuhau): bola de ceramica con aros de hierro, cuerda
+-- cruzada y mecha encendida.
+local function buildBomb(def: Types.WeaponDef): Tool
+	local tool = newTool("Bomba", def, Vector3.new(0, 0, -0.35))
+	local handle = handlePart(tool, Vector3.new(1.2, 1.2, 1.2), CLAY, Enum.Material.Slate)
+	handle.Shape = Enum.PartType.Ball
+	attach(tool, handle, "Band", Vector3.new(0.18, 1.24, 1.24), CFrame.new(0, 0, 0) * ALONG_Z, IRON, Enum.Material.Metal, Enum.PartType.Cylinder)
+	attach(tool, handle, "Rope", Vector3.new(0.1, 1.26, 1.26), CFrame.new(0, 0, 0), Color3.fromRGB(190, 160, 110), Enum.Material.Fabric, Enum.PartType.Cylinder)
+	attach(tool, handle, "Neck", Vector3.new(0.2, 0.42, 0.42), CFrame.new(0, 0, 0.6) * ALONG_Z, CLAY, Enum.Material.Slate, Enum.PartType.Cylinder)
+	attach(tool, handle, "Fuse", Vector3.new(0.1, 0.1, 0.5), CFrame.new(0, 0, 0.9) * CFrame.Angles(0.3, 0, 0), Color3.fromRGB(60, 45, 30), Enum.Material.Fabric)
+	local spark = attach(tool, handle, "Spark", Vector3.new(0.22, 0.22, 0.22), CFrame.new(0, -0.07, 1.15), Color3.fromRGB(255, 170, 60), Enum.Material.Neon, Enum.PartType.Ball)
+	local sparkles = Instance.new("Sparkles")
+	sparkles.SparkleColor = Color3.fromRGB(255, 170, 60)
+	sparkles.Parent = spark
+	return tool
+end
+
 -- Arco recurvo mongol: mango forrado, palas curvas con las puntas (siyah)
 -- hacia delante, cuerda en dos mitades y flecha encordada. La cuerda y la
 -- flecha van con Weld (no WeldConstraint) para que el cliente las mueva al
@@ -466,6 +635,10 @@ local function buildTool(id: string): Tool?
 		return buildSpear(def)
 	elseif id == "Trueno" then
 		return buildThunderStaff(def)
+	elseif id == "Maza" then
+		return buildMace(def)
+	elseif id == "Bomba" then
+		return buildBomb(def)
 	end
 	return nil
 end
@@ -479,6 +652,11 @@ function Weapons.displayModel(id: string): Model?
 	end
 	local model = Instance.new("Model")
 	model.Name = "Display_" .. id
+	for _, inst in tool:GetDescendants() do
+		if inst:IsA("Sparkles") then
+			inst:Destroy() -- en la mesa, la mecha va apagada
+		end
+	end
 	for _, inst in tool:GetChildren() do
 		if inst:IsA("BasePart") then
 			inst.Anchored = true

@@ -14,6 +14,7 @@
 --   - agacharse (C): rodillas flexionadas que coinciden con la bajada de cadera
 --   - transformación: se estira, abre los brazos y echa la cabeza atrás
 --   - ataque (Q): sigue la misma línea de tiempo que usa el servidor
+--   - batalla final: patada (KickStart) y lanzar roca (ThrowStart)
 --
 -- Funciona con cualquier rig (R15, R6 o personalizado): busca las uniones por
 -- nombre y aplica las rotaciones en el marco del torso. Escribe C0 en local
@@ -170,6 +171,52 @@ local function animate(rig: Rig, dt: number)
 		return
 	end
 
+	-- Patada (batalla final): recoge la rodilla derecha y la estira, echando
+	-- el torso atras y abriendo los brazos para equilibrarse
+	local kickStart = model:GetAttribute("KickStart") :: number?
+	if kickStart then
+		local t = Workspace:GetServerTimeNow() - kickStart
+		local hip, knee, waist = Pose.kickAngles(t)
+		local k = math.clamp(waist / math.rad(20), 0, 1)
+		set(rig, "Waist", rx(waist))
+		set(rig, "RightHip", rx(hip))
+		set(rig, "RightKnee", rx(knee))
+		set(rig, "RightAnkle", rx(-0.25 * k))
+		set(rig, "LeftHip", rx(-waist * 0.6))
+		set(rig, "LeftKnee", rx(-0.3 * k))
+		set(rig, "LeftAnkle", rx(0.15 * k))
+		set(rig, "LeftShoulder", rx(0.4 * k) * CFrame.Angles(0, 0, -0.9 * k))
+		set(rig, "RightShoulder", rx(-0.3 * k) * CFrame.Angles(0, 0, 0.9 * k))
+		set(rig, "LeftElbow", rx(0.35 * k))
+		set(rig, "RightElbow", rx(0.35 * k))
+		set(rig, "Neck", rx(-waist * 0.5) * CFrame.Angles(0, 0, math.sin(clock * 30) * 0.05))
+		set(rig, "HeadJoint", CFrame.identity)
+		return
+	end
+
+	-- Lanzar roca (batalla final): se agacha a arrancarla, la sube por detras
+	-- de la cabeza con el brazo derecho y la lanza; el izquierdo equilibra
+	local throwStart = model:GetAttribute("ThrowStart") :: number?
+	if throwStart then
+		local t = Workspace:GetServerTimeNow() - throwStart
+		local shoulder, elbow, waist = Pose.throwAngles(t)
+		local bendDown = math.clamp(-waist / math.rad(50), 0, 1) -- agachado al arrancarla
+		set(rig, "Waist", rx(waist))
+		set(rig, "RightShoulder", rx(shoulder) * CFrame.Angles(0, 0, math.rad(8)))
+		set(rig, "RightElbow", rx(elbow))
+		set(rig, "LeftShoulder", rx(math.rad(35) + waist * 0.4) * CFrame.Angles(0, 0, -math.rad(25)))
+		set(rig, "LeftElbow", rx(math.rad(25)))
+		set(rig, "LeftHip", rx(math.rad(-12) + 0.5 * bendDown))
+		set(rig, "RightHip", rx(math.rad(20) + 0.5 * bendDown))
+		set(rig, "LeftKnee", rx(-0.25 - 0.6 * bendDown))
+		set(rig, "RightKnee", rx(-0.35 - 0.6 * bendDown))
+		set(rig, "LeftAnkle", rx(0.12 + 0.3 * bendDown))
+		set(rig, "RightAnkle", rx(0.18 + 0.3 * bendDown))
+		set(rig, "Neck", rx(-waist * 0.5))
+		set(rig, "HeadJoint", CFrame.identity)
+		return
+	end
+
 	-- Transformación: se estira desde encogida, abre los brazos y ruge
 	local transformStart = model:GetAttribute("TransformStart") :: number?
 	if transformStart then
@@ -318,7 +365,10 @@ function VerityAnimator.start()
 				continue
 			end
 			local root = rig.root
-			local busy = model:GetAttribute("KillStart") ~= nil or model:GetAttribute("TransformStart") ~= nil
+			local busy = model:GetAttribute("KillStart") ~= nil
+				or model:GetAttribute("TransformStart") ~= nil
+				or model:GetAttribute("KickStart") ~= nil
+				or model:GetAttribute("ThrowStart") ~= nil
 			if busy or not root or not root.Anchored then
 				animate(rig, dt)
 			end

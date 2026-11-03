@@ -6,7 +6,7 @@ local Types = require(script.Parent.Types)
 local Config = {}
 
 -- Se ve abajo a la izquierda: sirve para saber si abriste el archivo mas nuevo.
-Config.Version = "v20"
+Config.Version = "v21"
 
 -- Introduccion cinematografica al entrar (historia de Gengis Khan). false = sin intro.
 Config.Intro = { Enabled = true }
@@ -62,14 +62,29 @@ Config.FinalBattle = {
 	Scale = 1.7, -- ~31 studs de alto
 	BaseHealth = 12000,
 	HealthPerPlayer = 6000,
-	WalkSpeed = 30,
-	EnragedSpeed = 38,
+	WalkSpeed = 48, -- mas rapido que los caballos: no se le puede huir
+	EnragedSpeed = 56,
 	EnrageThreshold = 0.3,
-	HorseSpeed = 44, -- los caballos son mas rapidos que la forma final
+	HorseSpeed = 44,
+	-- Ataques de la forma final (elige segun la distancia al jinete):
+	--   golpe   : levanta los brazos y aplasta; la onda dana alrededor del impacto
+	--   patada  : rapida, de cerca, y lanza por los aires al jinete
+	--   rocas   : de lejos, arranca una roca del suelo y la lanza en arco
+	--             (un circulo rojo marca donde va a caer: se puede esquivar)
 	MeleeRange = 20,
 	MeleeDamage = 40,
-	MeleeCooldown = 2.8,
+	MeleeCooldown = 2.8, -- tiempo entre el inicio de un ataque y el siguiente (+ duracion - AttackAnimTime)
 	AttackAnimTime = 2.4,
+	SlamRadius = 18, -- onda del golpe
+	KickRange = 16,
+	KickDamage = 30,
+	KickKnockback = 70,
+	ThrowMinRange = 28,
+	ThrowRange = 170,
+	ThrowCooldown = 5,
+	RockDamage = 35,
+	RockRadius = 13,
+	RockSpeed = 95, -- studs por segundo (en horizontal)
 	ScreamCooldown = 10,
 	ScreamRadius = 60,
 	ScreamDamage = 25,
@@ -98,6 +113,32 @@ Config.Rebirth = {
 -- Trueno de Tengri: el rayo sale al bajar el baculo (sincronizado con la animacion).
 Config.Staff = {
 	CastTime = 0.3,
+}
+
+-- Maza de Hierro (shestopior, la maza de seis alas): golpe por encima de la
+-- cabeza que aturde a Verity un instante.
+Config.Mace = {
+	ImpactTime = 0.32, -- el golpe llega al bajar la maza
+	StunSeconds = 0.8,
+}
+
+-- Bomba de Polvora (tetsuhau, la bomba de ceramica de los mongoles): se lanza
+-- en arco y explota al caer.
+Config.Bomb = {
+	ThrowTime = 0.35, -- sale de la mano
+	Radius = 14, -- explosion
+	FlightSpeed = 70,
+	ReloadTime = 1.4, -- la mano queda vacia hasta que aparece otra bomba
+}
+
+-- Torres de la puerta: balista en lo alto de cada torre. Sientate en el
+-- banco, apunta con el raton (o toca la pantalla) y dispara.
+Config.Tower = {
+	Height = 30, -- plataforma de arriba
+	Damage = 90,
+	Cooldown = 1.6,
+	Range = 180,
+	BoltSpeed = 240,
 }
 
 -- Canto de garganta mongol (khöömei): tecla G / boton en pantalla.
@@ -154,6 +195,8 @@ Config.Weapons = {
 	Arco = { DisplayName = "Arco Compuesto", Damage = 20, Range = 90, Cooldown = 0.9, Ranged = true },
 	Lanza = { DisplayName = "Lanza del Khan", Damage = 65, Range = 14, Cooldown = 1.0, Ranged = false },
 	Trueno = { DisplayName = "Trueno de Tengri", Damage = 140, Range = 70, Cooldown = 2.2, Ranged = true },
+	Maza = { DisplayName = "Maza de Hierro", Damage = 110, Range = 12, Cooldown = 1.4, Ranged = false },
+	Bomba = { DisplayName = "Bomba de Polvora", Damage = 230, Range = 60, Cooldown = 3.0, Ranged = true },
 } :: { [string]: Types.WeaponDef }
 
 -- Orden = orden de los botones en el plot. "Requires" desbloquea en cadena.
@@ -175,12 +218,16 @@ Config.Buttons = {
 	{ Id = "m1", Name = "Muralla de Madera", Cost = 2500, Kind = "Wall", WallHP = 800, WallHeight = 14, WallColor = Color3.fromRGB(120, 80, 40), WallMaterial = Enum.Material.WoodPlanks, Requires = "d2" },
 	{ Id = "m2", Name = "Muralla de Piedra", Cost = 12000, Kind = "Wall", WallHP = 2500, WallHeight = 18, WallColor = Color3.fromRGB(120, 115, 105), WallMaterial = Enum.Material.Cobblestone, Requires = "m1" },
 	{ Id = "m3", Name = "Gran Muralla", Cost = 45000, Kind = "Wall", WallHP = 6000, WallHeight = 24, WallColor = Color3.fromRGB(160, 140, 110), WallMaterial = Enum.Material.Brick, Requires = "m2" },
+	-- Dos torres a los lados de la puerta, con una balista arriba (Config.Tower).
+	{ Id = "t1", Name = "Torres de la Puerta", Cost = 15000, Kind = "Towers", Requires = "m1" },
 	{ Id = "p2", Name = "Segundo Piso", Cost = 20000, Kind = "Floor", Requires = "d4" },
 	-- Segundo piso (los botones aparecen arriba)
 	{ Id = "d5", Name = "Rebano de Yaks", Cost = 25000, Kind = "Dropper", Floor = 2, Slot = 1, Value = 120, Interval = 2, OreColor = Color3.fromRGB(60, 45, 35), Requires = "p2" },
 	{ Id = "d6", Name = "Camellos Bactrianos", Cost = 40000, Kind = "Dropper", Floor = 2, Slot = 2, Value = 200, Interval = 2, OreColor = Color3.fromRGB(190, 150, 90), Requires = "d5" },
 	{ Id = "d7", Name = "Halcones de Caza", Cost = 60000, Kind = "Dropper", Floor = 2, Slot = 3, Value = 320, Interval = 2, OreColor = Color3.fromRGB(150, 120, 80), Requires = "d6" },
 	{ Id = "d8", Name = "Tesoro de Karakorum", Cost = 90000, Kind = "Dropper", Floor = 2, Slot = 4, Value = 500, Interval = 2, OreColor = Color3.fromRGB(255, 210, 60), Requires = "d7" },
+	{ Id = "w5", Name = "Maza de Hierro", Cost = 35000, Kind = "Weapon", WeaponId = "Maza", Floor = 2, Requires = "d5" },
+	{ Id = "w6", Name = "Bomba de Polvora", Cost = 75000, Kind = "Weapon", WeaponId = "Bomba", Floor = 2, Requires = "d7" },
 } :: { Types.ButtonDef }
 
 return Config

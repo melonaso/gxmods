@@ -68,11 +68,15 @@ Abajo a la izquierda el juego dice **"Progreso: se guarda"** (verde) o **"Progre
 | Lanza del Khan | 16 000 | Lanza con punta de hoja de acero y borla de crin roja, con animación: baja la lanza a horizontal y lanza una estocada al frente (65 de daño, alcance 14) |
 | Tributo Imperial | 30 000 | Todo el oro x3 (reemplaza al x2) |
 | Trueno de Tengri | 50 000 | Báculo con anillos de oro y un orbe que brilla, con animación: lo alza sobre la cabeza y al bajarlo cae un **rayo en zigzag** sobre Verity (o al suelo delante si no está a tiro) y el orbe destella (140 de daño, alcance 70) |
-| Muralla de Madera / Piedra / Gran Muralla | 2 500 / 12 000 / 45 000 | Rodea tu campamento: **los jugadores la atraviesan, Verity no**. Verity la golpea (200 por golpe) hasta romperla (800 / 2 500 / 6 000 de vida) y se repara sola cuando se va |
+| Muralla de Madera / Piedra / Gran Muralla | 2 500 / 12 000 / 45 000 | Rodea tu campamento: **los jugadores la atraviesan, Verity no**. Verity la golpea (200 por golpe) hasta romperla (800 / 2 500 / 6 000 de vida) y se repara sola cuando se va. La de madera es una empalizada de troncos afilados; las de piedra tienen zócalo, cornisa, almenas, contrafuertes y bastiones en las esquinas. La puerta tiene pilares rojos, tejadillo y placa con el nombre |
+| Torres de la Puerta | 15 000 | Dos torres de piedra a los lados de la puerta (30 de alto) con escalera de mano, almenas, tejado rojo con estandarte de crines y una **balista** arriba. Siéntate en su banco, apunta con el ratón (o toca la pantalla / R2 con mando) y dispara virotes: 90 de daño, alcance 180, recarga 1,6 s |
 | Segundo Piso | 20 000 | Losa con escalera, cinta, colector y caja propios |
 | Yaks / Camellos / Halcones / Tesoro de Karakorum | 25 000 – 90 000 | Droppers del segundo piso: 120 / 200 / 320 / 500 oro |
+| Maza de Hierro (2.º piso) | 35 000 | Shestopior (maza de seis alas) con animación: la alza y la baja de golpe con una onda en el suelo; **aturde** a Verity 0,8 s (110 de daño, alcance 12) |
+| Bomba de Pólvora (2.º piso) | 75 000 | Tetsuhau (bomba de cerámica mongola) con la mecha encendida: la lanzas en arco y **explota** al caer (230 de daño en 14 studs, alcance 60, recarga 3 s). La explosión es solo visual: no empuja ni hiere a jugadores |
 
-   - La cinta y los animales están al fondo del campamento; en el centro está la **Armería del Khan**: cada arma que compras aparece tumbada sobre la mesa.
+   - La cinta y los animales están al fondo del campamento; en el centro está la **Armería del Khan**: cada arma que compras (las 6) aparece tumbada sobre la mesa.
+   - Cada **dropper** es un pórtico de madera lacada (rojo abajo, azul en el segundo piso) con tejadillo y cumbrera dorada, tolva en embudo con la mercancía asomando, farol y letrero tallado; detrás, un corral con su animal: ovejas, cabras, un caballo, un camello con fardos de seda, un yak, camellos bactrianos, halcones en sus perchas y el cofre del tesoro. La lana cae en bolas y el tesoro en monedas de oro.
 3. Los productos caen en la cinta → llegan al **colector dorado** → pisa el **cuadro verde** para cobrar.
    - Las **murallas** son sólidas, con una **puerta** al frente que se abre sola cuando te acercas. Los jugadores siempre pasan por la puerta; Verity no (la golpea como al resto). Encima de la puerta hay una **barra de vida** de la muralla.
 4. **Verity** (avisos a los 5 min, 1 min y 10 s):
@@ -82,7 +86,7 @@ Abajo a la izquierda el juego dice **"Progreso: se guarda"** (verde) o **"Progre
    - Con menos del 30 % de vida se enfurece y corre más que tú.
    - Vida: 5 000 + 1 500 por cada jugador extra (`Config.Verity.BaseHealth` / `HealthPerPlayer`).
    - **Pelear:** si lo matan, se reparten 6 000 de oro según el daño de cada uno, más 500 por participar. Verity **no muere**: herido, huye corriendo hacia la oscuridad del portal y la bola vuelve a aparecer.
-   - **Esconderse:** dentro de las 4 **Cuevas del Chamán** (públicas) o de tu Gran Yurta, Verity no te ve. A los 3 minutos se va.
+   - **Esconderse:** dentro de las 4 **Cuevas del Chamán** (públicas) o de tu Gran Yurta, Verity no te ve. A los 3 minutos se va. Las cuevas son un pedregal de rocas con la entrada entre dos peñas, una cuerda con khadag (pañuelos de seda azul de las ofrendas), braseros y un ovoo; dentro hay una fogata con círculo de piedras, un tambor chamánico, pieles de oveja y telas colgadas.
 
 5. **Canto de garganta (khöömei)** — tecla **G** (botón Y del mando o botón "Canto" en móvil), cada 25 s:
    - Verity a menos de 45 studs queda **aturdido** 4 s (lento y sin atacar) y recibe 60 de daño.
@@ -112,8 +116,11 @@ Roblox solo reproduce audio subido a su plataforma, así que estos archivos de `
 
 **Batalla final:** cuando alguien compra **todo** su tycoon aparece un círculo dorado "BATALLA FINAL" en su campamento.
 - Al pisarlo convoca la batalla: todos ven durante 20 s un botón **"Unirse a la batalla final"** (las noches normales se pausan).
-- Los que se unen viajan al **Campo de la Batalla Final** montados a **caballo** (más rápidos que Verity, con galope animado).
-- Allí despierta la **forma final de Verity**: 1,7 veces más grande, con aura de fuego, más rápida, brazos de 20 studs de alcance y rugidos de 60 studs. Vida: 12 000 + 6 000 por jinete extra. Tienen 6 minutos.
+- Los que se unen viajan al **Campo de la Batalla Final** montados a **caballo** (con galope animado).
+- Allí despierta la **forma final de Verity**: 1,7 veces más grande, con aura de fuego y **más rápida que los caballos** (48 contra 44; 56 enfurecida), con rugidos de 60 studs. Vida: 12 000 + 6 000 por jinete extra. Tienen 6 minutos. Elige entre tres ataques según la distancia:
+  - **Golpe** (cerca): levanta los brazos y aplasta (40 de daño); la **onda** del impacto daña también a los jinetes a 18 studs.
+  - **Patada** (muy cerca): recoge la rodilla y patea (30 de daño) y **lanza por los aires** al jinete.
+  - **Lanzamiento de rocas** (de 28 a 170 studs, cada 5 s): se agacha, arranca una roca del suelo, la sube por detrás de la cabeza y la lanza en arco apuntando por delante del jinete. Un **círculo rojo** marca dónde va a caer: muévete para esquivarla (35 de daño en 13 studs, con empujón).
 - Si la matan, se retuerce y se hunde en la tierra: 60 000 de oro repartidos por daño + 10 000 a cada participante. Si caen todos o se acaba el tiempo, resiste. Al terminar, todos vuelven a su campamento.
 - **Renacer (si quieres):** si ganan, a cada jinete le aparece una ventana "¿Renacer?". Renacer reinicia tu campamento y tu oro desde cero, pero ganas **+50 % de oro para siempre** por cada renacimiento (x1.5, x2, x2.5...). Si eliges "Ahora no", queda un botón "Renacer..." abajo a la izquierda mientras sigas en el servidor. Tus muertes de Verity y tus renacimientos (columna "Renacer" en la tabla) se conservan.
 
@@ -129,12 +136,14 @@ src/
 ├── server/   init.server.luau + Systems/
 │   ├── PlayerData.luau   oro, compras, muertes de Verity (DataStore)
 │   ├── World.luau        estepa, cuevas-refugio, portal
-│   ├── Tycoon.luau       plots, botones, droppers, colector
+│   ├── Tycoon.luau       plots, botones, droppers, colector, murallas, torres
 │   ├── Weapons.luau      armas (daño validado en el servidor)
-│   └── Verity.luau       ciclo de 20 min, IA, ataques, recompensas
-│   Lib/  Build, VerityModel, VerityRig
-├── client/   init.client.luau + Controllers/ (HUD, VerityFX, VerityAnimator)
+│   ├── Ballista.luau     balistas de las torres (disparo validado en el servidor)
+│   └── Verity.luau       ciclo de 5 min, IA, ataques, recompensas
+│   Lib/  Build, Props (animales y tesoro), Horse, VerityModel, VerityRig
+├── client/   init.client.luau + Controllers/ (HUD, VerityFX, VerityAnimator,
+│             WeaponAnimator, BowAnimator, Ballista, ...)
 └── world/    VerityFallback.model.json
 ```
 
-Seguridad: el cliente no tiene ningún remote para pedirle cosas al servidor. Las compras van por `Touched` en el servidor y los ataques por `Tool.Activated`, con alcance y cooldown comprobados allí.
+Seguridad: las compras van por `Touched` en el servidor y los ataques por `Tool.Activated`, con alcance y cooldown comprobados allí. Los únicos remotes del cliente son ThroatSing, FinalJoin y Rebirth (sin datos) y TowerFire (solo un punto `Vector3`: el servidor comprueba que estés sentado en una balista, la recarga y el alcance, y decide él si el virote da a Verity).

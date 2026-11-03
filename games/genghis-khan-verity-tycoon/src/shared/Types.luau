@@ -8,7 +8,7 @@ export type Profile = {
 	Rebirths: number,
 }
 
-export type ButtonKind = "Dropper" | "Weapon" | "Multiplier" | "Shelter" | "Decor" | "Wall" | "Floor"
+export type ButtonKind = "Dropper" | "Weapon" | "Multiplier" | "Shelter" | "Decor" | "Wall" | "Floor" | "Towers"
 
 export type ButtonDef = {
 	Id: string,

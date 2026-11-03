@@ -409,26 +409,132 @@ local function buildCenter(map: Folder)
 	Build.billboard(tip, "ESTEPA DEL KHAN", 4, 300)
 end
 
+-- Cuevas del Chaman: refugio de piedra (muros solidos, Verity no entra)
+-- cubierto de rocas para que parezca una cueva en un pedregal. En la entrada:
+-- rocas a los lados y encima, cuerda con khadag (panuelos de seda azul de las
+-- ofrendas), braseros y un ovoo. Dentro: fogata con circulo de piedras,
+-- tambor chamanico, pieles de oveja y telas colgadas.
 local function buildCaves(map: Folder)
 	local hiding = World.getHidingFolder()
+	local rockColors = { Color3.fromRGB(96, 90, 84), Color3.fromRGB(110, 103, 94), Color3.fromRGB(84, 79, 74), Color3.fromRGB(120, 112, 100) }
+	local blues = { Color3.fromRGB(60, 130, 220), Color3.fromRGB(90, 160, 235), Color3.fromRGB(235, 240, 250), Color3.fromRGB(45, 105, 200) }
 	for i = 0, 3 do
 		local angle = math.pi / 4 + i * math.pi / 2
 		local pos = Vector3.new(math.cos(angle) * 75, 0, math.sin(angle) * 75)
 		-- la puerta (lado -Z local) mira hacia el centro
 		local cf = CFrame.lookAt(pos, Vector3.new(0, 0, 0))
-		local cave = Build.boxShelter(map, cf, 22, 22, 11, Color3.fromRGB(95, 90, 85), Enum.Material.Slate)
+		local rng = Random.new(1206 + i)
+		local cave = Build.boxShelter(map, cf, 22, 22, 11, Color3.fromRGB(88, 82, 76), Enum.Material.Rock)
 		cave.Name = "ShamanCave"
-		Build.markSolid(cave)
-		Build.hidingZone(hiding, cf * CFrame.new(0, 5, 0), Vector3.new(19, 10, 19), nil)
-		local sign = Build.part({ Name = "Sign", Size = Vector3.new(1, 1, 1), CFrame = cf * CFrame.new(0, 14, -11), Transparency = 1, CanCollide = false, Parent = cave })
-		Build.billboard(sign, "Cueva del Chaman (refugio)", 0, 260)
-		-- fogata adentro
-		local fire = Build.part({ Name = "Fire", Size = Vector3.new(2, 1, 2), CFrame = cf * CFrame.new(0, 0.5, 4), Color = Color3.fromRGB(80, 50, 30), Material = Enum.Material.Wood, Parent = cave })
+
+		local function piece(name: string, size: Vector3, offset: CFrame, color: Color3, material: Enum.Material, shape: Enum.PartType?, solid: boolean?): Part
+			local p = Build.part({ Name = name, Size = size, CFrame = cf * offset, Color = color, Material = material, Shape = shape, Parent = cave })
+			p.CanCollide = solid == true
+			p.CanQuery = solid == true
+			p.CanTouch = false
+			return p
+		end
+		local function rock(size: Vector3, offset: Vector3, tilt: number)
+			local rot = CFrame.Angles(rng:NextNumber(-tilt, tilt), rng:NextNumber(-0.18, 0.18), rng:NextNumber(-tilt, tilt))
+			piece("Rock", size, CFrame.new(offset) * rot, rockColors[rng:NextInteger(1, #rockColors)], Enum.Material.Rock, nil, true)
+		end
+
+		-- pedregal: rocas sobre el techo, detras y a los lados (sin tapar la puerta
+		-- ni salir hacia los caminos de los campamentos)
+		for _, rx in { -5.5, 5.5 } do
+			for _, rz in { -4.5, 5.5 } do
+				local sy = rng:NextNumber(3, 5)
+				rock(Vector3.new(rng:NextNumber(8, 10.5), sy, rng:NextNumber(8, 10.5)), Vector3.new(rx, 12.5 + sy / 2 - 0.5, rz), 0.15)
+			end
+		end
+		local crown = rng:NextNumber(4, 6)
+		rock(Vector3.new(7, crown, 7), Vector3.new(rng:NextNumber(-2, 2), 15 + crown / 2, rng:NextNumber(-1, 3)), 0.2)
+		for _, rx in { -7.5, 0, 7.5 } do
+			local sy = rng:NextNumber(9, 13)
+			local sz = rng:NextNumber(4, 6)
+			rock(Vector3.new(rng:NextNumber(7, 9), sy, sz), Vector3.new(rx, sy / 2 - 0.5, 11.75 + sz / 2 - 0.4), 0.1)
+		end
+		for _, sx in { -1, 1 } do
+			for _, rz in { 1, 8 } do
+				local sy = rng:NextNumber(8, 11)
+				rock(Vector3.new(2.6, sy, rng:NextNumber(6, 7.5)), Vector3.new(sx * (11.75 + 1.1), sy / 2 - 0.5, rz), 0.08)
+			end
+		end
+		-- entrada: rocas a los lados de la puerta y una losa encima
+		for _, sx in { -1, 1 } do
+			local sy = rng:NextNumber(11, 12.5)
+			rock(Vector3.new(4.4, sy, 3), Vector3.new(sx * 5.6, sy / 2 - 0.5, -12.9), 0.06)
+		end
+		piece("Lintel", Vector3.new(9, 2.6, 3.4), CFrame.new(0, 12.2, -12.9) * CFrame.Angles(0, 0, math.rad(4)), rockColors[1], Enum.Material.Rock, nil, true)
+
+		-- cuerda con khadag (panuelos de seda) cruzando la entrada
+		piece("Rope", Vector3.new(8.4, 0.14, 0.14), CFrame.new(0, 10.6, -14.7), Color3.fromRGB(190, 160, 110), Enum.Material.Fabric)
+		for k = 0, 6 do
+			local x = -3.3 + k * 1.1
+			piece("Khadag", Vector3.new(0.45, 1.6 + (k % 3) * 0.35, 0.06), CFrame.new(x, 9.7 - (k % 3) * 0.17, -14.7) * CFrame.Angles(0, 0, math.rad((k % 2) * 8 - 4)), blues[k % #blues + 1], Enum.Material.Fabric)
+		end
+		-- braseros a los lados de la entrada
+		for _, sx in { -1, 1 } do
+			piece("BrazierStand", Vector3.new(0.4, 3, 0.4), CFrame.new(sx * 6, 1.5, -17), Color3.fromRGB(50, 45, 40), Enum.Material.Metal, nil, true)
+			local bowl = piece("Brazier", Vector3.new(1.8, 0.8, 1.8), CFrame.new(sx * 6, 3.3, -17), Color3.fromRGB(60, 50, 40), Enum.Material.Metal, nil, true)
+			local fire = Instance.new("Fire")
+			fire.Size = 3
+			fire.Heat = 6
+			fire.Parent = bowl
+			local light = Instance.new("PointLight")
+			light.Color = Color3.fromRGB(255, 150, 70)
+			light.Range = 16
+			light.Brightness = 1.5
+			light.Parent = bowl
+		end
+		-- ovoo: monton de piedras con un palo y panuelos azules (del lado
+		-- contrario al camino de campamento que pasa mas cerca de la cueva)
+		local ovooSide = if i % 2 == 0 then 1 else -1
+		local ovoo = CFrame.new(ovooSide * 9.5, 0, -18)
+		for tier, data in { { 2.2, 6, 0.7 }, { 1.4, 5, 1.6 }, { 0.6, 3, 2.4 } } do
+			for k = 0, data[2] - 1 do
+				local a = k / data[2] * math.pi * 2 + tier
+				piece("OvooStone", Vector3.new(1.3, 1.3, 1.3), ovoo * CFrame.new(math.cos(a) * data[1], data[3], math.sin(a) * data[1]), rockColors[(k + tier) % #rockColors + 1], Enum.Material.Rock, Enum.PartType.Ball)
+			end
+		end
+		piece("OvooPole", Vector3.new(0.3, 5, 0.3), ovoo * CFrame.new(0, 4, 0), Color3.fromRGB(110, 75, 40), Enum.Material.Wood)
+		for k = 0, 3 do
+			local a = k / 4 * math.pi * 2
+			piece("Khadag", Vector3.new(0.06, 2.2, 0.4), ovoo * CFrame.new(math.cos(a) * 0.5, 5.4, math.sin(a) * 0.5) * CFrame.Angles(math.cos(a) * 0.5, 0, math.sin(a) * 0.5), blues[k + 1], Enum.Material.Fabric)
+		end
+
+		-- dentro: fogata con circulo de piedras y troncos
+		local fire = piece("Fire", Vector3.new(2, 0.6, 2), CFrame.new(0, 0.3, 3), Color3.fromRGB(60, 35, 20), Enum.Material.Wood)
+		for k = 0, 9 do
+			local a = k / 10 * math.pi * 2
+			piece("FireStone", Vector3.new(0.8, 0.6, 0.8), CFrame.new(math.cos(a) * 1.7, 0.3, 3 + math.sin(a) * 1.7), rockColors[k % #rockColors + 1], Enum.Material.Rock, Enum.PartType.Ball)
+		end
+		for k = 0, 2 do
+			piece("Log", Vector3.new(2.2, 0.35, 0.35), CFrame.new(0, 0.5, 3) * CFrame.Angles(0, k * math.pi / 3, 0.25), Color3.fromRGB(90, 58, 30), Enum.Material.Wood, Enum.PartType.Cylinder)
+		end
 		Instance.new("Fire", fire).Size = 4
 		local light = Instance.new("PointLight")
 		light.Color = Color3.fromRGB(255, 160, 80)
 		light.Range = 18
 		light.Parent = fire
+		-- tambor chamanico (hengereg) apoyado en la pared, con su maza
+		piece("DrumRim", Vector3.new(0.6, 3, 3), CFrame.new(-8.6, 2.6, 7.5) * CFrame.Angles(0, math.rad(55), math.rad(10)), Color3.fromRGB(130, 30, 30), Enum.Material.Wood, Enum.PartType.Cylinder)
+		piece("DrumSkin", Vector3.new(0.65, 2.7, 2.7), CFrame.new(-8.6, 2.6, 7.5) * CFrame.Angles(0, math.rad(55), math.rad(10)), Color3.fromRGB(225, 205, 165), Enum.Material.Fabric, Enum.PartType.Cylinder)
+		piece("DrumStick", Vector3.new(0.15, 0.15, 1.8), CFrame.new(-7.2, 1.1, 6.2) * CFrame.Angles(0, 0.6, 0), Color3.fromRGB(110, 75, 40), Enum.Material.Wood)
+		-- pieles de oveja en el suelo
+		piece("Sheepskin", Vector3.new(3.2, 0.12, 2.2), CFrame.new(5.5, 0.08, 4) * CFrame.Angles(0, 0.4, 0), Color3.fromRGB(235, 228, 210), Enum.Material.Fabric)
+		piece("Sheepskin", Vector3.new(2.8, 0.12, 2), CFrame.new(-4.5, 0.08, 1) * CFrame.Angles(0, -0.5, 0), Color3.fromRGB(215, 205, 185), Enum.Material.Fabric)
+		-- telas azules y blancas colgadas en la pared del fondo
+		for k = 0, 4 do
+			piece("Hanging", Vector3.new(0.8, 3.2, 0.08), CFrame.new(-4 + k * 2, 7, 10.1), blues[k % #blues + 1], Enum.Material.Fabric)
+		end
+		piece("HangingRod", Vector3.new(10, 0.2, 0.2), CFrame.new(0, 8.7, 10.05), Color3.fromRGB(110, 75, 40), Enum.Material.Wood)
+
+		Build.markSolid(cave)
+		Build.hidingZone(hiding, cf * CFrame.new(0, 5, 0), Vector3.new(19, 10, 19), nil)
+		local sign = Build.part({ Name = "Sign", Size = Vector3.new(1, 1, 1), CFrame = cf * CFrame.new(0, 21, -11), Transparency = 1, CanCollide = false, Parent = cave })
+		sign.CanQuery = false
+		Build.billboard(sign, "Cueva del Chaman (refugio)", 0, 260)
 	end
 end
 

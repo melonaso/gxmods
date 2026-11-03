@@ -7,11 +7,14 @@
 --     portal y se pierde en la oscuridad. Si nadie lo mata, se va al acabarse
 --     el tiempo.
 --   Final (Systems/FinalBattle): forma final mas grande y fuerte en el campo
---     de batalla, contra los jinetes que se unieron. Si muere, se hunde en la
---     tierra para siempre (hasta la proxima batalla final).
+--     de batalla, contra los jinetes que se unieron. Corre mas que los
+--     caballos y tiene tres ataques: golpe (con onda), patada (lanza por los
+--     aires) y lanzar rocas de lejos. Si muere, se hunde en la tierra para
+--     siempre (hasta la proxima batalla final).
 -- Modelo/rig y animaciones: los de "Survive A Verity" (Lib/VerityModel,
 -- Controllers/VerityAnimator y Controllers/BallFX).
 local CollectionService = game:GetService("CollectionService")
+local Debris = game:GetService("Debris")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
@@ -59,6 +62,7 @@ local rootY = 8
 local attackUntil = 0
 local stunnedUntil = 0
 local lastScream = 0
+local lastThrow = 0
 local lastMoveOrder = 0
 local lastHurtSound = 0
 local fleeStart = 0
@@ -194,6 +198,12 @@ local function setWallBroken(wall: Model, broken: boolean)
 		seg.CanCollide = not broken
 		if not seg:GetAttribute("Invisible") then -- la barrera de la puerta siempre es invisible
 			seg.Transparency = if broken then 0.85 else 0
+		end
+	end
+	-- almenas, troncos, portada... (decoracion sin colision) se desvanecen igual
+	for _, p in wall:GetChildren() do
+		if p:IsA("BasePart") and p.Name == "WallDecor" then
+			p.Transparency = if broken then 0.85 else 0
 		end
 	end
 end
@@ -368,38 +378,309 @@ local function canAttack(t: number): boolean
 	return t >= attackUntil + P.MeleeCooldown - P.AttackAnimTime and t >= stunnedUntil
 end
 
--- Animacion "levantar y aplastar" (el cliente la ve via KillStart).
--- onImpact corre en el instante del golpe.
-local function swing(onImpact: () -> ())
+-- Ataque generico: marca el atributo que anima el cliente (KillStart,
+-- KickStart, ThrowStart), lo deja quieto "duration" segundos y corre cada
+-- evento en su instante (si sigue vivo y peleando).
+type AttackEvent = { at: number, fn: () -> () }
+local function perform(attribute: string, duration: number, events: { AttackEvent })
 	local m = model
 	if not m then
 		return
 	end
 	local t = now()
-	attackUntil = t + P.AttackAnimTime
-	m:SetAttribute("KillStart", t)
-	task.delay(Pose.KillImpact, function()
-		if model == m and root and phase ~= "Fleeing" then
-			flash(Color3.fromRGB(255, 0, 0))
-			Sfx.play(S.Bass, root, { Volume = 2, Speed = 0.5, MaxDistance = 120 })
-			onImpact()
-		end
-	end)
-	task.delay(P.AttackAnimTime, function()
+	attackUntil = t + duration
+	m:SetAttribute(attribute, t)
+	for _, event in events do
+		task.delay(event.at, function()
+			if model == m and root and phase ~= "Fleeing" and not releasing then
+				event.fn()
+			end
+		end)
+	end
+	task.delay(duration, function()
 		if model == m then
-			m:SetAttribute("KillStart", nil)
+			m:SetAttribute(attribute, nil)
 		end
 	end)
 end
 
+-- Gira a Verity hacia un punto (solo sobre el eje vertical) antes de atacar.
+local function faceTowards(point: Vector3)
+	local r = root
+	if not r then
+		return
+	end
+	local dir = flat(point - r.Position)
+	if dir.Magnitude > 0.5 then
+		r.CFrame = CFrame.lookAt(r.Position, r.Position + dir)
+	end
+end
+
+local function lookFlat(r: BasePart): Vector3
+	local look = flat(r.CFrame.LookVector)
+	return if look.Magnitude > 0.01 then look.Unit else Vector3.new(0, 0, -1)
+end
+
+-- Onda de polvo en el suelo (golpe, patada, roca).
+local function dustRing(at: Vector3, radius: number)
+	local ring = Build.part({
+		Name = "Dust",
+		Shape = Enum.PartType.Cylinder,
+		Size = Vector3.new(0.6, 2, 2),
+		CFrame = CFrame.new(at + Vector3.new(0, 0.4, 0)) * CFrame.Angles(0, 0, math.pi / 2),
+		Color = Color3.fromRGB(140, 115, 80),
+		Material = Enum.Material.SmoothPlastic,
+		CanCollide = false,
+		Transparency = 0.25,
+		Parent = workspace,
+	})
+	ring.CanQuery = false
+	ring.CanTouch = false
+	TweenService:Create(ring, TweenInfo.new(0.5, Enum.EasingStyle.Quad), { Size = Vector3.new(0.6, radius * 2, radius * 2), Transparency = 1 }):Play()
+	Debris:AddItem(ring, 0.6)
+end
+
+-- Empuje: el servidor pone un LinearVelocity breve en el jugador (su cliente
+-- lo simula), asi sale despedido aunque el personaje sea suyo.
+local function knockback(r: BasePart, from: Vector3, power: number)
+	local dir = flat(r.Position - from)
+	dir = if dir.Magnitude > 0.1 then dir.Unit else Vector3.zAxis
+	local attachment = Instance.new("Attachment")
+	attachment.Name = "Knockback"
+	attachment.Parent = r
+	local push = Instance.new("LinearVelocity")
+	push.Attachment0 = attachment
+	push.MaxForce = 1e7
+	push.VelocityConstraintMode = Enum.VelocityConstraintMode.Vector
+	push.RelativeTo = Enum.ActuatorRelativeTo.World
+	push.VectorVelocity = dir * power + Vector3.new(0, power * 0.45, 0)
+	push.Parent = r
+	Debris:AddItem(push, 0.25)
+	Debris:AddItem(attachment, 0.25)
+end
+
+-- Animacion "levantar y aplastar" (el cliente la ve via KillStart).
+-- onImpact corre en el instante del golpe.
+local function swing(onImpact: () -> ())
+	perform("KillStart", P.AttackAnimTime, {
+		{
+			at = Pose.KillImpact,
+			fn = function()
+				flash(Color3.fromRGB(255, 0, 0))
+				Sfx.play(S.Bass, root :: BasePart, { Volume = 2, Speed = 0.5, MaxDistance = 120 })
+				onImpact()
+			end,
+		},
+	})
+end
+
 local function attackPlayer(targetPlayer: Player)
+	local tr = rootOf(targetPlayer)
+	if mode == "Final" and tr then
+		faceTowards(tr.Position)
+	end
 	swing(function()
+		local hitTarget: Humanoid? = nil
 		local r, h = rootOf(targetPlayer)
 		if r and h and root and eligible(targetPlayer) and flat(r.Position - root.Position).Magnitude <= P.MeleeRange + 3 then
 			h:TakeDamage(P.MeleeDamage)
+			hitTarget = h
 			Sfx.play(S.PlayerScream, r, { Volume = 0.7 })
 		end
+		-- forma final: la onda del golpe dana a todos alrededor del impacto
+		local slam = P.SlamRadius :: number?
+		local vr = root
+		if mode == "Final" and slam and vr then
+			local impact = vr.Position + lookFlat(vr) * (P.MeleeRange * 0.55) - Vector3.new(0, rootY, 0)
+			dustRing(impact, slam)
+			for _, player in Players:GetPlayers() do
+				local pr, ph = rootOf(player)
+				if pr and ph and ph ~= hitTarget and eligible(player) and flat(pr.Position - impact).Magnitude <= slam then
+					ph:TakeDamage(P.MeleeDamage * 0.6)
+				end
+			end
+		end
 	end)
+end
+
+-- Patada (batalla final): rapida, de cerca, lanza por los aires al jinete.
+local function kick(targetPlayer: Player)
+	local tr = rootOf(targetPlayer)
+	if tr then
+		faceTowards(tr.Position)
+	end
+	perform("KickStart", Pose.KickDuration, {
+		{
+			at = Pose.KickImpact,
+			fn = function()
+				local r = root :: BasePart
+				Sfx.play(S.Bass, r, { Volume = 1.8, Speed = 0.8, MaxDistance = 150 })
+				Sfx.play(S.Slash, r, { Volume = 1.2, Speed = 0.5, MaxDistance = 120 })
+				local front = r.Position + lookFlat(r) * (P.KickRange * 0.55)
+				dustRing(front - Vector3.new(0, rootY, 0), P.KickRange * 0.6)
+				for _, player in Players:GetPlayers() do
+					local pr, ph = rootOf(player)
+					if pr and ph and eligible(player) and flat(pr.Position - front).Magnitude <= P.KickRange * 0.75 then
+						ph:TakeDamage(P.KickDamage)
+						knockback(pr, r.Position, P.KickKnockback)
+						Sfx.play(S.PlayerScream, pr, { Volume = 0.6 })
+					end
+				end
+			end,
+		},
+	})
+end
+
+-- La roca cae: dano en el area, empuje, polvo y fragmentos.
+-- (radio y dano se pasan al lanzarla: la batalla puede acabar en pleno vuelo)
+local function rockImpact(at: Vector3, radius: number, damage: number)
+	Sfx.play(S.Bass, workspace, { Volume = 1.6, Speed = 0.4 })
+	dustRing(at, radius)
+	if mode == "Final" and phase == "Final" then
+		for _, player in Players:GetPlayers() do
+			local pr, ph = rootOf(player)
+			if pr and ph and eligible(player) and flat(pr.Position - at).Magnitude <= radius then
+				ph:TakeDamage(damage)
+				knockback(pr, at, 35)
+			end
+		end
+	end
+	for _ = 1, 7 do
+		local size = 0.8 + math.random() * 1.2
+		local chip = Build.part({
+			Name = "RockChip",
+			Size = Vector3.new(size, size * 0.8, size),
+			CFrame = CFrame.new(at + Vector3.new(0, 1.5, 0)) * CFrame.Angles(math.random() * 6, math.random() * 6, 0),
+			Color = Color3.fromRGB(95, 88, 80),
+			Material = Enum.Material.Rock,
+			Anchored = false,
+			CanCollide = true,
+			Parent = workspace,
+		})
+		chip.CanQuery = false
+		chip.CanTouch = false
+		chip.Massless = true
+		chip.AssemblyLinearVelocity = Vector3.new((math.random() - 0.5) * 50, 25 + math.random() * 20, (math.random() - 0.5) * 50)
+		Debris:AddItem(chip, 2.5)
+	end
+end
+
+-- Vuelo en arco de la roca; un circulo rojo marca donde va a caer.
+local function launchRock(from: Vector3, to: Vector3)
+	local radius, damage, speed = P.RockRadius :: number, P.RockDamage :: number, P.RockSpeed :: number
+	local marker = Build.part({
+		Name = "RockTarget",
+		Shape = Enum.PartType.Cylinder,
+		Size = Vector3.new(0.3, radius * 2, radius * 2),
+		CFrame = CFrame.new(to + Vector3.new(0, 0.3, 0)) * CFrame.Angles(0, 0, math.pi / 2),
+		Color = Color3.fromRGB(255, 40, 30),
+		Material = Enum.Material.Neon,
+		CanCollide = false,
+		Transparency = 0.5,
+		Parent = workspace,
+	})
+	marker.CanQuery = false
+	marker.CanTouch = false
+	local rock = Build.part({
+		Name = "ThrownRock",
+		Size = Vector3.new(5, 4.2, 4.6),
+		CFrame = CFrame.new(from),
+		Color = Color3.fromRGB(95, 88, 80),
+		Material = Enum.Material.Rock,
+		CanCollide = false,
+		Parent = workspace,
+	})
+	rock.CanQuery = false
+	rock.CanTouch = false
+	local dist = flat(to - from).Magnitude
+	local duration = math.clamp(dist / speed, 0.6, 1.8)
+	local apex = math.max(8, dist * 0.3)
+	task.spawn(function()
+		local start = os.clock()
+		while true do
+			local a = math.min(1, (os.clock() - start) / duration)
+			local pos = from:Lerp(to, a) + Vector3.new(0, 4 * apex * a * (1 - a), 0)
+			rock.CFrame = CFrame.new(pos) * CFrame.Angles(a * 9, a * 6, 0)
+			if a >= 1 then
+				break
+			end
+			RunService.Heartbeat:Wait()
+		end
+		rock:Destroy()
+		marker:Destroy()
+		rockImpact(to, radius, damage)
+	end)
+end
+
+-- Lanzar roca (batalla final): la arranca del suelo, la sostiene en la mano
+-- derecha y la lanza al jinete (apuntando un poco por delante de el).
+local function throwRock(targetPlayer: Player)
+	local tr = rootOf(targetPlayer)
+	local m = model
+	if not tr or not m then
+		return
+	end
+	faceTowards(tr.Position)
+	lastThrow = now()
+	local held: BasePart? = nil
+	perform("ThrowStart", Pose.ThrowDuration, {
+		{
+			at = Pose.ThrowGrab,
+			fn = function()
+				local r = root :: BasePart
+				dustRing(r.Position + lookFlat(r) * 6 - Vector3.new(0, rootY, 0), 6)
+				Sfx.play(S.Bass, r, { Volume = 1.4, Speed = 0.6, MaxDistance = 150 })
+				-- soldada a la mano: cada cliente la ve en la mano animada
+				local hand = m:FindFirstChild("RightHand")
+				if not (hand and hand:IsA("BasePart")) then
+					return
+				end
+				local grip = hand:FindFirstChild("RightGripAttachment")
+				local at = if grip and grip:IsA("Attachment") then grip.WorldPosition else hand.Position
+				local rock = Build.part({
+					Name = "HeldRock",
+					Size = Vector3.new(5, 4.2, 4.6),
+					CFrame = CFrame.new(at) * CFrame.Angles(0.4, 0.7, 0.2),
+					Color = Color3.fromRGB(95, 88, 80),
+					Material = Enum.Material.Rock,
+					Anchored = false,
+					CanCollide = false,
+				})
+				rock.Massless = true
+				rock.CanQuery = false
+				rock.CanTouch = false
+				rock.CollisionGroup = Build.VERITY_GROUP
+				local weld = Instance.new("WeldConstraint")
+				weld.Part0 = hand
+				weld.Part1 = rock
+				weld.Parent = rock
+				rock.Parent = m
+				held = rock
+			end,
+		},
+		{
+			at = Pose.ThrowRelease,
+			fn = function()
+				if held then
+					held:Destroy()
+					held = nil
+				end
+				local r = root :: BasePart
+				Sfx.play(S.Lunge, r, { Volume = 1.5, Speed = 0.4, MaxDistance = 200 })
+				-- sale por encima de la cabeza
+				local from = r.Position + Vector3.new(0, rootY * 1.1, 0) + lookFlat(r) * 3
+				local pr = rootOf(targetPlayer)
+				local aim: Vector3
+				if pr and eligible(targetPlayer) then
+					local flight = math.clamp(flat(pr.Position - from).Magnitude / P.RockSpeed, 0.6, 1.8)
+					aim = pr.Position + flat(pr.AssemblyLinearVelocity) * flight * 0.5
+				else
+					aim = r.Position + lookFlat(r) * 60
+				end
+				launchRock(from, Vector3.new(aim.X, home.Y, aim.Z))
+			end,
+		},
+	})
 end
 
 local function attackWall(wall: Model)
@@ -496,7 +777,16 @@ local function step(_dt: number)
 	end
 
 	if canAttack(t) then
-		if targetPlayer and bestDist <= P.MeleeRange then
+		if mode == "Final" and targetPlayer then
+			-- forma final: patada o golpe de cerca, rocas de lejos
+			if bestDist <= P.KickRange and math.random() < 0.55 then
+				kick(targetPlayer)
+			elseif bestDist <= P.MeleeRange then
+				attackPlayer(targetPlayer)
+			elseif bestDist >= P.ThrowMinRange and bestDist <= P.ThrowRange and t - lastThrow >= P.ThrowCooldown then
+				throwRock(targetPlayer)
+			end
+		elseif targetPlayer and bestDist <= P.MeleeRange then
 			attackPlayer(targetPlayer)
 		elseif mode == "Night" and target and flat(r.AssemblyLinearVelocity).Magnitude < 3 then
 			-- frenado por una muralla: la golpea
