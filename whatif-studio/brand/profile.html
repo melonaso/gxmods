@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Avatar del canal</title>
+<script type="importmap">
+  { "imports": { "three": "../node_modules/three/build/three.module.js" } }
+</script>
+<style>
+  @font-face { font-family: Inter; font-weight: 900; src: url(../node_modules/@fontsource/inter/files/inter-latin-900-normal.woff2); }
+  html, body { margin: 0; background: #111; }
+  #out { display: block; }
+</style>
+</head>
+<body>
+<canvas id="out"></canvas>
+<script type="module">
+  // Foto de perfil: la mascota del canal (protagonista del ep01) frente a una curva exponencial que no se detiene.
+  import * as THREE from 'three';
+  import { createPerson } from '../engine/actors.js';
+
+  const S = 800;
+  const out = document.getElementById('out');
+  out.width = out.height = S;
+  const ctx = out.getContext('2d');
+  await document.fonts.load('900 40px Inter');
+
+  // 1) Fondo: cielo radial + sol suave.
+  const bg = ctx.createRadialGradient(S * 0.5, S * 0.38, S * 0.05, S * 0.5, S * 0.5, S * 0.75);
+  bg.addColorStop(0, '#d9f1ff'); bg.addColorStop(0.55, '#7cc4ee'); bg.addColorStop(1, '#2b7fc0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, S, S);
+
+  // 2) Colina verde (suelo low-poly).
+  ctx.fillStyle = '#7fb04a';
+  ctx.beginPath(); ctx.moveTo(0, S * 0.80);
+  [[0.18, 0.76], [0.38, 0.79], [0.6, 0.75], [0.82, 0.78], [1, 0.74]].forEach(([x, y]) => ctx.lineTo(S * x, S * y));
+  ctx.lineTo(S, S); ctx.lineTo(0, S); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#6a9a3c';
+  ctx.beginPath(); ctx.moveTo(0, S * 0.88); ctx.lineTo(S * 0.45, S * 0.84); ctx.lineTo(S, S * 0.9); ctx.lineTo(S, S); ctx.lineTo(0, S); ctx.fill();
+
+  // 3) Curva exponencial y = e^x que sale del borde: el símbolo de "no parar".
+  const pts = [];
+  for (let i = 0; i <= 60; i++) {
+    const x = i / 60;                               // 0..1
+    const y = (Math.exp(4.2 * x) - 1) / (Math.exp(4.2) - 1); // normalizada 0..1
+    pts.push([S * (0.16 + x * 0.60), S * (0.80 - y * 0.54)]);
+  }
+  const stroke = (w, c) => {
+    ctx.lineWidth = w; ctx.strokeStyle = c; ctx.lineJoin = ctx.lineCap = 'round';
+    ctx.beginPath(); pts.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.stroke();
+  };
+  stroke(56, '#111827');
+  stroke(36, '#ffd34d');
+  // Punta de flecha en la dirección final de la curva.
+  const [x1, y1] = pts[pts.length - 1], [x0, y0] = pts[pts.length - 4];
+  const a = Math.atan2(y1 - y0, x1 - x0);
+  const head = (r, c) => {
+    ctx.fillStyle = c; ctx.beginPath();
+    ctx.moveTo(x1 + Math.cos(a) * r, y1 + Math.sin(a) * r);
+    ctx.lineTo(x1 + Math.cos(a + 2.4) * r, y1 + Math.sin(a + 2.4) * r);
+    ctx.lineTo(x1 + Math.cos(a - 2.4) * r, y1 + Math.sin(a - 2.4) * r);
+    ctx.closePath(); ctx.fill();
+  };
+  head(76, '#111827'); head(54, '#ffd34d');
+
+  // 4) Mascota 3D renderizada con fondo transparente.
+  const gl = document.createElement('canvas'); gl.width = gl.height = S;
+  const renderer = new THREE.WebGLRenderer({ canvas: gl, antialias: true, alpha: true, preserveDrawingBuffer: true });
+  renderer.setSize(S, S, false); renderer.setPixelRatio(1);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
+  const scene = new THREE.Scene();
+  scene.add(new THREE.HemisphereLight('#ffffff', '#5d7a3a', 1.6));
+  const sun = new THREE.DirectionalLight('#fff3dc', 2.8); sun.position.set(2, 4, 5); scene.add(sun);
+  const hero = createPerson({ shirt: '#22c55e', pants: '#1e3a8a', skin: '#e8b48a', hair: '#2b1a10' });
+  hero.userData.pose(0.35, 'cheer');
+  hero.rotation.y = -0.35;
+  scene.add(hero);
+  const cam = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+  cam.position.set(1.2, 0.75, 4.9);
+  cam.lookAt(0.1, 1.05, 0);
+  renderer.render(scene, cam);
+  ctx.drawImage(gl, -S * 0.09, S * 0.07);
+
+  // 5) Signo de interrogación grande: la pregunta "¿y si...?"
+  ctx.font = `900 ${S * 0.25}px Inter`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.lineJoin = 'round'; ctx.lineWidth = S * 0.035; ctx.strokeStyle = '#111827';
+  ctx.save(); ctx.translate(S * 0.83, S * 0.56); ctx.rotate(0.12);
+  ctx.strokeText('?', 0, 0); ctx.fillStyle = '#ffffff'; ctx.fillText('?', 0, 0);
+  ctx.restore();
+
+  window.png = () => out.toDataURL('image/png');
+  window.ready = true;
+</script>
+</body>
+</html>
