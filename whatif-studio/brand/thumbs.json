@@ -1,0 +1,44 @@
+{
+  "ep01": {
+    "episode": "ep01-crecer",
+    "t": 100,
+    "big": "367 m",
+    "line": "1 CM CADA DÍA",
+    "tag": "100 AÑOS DESPUÉS",
+    "align": "left",
+    "accent": "#ffd34d",
+    "frame": {
+      "zoom": 1.7,
+      "dx": 330,
+      "dy": 40
+    }
+  },
+  "ep02": {
+    "episode": "ep02-seguidores",
+    "t": 52,
+    "big": "438,000",
+    "line": "TE SIGUEN",
+    "tag": "+1 CADA HORA",
+    "align": "left",
+    "accent": "#ffd34d",
+    "frame": {
+      "zoom": 1.25,
+      "dx": 330,
+      "dy": 0
+    }
+  },
+  "ep03": {
+    "episode": "ep03-velocidad",
+    "t": 66,
+    "big": "MACH 7",
+    "line": "+1% POR PASO",
+    "tag": "PASO 750",
+    "align": "left",
+    "accent": "#fb923c",
+    "frame": {
+      "zoom": 1.9,
+      "dx": 330,
+      "dy": -30
+    }
+  }
+}

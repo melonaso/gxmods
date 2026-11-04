@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Miniatura</title>
+<script type="importmap">
+  { "imports": { "three": "../node_modules/three/build/three.module.js" } }
+</script>
+<style>
+  @font-face { font-family: Inter; font-weight: 800; src: url(../node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2); }
+  @font-face { font-family: Inter; font-weight: 900; src: url(../node_modules/@fontsource/inter/files/inter-latin-900-normal.woff2); }
+  html, body { margin: 0; background: #000; }
+  #out { display: block; }
+</style>
+</head>
+<body>
+<canvas id="out"></canvas>
+<script type="module">
+  // Miniatura: frame real del episodio (sin textos del video) + número gigante y frase corta.
+  import { createStudio } from '../engine/timeline.js';
+
+  const id = new URLSearchParams(location.search).get('id') || 'ep01';
+  const cfg = (await (await fetch('thumbs.json')).json())[id];
+  const W = 1280, H = 720;
+  await Promise.all([800, 900].map((w) => document.fonts.load(`${w} 40px Inter`)));
+
+  // El motor busca los episodios relativo a la página: ../episodes/... funciona igual desde brand/.
+  const studio = await createStudio({ episode: cfg.episode, W, H });
+  studio.renderFrame(cfg.t, { bare: true, frame: cfg.frame });
+
+  const ctx = document.getElementById('out').getContext('2d');
+
+  // Viñeta lateral para que el texto contraste sobre cualquier fondo.
+  const g = ctx.createLinearGradient(0, 0, W * 0.75, 0);
+  g.addColorStop(0, 'rgba(8,12,24,0.72)'); g.addColorStop(0.55, 'rgba(8,12,24,0.25)'); g.addColorStop(1, 'rgba(8,12,24,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+
+  const text = (str, x, y, size, fill, stroke = 0.1, weight = 900) => {
+    ctx.font = `${weight} ${size}px Inter`;
+    ctx.lineJoin = 'round'; ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+    ctx.lineWidth = size * stroke; ctx.strokeStyle = '#0b0f1a';
+    ctx.strokeText(str, x, y);
+    ctx.fillStyle = fill; ctx.fillText(str, x, y);
+    return ctx.measureText(str).width;
+  };
+
+  // Ajusta el tamaño del número para que ocupe ~60% del ancho.
+  let big = 230;
+  ctx.font = `900 ${big}px Inter`;
+  while (ctx.measureText(cfg.big).width > W * 0.6 && big > 90) { big -= 6; ctx.font = `900 ${big}px Inter`; }
+
+  const x = 56;
+  // Etiqueta superior (chip).
+  ctx.font = '800 40px Inter';
+  const tw = ctx.measureText(cfg.tag).width;
+  ctx.fillStyle = cfg.accent;
+  ctx.beginPath(); ctx.roundRect(x, 64, tw + 44, 66, 14); ctx.fill();
+  ctx.fillStyle = '#0b0f1a'; ctx.textBaseline = 'middle'; ctx.fillText(cfg.tag, x + 22, 98);
+
+  text(cfg.big, x, 150 + big * 0.82, big, cfg.accent, 0.09);
+  text(cfg.line, x + 6, 150 + big * 0.82 + 96, 76, '#ffffff', 0.12);
+
+  window.png = () => document.getElementById('out').toDataURL('image/png');
+  window.ready = true;
+</script>
+</body>
+</html>

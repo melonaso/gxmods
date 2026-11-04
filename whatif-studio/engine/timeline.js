@@ -63,13 +63,20 @@ export async function createStudio({ episode, W = 1920, H = 1080 }) {
     return null;
   }
 
-  function renderFrame(t) {
+  /** Dibuja el frame del instante t. bare = solo la escena 3D (para miniaturas). */
+  function renderFrame(t, { bare = false, frame = null } = {}) {
     const s = sceneAt(t);
     const local = t - s.start;
     const p = Math.min(1, Math.max(0, local / s.dur));
     const ov = ep.update(C, { t, scene: s, local, p }) || {};
+    // Reencuadre opcional (miniaturas): zoom alrededor del centro y desplazamiento en píxeles.
+    if (frame) {
+      const z = frame.zoom ?? 1, fw = W * z, fh = H * z;
+      world.camera.setViewOffset(fw, fh, (fw - W) / 2 - (frame.dx ?? 0), (fh - H) / 2 - (frame.dy ?? 0), W, H);
+    } else world.camera.clearViewOffset();
     world.renderer.render(world.scene, world.camera);
     ctx2d.drawImage(glCanvas, 0, 0);
+    if (bare) return;
     drawOverlay(ctx2d, W, H, {
       subtitle: script.subtitles === false ? null : subtitleAt(s, local),
       fade: Math.max(t < 0.6 ? 1 - t / 0.6 : 0, t > duration - 1 ? (t - (duration - 1)) : 0),
