@@ -1,0 +1,133 @@
+{
+  "title": "¿Qué pasaría si cada día la gravedad fuera 1% más débil?",
+  "fps": 30,
+  "gap": 0.4,
+  "tail": 2.5,
+  "narration": false,
+  "cps": 13,
+  "cueMin": 2.4,
+  "cueChars": 90,
+  "voice": {
+    "edge": "es-MX-JorgeNeural",
+    "piper": "es-mls_9972-low"
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "text": "¿Qué pasaría si cada día la gravedad fuera 1% más débil... y nunca dejara de bajar?",
+      "d0": 0,
+      "d1": 0,
+      "cam": {
+        "dist": 2.6,
+        "yaw": 0.3,
+        "lift": 0.9
+      },
+      "hold": 0.8,
+      "titleCard": [
+        "¿QUÉ PASARÍA SI LA GRAVEDAD",
+        "BAJARA 1% CADA DÍA?"
+      ],
+      "titleY": 0.18
+    },
+    {
+      "id": "dia1",
+      "text": "Hoy la gravedad es 9.8 m/s². Mañana: 9.8 × 0.99 = 9.70 m/s². Saltas igual que siempre: unos 50 cm.",
+      "d0": 0,
+      "d1": 1,
+      "cam": {
+        "dist": 3.0,
+        "yaw": -0.5,
+        "lift": 0.8
+      }
+    },
+    {
+      "id": "mitad",
+      "text": "Pero cada 1% se descuenta de lo que queda. Después de 69 días: 0.99⁶⁹ ≈ 0.5. La gravedad es la mitad, y la báscula dice que pesas la mitad.",
+      "d0": 1,
+      "d1": 69,
+      "cam": {
+        "dist": 3.2,
+        "yaw": 0.6,
+        "lift": 0.8
+      },
+      "reach": "all"
+    },
+    {
+      "id": "salto",
+      "text": "Tus piernas empujan con la misma fuerza, pero la Tierra te jala menos. La altura del salto es v² ÷ 2g: si g se divide entre 2, el salto se multiplica por 2.",
+      "d0": 69,
+      "d1": 100,
+      "cam": {
+        "dist": 3.0,
+        "yaw": 1.3,
+        "lift": 0.7
+      },
+      "reach": "all"
+    },
+    {
+      "id": "luna",
+      "text": "Día 179: la gravedad es como la de la Luna, 1/6 de la normal. Saltas 3 metros y tardas casi 4 segundos en volver al suelo.",
+      "d0": 100,
+      "d1": 179,
+      "cam": {
+        "dist": 2.6,
+        "yaw": -0.2,
+        "lift": 0.7
+      }
+    },
+    {
+      "id": "aire",
+      "text": "Día 230: 0.99²³⁰ ≈ 0.1. Con una décima parte de su gravedad, la Tierra ya no retiene bien su aire: la atmósfera empieza a escaparse al espacio y el cielo se oscurece.",
+      "d0": 179,
+      "d1": 230,
+      "cam": {
+        "dist": 2.4,
+        "yaw": 0.9,
+        "lift": 0.6
+      }
+    },
+    {
+      "id": "edificio",
+      "text": "Día 459: queda 1% de la gravedad. Un salto te sube 50 metros, más alto que un edificio de 15 pisos, y pasas más de un minuto en el aire.",
+      "d0": 230,
+      "d1": 459,
+      "cam": {
+        "dist": 0.9,
+        "yaw": -0.45,
+        "lift": 0.55,
+        "follow": 0.6
+      }
+    },
+    {
+      "id": "escape",
+      "text": "Día 1,628, unos 4 años y medio después: tu salto ya supera la velocidad de escape de la Tierra. Saltas... y nunca vuelves a bajar.",
+      "d0": 459,
+      "d1": 1628,
+      "cam": {
+        "dist": 1.0,
+        "yaw": 0.5,
+        "lift": 0.5,
+        "follow": 0.9,
+        "fixed": 35
+      },
+      "hvis": 160
+    },
+    {
+      "id": "outro",
+      "text": "1% al día parece poco. Pero en 4 años y medio, un simple salto basta para dejar el planeta. ¿Qué otro quieres ver? Déjalo en los comentarios.",
+      "d0": 1628,
+      "d1": 1628,
+      "cam": {
+        "dist": 1.0,
+        "yaw": 2.4,
+        "lift": 0.4
+      },
+      "hold": 1.0,
+      "titleCard": [
+        "DÍA 1,628",
+        "UN SALTO AL ESPACIO"
+      ],
+      "titleY": 0.7
+    }
+  ]
+}

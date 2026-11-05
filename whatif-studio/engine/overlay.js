@@ -120,7 +120,8 @@ function balance(ctx, text, maxW) {
 }
 
 function wrap(ctx, text, maxW) {
-  const words = text.split(/\s+/);
+  // Solo corta en espacios normales: el espacio no separable (U+00A0) mantiene unidos número y unidad.
+  const words = text.split(/[ \t\n]+/);
   const lines = [];
   let cur = '';
   for (const w of words) {

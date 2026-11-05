@@ -1,0 +1,140 @@
+{
+  "title": "¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?",
+  "fps": 30,
+  "gap": 0.4,
+  "tail": 2.5,
+  "narration": false,
+  "cps": 13,
+  "cueMin": 2.4,
+  "cueChars": 90,
+  "voice": {
+    "edge": "es-MX-JorgeNeural",
+    "piper": "es-mls_9972-low"
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "text": "¿Qué pasaría si cada vez que parpadeas ganaras 1 peso... en monedas?",
+      "c0": 0,
+      "c1": 0,
+      "cam": {
+        "dist": 1.5,
+        "yaw": 0.25,
+        "lift": 0.55
+      },
+      "hold": 0.8,
+      "titleCard": [
+        "¿QUÉ PASARÍA SI CADA PARPADEO",
+        "TE DIERA 1 PESO?"
+      ],
+      "titleY": 0.18
+    },
+    {
+      "id": "parpadeo",
+      "text": "Parpadeas unas 15 veces por minuto sin darte cuenta. Cada parpadeo, una moneda de $1 cae a tus pies.",
+      "c0": 0,
+      "c1": 15,
+      "cam": {
+        "dist": 1.0,
+        "yaw": -0.4,
+        "lift": 0.7,
+        "look": 0.72
+      },
+      "reach": "all",
+      "blinkCoins": true
+    },
+    {
+      "id": "hora",
+      "text": "En una hora: 15 × 60 = 900 parpadeos. $900 solo por tener los ojos abiertos.",
+      "c0": 15,
+      "c1": 900,
+      "cam": {
+        "dist": 1.3,
+        "yaw": 0.5,
+        "lift": 0.35
+      },
+      "rain": 0.25
+    },
+    {
+      "id": "dia",
+      "text": "En un día despierto (16 horas): 900 × 16 = $14,400. Pero cada moneda pesa 3.95 g: 14,400 × 3.95 g ≈ 57 kg. Casi lo que pesas tú.",
+      "c0": 900,
+      "c1": 14400,
+      "cam": {
+        "dist": 1.5,
+        "yaw": -0.2,
+        "lift": 0.4
+      },
+      "rain": 0.5
+    },
+    {
+      "id": "mes",
+      "text": "En un mes: 14,400 × 30 = $432,000... y 1.7 toneladas de metal. Ya no caben en tu cuarto.",
+      "c0": 14400,
+      "c1": 432000,
+      "cam": {
+        "dist": 1.8,
+        "yaw": 0.8,
+        "lift": 0.5
+      },
+      "rain": 0.8
+    },
+    {
+      "id": "anio",
+      "text": "En un año: 14,400 × 365 = $5,256,000. Eres millonario... y tienes 20.8 toneladas de monedas: más que 3 elefantes adultos.",
+      "c0": 432000,
+      "c1": 5256000,
+      "cam": {
+        "dist": 1.9,
+        "yaw": -0.6,
+        "lift": 0.55
+      },
+      "rain": 1.0,
+      "pose": "cheer"
+    },
+    {
+      "id": "banco",
+      "text": "Ningún banco quiere contarlas a mano. Una máquina rápida cuenta unas 2,000 monedas por minuto: 5,256,000 ÷ 2,000 = 2,628 minutos. Casi 44 horas sin parar.",
+      "c0": 5256000,
+      "c1": 5256000,
+      "cam": {
+        "dist": 1.7,
+        "yaw": 0.3,
+        "lift": 0.5
+      },
+      "rain": 0.6
+    },
+    {
+      "id": "anio50",
+      "text": "En 50 años: 5,256,000 × 50 = $262,800,000. Más de 262 millones de pesos... y 1,038 toneladas de metal en tu patio.",
+      "c0": 5256000,
+      "c1": 262800000,
+      "cam": {
+        "dist": 1.5,
+        "yaw": 1.0,
+        "lift": 0.55
+      },
+      "rain": 1.0,
+      "pose": "cheer"
+    },
+    {
+      "id": "outro",
+      "text": "Un parpadeo parece nada. Pero lo haces 14,400 veces al día. ¿Tú qué harías con 262 millones en monedas? Déjalo en los comentarios.",
+      "c0": 262800000,
+      "c1": 262800000,
+      "cam": {
+        "dist": 1.6,
+        "yaw": 0.4,
+        "lift": 0.7
+      },
+      "hold": 1.0,
+      "rain": 0.5,
+      "pose": "cheer",
+      "titleCard": [
+        "50 AÑOS DE PARPADEOS",
+        "$262,800,000"
+      ],
+      "titleY": 0.6
+    }
+  ]
+}
