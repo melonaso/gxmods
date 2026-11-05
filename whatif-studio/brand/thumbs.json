@@ -40,5 +40,33 @@
       "dx": 330,
       "dy": -30
     }
+  },
+  "ep04": {
+    "episode": "ep04-gravedad",
+    "t": 74,
+    "big": "50 m",
+    "line": "DE UN SOLO SALTO",
+    "tag": "GRAVEDAD −1% AL DÍA",
+    "align": "left",
+    "accent": "#a5b4fc",
+    "frame": {
+      "zoom": 1.35,
+      "dx": 330,
+      "dy": 20
+    }
+  },
+  "ep05": {
+    "episode": "ep05-parpadeos",
+    "t": 71,
+    "big": "$262,800,000",
+    "line": "EN PARPADEOS",
+    "tag": "1,038 TONELADAS",
+    "align": "left",
+    "accent": "#ffd34d",
+    "frame": {
+      "zoom": 1.45,
+      "dx": 330,
+      "dy": -10
+    }
   }
 }

@@ -1,6 +1,6 @@
-# Publicación de los primeros 3 videos
+# Publicación de los videos
 
-Miniaturas (1280×720): `out/brand/thumb-ep01.png`, `thumb-ep02.png`, `thumb-ep03.png`.
+Miniaturas (1280×720): `out/brand/thumb-ep01.png` … `thumb-ep05.png`.
 Para generarlas de nuevo: `node brand/render-brand.mjs thumb ep01` (textos y encuadre en `brand/thumbs.json`).
 
 ---
@@ -74,3 +74,53 @@ Las cuentas del video:
 #QuéPasaríaSi #YSiNoParas #Física #Matemáticas #Animación
 
 **Etiquetas:** qué pasaría si, 1% más rápido, crecimiento exponencial, interés compuesto, velocidad del sonido, velocidad de escape, física, animación, y si no paras
+
+---
+
+## Video 4 — `out/ep04-gravedad.mp4`
+
+**Título:**
+¿Qué pasaría si cada día la gravedad fuera 1% más débil?
+
+**Descripción:**
+1% menos de gravedad al día. En 4 años y medio, un simple salto bastaría para salir de la Tierra… y nunca volver.
+
+Las cuentas del video:
+🌍 Gravedad normal: 9.8 m/s². Día 1: 9.8 × 0.99 = 9.70 m/s².
+📉 Cada 1% se descuenta de lo que queda: 0.99⁶⁹ ≈ 0.5 → en el día 69 la gravedad es la mitad (y la báscula marca la mitad de tu peso).
+🦘 Altura del salto = v² ÷ 2g: con la misma fuerza de piernas, si g se divide entre 2, el salto se multiplica por 2.
+🌙 Día 179: gravedad lunar (1/6). Saltas 3 m y tardas casi 4 s en caer.
+💨 Día 230: 0.99²³⁰ ≈ 0.1. Con una décima parte de gravedad, la atmósfera empieza a escaparse.
+🏢 Día 459: queda 1%. Un salto de 50 m y más de un minuto en el aire.
+🚀 Día 1,628: tu salto (3.13 m/s) supera la velocidad de escape, √(2gR). Saltas… y no regresas.
+
+¿Qué otro «qué pasaría si» quieres ver? Déjalo en los comentarios.
+
+#QuéPasaríaSi #YSiNoParas #Física #Gravedad #Animación
+
+**Etiquetas:** qué pasaría si, gravedad, sin gravedad, decaimiento exponencial, velocidad de escape, física, salto, animación, y si no paras
+
+---
+
+## Video 5 — `out/ep05-parpadeos.mp4`
+
+**Título:**
+¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?
+
+**Descripción:**
+Parpadeas 14,400 veces al día sin darte cuenta. Si cada parpadeo fuera una moneda de $1, en 50 años tendrías más de 262 millones de pesos… y 1,038 toneladas de metal.
+
+Las cuentas del video:
+👁️ 15 parpadeos por minuto × 60 = 900 por hora.
+☀️ 16 horas despierto: 900 × 16 = $14,400 al día.
+⚖️ Cada moneda de $1 pesa 3.95 g: 14,400 × 3.95 g ≈ 57 kg al día.
+📦 1 mes: 14,400 × 30 = $432,000 y 1.7 toneladas.
+🐘 1 año: 14,400 × 365 = $5,256,000 y 20.8 toneladas, más que 3 elefantes adultos.
+🏦 Contarlas a 2,000 monedas por minuto: 5,256,000 ÷ 2,000 = 2,628 minutos, casi 44 horas.
+💰 50 años: 5,256,000 × 50 = $262,800,000 y 1,038 toneladas.
+
+¿Tú qué harías con 262 millones en monedas? Déjalo en los comentarios.
+
+#QuéPasaríaSi #YSiNoParas #Matemáticas #Dinero #Animación
+
+**Etiquetas:** qué pasaría si, parpadear, monedas, millonario, dinero, matemáticas, curiosidades, animación, y si no paras
