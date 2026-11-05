@@ -28,7 +28,8 @@
         "¿QUÉ PASARÍA SI CADA HORA",
         "TE SIGUIERA 1 PERSONA MÁS?"
       ],
-      "titleY": 0.17
+      "titleY": 0.17,
+      "chapter": "La pregunta"
     },
     {
       "id": "hora1",
@@ -40,7 +41,8 @@
         "front": 6.5,
         "side": 2.5,
         "look": -1.5
-      }
+      },
+      "chapter": "Hora 1: tu primer seguidor"
     },
     {
       "id": "dia1",
@@ -52,7 +54,8 @@
         "front": 11,
         "side": 7,
         "look": -6
-      }
+      },
+      "chapter": "1 día: 24 personas"
     },
     {
       "id": "semana",
@@ -64,7 +67,8 @@
         "front": 20,
         "side": 16,
         "look": -18
-      }
+      },
+      "chapter": "1 semana: 168"
     },
     {
       "id": "mes",
@@ -76,7 +80,9 @@
         "front": 35,
         "side": 35,
         "look": -60
-      }
+      },
+      "chapter": "1 mes: 720 y 2,160 platos",
+      "chapterJoin": "1 mes: 720"
     },
     {
       "id": "anio1",
@@ -88,7 +94,8 @@
         "front": 25,
         "side": 28,
         "look": -120
-      }
+      },
+      "chapter": "1 año: 8,760 personas"
     },
     {
       "id": "espacio",
@@ -100,7 +107,8 @@
         "front": 30,
         "side": -70,
         "look": -400
-      }
+      },
+      "chapter": "¿Cuánto espacio ocupan?"
     },
     {
       "id": "anio10",
@@ -112,7 +120,8 @@
         "front": 30,
         "side": 35,
         "look": -700
-      }
+      },
+      "chapter": "10 años: un estadio lleno"
     },
     {
       "id": "anio50",
@@ -124,7 +133,8 @@
         "front": 40,
         "side": 45,
         "look": -1500
-      }
+      },
+      "chapter": "50 años: una fila de 87.6 km"
     },
     {
       "id": "outro",
@@ -142,7 +152,8 @@
         "50 AÑOS DESPUÉS",
         "438,000 SEGUIDORES"
       ],
-      "titleY": 0.22
+      "titleY": 0.22,
+      "chapter": "El resultado final"
     }
   ]
 }

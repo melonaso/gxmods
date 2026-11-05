@@ -27,7 +27,8 @@
         "¿QUÉ PASARÍA SI CADA PASO",
         "FUERAS 1% MÁS RÁPIDO?"
       ],
-      "titleY": 0.18
+      "titleY": 0.18,
+      "chapter": "La pregunta"
     },
     {
       "id": "paso1",
@@ -38,7 +39,8 @@
         "dist": 6,
         "h": 1.8,
         "yaw": 1.2
-      }
+      },
+      "chapter": "Paso 1: 1.414 m/s"
     },
     {
       "id": "compuesto",
@@ -50,7 +52,8 @@
         "h": 2.2,
         "yaw": 1.5
       },
-      "reach": "all"
+      "reach": "all",
+      "chapter": "Interés compuesto"
     },
     {
       "id": "auto",
@@ -61,7 +64,8 @@
         "dist": 8,
         "h": 2.0,
         "yaw": 1.75
-      }
+      },
+      "chapter": "Paso 230: 50 km/h"
     },
     {
       "id": "guepardo",
@@ -72,7 +76,8 @@
         "dist": 9,
         "h": 1.5,
         "yaw": 2.4
-      }
+      },
+      "chapter": "Paso 310: más que un guepardo"
     },
     {
       "id": "sonido",
@@ -84,7 +89,9 @@
         "h": 3.0,
         "yaw": 1.35
       },
-      "cone": true
+      "cone": true,
+      "chapter": "Paso 553: la barrera del sonido",
+      "chapterJoin": "Mach 1"
     },
     {
       "id": "calor",
@@ -97,7 +104,8 @@
         "yaw": 0.6
       },
       "cone": true,
-      "heat": true
+      "heat": true,
+      "chapter": "Paso 750: Mach 7"
     },
     {
       "id": "escape",
@@ -111,7 +119,8 @@
       },
       "cone": true,
       "heat": true,
-      "lift": 0.15
+      "lift": 0.15,
+      "chapter": "Paso 904: velocidad de escape"
     },
     {
       "id": "outro",
@@ -130,7 +139,8 @@
         "904 PASOS",
         "11.2 KM/S"
       ],
-      "titleY": 0.68
+      "titleY": 0.68,
+      "chapter": "678 metros para salir del planeta"
     }
   ]
 }

@@ -23,7 +23,8 @@
       "titleCard": [
         "¿QUÉ PASARÍA SI CRECIERAS",
         "1 CM CADA DÍA?"
-      ]
+      ],
+      "chapter": "La pregunta"
     },
     {
       "id": "dia1",
@@ -34,7 +35,9 @@
         "dist": 2.2,
         "yaw": -0.35,
         "lift": 0.8
-      }
+      },
+      "chapter": "Día 1: nadie lo nota",
+      "chapterJoin": "Día 1"
     },
     {
       "id": "mes1",
@@ -45,7 +48,8 @@
         "dist": 3.2,
         "yaw": 0.55,
         "lift": 0.7
-      }
+      },
+      "chapter": "1 mes: 2 metros"
     },
     {
       "id": "anio1",
@@ -57,7 +61,8 @@
         "yaw": 0.15,
         "lift": 0.6
       },
-      "crowd": "lookUp"
+      "crowd": "lookUp",
+      "chapter": "1 año: 5.35 m"
     },
     {
       "id": "fisica",
@@ -70,7 +75,8 @@
         "lift": 0.55
       },
       "counter": "weight",
-      "crowd": "lookUp"
+      "crowd": "lookUp",
+      "chapter": "La ley cuadrado-cubo"
     },
     {
       "id": "anio10",
@@ -82,7 +88,8 @@
         "yaw": 0.4,
         "lift": 0.55
       },
-      "crowd": "cheer"
+      "crowd": "cheer",
+      "chapter": "10 años: 38 m"
     },
     {
       "id": "anio50",
@@ -94,7 +101,8 @@
         "yaw": -0.3,
         "lift": 0.5
       },
-      "crowd": "lookUp"
+      "crowd": "lookUp",
+      "chapter": "50 años: 184 m"
     },
     {
       "id": "anio100",
@@ -107,7 +115,8 @@
         "yaw": 0.65,
         "lift": 0.45
       },
-      "crowd": "lookUp"
+      "crowd": "lookUp",
+      "chapter": "100 años: más que la Torre Eiffel"
     },
     {
       "id": "outro",
@@ -126,7 +135,8 @@
         "36,500 DÍAS DESPUÉS",
         "367 METROS"
       ],
-      "titleY": 0.17
+      "titleY": 0.17,
+      "chapter": "El resultado final"
     }
   ],
   "narration": false,

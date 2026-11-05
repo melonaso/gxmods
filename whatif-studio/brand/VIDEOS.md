@@ -1,16 +1,31 @@
 # Publicación de los videos
 
-Miniaturas (1280×720): `out/brand/thumb-ep01.png` … `thumb-ep05.png`.
-Para generarlas de nuevo: `node brand/render-brand.mjs thumb ep01` (textos y encuadre en `brand/thumbs.json`).
+> Archivo generado con `python3 brand/build_copy.py` a partir de `brand/copy.json`.
+> No lo edites a mano: cambia `copy.json` y vuelve a generarlo.
+
+Canal: **¿Y Si No Paras?** · YouTube `@YSiNoParas` · TikTok/Instagram `@ysinoparas` · Lista: «¿Y Si No Paras? · Temporada 1».
+Miniaturas (1280×720): `out/brand/thumb-ep0N.png` (`node brand/render-brand.mjs thumb ep0N`).
+
+## Ajustes al subir (iguales para todos)
+- **Categoría:** Educación · **Idioma:** Español (México) · **Licencia:** estándar de YouTube.
+- **Audiencia:** «No, no es contenido creado para niños» (es apto para todo público, pero no está dirigido a niños).
+- **Contenido alterado o sintético:** No (es animación claramente no realista).
+- **Lista de reproducción:** «¿Y Si No Paras? · Temporada 1».
+- **Pantalla final:** «Video siguiente» + «Suscribirse», en los últimos 15 s (la tarjeta de título final deja espacio).
+- **Comentario fijado:** publícalo tú apenas subas el video y fíjalo (texto abajo).
+- **Hashtags:** YouTube muestra los 3 primeros sobre el título; con más de 15 los ignora todos.
 
 ---
 
 ## Video 1 — `out/ep01-crecer.mp4`
 
-**Título:**
+**Título** (60/100):
+```
 ¿Qué pasaría si crecieras 1 cm cada día y no pudieras parar?
+```
 
-**Descripción:**
+**Descripción** (931/5000):
+```
 1 centímetro al día parece nada. Pero después de 100 años medirías 367 metros: más que la Torre Eiffel.
 
 Las cuentas del video:
@@ -22,18 +37,50 @@ Las cuentas del video:
 
 ¿Qué otro «qué pasaría si» quieres ver? Déjalo en los comentarios.
 
-#QuéPasaríaSi #YSiNoParas #Matemáticas #Curiosidades #Animación
+⏱️ Capítulos
+0:00 La pregunta · Día 1
+0:13 1 mes: 2 metros
+0:24 1 año: 5.35 m
+0:35 La ley cuadrado-cubo
+0:57 10 años: 38 m
+1:11 50 años: 184 m
+1:26 100 años: más que la Torre Eiffel
+1:37 El resultado final
 
-**Etiquetas:** qué pasaría si, crecer 1 cm cada día, ley cuadrado cubo, gigante, matemáticas, curiosidades, animación, y si no paras
+🔔 Suscríbete: @YSiNoParas
+📲 TikTok e Instagram: @ysinoparas
+
+#QuePasariaSi #YSiNoParas #Curiosidades #Matematicas #Gigante
+```
+
+**Etiquetas** (133/500):
+```
+qué pasaría si, que pasaria si, crecer 1 cm cada día, ley cuadrado cubo, gigante, matemáticas, curiosidades, animación, y si no paras
+```
+
+**Comentario fijado:**
+```
+📌 Si duplicas tu altura, tu peso se multiplica por 8 pero tus huesos solo se hacen 4 veces más fuertes. Por eso un gigante de 5 m tendría problemas para sostenerse 🦴 ¿Qué número te sorprendió más? 👇
+```
+
+**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):
+```
+1 cm al día... durante 100 años 📏🤯 ¿Hasta dónde llegarías?
+Video completo en YouTube: @YSiNoParas
+#quepasariasi #ysinoparas #curiosidades #matematicas #parati
+```
 
 ---
 
 ## Video 2 — `out/ep02-seguidores.mp4`
 
-**Título:**
+**Título** (66/100):
+```
 ¿Qué pasaría si cada hora te siguiera 1 persona más… para siempre?
+```
 
-**Descripción:**
+**Descripción** (1078/5000):
+```
 Una persona nueva cada hora. Nunca se va. En 50 años tendrías 438,000 seguidores reales caminando detrás de ti.
 
 Las cuentas del video:
@@ -46,18 +93,51 @@ Las cuentas del video:
 
 ¿Tú qué harías con casi medio millón de seguidores? Déjalo en los comentarios.
 
-#QuéPasaríaSi #YSiNoParas #Matemáticas #Curiosidades #Animación
+⏱️ Capítulos
+0:00 La pregunta
+0:10 Hora 1: tu primer seguidor
+0:21 1 día: 24 personas
+0:31 1 semana: 168 · 1 mes: 720
+0:46 1 año: 8,760 personas
+0:56 ¿Cuánto espacio ocupan?
+1:10 10 años: un estadio lleno
+1:22 50 años: una fila de 87.6 km
+1:34 El resultado final
 
-**Etiquetas:** qué pasaría si, seguidores, multitud, cada hora, matemáticas, curiosidades, animación, y si no paras
+🔔 Suscríbete: @YSiNoParas
+📲 TikTok e Instagram: @ysinoparas
+
+#QuePasariaSi #YSiNoParas #Curiosidades #Matematicas #Seguidores
+```
+
+**Etiquetas** (116/500):
+```
+qué pasaría si, que pasaria si, seguidores, multitud, cada hora, matemáticas, curiosidades, animación, y si no paras
+```
+
+**Comentario fijado:**
+```
+📌 En 1 año serían 8,760 personas: la población de un pueblo entero siguiéndote 😳 ¿A dónde los llevarías primero? 👇
+```
+
+**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):
+```
++1 persona cada hora, para siempre 👣 En 50 años: 438,000 detrás de ti 😳
+Video completo en YouTube: @YSiNoParas
+#quepasariasi #ysinoparas #curiosidades #matematicas #parati
+```
 
 ---
 
 ## Video 3 — `out/ep03-velocidad.mp4`
 
-**Título:**
+**Título** (51/100):
+```
 ¿Qué pasaría si cada paso te hiciera 1% más rápido?
+```
 
-**Descripción:**
+**Descripción** (1123/5000):
+```
 1% parece poco. Pero con 904 pasos —menos de 1 km de caminata— alcanzarías la velocidad necesaria para salir de la Tierra.
 
 Las cuentas del video:
@@ -71,18 +151,50 @@ Las cuentas del video:
 
 ¿Qué otro «qué pasaría si» quieres ver? Déjalo en los comentarios.
 
-#QuéPasaríaSi #YSiNoParas #Física #Matemáticas #Animación
+⏱️ Capítulos
+0:00 La pregunta
+0:10 Paso 1: 1.414 m/s
+0:20 Interés compuesto
+0:31 Paso 230: 50 km/h
+0:41 Paso 310: más que un guepardo · Mach 1
+0:58 Paso 750: Mach 7
+1:09 Paso 904: velocidad de escape
+1:20 678 metros para salir del planeta
 
-**Etiquetas:** qué pasaría si, 1% más rápido, crecimiento exponencial, interés compuesto, velocidad del sonido, velocidad de escape, física, animación, y si no paras
+🔔 Suscríbete: @YSiNoParas
+📲 TikTok e Instagram: @ysinoparas
+
+#QuePasariaSi #YSiNoParas #Fisica #CrecimientoExponencial #Matematicas
+```
+
+**Etiquetas** (166/500):
+```
+qué pasaría si, que pasaria si, 1% más rápido, crecimiento exponencial, interés compuesto, velocidad del sonido, velocidad de escape, física, animación, y si no paras
+```
+
+**Comentario fijado:**
+```
+📌 Regla del 70: divide 70 entre el % de crecimiento y sabrás cuánto tarda en duplicarse. Con 1%: 70 pasos. Funciona igual con el dinero 💰 ¿La conocías? 👇
+```
+
+**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):
+```
+Cada paso, 1% más rápido 🏃‍♂️💨 En el paso 904 sales de la Tierra 🚀
+Video completo en YouTube: @YSiNoParas
+#quepasariasi #ysinoparas #fisica #curiosidades #parati
+```
 
 ---
 
 ## Video 4 — `out/ep04-gravedad.mp4`
 
-**Título:**
+**Título** (56/100):
+```
 ¿Qué pasaría si cada día la gravedad fuera 1% más débil?
+```
 
-**Descripción:**
+**Descripción** (1208/5000):
+```
 1% menos de gravedad al día. En 4 años y medio, un simple salto bastaría para salir de la Tierra… y nunca volver.
 
 Las cuentas del video:
@@ -96,18 +208,50 @@ Las cuentas del video:
 
 ¿Qué otro «qué pasaría si» quieres ver? Déjalo en los comentarios.
 
-#QuéPasaríaSi #YSiNoParas #Física #Gravedad #Animación
+⏱️ Capítulos
+0:00 La pregunta · Día 1
+0:16 Día 69: la mitad de gravedad
+0:29 La física del salto
+0:42 Día 179: gravedad lunar
+0:52 Día 230: se escapa el aire
+1:07 Día 459: saltos de 50 m
+1:19 Día 1,628: velocidad de escape
+1:30 Un salto al espacio
 
-**Etiquetas:** qué pasaría si, gravedad, sin gravedad, decaimiento exponencial, velocidad de escape, física, salto, animación, y si no paras
+🔔 Suscríbete: @YSiNoParas
+📲 TikTok e Instagram: @ysinoparas
+
+#QuePasariaSi #YSiNoParas #Fisica #Gravedad #Espacio
+```
+
+**Etiquetas** (141/500):
+```
+qué pasaría si, que pasaria si, gravedad, sin gravedad, decaimiento exponencial, velocidad de escape, física, salto, animación, y si no paras
+```
+
+**Comentario fijado:**
+```
+📌 Dato real: la gravedad de la Luna es 1/6 de la de la Tierra, y en gran parte por eso casi no tiene atmósfera: no logra retener su aire 🌙 ¿Qué harías pesando la mitad? 👇
+```
+
+**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):
+```
+La gravedad baja 1% cada día 🌍⬇️ En 4.5 años, un salto te saca del planeta 🚀
+Video completo en YouTube: @YSiNoParas
+#quepasariasi #ysinoparas #fisica #espacio #parati
+```
 
 ---
 
 ## Video 5 — `out/ep05-parpadeos.mp4`
 
-**Título:**
+**Título** (54/100):
+```
 ¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?
+```
 
-**Descripción:**
+**Descripción** (1046/5000):
+```
 Parpadeas 14,400 veces al día sin darte cuenta. Si cada parpadeo fuera una moneda de $1, en 50 años tendrías más de 262 millones de pesos… y 1,038 toneladas de metal.
 
 Las cuentas del video:
@@ -121,6 +265,34 @@ Las cuentas del video:
 
 ¿Tú qué harías con 262 millones en monedas? Déjalo en los comentarios.
 
-#QuéPasaríaSi #YSiNoParas #Matemáticas #Dinero #Animación
+⏱️ Capítulos
+0:00 La pregunta · 15 por minuto
+0:15 1 hora: $900 · 1 día: $14,400
+0:33 1 mes: 1.7 toneladas
+0:43 1 año: millonario
+0:53 ¿Cuánto tardas en contarlas?
+1:06 50 años: $262,800,000
+1:16 El resultado final
 
-**Etiquetas:** qué pasaría si, parpadear, monedas, millonario, dinero, matemáticas, curiosidades, animación, y si no paras
+🔔 Suscríbete: @YSiNoParas
+📲 TikTok e Instagram: @ysinoparas
+
+#QuePasariaSi #YSiNoParas #Dinero #Matematicas #Curiosidades
+```
+
+**Etiquetas** (123/500):
+```
+qué pasaría si, que pasaria si, parpadear, monedas, millonario, dinero, matemáticas, curiosidades, animación, y si no paras
+```
+
+**Comentario fijado:**
+```
+📌 Ser millonario en un año suena bien… hasta que tienes que cargar 57 kg de monedas cada día 😅 ¿En qué gastarías el primer millón? 👇
+```
+
+**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):
+```
+1 peso por cada parpadeo 👁️💰 En 1 año: millonario… y 20 toneladas de monedas 😳
+Video completo en YouTube: @YSiNoParas
+#quepasariasi #ysinoparas #dinero #curiosidades #parati
+```

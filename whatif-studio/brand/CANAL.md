@@ -27,5 +27,9 @@ Lo que nos hace diferentes: hacemos las cuentas de verdad. Cada número en panta
 
 Suscríbete y no pares.
 
+📲 TikTok e Instagram: @ysinoparas
+
+Usuarios, biografías y hashtags para cada red: `brand/REDES.md`. Textos de cada video: `brand/VIDEOS.md`.
+
 ## Palabras clave del canal
 qué pasaría si, y si no paras, animación, curiosidades, matemáticas, física, ciencia, crecimiento exponencial, datos curiosos, experimento mental, what if en español
