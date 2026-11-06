@@ -1,0 +1,187 @@
+{
+  "title": "¿Qué pasaría si el mar subiera 1 cm cada día?",
+  "fps": 30,
+  "gap": 0.4,
+  "tail": 2.5,
+  "narration": false,
+  "cps": 13,
+  "cueMin": 2.4,
+  "cueChars": 90,
+  "voice": {
+    "edge": "es-MX-JorgeNeural",
+    "piper": "es-mls_9972-low"
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "text": "¿Qué pasaría si el mar subiera 1 cm cada día... y nunca se detuviera?",
+      "d0": 0,
+      "d1": 0,
+      "cam": {
+        "dist": 1.4,
+        "yaw": 0.55,
+        "lift": 0.32
+      },
+      "chapter": "La pregunta",
+      "hold": 0.8,
+      "titleCard": [
+        "¿QUÉ PASARÍA SI EL MAR",
+        "SUBIERA 1 CM CADA DÍA?"
+      ],
+      "titleY": 0.2
+    },
+    {
+      "id": "hoy",
+      "text": "Hoy el mar sube unos 4 mm al año. A 1 cm diario subiría 365 cm al año: unas 900 veces más rápido.",
+      "d0": 0,
+      "d1": 1,
+      "cam": {
+        "dist": 1.3,
+        "yaw": -0.35,
+        "lift": 0.3
+      },
+      "chapter": "1 cm al día: 900 veces más rápido"
+    },
+    {
+      "id": "mes",
+      "text": "En un mes: 30 × 1 cm = 30 cm. Parece poco, pero la playa se encoge más de 10 metros, porque en la orilla el terreno es casi plano.",
+      "d0": 1,
+      "d1": 30,
+      "cam": {
+        "dist": 1.5,
+        "yaw": 0.3,
+        "lift": 0.35
+      },
+      "chapter": "1 mes: la playa desaparece"
+    },
+    {
+      "id": "anio1",
+      "text": "En un año: 365 × 1 cm = 3.65 m. Las casas de la primera fila ya están bajo el agua.",
+      "d0": 30,
+      "d1": 365,
+      "cam": {
+        "dist": 1.25,
+        "yaw": -0.2,
+        "lift": 0.34
+      },
+      "chapter": "1 año: 3.65 m",
+      "focus": "town"
+    },
+    {
+      "id": "puertos",
+      "text": "En menos de 3 años el agua pasa los 10 m: la mayoría de los puertos y playas del mundo quedan bajo el mar.",
+      "d0": 365,
+      "d1": 1000,
+      "cam": {
+        "dist": 1.32,
+        "yaw": -0.2,
+        "lift": 0.4
+      },
+      "chapter": "3 años: adiós puertos",
+      "labels": [
+        "m10"
+      ],
+      "focus": "town",
+      "camT": 3.0
+    },
+    {
+      "id": "hielo",
+      "text": "Si se derritiera todo el hielo del planeta, el mar subiría unos 70 m. A este ritmo lo superas en 19 años: 70 ÷ 3.65 ≈ 19.",
+      "d0": 1000,
+      "d1": 7000,
+      "cam": {
+        "dist": 1.15,
+        "yaw": -0.3,
+        "lift": 0.45
+      },
+      "chapter": "19 años: más que todo el hielo",
+      "labels": [
+        "m70"
+      ],
+      "focus": "plain",
+      "reach": "all",
+      "camT": 0
+    },
+    {
+      "id": "monterrey",
+      "text": "Ya no queda hielo que derretir, pero en este mundo el mar no para. En 148 años llega a 540 m: la altura de Monterrey.",
+      "d0": 7000,
+      "d1": 54000,
+      "cam": {
+        "dist": 1.0,
+        "yaw": 0.35,
+        "lift": 0.45
+      },
+      "chapter": "148 años: Monterrey",
+      "labels": [
+        "m540"
+      ],
+      "camT": 0,
+      "focus": "fixed",
+      "at": 4200,
+      "scale": 2600,
+      "reach": "all"
+    },
+    {
+      "id": "cdmx",
+      "text": "Guadalajara (1,566 m) se hunde en el año 429. Y en el 614 el agua alcanza 2,240 m: la Ciudad de México queda bajo el mar.",
+      "d0": 54000,
+      "d1": 224000,
+      "cam": {
+        "dist": 1.0,
+        "yaw": -0.4,
+        "lift": 0.5
+      },
+      "chapter": "614 años: la Ciudad de México",
+      "labels": [
+        "m1566",
+        "m2240"
+      ],
+      "focus": "fixed",
+      "at": 11500,
+      "scale": 7600,
+      "reach": "all",
+      "camT": 0
+    },
+    {
+      "id": "orizaba",
+      "text": "En el año 1,544 el agua cubre el Pico de Orizaba (5,636 m), la montaña más alta de México. El Everest resistiría hasta el año 2,424.",
+      "d0": 224000,
+      "d1": 563600,
+      "cam": {
+        "dist": 1.0,
+        "yaw": 0.3,
+        "lift": 0.55
+      },
+      "chapter": "1,544 años: el Pico de Orizaba",
+      "labels": [
+        "m5636"
+      ],
+      "focus": "fixed",
+      "at": 23500,
+      "scale": 15000,
+      "reach": "all",
+      "camT": 0
+    },
+    {
+      "id": "outro",
+      "text": "1 cm al día parece nada. Pero en 1,544 años no queda ni un pedazo de México sobre el agua. ¿Qué otro quieres ver? Déjalo en los comentarios.",
+      "d0": 563600,
+      "d1": 563600,
+      "cam": {
+        "dist": 1.5,
+        "yaw": 0.9,
+        "lift": 0.45
+      },
+      "chapter": "El resultado final",
+      "hold": 1.0,
+      "titleCard": [
+        "AÑO 1,544",
+        "MÉXICO BAJO EL MAR"
+      ],
+      "titleY": 0.25,
+      "focus": "peak",
+      "camT": 3.0
+    }
+  ]
+}

@@ -95,7 +95,7 @@ export async function createStudio({ episode, W = 1920, H = 1080 }) {
     world.scene.traverse((o) => {
       if (!o.userData?.solid) return;
       let v = true; for (let p = o; p; p = p.parent) if (!p.visible) v = false;
-      if (v) solids.push({ o, b: new THREE.Box3().setFromObject(o) });
+      if (v) solids.push({ o, b: new THREE.Box3().setFromObject(o, true) }); // precisa: sobre los vértices reales
     });
     const out = [];
     for (let i = 0; i < solids.length; i++) for (let j = i + 1; j < solids.length; j++) {
@@ -103,6 +103,14 @@ export async function createStudio({ episode, W = 1920, H = 1080 }) {
       const ox = Math.min(a.max.x, b.max.x) - Math.max(a.min.x, b.min.x);
       const oz = Math.min(a.max.z, b.max.z) - Math.max(a.min.z, b.min.z);
       const oy = Math.min(a.max.y, b.max.y) - Math.max(a.min.y, b.min.y);
+      // Las cajas alineadas a los ejes se inflan con objetos girados: si ambos declaran su radio en
+      // planta, el choque se confirma con la distancia real entre centros.
+      const oa = solids[i].o, obj = solids[j].o;
+      if (ox > 0.3 && oz > 0.3 && oy > 0 && oa.userData.radius && obj.userData.radius) {
+        const pa = oa.getWorldPosition(new THREE.Vector3()), pb = obj.getWorldPosition(new THREE.Vector3());
+        const ra = oa.userData.radius * oa.getWorldScale(new THREE.Vector3()).x, rb = obj.userData.radius * obj.getWorldScale(new THREE.Vector3()).x;
+        if (Math.hypot(pa.x - pb.x, pa.z - pb.z) >= ra + rb - 0.3) continue;
+      }
       if (ox > 0.3 && oz > 0.3 && oy > 0) {
         const c = (bx) => `(${bx.getCenter(new THREE.Vector3()).x.toFixed(0)}, ${bx.getCenter(new THREE.Vector3()).z.toFixed(0)})`;
         out.push(`${solids[i].o.userData.solid} ${c(a)} ↔ ${solids[j].o.userData.solid} ${c(b)}`);

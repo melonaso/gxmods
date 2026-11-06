@@ -1,0 +1,139 @@
+{
+  "title": "¿Qué pasaría si tu casa ganara un cuarto nuevo cada día?",
+  "fps": 30,
+  "gap": 0.4,
+  "tail": 2.5,
+  "narration": false,
+  "cps": 13,
+  "cueMin": 2.4,
+  "cueChars": 90,
+  "voice": {
+    "edge": "es-MX-JorgeNeural",
+    "piper": "es-mls_9972-low"
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "text": "¿Qué pasaría si cada día tu casa ganara un cuarto nuevo... para siempre?",
+      "n0": 0,
+      "n1": 0,
+      "cam": {
+        "dist": 1.5,
+        "yaw": 0.45,
+        "lift": 0.25
+      },
+      "chapter": "La pregunta",
+      "hold": 0.8,
+      "titleCard": [
+        "¿QUÉ PASARÍA SI TU CASA",
+        "GANARA UN CUARTO AL DÍA?"
+      ],
+      "titleY": 0.2
+    },
+    {
+      "id": "dia1",
+      "text": "Mañana aparece un cuarto extra de 3 × 4 m: 12 m² más. ¡Por fin un cuarto de juegos!",
+      "n0": 0,
+      "n1": 1,
+      "cam": {
+        "dist": 1.5,
+        "yaw": 0.45,
+        "lift": 0.3
+      },
+      "chapter": "Día 1: 12 m² más"
+    },
+    {
+      "id": "mes",
+      "text": "En un mes: 30 cuartos, 30 × 12 = 360 m². Tu casa ya parece un hotel.",
+      "n0": 1,
+      "n1": 30,
+      "cam": {
+        "dist": 1.4,
+        "yaw": 0.45,
+        "lift": 0.45
+      },
+      "chapter": "1 mes: 360 m²"
+    },
+    {
+      "id": "anio1",
+      "text": "En un año: 365 cuartos y 4,380 m². Si limpias cada uno en 15 minutos: 365 × 15 = 5,475 minutos, más de 91 horas de limpieza.",
+      "n0": 30,
+      "n1": 365,
+      "cam": {
+        "dist": 1.35,
+        "yaw": 0.45,
+        "lift": 0.6
+      },
+      "chapter": "1 año: 91 horas de limpieza"
+    },
+    {
+      "id": "buckingham",
+      "text": "Día 775, poco más de 2 años: 775 cuartos, los mismos que el Palacio de Buckingham, el palacio de la familia real británica.",
+      "n0": 365,
+      "n1": 775,
+      "cam": {
+        "dist": 1.3,
+        "yaw": 0.45,
+        "lift": 0.65
+      },
+      "chapter": "2 años: el Palacio de Buckingham"
+    },
+    {
+      "id": "versalles",
+      "text": "Después de 6 años ya tienes 2,300 cuartos, como el Palacio de Versalles. Solo recorrerlos, a 4 m por cuarto, son 2,300 × 4 m = 9.2 km.",
+      "n0": 775,
+      "n1": 2300,
+      "cam": {
+        "dist": 1.25,
+        "yaw": 0.45,
+        "lift": 0.7
+      },
+      "chapter": "6 años: el Palacio de Versalles",
+      "reach": "all"
+    },
+    {
+      "id": "puertas",
+      "text": "Y antes de dormir, cerrar todas las puertas a 5 segundos cada una: 2,300 × 5 s = 11,500 s. Más de 3 horas solo cerrando puertas.",
+      "n0": 2300,
+      "n1": 2300,
+      "cam": {
+        "dist": 1.15,
+        "yaw": 0.45,
+        "lift": 0.55
+      },
+      "chapter": "3 horas cerrando puertas",
+      "focusDoor": true
+    },
+    {
+      "id": "anio50",
+      "text": "A los 50 años: 365 × 50 = 18,250 cuartos y 219,000 m². Tu casa ocupa más que 30 canchas de fútbol.",
+      "n0": 2300,
+      "n1": 18250,
+      "cam": {
+        "dist": 1.2,
+        "yaw": 0.45,
+        "lift": 0.78
+      },
+      "chapter": "50 años: 30 canchas de fútbol",
+      "reach": "all"
+    },
+    {
+      "id": "outro",
+      "text": "Un cuarto al día parece poco. Pero en 50 años tu casa es más grande que muchos pueblos. ¿Qué otro quieres ver? Déjalo en los comentarios.",
+      "n0": 18250,
+      "n1": 18250,
+      "cam": {
+        "dist": 1.35,
+        "yaw": 0.45,
+        "lift": 0.8
+      },
+      "chapter": "El resultado final",
+      "hold": 1.0,
+      "titleCard": [
+        "50 AÑOS DESPUÉS",
+        "18,250 CUARTOS"
+      ],
+      "titleY": 0.22
+    }
+  ]
+}
