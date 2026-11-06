@@ -142,5 +142,8 @@
       "titleY": 0.68,
       "chapter": "678 metros para salir del planeta"
     }
-  ]
+  ],
+  "world": {
+    "groundPatches": "mesh"
+  }
 }

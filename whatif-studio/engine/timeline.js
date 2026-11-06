@@ -32,13 +32,16 @@ export async function createStudio({ episode, W = 1920, H = 1080 }) {
   });
   const duration = acc + (script.tail ?? 1.5);
 
+  // Supermuestreo: la escena 3D se dibuja a SS× la resolución y se reduce suavizada al tamaño final.
+  // Elimina el "hormigueo" de bordes finos (ventanas, líneas de la calle) cuando la cámara se mueve.
+  const SS = script.supersample ?? 1.5;
   const glCanvas = document.createElement('canvas');
-  glCanvas.width = W; glCanvas.height = H;
+  glCanvas.width = Math.round(W * SS); glCanvas.height = Math.round(H * SS);
   const out = document.getElementById('out');
   out.width = W; out.height = H;
   const ctx2d = out.getContext('2d');
 
-  const world = createWorld(glCanvas, W, H);
+  const world = createWorld(glCanvas, glCanvas.width, glCanvas.height, script.world || {});
   const C = { THREE, world, actors, script, scenes, W, H };
   ep.setup(C);
 
@@ -75,7 +78,8 @@ export async function createStudio({ episode, W = 1920, H = 1080 }) {
       world.camera.setViewOffset(fw, fh, (fw - W) / 2 - (frame.dx ?? 0), (fh - H) / 2 - (frame.dy ?? 0), W, H);
     } else world.camera.clearViewOffset();
     world.renderer.render(world.scene, world.camera);
-    ctx2d.drawImage(glCanvas, 0, 0);
+    ctx2d.imageSmoothingEnabled = true; ctx2d.imageSmoothingQuality = 'high';
+    ctx2d.drawImage(glCanvas, 0, 0, W, H);
     if (bare) return;
     drawOverlay(ctx2d, W, H, {
       subtitle: script.subtitles === false ? null : subtitleAt(s, local),
@@ -84,7 +88,30 @@ export async function createStudio({ episode, W = 1920, H = 1080 }) {
     });
   }
 
-  return { renderFrame, duration, scenes, fps: script.fps ?? 30, frame: (t, q = 0.92) => { renderFrame(t); return out.toDataURL('image/jpeg', q); } };
+  /** Control de calidad: pares de objetos sólidos visibles que se enciman en planta (más de 0.3 m). */
+  function overlaps() {
+    const solids = [];
+    world.scene.updateMatrixWorld(true);
+    world.scene.traverse((o) => {
+      if (!o.userData?.solid) return;
+      let v = true; for (let p = o; p; p = p.parent) if (!p.visible) v = false;
+      if (v) solids.push({ o, b: new THREE.Box3().setFromObject(o) });
+    });
+    const out = [];
+    for (let i = 0; i < solids.length; i++) for (let j = i + 1; j < solids.length; j++) {
+      const a = solids[i].b, b = solids[j].b;
+      const ox = Math.min(a.max.x, b.max.x) - Math.max(a.min.x, b.min.x);
+      const oz = Math.min(a.max.z, b.max.z) - Math.max(a.min.z, b.min.z);
+      const oy = Math.min(a.max.y, b.max.y) - Math.max(a.min.y, b.min.y);
+      if (ox > 0.3 && oz > 0.3 && oy > 0) {
+        const c = (bx) => `(${bx.getCenter(new THREE.Vector3()).x.toFixed(0)}, ${bx.getCenter(new THREE.Vector3()).z.toFixed(0)})`;
+        out.push(`${solids[i].o.userData.solid} ${c(a)} ↔ ${solids[j].o.userData.solid} ${c(b)}`);
+      }
+    }
+    return out;
+  }
+
+  return { renderFrame, overlaps, world, duration, scenes, fps: script.fps ?? 30, frame: (t, q = 0.92) => { renderFrame(t); return out.toDataURL('image/jpeg', q); } };
 }
 
 /**

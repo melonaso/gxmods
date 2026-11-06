@@ -114,6 +114,8 @@ export function createTree(rng, h = 8) {
   leaf.position.y = h * 0.62;
   leaf.castShadow = true;
   g.add(leaf);
+  g.userData.solid = 'árbol';
+  g.userData.radius = h * 0.34; // copa vista desde arriba
   return g;
 }
 
@@ -126,6 +128,8 @@ export function createHouse(color = '#f4e1c1', roof = '#b45309') {
   for (const x of [-2.6, 2.6]) {
     const w = box(1.4, 1.2, 0.1, '#bfe3ff'); w.position.set(x, 3, 3.52); g.add(w);
   }
+  g.userData.solid = 'casa';
+  g.userData.radius = 6.6; // techo incluido
   return g;
 }
 
@@ -146,17 +150,39 @@ export function createBuilding(h, w = 14, color = '#cbd5e1') {
       g.add(m);
     }
   }
+  g.userData.solid = 'edificio';
+  g.userData.radius = w * 0.72 + 0.5;
   return g;
 }
 
-/** Calle simple con línea central. */
+/** Calle simple con línea central. La calle va 3 cm sobre el suelo y las líneas 3 cm sobre la
+ *  calle: con la profundidad logarítmica del mundo esa separación no parpadea ni a kilómetros. */
 export function createRoad(length, width = 8) {
   const g = new THREE.Group();
-  const r = new THREE.Mesh(new THREE.PlaneGeometry(width, length), mat('#4b5563'));
-  r.rotation.x = -Math.PI / 2; r.position.y = 0.05; r.receiveShadow = true; g.add(r);
+  const r = new THREE.Mesh(new THREE.PlaneGeometry(width, length, 1, Math.max(1, Math.round(length / 10))), mat('#4b5563'));
+  r.rotation.x = -Math.PI / 2; r.position.y = 0.03; r.receiveShadow = true; g.add(r);
+  const lineGeo = new THREE.PlaneGeometry(0.3, 3);
   for (let z = -length / 2; z < length / 2; z += 6) {
-    const l = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 3), mat('#f8fafc'));
-    l.rotation.x = -Math.PI / 2; l.position.set(0, 0.07, z); g.add(l);
+    const l = new THREE.Mesh(lineGeo, mat('#f8fafc'));
+    l.rotation.x = -Math.PI / 2; l.position.set(0, 0.06, z); l.receiveShadow = true; g.add(l);
   }
+  g.userData.road = { length, width };
   return g;
+}
+
+/**
+ * Colocador sin choques: reserva círculos (casas, árboles, edificios) y rectángulos (calles,
+ * zonas que deben quedar libres) y solo acepta posiciones que no se encimen con nada.
+ *   const P = createPlacer(); P.blockRect(x0, x1, z0, z1); if (P.place(x, z, r)) scene.add(obj)
+ */
+export function createPlacer() {
+  const circles = [], rects = [];
+  const fits = (x, z, r) => circles.every((c) => Math.hypot(x - c.x, z - c.z) >= r + c.r)
+    && rects.every((q) => x + r <= q.x0 || x - r >= q.x1 || z + r <= q.z0 || z - r >= q.z1);
+  return {
+    fits,
+    blockRect(x0, x1, z0, z1) { rects.push({ x0: Math.min(x0, x1), x1: Math.max(x0, x1), z0: Math.min(z0, z1), z1: Math.max(z0, z1) }); },
+    blockCircle(x, z, r) { circles.push({ x, z, r }); },
+    place(x, z, r) { if (!fits(x, z, r)) return false; circles.push({ x, z, r }); return true; },
+  };
 }

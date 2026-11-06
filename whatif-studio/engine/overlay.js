@@ -14,6 +14,23 @@ const FONT = 'Inter, "DejaVu Sans", sans-serif';
 export function drawOverlay(ctx, W, H, ov) {
   const u = H / 1080; // escala relativa a 1080p
 
+  // Etiquetas ancladas a puntos de la escena (el episodio ya las proyectó a píxeles).
+  if (ov.labels) {
+    ctx.save();
+    for (const lb of ov.labels) {
+      ctx.globalAlpha = lb.alpha ?? 1;
+      ctx.font = `800 ${30 * u}px ${FONT}`;
+      const tw = ctx.measureText(lb.text).width, pad = 16 * u, h = 48 * u;
+      const x = Math.min(W - tw - pad * 2 - 10 * u, Math.max(10 * u, lb.x - (tw + pad * 2) / 2)), y = lb.y - h - 14 * u;
+      ctx.fillStyle = lb.bg || 'rgba(15,23,42,0.82)';
+      roundRect(ctx, x, y, tw + pad * 2, h, 12 * u); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(lb.x - 9 * u, y + h); ctx.lineTo(lb.x + 9 * u, y + h); ctx.lineTo(lb.x, y + h + 12 * u); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = lb.color || '#ffffff'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+      ctx.fillText(lb.text, x + pad, y + h / 2 + 2 * u);
+    }
+    ctx.restore();
+  }
+
   if (ov.counter) {
     const { label, value, color = '#ffd34d', alpha = 1 } = ov.counter;
     ctx.save();
