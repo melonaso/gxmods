@@ -14,8 +14,9 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
   const gap = script.gap ?? 0.35;
   let acc = 0;
   const scenes = script.scenes.map((s, i) => {
-    const cues = splitCues(s.text || '', script.cueChars ?? 80);
-    const reading = cues.map((c) => readTime(c, script.cps ?? 14, script.cueMin ?? 2.2));
+    // "caps": frases ya cortadas a mano (Shorts de ritmo rápido); si no, se cortan por oraciones.
+    const cues = s.caps ?? splitCues(s.text || '', script.cueChars ?? 80);
+    const reading = cues.map((c) => readTime(c.replace(/\*/g, ''), script.cps ?? 14, script.cueMin ?? 2.2));
     const audio = reading.reduce((a, b) => a + b, 0);
     const total = audio || 1;
     let c0 = 0;
@@ -26,6 +27,15 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
     return sc;
   });
   const duration = acc + (script.tail ?? 1.5);
+
+  // Efectos de sonido: "whoosh" en cada corte de escena (script.sfx) y golpes puntuales que pide
+  // cada escena en "fx": [{ type, cue, at }] (cue = índice de la frase; at = segundos extra).
+  const sfx = [];
+  for (const s of scenes) {
+    if (script.sfx && s.index > 0) sfx.push({ t: s.start, type: 'whoosh' });
+    for (const f of s.fx || []) sfx.push({ t: s.start + (f.cue != null ? s.cueTimes[f.cue][0] : 0) + (f.at ?? 0), type: f.type });
+  }
+  sfx.sort((a, b) => a.t - b.t);
 
   const out = document.getElementById('out');
   out.width = W; out.height = H;
@@ -38,7 +48,10 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
     for (let i = 0; i < s.cues.length; i++) {
       const [a, b0] = s.cueTimes[i];
       const b = i === s.cues.length - 1 ? s.dur : b0;
-      if (local >= a && local < b) return { text: s.cues[i], alpha: Math.max(0, Math.min(1, (local - a) / 0.18, (b - local) / 0.18)) };
+      if (local >= a && local < b) {
+        if (script.captions === 'pop') return { text: s.cues[i], style: 'pop', age: local - a, alpha: Math.max(0, Math.min(1, (b - local) / 0.08)) };
+        return { text: s.cues[i], alpha: Math.max(0, Math.min(1, (local - a) / 0.18, (b - local) / 0.18)) };
+      }
     }
     return null;
   }
@@ -48,18 +61,23 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
     const local = t - s.start;
     const p = Math.min(1, Math.max(0, local / s.dur));
     ctx.save();
+    // "punch": al empezar cada escena la imagen entra un poco ampliada y se asienta (corte con golpe).
+    if (script.punch && s.index > 0) {
+      const k = 1 + script.punch * Math.pow(Math.max(0, 1 - local / 0.22), 2);
+      ctx.translate(W / 2, H * 0.42); ctx.scale(k, k); ctx.translate(-W / 2, -H * 0.42);
+    }
     const ov = ep.draw(ctx, C, { t, scene: s, local, p }) || {};
     ctx.restore();
     if (bare) return;
     drawOverlay(ctx, W, H, {
       subtitle: subtitleAt(s, local),
-      fade: Math.max(t < 0.5 ? 1 - t / 0.5 : 0, t > duration - 1 ? t - (duration - 1) : 0),
+      fade: Math.max(t < (script.fadeIn ?? 0.5) ? 1 - t / (script.fadeIn ?? 0.5) : 0, t > duration - 1 ? t - (duration - 1) : 0),
       ...ov,
     });
   }
 
   return {
-    renderFrame, duration, scenes, fps: script.fps ?? 30, overlaps: () => [],
+    renderFrame, duration, scenes, sfx, fps: script.fps ?? 30, overlaps: () => [],
     frame: (t, q = 0.92) => { renderFrame(t); return out.toDataURL('image/jpeg', q); },
   };
 }

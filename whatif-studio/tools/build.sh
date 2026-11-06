@@ -19,6 +19,8 @@ if [[ "$(python3 -c "import json;print(json.load(open('episodes/$EP/script.json'
   RENDER_ARGS+=(--page engine2d --w 1080 --h 1920)
 fi
 BPM=$(python3 -c "import json;print(json.load(open('episodes/$EP/script.json')).get('music',{}).get('bpm',96))")
+# Opciones de música del guion: "music": {"bpm": 128, "drums": true, "minor": true}
+MUSIC_FLAGS=$(python3 -c "import json;m=json.load(open('episodes/$EP/script.json')).get('music',{});print(' '.join(f for f,k in (('--drums','drums'),('--minor','minor')) if m.get(k)))")
 mkdir -p out "$B"
 
 # "narration": false en script.json -> video solo con música y textos en pantalla.
@@ -36,7 +38,9 @@ node tools/render.mjs --ep "$EP" --out "out/$EP-video.mp4" "${RENDER_ARGS[@]}"
 
 echo "== 3/4 Música"
 DUR=$(python3 -c "import json;print(json.load(open('$B/starts.json'))['duration'])")
-python3 tools/music.py "$DUR" "$B/music.wav" --bpm "$BPM"
+python3 tools/music.py "$DUR" "$B/music.wav" --bpm "$BPM" $MUSIC_FLAGS
+# Efectos de sonido (whoosh en los cortes, golpes...) si el episodio los pide.
+python3 tools/sfx.py "$B/starts.json" "$B/sfx.wav"
 
 echo "== 4/4 Mezcla"
 # Cada escena se retrasa (adelay) hasta su inicio; la música baja de volumen cuando hay voz (sidechain).
@@ -45,9 +49,11 @@ import json, subprocess, sys
 ep = sys.argv[1]; b = f'episodes/{ep}/build'
 st = json.load(open(f'{b}/starts.json'))
 if sys.argv[2] != 'True':
-    # Sin voz: solo música, normalizada a volumen estándar de YouTube.
-    subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'out/{ep}-video.mp4', '-i', f'{b}/music.wav',
-        '-filter_complex', '[1:a]loudnorm=I=-16:TP=-1.5[aout]', '-map', '0:v', '-map', '[aout]',
+    # Sin voz: música + efectos, normalizados a volumen estándar (los Shorts, un poco más fuertes).
+    short = json.load(open(f'episodes/{ep}/script.json')).get('type') == '2d'
+    lufs = -14 if short else -16
+    subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'out/{ep}-video.mp4', '-i', f'{b}/music.wav', '-i', f'{b}/sfx.wav',
+        '-filter_complex', f'[1:a]volume=0.7[m];[m][2:a]amix=inputs=2:normalize=0:duration=first,loudnorm=I={lufs}:TP=-1.5[aout]', '-map', '0:v', '-map', '[aout]',
         '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-ac', '2', '-shortest', f'out/{ep}.mp4'])
     sys.exit(0)
 tm = json.load(open(f'{b}/timing.json'))

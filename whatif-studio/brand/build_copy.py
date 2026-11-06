@@ -16,7 +16,7 @@ LIMITS = {'title': 100, 'description': 5000, 'tags': 500, 'hashtags': 15}
 def description(c, v, ch):
     parts = [
         v['hook'], '',
-        'Las cuentas del video:', *v['math'], '',
+        v.get('factsTitle', 'Las cuentas del video:'), *v['math'], '',
         v['question'], '',
         *(['⏱️ Capítulos', *ch, ''] if ch else []),
         f"🔔 Suscríbete: {c['youtube']}",

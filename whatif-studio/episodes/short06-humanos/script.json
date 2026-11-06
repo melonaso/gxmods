@@ -1,0 +1,138 @@
+{
+  "type": "2d",
+  "title": "¿Y si los humanos desaparecieran?",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0.12,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "music": {
+    "bpm": 110,
+    "drums": true,
+    "minor": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si mañana todos los humanos",
+        "*desaparecieran*?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.0,
+          "type": "pop"
+        },
+        {
+          "cue": 1,
+          "at": 0.12,
+          "type": "pop"
+        },
+        {
+          "cue": 1,
+          "at": 0.24,
+          "type": "pop"
+        },
+        {
+          "cue": 1,
+          "at": 0.36,
+          "type": "pop"
+        },
+        {
+          "cue": 1,
+          "at": 0.48,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "luces",
+      "chip": "DÍA 2",
+      "caps": [
+        "En *1 o 2 días*, sin nadie al mando,",
+        "las ciudades *se apagan*."
+      ]
+    },
+    {
+      "id": "asfalto",
+      "chip": "AÑO 5",
+      "caps": [
+        "En pocos años, las plantas",
+        "*rompen el asfalto*."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "casas",
+      "chip": "AÑO 20",
+      "caps": [
+        "En *20 años*, muchos techos se caen",
+        "y crecen *árboles dentro de las casas*."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.5,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "puentes",
+      "chip": "AÑO 300",
+      "caps": [
+        "En unos siglos, el óxido",
+        "*derrumba los puentes* de acero."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "crack"
+        },
+        {
+          "cue": 1,
+          "at": 0.85,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "bosque",
+      "chip": "AÑO 1,000",
+      "caps": [
+        "En *1,000 años*,",
+        "las ciudades son *bosques*."
+      ]
+    },
+    {
+      "id": "queda",
+      "chip": "MILES DE AÑOS",
+      "caps": [
+        "Lo que más dura:",
+        "*plástico, vidrio*… y *las pirámides*."
+      ]
+    },
+    {
+      "id": "radio",
+      "caps": [
+        "Y nuestras señales de radio",
+        "seguirían viajando *por el espacio*.",
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "hold": 0.4
+    }
+  ]
+}

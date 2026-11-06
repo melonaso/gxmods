@@ -1,0 +1,99 @@
+{
+  "type": "2d",
+  "title": "¿Y si el Sol se apagara ahora mismo?",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0.12,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "music": {
+    "bpm": 120,
+    "drums": true,
+    "minor": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si el Sol *se apagara*…",
+        "*ahora mismo*?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "type": "click"
+        },
+        {
+          "cue": 1,
+          "at": 0.05,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "luz",
+      "caps": [
+        "Durante *8 minutos* no notarías *nada*:",
+        "su última luz *sigue en camino*."
+      ]
+    },
+    {
+      "id": "oscuro",
+      "caps": [
+        "Luego, *oscuridad total*.",
+        "Hasta la Luna *se apaga*: solo reflejaba la del Sol."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.25,
+          "type": "boom"
+        },
+        {
+          "cue": 1,
+          "at": 0.5,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "semana",
+      "chip": "SEMANA 1",
+      "caps": [
+        "En una semana: *−18 °C*,",
+        "como dentro de un *congelador*."
+      ]
+    },
+    {
+      "id": "anio",
+      "chip": "AÑO 1",
+      "caps": [
+        "En un año: *−73 °C*.",
+        "Más frío que *la Antártida* en invierno."
+      ]
+    },
+    {
+      "id": "mar",
+      "caps": [
+        "El mar se congela *por encima*…",
+        "pero abajo, junto a volcanes,",
+        "*la vida resistiría*."
+      ]
+    },
+    {
+      "id": "orbita",
+      "caps": [
+        "Y la Tierra seguiría girando",
+        "alrededor de *un Sol apagado*.",
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "hold": 0.4
+    }
+  ]
+}

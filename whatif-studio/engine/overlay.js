@@ -88,7 +88,9 @@ export function drawOverlay(ctx, W, H, ov) {
     ctx.restore();
   }
 
-  if (ov.subtitle) {
+  if (ov.subtitle && typeof ov.subtitle === 'object' && ov.subtitle.style === 'pop') {
+    drawPopCaption(ctx, W, H, u, ov.subtitle);
+  } else if (ov.subtitle) {
     // Acepta texto plano o { text, alpha }. Caja oscura detrás para leer sobre cualquier fondo.
     const sub = typeof ov.subtitle === 'string' ? { text: ov.subtitle, alpha: 1 } : ov.subtitle;
     ctx.save();
@@ -112,6 +114,51 @@ export function drawOverlay(ctx, W, H, ov) {
     ctx.fillStyle = `rgba(0,0,0,${Math.min(1, ov.fade)})`;
     ctx.fillRect(0, 0, W, H);
   }
+}
+
+/**
+ * Subtítulo estilo Shorts/TikTok: letras grandes al centro, sin caja, con un pequeño "salto" al
+ * aparecer. Las palabras entre *asteriscos* se pintan en amarillo (la palabra clave de la frase).
+ */
+function drawPopCaption(ctx, W, H, u, sub) {
+  const age = sub.age ?? 1;
+  const pop = 1 + 0.18 * Math.max(0, 1 - age / 0.14);           // 1.18 → 1 en 0.14 s
+  const size = 70 * u;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, age / 0.06) * (sub.alpha ?? 1);
+  ctx.font = `900 ${size}px ${FONT}`;
+  ctx.textBaseline = 'middle';
+  // Palabras con su color (la marca * puede abrir y cerrar en palabras distintas).
+  let emph = false;
+  const words = sub.text.split(/[ \t\n]+/).filter(Boolean).map((w) => {
+    let open = w.startsWith('*'), close = w.endsWith('*') && w.length > 1;
+    if (open) emph = true;
+    const word = { text: w.replace(/\*/g, ''), em: emph };
+    if (close || (open && w.length > 1 && w.endsWith('*'))) emph = false;
+    return word;
+  });
+  const space = ctx.measureText(' ').width, maxW = W * 0.84;
+  const lines = [[]];
+  let lw = 0;
+  for (const w of words) {
+    const ww = ctx.measureText(w.text).width;
+    if (lw + ww > maxW && lines[lines.length - 1].length) { lines.push([]); lw = 0; }
+    lines[lines.length - 1].push({ ...w, w: ww }); lw += ww + space;
+  }
+  const lh = size * 1.12, cy = H * 0.64;
+  ctx.translate(W / 2, cy); ctx.scale(pop, pop);
+  lines.forEach((ln, i) => {
+    const total = ln.reduce((a, w) => a + w.w, 0) + space * (ln.length - 1);
+    let x = -total / 2;
+    const y = (i - (lines.length - 1) / 2) * lh;
+    for (const w of ln) {
+      ctx.lineJoin = 'round'; ctx.lineWidth = 14 * u; ctx.strokeStyle = '#0b0f1a'; ctx.textAlign = 'left';
+      ctx.strokeText(w.text, x, y);
+      ctx.fillStyle = w.em ? '#ffd34d' : '#ffffff'; ctx.fillText(w.text, x, y);
+      x += w.w + space;
+    }
+  });
+  ctx.restore();
 }
 
 /** Tamaño de letra que hace caber el texto en maxW (sin pasar del tamaño pedido). */

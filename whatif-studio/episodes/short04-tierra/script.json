@@ -1,0 +1,107 @@
+{
+  "type": "2d",
+  "title": "¿Y si la Tierra dejara de girar de golpe?",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0.12,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "music": {
+    "bpm": 128,
+    "drums": true,
+    "minor": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si la Tierra *se detuviera*…",
+        "*de golpe*?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "vel",
+      "caps": [
+        "En el ecuador giras a *1,670 km/h*…",
+        "y ni lo *sientes*."
+      ]
+    },
+    {
+      "id": "vuelo",
+      "caps": [
+        "Si la Tierra frena, *tú no*:",
+        "sales *disparado* al este,",
+        "más rápido que *el sonido*."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "boom"
+        },
+        {
+          "cue": 2,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "viento",
+      "caps": [
+        "El viento tampoco frena:",
+        "*4 veces* más rápido que el peor huracán."
+      ]
+    },
+    {
+      "id": "tsunami",
+      "caps": [
+        "Los océanos *siguen de largo*:",
+        "*tsunamis gigantes*."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "boom"
+        },
+        {
+          "cue": 1,
+          "at": 0.15,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "polos",
+      "caps": [
+        "Luego el agua *huye a los polos*…",
+        "y aparece *un supercontinente*."
+      ]
+    },
+    {
+      "id": "dia",
+      "caps": [
+        "Un día duraría *un año entero*:",
+        "*6 meses de sol*… *6 meses de noche*."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Tranquilo: *nada* puede frenarla así.",
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "hold": 0.4
+    }
+  ]
+}

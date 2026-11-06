@@ -528,3 +528,127 @@ millón de segundos, mil millones de segundos, billón, escala de números, mate
 ```
 
 **También en TikTok / Reels** (es vertical, se sube tal cual): usa la misma descripción corta y #quepasariasi #cuentaslocas #matematicas #curiosidades #parati
+
+---
+
+## Short 4 — `out/short04-tierra.mp4` (vertical)
+
+**Título** (51/100):
+```
+¿Y si la Tierra dejara de girar de golpe? 🌍 #Shorts
+```
+
+**Descripción** (839/5000):
+```
+Si la Tierra frenara de golpe, tú no: saldrías disparado a 1,670 km/h. Y eso sería solo el principio.
+
+Los datos del video:
+🌍 En el ecuador, la Tierra gira a unos 1,670 km/h (40,075 km de vuelta ÷ 24 h).
+💨 Todo lo que no esté anclado seguiría a esa velocidad: más rápido que el sonido (≈1,235 km/h).
+🌀 El viento soplaría unas 4 veces más rápido que la ráfaga de huracán más fuerte registrada (≈408 km/h).
+🌊 Los océanos seguirían de largo: tsunamis gigantes. Después, el agua se iría a los polos y en el ecuador quedaría un supercontinente.
+☀️ Un día duraría un año: 6 meses de sol y 6 meses de noche.
+✅ Tranquilo: no hay nada conocido que pueda frenar la Tierra así.
+
+¿Qué crees que sería lo más difícil de sobrevivir? 👇
+
+🔔 Suscríbete: @CuentasLocas
+📲 TikTok e Instagram: @cuentaslocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Ciencia #Tierra
+```
+
+**Etiquetas** (142/500):
+```
+qué pasaría si la tierra dejara de girar, tierra deja de girar, rotación de la tierra, 1670 km/h, ciencia, curiosidades, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 ¿Por qué el agua se iría a los polos? Hoy el giro de la Tierra empuja el mar hacia el ecuador y lo «abomba» unos kilómetros. Sin giro, el agua se reacomoda hacia los polos 🌊
+```
+
+**También en TikTok / Reels** (es vertical, se sube tal cual): usa la misma descripción corta y #quepasariasi #cuentaslocas #ciencia #tierra #parati
+
+---
+
+## Short 5 — `out/short05-sol.mp4` (vertical)
+
+**Título** (47/100):
+```
+¿Y si el Sol se apagara ahora mismo? ☀️ #Shorts
+```
+
+**Descripción** (912/5000):
+```
+Durante 8 minutos no notarías nada… y después, la Tierra entera se volvería un congelador.
+
+Los datos del video:
+💡 La luz del Sol tarda unos 8 min 20 s en llegar (150 millones de km ÷ 300,000 km/s ≈ 500 s).
+🌙 La Luna también se apagaría: no tiene luz propia, solo refleja la del Sol.
+🥶 En una semana, la temperatura promedio bajaría a unos −18 °C (como un congelador); en un año, a unos −73 °C.
+🌊 El mar se congelaría por arriba, pero ese hielo aislaría el agua de abajo, que seguiría líquida mucho tiempo.
+🦠 Junto a los volcanes del fondo del mar (fuentes hidrotermales) viven microbios y gusanos de tubo que no necesitan al Sol: se alimentan del calor y los químicos del volcán.
+🪐 La Tierra seguiría en órbita: la gravedad del Sol no depende de que brille.
+
+¿Qué harías en esos 8 minutos? 👇
+
+🔔 Suscríbete: @CuentasLocas
+📲 TikTok e Instagram: @cuentaslocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Espacio #Ciencia
+```
+
+**Etiquetas** (127/500):
+```
+qué pasaría si el sol se apagara, el sol se apaga, luz del sol 8 minutos, espacio, ciencia, curiosidades, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: aunque el Sol se apagara, su gravedad seguiría ahí. Por eso la Tierra no saldría disparada: seguiría girando alrededor de un Sol oscuro 🌑
+```
+
+**También en TikTok / Reels** (es vertical, se sube tal cual): usa la misma descripción corta y #quepasariasi #cuentaslocas #espacio #ciencia #parati
+
+---
+
+## Short 6 — `out/short06-humanos.mp4` (vertical)
+
+**Título** (51/100):
+```
+¿Y si los humanos desaparecieran mañana? 🏙️ #Shorts
+```
+
+**Descripción** (871/5000):
+```
+En 2 días las ciudades se apagan. En 1,000 años son bosques. ¿Qué quedaría de nosotros?
+
+Los datos del video:
+💡 Sin nadie que las opere, las plantas de energía se detienen en horas o pocos días: las ciudades se quedan a oscuras.
+🌱 Sin mantenimiento, el agua y las raíces rompen el asfalto en pocos años.
+🏚️ En unas décadas, muchas casas pierden el techo y los árboles crecen dentro.
+🌉 En unos siglos, el óxido derrumba los puentes de acero que nadie pinta ni repara.
+🌳 En unos 1,000 años, las ciudades quedarían cubiertas de bosque.
+🏺 Lo que más dura: plástico, vidrio y la piedra de monumentos como las pirámides.
+📡 Nuestras señales de radio seguirían viajando por el espacio a la velocidad de la luz.
+
+¿Qué crees que duraría más de tu ciudad? 👇
+
+🔔 Suscríbete: @CuentasLocas
+📲 TikTok e Instagram: @cuentaslocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Curiosidades #Ciencia
+```
+
+**Etiquetas** (152/500):
+```
+qué pasaría si los humanos desaparecieran, mundo sin humanos, la tierra sin nosotros, ciudades abandonadas, ciencia, curiosidades, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 ¿Por qué el plástico dura tanto? Casi ningún microbio sabe «comérselo», así que tarda cientos de años en degradarse 🧴
+```
+
+**También en TikTok / Reels** (es vertical, se sube tal cual): usa la misma descripción corta y #quepasariasi #cuentaslocas #curiosidades #ciencia #parati

@@ -43,8 +43,9 @@ await page.waitForFunction(() => window.studioReady === true, null, { timeout: 1
 const { duration, fps } = await page.evaluate(() => ({ duration: studio.duration, fps: studio.fps }));
 // Inicio de cada escena, para colocar la narración en el lugar exacto al mezclar.
 const starts = await page.evaluate(() => studio.scenes.map((s) => ({ id: s.id, start: s.start })));
+const sfx = await page.evaluate(() => studio.sfx || []); // efectos de sonido (solo Shorts 2D)
 fs.mkdirSync(path.join(ROOT, 'episodes', ep, 'build'), { recursive: true });
-fs.writeFileSync(path.join(ROOT, 'episodes', ep, 'build', 'starts.json'), JSON.stringify({ duration, starts }, null, 1));
+fs.writeFileSync(path.join(ROOT, 'episodes', ep, 'build', 'starts.json'), JSON.stringify({ duration, starts, sfx }, null, 1));
 console.log(`Episodio ${ep}:${duration.toFixed(2)} s a ${fps} fps (${Math.ceil(duration * fps)} frames)`);
 
 const toBuf = (dataUrl) => Buffer.from(dataUrl.slice(dataUrl.indexOf(',') + 1), 'base64');

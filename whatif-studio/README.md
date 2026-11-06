@@ -48,6 +48,17 @@ Vista previa en vivo (sin audio): sirve la carpeta y abre `engine/index.html?ep=
 - Se dibujan sobre una caja oscura semitransparente, en 1 o 2 líneas de largo parecido, con un fundido corto al entrar y salir.
 - Para controlar los cortes a mano, escribe oraciones más cortas en `text`.
 
+## Shorts 2D de ritmo rápido
+Episodios verticales dibujados en 2D (`"type": "2d"` en `script.json`, motor `engine2d/`). Opciones del guion:
+- `"captions": "pop"`: subtítulos grandes al centro, estilo TikTok, que entran con un pequeño salto. La palabra clave va entre `*asteriscos*` y sale en amarillo.
+- `"caps": [...]` en cada escena: las frases ya cortadas a mano (2–5 palabras, ~1.5 s cada una), en lugar de `text`.
+- `"punch": 0.07`: cada corte de escena entra un 7% ampliado y se asienta (corte con golpe).
+- `"sfx": true`: un *whoosh* en cada corte. Golpes puntuales por escena con `"fx": [{ "type": "boom", "cue": 1, "at": 0.2 }]` (en la frase 1, 0.2 s después). Tipos: `whoosh`, `boom`, `click`, `pop`, `splash`, `crack` (`tools/sfx.py`, sintetizados, libres de derechos).
+- `"music": { "bpm": 128, "drums": true, "minor": true }`: batería, bajo y progresión menor (más dramática).
+- `"chip"` en una escena: etiqueta de tiempo arriba (ej. `"AÑO 20"`).
+
+Herramientas de dibujo en `engine2d/kit.js` (persona, casa, árbol, coche, edificio, Sol, sacudida, destello, líneas de velocidad) y el globo terráqueo en `engine2d/earth.js`.
+
 ## Crear un episodio nuevo
 1. Copia `episodes/ep01-crecer/` a `episodes/ep02-<tema>/`.
 2. Edita `script.json`: una entrada por escena con `text` (narración; escribe los números con letra para que la voz los lea bien) y los parámetros que use tu `episode.js` (en el piloto: `d0/d1` días, `cam`, `crowd`, `counter`, `titleCard`).
