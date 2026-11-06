@@ -1,9 +1,10 @@
 {
   "channel": {
-    "name": "¿Y Si No Paras?",
-    "youtube": "@YSiNoParas",
-    "social": "@ysinoparas",
-    "playlist": "¿Y Si No Paras? · Temporada 1"
+    "name": "Cuentas Locas",
+    "youtube": "@CuentasLocas",
+    "social": "@cuentaslocas",
+    "playlist": "Cuentas Locas · Temporada 1",
+    "shortsPlaylist": "Cuentas Locas · Shorts"
   },
   "videos": [
     {
@@ -20,7 +21,7 @@
       "question": "¿Qué otro «qué pasaría si» quieres ver? Déjalo en los comentarios.",
       "hashtags": [
         "#QuePasariaSi",
-        "#YSiNoParas",
+        "#CuentasLocas",
         "#Curiosidades",
         "#Matematicas",
         "#Gigante"
@@ -34,13 +35,13 @@
         "matemáticas",
         "curiosidades",
         "animación",
-        "y si no paras"
+        "cuentas locas"
       ],
       "pinned": "📌 Si duplicas tu altura, tu peso se multiplica por 8 pero tus huesos solo se hacen 4 veces más fuertes. Por eso un gigante de 5 m tendría problemas para sostenerse 🦴 ¿Qué número te sorprendió más? 👇",
       "short": "1 cm al día... durante 100 años 📏🤯 ¿Hasta dónde llegarías?",
       "shortTags": [
         "#quepasariasi",
-        "#ysinoparas",
+        "#cuentaslocas",
         "#curiosidades",
         "#matematicas",
         "#parati"
@@ -61,7 +62,7 @@
       "question": "¿Tú qué harías con casi medio millón de seguidores? Déjalo en los comentarios.",
       "hashtags": [
         "#QuePasariaSi",
-        "#YSiNoParas",
+        "#CuentasLocas",
         "#Curiosidades",
         "#Matematicas",
         "#Seguidores"
@@ -75,13 +76,13 @@
         "matemáticas",
         "curiosidades",
         "animación",
-        "y si no paras"
+        "cuentas locas"
       ],
       "pinned": "📌 En 1 año serían 8,760 personas: la población de un pueblo entero siguiéndote 😳 ¿A dónde los llevarías primero? 👇",
       "short": "+1 persona cada hora, para siempre 👣 En 50 años: 438,000 detrás de ti 😳",
       "shortTags": [
         "#quepasariasi",
-        "#ysinoparas",
+        "#cuentaslocas",
         "#curiosidades",
         "#matematicas",
         "#parati"
@@ -103,7 +104,7 @@
       "question": "¿Qué otro «qué pasaría si» quieres ver? Déjalo en los comentarios.",
       "hashtags": [
         "#QuePasariaSi",
-        "#YSiNoParas",
+        "#CuentasLocas",
         "#Fisica",
         "#CrecimientoExponencial",
         "#Matematicas"
@@ -118,13 +119,13 @@
         "velocidad de escape",
         "física",
         "animación",
-        "y si no paras"
+        "cuentas locas"
       ],
       "pinned": "📌 Regla del 70: divide 70 entre el % de crecimiento y sabrás cuánto tarda en duplicarse. Con 1%: 70 pasos. Funciona igual con el dinero 💰 ¿La conocías? 👇",
       "short": "Cada paso, 1% más rápido 🏃‍♂️💨 En el paso 904 sales de la Tierra 🚀",
       "shortTags": [
         "#quepasariasi",
-        "#ysinoparas",
+        "#cuentaslocas",
         "#fisica",
         "#curiosidades",
         "#parati"
@@ -146,7 +147,7 @@
       "question": "¿Qué otro «qué pasaría si» quieres ver? Déjalo en los comentarios.",
       "hashtags": [
         "#QuePasariaSi",
-        "#YSiNoParas",
+        "#CuentasLocas",
         "#Fisica",
         "#Gravedad",
         "#Espacio"
@@ -161,13 +162,13 @@
         "física",
         "salto",
         "animación",
-        "y si no paras"
+        "cuentas locas"
       ],
       "pinned": "📌 Dato real: la gravedad de la Luna es 1/6 de la de la Tierra, y en gran parte por eso casi no tiene atmósfera: no logra retener su aire 🌙 ¿Qué harías pesando la mitad? 👇",
       "short": "La gravedad baja 1% cada día 🌍⬇️ En 4.5 años, un salto te saca del planeta 🚀",
       "shortTags": [
         "#quepasariasi",
-        "#ysinoparas",
+        "#cuentaslocas",
         "#fisica",
         "#espacio",
         "#parati"
@@ -189,7 +190,7 @@
       "question": "¿Tú qué harías con 262 millones en monedas? Déjalo en los comentarios.",
       "hashtags": [
         "#QuePasariaSi",
-        "#YSiNoParas",
+        "#CuentasLocas",
         "#Dinero",
         "#Matematicas",
         "#Curiosidades"
@@ -204,17 +205,199 @@
         "matemáticas",
         "curiosidades",
         "animación",
-        "y si no paras"
+        "cuentas locas"
       ],
       "pinned": "📌 Ser millonario en un año suena bien… hasta que tienes que cargar 57 kg de monedas cada día 😅 ¿En qué gastarías el primer millón? 👇",
       "short": "1 peso por cada parpadeo 👁️💰 En 1 año: millonario… y 20 toneladas de monedas 😳",
       "shortTags": [
         "#quepasariasi",
-        "#ysinoparas",
+        "#cuentaslocas",
         "#dinero",
         "#curiosidades",
         "#parati"
       ]
+    },
+    {
+      "episode": "ep06-mar",
+      "title": "¿Qué pasaría si el mar subiera 1 cm cada día?",
+      "hook": "1 cm al día parece poco. Pero en 1,544 años el agua cubriría el Pico de Orizaba, la montaña más alta de México.",
+      "math": [
+        "🌊 Hoy el mar sube unos 4 mm al año. A 1 cm diario serían 365 cm al año: unas 900 veces más rápido.",
+        "🏖️ 1 mes: 30 × 1 cm = 30 cm. En la orilla el terreno es casi plano, así que la playa se encoge más de 10 m.",
+        "🏠 1 año: 365 × 1 cm = 3.65 m.",
+        "⚓ En menos de 3 años pasa los 10 m: la mayoría de los puertos y playas quedan bajo el agua.",
+        "🧊 Si se derritiera todo el hielo del planeta, el mar subiría unos 70 m: 70 ÷ 3.65 ≈ 19 años.",
+        "🏙️ Monterrey (540 m): 540 ÷ 3.65 ≈ 148 años. Guadalajara (1,566 m): año 429. Ciudad de México (2,240 m): año 614.",
+        "🏔️ Pico de Orizaba (5,636 m): año 1,544. Everest (8,849 m): año 2,424."
+      ],
+      "question": "¿En qué año se hundiría tu ciudad? Divide su altura (en metros) entre 3.65 y déjalo en los comentarios.",
+      "hashtags": [
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Matematicas",
+        "#Mexico",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si",
+        "que pasaria si",
+        "nivel del mar",
+        "mar sube",
+        "inundación",
+        "Ciudad de México",
+        "Pico de Orizaba",
+        "matemáticas",
+        "curiosidades",
+        "animación",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Truco: divide la altura de tu ciudad (en metros) entre 3.65 y sabrás en qué año la cubriría el mar. ¿Cuánto te dio? 👇",
+      "short": "El mar sube 1 cm al día 🌊 ¿En qué año cubre la Ciudad de México? 🏙️",
+      "shortTags": [
+        "#quepasariasi",
+        "#cuentaslocas",
+        "#mexico",
+        "#curiosidades",
+        "#parati"
+      ]
+    },
+    {
+      "episode": "ep07-cuartos",
+      "title": "¿Qué pasaría si tu casa ganara un cuarto nuevo cada día?",
+      "hook": "Un cuarto de 12 m² al día. En 50 años tu casa tendría 18,250 cuartos y ocuparía más que 30 canchas de fútbol.",
+      "math": [
+        "🏠 Cada cuarto: 3 × 4 m = 12 m².",
+        "🏨 1 mes: 30 × 12 = 360 m².",
+        "🧹 1 año: 365 cuartos y 4,380 m². Limpiar cada uno en 15 min: 365 × 15 = 5,475 min ≈ 91 horas.",
+        "👑 Día 775 (poco más de 2 años): los mismos cuartos que el Palacio de Buckingham.",
+        "🏰 Más de 6 años: 2,300 cuartos, como el Palacio de Versalles. Recorrerlos: 2,300 × 4 m = 9.2 km.",
+        "🚪 Cerrar todas las puertas a 5 s cada una: 2,300 × 5 = 11,500 s, más de 3 horas.",
+        "⚽ 50 años: 365 × 50 = 18,250 cuartos y 219,000 m², más de 30 canchas de fútbol (7,140 m² cada una)."
+      ],
+      "question": "¿Qué pondrías en el cuarto número 1,000? Déjalo en los comentarios.",
+      "hashtags": [
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Matematicas",
+        "#Curiosidades",
+        "#Casa"
+      ],
+      "tags": [
+        "qué pasaría si",
+        "que pasaria si",
+        "casa infinita",
+        "cuarto nuevo cada día",
+        "mansión",
+        "Palacio de Versalles",
+        "Buckingham",
+        "matemáticas",
+        "curiosidades",
+        "animación",
+        "cuentas locas"
+      ],
+      "pinned": "📌 El Palacio de Buckingham tiene 775 cuartos: a un cuarto por día lo alcanzas en 2 años y 45 días 👑 ¿Cuál sería tu primer cuarto extra? 👇",
+      "short": "Un cuarto nuevo cada día 🏠➕ En 6 años: tantos como el Palacio de Versalles 🏰",
+      "shortTags": [
+        "#quepasariasi",
+        "#cuentaslocas",
+        "#curiosidades",
+        "#casa",
+        "#parati"
+      ]
+    },
+    {
+      "episode": "short01-papel",
+      "isShort": true,
+      "title": "¿Qué pasaría si doblaras una hoja de papel 42 veces? #Shorts",
+      "hook": "Cada doblez duplica el grosor: 0.1 mm × 2⁴² = 439,805 km. ¡Más lejos que la Luna!",
+      "math": [
+        "📄 7 dobleces: 0.1 mm × 2⁷ = 12.8 mm (el récord real ronda los 12 o 13).",
+        "🏙️ 23 dobleces: 839 m, más que el Burj Khalifa (828 m).",
+        "🛰️ 32 dobleces: 429 km, más que la Estación Espacial (400 km).",
+        "🌙 42 dobleces: 439,805 km, más que la distancia a la Luna (384,400 km)."
+      ],
+      "question": "¿Cuántas veces has logrado doblar una hoja? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Matematicas",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si",
+        "doblar papel 42 veces",
+        "potencias de 2",
+        "luna",
+        "matemáticas",
+        "curiosidades",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Una potencia de 2 crece tan rápido que con solo 42 duplicaciones pasas de 0.1 mm a la Luna 🌙 ¿Qué más duplicarías?"
+    },
+    {
+      "episode": "short02-ajedrez",
+      "isShort": true,
+      "title": "¿Qué pasaría si duplicaras el arroz en cada casilla del ajedrez? #Shorts",
+      "hook": "La leyenda del ajedrez: 1 grano en la primera casilla y el doble en cada una. En la casilla 64 hay 9.2 trillones de granos.",
+      "math": [
+        "🥄 Casilla 10: 2⁹ = 512 granos, una cucharada.",
+        "🎒 Casilla 20: 524,288 granos, unos 13 kg.",
+        "🚛 Casilla 32: 2,147 millones de granos, unas 54 toneladas.",
+        "🌍 Total: 2⁶⁴ − 1 ≈ 18.4 trillones de granos (≈ 461 mil millones de toneladas): más de 500 años de toda la cosecha mundial.",
+        "🔢 En español, 1 trillón = 1 con 18 ceros."
+      ],
+      "question": "¿Conocías esta leyenda? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Matematicas",
+        "#Ajedrez"
+      ],
+      "tags": [
+        "leyenda del ajedrez",
+        "granos de arroz",
+        "tablero de ajedrez",
+        "potencias de 2",
+        "matemáticas",
+        "curiosidades",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Cada casilla tiene más granos que todas las anteriores juntas, más uno: así crece una potencia de 2 ♟️🍚"
+    },
+    {
+      "episode": "short03-segundos",
+      "isShort": true,
+      "title": "¿Cuánto tiempo es realmente 1 millón de segundos? #Shorts",
+      "hook": "1 millón de segundos = 11.6 días. Mil millones = 31.7 años. ¡No es «un poco más», es ×1,000!",
+      "math": [
+        "⏱️ 1,000 s = 16 min 40 s.",
+        "📅 1,000,000 s ÷ 86,400 s por día ≈ 11.6 días.",
+        "🎂 1,000,000,000 s ÷ 31,557,600 s por año ≈ 31.7 años.",
+        "🦣 1 billón (en español, un millón de millones) de segundos ≈ 31,700 años."
+      ],
+      "question": "¿Cuántos segundos llevas vivo? Edad × 31,557,600 y déjalo aquí 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Matematicas",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "millón de segundos",
+        "mil millones de segundos",
+        "billón",
+        "escala de números",
+        "matemáticas",
+        "curiosidades",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Ojo: en español, 1 billón = 1,000,000,000,000 (un millón de millones). En inglés «billion» son solo mil millones 🤯"
     }
   ]
 }

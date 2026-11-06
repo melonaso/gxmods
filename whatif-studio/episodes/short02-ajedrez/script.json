@@ -1,0 +1,91 @@
+{
+  "type": "2d",
+  "title": "¿Qué pasaría si duplicaras el arroz en cada casilla del ajedrez?",
+  "fps": 30,
+  "gap": 0.35,
+  "tail": 2.0,
+  "narration": false,
+  "cps": 14,
+  "cueMin": 2.2,
+  "cueChars": 70,
+  "music": {
+    "bpm": 104
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "text": "¿Qué pasaría si pusieras 1 grano de arroz en el ajedrez... y duplicaras en cada casilla?",
+      "k0": 0,
+      "k1": 0,
+      "chapter": "La pregunta",
+      "hold": 0.6,
+      "titleCard": [
+        "¿Y SI DUPLICARAS EL ARROZ",
+        "EN CADA CASILLA?"
+      ],
+      "titleY": 0.42
+    },
+    {
+      "id": "leyenda",
+      "text": "Cuenta una leyenda que el inventor del ajedrez pidió como pago 1 grano en la primera casilla, 2 en la segunda, 4 en la tercera... y así hasta la 64.",
+      "k0": 0,
+      "k1": 3,
+      "chapter": "La leyenda",
+      "reach": "all"
+    },
+    {
+      "id": "k10",
+      "text": "Casilla 10: 2⁹ = 512 granos. Más o menos una cucharada.",
+      "k0": 3,
+      "k1": 10,
+      "chapter": "Casilla 10: una cucharada",
+      "icon": "spoon"
+    },
+    {
+      "id": "k20",
+      "text": "Casilla 20: 524,288 granos. Unos 13 kg: un costal entero.",
+      "k0": 10,
+      "k1": 20,
+      "chapter": "Casilla 20: un costal",
+      "icon": "sack"
+    },
+    {
+      "id": "k32",
+      "text": "Casilla 32, la mitad del tablero: 2,147 millones de granos. ¡54 toneladas, dos tráileres llenos!",
+      "k0": 20,
+      "k1": 32,
+      "chapter": "Casilla 32: dos tráileres",
+      "icon": "truck"
+    },
+    {
+      "id": "k64",
+      "text": "Casilla 64: 2⁶³ ≈ 9.2 trillones de granos. En español, 1 trillón es un 1 con 18 ceros.",
+      "k0": 32,
+      "k1": 64,
+      "chapter": "Casilla 64: 9.2 trillones",
+      "icon": "mountain"
+    },
+    {
+      "id": "total",
+      "text": "En total: 2⁶⁴ − 1 ≈ 18.4 trillones de granos, unas 461 mil millones de toneladas. Más de 500 años de toda la cosecha mundial de arroz.",
+      "k0": 64,
+      "k1": 64,
+      "chapter": "El total",
+      "icon": "globe"
+    },
+    {
+      "id": "outro",
+      "text": "Duplicar 64 veces convierte 1 grano en una montaña imposible. ¿Qué otro quieres ver?",
+      "k0": 64,
+      "k1": 64,
+      "chapter": "El resultado",
+      "hold": 0.8,
+      "titleCard": [
+        "CASILLA 64",
+        "18 TRILLONES DE GRANOS"
+      ],
+      "titleY": 0.42,
+      "icon": "globe"
+    }
+  ]
+}

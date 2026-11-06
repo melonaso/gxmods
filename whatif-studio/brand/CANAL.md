@@ -1,8 +1,8 @@
 # Identidad del canal
 
 ## Nombre
-**¿Y Si No Paras?**
-Usuario sugerido: `@YSiNoParas` (alternativa si está ocupado: `@YSiNoParasMX`).
+**Cuentas Locas**
+Usuario sugerido: `@CuentasLocas` (alternativa si está ocupado: `@CuentasLocasMX`).
 
 ## Foto de perfil
 `out/brand/profile.png` (800×800). Para generarla de nuevo:
@@ -15,7 +15,7 @@ Concepto: la mascota del canal (protagonista del ep01) celebra frente a una curv
 
 ¿Qué pasaría si crecieras 1 cm cada día? ¿Y si cada hora te siguiera una persona más? ¿Y si cada paso te hiciera 1% más rápido?
 
-En ¿Y Si No Paras? tomamos una idea simple y la llevamos hasta el extremo, sin frenos. Cada video es una animación que muestra qué pasaría día tras día, año tras año, hasta llegar a resultados que no imaginarías.
+En Cuentas Locas tomamos una idea simple y la llevamos hasta el extremo, sin frenos. Cada video es una animación que muestra qué pasaría día tras día, año tras año, hasta llegar a resultados que no imaginarías.
 
 Lo que nos hace diferentes: hacemos las cuentas de verdad. Cada número en pantalla tiene su cálculo explicado (365 × 1 cm = 3.65 m), para que entiendas no solo el resultado, sino de dónde sale.
 
@@ -25,11 +25,11 @@ Lo que nos hace diferentes: hacemos las cuentas de verdad. Cada número en panta
 
 ¿Tienes una idea de «qué pasaría si»? Déjala en los comentarios: las mejores se convierten en video.
 
-Suscríbete y no pares.
+Suscríbete y haz las cuentas con nosotros.
 
-📲 TikTok e Instagram: @ysinoparas
+📲 TikTok e Instagram: @cuentaslocas
 
 Usuarios, biografías y hashtags para cada red: `brand/REDES.md`. Textos de cada video: `brand/VIDEOS.md`.
 
 ## Palabras clave del canal
-qué pasaría si, y si no paras, animación, curiosidades, matemáticas, física, ciencia, crecimiento exponencial, datos curiosos, experimento mental, what if en español
+qué pasaría si, cuentas locas, animación, curiosidades, matemáticas, física, ciencia, crecimiento exponencial, datos curiosos, experimento mental, what if en español

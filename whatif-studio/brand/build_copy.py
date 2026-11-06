@@ -18,7 +18,7 @@ def description(c, v, ch):
         v['hook'], '',
         'Las cuentas del video:', *v['math'], '',
         v['question'], '',
-        '⏱️ Capítulos', *ch, '',
+        *(['⏱️ Capítulos', *ch, ''] if ch else []),
         f"🔔 Suscríbete: {c['youtube']}",
         f"📲 TikTok e Instagram: {c['social']}", '',
         ' '.join(v['hashtags']),
@@ -42,14 +42,17 @@ def main():
         '- **Categoría:** Educación · **Idioma:** Español (México) · **Licencia:** estándar de YouTube.',
         '- **Audiencia:** «No, no es contenido creado para niños» (es apto para todo público, pero no está dirigido a niños).',
         '- **Contenido alterado o sintético:** No (es animación claramente no realista).',
-        f"- **Lista de reproducción:** «{c['playlist']}».",
+        f"- **Lista de reproducción:** «{c['playlist']}» (Shorts: «{c.get('shortsPlaylist', c['playlist'])}»).",
         '- **Pantalla final:** «Video siguiente» + «Suscribirse», en los últimos 15 s (la tarjeta de título final deja espacio).',
         '- **Comentario fijado:** publícalo tú apenas subas el video y fíjalo (texto abajo).',
         '- **Hashtags:** YouTube muestra los 3 primeros sobre el título; con más de 15 los ignora todos.',
         '',
     ]
-    for n, v in enumerate(data['videos'], 1):
-        ch = chapters(v['episode'])
+    nv = ns = 0
+    for v in data['videos']:
+        if v.get('isShort'): ns += 1
+        else: nv += 1
+        ch = [] if v.get('isShort') else chapters(v['episode'])  # YouTube no muestra capítulos en Shorts
         desc = description(c, v, ch)
         tags = ', '.join(v['tags'])
         assert len(v['title']) <= LIMITS['title'], v['title']
@@ -58,14 +61,18 @@ def main():
         assert len(v['hashtags']) <= LIMITS['hashtags'], v['episode']
         out += [
             '---', '',
-            f"## Video {n} — `out/{v['episode']}.mp4`", '',
+            (f"## Short {ns} — `out/{v['episode']}.mp4` (vertical)" if v.get('isShort') else f"## Video {nv} — `out/{v['episode']}.mp4`"), '',
             f"**Título** ({len(v['title'])}/100):", '```', v['title'], '```', '',
             f'**Descripción** ({len(desc)}/5000):', '```', desc, '```', '',
             f'**Etiquetas** ({len(tags)}/500):', '```', tags, '```', '',
             '**Comentario fijado:**', '```', v['pinned'], '```', '',
-            '**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):', '```',
-            f"{v['short']}\nVideo completo en YouTube: {c['youtube']}\n{' '.join(v['shortTags'])}", '```', '',
         ]
+        if 'short' in v:
+            out += ['**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):', '```',
+                    f"{v['short']}\nVideo completo en YouTube: {c['youtube']}\n{' '.join(v['shortTags'])}", '```', '']
+        else:
+            out += ['**También en TikTok / Reels** (es vertical, se sube tal cual): usa la misma descripción corta y '
+                    f"{' '.join(h.lower() for h in v['hashtags'] if h != '#Shorts')} #parati", '']
     (ROOT / 'brand' / 'VIDEOS.md').write_text('\n'.join(out))
     print('VIDEOS.md generado con', len(data['videos']), 'videos')
 

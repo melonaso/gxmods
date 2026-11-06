@@ -68,5 +68,33 @@
       "dx": 330,
       "dy": -10
     }
+  },
+  "ep06": {
+    "episode": "ep06-mar",
+    "t": 71,
+    "big": "AÑO 614",
+    "line": "CDMX BAJO EL MAR",
+    "tag": "EL MAR SUBE 1 CM AL DÍA",
+    "align": "left",
+    "accent": "#7dd3fc",
+    "frame": {
+      "zoom": 1.05,
+      "dx": 260,
+      "dy": 230
+    }
+  },
+  "ep07": {
+    "episode": "ep07-cuartos",
+    "t": 70,
+    "big": "18,250",
+    "line": "CUARTOS EN TU CASA",
+    "tag": "+1 CUARTO AL DÍA",
+    "align": "left",
+    "accent": "#ffd34d",
+    "frame": {
+      "zoom": 1.3,
+      "dx": 330,
+      "dy": 20
+    }
   }
 }

@@ -31,7 +31,8 @@ const server = http.createServer((req, res) => {
   fs.createReadStream(p).pipe(res);
 });
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
-const url = `http://127.0.0.1:${server.address().port}/engine/index.html?ep=${ep}&w=${W}&h=${H}`;
+// --page engine2d: Shorts 2D (vertical). Por defecto, el motor 3D.
+const url = `http://127.0.0.1:${server.address().port}/${args.page || 'engine'}/index.html?ep=${ep}&w=${W}&h=${H}`;
 
 const browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
 const page = await browser.newPage({ viewport: { width: 800, height: 450 } });

@@ -14,6 +14,11 @@ while [[ $# -gt 0 ]]; do
 done
 
 B="episodes/$EP/build"
+# Episodios 2D (Shorts verticales): "type": "2d" en script.json.
+if [[ "$(python3 -c "import json;print(json.load(open('episodes/$EP/script.json')).get('type','3d'))")" == "2d" ]]; then
+  RENDER_ARGS+=(--page engine2d --w 1080 --h 1920)
+fi
+BPM=$(python3 -c "import json;print(json.load(open('episodes/$EP/script.json')).get('music',{}).get('bpm',96))")
 mkdir -p out "$B"
 
 # "narration": false en script.json -> video solo con música y textos en pantalla.
@@ -31,7 +36,7 @@ node tools/render.mjs --ep "$EP" --out "out/$EP-video.mp4" "${RENDER_ARGS[@]}"
 
 echo "== 3/4 Música"
 DUR=$(python3 -c "import json;print(json.load(open('$B/starts.json'))['duration'])")
-python3 tools/music.py "$DUR" "$B/music.wav"
+python3 tools/music.py "$DUR" "$B/music.wav" --bpm "$BPM"
 
 echo "== 4/4 Mezcla"
 # Cada escena se retrasa (adelay) hasta su inicio; la música baja de volumen cuando hay voz (sidechain).

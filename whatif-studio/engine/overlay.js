@@ -12,7 +12,10 @@ const FONT = 'Inter, "DejaVu Sans", sans-serif';
  * }
  */
 export function drawOverlay(ctx, W, H, ov) {
-  const u = H / 1080; // escala relativa a 1080p
+  // Vertical (Shorts, 1080×1920): todo centrado y fuera de las zonas que tapa la interfaz de YouTube
+  // (arriba ~130 px; abajo ~480 px con título y canal; a la derecha, los botones).
+  const vert = H > W;
+  const u = (vert ? W : H) / 1080; // escala relativa a 1080 px
 
   // Etiquetas ancladas a puntos de la escena (el episodio ya las proyectó a píxeles).
   if (ov.labels) {
@@ -37,10 +40,18 @@ export function drawOverlay(ctx, W, H, ov) {
     ctx.globalAlpha = alpha;
     ctx.textBaseline = 'top';
     ctx.lineJoin = 'round';
-    ctx.font = `800 ${34 * u}px ${FONT}`;
-    stroked(ctx, label, 70 * u, 60 * u, '#ffffff', 8 * u);
-    ctx.font = `900 ${118 * u}px ${FONT}`;
-    stroked(ctx, value, 64 * u, 100 * u, color, 14 * u);
+    if (vert) {
+      ctx.font = `800 ${38 * u}px ${FONT}`;
+      stroked(ctx, label, W / 2, 150 * u, '#ffffff', 8 * u, 'center');
+      const fs = fitFont(ctx, value, 900, 130 * u, W * 0.86);
+      ctx.font = `900 ${fs}px ${FONT}`;
+      stroked(ctx, value, W / 2, 200 * u, color, 14 * u, 'center');
+    } else {
+      ctx.font = `800 ${34 * u}px ${FONT}`;
+      stroked(ctx, label, 70 * u, 60 * u, '#ffffff', 8 * u);
+      ctx.font = `900 ${118 * u}px ${FONT}`;
+      stroked(ctx, value, 64 * u, 100 * u, color, 14 * u);
+    }
     ctx.restore();
   }
 
@@ -49,7 +60,7 @@ export function drawOverlay(ctx, W, H, ov) {
     ctx.font = `800 ${40 * u}px ${FONT}`;
     const tw = ctx.measureText(ov.chip).width;
     const pad = 26 * u, h = 72 * u;
-    const x = W - 70 * u - tw - pad * 2, y = 60 * u;
+    const x = vert ? W / 2 - tw / 2 - pad : W - 70 * u - tw - pad * 2, y = vert ? 360 * u : 60 * u;
     ctx.fillStyle = 'rgba(15,23,42,0.78)';
     roundRect(ctx, x, y, tw + pad * 2, h, 18 * u);
     ctx.fill();
@@ -70,7 +81,7 @@ export function drawOverlay(ctx, W, H, ov) {
     const cy = H * (ov.title.y ?? 0.5); // posición vertical (fracción de la altura)
     lines.forEach((ln, i) => {
       const big = i === lines.length - 1;
-      ctx.font = `900 ${(big ? 104 : 60) * u}px ${FONT}`;
+      ctx.font = `900 ${fitFont(ctx, ln, 900, (big ? 104 : 60) * u, W * 0.9)}px ${FONT}`;
       const y = cy + (i - (lines.length - 1) / 2) * 120 * u;
       stroked(ctx, ln, W / 2, y, big ? '#ffd34d' : '#ffffff', 14 * u, 'center');
     });
@@ -82,12 +93,12 @@ export function drawOverlay(ctx, W, H, ov) {
     const sub = typeof ov.subtitle === 'string' ? { text: ov.subtitle, alpha: 1 } : ov.subtitle;
     ctx.save();
     ctx.globalAlpha = sub.alpha ?? 1;
-    ctx.font = `700 ${48 * u}px ${FONT}`;
+    ctx.font = `700 ${(vert ? 54 : 48) * u}px ${FONT}`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    const lines = balance(ctx, sub.text, W * 0.62);
-    const lh = 64 * u;
-    const y0 = H - 120 * u - (lines.length - 1) * lh;
+    const lines = balance(ctx, sub.text, W * (vert ? 0.82 : 0.62));
+    const lh = (vert ? 72 : 64) * u;
+    const y0 = (vert ? H * 0.72 : H - 120 * u) - (lines.length - 1) * lh;
     const bw = Math.max(...lines.map((l) => ctx.measureText(l).width)) + 64 * u;
     const bh = lines.length * lh + 36 * u;
     ctx.fillStyle = 'rgba(10,14,25,0.62)';
@@ -101,6 +112,13 @@ export function drawOverlay(ctx, W, H, ov) {
     ctx.fillStyle = `rgba(0,0,0,${Math.min(1, ov.fade)})`;
     ctx.fillRect(0, 0, W, H);
   }
+}
+
+/** Tamaño de letra que hace caber el texto en maxW (sin pasar del tamaño pedido). */
+function fitFont(ctx, text, weight, size, maxW) {
+  ctx.font = `${weight} ${size}px ${FONT}`;
+  const w = ctx.measureText(text).width;
+  return w > maxW ? Math.floor((size * maxW) / w) : size;
 }
 
 function stroked(ctx, text, x, y, fill, lw, align = 'left') {

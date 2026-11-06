@@ -1,0 +1,83 @@
+{
+  "type": "2d",
+  "title": "¿Cuánto tiempo es realmente 1 millón de segundos?",
+  "fps": 30,
+  "gap": 0.35,
+  "tail": 2.0,
+  "narration": false,
+  "cps": 14,
+  "cueMin": 2.2,
+  "cueChars": 70,
+  "music": {
+    "bpm": 92
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "text": "¿Cuánto tiempo es 1 millón de segundos? ¿Y mil millones?",
+      "s0": 0,
+      "s1": 0,
+      "chapter": "La pregunta",
+      "hold": 0.6,
+      "titleCard": [
+        "¿CUÁNTO ES 1 MILLÓN",
+        "DE SEGUNDOS?"
+      ],
+      "titleY": 0.42
+    },
+    {
+      "id": "mil",
+      "text": "1,000 segundos son 16 minutos y 40 segundos. Lo que dura un capítulo corto.",
+      "s0": 0,
+      "s1": 1000,
+      "chapter": "1,000 segundos",
+      "view": "clock"
+    },
+    {
+      "id": "millon",
+      "text": "1,000,000 de segundos: 11 días y medio sin parar.",
+      "s0": 1000,
+      "s1": 1000000,
+      "chapter": "1 millón de segundos",
+      "view": "calendar"
+    },
+    {
+      "id": "milmillones",
+      "text": "1,000,000,000 de segundos: ¡31 años y 8 meses! Más de lo que han vivido muchos de los que ven esto.",
+      "s0": 1000000,
+      "s1": 1000000000,
+      "chapter": "Mil millones de segundos",
+      "view": "life"
+    },
+    {
+      "id": "billon",
+      "text": "1 billón de segundos (en español, un millón de millones): ¡31,700 años! Por esas fechas, nuestros ancestros pintaban cuevas.",
+      "s0": 1000000000,
+      "s1": 1000000000000,
+      "chapter": "1 billón de segundos",
+      "view": "history"
+    },
+    {
+      "id": "compara",
+      "text": "Entre 1 millón y mil millones no hay «un poco más»: hay ×1,000. Es la diferencia entre 11 días y 31 años.",
+      "s0": 1000000000000,
+      "s1": 1000000000000,
+      "chapter": "×1,000",
+      "view": "bars"
+    },
+    {
+      "id": "outro",
+      "text": "La próxima vez que escuches «millones» o «billones», piensa en segundos. ¿Qué otro quieres ver?",
+      "s0": 1000000000000,
+      "s1": 1000000000000,
+      "chapter": "El resultado",
+      "hold": 0.8,
+      "view": "bars",
+      "titleCard": [
+        "1 BILLÓN DE SEGUNDOS",
+        "31,700 AÑOS"
+      ],
+      "titleY": 0.42
+    }
+  ]
+}
