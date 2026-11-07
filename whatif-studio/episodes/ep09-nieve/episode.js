@@ -337,7 +337,7 @@ export function update(C, { t, scene: s, local }) {
 
   let counter = null, chip = null;
   if (!real || s.id === 'intro') {
-    const n = Math.max(0, Math.floor(day + 1e-6));
+    const n = Math.max(0, Math.ceil(day - 1e-6)); // el día en curso: su nieve ya se está sumando al total
     counter = { label: 'NIEVE ACUMULADA', value: fmt(DEPTH(day)) };
     const today = n / 100;
     chip = n >= 1 ? `DÍA ${nf(n)} · HOY CAEN ${today < 1 ? `${nf(n)} cm` : `${nf(today, 2)} m`}` : 'DÍA 0';
