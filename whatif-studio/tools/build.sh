@@ -41,7 +41,8 @@ else
 fi
 
 echo "== 2/4 Video"
-node tools/render.mjs --ep "$EP" --out "out/$EP-video.mp4" "${RENDER_ARGS[@]}"
+# SKIP_RENDER=1: usa out/<ep>-video.mp4 ya hecho (p. ej. con tools/render_parts.sh).
+if [[ "${SKIP_RENDER:-0}" != "1" ]]; then node tools/render.mjs --ep "$EP" --out "out/$EP-video.mp4" "${RENDER_ARGS[@]}"; fi
 
 echo "== 3/4 Música"
 DUR=$(python3 -c "import json;print(json.load(open('$B/starts.json'))['duration'])")

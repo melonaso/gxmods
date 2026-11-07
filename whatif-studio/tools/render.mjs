@@ -66,13 +66,15 @@ if (args.preview) {
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
     '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-pix_fmt', 'yuv420p', out], { stdio: ['pipe', 'inherit', 'inherit'] });
   const total = Math.ceil(duration * fps);
+  // --from / --to (fotogramas): renderiza solo un tramo (tools/render_parts.sh junta los tramos).
+  const f0 = Math.max(0, +(args.from ?? 0)), f1 = Math.min(total, +(args.to ?? total));
   const t0 = Date.now();
-  for (let i = 0; i < total; i++) {
+  for (let i = f0; i < f1; i++) {
     const d = await page.evaluate((t) => studio.frame(t, 0.93), i / fps);
     if (!ff.stdin.write(toBuf(d))) await new Promise((r) => ff.stdin.once('drain', r));
-    if (i % 60 === 0) {
-      const el = (Date.now() - t0) / 1000;
-      process.stdout.write(`\rframe ${i}/${total}  ${(i / Math.max(el, 0.01)).toFixed(1)} fps  ETA ${Math.round((total - i) * el / Math.max(i, 1))} s   `);
+    if ((i - f0) % 60 === 0) {
+      const el = (Date.now() - t0) / 1000, k = i - f0;
+      process.stdout.write(`\rframe ${i}/${total}  ${(k / Math.max(el, 0.01)).toFixed(1)} fps  ETA ${Math.round((f1 - i) * el / Math.max(k, 1))} s   `);
     }
   }
   ff.stdin.end();
