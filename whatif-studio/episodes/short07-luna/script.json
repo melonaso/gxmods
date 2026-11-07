@@ -41,11 +41,12 @@
       "fx": [
         {
           "cue": 1,
+          "at": 0.35,
           "type": "pop"
         },
         {
           "cue": 1,
-          "at": 0.05,
+          "at": 0.38,
           "type": "boom"
         }
       ]
@@ -59,6 +60,13 @@
       "say": [
         "Las noches de luna llena",
         "serían unas cien veces más oscuras."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "pop"
+        }
       ]
     },
     {
@@ -96,6 +104,12 @@
       "say": [
         "Se acabarían los eclipses de Sol.",
         "Para siempre."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "boom"
+        }
       ]
     },
     {
@@ -120,7 +134,14 @@
         "Sin ella, en millones de años,",
         "la Tierra se tambalearía…",
         "y las estaciones serían un caos."
-      ]
+      ],
+      "fx": [
+        {
+          "cue": 2,
+          "type": "whoosh"
+        }
+      ],
+      "chip": "MILLONES DE AÑOS"
     },
     {
       "id": "outro",

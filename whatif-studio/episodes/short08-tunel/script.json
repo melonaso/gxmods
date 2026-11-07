@@ -43,6 +43,7 @@
       "fx": [
         {
           "cue": 2,
+          "at": 0.1,
           "type": "whoosh"
         }
       ]
@@ -69,6 +70,12 @@
         "Caerías cada vez más rápido:",
         "a más de veintiocho mil kilómetros por hora",
         "al pasar por el centro."
+      ],
+      "fx": [
+        {
+          "cue": 2,
+          "type": "whoosh"
+        }
       ]
     },
     {
@@ -102,6 +109,12 @@
       "say": [
         "En unos cuarenta minutos llegarías al otro lado…",
         "y volverías a caer, para siempre."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "whoosh"
+        }
       ]
     },
     {
@@ -128,6 +141,12 @@
         "El pozo más profundo que existe",
         "mide doce kilómetros:",
         "ni siquiera cruza la corteza."
+      ],
+      "fx": [
+        {
+          "cue": 2,
+          "type": "crack"
+        }
       ]
     },
     {

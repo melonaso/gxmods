@@ -18,7 +18,7 @@ Pasos:
     hablado y lo ajusta a la pausa real más cercana.
 Escribe episodes/<ep>/build/voice/NN-<id>.wav y build/timing.json (lo usan el motor y build.sh).
 """
-import json, re, subprocess, sys, wave
+import itertools, json, re, subprocess, sys, wave
 from pathlib import Path
 import numpy as np
 
@@ -59,6 +59,45 @@ def segments(x, thr_db=-38, min_sil=0.12):
 
 def sentences(text):
     return [s for s in re.split(r'(?<=[.!?…])\s+(?=[¿¡«A-ZÁÉÍÓÚÑ])', text.strip()) if s]
+
+
+def match_sentences(scenes, groups):
+    """Cuántos grupos de audio (separados por silencios largos) le tocan a cada escena.
+
+    Las oraciones (. ? !) siempre llevan pausa larga. Los puntos suspensivos («…») a veces sí y a
+    veces no, según la voz: si el audio tiene más pausas largas que oraciones, se prueba qué «…» se
+    dijeron con pausa y se elige la combinación cuyo reparto de texto se parece más al de los tiempos.
+    """
+    units = []  # (escena, caracteres, ¿la pausa siguiente es opcional?)
+    for k, sc in enumerate(scenes):
+        for sent in sentences(' '.join(sc['say'])):
+            parts = re.split(r'(?<=…)\s+', sent)
+            for j, part in enumerate(parts):
+                units.append((k, len(re.sub(r'[^\wáéíóúñü]', '', part, flags=re.I)), j < len(parts) - 1))
+    strong = sum(1 for u in units if not u[2])
+    opt = [i for i, u in enumerate(units) if u[2]]
+    extra = len(groups) - strong
+    if extra < 0 or extra > len(opt):
+        sys.exit(f'El audio tiene {len(groups)} pausas largas y el texto {strong} oraciones: revisa "say" o el audio.')
+    durs = [sum(b - a for a, b in g) for g in groups]
+    cum_d = np.cumsum(durs) / sum(durs)
+    best = None
+    for keep in itertools.combinations(opt, extra):
+        sents, cur = [], [None, 0]
+        for i, (k, n, o) in enumerate(units):
+            cur = [k, cur[1] + n]
+            if not o or i in keep:
+                sents.append(cur); cur = [None, 0]
+        cum_c = np.cumsum([c for _, c in sents]) / sum(c for _, c in sents)
+        cost = float(np.sum((cum_c - cum_d) ** 2))
+        if best is None or cost < best[0]:
+            best = (cost, sents)
+    per_scene = [0] * len(scenes)
+    for k, _ in best[1]:
+        per_scene[k] += 1
+    if extra:
+        print(f'  ({extra} pausa(s) larga(s) en «…»: se reparten por escena {per_scene})')
+    return per_scene
 
 
 def process(clip, tempo, semis, out):
@@ -102,9 +141,7 @@ def main():
     groups = [[segs[0]]]
     for a, b in zip(segs, segs[1:]):
         (groups.append([b]) if b[0] - a[1] >= SENT_GAP else groups[-1].append(b))
-    per_scene = [len(sentences(' '.join(s['say']))) for s in script['scenes']]
-    if sum(per_scene) != len(groups):
-        sys.exit(f'El audio tiene {len(groups)} oraciones y el texto {sum(per_scene)}: revisa "say" o el audio.')
+    per_scene = match_sentences(script['scenes'], groups)
 
     out_dir = root / 'build' / 'voice'
     out_dir.mkdir(parents=True, exist_ok=True)
