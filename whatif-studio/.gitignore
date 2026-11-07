@@ -2,3 +2,4 @@ node_modules/
 out/
 models/
 episodes/*/build/
+__pycache__/
