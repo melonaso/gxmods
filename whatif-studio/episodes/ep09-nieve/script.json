@@ -1,0 +1,114 @@
+{
+  "title": "¿Qué pasaría si cada día nevara 1 cm más que el anterior?",
+  "fps": 30,
+  "gap": 0.5,
+  "tail": 2.5,
+  "narration": false,
+  "cps": 13,
+  "cueMin": 2.4,
+  "cueChars": 90,
+  "world": {
+    "clouds": false
+  },
+  "music": {
+    "bpm": 92
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "d0": 0,
+      "d1": 0,
+      "text": "¿Qué pasaría si cada día nevara 1 cm más que el día anterior… y nunca dejara de nevar?",
+      "chapter": "La pregunta",
+      "hold": 0.8,
+      "titleCard": [
+        "¿Y SI CADA DÍA NEVARA",
+        "1 CM MÁS QUE AYER?"
+      ],
+      "titleY": 0.24
+    },
+    {
+      "id": "semana",
+      "d0": 0,
+      "d1": 7,
+      "text": "Día 1: cae 1 cm. Día 2: 2 cm. Día 3: 3 cm. Parece poco, pero se acumula: en una semana ya hay 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28 cm.",
+      "chapter": "Semana 1: 28 cm"
+    },
+    {
+      "id": "gauss",
+      "d0": 7,
+      "d1": 10,
+      "text": "Para no sumar día por día hay un truco: junta el primer día con el último. 1 + 10 = 11, 2 + 9 = 11, 3 + 8 = 11… Son 5 parejas de 11: 55 cm en 10 días.",
+      "chapter": "El truco de Gauss"
+    },
+    {
+      "id": "formula",
+      "d0": 10,
+      "d1": 19,
+      "text": "En general, el total es n × (n + 1) ÷ 2. Día 19: 19 × 20 ÷ 2 = 190 cm. La nieve ya te taparía la cabeza.",
+      "chapter": "Día 19: más alta que tú"
+    },
+    {
+      "id": "techos",
+      "d0": 19,
+      "d1": 30,
+      "text": "Día 30: 4.65 m. Cada metro cuadrado de techo carga unos 465 kg de nieve, como 6 personas paradas encima. Los techos se hunden.",
+      "chapter": "Día 30: los techos ceden"
+    },
+    {
+      "id": "dia60",
+      "d0": 30,
+      "d1": 60,
+      "text": "Día 60: 18.3 m. Las casas, los árboles y los postes de luz desaparecieron. Solo asoman los edificios.",
+      "chapter": "Día 60: 18 m"
+    },
+    {
+      "id": "dia100",
+      "d0": 60,
+      "d1": 100,
+      "text": "Día 100: 1 + 2 + … + 100 = 5,050 cm. ¡50.5 m! Un edificio de 15 pisos, enterrado por completo.",
+      "chapter": "Día 100: 50 m"
+    },
+    {
+      "id": "record",
+      "d0": 100,
+      "d1": 193,
+      "text": "Día 193: ese día caen 1.93 m, igual que el récord de nieve en un solo día en Estados Unidos. En total ya hay 187 m: más que la Torre Latinoamericana (182 m).",
+      "chapter": "Día 193: un récord diario"
+    },
+    {
+      "id": "anio",
+      "d0": 193,
+      "d1": 365,
+      "text": "Día 365: 668 m de nieve. La ciudad entera es una llanura blanca.",
+      "chapter": "Un año: 668 m"
+    },
+    {
+      "id": "burj",
+      "d0": 365,
+      "d1": 407,
+      "text": "Y el día 407 llega a 830 m: tapa hasta el Burj Khalifa, el edificio más alto del mundo (828 m).",
+      "chapter": "Día 407: más que el Burj Khalifa"
+    },
+    {
+      "id": "real",
+      "d0": 0,
+      "d1": 0,
+      "text": "En la realidad, la nieve se aplasta con su propio peso y el sol la derrite. Ninguna nevada crece así para siempre… por suerte.",
+      "chapter": "En la vida real"
+    },
+    {
+      "id": "outro",
+      "d0": 0,
+      "d1": 0,
+      "text": "Sumar solo un poquito más cada día crece rapidísimo. ¿Qué otro «¿qué pasaría si…?» quieres ver?",
+      "chapter": "El resultado",
+      "hold": 1.2,
+      "titleCard": [
+        "1 + 2 + 3 + … + n",
+        "= n × (n + 1) ÷ 2"
+      ],
+      "titleY": 0.3
+    }
+  ]
+}

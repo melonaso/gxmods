@@ -96,5 +96,33 @@
       "dx": 330,
       "dy": 20
     }
+  },
+  "ep08": {
+    "episode": "ep08-rebote",
+    "t": 59.6,
+    "big": "¡102 KM!",
+    "line": "UNA PELOTA EN EL ESPACIO",
+    "tag": "+10% EN CADA REBOTE",
+    "align": "left",
+    "accent": "#fb923c",
+    "frame": {
+      "zoom": 1.15,
+      "dx": 260,
+      "dy": 20
+    }
+  },
+  "ep09": {
+    "episode": "ep09-nieve",
+    "t": 98.6,
+    "big": "830 m",
+    "line": "DE NIEVE",
+    "tag": "+1 CM MÁS CADA DÍA",
+    "align": "left",
+    "accent": "#7dd3fc",
+    "frame": {
+      "zoom": 1.5,
+      "dx": 330,
+      "dy": 60
+    }
   }
 }

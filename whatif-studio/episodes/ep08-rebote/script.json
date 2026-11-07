@@ -1,0 +1,126 @@
+{
+  "title": "¿Qué pasaría si tu pelota rebotara 10% más alto cada vez?",
+  "fps": 30,
+  "gap": 0.5,
+  "tail": 2.5,
+  "narration": false,
+  "cps": 13,
+  "cueMin": 2.4,
+  "cueChars": 90,
+  "world": {
+    "clouds": false
+  },
+  "music": {
+    "bpm": 104
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "spot": "court",
+      "n0": 0,
+      "n1": 0,
+      "text": "¿Qué pasaría si tu pelota rebotara un 10% más alto cada vez… y nunca dejara de rebotar?",
+      "chapter": "La pregunta",
+      "hold": 0.8,
+      "titleCard": [
+        "¿Y SI TU PELOTA REBOTARA",
+        "10% MÁS ALTO CADA VEZ?"
+      ],
+      "titleY": 0.24
+    },
+    {
+      "id": "regla",
+      "spot": "court",
+      "n0": 0,
+      "n1": 3,
+      "text": "La sueltas desde 1 m. Rebota a 1.1 m, luego a 1.21 m, luego a 1.33 m: cada rebote es el anterior × 1.1. En este mundo, el aire no la frena.",
+      "chapter": "La regla: × 1.1"
+    },
+    {
+      "id": "dobla",
+      "spot": "court",
+      "n0": 3,
+      "n1": 7,
+      "text": "¿Por qué crece tan rápido? Porque el 10% se calcula sobre la altura nueva. Tras 7 rebotes ya multiplicaste 7 veces por 1.1: da 1.95, casi el doble.",
+      "chapter": "Rebote 7: casi el doble"
+    },
+    {
+      "id": "casa",
+      "spot": "house",
+      "n0": 7,
+      "n1": 19,
+      "text": "Rebote 19: 1.1 multiplicado 19 veces da 6.1 m. Ya pasa por encima del techo de una casa… y apenas lleva medio minuto rebotando.",
+      "chapter": "Rebote 19: más alta que una casa"
+    },
+    {
+      "id": "coche",
+      "spot": "car",
+      "n0": 19,
+      "n1": 30,
+      "text": "Rebote 30: 17 m de altura. Al caer ya va a 67 km/h: si toca un coche, lo abolla.",
+      "chapter": "Rebote 30: abolla un coche"
+    },
+    {
+      "id": "plaza",
+      "spot": "plaza",
+      "n0": 30,
+      "n1": 42,
+      "text": "Rebote 42: 55 m, como un edificio de 17 pisos. Cae a 118 km/h, y todo lo que está cerca sale volando.",
+      "chapter": "Rebote 42: 17 pisos"
+    },
+    {
+      "id": "torre",
+      "spot": "tower",
+      "n0": 42,
+      "n1": 55,
+      "text": "Rebote 55: 189 m, más alta que la Torre Latinoamericana (182 m). Cae a 219 km/h: ya abre hoyos en el piso.",
+      "chapter": "Rebote 55: más alta que una torre"
+    },
+    {
+      "id": "nubes",
+      "spot": "tower",
+      "n0": 55,
+      "n1": 80,
+      "text": "Rebote 80: ¡2 km! Atraviesa las nubes, y cada subida y bajada ya tarda 41 segundos.",
+      "chapter": "Rebote 80: las nubes"
+    },
+    {
+      "id": "aviones",
+      "spot": "tower",
+      "n0": 80,
+      "n1": 97,
+      "text": "Rebote 97: 10 km, la altura a la que vuelan los aviones. Llega al suelo a más de 1,600 km/h: más rápido que el sonido.",
+      "chapter": "Rebote 97: los aviones"
+    },
+    {
+      "id": "espacio",
+      "spot": "tower",
+      "n0": 97,
+      "n1": 121,
+      "text": "Rebote 121: ¡102 km! Ya cruza la frontera del espacio… y desde que la soltaste, solo pasaron 103 minutos.",
+      "chapter": "Rebote 121: el espacio"
+    },
+    {
+      "id": "real",
+      "spot": "court",
+      "n0": 0,
+      "n1": 0,
+      "text": "En la realidad pasa lo contrario: una pelota de básquet regresa a cerca del 70% de la altura de la que cae. En cada rebote pierde energía, que se va en calor y ruido.",
+      "chapter": "En la vida real"
+    },
+    {
+      "id": "outro",
+      "spot": "court",
+      "n0": 0,
+      "n1": 0,
+      "text": "Una pelota que gana energía en cada rebote rompería las leyes de la física. ¿Qué otro «¿qué pasaría si…?» quieres ver?",
+      "chapter": "El resultado",
+      "hold": 1.2,
+      "titleCard": [
+        "1.1 × 1.1 × 1.1…",
+        "121 REBOTES = EL ESPACIO"
+      ],
+      "titleY": 0.3
+    }
+  ]
+}

@@ -45,6 +45,8 @@ export async function createStudio({ episode, W = 1920, H = 1080 }) {
   const world = createWorld(glCanvas, glCanvas.width, glCanvas.height, script.world || {});
   const C = { THREE, world, actors, script, scenes, W, H };
   ep.setup(C);
+  // Efectos de sonido del episodio (rebotes, golpes...): [{ t, type }] en segundos del video.
+  const sfx = ep.sfx ? ep.sfx(C) : [];
 
   function sceneAt(t) {
     for (const s of scenes) if (t < s.start + s.dur) return s;
@@ -117,10 +119,11 @@ export async function createStudio({ episode, W = 1920, H = 1080 }) {
         out.push(`${solids[i].o.userData.solid} ${c(a)} ↔ ${solids[j].o.userData.solid} ${c(b)}`);
       }
     }
-    return out;
+    // Choques revisados antes de hornear lo estático (las piezas horneadas ya no existen por separado).
+    return out.concat(world.userData?.preOverlaps ?? []);
   }
 
-  return { renderFrame, overlaps, world, duration, scenes, fps: script.fps ?? 30, frame: (t, q = 0.92) => { renderFrame(t); return out.toDataURL('image/jpeg', q); } };
+  return { renderFrame, overlaps, world, duration, scenes, sfx, fps: script.fps ?? 30, frame: (t, q = 0.92) => { renderFrame(t); return out.toDataURL('image/jpeg', q); } };
 }
 
 // Utilidades compartidas con el motor 2D (subtítulos, tiempos y curvas de animación).

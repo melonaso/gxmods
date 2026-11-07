@@ -4,7 +4,11 @@
 <meta charset="utf-8">
 <title>WhatIf Studio</title>
 <script type="importmap">
-  { "imports": { "three": "../node_modules/three/build/three.module.js" } }
+  { "imports": {
+      "three": "../node_modules/three/build/three.module.js",
+      "three/addons/": "../node_modules/three/examples/jsm/",
+      "cannon-es": "../node_modules/cannon-es/dist/cannon-es.js"
+  } }
 </script>
 <style>
   @font-face { font-family: Inter; font-weight: 700; src: url(../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2); }

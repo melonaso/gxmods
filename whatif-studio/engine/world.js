@@ -82,7 +82,7 @@ export function createWorld(canvas, W, H, opts = {}) {
 
   // Nubes low-poly flotando.
   const cloudMat = new THREE.MeshStandardMaterial({ color: '#ffffff', flatShading: true, roughness: 1 });
-  for (let i = 0; i < 26; i++) {
+  for (let i = 0; i < (opts.clouds === false ? 0 : 26); i++) {
     const c = new THREE.Group();
     for (let k = 0; k < 4; k++) {
       const s = new THREE.Mesh(new THREE.IcosahedronGeometry(14 + rng() * 14, 0), cloudMat);
@@ -129,7 +129,7 @@ export function createWorld(canvas, W, H, opts = {}) {
     scene.fog.far = want * 60 + 600;
   }
 
-  return { THREE, renderer, scene, camera, sun, ground, fitToScale, rng: mulberry32(42) };
+  return { THREE, renderer, scene, camera, sun, ground, fitToScale, rng: mulberry32(42), userData: {} };
 }
 
 /** Generador pseudoaleatorio con semilla: mismo resultado en cada render. */

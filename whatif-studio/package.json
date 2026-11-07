@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fontsource/inter": "^5.1.0",
+    "cannon-es": "^0.20.0",
     "three": "^0.170.0"
   }
 }

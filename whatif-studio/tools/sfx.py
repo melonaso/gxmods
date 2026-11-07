@@ -76,7 +76,36 @@ def crack():
     return y * 0.9 + 0.5 * np.sin(2 * np.pi * 90 * tt) * np.exp(-tt * 10)
 
 
-KINDS = {'whoosh': (whoosh, 0.55), 'boom': (boom, 0.9), 'click': (click, 0.6), 'pop': (pop, 0.35),
+def thud():
+    """Bote de pelota: golpe grave corto con un chasquido de goma."""
+    n = int(0.25 * SR)
+    tt = np.arange(n) / SR
+    body = np.sin(2 * np.pi * (95 * tt + 60 * (1 - np.exp(-30 * tt)) / 30)) * np.exp(-tt * 22)
+    x = rng.standard_normal(n)
+    snap = (x - lowpass_var(x, np.full(n, 0.5))) * np.exp(-tt * 90) * 0.5
+    return body + snap
+
+
+def alarm():
+    """Alarma de coche: dos tonos que se alternan (1.6 s)."""
+    n = int(1.6 * SR)
+    tt = np.arange(n) / SR
+    f = np.where((tt * 5).astype(int) % 2 == 0, 1150, 820)
+    sig = np.sign(np.sin(2 * np.pi * np.cumsum(f) / SR)) * 0.5
+    return lowpass_var(sig, np.full(n, 0.6)) * np.clip((1.6 - tt) / 0.1, 0, 1)
+
+
+def jet():
+    """Avión pasando: ruido grave que crece y se aleja (2.5 s)."""
+    n = int(2.5 * SR)
+    tt = np.arange(n) / SR
+    x = rng.standard_normal(n)
+    a = 0.985 - 0.03 * np.sin(np.pi * tt / 2.5)
+    return lowpass_var(x, a) * np.sin(np.pi * tt / 2.5) ** 2 * 6
+
+
+KINDS = {'thud': (thud, 0.75), 'alarm': (alarm, 0.4), 'jet': (jet, 0.6),
+         'whoosh': (whoosh, 0.55), 'boom': (boom, 0.9), 'click': (click, 0.6), 'pop': (pop, 0.35),
          'splash': (splash, 0.7), 'crack': (crack, 0.7)}
 
 

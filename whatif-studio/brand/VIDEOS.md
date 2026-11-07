@@ -357,6 +357,110 @@ qué pasaría si, que pasaria si, casa infinita, cuarto nuevo cada día, mansió
 
 ---
 
+## Video 8 — `out/ep08-rebote.mp4`
+
+**Título** (57/100):
+```
+¿Qué pasaría si tu pelota rebotara 10% más alto cada vez?
+```
+
+**Descripción** (1312/5000):
+```
+1.1 × 1.1 × 1.1… Con solo 10% más en cada rebote, tu pelota llega al espacio en 121 rebotes y en menos de dos horas.
+
+Las cuentas del video:
+🏀 La altura del rebote n es 1.1 multiplicado n veces por sí mismo (en metros). Rebote 7: 1.95 m, casi el doble.
+🏠 Rebote 19: 6.1 m · Rebote 30: 17.4 m · Rebote 42: 54.8 m · Rebote 55: 189 m.
+☁️ Rebote 80: 2,048 m · Rebote 97: 10,354 m · Rebote 121: 101,980 m (102 km).
+⏱️ Tiempo en el aire de un rebote de altura h: 2 × √(2h ÷ 9.81) segundos. A 102 km, casi 5 minutos por rebote.
+💥 Velocidad al caer (sin aire): √(2 × 9.81 × h). A 17 m: 67 km/h; a 55 m: 118 km/h; a 10 km: 1,623 km/h.
+🧮 Sumando todos los tiempos de vuelo, el rebote 121 llega a los 103 minutos de haberla soltado.
+🏀 En la vida real, una pelota de básquet regresa a cerca del 70% de la altura: pierde energía en calor y ruido.
+
+¿En qué rebote crees que ya no podrías atraparla? 👇
+
+⏱️ Capítulos
+0:00 La pregunta
+0:10 La regla: × 1.1
+0:21 Rebote 7: casi el doble
+0:33 Rebote 19: más alta que una casa
+0:44 Rebote 30: abolla un coche
+0:54 Rebote 42: 17 pisos · Rebote 55: más alta que una torre
+1:10 Rebote 80: las nubes
+1:20 Rebote 97: los aviones
+1:30 Rebote 121: el espacio
+1:40 En la vida real
+1:53 El resultado
+
+🔔 Suscríbete: @CuentasLocas
+
+#QuePasariaSi #CuentasLocas #Fisica #Matematicas #Curiosidades
+```
+
+**Etiquetas** (154/500):
+```
+qué pasaría si, pelota que rebota, rebote 10 por ciento, crecimiento exponencial, física, matemáticas, caída libre, cuentas locas, curiosidades, animación
+```
+
+**Comentario fijado:**
+```
+📌 ¿Por qué 1.1 multiplicado 7 veces casi da el doble? Porque cada 10% se calcula sobre lo que ya creció: es interés compuesto, igual que en los bancos 🏦
+```
+
+---
+
+## Video 9 — `out/ep09-nieve.mp4`
+
+**Título** (57/100):
+```
+¿Qué pasaría si cada día nevara 1 cm más que el anterior?
+```
+
+**Descripción** (1144/5000):
+```
+1 cm, luego 2, luego 3… Sumar un poquito más cada día termina enterrando el edificio más alto del mundo en 407 días.
+
+Las cuentas del video:
+❄️ Total después de n días: 1 + 2 + … + n = n × (n + 1) ÷ 2 cm. Es el truco de Gauss: juntar el primer día con el último.
+📅 Día 7: 28 cm · Día 10: 55 cm · Día 19: 190 cm · Día 30: 4.65 m.
+🏠 Con 4.65 m de nieve recién caída (unos 100 kg por m³), cada m² de techo carga unos 465 kg.
+🏢 Día 60: 18.3 m · Día 100: 5,050 cm = 50.5 m.
+🗼 Día 193: ese día caen 1.93 m (el récord de un solo día en EE. UU.) y el total es de 187 m.
+🌆 Día 365: 668 m · Día 407: 830 m, más que el Burj Khalifa (828 m).
+🌨️ En la realidad, la nieve se compacta con su propio peso y el sol la derrite.
+
+¿Hasta qué día aguantarías antes de mudarte? 👇
+
+⏱️ Capítulos
+0:00 La pregunta
+0:10 Semana 1: 28 cm
+0:22 El truco de Gauss
+0:36 Día 19: más alta que tú
+0:46 Día 30: los techos ceden
+0:58 Día 60: 18 m
+1:08 Día 100: 50 m
+1:18 Día 193: un récord diario
+1:32 Un año: 668 m · Día 407: más que el Burj Khalifa
+1:46 En la vida real
+1:57 El resultado
+
+🔔 Suscríbete: @CuentasLocas
+
+#QuePasariaSi #CuentasLocas #Matematicas #Nieve #Curiosidades
+```
+
+**Etiquetas** (133/500):
+```
+qué pasaría si, nieve, nevada, suma de gauss, números triangulares, matemáticas, burj khalifa, cuentas locas, curiosidades, animación
+```
+
+**Comentario fijado:**
+```
+📌 Cuenta la historia que Gauss, de niño, sumó del 1 al 100 en segundos: 50 parejas que suman 101 → 50 × 101 = 5,050 ✏️
+```
+
+---
+
 ## Short 1 — `out/short01-papel.mp4` (vertical)
 
 **Título** (60/100):
