@@ -10,18 +10,26 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
   const script = await (await fetch(base + 'script.json')).json();
   const ep = await import(base + 'episode.js');
 
-  // Línea de tiempo por lectura (igual que en 3D, sin narración).
-  const gap = script.gap ?? 0.35;
+  // Con voz grabada ("voice" en el guion), tools/voice.py deja build/timing.json con lo que dura la
+  // voz de cada escena y cuándo empieza cada subtítulo: la escena dura lo que dura su voz.
+  // Sin voz, la línea de tiempo sale del tiempo de lectura (igual que en 3D).
+  const timing = script.voice ? await (await fetch(base + 'build/timing.json')).json() : null;
+  const gap = timing ? (script.voice.gap ?? 0.22) : (script.gap ?? 0.35);
   let acc = 0;
   const scenes = script.scenes.map((s, i) => {
     // "caps": frases ya cortadas a mano (Shorts de ritmo rápido); si no, se cortan por oraciones.
     const cues = s.caps ?? splitCues(s.text || '', script.cueChars ?? 80);
-    const reading = cues.map((c) => readTime(c.replace(/\*/g, ''), script.cps ?? 14, script.cueMin ?? 2.2));
-    const audio = reading.reduce((a, b) => a + b, 0);
-    const total = audio || 1;
-    let c0 = 0;
-    const cueTimes = reading.map((r) => { const st = c0; c0 += (r / total) * audio; return [st, c0]; });
-    const dur = Math.max(s.min ?? 0, audio + gap + (s.hold ?? 0));
+    let audio, cueTimes, minDur = s.min ?? 0;
+    if (timing) {
+      audio = timing[i].dur; cueTimes = timing[i].cues; minDur = s.min ?? script.voice.min ?? 0;
+    } else {
+      const reading = cues.map((c) => readTime(c.replace(/\*/g, ''), script.cps ?? 14, script.cueMin ?? 2.2));
+      audio = reading.reduce((a, b) => a + b, 0);
+      const total = audio || 1;
+      let c0 = 0;
+      cueTimes = reading.map((r) => { const st = c0; c0 += (r / total) * audio; return [st, c0]; });
+    }
+    const dur = Math.max(minDur, audio + gap + (s.hold ?? 0));
     const sc = { ...s, index: i, start: acc, audio, dur, cues, cueTimes };
     acc += dur;
     return sc;

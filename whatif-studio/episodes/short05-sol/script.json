@@ -34,6 +34,10 @@
           "at": 0.05,
           "type": "boom"
         }
+      ],
+      "say": [
+        "¿Y si el Sol se apagara…",
+        "ahora mismo?"
       ]
     },
     {
@@ -41,6 +45,10 @@
       "caps": [
         "Durante *8 minutos* no notarías *nada*:",
         "su última luz *sigue en camino*."
+      ],
+      "say": [
+        "Durante ocho minutos no notarías nada:",
+        "su última luz sigue en camino."
       ]
     },
     {
@@ -60,6 +68,10 @@
           "at": 0.5,
           "type": "pop"
         }
+      ],
+      "say": [
+        "Luego, oscuridad total.",
+        "Hasta la Luna se apaga: solo reflejaba la del Sol."
       ]
     },
     {
@@ -68,6 +80,10 @@
       "caps": [
         "En una semana: *−18 °C*,",
         "como dentro de un *congelador*."
+      ],
+      "say": [
+        "En una semana: dieciocho grados bajo cero,",
+        "como dentro de un congelador."
       ]
     },
     {
@@ -76,6 +92,10 @@
       "caps": [
         "En un año: *−73 °C*.",
         "Más frío que *la Antártida* en invierno."
+      ],
+      "say": [
+        "En un año: setenta y tres bajo cero.",
+        "Más frío que la Antártida en invierno."
       ]
     },
     {
@@ -84,6 +104,11 @@
         "El mar se congela *por encima*…",
         "pero abajo, junto a volcanes,",
         "*la vida resistiría*."
+      ],
+      "say": [
+        "El mar se congela por encima…",
+        "pero abajo, junto a volcanes,",
+        "la vida resistiría."
       ]
     },
     {
@@ -93,7 +118,22 @@
         "alrededor de *un Sol apagado*.",
         "Deja tu *«¿Y si…?»* abajo."
       ],
-      "hold": 0.4
+      "hold": 0.4,
+      "say": [
+        "Y la Tierra seguiría girando",
+        "alrededor de un Sol apagado.",
+        "Deja tu «¿Y si…?» abajo."
+      ]
     }
-  ]
+  ],
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  }
 }

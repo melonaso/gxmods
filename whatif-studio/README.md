@@ -57,6 +57,13 @@ Episodios verticales dibujados en 2D (`"type": "2d"` en `script.json`, motor `en
 - `"music": { "bpm": 128, "drums": true, "minor": true }`: batería, bajo y progresión menor (más dramática).
 - `"chip"` en una escena: etiqueta de tiempo arriba (ej. `"AÑO 20"`).
 
+### Voz grabada aparte (tuya o de otra app)
+1. Guarda el audio como `episodes/<ep>/voice.mp3`, leído de corrido con el guion (una pausa clara entre oraciones).
+2. En `script.json`: `"voice": {"file": "voice.mp3", "tempo": 1.15, "semitones": 2}` y en cada escena `"say": [...]`, el texto hablado de cada subtítulo (con los números en letra).
+3. `bash tools/build.sh <ep>`. `tools/voice.py` quita el espacio muerto, acelera la voz (`tempo`), sube el tono (`semitones`, sin efecto «ardilla»), la ecualiza y comprime, y la reparte por escenas. El video toma el ritmo de la voz: cada escena dura lo que dura su frase y cada subtítulo aparece cuando se dice. `tools/mix.py` baja la música bajo la voz y deja el volumen final en -14 LUFS.
+
+Si el audio no tiene tantas oraciones como el texto `say`, `voice.py` se detiene y lo avisa.
+
 Herramientas de dibujo en `engine2d/kit.js` (persona, casa, árbol, coche, edificio, Sol, sacudida, destello, líneas de velocidad) y el globo terráqueo en `engine2d/earth.js`.
 
 ## Crear un episodio nuevo
