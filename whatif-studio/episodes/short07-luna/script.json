@@ -1,0 +1,140 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0.12,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "title": "¿Y si la Luna desapareciera?",
+  "music": {
+    "bpm": 112,
+    "drums": true,
+    "minor": true
+  },
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si esta noche…",
+        "*la Luna desapareciera*?"
+      ],
+      "say": [
+        "¿Y si esta noche…",
+        "la Luna desapareciera?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "type": "pop"
+        },
+        {
+          "cue": 1,
+          "at": 0.05,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "noches",
+      "caps": [
+        "Las noches de luna llena",
+        "serían *unas 100 veces más oscuras*."
+      ],
+      "say": [
+        "Las noches de luna llena",
+        "serían unas cien veces más oscuras."
+      ]
+    },
+    {
+      "id": "mareas",
+      "caps": [
+        "Las mareas se harían",
+        "*mucho más pequeñas*:",
+        "solo quedaría la del Sol."
+      ],
+      "say": [
+        "Las mareas se harían",
+        "mucho más pequeñas:",
+        "solo quedaría la del Sol."
+      ]
+    },
+    {
+      "id": "corales",
+      "caps": [
+        "Y muchos animales *se perderían*:",
+        "los corales usan la luna llena",
+        "como *calendario* para reproducirse."
+      ],
+      "say": [
+        "Y muchos animales se perderían:",
+        "los corales usan la luna llena",
+        "como calendario para reproducirse."
+      ]
+    },
+    {
+      "id": "eclipses",
+      "caps": [
+        "Se acabarían *los eclipses de Sol*.",
+        "*Para siempre*."
+      ],
+      "say": [
+        "Se acabarían los eclipses de Sol.",
+        "Para siempre."
+      ]
+    },
+    {
+      "id": "eje",
+      "caps": [
+        "Lo peor: la Luna *estabiliza*",
+        "la inclinación de la Tierra."
+      ],
+      "say": [
+        "Lo peor: la Luna estabiliza",
+        "la inclinación de la Tierra."
+      ]
+    },
+    {
+      "id": "caos",
+      "caps": [
+        "Sin ella, en millones de años,",
+        "la Tierra *se tambalearía*…",
+        "y las estaciones serían *un caos*."
+      ],
+      "say": [
+        "Sin ella, en millones de años,",
+        "la Tierra se tambalearía…",
+        "y las estaciones serían un caos."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Así que, cuando la veas esta noche…",
+        "*dale las gracias*.",
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Así que, cuando la veas esta noche…",
+        "dale las gracias.",
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ]
+}

@@ -20,7 +20,8 @@ def description(c, v, ch):
         v['question'], '',
         *(['⏱️ Capítulos', *ch, ''] if ch else []),
         f"🔔 Suscríbete: {c['youtube']}",
-        f"📲 TikTok e Instagram: {c['social']}", '',
+        # TikTok e Instagram solo cuando existan las cuentas ("social" en copy.json).
+        *([f"📲 TikTok e Instagram: {c['social']}"] if c.get('social') else []), '',
         ' '.join(v['hashtags']),
     ]
     return '\n'.join(parts)
@@ -35,7 +36,7 @@ def main():
         '> Archivo generado con `python3 brand/build_copy.py` a partir de `brand/copy.json`.',
         '> No lo edites a mano: cambia `copy.json` y vuelve a generarlo.',
         '',
-        f"Canal: **{c['name']}** · YouTube `{c['youtube']}` · TikTok/Instagram `{c['social']}` · Lista: «{c['playlist']}».",
+        f"Canal: **{c['name']}** · YouTube `{c['youtube']}`" + (f" · TikTok/Instagram `{c['social']}`" if c.get('social') else '') + f" · Lista: «{c['playlist']}».",
         'Miniaturas (1280×720): `out/brand/thumb-ep0N.png` (`node brand/render-brand.mjs thumb ep0N`).',
         '',
         '## Ajustes al subir (iguales para todos)',
@@ -67,7 +68,9 @@ def main():
             f'**Etiquetas** ({len(tags)}/500):', '```', tags, '```', '',
             '**Comentario fijado:**', '```', v['pinned'], '```', '',
         ]
-        if 'short' in v:
+        if not c.get('social'):
+            pass
+        elif 'short' in v:
             out += ['**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):', '```',
                     f"{v['short']}\nVideo completo en YouTube: {c['youtube']}\n{' '.join(v['shortTags'])}", '```', '']
         else:

@@ -2,9 +2,9 @@
  "channel": {
   "name": "Cuentas Locas",
   "youtube": "@CuentasLocas",
-  "social": "@cuentaslocas",
   "playlist": "Cuentas Locas · Temporada 1",
-  "shortsPlaylist": "Cuentas Locas · Shorts"
+  "shortsPlaylist": "Cuentas Locas · Shorts",
+  "socialPendiente": "@cuentaslocas"
  },
  "videos": [
   {

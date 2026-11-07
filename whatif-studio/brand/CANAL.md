@@ -27,8 +27,6 @@ Lo que nos hace diferentes: hacemos las cuentas de verdad. Cada número en panta
 
 Suscríbete y haz las cuentas con nosotros.
 
-📲 TikTok e Instagram: @cuentaslocas
-
 Usuarios, biografías y hashtags para cada red: `brand/REDES.md`. Textos de cada video: `brand/VIDEOS.md`.
 
 ## Palabras clave del canal

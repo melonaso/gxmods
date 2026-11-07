@@ -1,5 +1,8 @@
 # Redes sociales del canal
 
+> **Pendiente:** TikTok e Instagram todavía no existen. Mientras tanto, las descripciones de YouTube no los mencionan.
+> Cuando los crees, agrega `"social": "@cuentaslocas"` en `brand/copy.json → channel` y vuelve a correr `python3 brand/build_copy.py`.
+
 Nombre en todas las redes: **Cuentas Locas**
 Foto de perfil: `out/brand/profile.png` (sirve igual para todas; cada red la recorta en círculo).
 

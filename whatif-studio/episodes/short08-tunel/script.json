@@ -1,0 +1,144 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0.12,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "title": "¿Y si cayeras por un túnel que atraviesa la Tierra?",
+  "music": {
+    "bpm": 124,
+    "drums": true,
+    "minor": true
+  },
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si cavaras un túnel",
+        "que *atraviese toda la Tierra*…",
+        "*y saltaras*?"
+      ],
+      "say": [
+        "¿Y si cavaras un túnel",
+        "que atraviese toda la Tierra…",
+        "y saltaras?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 2,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "mexico",
+      "caps": [
+        "Si empiezas en México,",
+        "sales en medio del *océano Índico*."
+      ],
+      "say": [
+        "Si empiezas en México,",
+        "sales en medio del océano Índico."
+      ]
+    },
+    {
+      "id": "caida",
+      "caps": [
+        "Caerías cada vez más rápido:",
+        "a más de *28,000 km/h*",
+        "al pasar por el centro."
+      ],
+      "say": [
+        "Caerías cada vez más rápido:",
+        "a más de veintiocho mil kilómetros por hora",
+        "al pasar por el centro."
+      ]
+    },
+    {
+      "id": "calor",
+      "caps": [
+        "Allá abajo hay *más de 5,000 °C*:",
+        "casi como la superficie del Sol."
+      ],
+      "say": [
+        "Allá abajo hay más de cinco mil grados:",
+        "casi como la superficie del Sol."
+      ]
+    },
+    {
+      "id": "centro",
+      "caps": [
+        "Y justo en el centro…",
+        "*no pesarías nada*."
+      ],
+      "say": [
+        "Y justo en el centro…",
+        "no pesarías nada."
+      ]
+    },
+    {
+      "id": "vuelta",
+      "caps": [
+        "En unos *40 minutos* llegarías al otro lado…",
+        "y volverías a caer, *para siempre*."
+      ],
+      "say": [
+        "En unos cuarenta minutos llegarías al otro lado…",
+        "y volverías a caer, para siempre."
+      ]
+    },
+    {
+      "id": "aire",
+      "caps": [
+        "Eso, *sin aire*.",
+        "Con aire, frenarías poco a poco…",
+        "y terminarías *flotando en el centro*."
+      ],
+      "say": [
+        "Eso, sin aire.",
+        "Con aire, frenarías poco a poco…",
+        "y terminarías flotando en el centro."
+      ]
+    },
+    {
+      "id": "pozo",
+      "caps": [
+        "El pozo más profundo que existe",
+        "mide *12 km*:",
+        "ni siquiera cruza *la corteza*."
+      ],
+      "say": [
+        "El pozo más profundo que existe",
+        "mide doce kilómetros:",
+        "ni siquiera cruza la corteza."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ]
+}

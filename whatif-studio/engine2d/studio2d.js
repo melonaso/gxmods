@@ -13,7 +13,9 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
   // Con voz grabada ("voice" en el guion), tools/voice.py deja build/timing.json con lo que dura la
   // voz de cada escena y cuándo empieza cada subtítulo: la escena dura lo que dura su voz.
   // Sin voz, la línea de tiempo sale del tiempo de lectura (igual que en 3D).
-  const timing = script.voice ? await (await fetch(base + 'build/timing.json')).json() : null;
+  // (Mientras no llegue el audio, se usa el tiempo de lectura para poder revisar el video.)
+  const tres = script.voice ? await fetch(base + 'build/timing.json') : null;
+  const timing = tres && tres.ok ? await tres.json() : null;
   const gap = timing ? (script.voice.gap ?? 0.22) : (script.gap ?? 0.35);
   let acc = 0;
   const scenes = script.scenes.map((s, i) => {

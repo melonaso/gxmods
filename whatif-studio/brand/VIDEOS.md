@@ -3,7 +3,7 @@
 > Archivo generado con `python3 brand/build_copy.py` a partir de `brand/copy.json`.
 > No lo edites a mano: cambia `copy.json` y vuelve a generarlo.
 
-Canal: **Cuentas Locas** · YouTube `@CuentasLocas` · TikTok/Instagram `@cuentaslocas` · Lista: «Cuentas Locas · Temporada 1».
+Canal: **Cuentas Locas** · YouTube `@CuentasLocas` · Lista: «Cuentas Locas · Temporada 1».
 Miniaturas (1280×720): `out/brand/thumb-ep0N.png` (`node brand/render-brand.mjs thumb ep0N`).
 
 ## Ajustes al subir (iguales para todos)
@@ -24,7 +24,7 @@ Miniaturas (1280×720): `out/brand/thumb-ep0N.png` (`node brand/render-brand.mjs
 ¿Qué pasaría si crecieras 1 cm cada día y no pudieras parar?
 ```
 
-**Descripción** (937/5000):
+**Descripción** (901/5000):
 ```
 1 centímetro al día parece nada. Pero después de 100 años medirías 367 metros: más que la Torre Eiffel.
 
@@ -48,7 +48,6 @@ Las cuentas del video:
 1:37 El resultado final
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #QuePasariaSi #CuentasLocas #Curiosidades #Matematicas #Gigante
 ```
@@ -63,13 +62,6 @@ qué pasaría si, que pasaria si, crecer 1 cm cada día, ley cuadrado cubo, giga
 📌 Si duplicas tu altura, tu peso se multiplica por 8 pero tus huesos solo se hacen 4 veces más fuertes. Por eso un gigante de 5 m tendría problemas para sostenerse 🦴 ¿Qué número te sorprendió más? 👇
 ```
 
-**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):
-```
-1 cm al día... durante 100 años 📏🤯 ¿Hasta dónde llegarías?
-Video completo en YouTube: @CuentasLocas
-#quepasariasi #cuentaslocas #curiosidades #matematicas #parati
-```
-
 ---
 
 ## Video 2 — `out/ep02-seguidores.mp4`
@@ -79,7 +71,7 @@ Video completo en YouTube: @CuentasLocas
 ¿Qué pasaría si cada hora te siguiera 1 persona más… para siempre?
 ```
 
-**Descripción** (1084/5000):
+**Descripción** (1048/5000):
 ```
 Una persona nueva cada hora. Nunca se va. En 50 años tendrías 438,000 seguidores reales caminando detrás de ti.
 
@@ -105,7 +97,6 @@ Las cuentas del video:
 1:34 El resultado final
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #QuePasariaSi #CuentasLocas #Curiosidades #Matematicas #Seguidores
 ```
@@ -120,13 +111,6 @@ qué pasaría si, que pasaria si, seguidores, multitud, cada hora, matemáticas,
 📌 En 1 año serían 8,760 personas: la población de un pueblo entero siguiéndote 😳 ¿A dónde los llevarías primero? 👇
 ```
 
-**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):
-```
-+1 persona cada hora, para siempre 👣 En 50 años: 438,000 detrás de ti 😳
-Video completo en YouTube: @CuentasLocas
-#quepasariasi #cuentaslocas #curiosidades #matematicas #parati
-```
-
 ---
 
 ## Video 3 — `out/ep03-velocidad.mp4`
@@ -136,7 +120,7 @@ Video completo en YouTube: @CuentasLocas
 ¿Qué pasaría si cada paso te hiciera 1% más rápido?
 ```
 
-**Descripción** (1129/5000):
+**Descripción** (1093/5000):
 ```
 1% parece poco. Pero con 904 pasos —menos de 1 km de caminata— alcanzarías la velocidad necesaria para salir de la Tierra.
 
@@ -162,7 +146,6 @@ Las cuentas del video:
 1:20 678 metros para salir del planeta
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #QuePasariaSi #CuentasLocas #Fisica #CrecimientoExponencial #Matematicas
 ```
@@ -177,13 +160,6 @@ qué pasaría si, que pasaria si, 1% más rápido, crecimiento exponencial, inte
 📌 Regla del 70: divide 70 entre el % de crecimiento y sabrás cuánto tarda en duplicarse. Con 1%: 70 pasos. Funciona igual con el dinero 💰 ¿La conocías? 👇
 ```
 
-**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):
-```
-Cada paso, 1% más rápido 🏃‍♂️💨 En el paso 904 sales de la Tierra 🚀
-Video completo en YouTube: @CuentasLocas
-#quepasariasi #cuentaslocas #fisica #curiosidades #parati
-```
-
 ---
 
 ## Video 4 — `out/ep04-gravedad.mp4`
@@ -193,7 +169,7 @@ Video completo en YouTube: @CuentasLocas
 ¿Qué pasaría si cada día la gravedad fuera 1% más débil?
 ```
 
-**Descripción** (1214/5000):
+**Descripción** (1178/5000):
 ```
 1% menos de gravedad al día. En 4 años y medio, un simple salto bastaría para salir de la Tierra… y nunca volver.
 
@@ -219,7 +195,6 @@ Las cuentas del video:
 1:30 Un salto al espacio
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #QuePasariaSi #CuentasLocas #Fisica #Gravedad #Espacio
 ```
@@ -234,13 +209,6 @@ qué pasaría si, que pasaria si, gravedad, sin gravedad, decaimiento exponencia
 📌 Dato real: la gravedad de la Luna es 1/6 de la de la Tierra, y en gran parte por eso casi no tiene atmósfera: no logra retener su aire 🌙 ¿Qué harías pesando la mitad? 👇
 ```
 
-**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):
-```
-La gravedad baja 1% cada día 🌍⬇️ En 4.5 años, un salto te saca del planeta 🚀
-Video completo en YouTube: @CuentasLocas
-#quepasariasi #cuentaslocas #fisica #espacio #parati
-```
-
 ---
 
 ## Video 5 — `out/ep05-parpadeos.mp4`
@@ -250,7 +218,7 @@ Video completo en YouTube: @CuentasLocas
 ¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?
 ```
 
-**Descripción** (1052/5000):
+**Descripción** (1016/5000):
 ```
 Parpadeas 14,400 veces al día sin darte cuenta. Si cada parpadeo fuera una moneda de $1, en 50 años tendrías más de 262 millones de pesos… y 1,038 toneladas de metal.
 
@@ -275,7 +243,6 @@ Las cuentas del video:
 1:16 El resultado final
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #QuePasariaSi #CuentasLocas #Dinero #Matematicas #Curiosidades
 ```
@@ -290,13 +257,6 @@ qué pasaría si, que pasaria si, parpadear, monedas, millonario, dinero, matem�
 📌 Ser millonario en un año suena bien… hasta que tienes que cargar 57 kg de monedas cada día 😅 ¿En qué gastarías el primer millón? 👇
 ```
 
-**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):
-```
-1 peso por cada parpadeo 👁️💰 En 1 año: millonario… y 20 toneladas de monedas 😳
-Video completo en YouTube: @CuentasLocas
-#quepasariasi #cuentaslocas #dinero #curiosidades #parati
-```
-
 ---
 
 ## Video 6 — `out/ep06-mar.mp4`
@@ -306,7 +266,7 @@ Video completo en YouTube: @CuentasLocas
 ¿Qué pasaría si el mar subiera 1 cm cada día?
 ```
 
-**Descripción** (1277/5000):
+**Descripción** (1241/5000):
 ```
 1 cm al día parece poco. Pero en 1,544 años el agua cubriría el Pico de Orizaba, la montaña más alta de México.
 
@@ -333,7 +293,6 @@ Las cuentas del video:
 1:26 El resultado final
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #QuePasariaSi #CuentasLocas #Matematicas #Mexico #Curiosidades
 ```
@@ -348,13 +307,6 @@ qué pasaría si, que pasaria si, nivel del mar, mar sube, inundación, Ciudad d
 📌 Truco: divide la altura de tu ciudad (en metros) entre 3.65 y sabrás en qué año la cubriría el mar. ¿Cuánto te dio? 👇
 ```
 
-**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):
-```
-El mar sube 1 cm al día 🌊 ¿En qué año cubre la Ciudad de México? 🏙️
-Video completo en YouTube: @CuentasLocas
-#quepasariasi #cuentaslocas #mexico #curiosidades #parati
-```
-
 ---
 
 ## Video 7 — `out/ep07-cuartos.mp4`
@@ -364,7 +316,7 @@ Video completo en YouTube: @CuentasLocas
 ¿Qué pasaría si tu casa ganara un cuarto nuevo cada día?
 ```
 
-**Descripción** (1104/5000):
+**Descripción** (1068/5000):
 ```
 Un cuarto de 12 m² al día. En 50 años tu casa tendría 18,250 cuartos y ocuparía más que 30 canchas de fútbol.
 
@@ -389,7 +341,6 @@ Las cuentas del video:
 1:14 El resultado final
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #QuePasariaSi #CuentasLocas #Matematicas #Curiosidades #Casa
 ```
@@ -404,13 +355,6 @@ qué pasaría si, que pasaria si, casa infinita, cuarto nuevo cada día, mansió
 📌 El Palacio de Buckingham tiene 775 cuartos: a un cuarto por día lo alcanzas en 2 años y 45 días 👑 ¿Cuál sería tu primer cuarto extra? 👇
 ```
 
-**Texto para TikTok / Reels / Shorts** (si publicas un recorte vertical):
-```
-Un cuarto nuevo cada día 🏠➕ En 6 años: tantos como el Palacio de Versalles 🏰
-Video completo en YouTube: @CuentasLocas
-#quepasariasi #cuentaslocas #curiosidades #casa #parati
-```
-
 ---
 
 ## Short 1 — `out/short01-papel.mp4` (vertical)
@@ -420,7 +364,7 @@ Video completo en YouTube: @CuentasLocas
 ¿Qué pasaría si doblaras una hoja de papel 42 veces? #Shorts
 ```
 
-**Descripción** (544/5000):
+**Descripción** (508/5000):
 ```
 Cada doblez duplica el grosor: 0.1 mm × 2⁴² = 439,805 km. ¡Más lejos que la Luna!
 
@@ -433,7 +377,6 @@ Las cuentas del video:
 ¿Cuántas veces has logrado doblar una hoja? 👇
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Matematicas #Curiosidades
 ```
@@ -448,8 +391,6 @@ qué pasaría si, doblar papel 42 veces, potencias de 2, luna, matemáticas, cur
 📌 Una potencia de 2 crece tan rápido que con solo 42 duplicaciones pasas de 0.1 mm a la Luna 🌙 ¿Qué más duplicarías?
 ```
 
-**También en TikTok / Reels** (es vertical, se sube tal cual): usa la misma descripción corta y #quepasariasi #cuentaslocas #matematicas #curiosidades #parati
-
 ---
 
 ## Short 2 — `out/short02-ajedrez.mp4` (vertical)
@@ -459,7 +400,7 @@ qué pasaría si, doblar papel 42 veces, potencias de 2, luna, matemáticas, cur
 ¿Qué pasaría si duplicaras el arroz en cada casilla del ajedrez? #Shorts
 ```
 
-**Descripción** (610/5000):
+**Descripción** (574/5000):
 ```
 La leyenda del ajedrez: 1 grano en la primera casilla y el doble en cada una. En la casilla 64 hay 9.2 trillones de granos.
 
@@ -473,7 +414,6 @@ Las cuentas del video:
 ¿Conocías esta leyenda? 👇
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Matematicas #Ajedrez
 ```
@@ -488,8 +428,6 @@ leyenda del ajedrez, granos de arroz, tablero de ajedrez, potencias de 2, matem�
 📌 Cada casilla tiene más granos que todas las anteriores juntas, más uno: así crece una potencia de 2 ♟️🍚
 ```
 
-**También en TikTok / Reels** (es vertical, se sube tal cual): usa la misma descripción corta y #quepasariasi #cuentaslocas #matematicas #ajedrez #parati
-
 ---
 
 ## Short 3 — `out/short03-segundos.mp4` (vertical)
@@ -499,7 +437,7 @@ leyenda del ajedrez, granos de arroz, tablero de ajedrez, potencias de 2, matem�
 ¿Cuánto tiempo es realmente 1 millón de segundos? #Shorts
 ```
 
-**Descripción** (511/5000):
+**Descripción** (475/5000):
 ```
 1 millón de segundos = 11.6 días. Mil millones = 31.7 años. ¡No es «un poco más», es ×1,000!
 
@@ -512,7 +450,6 @@ Las cuentas del video:
 ¿Cuántos segundos llevas vivo? Edad × 31,557,600 y déjalo aquí 👇
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Matematicas #Curiosidades
 ```
@@ -527,8 +464,6 @@ millón de segundos, mil millones de segundos, billón, escala de números, mate
 📌 Ojo: en español, 1 billón = 1,000,000,000,000 (un millón de millones). En inglés «billion» son solo mil millones 🤯
 ```
 
-**También en TikTok / Reels** (es vertical, se sube tal cual): usa la misma descripción corta y #quepasariasi #cuentaslocas #matematicas #curiosidades #parati
-
 ---
 
 ## Short 4 — `out/short04-tierra.mp4` (vertical)
@@ -538,7 +473,7 @@ millón de segundos, mil millones de segundos, billón, escala de números, mate
 ¿Y si la Tierra dejara de girar de golpe? 🌍 #Shorts
 ```
 
-**Descripción** (839/5000):
+**Descripción** (803/5000):
 ```
 Si la Tierra frenara de golpe, tú no: saldrías disparado a 1,670 km/h. Y eso sería solo el principio.
 
@@ -553,7 +488,6 @@ Los datos del video:
 ¿Qué crees que sería lo más difícil de sobrevivir? 👇
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Ciencia #Tierra
 ```
@@ -568,8 +502,6 @@ qué pasaría si la tierra dejara de girar, tierra deja de girar, rotación de l
 📌 ¿Por qué el agua se iría a los polos? Hoy el giro de la Tierra empuja el mar hacia el ecuador y lo «abomba» unos kilómetros. Sin giro, el agua se reacomoda hacia los polos 🌊
 ```
 
-**También en TikTok / Reels** (es vertical, se sube tal cual): usa la misma descripción corta y #quepasariasi #cuentaslocas #ciencia #tierra #parati
-
 ---
 
 ## Short 5 — `out/short05-sol.mp4` (vertical)
@@ -579,7 +511,7 @@ qué pasaría si la tierra dejara de girar, tierra deja de girar, rotación de l
 ¿Y si el Sol se apagara ahora mismo? ☀️ #Shorts
 ```
 
-**Descripción** (912/5000):
+**Descripción** (876/5000):
 ```
 Durante 8 minutos no notarías nada… y después, la Tierra entera se volvería un congelador.
 
@@ -594,7 +526,6 @@ Los datos del video:
 ¿Qué harías en esos 8 minutos? 👇
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Espacio #Ciencia
 ```
@@ -609,8 +540,6 @@ qué pasaría si el sol se apagara, el sol se apaga, luz del sol 8 minutos, espa
 📌 Dato: aunque el Sol se apagara, su gravedad seguiría ahí. Por eso la Tierra no saldría disparada: seguiría girando alrededor de un Sol oscuro 🌑
 ```
 
-**También en TikTok / Reels** (es vertical, se sube tal cual): usa la misma descripción corta y #quepasariasi #cuentaslocas #espacio #ciencia #parati
-
 ---
 
 ## Short 6 — `out/short06-humanos.mp4` (vertical)
@@ -620,7 +549,7 @@ qué pasaría si el sol se apagara, el sol se apaga, luz del sol 8 minutos, espa
 ¿Y si los humanos desaparecieran mañana? 🏙️ #Shorts
 ```
 
-**Descripción** (871/5000):
+**Descripción** (835/5000):
 ```
 En 2 días las ciudades se apagan. En 1,000 años son bosques. ¿Qué quedaría de nosotros?
 
@@ -636,7 +565,6 @@ Los datos del video:
 ¿Qué crees que duraría más de tu ciudad? 👇
 
 🔔 Suscríbete: @CuentasLocas
-📲 TikTok e Instagram: @cuentaslocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Curiosidades #Ciencia
 ```
@@ -650,5 +578,3 @@ qué pasaría si los humanos desaparecieran, mundo sin humanos, la tierra sin no
 ```
 📌 ¿Por qué el plástico dura tanto? Casi ningún microbio sabe «comérselo», así que tarda cientos de años en degradarse 🧴
 ```
-
-**También en TikTok / Reels** (es vertical, se sube tal cual): usa la misma descripción corta y #quepasariasi #cuentaslocas #curiosidades #ciencia #parati
