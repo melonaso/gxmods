@@ -25,7 +25,13 @@ Concepto: la mascota del canal (protagonista del ep01) celebra frente a una curv
 
 Videos nuevos cada semana. Suscríbete y haz las cuentas con nosotros.
 
-## Texto del banner (2560×1440; zona segura central 1546×423)
+## Banner (2560×1440)
+Imagen: `out/brand/banner.png` (se genera con `node brand/render-brand.mjs banner`). Subir en
+*Personalizar canal → Marca → Imagen del banner*. Todo el texto y la mascota quedan dentro de la
+zona segura central (1546×423), que es lo que se ve en celular; en computadora se ven además la
+curva y el Sol con la Tierra a los lados, y en TV la imagen completa.
+
+Texto que lleva:
 
 ```
 ¿QUÉ PASARÍA SI…?

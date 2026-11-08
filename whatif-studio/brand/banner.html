@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Banner del canal</title>
+<script type="importmap">
+  { "imports": {
+      "three": "../node_modules/three/build/three.module.js",
+      "three/addons/": "../node_modules/three/examples/jsm/",
+      "cannon-es": "../node_modules/cannon-es/dist/cannon-es.js"
+  } }
+</script>
+<style>
+  @font-face { font-family: Inter; font-weight: 900; src: url(../node_modules/@fontsource/inter/files/inter-latin-900-normal.woff2); }
+  @font-face { font-family: Inter; font-weight: 800; src: url(../node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2); }
+  html, body { margin: 0; background: #111; }
+</style>
+</head>
+<body>
+<canvas id="out"></canvas>
+<script type="module">
+  // Banner de YouTube (2560×1440). Zonas que muestra YouTube:
+  //  - TV: la imagen completa.
+  //  - Computadora: franja de 2560×423 centrada (y de 508 a 931).
+  //  - Celular y zona segura: 1546×423 centrada (x de 507 a 2053). Ahí va todo el texto.
+  import * as THREE from 'three';
+  import { createPerson } from '../engine/actors.js';
+  import * as kit from '../engine2d/kit.js';
+  import { drawGlobe } from '../engine2d/earth.js';
+
+  const W = 2560, H = 1440, Y0 = 508, Y1 = 931, X0 = 507, X1 = 2053, CY = (Y0 + Y1) / 2;
+  const out = document.getElementById('out');
+  out.width = W; out.height = H;
+  const ctx = out.getContext('2d');
+  await Promise.all([800, 900].map((w) => document.fonts.load(`${w} 40px Inter`)));
+
+  // 1) Fondo: espacio azul profundo con estrellas y un brillo detrás del título.
+  kit.gradientBG(ctx, W, H, '#060b26', '#1e1b4b');
+  const glow = ctx.createRadialGradient(W * 0.53, CY, 50, W * 0.53, CY, 900);
+  glow.addColorStop(0, 'rgba(59,130,246,0.38)'); glow.addColorStop(1, 'rgba(59,130,246,0)');
+  ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+  kit.drawStars(ctx, kit.makeStars(520, W, H, 77), 0.9, 0);
+
+  // 2) Horizonte de un planeta abajo (solo se ve en TV).
+  drawGlobe(ctx, W / 2, H + 2300, 2620, { lon0: -60, lat0: 40, outline: 0 });
+
+  // 3) Izquierda: curva exponencial amarilla que sube sin parar (como en la foto de perfil).
+  const pts = [];
+  for (let i = 0; i <= 80; i++) {
+    const x = i / 80, y = (Math.exp(4 * x) - 1) / (Math.exp(4) - 1);
+    pts.push([60 + x * 400, Y1 - 30 - y * 340]);
+  }
+  const stroke = (w, c) => { ctx.lineWidth = w; ctx.strokeStyle = c; ctx.lineJoin = ctx.lineCap = 'round'; ctx.beginPath(); pts.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.stroke(); };
+  stroke(40, kit.INK); stroke(24, kit.YELLOW);
+  const [ax, ay] = pts[80], [bx, by] = pts[76], ang = Math.atan2(ay - by, ax - bx);
+  const head = (r, c) => { ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(ax + Math.cos(ang) * r, ay + Math.sin(ang) * r); ctx.lineTo(ax + Math.cos(ang + 2.4) * r, ay + Math.sin(ang + 2.4) * r); ctx.lineTo(ax + Math.cos(ang - 2.4) * r, ay + Math.sin(ang - 2.4) * r); ctx.closePath(); ctx.fill(); };
+  head(56, kit.INK); head(40, kit.YELLOW);
+  for (const [i, label] of [[20, '×2'], [44, '×4'], [64, '×16']]) {
+    const [x, y] = pts[i];
+    ctx.beginPath(); ctx.arc(x, y, 15, 0, Math.PI * 2); kit.shape(ctx, '#ffffff', 6);
+    kit.text(ctx, label, x - 62, y - 22, { size: 40, fill: '#ffffff' });
+  }
+
+  // 4) Derecha: Sol, la Tierra y un cohete (los temas de los Shorts).
+  kit.sun(ctx, 2410, CY - 50, 92, { t: 0.8, on: 1 });
+  drawGlobe(ctx, 2235, CY + 62, 128, { lon0: -95, lat0: 18 });
+  ctx.save(); ctx.translate(2110, Y0 + 95); ctx.rotate(0.7); ctx.scale(0.5, 0.5);
+  ctx.beginPath(); ctx.moveTo(-26, 92); ctx.quadraticCurveTo(0, 210, 26, 92); ctx.closePath(); kit.shape(ctx, '#f97316', 4);
+  for (const sx of [-1, 1]) { ctx.beginPath(); ctx.moveTo(sx * 30, 40); ctx.lineTo(sx * 62, 96); ctx.lineTo(sx * 30, 86); ctx.closePath(); kit.shape(ctx, '#dc2626', 5); }
+  ctx.beginPath(); ctx.moveTo(0, -110); ctx.quadraticCurveTo(44, -60, 34, 92); ctx.lineTo(-34, 92); ctx.quadraticCurveTo(-44, -60, 0, -110); ctx.closePath(); kit.shape(ctx, '#f1f5f9', 6);
+  ctx.beginPath(); ctx.moveTo(0, -110); ctx.quadraticCurveTo(26, -84, 30, -58); ctx.lineTo(-30, -58); ctx.quadraticCurveTo(-26, -84, 0, -110); ctx.closePath(); kit.shape(ctx, '#dc2626', 5);
+  ctx.beginPath(); ctx.arc(0, -8, 18, 0, Math.PI * 2); kit.shape(ctx, '#38bdf8', 5);
+  ctx.restore();
+
+  // 5) Mascota 3D (la del ep01 y la foto de perfil), dentro de la zona segura, a la izquierda.
+  const M = 900;
+  const gl = document.createElement('canvas'); gl.width = gl.height = M;
+  const renderer = new THREE.WebGLRenderer({ canvas: gl, antialias: true, alpha: true, preserveDrawingBuffer: true });
+  renderer.setSize(M, M, false); renderer.setPixelRatio(1);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
+  const scene = new THREE.Scene();
+  scene.add(new THREE.HemisphereLight('#ffffff', '#3b4a8a', 1.7));
+  const key = new THREE.DirectionalLight('#fff3dc', 2.8); key.position.set(2, 4, 5); scene.add(key);
+  const rim = new THREE.DirectionalLight('#93c5fd', 1.6); rim.position.set(-3, 2, -3); scene.add(rim);
+  const hero = createPerson({ shirt: '#22c55e', pants: '#1e3a8a', skin: '#e8b48a', hair: '#2b1a10' });
+  hero.userData.pose(0.35, 'cheer');
+  hero.rotation.y = 0.35;
+  scene.add(hero);
+  const cam = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+  cam.position.set(-1.0, 0.95, 4.7);
+  cam.lookAt(-0.05, 1.0, 0);
+  renderer.render(scene, cam);
+  // La figura completa (manos arriba incluidas) cabe en la franja de 423 px.
+  const D = 460;
+  ctx.drawImage(gl, 690 - D / 2, Y0 + 2, D, D);
+
+  // 6) Textos dentro de la zona segura.
+  const tx = 1440;
+  const title = (str, x, y, size, fill) => {
+    ctx.font = `900 ${size}px Inter`; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round';
+    ctx.lineWidth = size * 0.16; ctx.strokeStyle = kit.INK; ctx.strokeText(str, x, y);
+    ctx.fillStyle = fill; ctx.fillText(str, x, y);
+    return ctx.measureText(str).width;
+  };
+  // Título centrado en tx, con «SI…?» en amarillo.
+  const size = 112, a = '¿QUÉ PASARÍA ', b = 'SI…?';
+  ctx.font = `900 ${size}px Inter`;
+  const wa = ctx.measureText(a).width, wb = ctx.measureText(b).width, x0 = tx - (wa + wb) / 2;
+  title(a, x0, CY - 22, size, '#ffffff');
+  title(b, x0 + wa, CY - 22, size, kit.YELLOW);
+  kit.text(ctx, 'Ideas simples llevadas al extremo · con cuentas reales', tx, CY + 48, { size: 42, weight: 800, fill: '#dbeafe', lw: 8, maxW: 1120 });
+  // Etiqueta: videos y Shorts cada semana.
+  ctx.font = '900 36px Inter';
+  const chip = 'VIDEOS Y SHORTS NUEVOS CADA SEMANA', cw = ctx.measureText(chip).width + 64;
+  kit.roundRect(ctx, tx - cw / 2, CY + 92, cw, 66, 33); kit.shape(ctx, kit.YELLOW, 6);
+  kit.text(ctx, chip, tx, CY + 127, { size: 36, fill: kit.INK, stroke: null });
+
+  window.png = () => out.toDataURL('image/png');
+  window.ready = true;
+</script>
+</body>
+</html>
