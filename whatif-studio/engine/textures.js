@@ -235,3 +235,18 @@ export const groundDetail = (kind = 'grass') => make('detail' + kind, () => {
   }
   return { map: toTexture(c, { srgb: false }) };
 });
+
+/** Tierra suelta: café con grumos, piedritas y raíces finas (cerros de tierra, paredes de un hoyo). */
+export const dirt = () => make('dirt', () => {
+  const n = 512, [c, g] = canvas(n), r = rng(41);
+  g.fillStyle = '#7a5232'; g.fillRect(0, 0, n, n);
+  blotches(g, n, r, ['#6b4528', '#8b6240', '#5e3d22', '#94704b'], 260, 6, 34, 0.4);
+  for (let i = 0; i < 1400; i++) {
+    const x = r() * n, y = r() * n, s = 1.5 + r() * 4.5;
+    g.fillStyle = r() < 0.5 ? 'rgba(60,40,25,0.75)' : 'rgba(170,140,110,0.7)';
+    g.beginPath(); g.ellipse(x, y, s, s * (0.6 + r() * 0.4), r() * 3, 0, Math.PI * 2); g.fill();
+  }
+  g.strokeStyle = 'rgba(55,35,20,0.35)'; g.lineWidth = 1;
+  for (let i = 0; i < 60; i++) { const x = r() * n, y = r() * n; g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo(x + (r() - 0.5) * 30, y + 10, x + (r() - 0.5) * 40, y + 20 + r() * 20); g.stroke(); }
+  return { map: toTexture(c), normalMap: normalFrom(c, 2.5) };
+});

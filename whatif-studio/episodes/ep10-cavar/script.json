@@ -1,0 +1,120 @@
+{
+  "title": "¿Qué pasaría si cada día cavaras 1 metro hacia abajo?",
+  "fps": 30,
+  "gap": 0.5,
+  "tail": 2.5,
+  "narration": false,
+  "cps": 13,
+  "cueMin": 2.4,
+  "cueChars": 90,
+  "world": {},
+  "music": {
+    "bpm": 96
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "d0": 0,
+      "d1": 0,
+      "text": "¿Qué pasaría si cada día cavaras 1 metro hacia abajo… y nunca dejaras de cavar?",
+      "chapter": "La pregunta",
+      "hold": 0.8,
+      "titleCard": [
+        "¿Y SI CAVARAS 1 METRO",
+        "CADA DÍA HACIA ABAJO?"
+      ],
+      "titleY": 0.24
+    },
+    {
+      "id": "dia1",
+      "d0": 0,
+      "d1": 1,
+      "text": "Día 1: un hoyo de 1 m × 1 m × 1 m. Parece poco, pero ya sacaste 1 m³ de tierra: unas 1.5 toneladas, casi lo que pesa un coche.",
+      "chapter": "Día 1: 1.5 toneladas de tierra"
+    },
+    {
+      "id": "semana",
+      "d0": 1,
+      "d1": 7,
+      "text": "Día 7: 7 m de hondo, lo que mide una casa de dos pisos. Ya necesitas una escalera para bajar… y una cubeta con cuerda para subir la tierra.",
+      "chapter": "Día 7: tan hondo como tu casa"
+    },
+    {
+      "id": "agua",
+      "d0": 7,
+      "d1": 12,
+      "text": "Cerca de los 10 m, en muchos lugares aparece agua: es agua subterránea, la misma que sacan los pozos. Para seguir cavando hay que bombearla.",
+      "chapter": "Día 10: agua subterránea"
+    },
+    {
+      "id": "mes",
+      "d0": 12,
+      "d1": 30,
+      "text": "Día 30: 30 m. Es como un edificio de 10 pisos… pero hacia abajo.",
+      "chapter": "Día 30: un edificio hacia abajo"
+    },
+    {
+      "id": "cerro",
+      "d0": 30,
+      "d1": 100,
+      "text": "¿Y la tierra que sacas? Se amontona en un cono. Día 100: ya son 100 m³… y el cerro mide solo 3.6 m.",
+      "chapter": "Día 100: el cerro de tierra"
+    },
+    {
+      "id": "cubo",
+      "d0": 100,
+      "d1": 180,
+      "text": "¿Por qué tan bajito? El volumen de un cono crece con la altura al cubo: para un cerro el doble de alto necesitas 2 × 2 × 2 = 8 veces más tierra.",
+      "chapter": "La altura al cubo"
+    },
+    {
+      "id": "anio",
+      "d0": 180,
+      "d1": 365,
+      "text": "Día 365: 365 m. Más hondo que la Torre Eiffel es alta (330 m). Abajo la roca ya está 9 °C más caliente: cada kilómetro hacia abajo suma unos 25 °C.",
+      "chapter": "1 año: más que la Torre Eiffel"
+    },
+    {
+      "id": "mina",
+      "d0": 365,
+      "d1": 3650,
+      "text": "10 años: 3.65 km. Casi tan hondo como la mina más profunda del mundo, en Sudáfrica (4 km). Allá la roca está a unos 60 °C y el aire se enfría con hielo para poder trabajar.",
+      "chapter": "10 años: la mina más profunda"
+    },
+    {
+      "id": "kola",
+      "d0": 3650,
+      "d1": 12262,
+      "text": "33 años y medio: 12.3 km. Es el pozo de Kola, en Rusia, el agujero más profundo jamás hecho: más hondo que el Everest es alto. Ahí la roca está a 180 °C y se deforma como plastilina.",
+      "chapter": "33 años: el pozo de Kola"
+    },
+    {
+      "id": "cerro2",
+      "d0": 12262,
+      "d1": 12262,
+      "text": "Y aquí lo curioso: toda la tierra de esos 12 km cabe en un cerro de 18 m junto a tu casa. Un hoyo de 1 m de ancho es muy hondo… pero muy delgado.",
+      "chapter": "Un cerro de solo 18 m"
+    },
+    {
+      "id": "corteza",
+      "d0": 12262,
+      "d1": 35000,
+      "text": "A los 35 km se acaba la corteza y empieza el manto: roca a más de 500 °C. Llegar ahí te tomaría 96 años, más que una vida entera.",
+      "chapter": "96 años: el fin de la corteza"
+    },
+    {
+      "id": "centro",
+      "d0": 35000,
+      "d1": 6371000,
+      "text": "El centro de la Tierra está a 6,371 km. A 1 m por día tardarías 17,443 años: tendrías que haber empezado cuando los humanos pintaban cuevas… para llegar hoy a 5,200 °C.",
+      "chapter": "17,443 años: el centro"
+    },
+    {
+      "id": "outro",
+      "d0": 12262,
+      "d1": 12262,
+      "text": "¿Hasta qué día aguantarías cavando? Déjalo en los comentarios.",
+      "chapter": "¿Hasta dónde llegarías?"
+    }
+  ]
+}

@@ -124,5 +124,19 @@
       "dx": 330,
       "dy": 60
     }
+  },
+  "ep10": {
+    "episode": "ep10-cavar",
+    "t": 153.5,
+    "big": "6,371 KM",
+    "line": "HASTA EL CENTRO",
+    "tag": "1 METRO CADA DÍA",
+    "align": "left",
+    "accent": "#fb923c",
+    "frame": {
+      "zoom": 1.0,
+      "dx": 340,
+      "dy": 10
+    }
   }
 }

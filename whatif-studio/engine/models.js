@@ -145,6 +145,8 @@ export function createCharacter(o = {}) {
 
   const phase0 = r() * 10;
   root.userData.solid = null;
+  // Codos (la mano está en (0, -0.25, 0) de cada uno): sirven para colgar herramientas.
+  root.userData.hands = arms.map((a) => a.elbow);
   root.userData.pose = (t, mode = 'idle', opt = {}) => {
     const ph = (opt.phase ?? 0) + phase0, s = t * (opt.speed ?? 1) + ph;
     // Reinicio.

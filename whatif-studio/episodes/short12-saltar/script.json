@@ -1,0 +1,121 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0.12,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si todos los humanos saltáramos al mismo tiempo?",
+  "music": {
+    "bpm": 124,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si los *8,000 millones* de humanos…",
+        "saltáramos *al mismo tiempo*?"
+      ],
+      "say": [
+        "¿Y si los ocho mil millones de humanos…",
+        "saltáramos al mismo tiempo?"
+      ],
+      "hold": 0.3
+    },
+    {
+      "id": "juntos",
+      "caps": [
+        "Primero, nos juntamos. Apretados,",
+        "cabríamos en un cuadro de *45 km por lado*."
+      ],
+      "say": [
+        "Primero, nos juntamos. Apretados,",
+        "cabríamos en un cuadro de cuarenta y cinco kilómetros por lado."
+      ]
+    },
+    {
+      "id": "peso",
+      "caps": [
+        "Juntos pesamos unos *400 mil millones de kilos*…",
+        "y la Tierra pesa *15 billones de veces más*."
+      ],
+      "say": [
+        "Juntos pesamos unos cuatrocientos mil millones de kilos…",
+        "y la Tierra pesa quince billones de veces más."
+      ]
+    },
+    {
+      "id": "salto",
+      "caps": [
+        "¡Saltamos! Y la Tierra se mueve hacia abajo…",
+        "*3,000 veces menos* que el ancho de un átomo."
+      ],
+      "say": [
+        "¡Saltamos! Y la Tierra se mueve hacia abajo…",
+        "tres mil veces menos que el ancho de un átomo."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "golpe",
+      "caps": [
+        "Al caer, el golpe sería como *un temblor pequeño*:",
+        "lo sentirían los de cerca… y nada más."
+      ],
+      "say": [
+        "Al caer, el golpe sería como un temblor pequeño:",
+        "lo sentirían los de cerca… y nada más."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "regreso",
+      "caps": [
+        "Y la Tierra vuelve *justo a donde estaba*:",
+        "el empujón de ida y el de vuelta *se cancelan*."
+      ],
+      "say": [
+        "Y la Tierra vuelve justo a donde estaba:",
+        "el empujón de ida y el de vuelta se cancelan."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ]
+}

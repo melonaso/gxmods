@@ -1,0 +1,125 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0.12,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si cayeras en un agujero negro?",
+  "music": {
+    "bpm": 104,
+    "drums": true,
+    "minor": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si cayeras",
+        "en *un agujero negro*?"
+      ],
+      "say": [
+        "¿Y si cayeras",
+        "en un agujero negro?"
+      ],
+      "hold": 0.3
+    },
+    {
+      "id": "lejos",
+      "caps": [
+        "El más cercano que conocemos está a *1,560 años luz*:",
+        "con la nave más rápida, tardaríamos *2 millones de años*."
+      ],
+      "say": [
+        "El más cercano que conocemos está a mil quinientos sesenta años luz:",
+        "con la nave más rápida, tardaríamos dos millones de años."
+      ]
+    },
+    {
+      "id": "estirar",
+      "caps": [
+        "Al acercarte, la gravedad jala tus pies *más fuerte* que tu cabeza:",
+        "te estira *como un fideo*."
+      ],
+      "say": [
+        "Al acercarte, la gravedad jala tus pies más fuerte que tu cabeza:",
+        "te estira como un fideo."
+      ]
+    },
+    {
+      "id": "nombre",
+      "caps": [
+        "Los científicos lo llaman, en serio:",
+        "*espaguetificación*."
+      ],
+      "say": [
+        "Los científicos lo llaman, en serio:",
+        "espaguetificación."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "tiempo",
+      "caps": [
+        "Para quien te ve de lejos, tu reloj va *cada vez más lento*…",
+        "y parece que *nunca terminas de caer*."
+      ],
+      "say": [
+        "Para quien te ve de lejos, tu reloj va cada vez más lento…",
+        "y parece que nunca terminas de caer."
+      ]
+    },
+    {
+      "id": "horizonte",
+      "caps": [
+        "Al cruzar el *horizonte de sucesos*,",
+        "ni la luz puede salir: *nadie sabría qué te pasó*."
+      ],
+      "say": [
+        "Al cruzar el horizonte de sucesos,",
+        "ni la luz puede salir: nadie sabría qué te pasó."
+      ]
+    },
+    {
+      "id": "gigante",
+      "caps": [
+        "En uno gigante, como el del *centro de la galaxia*,",
+        "cruzarías el borde *sin sentir nada*… al principio."
+      ],
+      "say": [
+        "En uno gigante, como el del centro de la galaxia,",
+        "cruzarías el borde sin sentir nada… al principio."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ]
+}

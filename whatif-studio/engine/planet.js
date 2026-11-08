@@ -5,7 +5,7 @@ import { LAND } from '../engine2d/earth.js';
 
 export const R_EARTH = 6371000;
 
-function earthTexture() {
+export function earthTexture() {
   const W = 4096, H = 2048, c = document.createElement('canvas'); c.width = W; c.height = H;
   const g = c.getContext('2d');
   const sea = g.createLinearGradient(0, 0, 0, H); sea.addColorStop(0, '#1e3a8a'); sea.addColorStop(0.5, '#1d4ed8'); sea.addColorStop(1, '#1e3a8a');

@@ -522,6 +522,66 @@ qué pasaría si, nieve, nevada, suma de gauss, números triangulares, matemáti
 
 ---
 
+## Video 10 — `out/ep10-cavar.mp4`
+
+**Título** (53/100):
+```
+¿Qué pasaría si cada día cavaras 1 metro hacia abajo?
+```
+
+**Descripción** (1692/5000):
+```
+1 metro al día parece poco… pero en 33 años llegas al hoyo más profundo jamás hecho, y al centro de la Tierra en 17,443 años.
+
+Las cuentas del video:
+⛏️ Profundidad = días × 1 m. Cada día sacas 1 m³ de tierra: unas 1.5 toneladas.
+🏠 Día 7: 7 m · Día 10: agua subterránea · Día 30: 30 m, como un edificio de 10 pisos.
+⛰️ La tierra se apila en un cono con taludes de 35°: V = π × r² × h ÷ 3 y r = h ÷ tan 35°. Por eso la altura crece con la raíz cúbica del volumen: 100 m³ → 3.6 m; 12,262 m³ → 18 m.
+🗼 Día 365: 365 m, más que la Torre Eiffel (330 m). La roca se calienta unos 25 °C por cada kilómetro.
+⛏️ 10 años: 3.65 km, casi la mina más profunda del mundo (Mponeng, Sudáfrica: unos 4 km, roca a 60 °C).
+🕳️ 33.6 años: 12,262 m, el pozo superprofundo de Kola (Rusia), con roca a unos 180 °C.
+🌋 96 años: 35 km, donde termina la corteza. 17,443 años: 6,371 km, el centro de la Tierra (unos 5,200 °C).
+🧱 No contamos que la tierra suelta ocupa más que la compactada, ni el agua y el calor que harían imposible seguir a mano.
+
+¿Hasta qué día aguantarías cavando? 👇
+
+⏱️ Capítulos
+0:00 La pregunta
+0:10 Día 1: 1.5 toneladas de tierra
+0:20 Día 7: tan hondo como tu casa
+0:30 Día 10: agua subterránea · Día 30: un edificio hacia abajo
+0:50 Día 100: el cerro de tierra
+1:00 La altura al cubo
+1:13 1 año: más que la Torre Eiffel
+1:26 10 años: la mina más profunda
+1:42 33 años: el pozo de Kola
+1:58 Un cerro de solo 18 m
+2:10 96 años: el fin de la corteza
+2:21 17,443 años: el centro · ¿Hasta dónde llegarías?
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#QuePasariaSi #CuentasLocas #CentroDeLaTierra #Ciencia #Curiosidades
+```
+
+**Etiquetas** (173/500):
+```
+qué pasaría si cavaras, cavar un hoyo, centro de la tierra, pozo de kola, agujero más profundo, mina más profunda, capas de la tierra, cuentas locas, curiosidades, animación
+```
+
+**Comentario fijado:**
+```
+📌 Dato: el pozo de Kola mide 12 km de hondo… pero solo 23 cm de ancho. Tardaron 19 años en perforarlo 🕳️ ¿Cuánto crees que aguantarías tú? 👇
+```
+
+**Antes de publicar:**
+- Archivos: `out/subir/que-pasaria-si-cada-dia-cavaras-1-metro-hacia-abajo.mp4`, `out/subir/que-pasaria-si-cada-dia-cavaras-1-metro-hacia-abajo.png`
+- Listas: «Cuentas Locas · Temporada 1» · «¿Qué pasaría si…? Crecimiento sin freno» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Pantalla final → «Video»: «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
+---
+
 ## Short 1 — `out/short01-papel.mp4` (vertical)
 
 **Título** (60/100):
@@ -866,7 +926,7 @@ qué pasaría si cayeras por un túnel, túnel a través de la tierra, centro de
 **Antes de publicar:**
 - Archivo: `out/subir/y-si-cayeras-por-un-tunel-que-atraviesa-la-tierra.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
-- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día cavaras 1 metro hacia abajo?» (súbelo antes si aún no está publicado)
 
 ---
 
@@ -1003,3 +1063,91 @@ qué pasaría si se acabara el agua, sin agua, fosa de las marianas, fitoplancto
 - Archivo: `out/subir/y-si-se-acabara-toda-el-agua-del-mundo.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra» · «Ideas de los suscriptores»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 12 — `out/short12-saltar.mp4` (vertical)
+
+**Título** (61/100):
+```
+¿Y si todos los humanos saltáramos al mismo tiempo? 🌍 #Shorts
+```
+
+**Descripción** (920/5000):
+```
+8,000 millones de personas saltando juntas… y la Tierra se mueve 3,000 veces menos que el ancho de un átomo.
+
+Los datos del video:
+👥 Apretados (4 por m²), 8,000 millones cabríamos en 2,000 km²: un cuadro de unos 45 km por lado.
+⚖️ Juntos pesamos unos 400 mil millones de kg; la Tierra, 6 × 10²⁴ kg: unos 15 billones de veces más.
+🦘 Si saltamos 50 cm, la Tierra se mueve al revés 50 cm ÷ 15 billones ≈ 0.00000000000003 m.
+⚛️ Un átomo mide unos 0.0000000001 m: la Tierra se movería 3,000 veces menos.
+🌋 Al caer, el golpe sería como un temblor pequeño que solo sentirían los de cerca.
+🔁 Lo que empujamos al saltar lo devolvemos al caer: la Tierra queda justo donde estaba (conservación del momento).
+
+¿Dónde nos juntarías a todos para saltar? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Fisica #Tierra
+```
+
+**Etiquetas** (146/500):
+```
+qué pasaría si todos saltáramos, todos saltan al mismo tiempo, masa de la tierra, física, conservación del momento, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: en 1 m² caben hasta 4 personas de pie, apretadas. Por eso toda la humanidad cabría en un cuadro de 45 km por lado 🤯 ¿Cuánto tardarías en llegar desde tu casa? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-todos-los-humanos-saltaramos-al-mismo-tiempo.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 13 — `out/short13-agujero.mp4` (vertical)
+
+**Título** (45/100):
+```
+¿Y si cayeras en un agujero negro? 🕳️ #Shorts
+```
+
+**Descripción** (971/5000):
+```
+Te estiraría como un fideo (se llama espaguetificación) y, para quien te ve de lejos, nunca terminarías de caer.
+
+Los datos del video:
+🌌 El agujero negro más cercano que conocemos (Gaia BH1) está a unos 1,560 años luz.
+🚀 A 692,000 km/h, la nave más rápida, el viaje tomaría más de 2 millones de años.
+🍝 Cerca de uno pequeño, la gravedad en tus pies es mucho mayor que en tu cabeza: te estira. Se llama espaguetificación.
+⏳ Visto desde lejos, cerca del horizonte de sucesos el tiempo pasa cada vez más lento (relatividad de Einstein).
+⚫ Dentro del horizonte de sucesos, ni la luz puede salir.
+🌀 Sagitario A*, en el centro de nuestra galaxia, tiene unos 4 millones de veces la masa del Sol: en uno así cruzarías el borde sin sentir nada… al principio.
+
+¿Te acercarías a uno para verlo? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Espacio #AgujeroNegro
+```
+
+**Etiquetas** (152/500):
+```
+qué pasaría si cayeras en un agujero negro, agujero negro, espaguetificación, horizonte de sucesos, sagitario a, espacio, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: si el Sol se convirtiera en agujero negro, mediría solo 6 km de ancho… y la Tierra seguiría girando a su alrededor igual 🌍 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-cayeras-en-un-agujero-negro.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
