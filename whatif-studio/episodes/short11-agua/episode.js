@@ -154,13 +154,13 @@ const SCENES = {
       for (const [a, b] of [[380, 800], [470, 860], [880, 820], [960, 900]]) { ctx.beginPath(); ctx.moveTo(a, b); ctx.lineTo(a + 20, b + 30); ctx.lineTo(a + 5, b + 55); ctx.stroke(); }
       ctx.setLineDash([18, 14]); ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(150, seaY - 30); ctx.lineTo(W - 20, seaY - 30); ctx.stroke(); ctx.setLineDash([]);
       kit.text(ctx, 'ANTES: NIVEL DEL MAR', 640, seaY - 64, { size: 34, fill: '#0369a1', stroke: '#ffffff', lw: 6 });
-      const g = o.ease.out(kit.ramp(local, cue(1) + 0.1, cue(1) + 1.3));
+      const g = o.ease.out(kit.ramp(local, cue(1) + 0.05, cue(1) + 0.9));
       if (g > 0) {
         const x = tx + 160, y1 = seaY - 30 + (trenchY - seaY + 30) * g;
         ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 9; ctx.lineCap = 'round';
         ctx.beginPath(); ctx.moveTo(x, seaY - 30); ctx.lineTo(x, y1); ctx.stroke();
         for (const yy of [seaY - 30, y1]) { ctx.beginPath(); ctx.moveTo(x - 26, yy); ctx.lineTo(x + 26, yy); ctx.stroke(); }
-        kit.text(ctx, `${g < 1 ? kit.nf(11 * g, 1) : '11'} km`, x + 24, seaY + 110, { size: 60, fill: kit.YELLOW, align: 'left' });
+        kit.text(ctx, `${g < 1 ? kit.nf(11 * g, 1) : '11'} km`, x - 30, seaY + 110, { size: 60, fill: kit.YELLOW, align: 'right' });
       }
       kit.text(ctx, 'FOSA DE LAS MARIANAS', W / 2, 220, { size: 58, fill: '#ffffff', maxW: W * 0.9 });
       ctx.restore();
@@ -209,10 +209,10 @@ const SCENES = {
     if (two > 0) {
       ctx.save(); ctx.globalAlpha = two; kit.text(ctx, 'SIN COMIDA', W / 2, 200, { size: 96, fill: '#ef4444' }); ctx.restore();
       for (let i = 0; i < 4; i++) {
-        const a0 = cue(1) + 0.1 + i * 0.22, ap = o.ease.out(kit.ramp(local, a0, a0 + 0.3));
+        const a0 = cue(1) + 0.05 + i * 0.15, ap = o.ease.out(kit.ramp(local, a0, a0 + 0.25));
         if (ap <= 0) continue;
         const x = 630 + (i % 2) * 260, y = 520 + Math.floor(i / 2) * 290;
-        const gone = kit.ramp(local, a0 + 0.9, a0 + 1.2);
+        const gone = kit.ramp(local, a0 + 0.6, a0 + 0.85);
         ctx.save(); ctx.globalAlpha = 1 - 0.55 * gone; food(ctx, kit, i, x, y, 1.2 * ap); ctx.restore();
         if (gone > 0) {
           ctx.save(); ctx.translate(x, y); ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 16; ctx.lineCap = 'round';

@@ -64,14 +64,15 @@ def sentences(text):
 def match_sentences(scenes, groups):
     """Cuántos grupos de audio (separados por silencios largos) le tocan a cada escena.
 
-    Las oraciones (. ? !) siempre llevan pausa larga. Los puntos suspensivos («…») a veces sí y a
-    veces no, según la voz: si el audio tiene más pausas largas que oraciones, se prueba qué «…» se
-    dijeron con pausa y se elige la combinación cuyo reparto de texto se parece más al de los tiempos.
+    Las oraciones (. ? !) siempre llevan pausa larga. Los puntos suspensivos («…») y los dos puntos
+    («:», «;») a veces sí y a veces no, según la voz: si el audio tiene más pausas largas que
+    oraciones, se prueba en cuáles de esos signos hubo pausa y se elige la combinación cuyo reparto
+    de texto se parece más al de los tiempos.
     """
     units = []  # (escena, caracteres, ¿la pausa siguiente es opcional?)
     for k, sc in enumerate(scenes):
         for sent in sentences(' '.join(sc['say'])):
-            parts = re.split(r'(?<=…)\s+', sent)
+            parts = re.split(r'(?<=[…:;])\s+', sent)
             for j, part in enumerate(parts):
                 units.append((k, len(re.sub(r'[^\wáéíóúñü]', '', part, flags=re.I)), j < len(parts) - 1))
     strong = sum(1 for u in units if not u[2])
@@ -96,7 +97,7 @@ def match_sentences(scenes, groups):
     for k, _ in best[1]:
         per_scene[k] += 1
     if extra:
-        print(f'  ({extra} pausa(s) larga(s) en «…»: se reparten por escena {per_scene})')
+        print(f'  ({extra} pausa(s) larga(s) en «…» o «:»: se reparten por escena {per_scene})')
     return per_scene
 
 
