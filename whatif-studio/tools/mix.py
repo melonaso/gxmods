@@ -16,7 +16,7 @@ script = json.load(open(f'episodes/{ep}/script.json'))
 st = json.load(open(f'{b}/starts.json'))
 dur = st['duration']
 short = script.get('type') == '2d'
-voice = 'voice' in script or script.get('narration', True)
+voice = os.path.exists(f'{b}/timing.json') and ('voice' in script or script.get('narration', True))
 target = -14 if short else -16
 
 inputs, filt, n = ['-i', f'out/{ep}-video.mp4'], [], 1

@@ -37,7 +37,13 @@
         "¿Y si mañana se acabara",
         "toda el agua del mundo?"
       ],
-      "hold": 0.3
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "type": "whoosh"
+        }
+      ]
     },
     {
       "id": "oceanos",
@@ -48,6 +54,12 @@
       "say": [
         "El mar guarda el noventa y siete por ciento del agua:",
         "quedarían cañones de once kilómetros de profundidad."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "crack"
+        }
       ]
     },
     {
@@ -70,6 +82,13 @@
       "say": [
         "Las plantas morirían en días…",
         "y con ellas, todo lo que comemos."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 1.0,
+          "type": "click"
+        }
       ]
     },
     {
@@ -92,6 +111,12 @@
       "say": [
         "Tú aguantarías unos tres días sin beber:",
         "tu cuerpo es sesenta por ciento agua."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "splash"
+        }
       ]
     },
     {
@@ -103,6 +128,12 @@
       "say": [
         "La Tierra quedaría como Marte:",
         "un desierto que, hace miles de millones de años, también tuvo agua."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "pop"
+        }
       ]
     },
     {

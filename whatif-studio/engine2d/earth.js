@@ -87,7 +87,10 @@ export function drawGlobe(ctx, cx, cy, R, opts = {}) {
       if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y);
     });
     ctx.closePath();
-    ctx.fillStyle = idx === 1 || idx === LAND.length - 1 ? ice : land;
+    const base = idx === 1 || idx === LAND.length - 1 ? ice : land;
+    const col = opts.polyColor ? opts.polyColor(idx, base) : base; // permite ocultar o teñir cada continente/isla
+    if (!col) return;
+    ctx.fillStyle = col;
     ctx.fill();
   });
   ctx.restore();

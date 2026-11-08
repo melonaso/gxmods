@@ -758,3 +758,121 @@ qué pasaría si cayeras por un túnel, túnel a través de la tierra, centro de
 ```
 📌 Dato: en un planeta igual de denso por dentro, cualquier túnel recto (aunque no pase por el centro) tardaría lo mismo, unos 42 minutos. Se llama «tren de gravedad» 🤯
 ```
+
+---
+
+## Short 9 — `out/short09-encender.mp4` (vertical)
+
+**Título** (65/100):
+```
+¿Y si mandáramos una nave a volver a encender el Sol? ☀️🚀 #Shorts
+```
+
+**Descripción** (806/5000):
+```
+Llevamos todas las bombas nucleares de la Tierra hasta el Sol… y no alcanzan ni para una millonésima de segundo.
+💡 Idea de @kgatitoo en los comentarios. ¡Gracias!
+
+Los datos del video:
+🚀 La nave más rápida que existe (Parker Solar Probe) llega a unos 692,000 km/h: 150 millones de km ÷ 692,000 km/h ≈ 217 horas ≈ 9 días.
+💣 En el mundo hay unas 12,000 bombas nucleares.
+☀️ El Sol suelta esa misma energía en mucho menos de una millonésima de segundo.
+🔥 Para fusionar hidrógeno, su núcleo necesita unos 15 millones de °C y una presión enorme.
+🌍 En el Sol caben unos 1.3 millones de Tierras.
+🌀 Así se encendió de verdad: su propia gravedad lo apretó y lo calentó hasta iniciar la fusión.
+
+¿Qué otra misión imposible intentamos? 👇
+
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Sol #Espacio
+```
+
+**Etiquetas** (144/500):
+```
+qué pasaría si el sol se apagara, encender el sol, bombas nucleares, núcleo del sol, parker solar probe, espacio, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: el Sol no se puede «apagar» de golpe. Le queda combustible para unos 5,000 millones de años más 😎
+```
+
+---
+
+## Short 10 — `out/short10-islas.mp4` (vertical)
+
+**Título** (48/100):
+```
+¿Y si desaparecieran todas las islas? 🏝️ #Shorts
+```
+
+**Descripción** (745/5000):
+```
+Adiós Japón, Reino Unido, Indonesia, Filipinas, Cuba y Nueva Zelanda… y más de 700 millones de personas sin hogar.
+💡 Idea de @maesthela1977 en los comentarios. ¡Gracias!
+
+Los datos del video:
+👥 Más de 700 millones de personas viven en islas: casi 1 de cada 10 humanos.
+🏝️ Solo Indonesia tiene más de 17,000 islas.
+🧊 Groenlandia, la isla más grande, mide 2,166,000 km²; México, 1,964,000 km².
+🐒 En Madagascar, cerca de 9 de cada 10 especies no existen en ningún otro lugar (como los lémures).
+🌋 El Mauna Kea (Hawái) mide unos 10,210 m desde el fondo del mar: más que los 8,849 m del Everest.
+🦘 Australia no cuenta: es un continente.
+
+¿Qué isla extrañarías más? 👇
+
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Geografia #Islas
+```
+
+**Etiquetas** (126/500):
+```
+qué pasaría si no existieran las islas, islas, groenlandia, madagascar, mauna kea, indonesia, geografía, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: Groenlandia se ve gigante en los mapas planos por la proyección de Mercator; en realidad es unas 14 veces más chica que África 🗺️
+```
+
+---
+
+## Short 11 — `out/short11-agua.mp4` (vertical)
+
+**Título** (50/100):
+```
+¿Y si se acabara toda el agua del mundo? 💧 #Shorts
+```
+
+**Descripción** (850/5000):
+```
+Sin mares, sin lluvia, sin plantas… y tú solo aguantarías unos 3 días. La Tierra quedaría como Marte.
+💡 Idea de @dalimartinez773 en los comentarios. ¡Gracias!
+
+Los datos del video:
+🌊 El mar guarda cerca del 97% del agua del planeta.
+🕳️ Sin agua quedaría al aire la Fosa de las Marianas: unos 11 km de profundidad.
+☁️ Las nubes son gotitas de agua: sin agua, no vuelve a llover.
+🌱 Sin agua las plantas mueren en días, y con ellas la comida (también la de los animales que comemos).
+🫧 Al menos la mitad del oxígeno que respiras lo fabrican algas diminutas del mar (fitoplancton).
+🧍 Tu cuerpo es cerca de 60% agua; sin beber, aguantarías unos 3 días.
+🔴 Marte tuvo ríos y lagos hace unos 3,500 millones de años; hoy es un desierto.
+
+¿Qué sería lo primero que extrañarías? 👇
+
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Agua #Ciencia
+```
+
+**Etiquetas** (127/500):
+```
+qué pasaría si se acabara el agua, sin agua, fosa de las marianas, fitoplancton, oxígeno, marte, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: el agua que tomas hoy es la misma que bebieron los dinosaurios: el planeta la recicla desde hace miles de millones de años 🦕💧
+```

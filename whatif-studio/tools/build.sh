@@ -28,7 +28,9 @@ NARRATION=$(python3 -c "import json;print(json.load(open('episodes/$EP/script.js
 
 # "voice" en script.json -> voz grabada aparte (episodes/<ep>/voice.mp3): se limpia, se acelera y
 # marca el ritmo del video (tools/voice.py).
-HAS_VOICE=$(python3 -c "import json;print('voice' in json.load(open('episodes/$EP/script.json')))")
+# Si el guion espera voz pero aún no está el audio, se arma sin voz (tiempo de lectura de los subtítulos).
+HAS_VOICE=$(python3 -c "import json,os;d=json.load(open('episodes/$EP/script.json'));print('voice' in d and os.path.exists('episodes/$EP/'+d['voice'].get('file','voice.mp3')))")
+[[ "$HAS_VOICE" != "True" ]] && rm -f "$B/timing.json"
 
 if [[ "$HAS_VOICE" == "True" ]]; then
   echo "== 1/4 Voz grabada"

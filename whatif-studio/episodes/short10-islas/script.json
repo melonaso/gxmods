@@ -36,7 +36,14 @@
         "¿Y si de un día para otro…",
         "desaparecieran todas las islas del mundo?"
       ],
-      "hold": 0.3
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "splash"
+        }
+      ]
     },
     {
       "id": "adios",
@@ -47,6 +54,18 @@
       "say": [
         "Adiós Japón, Reino Unido, Indonesia,",
         "Filipinas, Cuba y Nueva Zelanda."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.0,
+          "type": "splash"
+        },
+        {
+          "cue": 1,
+          "at": 0.8,
+          "type": "splash"
+        }
       ]
     },
     {
@@ -58,6 +77,12 @@
       "say": [
         "Más de setecientos millones de personas se quedarían sin hogar:",
         "casi uno de cada diez humanos."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "pop"
+        }
       ]
     },
     {
@@ -111,6 +136,12 @@
       "say": [
         "¿Y Australia? Esa se queda:",
         "es un continente."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "thud"
+        }
       ]
     },
     {
