@@ -1,0 +1,130 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0.12,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si dejara de temblar en el mundo?",
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si mañana dejara de temblar",
+        "*en todo el mundo*?"
+      ],
+      "say": [
+        "¿Y si mañana dejara de temblar",
+        "en todo el mundo?"
+      ],
+      "hold": 0.3
+    },
+    {
+      "id": "cuantos",
+      "caps": [
+        "Cada año hay unos *500,000 sismos*:",
+        "la mayoría *ni los sentimos*."
+      ],
+      "say": [
+        "Cada año hay unos quinientos mil sismos:",
+        "la mayoría ni los sentimos."
+      ]
+    },
+    {
+      "id": "vidas",
+      "caps": [
+        "Lo bueno: se salvarían *miles de vidas* cada año…",
+        "y *adiós a la alerta sísmica*."
+      ],
+      "say": [
+        "Lo bueno: se salvarían miles de vidas cada año…",
+        "y adiós a la alerta sísmica."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "placas",
+      "caps": [
+        "Pero tiembla porque las *placas de la Tierra* se mueven,",
+        "tan lento como *crecen tus uñas*."
+      ],
+      "say": [
+        "Pero tiembla porque las placas de la Tierra se mueven,",
+        "tan lento como crecen tus uñas."
+      ]
+    },
+    {
+      "id": "montanas",
+      "caps": [
+        "Si dejaran de moverse, las montañas *dejarían de crecer*…",
+        "y la lluvia y el viento *las irían borrando*."
+      ],
+      "say": [
+        "Si dejaran de moverse, las montañas dejarían de crecer…",
+        "y la lluvia y el viento las irían borrando."
+      ]
+    },
+    {
+      "id": "oceano",
+      "caps": [
+        "En millones de años, la Tierra quedaría *lisa*:",
+        "el mar la cubriría toda, con *2.6 km* de profundidad."
+      ],
+      "say": [
+        "En millones de años, la Tierra quedaría lisa:",
+        "el mar la cubriría toda, con dos punto seis kilómetros de profundidad."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "marte",
+      "caps": [
+        "Sin placas que se muevan, nos pareceríamos a *Marte*:",
+        "un planeta *casi dormido* por dentro."
+      ],
+      "say": [
+        "Sin placas que se muevan, nos pareceríamos a Marte:",
+        "un planeta casi dormido por dentro."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ]
+}
