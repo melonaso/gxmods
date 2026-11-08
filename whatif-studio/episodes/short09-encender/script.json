@@ -1,0 +1,126 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0.12,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si mandáramos una nave a volver a encender el Sol?",
+  "music": {
+    "bpm": 120,
+    "drums": true,
+    "minor": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si el Sol se apagara…",
+        "y mandáramos una nave *a encenderlo*?"
+      ],
+      "say": [
+        "¿Y si el Sol se apagara…",
+        "y mandáramos una nave a volver a encenderlo?"
+      ],
+      "hold": 0.3
+    },
+    {
+      "id": "viaje",
+      "caps": [
+        "Primero, el viaje: *150 millones de km*."
+      ],
+      "say": [
+        "Primero, el viaje: ciento cincuenta millones de kilómetros."
+      ]
+    },
+    {
+      "id": "nave",
+      "caps": [
+        "Con la nave *más rápida* que existe,",
+        "tardaríamos unos *9 días*."
+      ],
+      "say": [
+        "Con la nave más rápida que existe,",
+        "tardaríamos unos nueve días."
+      ]
+    },
+    {
+      "id": "bombas",
+      "caps": [
+        "¿Y qué llevamos? *Todas las bombas nucleares* de la Tierra."
+      ],
+      "say": [
+        "¿Y qué llevamos? Todas las bombas nucleares de la Tierra."
+      ]
+    },
+    {
+      "id": "nada",
+      "caps": [
+        "El Sol suelta esa energía",
+        "en *menos de una millonésima de segundo*."
+      ],
+      "say": [
+        "El Sol suelta esa energía",
+        "en menos de una millonésima de segundo."
+      ]
+    },
+    {
+      "id": "centro",
+      "caps": [
+        "Para encenderse, su centro necesita *15 millones de grados*…",
+        "y una presión *aplastante*."
+      ],
+      "say": [
+        "Para encenderse, su centro necesita quince millones de grados…",
+        "y una presión aplastante."
+      ]
+    },
+    {
+      "id": "cerillo",
+      "caps": [
+        "Sería como prender una fogata",
+        "del tamaño de *un millón de Tierras*… con un cerillo."
+      ],
+      "say": [
+        "Sería como prender una fogata",
+        "del tamaño de un millón de Tierras… con un cerillo."
+      ]
+    },
+    {
+      "id": "gravedad",
+      "caps": [
+        "La buena noticia: *no hace falta*.",
+        "Su propia gravedad lo aplasta y lo calienta: *así se encendió*."
+      ],
+      "say": [
+        "La buena noticia: no hace falta.",
+        "Su propia gravedad lo aplasta y lo calienta: así se encendió."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ]
+}

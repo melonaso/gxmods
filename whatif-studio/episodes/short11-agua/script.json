@@ -1,0 +1,119 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0.12,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si se acabara toda el agua del mundo?",
+  "music": {
+    "bpm": 112,
+    "drums": true,
+    "minor": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si mañana se acabara",
+        "*toda el agua del mundo*?"
+      ],
+      "say": [
+        "¿Y si mañana se acabara",
+        "toda el agua del mundo?"
+      ],
+      "hold": 0.3
+    },
+    {
+      "id": "oceanos",
+      "caps": [
+        "El mar guarda el *97%* del agua:",
+        "quedarían cañones de *11 km* de profundidad."
+      ],
+      "say": [
+        "El mar guarda el noventa y siete por ciento del agua:",
+        "quedarían cañones de once kilómetros de profundidad."
+      ]
+    },
+    {
+      "id": "lluvia",
+      "caps": [
+        "No volvería a llover:",
+        "*sin agua no hay nubes*."
+      ],
+      "say": [
+        "No volvería a llover:",
+        "sin agua no hay nubes."
+      ]
+    },
+    {
+      "id": "plantas",
+      "caps": [
+        "Las plantas *morirían en días*…",
+        "y con ellas, *todo lo que comemos*."
+      ],
+      "say": [
+        "Las plantas morirían en días…",
+        "y con ellas, todo lo que comemos."
+      ]
+    },
+    {
+      "id": "oxigeno",
+      "caps": [
+        "*La mitad del oxígeno* que respiras",
+        "lo fabrican algas diminutas *del mar*."
+      ],
+      "say": [
+        "La mitad del oxígeno que respiras",
+        "lo fabrican algas diminutas del mar."
+      ]
+    },
+    {
+      "id": "tu",
+      "caps": [
+        "Tú aguantarías unos *3 días* sin beber:",
+        "tu cuerpo es *60% agua*."
+      ],
+      "say": [
+        "Tú aguantarías unos tres días sin beber:",
+        "tu cuerpo es sesenta por ciento agua."
+      ]
+    },
+    {
+      "id": "marte",
+      "caps": [
+        "La Tierra quedaría *como Marte*:",
+        "un desierto que *también tuvo agua*."
+      ],
+      "say": [
+        "La Tierra quedaría como Marte:",
+        "un desierto que, hace miles de millones de años, también tuvo agua."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ]
+}

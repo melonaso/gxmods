@@ -1,0 +1,127 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0.12,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si las islas no existieran?",
+  "music": {
+    "bpm": 116,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si de un día para otro…",
+        "*desaparecieran todas las islas*?"
+      ],
+      "say": [
+        "¿Y si de un día para otro…",
+        "desaparecieran todas las islas del mundo?"
+      ],
+      "hold": 0.3
+    },
+    {
+      "id": "adios",
+      "caps": [
+        "Adiós *Japón, Reino Unido, Indonesia*,",
+        "*Filipinas, Cuba y Nueva Zelanda*."
+      ],
+      "say": [
+        "Adiós Japón, Reino Unido, Indonesia,",
+        "Filipinas, Cuba y Nueva Zelanda."
+      ]
+    },
+    {
+      "id": "gente",
+      "caps": [
+        "Más de *700 millones de personas* sin hogar:",
+        "casi *1 de cada 10* humanos."
+      ],
+      "say": [
+        "Más de setecientos millones de personas se quedarían sin hogar:",
+        "casi uno de cada diez humanos."
+      ]
+    },
+    {
+      "id": "indonesia",
+      "caps": [
+        "Solo Indonesia tiene *más de 17,000 islas*."
+      ],
+      "say": [
+        "Solo Indonesia tiene más de diecisiete mil islas."
+      ]
+    },
+    {
+      "id": "groenlandia",
+      "caps": [
+        "Se iría Groenlandia, la isla más grande:",
+        "*es más grande que México*."
+      ],
+      "say": [
+        "Se iría Groenlandia, la isla más grande:",
+        "es más grande que México."
+      ]
+    },
+    {
+      "id": "animales",
+      "caps": [
+        "Y en Madagascar, *casi 9 de cada 10* especies",
+        "no existen *en ningún otro lugar*."
+      ],
+      "say": [
+        "Y en Madagascar, casi nueve de cada diez especies",
+        "no existen en ningún otro lugar."
+      ]
+    },
+    {
+      "id": "hawai",
+      "caps": [
+        "Hawái se llevaría al Mauna Kea:",
+        "desde el fondo del mar mide *más de 10,000 m*."
+      ],
+      "say": [
+        "Hawái se llevaría al Mauna Kea:",
+        "medido desde el fondo del mar, mide más de diez mil metros."
+      ]
+    },
+    {
+      "id": "australia",
+      "caps": [
+        "¿Y Australia? *Esa se queda*:",
+        "es un *continente*."
+      ],
+      "say": [
+        "¿Y Australia? Esa se queda:",
+        "es un continente."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ]
+}
