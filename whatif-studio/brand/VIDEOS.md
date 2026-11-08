@@ -6,13 +6,20 @@
 Canal: **Cuentas Locas** · YouTube `@CuentasLocas` · Lista: «Cuentas Locas · Temporada 1».
 Miniaturas (1280×720): `out/brand/thumb-ep0N.png` (`node brand/render-brand.mjs thumb ep0N`).
 
+## Orden para subir cada video (ver `brand/PUBLICACION.md`)
+1. Sube el archivo de `out/subir/` (ya tiene el nombre del título) como **Privado**, uno o dos días antes.
+2. Pega título, descripción y etiquetas; sube la miniatura (videos largos).
+3. Agrega las listas de reproducción **antes** de publicar.
+4. Videos largos: revisa que salgan los capítulos de la descripción (desactiva «Capítulos automáticos») y pon la pantalla final indicada. Shorts: pon el «video relacionado» indicado.
+5. Publica (o programa) a la hora en que tu audiencia está conectada y quédate la primera hora: fija el comentario y responde.
+
 ## Ajustes al subir (iguales para todos)
 - **Categoría:** Educación · **Idioma:** Español (México) · **Licencia:** estándar de YouTube.
 - **Audiencia:** «No, no es contenido creado para niños» (es apto para todo público, pero no está dirigido a niños).
 - **Contenido alterado o sintético:** No (es animación claramente no realista).
 - **Lista de reproducción:** «Cuentas Locas · Temporada 1» (Shorts: «Cuentas Locas · Shorts»).
-- **Pantalla final:** «Video siguiente» + «Suscribirse», en los últimos 15 s (la tarjeta de título final deja espacio).
-- **Comentario fijado:** publícalo tú apenas subas el video y fíjalo (texto abajo).
+- **Pantalla final:** el video indicado en cada ficha (continúa el tema, no el más reciente) + «Suscribirse», en los últimos 15 s.
+- **Comentario fijado:** publícalo tú apenas salga el video y fíjalo (texto abajo); siempre cierra con una pregunta.
 - **Hashtags:** YouTube muestra los 3 primeros sobre el título; con más de 15 los ignora todos.
 
 ---
@@ -24,7 +31,7 @@ Miniaturas (1280×720): `out/brand/thumb-ep0N.png` (`node brand/render-brand.mjs
 ¿Qué pasaría si crecieras 1 cm cada día y no pudieras parar?
 ```
 
-**Descripción** (901/5000):
+**Descripción** (998/5000):
 ```
 1 centímetro al día parece nada. Pero después de 100 años medirías 367 metros: más que la Torre Eiffel.
 
@@ -47,6 +54,7 @@ Las cuentas del video:
 1:26 100 años: más que la Torre Eiffel
 1:37 El resultado final
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #QuePasariaSi #CuentasLocas #Curiosidades #Matematicas #Gigante
@@ -62,6 +70,11 @@ qué pasaría si, que pasaria si, crecer 1 cm cada día, ley cuadrado cubo, giga
 📌 Si duplicas tu altura, tu peso se multiplica por 8 pero tus huesos solo se hacen 4 veces más fuertes. Por eso un gigante de 5 m tendría problemas para sostenerse 🦴 ¿Qué número te sorprendió más? 👇
 ```
 
+**Antes de publicar:**
+- Archivos: `out/subir/que-pasaria-si-crecieras-1-cm-cada-dia-y-no-pudieras-parar.mp4`, `out/subir/que-pasaria-si-crecieras-1-cm-cada-dia-y-no-pudieras-parar.png`
+- Listas: «Cuentas Locas · Temporada 1» · «¿Qué pasaría si…? Crecimiento sin freno»
+- Pantalla final → «Video»: «¿Qué pasaría si cada día nevara 1 cm más que el anterior?» (súbelo antes si aún no está publicado)
+
 ---
 
 ## Video 2 — `out/ep02-seguidores.mp4`
@@ -71,7 +84,7 @@ qué pasaría si, que pasaria si, crecer 1 cm cada día, ley cuadrado cubo, giga
 ¿Qué pasaría si cada hora te siguiera 1 persona más… para siempre?
 ```
 
-**Descripción** (1048/5000):
+**Descripción** (1145/5000):
 ```
 Una persona nueva cada hora. Nunca se va. En 50 años tendrías 438,000 seguidores reales caminando detrás de ti.
 
@@ -96,6 +109,7 @@ Las cuentas del video:
 1:22 50 años: una fila de 87.6 km
 1:34 El resultado final
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #QuePasariaSi #CuentasLocas #Curiosidades #Matematicas #Seguidores
@@ -111,6 +125,11 @@ qué pasaría si, que pasaria si, seguidores, multitud, cada hora, matemáticas,
 📌 En 1 año serían 8,760 personas: la población de un pueblo entero siguiéndote 😳 ¿A dónde los llevarías primero? 👇
 ```
 
+**Antes de publicar:**
+- Archivos: `out/subir/que-pasaria-si-cada-hora-te-siguiera-1-persona-mas-para-siempre.mp4`, `out/subir/que-pasaria-si-cada-hora-te-siguiera-1-persona-mas-para-siempre.png`
+- Listas: «Cuentas Locas · Temporada 1» · «¿Qué pasaría si…? Crecimiento sin freno»
+- Pantalla final → «Video»: «¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?» (súbelo antes si aún no está publicado)
+
 ---
 
 ## Video 3 — `out/ep03-velocidad.mp4`
@@ -120,7 +139,7 @@ qué pasaría si, que pasaria si, seguidores, multitud, cada hora, matemáticas,
 ¿Qué pasaría si cada paso te hiciera 1% más rápido?
 ```
 
-**Descripción** (1093/5000):
+**Descripción** (1190/5000):
 ```
 1% parece poco. Pero con 904 pasos —menos de 1 km de caminata— alcanzarías la velocidad necesaria para salir de la Tierra.
 
@@ -145,6 +164,7 @@ Las cuentas del video:
 1:09 Paso 904: velocidad de escape
 1:20 678 metros para salir del planeta
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #QuePasariaSi #CuentasLocas #Fisica #CrecimientoExponencial #Matematicas
@@ -160,6 +180,11 @@ qué pasaría si, que pasaria si, 1% más rápido, crecimiento exponencial, inte
 📌 Regla del 70: divide 70 entre el % de crecimiento y sabrás cuánto tarda en duplicarse. Con 1%: 70 pasos. Funciona igual con el dinero 💰 ¿La conocías? 👇
 ```
 
+**Antes de publicar:**
+- Archivos: `out/subir/que-pasaria-si-cada-paso-te-hiciera-1-mas-rapido.mp4`, `out/subir/que-pasaria-si-cada-paso-te-hiciera-1-mas-rapido.png`
+- Listas: «Cuentas Locas · Temporada 1» · «¿Qué pasaría si…? Crecimiento sin freno»
+- Pantalla final → «Video»: «¿Qué pasaría si tu pelota rebotara 10% más alto cada vez?» (súbelo antes si aún no está publicado)
+
 ---
 
 ## Video 4 — `out/ep04-gravedad.mp4`
@@ -169,7 +194,7 @@ qué pasaría si, que pasaria si, 1% más rápido, crecimiento exponencial, inte
 ¿Qué pasaría si cada día la gravedad fuera 1% más débil?
 ```
 
-**Descripción** (1178/5000):
+**Descripción** (1275/5000):
 ```
 1% menos de gravedad al día. En 4 años y medio, un simple salto bastaría para salir de la Tierra… y nunca volver.
 
@@ -194,6 +219,7 @@ Las cuentas del video:
 1:19 Día 1,628: velocidad de escape
 1:30 Un salto al espacio
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #QuePasariaSi #CuentasLocas #Fisica #Gravedad #Espacio
@@ -209,6 +235,11 @@ qué pasaría si, que pasaria si, gravedad, sin gravedad, decaimiento exponencia
 📌 Dato real: la gravedad de la Luna es 1/6 de la de la Tierra, y en gran parte por eso casi no tiene atmósfera: no logra retener su aire 🌙 ¿Qué harías pesando la mitad? 👇
 ```
 
+**Antes de publicar:**
+- Archivos: `out/subir/que-pasaria-si-cada-dia-la-gravedad-fuera-1-mas-debil.mp4`, `out/subir/que-pasaria-si-cada-dia-la-gravedad-fuera-1-mas-debil.png`
+- Listas: «Cuentas Locas · Temporada 1» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Pantalla final → «Video»: «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
 ---
 
 ## Video 5 — `out/ep05-parpadeos.mp4`
@@ -218,9 +249,9 @@ qué pasaría si, que pasaria si, gravedad, sin gravedad, decaimiento exponencia
 ¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?
 ```
 
-**Descripción** (1016/5000):
+**Descripción** (1087/5000):
 ```
-Parpadeas 14,400 veces al día sin darte cuenta. Si cada parpadeo fuera una moneda de $1, en 50 años tendrías más de 262 millones de pesos… y 1,038 toneladas de metal.
+Parpadeas 14,400 veces al día. Si cada parpadeo te diera $1, en 50 años tendrías más de 262 millones de pesos… y 1,038 toneladas de monedas.
 
 Las cuentas del video:
 👁️ 15 parpadeos por minuto × 60 = 900 por hora.
@@ -242,6 +273,7 @@ Las cuentas del video:
 1:06 50 años: $262,800,000
 1:16 El resultado final
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #QuePasariaSi #CuentasLocas #Dinero #Matematicas #Curiosidades
@@ -257,6 +289,11 @@ qué pasaría si, que pasaria si, parpadear, monedas, millonario, dinero, matem�
 📌 Ser millonario en un año suena bien… hasta que tienes que cargar 57 kg de monedas cada día 😅 ¿En qué gastarías el primer millón? 👇
 ```
 
+**Antes de publicar:**
+- Archivos: `out/subir/que-pasaria-si-cada-vez-que-parpadeas-ganaras-1-peso.mp4`, `out/subir/que-pasaria-si-cada-vez-que-parpadeas-ganaras-1-peso.png`
+- Listas: «Cuentas Locas · Temporada 1» · «¿Qué pasaría si…? Crecimiento sin freno»
+- Pantalla final → «Video»: «¿Qué pasaría si cada hora te siguiera 1 persona más… para siempre?» (súbelo antes si aún no está publicado)
+
 ---
 
 ## Video 6 — `out/ep06-mar.mp4`
@@ -266,7 +303,7 @@ qué pasaría si, que pasaria si, parpadear, monedas, millonario, dinero, matem�
 ¿Qué pasaría si el mar subiera 1 cm cada día?
 ```
 
-**Descripción** (1241/5000):
+**Descripción** (1338/5000):
 ```
 1 cm al día parece poco. Pero en 1,544 años el agua cubriría el Pico de Orizaba, la montaña más alta de México.
 
@@ -292,6 +329,7 @@ Las cuentas del video:
 1:16 1,544 años: el Pico de Orizaba
 1:26 El resultado final
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #QuePasariaSi #CuentasLocas #Matematicas #Mexico #Curiosidades
@@ -307,6 +345,11 @@ qué pasaría si, que pasaria si, nivel del mar, mar sube, inundación, Ciudad d
 📌 Truco: divide la altura de tu ciudad (en metros) entre 3.65 y sabrás en qué año la cubriría el mar. ¿Cuánto te dio? 👇
 ```
 
+**Antes de publicar:**
+- Archivos: `out/subir/que-pasaria-si-el-mar-subiera-1-cm-cada-dia.mp4`, `out/subir/que-pasaria-si-el-mar-subiera-1-cm-cada-dia.png`
+- Listas: «Cuentas Locas · Temporada 1» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Pantalla final → «Video»: «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+
 ---
 
 ## Video 7 — `out/ep07-cuartos.mp4`
@@ -316,7 +359,7 @@ qué pasaría si, que pasaria si, nivel del mar, mar sube, inundación, Ciudad d
 ¿Qué pasaría si tu casa ganara un cuarto nuevo cada día?
 ```
 
-**Descripción** (1068/5000):
+**Descripción** (1165/5000):
 ```
 Un cuarto de 12 m² al día. En 50 años tu casa tendría 18,250 cuartos y ocuparía más que 30 canchas de fútbol.
 
@@ -340,6 +383,7 @@ Las cuentas del video:
 1:04 50 años: 30 canchas de fútbol
 1:14 El resultado final
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #QuePasariaSi #CuentasLocas #Matematicas #Curiosidades #Casa
@@ -355,6 +399,11 @@ qué pasaría si, que pasaria si, casa infinita, cuarto nuevo cada día, mansió
 📌 El Palacio de Buckingham tiene 775 cuartos: a un cuarto por día lo alcanzas en 2 años y 45 días 👑 ¿Cuál sería tu primer cuarto extra? 👇
 ```
 
+**Antes de publicar:**
+- Archivos: `out/subir/que-pasaria-si-tu-casa-ganara-un-cuarto-nuevo-cada-dia.mp4`, `out/subir/que-pasaria-si-tu-casa-ganara-un-cuarto-nuevo-cada-dia.png`
+- Listas: «Cuentas Locas · Temporada 1» · «¿Qué pasaría si…? Crecimiento sin freno»
+- Pantalla final → «Video»: «¿Qué pasaría si crecieras 1 cm cada día y no pudieras parar?» (súbelo antes si aún no está publicado)
+
 ---
 
 ## Video 8 — `out/ep08-rebote.mp4`
@@ -364,7 +413,7 @@ qué pasaría si, que pasaria si, casa infinita, cuarto nuevo cada día, mansió
 ¿Qué pasaría si tu pelota rebotara 10% más alto cada vez?
 ```
 
-**Descripción** (1312/5000):
+**Descripción** (1409/5000):
 ```
 1.1 × 1.1 × 1.1… Con solo 10% más en cada rebote, tu pelota llega al espacio en 121 rebotes y en menos de dos horas.
 
@@ -392,6 +441,7 @@ Las cuentas del video:
 1:40 En la vida real
 1:53 El resultado
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #QuePasariaSi #CuentasLocas #Fisica #Matematicas #Curiosidades
@@ -407,6 +457,11 @@ qué pasaría si, pelota que rebota, rebote 10 por ciento, crecimiento exponenci
 📌 ¿Por qué 1.1 multiplicado 7 veces casi da el doble? Porque cada 10% se calcula sobre lo que ya creció: es interés compuesto, igual que en los bancos 🏦
 ```
 
+**Antes de publicar:**
+- Archivos: `out/subir/que-pasaria-si-tu-pelota-rebotara-10-mas-alto-cada-vez.mp4`, `out/subir/que-pasaria-si-tu-pelota-rebotara-10-mas-alto-cada-vez.png`
+- Listas: «Cuentas Locas · Temporada 1» · «¿Qué pasaría si…? Crecimiento sin freno»
+- Pantalla final → «Video»: «¿Qué pasaría si cada paso te hiciera 1% más rápido?» (súbelo antes si aún no está publicado)
+
 ---
 
 ## Video 9 — `out/ep09-nieve.mp4`
@@ -416,7 +471,7 @@ qué pasaría si, pelota que rebota, rebote 10 por ciento, crecimiento exponenci
 ¿Qué pasaría si cada día nevara 1 cm más que el anterior?
 ```
 
-**Descripción** (1144/5000):
+**Descripción** (1241/5000):
 ```
 1 cm, luego 2, luego 3… Sumar un poquito más cada día termina enterrando el edificio más alto del mundo en 407 días.
 
@@ -444,6 +499,7 @@ Las cuentas del video:
 1:46 En la vida real
 1:57 El resultado
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #QuePasariaSi #CuentasLocas #Matematicas #Nieve #Curiosidades
@@ -456,8 +512,13 @@ qué pasaría si, nieve, nevada, suma de gauss, números triangulares, matemáti
 
 **Comentario fijado:**
 ```
-📌 Cuenta la historia que Gauss, de niño, sumó del 1 al 100 en segundos: 50 parejas que suman 101 → 50 × 101 = 5,050 ✏️
+📌 Cuenta la historia que Gauss, de niño, sumó del 1 al 100 en segundos: 50 parejas que suman 101 → 50 × 101 = 5,050 ✏️ ¿Tú lo hubieras resuelto tan rápido? 👇
 ```
+
+**Antes de publicar:**
+- Archivos: `out/subir/que-pasaria-si-cada-dia-nevara-1-cm-mas-que-el-anterior.mp4`, `out/subir/que-pasaria-si-cada-dia-nevara-1-cm-mas-que-el-anterior.png`
+- Listas: «Cuentas Locas · Temporada 1» · «¿Qué pasaría si…? Crecimiento sin freno»
+- Pantalla final → «Video»: «¿Qué pasaría si crecieras 1 cm cada día y no pudieras parar?» (súbelo antes si aún no está publicado)
 
 ---
 
@@ -468,7 +529,7 @@ qué pasaría si, nieve, nevada, suma de gauss, números triangulares, matemáti
 ¿Qué pasaría si doblaras una hoja de papel 42 veces? #Shorts
 ```
 
-**Descripción** (508/5000):
+**Descripción** (605/5000):
 ```
 Cada doblez duplica el grosor: 0.1 mm × 2⁴² = 439,805 km. ¡Más lejos que la Luna!
 
@@ -480,6 +541,7 @@ Las cuentas del video:
 
 ¿Cuántas veces has logrado doblar una hoja? 👇
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Matematicas #Curiosidades
@@ -495,6 +557,11 @@ qué pasaría si, doblar papel 42 veces, potencias de 2, luna, matemáticas, cur
 📌 Una potencia de 2 crece tan rápido que con solo 42 duplicaciones pasas de 0.1 mm a la Luna 🌙 ¿Qué más duplicarías?
 ```
 
+**Antes de publicar:**
+- Archivo: `out/subir/que-pasaria-si-doblaras-una-hoja-de-papel-42-veces.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Crecimiento sin freno»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada paso te hiciera 1% más rápido?» (súbelo antes si aún no está publicado)
+
 ---
 
 ## Short 2 — `out/short02-ajedrez.mp4` (vertical)
@@ -504,7 +571,7 @@ qué pasaría si, doblar papel 42 veces, potencias de 2, luna, matemáticas, cur
 ¿Qué pasaría si duplicaras el arroz en cada casilla del ajedrez? #Shorts
 ```
 
-**Descripción** (574/5000):
+**Descripción** (671/5000):
 ```
 La leyenda del ajedrez: 1 grano en la primera casilla y el doble en cada una. En la casilla 64 hay 9.2 trillones de granos.
 
@@ -517,6 +584,7 @@ Las cuentas del video:
 
 ¿Conocías esta leyenda? 👇
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Matematicas #Ajedrez
@@ -529,8 +597,13 @@ leyenda del ajedrez, granos de arroz, tablero de ajedrez, potencias de 2, matem�
 
 **Comentario fijado:**
 ```
-📌 Cada casilla tiene más granos que todas las anteriores juntas, más uno: así crece una potencia de 2 ♟️🍚
+📌 Cada casilla tiene más granos que todas las anteriores juntas, más uno: así crece una potencia de 2 ♟️🍚 ¿En qué casilla crees que el arroz ya no cabría en tu casa? 👇
 ```
+
+**Antes de publicar:**
+- Archivo: `out/subir/que-pasaria-si-duplicaras-el-arroz-en-cada-casilla-del-ajedrez.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Crecimiento sin freno»
+- Video relacionado (debajo del Short): «¿Qué pasaría si tu pelota rebotara 10% más alto cada vez?» (súbelo antes si aún no está publicado)
 
 ---
 
@@ -541,7 +614,7 @@ leyenda del ajedrez, granos de arroz, tablero de ajedrez, potencias de 2, matem�
 ¿Cuánto tiempo es realmente 1 millón de segundos? #Shorts
 ```
 
-**Descripción** (475/5000):
+**Descripción** (572/5000):
 ```
 1 millón de segundos = 11.6 días. Mil millones = 31.7 años. ¡No es «un poco más», es ×1,000!
 
@@ -553,6 +626,7 @@ Las cuentas del video:
 
 ¿Cuántos segundos llevas vivo? Edad × 31,557,600 y déjalo aquí 👇
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Matematicas #Curiosidades
@@ -565,8 +639,13 @@ millón de segundos, mil millones de segundos, billón, escala de números, mate
 
 **Comentario fijado:**
 ```
-📌 Ojo: en español, 1 billón = 1,000,000,000,000 (un millón de millones). En inglés «billion» son solo mil millones 🤯
+📌 Ojo: en español, 1 billón = 1,000,000,000,000 (un millón de millones). En inglés «billion» son solo mil millones 🤯 ¿Tú ya sabías la diferencia? 👇
 ```
+
+**Antes de publicar:**
+- Archivo: `out/subir/cuanto-tiempo-es-realmente-1-millon-de-segundos.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Crecimiento sin freno»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?» (súbelo antes si aún no está publicado)
 
 ---
 
@@ -577,7 +656,7 @@ millón de segundos, mil millones de segundos, billón, escala de números, mate
 ¿Y si la Tierra dejara de girar de golpe? 🌍 #Shorts
 ```
 
-**Descripción** (803/5000):
+**Descripción** (900/5000):
 ```
 Si la Tierra frenara de golpe, tú no: saldrías disparado a 1,670 km/h. Y eso sería solo el principio.
 
@@ -591,6 +670,7 @@ Los datos del video:
 
 ¿Qué crees que sería lo más difícil de sobrevivir? 👇
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Ciencia #Tierra
@@ -606,6 +686,11 @@ qué pasaría si la tierra dejara de girar, tierra deja de girar, rotación de l
 📌 ¿Por qué el agua se iría a los polos? Hoy el giro de la Tierra empuja el mar hacia el ecuador y lo «abomba» unos kilómetros. Sin giro, el agua se reacomoda hacia los polos 🌊
 ```
 
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-la-tierra-dejara-de-girar-de-golpe.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+
 ---
 
 ## Short 5 — `out/short05-sol.mp4` (vertical)
@@ -615,7 +700,7 @@ qué pasaría si la tierra dejara de girar, tierra deja de girar, rotación de l
 ¿Y si el Sol se apagara ahora mismo? ☀️ #Shorts
 ```
 
-**Descripción** (876/5000):
+**Descripción** (973/5000):
 ```
 Durante 8 minutos no notarías nada… y después, la Tierra entera se volvería un congelador.
 
@@ -629,6 +714,7 @@ Los datos del video:
 
 ¿Qué harías en esos 8 minutos? 👇
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Espacio #Ciencia
@@ -641,8 +727,13 @@ qué pasaría si el sol se apagara, el sol se apaga, luz del sol 8 minutos, espa
 
 **Comentario fijado:**
 ```
-📌 Dato: aunque el Sol se apagara, su gravedad seguiría ahí. Por eso la Tierra no saldría disparada: seguiría girando alrededor de un Sol oscuro 🌑
+📌 Dato: aunque el Sol se apagara, su gravedad seguiría ahí. Por eso la Tierra no saldría disparada: seguiría girando alrededor de un Sol oscuro 🌑 ¿Crees que podríamos sobrevivir sin la luz del Sol? 👇
 ```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-sol-se-apagara-ahora-mismo.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
 
 ---
 
@@ -653,7 +744,7 @@ qué pasaría si el sol se apagara, el sol se apaga, luz del sol 8 minutos, espa
 ¿Y si los humanos desaparecieran mañana? 🏙️ #Shorts
 ```
 
-**Descripción** (835/5000):
+**Descripción** (932/5000):
 ```
 En 2 días las ciudades se apagan. En 1,000 años son bosques. ¿Qué quedaría de nosotros?
 
@@ -668,6 +759,7 @@ Los datos del video:
 
 ¿Qué crees que duraría más de tu ciudad? 👇
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Curiosidades #Ciencia
@@ -683,6 +775,11 @@ qué pasaría si los humanos desaparecieran, mundo sin humanos, la tierra sin no
 📌 ¿Por qué el plástico dura tanto? Casi ningún microbio sabe «comérselo», así que tarda cientos de años en degradarse 🧴
 ```
 
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-los-humanos-desaparecieran-manana.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
 ---
 
 ## Short 7 — `out/short07-luna.mp4` (vertical)
@@ -692,7 +789,7 @@ qué pasaría si los humanos desaparecieran, mundo sin humanos, la tierra sin no
 ¿Y si la Luna desapareciera esta noche? 🌕 #Shorts
 ```
 
-**Descripción** (742/5000):
+**Descripción** (839/5000):
 ```
 Noches 100 veces más oscuras, mareas pequeñas, corales perdidos… y una Tierra que se tambalea.
 
@@ -705,6 +802,7 @@ Los datos del video:
 
 ¿Qué crees que extrañaríamos más de la Luna? 👇
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Espacio #Luna
@@ -720,6 +818,11 @@ qué pasaría si la luna desapareciera, la luna desaparece, sin luna, mareas, ec
 📌 ¿Sabías que la Luna se aleja de la Tierra unos 3.8 cm cada año? Hace millones de años se veía más grande en el cielo 🌕
 ```
 
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-la-luna-desapareciera-esta-noche.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+
 ---
 
 ## Short 8 — `out/short08-tunel.mp4` (vertical)
@@ -729,7 +832,7 @@ qué pasaría si la luna desapareciera, la luna desaparece, sin luna, mareas, ec
 ¿Y si cayeras por un túnel que atraviesa la Tierra? 🕳️ #Shorts
 ```
 
-**Descripción** (836/5000):
+**Descripción** (933/5000):
 ```
 Saltas en México, pasas por el centro a 28,000 km/h y sales en el océano Índico… unos 40 minutos después.
 
@@ -744,6 +847,7 @@ Los datos del video:
 
 ¿Te atreverías a saltar? 👇
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Fisica #Ciencia
@@ -756,8 +860,13 @@ qué pasaría si cayeras por un túnel, túnel a través de la tierra, centro de
 
 **Comentario fijado:**
 ```
-📌 Dato: en un planeta igual de denso por dentro, cualquier túnel recto (aunque no pase por el centro) tardaría lo mismo, unos 42 minutos. Se llama «tren de gravedad» 🤯
+📌 Dato: en un planeta igual de denso por dentro, cualquier túnel recto (aunque no pase por el centro) tardaría lo mismo, unos 42 minutos. Se llama «tren de gravedad» 🤯 ¿Por dónde saldrías tú si saltaras desde tu ciudad? 👇
 ```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-cayeras-por-un-tunel-que-atraviesa-la-tierra.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
 
 ---
 
@@ -768,7 +877,7 @@ qué pasaría si cayeras por un túnel, túnel a través de la tierra, centro de
 ¿Y si mandáramos una nave a volver a encender el Sol? ☀️🚀 #Shorts
 ```
 
-**Descripción** (806/5000):
+**Descripción** (903/5000):
 ```
 Llevamos todas las bombas nucleares de la Tierra hasta el Sol… y no alcanzan ni para una millonésima de segundo.
 💡 Idea de @kgatitoo en los comentarios. ¡Gracias!
@@ -783,6 +892,7 @@ Los datos del video:
 
 ¿Qué otra misión imposible intentamos? 👇
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Sol #Espacio
@@ -795,8 +905,13 @@ qué pasaría si el sol se apagara, encender el sol, bombas nucleares, núcleo d
 
 **Comentario fijado:**
 ```
-📌 Dato: el Sol no se puede «apagar» de golpe. Le queda combustible para unos 5,000 millones de años más 😎
+📌 Dato: el Sol no se puede «apagar» de golpe. Le queda combustible para unos 5,000 millones de años más 😎 ¿Qué otro «¿Y si…?» del espacio quieres ver? 👇
 ```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-mandaramos-una-nave-a-volver-a-encender-el-sol.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra» · «Ideas de los suscriptores»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
 
 ---
 
@@ -807,7 +922,7 @@ qué pasaría si el sol se apagara, encender el sol, bombas nucleares, núcleo d
 ¿Y si desaparecieran todas las islas? 🏝️ #Shorts
 ```
 
-**Descripción** (745/5000):
+**Descripción** (842/5000):
 ```
 Adiós Japón, Reino Unido, Indonesia, Filipinas, Cuba y Nueva Zelanda… y más de 700 millones de personas sin hogar.
 💡 Idea de @maesthela1977 en los comentarios. ¡Gracias!
@@ -822,6 +937,7 @@ Los datos del video:
 
 ¿Qué isla extrañarías más? 👇
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Geografia #Islas
@@ -834,8 +950,13 @@ qué pasaría si no existieran las islas, islas, groenlandia, madagascar, mauna 
 
 **Comentario fijado:**
 ```
-📌 Dato: Groenlandia se ve gigante en los mapas planos por la proyección de Mercator; en realidad es unas 14 veces más chica que África 🗺️
+📌 Dato: Groenlandia se ve gigante en los mapas planos por la proyección de Mercator; en realidad es unas 14 veces más chica que África 🗺️ ¿Sabías que Groenlandia era más grande que México? 👇
 ```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-desaparecieran-todas-las-islas.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra» · «Ideas de los suscriptores»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
 
 ---
 
@@ -846,7 +967,7 @@ qué pasaría si no existieran las islas, islas, groenlandia, madagascar, mauna 
 ¿Y si se acabara toda el agua del mundo? 💧 #Shorts
 ```
 
-**Descripción** (850/5000):
+**Descripción** (947/5000):
 ```
 Sin mares, sin lluvia, sin plantas… y tú solo aguantarías unos 3 días. La Tierra quedaría como Marte.
 💡 Idea de @dalimartinez773 en los comentarios. ¡Gracias!
@@ -862,6 +983,7 @@ Los datos del video:
 
 ¿Qué sería lo primero que extrañarías? 👇
 
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
 
 #Shorts #QuePasariaSi #CuentasLocas #Agua #Ciencia
@@ -874,5 +996,10 @@ qué pasaría si se acabara el agua, sin agua, fosa de las marianas, fitoplancto
 
 **Comentario fijado:**
 ```
-📌 Dato: el agua que tomas hoy es la misma que bebieron los dinosaurios: el planeta la recicla desde hace miles de millones de años 🦕💧
+📌 Dato: el agua que tomas hoy es la misma que bebieron los dinosaurios: el planeta la recicla desde hace miles de millones de años 🦕💧 ¿Cuánta agua tomas tú al día? 💧👇
 ```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-se-acabara-toda-el-agua-del-mundo.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra» · «Ideas de los suscriptores»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)

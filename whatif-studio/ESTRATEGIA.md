@@ -52,6 +52,7 @@ Ventaja para nosotros: **en español el formato está casi vacío**, y el pipeli
 - Meta de monetización YouTube: 1,000 suscriptores + 4,000 h de visualización (o 10 M vistas de Shorts en 90 días).
 
 ## 6. SEO y miniatura
+- **Orden de publicación** (título, miniatura, listas, capítulos y pantalla final listos antes de publicar; primera hora respondiendo): ver `brand/PUBLICACION.md`.
 - **Título:** `¿Qué pasaría si [acción] y no pudieras parar?` (+ variante con número).
 - **Descripción:** las cuentas del video en texto (aparecen en búsquedas).
 - **Miniatura:** 1 número gigante (amarillo, borde negro) + personaje + 1 palabra de impacto. Se puede generar con el mismo motor (`--preview` en el segundo más dramático).
