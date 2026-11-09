@@ -61,8 +61,8 @@ const SCENES = {
     const r = kit.rng(5), n = Math.floor(160 * kit.ramp(local, 0, 2.2));
     for (let i = 0; i < 160; i++) {
       const a = r() * Math.PI * 2, d = Math.sqrt(r()) * R * 0.95, born = r() * 2.2;
-      if (i >= n) continue;
-      const age = (local - born) % 1.2, k = Math.max(0, 1 - age / 1.2);
+      if (i >= n || local < born) continue;
+      const age = (local - born) % 1.2, k = Math.min(1, Math.max(0, 1 - age / 1.2));
       ctx.beginPath(); ctx.arc(cx + Math.cos(a) * d, cy + Math.sin(a) * d, 5 + 16 * (1 - k), 0, Math.PI * 2);
       ctx.strokeStyle = `rgba(248,113,113,${0.9 * k})`; ctx.lineWidth = 4; ctx.stroke();
     }
