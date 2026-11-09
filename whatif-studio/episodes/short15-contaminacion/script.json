@@ -1,0 +1,137 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si se acabara toda la contaminación del mundo?",
+  "music": {
+    "bpm": 108,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si mañana se acabara",
+        "*toda la contaminación* del mundo?"
+      ],
+      "say": [
+        "¿Y si mañana se acabara",
+        "toda la contaminación del mundo?"
+      ],
+      "hold": 0.3
+    },
+    {
+      "id": "aire",
+      "caps": [
+        "En unos días, el aire quedaría *limpio*:",
+        "en 2020, en la India se volvió a ver el Himalaya *a más de 150 km*."
+      ],
+      "say": [
+        "En unos días, el aire quedaría limpio:",
+        "en dos mil veinte, en la India se volvió a ver el Himalaya a más de ciento cincuenta kilómetros."
+      ]
+    },
+    {
+      "id": "vidas",
+      "caps": [
+        "Se salvarían unos *7 millones de vidas* al año:",
+        "es lo que mata el aire sucio, *según la OMS*."
+      ],
+      "say": [
+        "Se salvarían unos siete millones de vidas al año:",
+        "es lo que mata el aire sucio, según la OMS."
+      ]
+    },
+    {
+      "id": "estrellas",
+      "caps": [
+        "Sin contaminación de luz, verías *la Vía Láctea* desde tu casa:",
+        "hoy, *1 de cada 3* personas no puede verla."
+      ],
+      "say": [
+        "Sin contaminación de luz, verías la Vía Láctea desde tu casa:",
+        "hoy, una de cada tres personas no puede verla."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "plastico",
+      "caps": [
+        "Pero el plástico que ya está en el mar *seguiría ahí*:",
+        "una botella tarda unos *450 años* en deshacerse."
+      ],
+      "say": [
+        "Pero el plástico que ya está en el mar seguiría ahí:",
+        "una botella tarda unos cuatrocientos cincuenta años en deshacerse."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "sorpresa",
+      "caps": [
+        "Y la sorpresa: el planeta se *calentaría un poquito*,",
+        "porque el humo también *refleja parte de la luz del Sol*."
+      ],
+      "say": [
+        "Y la sorpresa: el planeta se calentaría un poquito,",
+        "porque el humo también refleja parte de la luz del Sol."
+      ]
+    },
+    {
+      "id": "co2",
+      "caps": [
+        "El CO₂ dura *siglos* en el aire:",
+        "la temperatura dejaría de subir… pero *tardaría mucho en bajar*."
+      ],
+      "say": [
+        "El CO2 dura siglos en el aire:",
+        "la temperatura dejaría de subir… pero tardaría mucho en bajar."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI SE ACABARA",
+    "LA CONTAMINACIÓN?"
+  ],
+  "hookZoom": 0.12
+}

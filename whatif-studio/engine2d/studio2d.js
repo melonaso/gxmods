@@ -87,9 +87,9 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
     // "hookTitle": la pregunta en grande, arriba, desde el fotograma 1 y durante toda la primera escena
     // (el primer segundo decide si la gente se queda o desliza).
     if (script.hookTitle && s.index === 0) {
-      const lines = [].concat(script.hookTitle), k = 1 + 0.18 * Math.pow(Math.max(0, 1 - local / 0.18), 2);
+      const lines = [].concat(script.hookTitle), k = 1 + 0.07 * Math.pow(Math.max(0, 1 - local / 0.18), 2);
       ctx.save(); ctx.translate(W / 2, 250); ctx.scale(k, k);
-      lines.forEach((ln, i) => kit.text(ctx, ln, 0, (i - (lines.length - 1) / 2) * 112, { size: 100, fill: i === lines.length - 1 ? kit.YELLOW : '#ffffff', maxW: W * 0.92 }));
+      lines.forEach((ln, i) => kit.text(ctx, ln, 0, (i - (lines.length - 1) / 2) * 112, { size: 100, fill: i === lines.length - 1 ? kit.YELLOW : '#ffffff', maxW: W * 0.86 }));
       ctx.restore();
     }
     drawOverlay(ctx, W, H, {

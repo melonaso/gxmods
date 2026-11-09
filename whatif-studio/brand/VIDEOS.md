@@ -1151,3 +1151,92 @@ qué pasaría si cayeras en un agujero negro, agujero negro, espaguetificación,
 - Archivo: `out/subir/y-si-cayeras-en-un-agujero-negro.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
 - Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 14 — `out/short14-temblar.mp4` (vertical)
+
+**Título** (46/100):
+```
+¿Y si dejara de temblar en el mundo? 🌎 #Shorts
+```
+
+**Descripción** (971/5000):
+```
+Adiós a los sismos y a la alerta sísmica… pero sin placas que se muevan, la Tierra terminaría cubierta por un solo océano.
+💡 Idea de @dulce414 en los comentarios. ¡Gracias!
+
+Los datos del video:
+🌍 Cada año los sismógrafos detectan unos 500,000 sismos; solo unos 100,000 se sienten.
+🧱 Tiembla porque las placas tectónicas se mueven de 2 a 10 cm al año; tus uñas crecen unos 3 a 4 cm al año.
+⛰️ Ese movimiento levanta montañas: el Himalaya sigue subiendo unos milímetros al año. Sin él, la lluvia y el viento las irían gastando.
+🌊 Si la Tierra quedara lisa: 1,335 millones de km³ de mar ÷ 510 millones de km² de superficie ≈ 2.6 km de profundidad en todo el planeta.
+🔴 Marte casi no tiene movimiento de placas: es un planeta casi dormido por dentro.
+
+¿Vives en una zona donde tiembla seguido? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Sismos #Tierra
+```
+
+**Etiquetas** (138/500):
+```
+qué pasaría si no hubiera sismos, dejara de temblar, sismos, placas tectónicas, alerta sísmica, terremotos, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: en México tiembla tanto porque el país está sobre 5 placas tectónicas: Norteamérica, Pacífico, Cocos, Rivera y Caribe 🌎 ¿Desde dónde nos ves? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-dejara-de-temblar-en-el-mundo.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra» · «Ideas de los suscriptores»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día cavaras 1 metro hacia abajo?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 15 — `out/short15-contaminacion.mp4` (vertical)
+
+**Título** (59/100):
+```
+¿Y si se acabara toda la contaminación del mundo? 🌱 #Shorts
+```
+
+**Descripción** (1051/5000):
+```
+Aire limpio en días, la Vía Láctea desde tu casa… y una sorpresa: el planeta se calentaría un poquito.
+💡 Idea de @dianaisabeltijerinnava2598 en los comentarios. ¡Gracias!
+
+Los datos del video:
+🏔️ En abril de 2020, con las cuarentenas, desde Jalandhar (India) se volvió a ver el Himalaya, a más de 150 km.
+🫁 Según la OMS, el aire contaminado causa unos 7 millones de muertes al año.
+🌌 Más de un tercio de la humanidad no puede ver la Vía Láctea por la luz de las ciudades.
+🧴 Una botella de plástico tarda unos 450 años en deshacerse; la que ya está en el mar seguiría ahí.
+🌡️ Las partículas del humo reflejan parte de la luz del Sol: si desaparecieran de golpe, el planeta se calentaría unas décimas de grado.
+🏭 El CO₂ dura siglos en el aire: sin nuevas emisiones, la temperatura dejaría de subir, pero bajaría muy despacio.
+
+¿Qué contaminación quitarías primero? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #MedioAmbiente #Ciencia
+```
+
+**Etiquetas** (149/500):
+```
+qué pasaría si no hubiera contaminación, contaminación, aire limpio, vía láctea, plástico en el mar, cambio climático, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: la capa de ozono se está recuperando porque desde 1987 casi todo el mundo dejó de usar los gases que la dañaban 🌍 ¿Sabías que sí se puede? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-se-acabara-toda-la-contaminacion-del-mundo.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra» · «Ideas de los suscriptores»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
