@@ -1,0 +1,136 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si la Tierra tuviera anillos como Saturno?",
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si la Tierra tuviera",
+        "*anillos como Saturno*?"
+      ],
+      "say": [
+        "¿Y si la Tierra tuviera",
+        "anillos como Saturno?"
+      ],
+      "hold": 0.3
+    },
+    {
+      "id": "tamano",
+      "caps": [
+        "Serían de hielo y roca, de *miles de kilómetros* de ancho…",
+        "pero de apenas *unos 10 metros* de grueso."
+      ],
+      "say": [
+        "Serían de hielo y roca, de miles de kilómetros de ancho…",
+        "pero de apenas unos diez metros de grueso."
+      ]
+    },
+    {
+      "id": "cielo",
+      "caps": [
+        "Desde México los verías como *un arco gigante* en el cielo,",
+        "*de día y de noche*."
+      ],
+      "say": [
+        "Desde México los verías como un arco gigante en el cielo,",
+        "de día y de noche."
+      ]
+    },
+    {
+      "id": "ecuador",
+      "caps": [
+        "Pero en el ecuador los tendrías *justo encima*…",
+        "y se verían como *una línea delgadita*."
+      ],
+      "say": [
+        "Pero en el ecuador los tendrías justo encima…",
+        "y se verían como una línea delgadita."
+      ]
+    },
+    {
+      "id": "sombra",
+      "caps": [
+        "Su sombra caería sobre *medio planeta* en invierno:",
+        "los inviernos serían *más fríos*."
+      ],
+      "say": [
+        "Su sombra caería sobre medio planeta en invierno:",
+        "los inviernos serían más fríos."
+      ]
+    },
+    {
+      "id": "satelites",
+      "caps": [
+        "Y los satélites tendrían que *esquivarlos*:",
+        "una piedrita a esa velocidad pega *como una bala*."
+      ],
+      "say": [
+        "Y los satélites tendrían que esquivarlos:",
+        "una piedrita a esa velocidad pega como una bala."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "pasado",
+      "caps": [
+        "Lo más loco: hace *466 millones de años*,",
+        "la Tierra *quizá sí tuvo anillos*."
+      ],
+      "say": [
+        "Lo más loco: hace cuatrocientos sesenta y seis millones de años,",
+        "la Tierra quizá sí tuvo anillos."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI LA TIERRA",
+    "TUVIERA ANILLOS?"
+  ],
+  "hookZoom": 0.12
+}

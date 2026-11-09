@@ -1240,3 +1240,48 @@ qué pasaría si no hubiera contaminación, contaminación, aire limpio, vía l�
 - Archivo: `out/subir/y-si-se-acabara-toda-la-contaminacion-del-mundo.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra» · «Ideas de los suscriptores»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 16 — `out/short16-anillos.mp4` (vertical)
+
+**Título** (55/100):
+```
+¿Y si la Tierra tuviera anillos como Saturno? 🪐 #Shorts
+```
+
+**Descripción** (1190/5000):
+```
+Un arco gigante en el cielo de día y de noche… y una pista: hace 466 millones de años, la Tierra quizá sí tuvo anillos.
+💡 Idea de @clashero_1439 en los comentarios. ¡Gracias!
+
+Los datos del video:
+🪐 Los anillos principales de Saturno miden decenas de miles de km de ancho, pero en promedio solo unos 10 m de grueso. A la escala de la Tierra quedarían de miles de km de ancho.
+🧊 Están hechos de trozos de hielo y roca: desde granitos de polvo hasta pedazos del tamaño de una casa.
+🌎 Desde México se verían hacia el sur como un arco; desde el ecuador, de canto, como una línea delgadita justo encima.
+❄️ En el invierno de cada hemisferio, la sombra de los anillos taparía parte de la luz del Sol.
+🛰️ Los satélites van a unos 7 km por segundo: chocar con una piedrita sería más fuerte que una bala.
+🌋 Un estudio de 2024 encontró que 21 cráteres de hace unos 466 millones de años quedaron cerca del ecuador de entonces: una pista de que la Tierra tuvo un anillo de restos.
+
+¿Te gustaría ver anillos en el cielo? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Saturno #Espacio
+```
+
+**Etiquetas** (142/500):
+```
+qué pasaría si la tierra tuviera anillos, anillos de saturno, tierra con anillos, saturno, espacio, astronomía, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: los anillos de Saturno están cayendo poco a poco sobre el planeta; en unos cientos de millones de años podrían desaparecer 🪐 ¿Alcanzaremos a verlos? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-la-tierra-tuviera-anillos-como-saturno.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra» · «Ideas de los suscriptores»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
