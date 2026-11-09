@@ -6,7 +6,7 @@
   "cps": 18,
   "cueMin": 1.4,
   "gap": 0.15,
-  "fadeIn": 0.12,
+  "fadeIn": 0,
   "tail": 1.2,
   "punch": 0.07,
   "sfx": true,
@@ -126,5 +126,10 @@
       ],
       "hold": 0.4
     }
-  ]
+  ],
+  "hookTitle": [
+    "¿Y SI DEJARA",
+    "DE TEMBLAR?"
+  ],
+  "hookZoom": 0.12
 }

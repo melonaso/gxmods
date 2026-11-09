@@ -61,3 +61,11 @@ Ventaja para nosotros: **en español el formato está casi vacío**, y el pipeli
 1. **Voz:** la voz offline actual (Piper, 16 kHz) es funcional pero robótica. En tu PC, `edge-tts` (gratis) da voces neuronales mucho mejores; ElevenLabs es la opción premium.
 2. Efectos de sonido (pasos, multitud, "whoosh" en saltos de tiempo).
 3. Más actores/props reutilizables (vehículos, animales, planetas) para nuevas ideas.
+
+## 8. Primeros resultados (al 7 nov 2026) y ajustes
+- **Shorts:** 8 publicados ≈ 11,744 vistas (1,327 + 977 + 908 + 1,498 + 1,321 + 2,967 + 1,207 + 1,539), promedio ≈ 1,470. Mejor tema: espacio/Sol.
+- **Retención del feed:** 62.5 % se quedaron viendo (meta > 70 %). El 37.5 % que desliza se decide en el primer segundo → gancho visual inmediato y la pregunta en grande desde el fotograma 1.
+- **Interacción:** 291 me gusta ÷ 8,300 vistas ≈ 3.5 % (sano: 3–5 %); +36 suscriptores ≈ 4.3 por cada 1,000 vistas.
+- **Videos largos:** 52 vistas entre 7 (≈ 7 cada uno). Ajuste: 6–10 min, temas que continúen a los Shorts que funcionan, y cada Short enlaza su video largo como «video relacionado».
+- **Revisar cada semana:** vistos vs. deslizados por Short, porcentaje promedio visto (más de 100 % = la gente lo repite) y suscriptores por Short.
+

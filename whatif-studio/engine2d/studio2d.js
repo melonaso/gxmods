@@ -76,9 +76,22 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
       const k = 1 + script.punch * Math.pow(Math.max(0, 1 - local / 0.22), 2);
       ctx.translate(W / 2, H * 0.42); ctx.scale(k, k); ctx.translate(-W / 2, -H * 0.42);
     }
+    // "hookZoom": el primer fotograma ya se está moviendo (acercamiento que se asienta en ~0.6 s).
+    if (script.hookZoom && s.index === 0) {
+      const k = 1 + script.hookZoom * Math.pow(Math.max(0, 1 - local / 0.6), 2);
+      ctx.translate(W / 2, H * 0.42); ctx.scale(k, k); ctx.translate(-W / 2, -H * 0.42);
+    }
     const ov = ep.draw(ctx, C, { t, scene: s, local, p }) || {};
     ctx.restore();
     if (bare) return;
+    // "hookTitle": la pregunta en grande, arriba, desde el fotograma 1 y durante toda la primera escena
+    // (el primer segundo decide si la gente se queda o desliza).
+    if (script.hookTitle && s.index === 0) {
+      const lines = [].concat(script.hookTitle), k = 1 + 0.18 * Math.pow(Math.max(0, 1 - local / 0.18), 2);
+      ctx.save(); ctx.translate(W / 2, 250); ctx.scale(k, k);
+      lines.forEach((ln, i) => kit.text(ctx, ln, 0, (i - (lines.length - 1) / 2) * 112, { size: 100, fill: i === lines.length - 1 ? kit.YELLOW : '#ffffff', maxW: W * 0.92 }));
+      ctx.restore();
+    }
     drawOverlay(ctx, W, H, {
       subtitle: subtitleAt(s, local),
       fade: Math.max(t < (script.fadeIn ?? 0.5) ? 1 - t / (script.fadeIn ?? 0.5) : 0, t > duration - 1 ? t - (duration - 1) : 0),

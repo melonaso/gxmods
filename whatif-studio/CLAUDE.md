@@ -23,6 +23,18 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
   relacionado (`next`), y nombre de archivo con el título (`out/subir/`).
 - Videos largos: capítulos a mano desde los tiempos reales (`tools/chapters.py`).
 
+## Lo que dicen las estadísticas (primeros 3 días, al 7 nov 2026)
+- Shorts: ~1,470 vistas de promedio, ninguno bajo ~900; el mejor fue «¿Y si el Sol se apagara?»
+  (2,967). Temas de espacio y catástrofe universal funcionan mejor: priorizarlos.
+- Vistos vs. deslizados: 62.5 % (meta: más de 70 %). Me gusta ≈ 3.5 % de las vistas; +36
+  suscriptores (≈ 4.3 por cada 1,000 vistas); 96.7 % del tráfico viene del feed de Shorts.
+- Por eso cada Short nuevo arranca con: la pregunta en grande arriba desde el fotograma 1
+  (`hookTitle`), movimiento inmediato (`hookZoom`), sin fundido desde negro (`fadeIn: 0`) y la imagen
+  más impactante primero, sin introducción ni fondos quietos.
+- Videos largos: ~7 vistas de promedio. Formato intermedio (1:30–2:45) y temas distintos a los
+  Shorts. Siguiente paso: videos largos de 6–10 min que amplíen los Shorts ganadores (ej. «el Sol
+  se apaga, minuto a minuto») y enlazarlos como «video relacionado» desde esos Shorts.
+
 ## Producción
 - `bash tools/build.sh <ep>`: voz (si hay `voice.mp3`) → video → música → efectos → mezcla
   (−14 LUFS en Shorts, −16 en largos).
