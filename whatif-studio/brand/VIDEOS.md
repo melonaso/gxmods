@@ -1285,3 +1285,47 @@ qué pasaría si la tierra tuviera anillos, anillos de saturno, tierra con anill
 - Archivo: `out/subir/y-si-la-tierra-tuviera-anillos-como-saturno.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra» · «Ideas de los suscriptores»
 - Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 17 — `out/short17-globos.mp4` (vertical)
+
+**Título** (70/100):
+```
+¿Y si todos los globos del mundo explotaran al mismo tiempo? 🎈 #Shorts
+```
+
+**Descripción** (1133/5000):
+```
+Un solo globo puede sonar como un disparo… pero un millón juntos suenan apenas 60 decibeles más. Los decibeles no se suman como crees.
+
+Los datos del video:
+🎈 Un globo que revienta junto al oído puede pasar de 150 decibeles; un estudio midió hasta 168 dB.
+🔊 Los decibeles van en escala logarítmica: cada vez que multiplicas por 10 los globos, el ruido sube solo 10 dB. Fórmula: +10 × log₁₀(N) decibeles.
+🧮 1 → 10 → 100 → 1,000 → 10,000 → 100,000 → 1,000,000: son 6 multiplicaciones por 10, o sea, +60 dB.
+🌦️ Cada día se lanzan unos 1,800 globos meteorológicos en casi 900 lugares del mundo; sus datos alimentan los pronósticos del clima.
+🎈 El helio es tan ligero que la Tierra no lo puede retener: el que se libera termina escapando al espacio. El que usamos se formó en las rocas durante millones de años.
+🔥 Los globos aerostáticos están abiertos por abajo: no se inflan a presión, así que no pueden reventar.
+
+¿Le tienes miedo al ruido de los globos? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Fisica #Globos
+```
+
+**Etiquetas** (129/500):
+```
+qué pasaría si todos los globos explotaran, globos, decibeles, ruido, helio, globos meteorológicos, física, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: por eso 2 bocinas iguales no suenan el doble de fuerte, sino solo 3 decibeles más 🔊 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-todos-los-globos-del-mundo-explotaran-al-mismo-tiempo.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Crecimiento sin freno»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada paso te hiciera 1% más rápido?» (súbelo antes si aún no está publicado)

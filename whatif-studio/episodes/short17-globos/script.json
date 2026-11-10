@@ -1,0 +1,143 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si todos los globos del mundo explotaran al mismo tiempo?",
+  "music": {
+    "bpm": 126,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si todos los globos del mundo",
+        "*explotaran al mismo tiempo*?"
+      ],
+      "say": [
+        "¿Y si todos los globos del mundo",
+        "explotaran al mismo tiempo?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.25,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "ruido",
+      "caps": [
+        "Un solo globo, al reventar junto a tu oído,",
+        "puede llegar a *casi 160 decibeles*: tanto como un disparo."
+      ],
+      "say": [
+        "Un solo globo, al reventar junto a tu oído,",
+        "puede llegar a casi ciento sesenta decibeles: tanto como un disparo."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.9,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "suma",
+      "caps": [
+        "Pero los sonidos *no se suman* como crees:",
+        "*10 globos* juntos suenan solo *10 decibeles más* que uno."
+      ],
+      "say": [
+        "Pero los sonidos no se suman como crees:",
+        "diez globos juntos suenan solo diez decibeles más que uno."
+      ]
+    },
+    {
+      "id": "millon",
+      "caps": [
+        "Y *un millón* de globos juntos…",
+        "apenas *60 decibeles más*."
+      ],
+      "say": [
+        "Y un millón de globos juntos…",
+        "apenas sesenta decibeles más."
+      ]
+    },
+    {
+      "id": "clima",
+      "caps": [
+        "Lo que sí extrañaríamos: cada día se lanzan *unos 1,800 globos meteorológicos*.",
+        "Sin ellos, *los pronósticos del clima* fallarían más."
+      ],
+      "say": [
+        "Lo que sí extrañaríamos: cada día se lanzan unos mil ochocientos globos meteorológicos.",
+        "Sin ellos, los pronósticos del clima fallarían más."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "helio",
+      "caps": [
+        "Y el helio de los globos *se escaparía al espacio*:",
+        "la Tierra no lo puede retener… y *no se fabrica*."
+      ],
+      "say": [
+        "Y el helio de los globos se escaparía al espacio:",
+        "la Tierra no lo puede retener… y no se fabrica."
+      ]
+    },
+    {
+      "id": "aerostaticos",
+      "caps": [
+        "¿Y los globos aerostáticos?",
+        "*No pueden explotar*: están abiertos por abajo."
+      ],
+      "say": [
+        "¿Y los globos aerostáticos?",
+        "No pueden explotar: están abiertos por abajo."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI TODOS LOS GLOBOS",
+    "EXPLOTARAN A LA VEZ?"
+  ],
+  "hookZoom": 0.12
+}
