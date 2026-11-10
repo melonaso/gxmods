@@ -582,6 +582,77 @@ qué pasaría si cavaras, cavar un hoyo, centro de la tierra, pozo de kola, aguj
 
 ---
 
+## Video 11 — `out/ep11-solapagado.mp4`
+
+**Título** (50/100):
+```
+¿Qué pasaría si el Sol se apagara? Minuto a minuto
+```
+
+**Descripción** (1929/5000):
+```
+Durante 8 minutos y 20 segundos no notarías nada… después, oscuridad total, −18 °C en una semana y −73 °C en un año.
+
+Las cuentas del video:
+☀️ La luz tarda en llegar: 150,000,000 km ÷ 300,000 km/s = 500 s = 8 min 20 s.
+🌙 La Luna se apaga casi al mismo tiempo: solo refleja la luz del Sol.
+🪐 Júpiter seguiría brillando ~1 h 30 min y Saturno ~2 h 30 min: su luz reflejada hace el viaje Sol → planeta → Tierra.
+⚡ Los paneles solares dan cerca del 7% de la electricidad del mundo; las plantas de gas, carbón, agua y uranio seguirían funcionando un tiempo.
+🌡️ Semana 1: unos −18 °C de promedio · Año 1: unos −73 °C · Al final: unos −240 °C, tibia solo por el calor del interior de la Tierra.
+🫁 El oxígeno del aire alcanzaría para miles de años, aunque las plantas dejaran de producirlo.
+🌊 El hielo del mar aísla el agua de abajo: tardaría muchísimo en congelarse por completo, y junto a las ventilas hidrotermales la vida seguiría.
+🌍 La Tierra seguiría en su órbita: el Sol apagado conserva su masa y su gravedad.
+❄️ A muy largo plazo, hasta el aire se congela: el nitrógeno a −210 °C y el oxígeno a −218 °C.
+
+¿Qué harías tú en esos 8 minutos? 👇
+
+⏱️ Capítulos
+0:00 La pregunta
+0:11 Minuto 0: no pasa nada
+0:21 La luz viene en camino
+0:31 500 segundos · Los últimos 8 minutos
+0:50 Minuto 8:20: oscuridad
+1:01 Estrellas de día
+1:11 Adiós a la Luna
+1:21 Júpiter y Saturno
+1:38 Hora 1: la ciudad a oscuras
+2:00 Se acaba el viento
+2:11 Día 1: empieza el frío
+2:38 Semana 1: −18 °C
+3:04 Mes 1: el mundo sin plantas
+3:16 Año 1: −73 °C
+3:26 El mar bajo el hielo
+3:36 La vida que resiste
+3:48 ¿Dónde sobreviviríamos?
+4:11 La órbita no cambia
+4:21 Décadas: todo congelado
+4:31 El aire se congela
+4:44 Millones de años: −240 °C
+4:54 En la vida real · ¿Qué harías tú?
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#QuePasariaSi #CuentasLocas #Sol #Espacio #Ciencia
+```
+
+**Etiquetas** (144/500):
+```
+qué pasaría si el sol se apagara, sol apagado, minuto a minuto, 8 minutos luz, sin sol, espacio, ciencia, cuentas locas, curiosidades, animación
+```
+
+**Comentario fijado:**
+```
+📌 Dato: la luz del Sol que ves salió de su superficie hace 8 minutos… pero esa energía tardó miles de años en viajar desde su centro hasta la superficie ☀️ ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivos: `out/subir/que-pasaria-si-el-sol-se-apagara-minuto-a-minuto.mp4`, `out/subir/que-pasaria-si-el-sol-se-apagara-minuto-a-minuto.png`
+- Listas: «Cuentas Locas · Temporada 1» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Pantalla final → «Video»: «¿Qué pasaría si cada día cavaras 1 metro hacia abajo?» (súbelo antes si aún no está publicado)
+
+---
+
 ## Short 1 — `out/short01-papel.mp4` (vertical)
 
 **Título** (60/100):
@@ -793,7 +864,7 @@ qué pasaría si el sol se apagara, el sol se apaga, luz del sol 8 minutos, espa
 **Antes de publicar:**
 - Archivo: `out/subir/y-si-el-sol-se-apagara-ahora-mismo.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
-- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+- Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)
 
 ---
 
@@ -971,7 +1042,7 @@ qué pasaría si el sol se apagara, encender el sol, bombas nucleares, núcleo d
 **Antes de publicar:**
 - Archivo: `out/subir/y-si-mandaramos-una-nave-a-volver-a-encender-el-sol.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra» · «Ideas de los suscriptores»
-- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+- Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)
 
 ---
 
@@ -1150,7 +1221,7 @@ qué pasaría si cayeras en un agujero negro, agujero negro, espaguetificación,
 **Antes de publicar:**
 - Archivo: `out/subir/y-si-cayeras-en-un-agujero-negro.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
-- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+- Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)
 
 ---
 

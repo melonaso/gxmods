@@ -467,6 +467,47 @@
    "next": "ep06-mar"
   },
   {
+   "episode": "ep11-solapagado",
+   "title": "¿Qué pasaría si el Sol se apagara? Minuto a minuto",
+   "hook": "Durante 8 minutos y 20 segundos no notarías nada… después, oscuridad total, −18 °C en una semana y −73 °C en un año.",
+   "math": [
+    "☀️ La luz tarda en llegar: 150,000,000 km ÷ 300,000 km/s = 500 s = 8 min 20 s.",
+    "🌙 La Luna se apaga casi al mismo tiempo: solo refleja la luz del Sol.",
+    "🪐 Júpiter seguiría brillando ~1 h 30 min y Saturno ~2 h 30 min: su luz reflejada hace el viaje Sol → planeta → Tierra.",
+    "⚡ Los paneles solares dan cerca del 7% de la electricidad del mundo; las plantas de gas, carbón, agua y uranio seguirían funcionando un tiempo.",
+    "🌡️ Semana 1: unos −18 °C de promedio · Año 1: unos −73 °C · Al final: unos −240 °C, tibia solo por el calor del interior de la Tierra.",
+    "🫁 El oxígeno del aire alcanzaría para miles de años, aunque las plantas dejaran de producirlo.",
+    "🌊 El hielo del mar aísla el agua de abajo: tardaría muchísimo en congelarse por completo, y junto a las ventilas hidrotermales la vida seguiría.",
+    "🌍 La Tierra seguiría en su órbita: el Sol apagado conserva su masa y su gravedad.",
+    "❄️ A muy largo plazo, hasta el aire se congela: el nitrógeno a −210 °C y el oxígeno a −218 °C."
+   ],
+   "question": "¿Qué harías tú en esos 8 minutos? 👇",
+   "hashtags": [
+    "#QuePasariaSi",
+    "#CuentasLocas",
+    "#Sol",
+    "#Espacio",
+    "#Ciencia"
+   ],
+   "tags": [
+    "qué pasaría si el sol se apagara",
+    "sol apagado",
+    "minuto a minuto",
+    "8 minutos luz",
+    "sin sol",
+    "espacio",
+    "ciencia",
+    "cuentas locas",
+    "curiosidades",
+    "animación"
+   ],
+   "pinned": "📌 Dato: la luz del Sol que ves salió de su superficie hace 8 minutos… pero esa energía tardó miles de años en viajar desde su centro hasta la superficie ☀️ ¿Lo sabías? 👇",
+   "themes": [
+    "espacio"
+   ],
+   "next": "ep10-cavar"
+  },
+  {
    "episode": "short01-papel",
    "isShort": true,
    "title": "¿Qué pasaría si doblaras una hoja de papel 42 veces? #Shorts",
@@ -646,7 +687,7 @@
    "themes": [
     "espacio"
    ],
-   "next": "ep04-gravedad"
+   "next": "ep11-solapagado"
   },
   {
    "episode": "short06-humanos",
@@ -803,7 +844,7 @@
     "espacio",
     "ideas"
    ],
-   "next": "ep04-gravedad"
+   "next": "ep11-solapagado"
   },
   {
    "episode": "short10-islas",
@@ -961,7 +1002,7 @@
    "themes": [
     "espacio"
    ],
-   "next": "ep04-gravedad"
+   "next": "ep11-solapagado"
   },
   {
    "episode": "short14-temblar",

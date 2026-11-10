@@ -138,5 +138,19 @@
       "dx": 340,
       "dy": 10
     }
+  },
+  "ep11": {
+    "episode": "ep11-solapagado",
+    "t": 202,
+    "big": "−73 °C",
+    "line": "SIN SOL, EN 1 AÑO",
+    "tag": "MINUTO A MINUTO",
+    "align": "left",
+    "accent": "#7dd3fc",
+    "frame": {
+      "zoom": 1.1,
+      "dx": 300,
+      "dy": 0
+    }
   }
 }

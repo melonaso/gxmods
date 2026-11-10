@@ -1,0 +1,177 @@
+{
+  "title": "¿Qué pasaría si el Sol se apagara? Minuto a minuto",
+  "fps": 30,
+  "gap": 0.5,
+  "tail": 2.5,
+  "narration": false,
+  "cps": 10.5,
+  "cueMin": 2.6,
+  "cueChars": 90,
+  "world": {},
+  "music": {
+    "bpm": 84,
+    "minor": true
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "text": "¿Qué pasaría si el Sol se apagara ahora mismo? Vamos minuto a minuto… hasta millones de años después.",
+      "chapter": "La pregunta",
+      "hold": 0.8,
+      "titleCard": [
+        "¿Y SI EL SOL",
+        "SE APAGARA?"
+      ],
+      "titleY": 0.24
+    },
+    {
+      "id": "t0",
+      "text": "Minuto 0: el Sol se apaga. Y aquí en la Tierra… no pasa nada. Todo sigue igual.",
+      "chapter": "Minuto 0: no pasa nada"
+    },
+    {
+      "id": "luz",
+      "text": "La luz tarda en llegar: el Sol está a 150 millones de km, y la luz viaja a 300,000 km por segundo.",
+      "chapter": "La luz viene en camino"
+    },
+    {
+      "id": "cuenta",
+      "text": "150,000,000 ÷ 300,000 = 500 segundos: 8 minutos y 20 segundos. La última luz del Sol todavía viene en camino.",
+      "chapter": "500 segundos"
+    },
+    {
+      "id": "ultimos",
+      "text": "Durante esos 8 minutos, la gente sigue con su día sin saber nada.",
+      "chapter": "Los últimos 8 minutos"
+    },
+    {
+      "id": "apagon",
+      "text": "Minuto 8 con 20 segundos: de golpe, oscuridad total. A mediodía, el cielo se vuelve negro.",
+      "chapter": "Minuto 8:20: oscuridad",
+      "hold": 1.2,
+      "min": 9
+    },
+    {
+      "id": "estrellas",
+      "text": "Y aparecen las estrellas: siguen ahí porque son otros soles, muy lejos.",
+      "chapter": "Estrellas de día",
+      "min": 9
+    },
+    {
+      "id": "luna",
+      "text": "La Luna desaparece casi al mismo tiempo: no brilla sola, solo reflejaba la luz del Sol.",
+      "chapter": "Adiós a la Luna"
+    },
+    {
+      "id": "jupiter",
+      "text": "Pero Júpiter seguiría brillando una hora y media más: la luz que rebotó en él todavía viene en camino.",
+      "chapter": "Júpiter y Saturno"
+    },
+    {
+      "id": "saturno",
+      "text": "Y Saturno, unas dos horas y media. Después, ningún planeta: solo estrellas."
+    },
+    {
+      "id": "luces",
+      "text": "Hora 1: las ciudades prenden todas sus luces. La electricidad sigue: casi toda sale de plantas de gas, carbón, agua y uranio.",
+      "chapter": "Hora 1: la ciudad a oscuras"
+    },
+    {
+      "id": "solar",
+      "text": "Los paneles solares sí se apagan: hoy dan cerca del 7% de la electricidad del mundo."
+    },
+    {
+      "id": "viento",
+      "text": "Sin el Sol calentando el aire, el viento se va calmando. El clima, como lo conocemos, se detiene.",
+      "chapter": "Se acaba el viento"
+    },
+    {
+      "id": "dia1",
+      "text": "Día 1: la temperatura empieza a bajar. Sin Sol, la Tierra pierde su calor hacia el espacio.",
+      "chapter": "Día 1: empieza el frío"
+    },
+    {
+      "id": "plantas",
+      "text": "Las plantas dejan de hacer fotosíntesis: sin luz, ya no pueden fabricar su alimento."
+    },
+    {
+      "id": "oxigeno",
+      "text": "¿Y el oxígeno? Tranquilo: en el aire hay suficiente para miles de años."
+    },
+    {
+      "id": "semana",
+      "text": "Semana 1: unos 18 °C bajo cero en promedio. Más frío que un congelador.",
+      "chapter": "Semana 1: −18 °C"
+    },
+    {
+      "id": "lagos",
+      "text": "Los lagos y la superficie del mar empiezan a congelarse."
+    },
+    {
+      "id": "comida",
+      "text": "Las cosechas mueren por el frío y la oscuridad. La comida guardada se vuelve lo más valioso del planeta."
+    },
+    {
+      "id": "mes1",
+      "text": "Mes 1: casi todas las plantas de la superficie han muerto. Algunos árboles grandes aguantarían más con sus reservas.",
+      "chapter": "Mes 1: el mundo sin plantas"
+    },
+    {
+      "id": "anio1",
+      "text": "Año 1: unos 73 °C bajo cero. Más frío que la Antártida en pleno invierno.",
+      "chapter": "Año 1: −73 °C"
+    },
+    {
+      "id": "hielo",
+      "text": "El mar se cubre de hielo… pero el hielo funciona como una cobija: abajo, el agua tarda muchísimo en congelarse.",
+      "chapter": "El mar bajo el hielo"
+    },
+    {
+      "id": "ventilas",
+      "text": "En el fondo del mar, junto a las ventilas hidrotermales, la vida seguiría: ahí el calor sale de la Tierra, no del Sol.",
+      "chapter": "La vida que resiste",
+      "min": 9
+    },
+    {
+      "id": "humanos",
+      "text": "¿Y nosotros? Podríamos sobrevivir donde la Tierra da calor, como en Islandia, o en refugios con energía nuclear.",
+      "chapter": "¿Dónde sobreviviríamos?"
+    },
+    {
+      "id": "invernaderos",
+      "text": "Con lámparas y calor podríamos cultivar comida bajo techo… mientras dure la energía.",
+      "min": 9
+    },
+    {
+      "id": "orbita",
+      "text": "La Tierra seguiría girando alrededor del Sol apagado: su masa sigue ahí, y su gravedad también.",
+      "chapter": "La órbita no cambia"
+    },
+    {
+      "id": "decadas",
+      "text": "Con los años, el frío llega cada vez más hondo: la tierra se congela metros y metros hacia abajo.",
+      "chapter": "Décadas: todo congelado"
+    },
+    {
+      "id": "aire",
+      "text": "Y a muy largo plazo, ni el aire aguanta: el nitrógeno se congela a −210 °C y el oxígeno a −218 °C. Caería como nieve.",
+      "chapter": "El aire se congela"
+    },
+    {
+      "id": "final",
+      "text": "La Tierra terminaría a unos 240 °C bajo cero, apenas tibia por el calor de su interior.",
+      "chapter": "Millones de años: −240 °C",
+      "min": 9
+    },
+    {
+      "id": "real",
+      "text": "La buena noticia: el Sol no puede apagarse de golpe. Le quedan unos 5,000 millones de años de combustible.",
+      "chapter": "En la vida real"
+    },
+    {
+      "id": "outro",
+      "text": "¿Qué harías tú en esos 8 minutos? Déjalo en los comentarios.",
+      "chapter": "¿Qué harías tú?"
+    }
+  ]
+}
