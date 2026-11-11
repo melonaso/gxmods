@@ -1446,3 +1446,48 @@ qué pasaría si se acabara el dulce, azúcar, dulces, glucosa, cucharaditas de 
 - Archivo: `out/subir/y-si-se-acabara-todo-el-dulce-del-mundo.mp4`
 - Listas: «Cuentas Locas · Shorts» · «Ideas de los suscriptores»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 19 — `out/short19-asteroide.mp4` (vertical)
+
+**Título** (60/100):
+```
+¿Y si hoy cayera el asteroide de los dinosaurios? ☄️ #Shorts
+```
+
+**Descripción** (1433/5000):
+```
+Medía 10 km, venía a 20 km por segundo… y cayó en Yucatán. Si cayera hoy: un tsunami de 1.5 km y años sin Sol.
+
+Los datos del video:
+☄️ Medía unos 10 km (el Everest mide 8.8 km) y viajaba a unos 20 km/s: 20 × 3,600 = 72,000 km/h.
+🇲🇽 Cayó hace 66 millones de años en Chicxulub, Yucatán, y dejó un cráter de unos 180 km de ancho, hoy enterrado bajo la península.
+💥 Energía: masa = 2,600 kg/m³ × (4/3 × π × 5,000³ m³) ≈ 1.4 × 10¹⁵ kg. E = ½ × m × v² = ½ × 1.4 × 10¹⁵ × 20,000² ≈ 2.8 × 10²³ J. La bomba de Hiroshima liberó unos 6.3 × 10¹³ J (15 kilotones): 2.8 × 10²³ ÷ 6.3 × 10¹³ ≈ 4,400 millones de bombas.
+🌊 Las simulaciones calculan una ola inicial de hasta 1.5 km cerca del impacto; el edificio más alto del mundo mide 828 m (1,500 ÷ 828 ≈ 1.8 veces).
+🌑 El polvo y el hollín taparon la luz del Sol durante años; se extinguieron cerca del 75% de las especies, incluidos los dinosaurios (menos las aves). Varios mamíferos pequeños sobrevivieron.
+📅 Un asteroide de ese tamaño choca con la Tierra, en promedio, una vez cada ~100 millones de años.
+🚀 En 2022, la misión DART de la NASA chocó contra el asteroide Dimorphos y acortó su vuelta alrededor de Didymos unos 32 minutos: de 11 h 55 min a 11 h 23 min.
+
+¿Qué harías si supieras que cae mañana? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Asteroide #Dinosaurios
+```
+
+**Etiquetas** (160/500):
+```
+qué pasaría si cayera un asteroide, asteroide de los dinosaurios, chicxulub, yucatán, meteorito, dinosaurios, tsunami, nasa dart, espacio, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: las aves son dinosaurios que sobrevivieron a ese asteroide 🐦 ¿Sabías que la gallina es pariente lejana del T. rex? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-hoy-cayera-el-asteroide-de-los-dinosaurios.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)

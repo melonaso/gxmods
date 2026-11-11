@@ -1,0 +1,174 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si hoy cayera el asteroide de los dinosaurios?",
+  "music": {
+    "bpm": 100,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si hoy cayera el asteroide",
+        "que acabó con *los dinosaurios*?"
+      ],
+      "say": [
+        "¿Y si hoy cayera el asteroide",
+        "que acabó con los dinosaurios?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "tamano",
+      "caps": [
+        "Medía unos *10 km*: más que el Everest…",
+        "y venía a *20 km por segundo*."
+      ],
+      "say": [
+        "Medía unos diez kilómetros: más que el Everest…",
+        "y venía a veinte kilómetros por segundo."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "mexico",
+      "caps": [
+        "Y cayó en *México*:",
+        "en Yucatán dejó un cráter de *unos 180 km*."
+      ],
+      "say": [
+        "Y cayó en México:",
+        "en Yucatán dejó un cráter de unos ciento ochenta kilómetros."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "energia",
+      "caps": [
+        "Hoy, el golpe sería como",
+        "*miles de millones* de bombas de Hiroshima."
+      ],
+      "say": [
+        "Hoy, el golpe sería como",
+        "miles de millones de bombas de Hiroshima."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "tsunami",
+      "caps": [
+        "Un tsunami de hasta *1.5 km* de alto…",
+        "y *roca ardiendo* cayendo en todo el planeta."
+      ],
+      "say": [
+        "Un tsunami de hasta un kilómetro y medio de alto…",
+        "y roca ardiendo cayendo en todo el planeta."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "invierno",
+      "caps": [
+        "El polvo taparía el Sol *por años*:",
+        "la última vez, se extinguieron *3 de cada 4 especies*."
+      ],
+      "say": [
+        "El polvo taparía el Sol por años:",
+        "la última vez, se extinguieron tres de cada cuatro especies."
+      ]
+    },
+    {
+      "id": "cada",
+      "caps": [
+        "La buena noticia: uno así cae",
+        "cada *100 millones de años*, más o menos."
+      ],
+      "say": [
+        "La buena noticia: uno así cae",
+        "cada cien millones de años, más o menos."
+      ]
+    },
+    {
+      "id": "dart",
+      "caps": [
+        "Y ya sabemos desviarlos: en 2022, la NASA chocó una nave",
+        "contra un asteroide y *cambió su órbita*."
+      ],
+      "say": [
+        "Y ya sabemos desviarlos: en dos mil veintidós, la NASA chocó una nave",
+        "contra un asteroide y cambió su órbita."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI HOY CAYERA",
+    "EL ASTEROIDE DE",
+    "LOS DINOSAURIOS?"
+  ],
+  "hookZoom": 0.12
+}
