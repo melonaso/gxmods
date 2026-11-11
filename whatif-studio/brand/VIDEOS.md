@@ -615,7 +615,7 @@ Las cuentas del video:
 1:01 Estrellas de día
 1:11 Adiós a la Luna
 1:21 Júpiter y Saturno
-1:38 Hora 1: la ciudad a oscuras
+1:38 Hora 3: la ciudad a oscuras
 2:00 Se acaba el viento
 2:11 Día 1: empieza el frío
 2:38 Semana 1: −18 °C

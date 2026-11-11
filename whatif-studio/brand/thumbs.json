@@ -148,9 +148,9 @@
     "align": "left",
     "accent": "#7dd3fc",
     "frame": {
-      "zoom": 1.1,
-      "dx": 300,
-      "dy": 0
+      "zoom": 1.3,
+      "dx": -220,
+      "dy": 40
     }
   }
 }

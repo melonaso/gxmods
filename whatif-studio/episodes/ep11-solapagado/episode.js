@@ -22,7 +22,7 @@ const ENV = {
   apagon: { set: 'town', dark: 'switch', time: '8 min 20 s', temp: '15 °C' },
   estrellas: { set: 'town', dark: 1, lamps: 1, time: '9 min', temp: '15 °C' }, luna: { set: 'town', dark: 1, lamps: 1, time: '9 min', temp: '15 °C', moon: 'fade' },
   jupiter: { set: 'town', dark: 1, lamps: 1, time: '1 h 30 min', temp: '12 °C', planets: 'j' }, saturno: { set: 'town', dark: 1, lamps: 1, time: '2 h 30 min', temp: '11 °C', planets: 'js' },
-  luces: { set: 'town', dark: 1, lamps: 1, time: '1 hora', temp: '13 °C' }, solar: { set: 'town', dark: 1, lamps: 1, time: '1 hora', temp: '13 °C' },
+  luces: { set: 'town', dark: 1, lamps: 1, time: '3 horas', temp: '10 °C' }, solar: { set: 'town', dark: 1, lamps: 1, time: '3 horas', temp: '10 °C' },
   viento: { set: 'town', dark: 1, lamps: 1, wind: 'stop', time: '6 horas', temp: '8 °C' },
   dia1: { set: 'town', dark: 1, lamps: 1, frost: 0.15, time: '1 día', temp: '5 °C' }, plantas: { set: 'town', dark: 1, lamps: 1, frost: 0.2, wilt: [0, 0.35], time: '2 días', temp: '0 °C' },
   oxigeno: { set: 'town', dark: 1, lamps: 1, frost: 0.3, wilt: 0.35, time: '4 días', temp: '−8 °C' },
