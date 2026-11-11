@@ -1400,3 +1400,49 @@ qué pasaría si todos los globos explotaran, globos, decibeles, ruido, helio, g
 - Archivo: `out/subir/y-si-todos-los-globos-del-mundo-explotaran-al-mismo-tiempo.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Crecimiento sin freno»
 - Video relacionado (debajo del Short): «¿Qué pasaría si cada paso te hiciera 1% más rápido?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 18 — `out/short18-dulce.mp4` (vertical)
+
+**Título** (51/100):
+```
+¿Y si se acabara todo el dulce del mundo? 🍬 #Shorts
+```
+
+**Descripción** (1402/5000):
+```
+Comemos unas 15 cucharaditas de azúcar al día… pero toda tu sangre lleva solo una. ¿Cómo le hace tu cerebro?
+💡 Idea de @miriamrayas4781 en los comentarios. ¡Gracias!
+
+Los datos del video:
+🍬 El mundo produce unos 180 millones de toneladas de azúcar al año: 180,000,000,000 kg ÷ 8,000 millones de personas ≈ 22 kg por persona.
+🥄 22 kg ÷ 365 días ≈ 60 g al día; con 4 g por cucharadita: 60 ÷ 4 = 15 cucharaditas. La OMS recomienda menos del 10% de las calorías en azúcares libres, e idealmente menos del 5%: unos 25 g, o sea, 6 cucharaditas.
+🥤 Un refresco de cola trae unos 10.6 g de azúcar por cada 100 ml: 600 × 10.6 ÷ 100 ≈ 63 g, y 63 ÷ 4 ≈ 16 cucharaditas.
+🍅 También hay azúcar en la cátsup, el pan y el cereal, y la fruta tiene sus propios azúcares (fructosa y glucosa).
+🩸 Tienes unos 5 litros de sangre con cerca de 1 g de glucosa por litro: unos 4 a 5 g en total, una cucharadita.
+🧠 Tu cerebro usa unos 120 g de glucosa al día. La fabrica tu hígado a partir de otras sustancias (gluconeogénesis), por eso el azúcar de la comida no es indispensable.
+🦷 Las bacterias de la boca convierten el azúcar en ácido, y ese ácido daña el esmalte: con mucho menos azúcar, habría muchas menos caries.
+
+¿Qué dulce extrañarías más? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Azucar #Ciencia
+```
+
+**Etiquetas** (142/500):
+```
+qué pasaría si se acabara el dulce, azúcar, dulces, glucosa, cucharaditas de azúcar, refresco, caries, cerebro, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: cerca del 80% del azúcar del mundo sale de la caña y el resto de la remolacha… y una vez refinados, son idénticos 🍬 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-se-acabara-todo-el-dulce-del-mundo.mp4`
+- Listas: «Cuentas Locas · Shorts» · «Ideas de los suscriptores»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)

@@ -1,0 +1,161 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si se acabara todo el dulce del mundo?",
+  "music": {
+    "bpm": 118,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si mañana se acabara",
+        "*todo el dulce* del mundo?"
+      ],
+      "say": [
+        "¿Y si mañana se acabara",
+        "todo el dulce del mundo?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.25,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "azucar",
+      "caps": [
+        "El mundo produce unos *180 millones de toneladas* de azúcar al año:",
+        "*22 kilos* por persona."
+      ],
+      "say": [
+        "El mundo produce unos ciento ochenta millones de toneladas de azúcar al año:",
+        "veintidós kilos por persona."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "dia",
+      "caps": [
+        "Eso son unas *15 cucharaditas* al día…",
+        "y lo ideal, según la OMS, son *6*."
+      ],
+      "say": [
+        "Eso son unas quince cucharaditas al día…",
+        "y lo ideal, según la OMS, son seis."
+      ]
+    },
+    {
+      "id": "refresco",
+      "caps": [
+        "Un refresco de cola de 600 ml",
+        "trae unos *63 gramos*: ¡*16 cucharaditas*!"
+      ],
+      "say": [
+        "Un refresco de cola de seiscientos mililitros",
+        "trae unos sesenta y tres gramos: ¡dieciséis cucharaditas!"
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "escondido",
+      "caps": [
+        "Y desaparecería de donde no te imaginas:",
+        "la cátsup, el pan, el cereal… y hasta *la fruta*."
+      ],
+      "say": [
+        "Y desaparecería de donde no te imaginas:",
+        "la cátsup, el pan, el cereal… y hasta la fruta."
+      ]
+    },
+    {
+      "id": "cuerpo",
+      "caps": [
+        "Lo más loco: toda tu sangre lleva solo *una cucharadita* de azúcar,",
+        "y tu cerebro gasta unos *120 gramos* al día."
+      ],
+      "say": [
+        "Lo más loco: toda tu sangre lleva solo una cucharadita de azúcar,",
+        "y tu cerebro gasta unos ciento veinte gramos al día."
+      ]
+    },
+    {
+      "id": "higado",
+      "caps": [
+        "¿Cómo? *Tu hígado la fabrica*:",
+        "aunque nunca comieras nada dulce, *estarías bien*."
+      ],
+      "say": [
+        "¿Cómo? Tu hígado la fabrica:",
+        "aunque nunca comieras nada dulce, estarías bien."
+      ]
+    },
+    {
+      "id": "caries",
+      "caps": [
+        "Y las caries *casi desaparecerían*:",
+        "las bacterias que las causan *comen azúcar*."
+      ],
+      "say": [
+        "Y las caries casi desaparecerían:",
+        "las bacterias que las causan comen azúcar."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI SE ACABARA",
+    "TODO EL DULCE?"
+  ],
+  "hookZoom": 0.12
+}
