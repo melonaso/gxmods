@@ -326,7 +326,7 @@ const SCENES = {
     kit.gradientBG(ctx, W, H, '#991b1b', '#fca5a5');
     // La botella a la izquierda; a la derecha caen los 16 cubos (4 g cada uno) que trae dentro.
     bottle(ctx, kit, 270, 1070, 600 + 6 * Math.sin(t * 2));
-    const k = kit.ramp(local, 0.3, cue(1) + 0.8), S = 86;
+    const k = kit.ramp(local, 0.3, cue(1) + 0.15), S = 86;
     for (let i = 0; i < 16; i++) {
       const a = kit.clamp(k * 16 - i); if (a <= 0) continue;
       const c = i % 4, r = Math.floor(i / 4), x = 560 + c * (S + 6) + S / 2, y = 1070 - S / 2 - r * (S + 6);
