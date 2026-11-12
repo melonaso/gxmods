@@ -1,0 +1,156 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si la Tierra dejara de dar vueltas alrededor del Sol?",
+  "music": {
+    "bpm": 96,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si la Tierra dejara de dar vueltas",
+        "*alrededor del Sol*?"
+      ],
+      "say": [
+        "¿Y si la Tierra dejara de dar vueltas",
+        "alrededor del Sol?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "velocidad",
+      "caps": [
+        "Hoy vamos a *30 km por segundo*:",
+        "esa velocidad es lo único que *evita que caigamos al Sol*."
+      ],
+      "say": [
+        "Hoy vamos a treinta kilómetros por segundo:",
+        "esa velocidad es lo único que evita que caigamos al Sol."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "caida",
+      "caps": [
+        "Sin ella, caeríamos hacia el Sol…",
+        "y llegaríamos en *solo 65 días*."
+      ],
+      "say": [
+        "Sin ella, caeríamos hacia el Sol…",
+        "y llegaríamos en solo sesenta y cinco días."
+      ]
+    },
+    {
+      "id": "semanas",
+      "caps": [
+        "Las primeras semanas *casi no lo notarías*:",
+        "la caída empieza muy lenta."
+      ],
+      "say": [
+        "Las primeras semanas casi no lo notarías:",
+        "la caída empieza muy lenta."
+      ]
+    },
+    {
+      "id": "venus",
+      "caps": [
+        "Día 41: cruzamos la órbita de *Venus*",
+        "y el Sol calienta *el doble*."
+      ],
+      "say": [
+        "Día cuarenta y uno: cruzamos la órbita de Venus",
+        "y el Sol calienta el doble."
+      ]
+    },
+    {
+      "id": "mercurio",
+      "caps": [
+        "Día 57: pasamos *Mercurio*,",
+        "con *casi 7 veces* más luz que hoy."
+      ],
+      "say": [
+        "Día cincuenta y siete: pasamos Mercurio,",
+        "con casi siete veces más luz que hoy."
+      ]
+    },
+    {
+      "id": "final",
+      "caps": [
+        "Y todo se acelera: el último tramo hasta el Sol",
+        "dura *apenas una semana*."
+      ],
+      "say": [
+        "Y todo se acelera: el último tramo hasta el Sol",
+        "dura apenas una semana."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 1.0,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "frenar",
+      "caps": [
+        "La buena noticia: frenar la Tierra costaría",
+        "*toda la energía del Sol durante casi 3 meses*."
+      ],
+      "say": [
+        "La buena noticia: frenar la Tierra costaría",
+        "toda la energía del Sol durante casi tres meses."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI LA TIERRA",
+    "DEJARA DE GIRAR",
+    "ALREDEDOR DEL SOL?"
+  ],
+  "hookZoom": 0.12
+}

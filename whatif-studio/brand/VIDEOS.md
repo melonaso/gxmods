@@ -1491,3 +1491,92 @@ qué pasaría si cayera un asteroide, asteroide de los dinosaurios, chicxulub, y
 - Archivo: `out/subir/y-si-hoy-cayera-el-asteroide-de-los-dinosaurios.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 20 — `out/short20-orbita.mp4` (vertical)
+
+**Título** (62/100):
+```
+¿Y si la Tierra dejara de girar alrededor del Sol? ☀️🌍 #Shorts
+```
+
+**Descripción** (1283/5000):
+```
+Caeríamos al Sol en solo 65 días… y las primeras semanas ni lo notarías. Así sería, día por día.
+
+Los datos del video:
+🌍 Velocidad de la Tierra: 2 × π × 150,000,000 km ÷ (365.25 × 86,400 s) = 942,000,000 km ÷ 31,557,600 s ≈ 29.8 km/s ≈ 107,000 km/h.
+⏱️ Tiempo de caída: caer en línea recta es como una órbita aplastada de la mitad del tamaño. Por la tercera ley de Kepler, esa órbita dura (½)^1.5 ≈ 0.354 años, y la caída es media vuelta: 0.354 ÷ 2 × 365.25 ≈ 64.6 días.
+📅 Día 14: la distancia apenas bajó un 3 % (de 150 a ~146 millones de km). La caída empieza lentísimo.
+☀️ La luz crece con el inverso del cuadrado de la distancia: en la órbita de Venus (0.72 veces la distancia actual, día 41), 1 ÷ 0.72² ≈ 1.9 veces más luz; en la de Mercurio (0.39, día 57), 1 ÷ 0.39² ≈ 6.7 veces más, y el Sol se vería 1 ÷ 0.39 ≈ 2.6 veces más grande.
+🏁 De Mercurio al Sol: 64.6 − 57 ≈ 7.6 días.
+⚡ Frenar la Tierra: ½ × 5.97 × 10²⁴ kg × (29,800 m/s)² ≈ 2.65 × 10³³ J. El Sol emite 3.83 × 10²⁶ J cada segundo: 2.65 × 10³³ ÷ 3.83 × 10²⁶ ≈ 6.9 millones de segundos ≈ 80 días.
+
+¿Qué harías con 65 días antes del choque? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Espacio #Sol
+```
+
+**Etiquetas** (156/500):
+```
+qué pasaría si la tierra dejara de girar alrededor del sol, órbita de la tierra, caer al sol, sistema solar, kepler, espacio, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: la Tierra sí está cayendo hacia el Sol todo el tiempo… pero va tan rápido de lado que nunca le atina: eso es una órbita 🌍 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-la-tierra-dejara-de-girar-alrededor-del-sol.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 21 — `out/short21-oxigeno.mp4` (vertical)
+
+**Título** (58/100):
+```
+¿Y si el aire se quedara sin oxígeno 5 segundos? 🫁 #Shorts
+```
+
+**Descripción** (1294/5000):
+```
+Te tronarían los oídos y todo el fuego del planeta se apagaría… pero el concreto NO se desmoronaría. Esto pasaría de verdad.
+
+Los datos del video:
+🌬️ El aire seco es 78 % nitrógeno, 21 % oxígeno y ~1 % argón y otros gases.
+📉 Sin el oxígeno, la presión bajaría al 79 %: 101.3 kPa × 0.79 ≈ 80 kPa. En la atmósfera la presión cae a la mitad cada ~5.8 km de altura, así que 79 % equivale a subir −8.4 km × ln(0.79) ≈ 2 km.
+🔥 El fuego es una reacción del combustible con el oxígeno (combustión): sin oxígeno, se apaga al instante.
+🚗 Los motores de gasolina y los de avión queman combustible con el oxígeno del aire; sin él se apagan. Un avión comercial puede planear unos 15 km por cada km que baja.
+🫁 Tus pulmones y tu sangre guardan oxígeno: la mayoría de las personas aguanta la respiración más de un minuto.
+🧱 El concreto está hecho de compuestos como los silicatos de calcio, donde el oxígeno está unido químicamente al silicio y al calcio: no depende del oxígeno del aire.
+🪨 La corteza de la Tierra, por peso: oxígeno ≈ 46 %, silicio ≈ 28 %, aluminio ≈ 8 %, hierro ≈ 5 %.
+
+¿Cuánto tiempo aguantas sin respirar? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Oxigeno #Ciencia
+```
+
+**Etiquetas** (141/500):
+```
+qué pasaría si no hubiera oxígeno 5 segundos, sin oxígeno, oxígeno, aire, presión atmosférica, concreto, mito, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: el oxígeno del aire lo fabricaron seres vivos: antes de las cianobacterias, hace unos 2,400 millones de años, casi no había 🌱 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-aire-se-quedara-sin-oxigeno-5-segundos.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)

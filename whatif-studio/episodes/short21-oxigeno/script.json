@@ -1,0 +1,145 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si el aire se quedara sin oxígeno 5 segundos?",
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si el aire se quedara",
+        "*sin oxígeno 5 segundos*?"
+      ],
+      "say": [
+        "¿Y si el aire se quedara",
+        "sin oxígeno cinco segundos?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.25,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "aire",
+      "caps": [
+        "El aire es *21 % oxígeno*:",
+        "de golpe, la presión bajaría como si subieras *2 km*."
+      ],
+      "say": [
+        "El aire es veintiún por ciento oxígeno:",
+        "de golpe, la presión bajaría como si subieras dos kilómetros."
+      ]
+    },
+    {
+      "id": "fuego",
+      "caps": [
+        "Te *tronarían los oídos*…",
+        "y *todo el fuego* del planeta se apagaría al instante."
+      ],
+      "say": [
+        "Te tronarían los oídos…",
+        "y todo el fuego del planeta se apagaría al instante."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "motores",
+      "caps": [
+        "Los motores de coches y aviones *también se apagarían*:",
+        "sin oxígeno, *la gasolina no quema*."
+      ],
+      "say": [
+        "Los motores de coches y aviones también se apagarían:",
+        "sin oxígeno, la gasolina no quema."
+      ]
+    },
+    {
+      "id": "tu",
+      "caps": [
+        "¿Y tú? Si aguantas la respiración, *ni lo notarías*:",
+        "tu cuerpo guarda oxígeno para *más de un minuto*."
+      ],
+      "say": [
+        "¿Y tú? Si aguantas la respiración, ni lo notarías:",
+        "tu cuerpo guarda oxígeno para más de un minuto."
+      ]
+    },
+    {
+      "id": "mito",
+      "caps": [
+        "Y no: el concreto *no se desmoronaría*.",
+        "Su oxígeno está *pegado a otros átomos*, no viene del aire."
+      ],
+      "say": [
+        "Y no: el concreto no se desmoronaría.",
+        "Su oxígeno está pegado a otros átomos, no viene del aire."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.9,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "loco",
+      "caps": [
+        "Lo más loco: casi *la mitad* de las rocas",
+        "del planeta *es oxígeno*."
+      ],
+      "say": [
+        "Lo más loco: casi la mitad de las rocas",
+        "del planeta es oxígeno."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI EL AIRE",
+    "SE QUEDARA SIN",
+    "OXÍGENO 5 SEGUNDOS?"
+  ],
+  "hookZoom": 0.12
+}
