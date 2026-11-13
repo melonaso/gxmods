@@ -1580,3 +1580,90 @@ qué pasaría si no hubiera oxígeno 5 segundos, sin oxígeno, oxígeno, aire, p
 - Archivo: `out/subir/y-si-el-aire-se-quedara-sin-oxigeno-5-segundos.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 22 — `out/short22-doble.mp4` (vertical)
+
+**Título** (51/100):
+```
+¿Y si la Tierra fuera el doble de grande? 🌍 #Shorts
+```
+
+**Descripción** (1425/5000):
+```
+Pesarías el doble, saltarías la mitad… y un cohete tendría que ser 99.5 % combustible. Quizá nunca habríamos llegado al espacio.
+
+Los datos del video:
+🌍 Con la misma roca (misma densidad), la masa crece con el volumen (radio³) y la gravedad es masa ÷ radio²: radio³ ÷ radio² = radio. Doble de radio → doble de gravedad. 60 kg se sentirían como 120.
+🦘 Altura de un salto = velocidad² ÷ (2 × gravedad): con la misma fuerza en las piernas y el doble de gravedad, saltas la mitad (50 cm → 25 cm). Y la energía de una caída (masa × gravedad × altura) se duplica.
+🗺️ Superficie = 4 × π × radio²: 2² = 4 veces más (de 510 a 2,040 millones de km²). Volumen = 4/3 × π × radio³: 2³ = 8 veces más.
+🚀 La velocidad para quedar en órbita es √(gravedad × radio) = √(2 × 2) = 2 veces más: de 7.9 a 15.8 km/s (la de escape, de 11.2 a 22.4 km/s).
+⛽ Ecuación del cohete: masa llena ÷ masa vacía = e^(Δv ÷ velocidad de los gases). Hoy, con Δv ≈ 9.4 km/s y gases a ~3.5 km/s: e^2.7 ≈ 15 → 93 % combustible. Con el doble: e^5.4 ≈ 215 → 99.5 % combustible (214 kg de combustible por cada kilo de cohete).
+🪐 Los astrónomos han encontrado muchas «supertierras»: planetas rocosos más grandes que la Tierra y más pequeños que Neptuno.
+
+¿Cuánto pesarías tú en esa Tierra? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Espacio #Fisica
+```
+
+**Etiquetas** (142/500):
+```
+qué pasaría si la tierra fuera el doble de grande, gravedad, supertierra, cohetes, ecuación del cohete, espacio, física, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: en la Luna la gravedad es 1/6 de la de aquí: si pesas 60 kg, allá te sentirías de 10 🌙 ¿Te gustaría probar? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-la-tierra-fuera-el-doble-de-grande.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 23 — `out/short23-lunacerca.mp4` (vertical)
+
+**Título** (58/100):
+```
+¿Y si la Luna estuviera a la mitad de distancia? 🌕 #Shorts
+```
+
+**Descripción** (1252/5000):
+```
+Mareas 8 veces más fuertes, luna llena cada 10 días y noches 4 veces más brillantes. Todo por una cuenta: 2 × 2 × 2.
+
+Los datos del video:
+🌕 Hoy la Luna está a ~384,400 km; a la mitad, a ~192,200 km. El tamaño que vemos es proporcional a 1 ÷ distancia: el doble de ancha. El área (y la luz de luna llena), a 1 ÷ distancia²: 2 × 2 = 4 veces más.
+🌊 La fuerza de marea depende de 1 ÷ distancia³: a la mitad de distancia, 2 × 2 × 2 = 8 veces más fuerte. Donde hoy la marea sube 1 metro, subiría unos 8.
+🗓️ Por la tercera ley de Kepler, el tiempo de una vuelta crece con la distancia^1.5: 27.3 días × (½)^1.5 ≈ 9.7 días. Contando que la Tierra también avanza alrededor del Sol, habría luna llena cada ~9.9 días.
+🌑 Al verse el doble de grande que el Sol, la Luna lo taparía de sobra: los eclipses totales durarían mucho más y su sombra cubriría zonas más grandes.
+📏 La Luna se aleja unos 3.8 cm al año: lo medimos rebotando láseres en espejos que dejaron los astronautas del Apolo. Hace miles de millones de años estaba mucho más cerca.
+
+¿Te gustaría ver una Luna así de grande? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Luna #Espacio
+```
+
+**Etiquetas** (118/500):
+```
+qué pasaría si la luna estuviera más cerca, luna, mareas, luna llena, eclipses, kepler, espacio, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: por eso siempre vemos la misma cara de la Luna: la Tierra la «frenó» con las mareas hasta que su giro quedó sincronizado 🌕 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-la-luna-estuviera-a-la-mitad-de-distancia.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)

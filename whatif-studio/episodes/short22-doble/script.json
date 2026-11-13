@@ -1,0 +1,151 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si la Tierra fuera el doble de grande?",
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si la Tierra fuera",
+        "*el doble de grande*?"
+      ],
+      "say": [
+        "¿Y si la Tierra fuera",
+        "el doble de grande?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "gravedad",
+      "caps": [
+        "Con la misma roca, *la gravedad también sería el doble*:",
+        "si pesas 60 kilos, sentirías *120*."
+      ],
+      "say": [
+        "Con la misma roca, la gravedad también sería el doble:",
+        "si pesas sesenta kilos, sentirías ciento veinte."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "salto",
+      "caps": [
+        "Saltarías *la mitad de alto*…",
+        "y cada caída golpearía *el doble de fuerte*."
+      ],
+      "say": [
+        "Saltarías la mitad de alto…",
+        "y cada caída golpearía el doble de fuerte."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.4,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "tamano",
+      "caps": [
+        "Habría *4 veces más* superficie…",
+        "y *8 veces más* planeta por dentro."
+      ],
+      "say": [
+        "Habría cuatro veces más superficie…",
+        "y ocho veces más planeta por dentro."
+      ]
+    },
+    {
+      "id": "cohete",
+      "caps": [
+        "Pero lo peor: para llegar al espacio,",
+        "un cohete necesitaría *el doble de velocidad*."
+      ],
+      "say": [
+        "Pero lo peor: para llegar al espacio,",
+        "un cohete necesitaría el doble de velocidad."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "jet"
+        }
+      ]
+    },
+    {
+      "id": "combustible",
+      "caps": [
+        "Y el combustible crece *exponencialmente*:",
+        "el cohete sería *99.5 % combustible*."
+      ],
+      "say": [
+        "Y el combustible crece exponencialmente:",
+        "el cohete sería noventa y nueve punto cinco por ciento combustible."
+      ]
+    },
+    {
+      "id": "loco",
+      "caps": [
+        "Lo más loco: en una supertierra así,",
+        "*quizá nunca habríamos salido al espacio*."
+      ],
+      "say": [
+        "Lo más loco: en una supertierra así,",
+        "quizá nunca habríamos salido al espacio."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI LA TIERRA",
+    "FUERA EL DOBLE",
+    "DE GRANDE?"
+  ],
+  "hookZoom": 0.12
+}

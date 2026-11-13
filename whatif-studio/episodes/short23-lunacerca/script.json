@@ -1,0 +1,138 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si la Luna estuviera a la mitad de distancia?",
+  "music": {
+    "bpm": 92,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si la Luna estuviera",
+        "*a la mitad de distancia*?"
+      ],
+      "say": [
+        "¿Y si la Luna estuviera",
+        "a la mitad de distancia?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "tamano",
+      "caps": [
+        "Se vería *el doble de ancha*…",
+        "y las noches de luna llena serían *4 veces más brillantes*."
+      ],
+      "say": [
+        "Se vería el doble de ancha…",
+        "y las noches de luna llena serían cuatro veces más brillantes."
+      ]
+    },
+    {
+      "id": "mareas",
+      "caps": [
+        "Pero lo fuerte: las mareas serían *8 veces más intensas*:",
+        "su fuerza crece al cubo, *2 × 2 × 2*."
+      ],
+      "say": [
+        "Pero lo fuerte: las mareas serían ocho veces más intensas:",
+        "su fuerza crece al cubo, dos por dos por dos."
+      ]
+    },
+    {
+      "id": "costa",
+      "caps": [
+        "Donde hoy el mar sube *1 metro*, subiría *unos 8*:",
+        "muchas costas *se inundarían dos veces al día*."
+      ],
+      "say": [
+        "Donde hoy el mar sube un metro, subiría unos ocho:",
+        "muchas costas se inundarían dos veces al día."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "mes",
+      "caps": [
+        "Y daría la vuelta más rápido:",
+        "habría *luna llena cada 10 días*."
+      ],
+      "say": [
+        "Y daría la vuelta más rápido:",
+        "habría luna llena cada diez días."
+      ]
+    },
+    {
+      "id": "eclipses",
+      "caps": [
+        "Los eclipses de Sol serían *más seguidos*…",
+        "y *mucho más largos*."
+      ],
+      "say": [
+        "Los eclipses de Sol serían más seguidos…",
+        "y mucho más largos."
+      ]
+    },
+    {
+      "id": "loco",
+      "caps": [
+        "Lo más loco: hace miles de millones de años, *la Luna sí estaba así de cerca*…",
+        "y se sigue alejando *casi 4 cm al año*."
+      ],
+      "say": [
+        "Lo más loco: hace miles de millones de años, la Luna sí estaba así de cerca…",
+        "y se sigue alejando casi cuatro centímetros al año."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI LA LUNA",
+    "ESTUVIERA A LA",
+    "MITAD DE DISTANCIA?"
+  ],
+  "hookZoom": 0.12
+}
