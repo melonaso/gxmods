@@ -149,12 +149,12 @@ const SCENES = {
     space(ctx, o);
     // Despegue: velocidad para quedar en órbita 7.9 km/s → 15.8 km/s.
     earth(ctx, W / 2, 1650, 760, t * 0.2);
-    const y = 1000 - 260 * kit.ramp(local, 0.2, 3), q = kit.ramp(local, cue(1), cue(1) + 0.6);
+    const y = 1000 - 170 * kit.ramp(local, 0.2, 3), q = kit.ramp(local, cue(1), cue(1) + 0.6);
     rocket(ctx, kit, W / 2, y, 330, { flame: 1, t });
     const v = 7.9 + 7.9 * q;
-    kit.roundRect(ctx, 150, 470, 780, 50, 25); kit.shape(ctx, '#1e293b', 5);
-    kit.roundRect(ctx, 156, 476, 768 * (v / 16), 38, 19); ctx.fillStyle = q > 0.5 ? '#f87171' : '#4ade80'; ctx.fill();
-    kit.text(ctx, `${v.toFixed(1)} KM/S`, W / 2, 496, { size: 34, fill: '#ffffff' });
+    kit.roundRect(ctx, 150, 410, 780, 50, 25); kit.shape(ctx, '#1e293b', 5);
+    kit.roundRect(ctx, 156, 416, 768 * (v / 16), 38, 19); ctx.fillStyle = q > 0.5 ? '#f87171' : '#4ade80'; ctx.fill();
+    kit.text(ctx, `${v.toFixed(1)} KM/S`, W / 2, 436, { size: 34, fill: '#ffffff' });
     kit.text(ctx, q > 0.5 ? 'EL DOBLE DE VELOCIDAD' : 'PARA LLEGAR A ÓRBITA', W / 2, 230, { size: 86, fill: q > 0.5 ? kit.YELLOW : '#ffffff', maxW: W * 0.92 });
     kit.text(ctx, q > 0.5 ? '15.8 KM/S EN VEZ DE 7.9' : 'HOY: 7.9 KM/S', W / 2, 340, { size: 52, fill: '#c7d2fe' });
     void H;
