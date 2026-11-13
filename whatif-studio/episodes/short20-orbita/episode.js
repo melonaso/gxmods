@@ -110,7 +110,7 @@ const SCENES = {
     space(ctx, o);
     const a = 2.2 + 0.9 * local;
     const [ax, ay] = orbitView(ctx, o, a);
-    kit.text(ctx, '30 km/s', ax, ay - 50, { size: 44, fill: kit.YELLOW });
+    kit.text(ctx, '30 km/s', Math.min(W - 110, Math.max(110, ax)), Math.max(480, ay - 50), { size: 44, fill: kit.YELLOW });
     const q = kit.ramp(local, cue(1), cue(1) + 0.3);
     if (q < 0.5) {
       kit.text(ctx, '30 KM POR SEGUNDO', W / 2, 230, { size: 88, fill: '#ffffff', maxW: W * 0.92 });
