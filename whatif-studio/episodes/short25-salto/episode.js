@@ -116,7 +116,7 @@ const SCENES = {
       ctx.beginPath(); ctx.moveTo(380, 520); ctx.quadraticCurveTo(540, 740, 700, 520); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(330, 470); ctx.quadraticCurveTo(540, 800, 750, 470); ctx.stroke(); ctx.restore();
     }
-    const v = 1357 * o.ease.out(kit.ramp(local, 0, cue(1)));
+    const v = 1357 * o.ease.out(kit.ramp(local, 0, Math.min(1.0, cue(1))));
     kit.roundRect(ctx, 290, 960, 500, 90, 20); kit.shape(ctx, '#0f172a', 6);
     kit.text(ctx, `${kit.nf(Math.round(v))} km/h`, W / 2, 1006, { size: 56, fill: q > 0.5 ? '#f87171' : '#4ade80', stroke: null });
     kit.text(ctx, q > 0.5 ? 'MACH 1.25' : `${kit.nf(Math.round(v))} KM/H`, W / 2, 230, { size: 108, fill: q > 0.5 ? kit.YELLOW : '#ffffff' });
