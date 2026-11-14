@@ -1402,6 +1402,85 @@
     "espacio"
    ],
    "next": "ep11-solapagado"
+  },
+  {
+   "episode": "short24-electricidad",
+   "isShort": true,
+   "factsTitle": "Los datos del video:",
+   "title": "¿Y si se acabara la electricidad en todo el mundo? ⚡ #Shorts",
+   "hook": "En 1 segundo se apaga todo, en 4 horas se echa a perder tu comida y en 1 o 2 días deja de salir agua. Así sería, paso a paso.",
+   "math": [
+    "🚦 Semáforos, internet, elevadores y las bombas de agua y de gasolina dependen de la electricidad: se detienen en el mismo instante.",
+    "🧊 Un refrigerador cerrado mantiene la comida segura unas 4 horas; un congelador lleno, unas 48 horas.",
+    "🚰 En muchas ciudades el agua se bombea a tanques y tinacos; cuando se vacían (en uno o dos días), deja de salir.",
+    "⛽ La gasolina está en tanques bajo tierra y las bombas que la suben al coche son eléctricas.",
+    "🏥 Los hospitales tienen plantas de emergencia de diésel; suelen tener combustible para unos días.",
+    "💡 El mundo genera unos 30,000 TWh de electricidad al año: 30,000,000,000,000,000 Wh ÷ 8,100,000,000 personas ≈ 3,700 kWh por persona; ÷ 8,760 horas del año ≈ 420 W todo el tiempo, como 4 focos de 100 W prendidos día y noche."
+   ],
+   "question": "¿Qué es lo primero que harías sin luz? 👇",
+   "hashtags": [
+    "#Shorts",
+    "#QuePasariaSi",
+    "#CuentasLocas",
+    "#Electricidad",
+    "#Apagon"
+   ],
+   "tags": [
+    "qué pasaría si se acabara la electricidad",
+    "apagón mundial",
+    "sin luz",
+    "electricidad",
+    "apagón",
+    "energía",
+    "ciencia",
+    "shorts",
+    "cuentas locas"
+   ],
+   "pinned": "📌 Dato: en 2003 un apagón dejó sin luz a unos 50 millones de personas en EE. UU. y Canadá… y empezó con unos cables de alta tensión que tocaron árboles en Ohio 🌳 ¿Te ha tocado un apagón largo? 👇",
+   "themes": [
+    "espacio"
+   ],
+   "next": "ep11-solapagado"
+  },
+  {
+   "episode": "short25-salto",
+   "isShort": true,
+   "factsTitle": "Los datos del video:",
+   "title": "¿Y si saltaras desde el espacio? 🪂 #Shorts",
+   "hook": "Felix Baumgartner saltó desde 39 km y cayó más rápido que el sonido: 1,357 km/h. Esto es lo que pasa en un salto así.",
+   "math": [
+    "📏 Baumgartner saltó el 14 de octubre de 2012 desde unos 39 km: 39 ÷ 11 ≈ 3.5 veces la altura a la que vuela un avión.",
+    "🔊 A esa altura el aire está tan frío que el sonido viaja a unos 1,086 km/h: 1,357.6 ÷ 1,086 ≈ 1.25, o sea, Mach 1.25.",
+    "⏱️ Sin aire, la gravedad te acelera 9.8 m/s cada segundo. 1,357.6 km/h ÷ 3.6 = 377 m/s, y 377 ÷ 9.8 ≈ 38 s para llegar a esa velocidad (le tomó unos 50 s porque algo de aire sí había).",
+    "🌬️ A 39 km el aire es tan delgado que, en el mismo espacio, hay unas 300 veces menos aire que a nivel del mar.",
+    "🪂 Su caída libre duró 4 min 20 s; después abrió el paracaídas.",
+    "🛰️ La Estación Espacial va a unos 28,000 km/h = 7,800 m/s. Energía por kilo: ½ × 7,800² ≈ 30 millones de J. Un kilo de TNT libera 4.2 millones de J: es como 7 kg de TNT por cada kilo de tu cuerpo. Por eso las naves necesitan escudo térmico.",
+    "🏆 El 24 de octubre de 2014, Alan Eustace saltó desde unos 41.4 km."
+   ],
+   "question": "¿Te atreverías a saltar? 👇",
+   "hashtags": [
+    "#Shorts",
+    "#QuePasariaSi",
+    "#CuentasLocas",
+    "#Espacio",
+    "#Records"
+   ],
+   "tags": [
+    "qué pasaría si saltaras desde el espacio",
+    "felix baumgartner",
+    "salto desde la estratosfera",
+    "alan eustace",
+    "velocidad del sonido",
+    "estación espacial",
+    "espacio",
+    "shorts",
+    "cuentas locas"
+   ],
+   "pinned": "📌 Dato: arriba de unos 19 km la presión es tan baja que el agua hierve a 37 °C, la temperatura de tu cuerpo: por eso el traje presurizado era obligatorio 🧑‍🚀 ¿Lo sabías? 👇",
+   "themes": [
+    "espacio"
+   ],
+   "next": "ep04-gravedad"
   }
  ]
 }

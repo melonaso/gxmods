@@ -1,0 +1,152 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si se acabara la electricidad en todo el mundo?",
+  "music": {
+    "bpm": 100,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si mañana se acabara",
+        "*la electricidad* en todo el mundo?"
+      ],
+      "say": [
+        "¿Y si mañana se acabara",
+        "la electricidad en todo el mundo?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "segundo",
+      "caps": [
+        "En un segundo: *se apagan los semáforos*,",
+        "el internet se cae y los elevadores se detienen."
+      ],
+      "say": [
+        "En un segundo: se apagan los semáforos,",
+        "el internet se cae y los elevadores se detienen."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.4,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "refri",
+      "caps": [
+        "En *4 horas*, la comida de tu refri",
+        "*empieza a echarse a perder*."
+      ],
+      "say": [
+        "En cuatro horas, la comida de tu refri",
+        "empieza a echarse a perder."
+      ]
+    },
+    {
+      "id": "agua",
+      "caps": [
+        "En *uno o dos días*, deja de salir agua:",
+        "las bombas que la suben *funcionan con electricidad*."
+      ],
+      "say": [
+        "En uno o dos días, deja de salir agua:",
+        "las bombas que la suben funcionan con electricidad."
+      ]
+    },
+    {
+      "id": "gasolina",
+      "caps": [
+        "Y aunque haya gasolina, *no podrías cargarla*:",
+        "las bombas de la gasolinera *son eléctricas*."
+      ],
+      "say": [
+        "Y aunque haya gasolina, no podrías cargarla:",
+        "las bombas de la gasolinera son eléctricas."
+      ]
+    },
+    {
+      "id": "hospital",
+      "caps": [
+        "Los hospitales aguantarían *unos días* con plantas de diésel…",
+        "*hasta que se acabe el combustible*."
+      ],
+      "say": [
+        "Los hospitales aguantarían unos días con plantas de diésel…",
+        "hasta que se acabe el combustible."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "alarm"
+        }
+      ]
+    },
+    {
+      "id": "loco",
+      "caps": [
+        "Lo más loco: repartida entre todos, cada persona usa",
+        "como *4 focos de 100 watts* prendidos *día y noche*."
+      ],
+      "say": [
+        "Lo más loco: repartida entre todos, cada persona usa",
+        "como cuatro focos de cien watts prendidos día y noche."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI SE ACABARA",
+    "LA ELECTRICIDAD",
+    "EN TODO EL MUNDO?"
+  ],
+  "hookZoom": 0.12
+}

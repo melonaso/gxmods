@@ -1667,3 +1667,92 @@ qué pasaría si la luna estuviera más cerca, luna, mareas, luna llena, eclipse
 - Archivo: `out/subir/y-si-la-luna-estuviera-a-la-mitad-de-distancia.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 24 — `out/short24-electricidad.mp4` (vertical)
+
+**Título** (60/100):
+```
+¿Y si se acabara la electricidad en todo el mundo? ⚡ #Shorts
+```
+
+**Descripción** (1137/5000):
+```
+En 1 segundo se apaga todo, en 4 horas se echa a perder tu comida y en 1 o 2 días deja de salir agua. Así sería, paso a paso.
+
+Los datos del video:
+🚦 Semáforos, internet, elevadores y las bombas de agua y de gasolina dependen de la electricidad: se detienen en el mismo instante.
+🧊 Un refrigerador cerrado mantiene la comida segura unas 4 horas; un congelador lleno, unas 48 horas.
+🚰 En muchas ciudades el agua se bombea a tanques y tinacos; cuando se vacían (en uno o dos días), deja de salir.
+⛽ La gasolina está en tanques bajo tierra y las bombas que la suben al coche son eléctricas.
+🏥 Los hospitales tienen plantas de emergencia de diésel; suelen tener combustible para unos días.
+💡 El mundo genera unos 30,000 TWh de electricidad al año: 30,000,000,000,000,000 Wh ÷ 8,100,000,000 personas ≈ 3,700 kWh por persona; ÷ 8,760 horas del año ≈ 420 W todo el tiempo, como 4 focos de 100 W prendidos día y noche.
+
+¿Qué es lo primero que harías sin luz? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Electricidad #Apagon
+```
+
+**Etiquetas** (129/500):
+```
+qué pasaría si se acabara la electricidad, apagón mundial, sin luz, electricidad, apagón, energía, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: en 2003 un apagón dejó sin luz a unos 50 millones de personas en EE. UU. y Canadá… y empezó con unos cables de alta tensión que tocaron árboles en Ohio 🌳 ¿Te ha tocado un apagón largo? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-se-acabara-la-electricidad-en-todo-el-mundo.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 25 — `out/short25-salto.mp4` (vertical)
+
+**Título** (42/100):
+```
+¿Y si saltaras desde el espacio? 🪂 #Shorts
+```
+
+**Descripción** (1251/5000):
+```
+Felix Baumgartner saltó desde 39 km y cayó más rápido que el sonido: 1,357 km/h. Esto es lo que pasa en un salto así.
+
+Los datos del video:
+📏 Baumgartner saltó el 14 de octubre de 2012 desde unos 39 km: 39 ÷ 11 ≈ 3.5 veces la altura a la que vuela un avión.
+🔊 A esa altura el aire está tan frío que el sonido viaja a unos 1,086 km/h: 1,357.6 ÷ 1,086 ≈ 1.25, o sea, Mach 1.25.
+⏱️ Sin aire, la gravedad te acelera 9.8 m/s cada segundo. 1,357.6 km/h ÷ 3.6 = 377 m/s, y 377 ÷ 9.8 ≈ 38 s para llegar a esa velocidad (le tomó unos 50 s porque algo de aire sí había).
+🌬️ A 39 km el aire es tan delgado que, en el mismo espacio, hay unas 300 veces menos aire que a nivel del mar.
+🪂 Su caída libre duró 4 min 20 s; después abrió el paracaídas.
+🛰️ La Estación Espacial va a unos 28,000 km/h = 7,800 m/s. Energía por kilo: ½ × 7,800² ≈ 30 millones de J. Un kilo de TNT libera 4.2 millones de J: es como 7 kg de TNT por cada kilo de tu cuerpo. Por eso las naves necesitan escudo térmico.
+🏆 El 24 de octubre de 2014, Alan Eustace saltó desde unos 41.4 km.
+
+¿Te atreverías a saltar? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Espacio #Records
+```
+
+**Etiquetas** (175/500):
+```
+qué pasaría si saltaras desde el espacio, felix baumgartner, salto desde la estratosfera, alan eustace, velocidad del sonido, estación espacial, espacio, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: arriba de unos 19 km la presión es tan baja que el agua hierve a 37 °C, la temperatura de tu cuerpo: por eso el traje presurizado era obligatorio 🧑‍🚀 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-saltaras-desde-el-espacio.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)

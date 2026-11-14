@@ -1,0 +1,152 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "tail": 1.2,
+  "punch": 0.07,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si saltaras desde el espacio?",
+  "music": {
+    "bpm": 116,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si saltaras",
+        "*desde el espacio*?"
+      ],
+      "say": [
+        "¿Y si saltaras",
+        "desde el espacio?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "record",
+      "caps": [
+        "En 2012, Felix Baumgartner saltó",
+        "desde *39 km de altura*."
+      ],
+      "say": [
+        "En dos mil doce, Felix Baumgartner saltó",
+        "desde treinta y nueve kilómetros de altura."
+      ]
+    },
+    {
+      "id": "sonido",
+      "caps": [
+        "Cayó a *1,357 km/h*:",
+        "*más rápido que el sonido*."
+      ],
+      "say": [
+        "Cayó a mil trescientos cincuenta y siete kilómetros por hora:",
+        "más rápido que el sonido."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "aire",
+      "caps": [
+        "¿Cómo? Allá arriba *casi no hay aire*",
+        "que te frene: es como caer en el vacío."
+      ],
+      "say": [
+        "¿Cómo? Allá arriba casi no hay aire",
+        "que te frene: es como caer en el vacío."
+      ]
+    },
+    {
+      "id": "frenar",
+      "caps": [
+        "Luego el aire se hace *más espeso* y te frena:",
+        "*4 minutos y 20 segundos* de caída libre hasta abrir el paracaídas."
+      ],
+      "say": [
+        "Luego el aire se hace más espeso y te frena:",
+        "cuatro minutos y veinte segundos de caída libre hasta abrir el paracaídas."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 1.4,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "iss",
+      "caps": [
+        "Pero si saltaras de la Estación Espacial, que va a *28,000 km/h*,",
+        "entrarías como un meteorito… *y te quemarías*."
+      ],
+      "say": [
+        "Pero si saltaras de la Estación Espacial, que va a veintiocho mil kilómetros por hora,",
+        "entrarías como un meteorito… y te quemarías."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "jet"
+        }
+      ]
+    },
+    {
+      "id": "loco",
+      "caps": [
+        "Lo más loco: en 2014, Alan Eustace",
+        "saltó *aún más alto*: desde *41 km*."
+      ],
+      "say": [
+        "Lo más loco: en dos mil catorce, Alan Eustace",
+        "saltó aún más alto: desde cuarenta y un kilómetros."
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "Deja tu *«¿Y si…?»* abajo."
+      ],
+      "say": [
+        "Deja tu «¿Y si…?» abajo."
+      ],
+      "hold": 0.4
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI SALTARAS",
+    "DESDE EL",
+    "ESPACIO?"
+  ],
+  "hookZoom": 0.12
+}
