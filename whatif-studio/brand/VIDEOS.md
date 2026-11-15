@@ -1844,3 +1844,48 @@ qué pasaría si fueras invisible, ser invisible, invisible, curiosidades, cienc
 - Archivo: `out/subir/y-si-fueras-invisible.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
 - Video relacionado (debajo del Short): «¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 28 — `out/short28-sintraje.mp4` (vertical)
+
+**Título** (48/100):
+```
+¿Y si salieras al espacio sin traje? 🧑‍🚀 #Shorts
+```
+
+**Descripción** (1170/5000):
+```
+No explotarías… pero tu saliva hervería y tendrías unos 15 segundos. A un técnico de la NASA le pasó en 1966.
+
+Lo que pasaría de verdad:
+💥 No explotarías: te hincharías un poco, pero la piel es lo bastante fuerte para contenerte.
+🫁 Hay que sacar el aire: si lo aguantas, el aire de tus pulmones se expande (afuera no hay presión) y los daña.
+💧 Sin presión, el agua hierve a temperaturas mucho más bajas, incluso a la de tu cuerpo: la saliva y las lágrimas burbujean.
+🧊 No te congelarías al instante: en el vacío no hay aire que se lleve tu calor, igual que en un termo.
+😵 Sin oxígeno, en unos 15 segundos te desmayas.
+🧑‍🚀 En 1966, Jim LeBlanc probaba un traje en una cámara de vacío de la NASA cuando el traje perdió la presión. Se desmayó a los 14 segundos; subieron la presión rápido y se recuperó. Lo último que recordó: sentir su saliva burbujeando.
+⏱️ Según los expertos, si te devuelven a la presión normal en poco más de un minuto, podrías sobrevivir.
+
+¿Cuánto crees que aguantarías? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Espacio #NASA
+```
+
+**Etiquetas** (138/500):
+```
+qué pasaría si salieras al espacio sin traje, espacio sin traje, vacío, astronauta, nasa 1966, jim leblanc, espacio, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: lo más importante de un traje espacial no es el frío, sino la presión: es como un globo con forma de persona 🧑‍🚀 ¿Te lo imaginabas? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-salieras-al-espacio-sin-traje.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)

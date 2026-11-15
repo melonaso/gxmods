@@ -1561,6 +1561,46 @@
     "locas"
    ],
    "next": "ep05-parpadeos"
+  },
+  {
+   "episode": "short28-sintraje",
+   "isShort": true,
+   "factsTitle": "Lo que pasaría de verdad:",
+   "title": "¿Y si salieras al espacio sin traje? 🧑‍🚀 #Shorts",
+   "hook": "No explotarías… pero tu saliva hervería y tendrías unos 15 segundos. A un técnico de la NASA le pasó en 1966.",
+   "math": [
+    "💥 No explotarías: te hincharías un poco, pero la piel es lo bastante fuerte para contenerte.",
+    "🫁 Hay que sacar el aire: si lo aguantas, el aire de tus pulmones se expande (afuera no hay presión) y los daña.",
+    "💧 Sin presión, el agua hierve a temperaturas mucho más bajas, incluso a la de tu cuerpo: la saliva y las lágrimas burbujean.",
+    "🧊 No te congelarías al instante: en el vacío no hay aire que se lleve tu calor, igual que en un termo.",
+    "😵 Sin oxígeno, en unos 15 segundos te desmayas.",
+    "🧑‍🚀 En 1966, Jim LeBlanc probaba un traje en una cámara de vacío de la NASA cuando el traje perdió la presión. Se desmayó a los 14 segundos; subieron la presión rápido y se recuperó. Lo último que recordó: sentir su saliva burbujeando.",
+    "⏱️ Según los expertos, si te devuelven a la presión normal en poco más de un minuto, podrías sobrevivir."
+   ],
+   "question": "¿Cuánto crees que aguantarías? 👇",
+   "hashtags": [
+    "#Shorts",
+    "#QuePasariaSi",
+    "#CuentasLocas",
+    "#Espacio",
+    "#NASA"
+   ],
+   "tags": [
+    "qué pasaría si salieras al espacio sin traje",
+    "espacio sin traje",
+    "vacío",
+    "astronauta",
+    "nasa 1966",
+    "jim leblanc",
+    "espacio",
+    "shorts",
+    "cuentas locas"
+   ],
+   "pinned": "📌 Dato: lo más importante de un traje espacial no es el frío, sino la presión: es como un globo con forma de persona 🧑‍🚀 ¿Te lo imaginabas? 👇",
+   "themes": [
+    "espacio"
+   ],
+   "next": "ep04-gravedad"
   }
  ]
 }

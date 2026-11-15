@@ -51,6 +51,10 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
     (cortes cada ~3 s); chistes visuales y una sorpresa al final.
   - Las cuentas, si las hay, van en la descripción, no en el video.
   - Ejemplo: Short 27 «¿Y si fueras invisible?» (sin voz, 27 s, lista «Preguntas locas»).
+- Opinión sobre el Short 27: ya se entendía, pero faltaba explicar (¿qué se tomó?, ¿cómo supo el perro?)
+  y era demasiado infantil. Ajuste: temas de curiosidad adulta y **cada escena = lo que pasa + por qué**
+  (una frase corta cada cosa), sin elementos mágicos sin explicar. Ej.: Short 28 «¿Y si salieras al
+  espacio sin traje?» (mito que se cae + caso real de la NASA, 1966).
 
 ## Producción
 - `bash tools/build.sh <ep>`: voz (si hay `voice.mp3`) → video → música → efectos → mezcla

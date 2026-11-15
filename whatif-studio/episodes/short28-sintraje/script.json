@@ -1,0 +1,125 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 19,
+  "cueMin": 1.3,
+  "gap": 0.1,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.3,
+  "punch": 0.08,
+  "sfx": true,
+  "title": "¿Y si salieras al espacio sin traje?",
+  "music": {
+    "bpm": 96,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "Abres la escotilla…",
+        "y sales al espacio *sin traje*."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "explota",
+      "caps": [
+        "¿Explotarías? *No*.",
+        "Te hinchas un poco, pero *tu piel te sostiene*."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "pulmones",
+      "caps": [
+        "Lo primero: *saca todo el aire*.",
+        "Si lo aguantas, *tus pulmones se dañan*."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "saliva",
+      "caps": [
+        "Tu saliva *empieza a burbujear*…",
+        "sin presión, el agua hierve *a la temperatura de tu cuerpo*."
+      ]
+    },
+    {
+      "id": "frio",
+      "caps": [
+        "¿Te congelas? *No tan rápido*.",
+        "El vacío guarda el calor, *como un termo*."
+      ]
+    },
+    {
+      "id": "oxigeno",
+      "caps": [
+        "El problema real: *el oxígeno*.",
+        "En unos *15 segundos* te desmayas."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 1.2,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "historia",
+      "caps": [
+        "Le pasó a alguien: *NASA, 1966*.",
+        "Su traje perdió la presión en una prueba…",
+        "se desmayó a los 14 segundos… *y sobrevivió*."
+      ],
+      "fx": [
+        {
+          "cue": 2,
+          "at": 0.6,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "rescate",
+      "caps": [
+        "Si te rescatan rápido… *sobrevives*."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI SALIERAS AL",
+    "ESPACIO SIN TRAJE?"
+  ],
+  "hookZoom": 0.12
+}
