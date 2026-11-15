@@ -1889,3 +1889,93 @@ qué pasaría si salieras al espacio sin traje, espacio sin traje, vacío, astro
 - Archivo: `out/subir/y-si-salieras-al-espacio-sin-traje.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
 - Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 29 — `out/short29-rayo.mp4` (vertical)
+
+**Título** (34/100):
+```
+¿Y si te cayera un rayo? ⚡ #Shorts
+```
+
+**Descripción** (1258/5000):
+```
+Un rayo está 5 veces más caliente que el Sol… y aun así casi todos sobreviven. Un guardabosques sobrevivió a 7.
+
+Lo que pasa de verdad:
+⚡ Un rayo puede llegar a unos 30,000 °C; la superficie del Sol está a unos 5,500 °C: unas 5 veces menos.
+💧 Gran parte de la corriente corre por fuera del cuerpo, sobre la piel mojada (se llama «descarga superficial»), y por eso muchos sobreviven.
+👟 El sudor y la lluvia se vuelven vapor de golpe: hay casos en que esa explosión de vapor arranca los zapatos y la ropa.
+🌿 Las marcas en forma de helecho (figuras de Lichtenberg) son vasitos de sangre reventados bajo la piel; se borran en horas o días.
+❤️ Lo más peligroso es que el corazón se detenga. A alguien a quien le cayó un rayo se le puede tocar sin peligro (no queda «cargado»): la RCP salva vidas.
+📊 Cerca de 9 de cada 10 personas a las que les cae un rayo sobreviven, aunque muchas quedan con secuelas.
+🏆 Roy Sullivan, guardabosques del Parque Nacional Shenandoah (EE. UU.), sobrevivió a 7 rayos entre 1942 y 1977: un récord Guinness.
+
+¿Sabías que se podía sobrevivir a un rayo? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Rayo #Curiosidades
+```
+
+**Etiquetas** (145/500):
+```
+qué pasaría si te cayera un rayo, rayo, sobrevivir a un rayo, roy sullivan, figuras de lichtenberg, tormenta, curiosidades, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: si escuchas un trueno, ya estás lo bastante cerca para que te caiga un rayo ⛈️ ¿Tú te metes a tu casa cuando truena? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-te-cayera-un-rayo.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día nevara 1 cm más que el anterior?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 30 — `out/short30-sueno.mp4` (vertical)
+
+**Título** (34/100):
+```
+¿Y si dejaras de dormir? 😴 #Shorts
+```
+
+**Descripción** (1193/5000):
+```
+A las 24 horas manejas como borracho, a las 48 tu cerebro se apaga solo y al tercer día ves cosas. El récord: 11 días.
+
+Lo que pasa de verdad:
+🚗 Estar 24 horas despierto afecta tus reflejos más o menos como tener 0.1 % de alcohol en la sangre, más del límite para manejar en muchos países.
+💤 Con mucho sueño, el cerebro se «apaga» unos segundos sin que lo notes: son los microsueños, muy peligrosos al manejar.
+👀 Después de 2 o 3 días sin dormir aparecen alucinaciones: ves u oyes cosas que no están.
+🧠 Mientras duermes, el cerebro elimina desechos que se acumulan durante el día y guarda en la memoria lo que aprendiste.
+🏆 En 1964, Randy Gardner, un estudiante de 17 años, estuvo 11 días (264 horas) despierto para una feria de ciencias. Después durmió unas 14 horas y se recuperó.
+⚠️ Guinness ya no registra este récord porque es peligroso. No lo intentes.
+🐬 Los delfines duermen con la mitad del cerebro a la vez: así siguen nadando y saliendo a respirar.
+
+¿Cuánto es lo más que has aguantado sin dormir? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Sueño #Curiosidades
+```
+
+**Etiquetas** (143/500):
+```
+qué pasaría si dejaras de dormir, no dormir, privación de sueño, microsueños, randy gardner, récord sin dormir, delfines, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: los delfines pueden pasar días nadando sin «apagarse» del todo porque una mitad del cerebro descansa mientras la otra vigila 🐬 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-dejaras-de-dormir.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?» (súbelo antes si aún no está publicado)

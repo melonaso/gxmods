@@ -1601,6 +1601,86 @@
     "espacio"
    ],
    "next": "ep04-gravedad"
+  },
+  {
+   "episode": "short29-rayo",
+   "isShort": true,
+   "factsTitle": "Lo que pasa de verdad:",
+   "title": "¿Y si te cayera un rayo? ⚡ #Shorts",
+   "hook": "Un rayo está 5 veces más caliente que el Sol… y aun así casi todos sobreviven. Un guardabosques sobrevivió a 7.",
+   "math": [
+    "⚡ Un rayo puede llegar a unos 30,000 °C; la superficie del Sol está a unos 5,500 °C: unas 5 veces menos.",
+    "💧 Gran parte de la corriente corre por fuera del cuerpo, sobre la piel mojada (se llama «descarga superficial»), y por eso muchos sobreviven.",
+    "👟 El sudor y la lluvia se vuelven vapor de golpe: hay casos en que esa explosión de vapor arranca los zapatos y la ropa.",
+    "🌿 Las marcas en forma de helecho (figuras de Lichtenberg) son vasitos de sangre reventados bajo la piel; se borran en horas o días.",
+    "❤️ Lo más peligroso es que el corazón se detenga. A alguien a quien le cayó un rayo se le puede tocar sin peligro (no queda «cargado»): la RCP salva vidas.",
+    "📊 Cerca de 9 de cada 10 personas a las que les cae un rayo sobreviven, aunque muchas quedan con secuelas.",
+    "🏆 Roy Sullivan, guardabosques del Parque Nacional Shenandoah (EE. UU.), sobrevivió a 7 rayos entre 1942 y 1977: un récord Guinness."
+   ],
+   "question": "¿Sabías que se podía sobrevivir a un rayo? 👇",
+   "hashtags": [
+    "#Shorts",
+    "#QuePasariaSi",
+    "#CuentasLocas",
+    "#Rayo",
+    "#Curiosidades"
+   ],
+   "tags": [
+    "qué pasaría si te cayera un rayo",
+    "rayo",
+    "sobrevivir a un rayo",
+    "roy sullivan",
+    "figuras de lichtenberg",
+    "tormenta",
+    "curiosidades",
+    "shorts",
+    "cuentas locas"
+   ],
+   "pinned": "📌 Dato: si escuchas un trueno, ya estás lo bastante cerca para que te caiga un rayo ⛈️ ¿Tú te metes a tu casa cuando truena? 👇",
+   "themes": [
+    "locas"
+   ],
+   "next": "ep09-nieve"
+  },
+  {
+   "episode": "short30-sueno",
+   "isShort": true,
+   "factsTitle": "Lo que pasa de verdad:",
+   "title": "¿Y si dejaras de dormir? 😴 #Shorts",
+   "hook": "A las 24 horas manejas como borracho, a las 48 tu cerebro se apaga solo y al tercer día ves cosas. El récord: 11 días.",
+   "math": [
+    "🚗 Estar 24 horas despierto afecta tus reflejos más o menos como tener 0.1 % de alcohol en la sangre, más del límite para manejar en muchos países.",
+    "💤 Con mucho sueño, el cerebro se «apaga» unos segundos sin que lo notes: son los microsueños, muy peligrosos al manejar.",
+    "👀 Después de 2 o 3 días sin dormir aparecen alucinaciones: ves u oyes cosas que no están.",
+    "🧠 Mientras duermes, el cerebro elimina desechos que se acumulan durante el día y guarda en la memoria lo que aprendiste.",
+    "🏆 En 1964, Randy Gardner, un estudiante de 17 años, estuvo 11 días (264 horas) despierto para una feria de ciencias. Después durmió unas 14 horas y se recuperó.",
+    "⚠️ Guinness ya no registra este récord porque es peligroso. No lo intentes.",
+    "🐬 Los delfines duermen con la mitad del cerebro a la vez: así siguen nadando y saliendo a respirar."
+   ],
+   "question": "¿Cuánto es lo más que has aguantado sin dormir? 👇",
+   "hashtags": [
+    "#Shorts",
+    "#QuePasariaSi",
+    "#CuentasLocas",
+    "#Sueño",
+    "#Curiosidades"
+   ],
+   "tags": [
+    "qué pasaría si dejaras de dormir",
+    "no dormir",
+    "privación de sueño",
+    "microsueños",
+    "randy gardner",
+    "récord sin dormir",
+    "delfines",
+    "shorts",
+    "cuentas locas"
+   ],
+   "pinned": "📌 Dato: los delfines pueden pasar días nadando sin «apagarse» del todo porque una mitad del cerebro descansa mientras la otra vigila 🐬 ¿Lo sabías? 👇",
+   "themes": [
+    "locas"
+   ],
+   "next": "ep05-parpadeos"
   }
  ]
 }

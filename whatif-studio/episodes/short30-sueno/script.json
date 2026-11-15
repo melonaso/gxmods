@@ -1,0 +1,154 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si dejaras de dormir?",
+  "music": {
+    "bpm": 92,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si",
+        "*dejaras de dormir*?"
+      ],
+      "say": [
+        "¿Qué pasaría si",
+        "dejaras de dormir?"
+      ],
+      "hold": 0.2
+    },
+    {
+      "id": "h24",
+      "caps": [
+        "A las *24 horas*, manejarías *como si estuvieras borracho*:",
+        "tus reflejos se vuelven lentos."
+      ],
+      "say": [
+        "A las veinticuatro horas, manejarías como si estuvieras borracho:",
+        "tus reflejos se vuelven lentos."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "h48",
+      "caps": [
+        "A las *48*, tu cerebro *se apaga unos segundos*",
+        "sin que lo notes: son *microsueños*."
+      ],
+      "say": [
+        "A las cuarenta y ocho, tu cerebro se apaga unos segundos",
+        "sin que lo notes: son microsueños."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "dia3",
+      "caps": [
+        "Al *tercer día*, empiezas a ver",
+        "cosas que *no están ahí*."
+      ],
+      "say": [
+        "Al tercer día, empiezas a ver",
+        "cosas que no están ahí."
+      ]
+    },
+    {
+      "id": "porque",
+      "caps": [
+        "¿Por qué? Dormido, *tu cerebro se limpia*",
+        "y guarda lo que aprendiste. Sin dormir, *se satura*."
+      ],
+      "say": [
+        "¿Por qué? Dormido, tu cerebro se limpia",
+        "y guarda lo que aprendiste. Sin dormir, se satura."
+      ]
+    },
+    {
+      "id": "record",
+      "caps": [
+        "El récord: en 1964, un estudiante de 17 años",
+        "aguantó *11 días despierto*."
+      ],
+      "say": [
+        "El récord: en mil novecientos sesenta y cuatro, un estudiante de diecisiete años",
+        "aguantó once días despierto."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "durmio",
+      "caps": [
+        "Después durmió *14 horas*…",
+        "*y despertó bien*."
+      ],
+      "say": [
+        "Después durmió catorce horas…",
+        "y despertó bien."
+      ]
+    },
+    {
+      "id": "delfines",
+      "caps": [
+        "Los delfines, en cambio, *nunca se duermen del todo*:",
+        "*duermen con medio cerebro* a la vez."
+      ],
+      "say": [
+        "Los delfines, en cambio, nunca se duermen del todo:",
+        "duermen con medio cerebro a la vez."
+      ],
+      "hold": 0.4,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "splash"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI DEJARAS",
+    "DE DORMIR?"
+  ],
+  "hookZoom": 0.12
+}

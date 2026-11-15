@@ -1,0 +1,168 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si te cayera un rayo?",
+  "music": {
+    "bpm": 108,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *te cayera un rayo*?",
+        "¿Sobrevivirías?"
+      ],
+      "say": [
+        "¿Qué pasaría si te cayera un rayo?",
+        "¿Sobrevivirías?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.5,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "calor",
+      "caps": [
+        "Un rayo está *5 veces más caliente*",
+        "que la superficie del Sol."
+      ],
+      "say": [
+        "Un rayo está cinco veces más caliente",
+        "que la superficie del Sol."
+      ]
+    },
+    {
+      "id": "piel",
+      "caps": [
+        "Pero casi toda la corriente *no entra en ti*:",
+        "corre *por fuera*, sobre tu piel mojada."
+      ],
+      "say": [
+        "Pero casi toda la corriente no entra en ti:",
+        "corre por fuera, sobre tu piel mojada."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "zapatos",
+      "caps": [
+        "El sudor se vuelve vapor de golpe…",
+        "*¡y puede volarte los zapatos!*"
+      ],
+      "say": [
+        "El sudor se vuelve vapor de golpe…",
+        "¡y puede volarte los zapatos!"
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.15,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "marcas",
+      "caps": [
+        "Te quedan marcas *como helechos*:",
+        "son vasitos de sangre reventados, *y se borran en días*."
+      ],
+      "say": [
+        "Te quedan marcas como helechos:",
+        "son vasitos de sangre reventados, y se borran en días."
+      ]
+    },
+    {
+      "id": "corazon",
+      "caps": [
+        "Lo peligroso: *puede detener tu corazón*…",
+        "y ahí la *RCP* te puede salvar."
+      ],
+      "say": [
+        "Lo peligroso: puede detener tu corazón…",
+        "y ahí la RCP te puede salvar."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.6,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "respuesta",
+      "caps": [
+        "¿La respuesta? *9 de cada 10* personas",
+        "*sobreviven* a un rayo."
+      ],
+      "say": [
+        "¿La respuesta? Nueve de cada diez personas",
+        "sobreviven a un rayo."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.5,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "sullivan",
+      "caps": [
+        "Y un guardabosques, *Roy Sullivan*,",
+        "sobrevivió… *¡a 7 rayos!*"
+      ],
+      "say": [
+        "Y un guardabosques, Roy Sullivan,",
+        "sobrevivió… ¡a siete rayos!"
+      ],
+      "hold": 0.4,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "boom"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI TE CAYERA",
+    "UN RAYO?"
+  ],
+  "hookZoom": 0.12
+}

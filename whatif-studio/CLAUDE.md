@@ -55,6 +55,10 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
   y era demasiado infantil. Ajuste: temas de curiosidad adulta y **cada escena = lo que pasa + por qué**
   (una frase corta cada cosa), sin elementos mágicos sin explicar. Ej.: Short 28 «¿Y si salieras al
   espacio sin traje?» (mito que se cae + caso real de la NASA, 1966).
+- Los Shorts 26–28 fueron **pruebas** (no se suben). Los que se publican siguen con la voz del dueño, pero
+  con la estructura nueva: pregunta abierta al inicio y respuesta casi al final, lo que pasa + por qué,
+  un lugar distinto por escena, sin ecuaciones en pantalla y **sin «Deja tu ¿Y si…? abajo»** al cierre
+  (termina con una sorpresa). Primeros: Shorts 29 (rayo) y 30 (sin dormir).
 
 ## Producción
 - `bash tools/build.sh <ep>`: voz (si hay `voice.mp3`) → video → música → efectos → mezcla
