@@ -1481,6 +1481,45 @@
     "espacio"
    ],
    "next": "ep04-gravedad"
+  },
+  {
+   "episode": "short26-gota",
+   "isShort": true,
+   "factsTitle": "Las cuentas:",
+   "title": "1 gota que se duplica cada minuto: ¿cuándo llena medio estadio? 💧 #Shorts",
+   "hook": "Llena un estadio en 45 minutos. ¿En qué minuto está a la mitad? Casi todos fallan… la respuesta está al final.",
+   "math": [
+    "💧 Una gota ≈ 0.05 mL y se duplica cada minuto: en el minuto n hay 2ⁿ gotas.",
+    "🥃 Minuto 10: 2¹⁰ = 1,024 gotas × 0.05 mL ≈ 51 mL, un caballito.",
+    "🚰 Minuto 20: 2²⁰ = 1,048,576 gotas ≈ 52 litros, 2 garrafones y medio.",
+    "🏊 Minuto 30: 2³⁰ ≈ 1,074 millones de gotas ≈ 54,000 litros, una alberca.",
+    "🏟️ Minuto 45: 2⁴⁵ ≈ 35 billones de gotas ≈ 1.76 millones de m³, un estadio gigante.",
+    "📉 Como se duplica, un minuto antes siempre hay la mitad: minuto 44 = 50 %, 43 = 25 %, 42 = 12.5 %, 41 = 6.25 %, 40 = 3.1 %.",
+    "🧠 Así es el crecimiento exponencial: casi nada durante mucho tiempo… y de golpe, todo."
+   ],
+   "question": "¿Le atinaste al minuto? 👇",
+   "hashtags": [
+    "#Shorts",
+    "#QuePasariaSi",
+    "#CuentasLocas",
+    "#Matematicas",
+    "#Exponencial"
+   ],
+   "tags": [
+    "crecimiento exponencial",
+    "gota que se duplica",
+    "acertijo matemático",
+    "duplicar cada minuto",
+    "estadio lleno de agua",
+    "matemáticas",
+    "shorts",
+    "cuentas locas"
+   ],
+   "pinned": "📌 Dato: si la gota siguiera duplicándose, en el minuto 85 ya tendría más agua que todos los océanos de la Tierra 🌊 ¿Te lo imaginabas? 👇",
+   "themes": [
+    "crecimiento"
+   ],
+   "next": "ep03-velocidad"
   }
  ]
 }

@@ -94,7 +94,8 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
     }
     drawOverlay(ctx, W, H, {
       subtitle: subtitleAt(s, local),
-      fade: Math.max(t < (script.fadeIn ?? 0.5) ? 1 - t / (script.fadeIn ?? 0.5) : 0, t > duration - 1 ? t - (duration - 1) : 0),
+      // "fadeOut": 0 deja el final sin fundido a negro (para Shorts en bucle: el último cuadro empata con el primero).
+      fade: Math.max(t < (script.fadeIn ?? 0.5) ? 1 - t / (script.fadeIn ?? 0.5) : 0, (script.fadeOut ?? 1) > 0 && t > duration - (script.fadeOut ?? 1) ? (t - (duration - (script.fadeOut ?? 1))) / (script.fadeOut ?? 1) : 0),
       ...ov,
     });
   }

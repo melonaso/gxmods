@@ -35,6 +35,15 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
   Shorts. Siguiente paso: videos largos de 6–10 min que amplíen los Shorts ganadores (ej. «el Sol
   se apaga, minuto a minuto») y enlazarlos como «video relacionado» desde esos Shorts.
 
+## Retención (14 nov 2026)
+- Problema: la gente se va a la mitad (~67 % visto). Causas probables: sin pregunta abierta, el dato
+  fuerte sale pronto y el cierre «Deja tu ¿Y si…? abajo» avisa que ya terminó (deslizan).
+- Prueba en curso: Short 26 (gota que se duplica) **sin voz**, ~27 s, con una pregunta fija arriba que
+  se contesta al final (~85 % del video), números que escalan cada ~3 s y final en **bucle**
+  (`"fadeOut": 0`; el último cuadro empata con el primero). El llamado a comentar va en el comentario
+  fijado, no al final del video.
+- Comparar su % visto contra los Shorts con voz antes de decidir el formato.
+
 ## Producción
 - `bash tools/build.sh <ep>`: voz (si hay `voice.mp3`) → video → música → efectos → mezcla
   (−14 LUFS en Shorts, −16 en largos).

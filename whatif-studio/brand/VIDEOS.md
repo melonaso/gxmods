@@ -1756,3 +1756,48 @@ qué pasaría si saltaras desde el espacio, felix baumgartner, salto desde la es
 - Archivo: `out/subir/y-si-saltaras-desde-el-espacio.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
 - Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 26 — `out/short26-gota.mp4` (vertical)
+
+**Título** (73/100):
+```
+1 gota que se duplica cada minuto: ¿cuándo llena medio estadio? 💧 #Shorts
+```
+
+**Descripción** (918/5000):
+```
+Llena un estadio en 45 minutos. ¿En qué minuto está a la mitad? Casi todos fallan… la respuesta está al final.
+
+Las cuentas:
+💧 Una gota ≈ 0.05 mL y se duplica cada minuto: en el minuto n hay 2ⁿ gotas.
+🥃 Minuto 10: 2¹⁰ = 1,024 gotas × 0.05 mL ≈ 51 mL, un caballito.
+🚰 Minuto 20: 2²⁰ = 1,048,576 gotas ≈ 52 litros, 2 garrafones y medio.
+🏊 Minuto 30: 2³⁰ ≈ 1,074 millones de gotas ≈ 54,000 litros, una alberca.
+🏟️ Minuto 45: 2⁴⁵ ≈ 35 billones de gotas ≈ 1.76 millones de m³, un estadio gigante.
+📉 Como se duplica, un minuto antes siempre hay la mitad: minuto 44 = 50 %, 43 = 25 %, 42 = 12.5 %, 41 = 6.25 %, 40 = 3.1 %.
+🧠 Así es el crecimiento exponencial: casi nada durante mucho tiempo… y de golpe, todo.
+
+¿Le atinaste al minuto? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Matematicas #Exponencial
+```
+
+**Etiquetas** (146/500):
+```
+crecimiento exponencial, gota que se duplica, acertijo matemático, duplicar cada minuto, estadio lleno de agua, matemáticas, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: si la gota siguiera duplicándose, en el minuto 85 ya tendría más agua que todos los océanos de la Tierra 🌊 ¿Te lo imaginabas? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/1-gota-que-se-duplica-cada-minuto-cuando-llena-medio-estadio.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Crecimiento sin freno»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada paso te hiciera 1% más rápido?» (súbelo antes si aún no está publicado)

@@ -1,0 +1,158 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 21,
+  "cueMin": 1.15,
+  "gap": 0.1,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.09,
+  "sfx": true,
+  "title": "1 gota que se duplica cada minuto: ¿cuándo llena medio estadio?",
+  "music": {
+    "bpm": 124,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "Se llena en *45 minutos*.",
+        "¿En qué minuto está *a la mitad*?"
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.55,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "min10",
+      "caps": [
+        "Minuto 10: *1,024 gotas*.",
+        "Apenas *un caballito*."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.05,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "min20",
+      "caps": [
+        "Minuto 20: *52 litros*.",
+        "*2 garrafones y medio*."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.05,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "min30",
+      "caps": [
+        "Minuto 30: *una alberca*…",
+        "y el estadio, *casi vacío*."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.05,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "min40",
+      "caps": [
+        "Minuto 40: *apenas 3 %*… parece que falta mucho."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.05,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "rapido",
+      "caps": [
+        "41: *6 %* · 42: *12 %* · 43: *25 %*…"
+      ],
+      "hold": 0.5,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.05,
+          "type": "click"
+        },
+        {
+          "cue": 0,
+          "at": 0.6,
+          "type": "click"
+        },
+        {
+          "cue": 0,
+          "at": 1.15,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "mitad",
+      "caps": [
+        "Minuto 44: *¡a la mitad!*",
+        "Y un minuto después…"
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.1,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "lleno",
+      "caps": [
+        "*¡LLENO!*",
+        "La mitad, *en el último minuto*."
+      ],
+      "hold": 0.3,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.15,
+          "type": "splash"
+        }
+      ],
+      "min": 2.6
+    },
+    {
+      "id": "loop",
+      "caps": [
+        "¿Le atinaste?"
+      ],
+      "hold": 0.6,
+      "min": 2.2
+    }
+  ],
+  "hookTitle": [
+    "1 GOTA QUE SE DUPLICA",
+    "CADA MINUTO"
+  ],
+  "hookZoom": 0.12
+}
