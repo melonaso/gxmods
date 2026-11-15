@@ -1,0 +1,160 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "title": "¿Y si cayeras de un avión sin paracaídas?",
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si cayeras de un avión… *sin paracaídas*?",
+        "¿Hay forma de *sobrevivir*?"
+      ],
+      "say": [
+        "¿Qué pasaría si cayeras de un avión… sin paracaídas?",
+        "¿Hay forma de sobrevivir?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "frio",
+      "caps": [
+        "A *10 km* de altura hace *−50 °C* y casi no hay oxígeno:",
+        "te desmayarías en *menos de un minuto*."
+      ],
+      "say": [
+        "A diez kilómetros de altura hace cincuenta grados bajo cero y casi no hay oxígeno:",
+        "te desmayarías en menos de un minuto."
+      ]
+    },
+    {
+      "id": "despiertas",
+      "caps": [
+        "Pero al caer, el aire se hace *más espeso*…",
+        "*y despiertas*."
+      ],
+      "say": [
+        "Pero al caer, el aire se hace más espeso…",
+        "y despiertas."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "velocidad",
+      "caps": [
+        "Caerías a unos *200 km/h*:",
+        "el aire te frena y *no te deja ir más rápido*."
+      ],
+      "say": [
+        "Caerías a unos doscientos kilómetros por hora:",
+        "el aire te frena y no te deja ir más rápido."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "tiempo",
+      "caps": [
+        "Tardarías unos *3 minutos* en llegar al suelo."
+      ],
+      "say": [
+        "Tardarías unos tres minutos en llegar al suelo."
+      ],
+      "hold": 0.3
+    },
+    {
+      "id": "opcion",
+      "caps": [
+        "Tu mejor opción: caer en *nieve, árboles o una pendiente*:",
+        "te frenan *poco a poco*."
+      ],
+      "say": [
+        "Tu mejor opción: caer en nieve, árboles o una pendiente:",
+        "te frenan poco a poco."
+      ]
+    },
+    {
+      "id": "vesna",
+      "caps": [
+        "¿Se puede sobrevivir? *Sí*: en 1972, una azafata",
+        "cayó desde *10 km* dentro de un pedazo del avión… *y sobrevivió*."
+      ],
+      "say": [
+        "¿Se puede sobrevivir? Sí: en mil novecientos setenta y dos, una azafata",
+        "cayó desde diez kilómetros dentro de un pedazo del avión… y sobrevivió."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 1.2,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "record",
+      "caps": [
+        "Su caída sigue siendo *récord mundial*:",
+        "la más alta *sin paracaídas*."
+      ],
+      "say": [
+        "Su caída sigue siendo récord mundial:",
+        "la más alta sin paracaídas."
+      ],
+      "hold": 0.4,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI CAYERAS DE UN",
+    "AVIÓN SIN PARACAÍDAS?"
+  ],
+  "hookZoom": 0.12
+}

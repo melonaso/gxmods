@@ -1681,6 +1681,47 @@
     "locas"
    ],
    "next": "ep05-parpadeos"
+  },
+  {
+   "episode": "short31-caida",
+   "isShort": true,
+   "factsTitle": "Lo que pasa de verdad:",
+   "title": "¿Y si cayeras de un avión sin paracaídas? ✈️ #Shorts",
+   "hook": "A 10 km te desmayarías, pero al bajar el aire te despierta y te frena. En 1972 una azafata cayó así… y sobrevivió.",
+   "math": [
+    "🥶 A unos 10 km, donde vuelan los aviones comerciales, hace unos −50 °C y cada respiración trae como un tercio del oxígeno que al nivel del mar: sin máscara te desmayarías en menos de un minuto.",
+    "💨 Mientras caes, el aire se vuelve más denso (hay más aire encima apretándolo) y trae más oxígeno: por debajo de unos 5 km es probable que despiertes.",
+    "🪂 Al principio aceleras, pero el aire te empuja hacia arriba cada vez más fuerte. Cuando ese empuje iguala tu peso dejas de acelerar: es la velocidad terminal (la máxima a la que puede caer un cuerpo en el aire), unos 200 km/h boca abajo.",
+    "⏱️ 200 km/h son 200,000 m ÷ 3,600 s ≈ 55 m por segundo. Entonces 10,000 m ÷ 55 m/s ≈ 180 s, unos 3 minutos de caída.",
+    "🌲 Lo que mata no es la velocidad, sino frenar de golpe. Nieve, ramas o una pendiente alargan la distancia en la que frenas, y así la fuerza sobre tu cuerpo es mucho menor.",
+    "✈️ El 26 de enero de 1972, el vuelo 367 de JAT explotó sobre Checoslovaquia. La azafata Vesna Vulović quedó atrapada en un pedazo del fuselaje que cayó unos 10,160 m sobre una ladera nevada con árboles. Estuvo días en coma y con fracturas, pero sobrevivió y volvió a caminar.",
+    "🏆 Guinness la reconoce como la caída más alta sobrevivida sin paracaídas (algunos periodistas han dudado de la altura, pero el récord sigue vigente).",
+    "⚠️ Es casi imposible sobrevivir: ella tuvo muchísima suerte."
+   ],
+   "question": "¿Tú te volverías a subir a un avión después de algo así? 👇",
+   "hashtags": [
+    "#Shorts",
+    "#QuePasariaSi",
+    "#CuentasLocas",
+    "#Aviones",
+    "#Curiosidades"
+   ],
+   "tags": [
+    "qué pasaría si cayeras de un avión",
+    "caer sin paracaídas",
+    "velocidad terminal",
+    "vesna vulović",
+    "récord guinness caída",
+    "sobrevivir caída avión",
+    "física",
+    "shorts",
+    "cuentas locas"
+   ],
+   "pinned": "📌 Dato: en 1971, Juliane Koepcke, de 17 años, cayó unos 3 km todavía amarrada a su asiento sobre la selva de Perú… y caminó 11 días hasta encontrar ayuda 🌳 ¿Tú habrías sobrevivido? 👇",
+   "themes": [
+    "locas"
+   ],
+   "next": "ep04-gravedad"
   }
  ]
 }

@@ -1979,3 +1979,49 @@ qué pasaría si dejaras de dormir, no dormir, privación de sueño, microsueño
 - Archivo: `out/subir/y-si-dejaras-de-dormir.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
 - Video relacionado (debajo del Short): «¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 31 — `out/short31-caida.mp4` (vertical)
+
+**Título** (52/100):
+```
+¿Y si cayeras de un avión sin paracaídas? ✈️ #Shorts
+```
+
+**Descripción** (1744/5000):
+```
+A 10 km te desmayarías, pero al bajar el aire te despierta y te frena. En 1972 una azafata cayó así… y sobrevivió.
+
+Lo que pasa de verdad:
+🥶 A unos 10 km, donde vuelan los aviones comerciales, hace unos −50 °C y cada respiración trae como un tercio del oxígeno que al nivel del mar: sin máscara te desmayarías en menos de un minuto.
+💨 Mientras caes, el aire se vuelve más denso (hay más aire encima apretándolo) y trae más oxígeno: por debajo de unos 5 km es probable que despiertes.
+🪂 Al principio aceleras, pero el aire te empuja hacia arriba cada vez más fuerte. Cuando ese empuje iguala tu peso dejas de acelerar: es la velocidad terminal (la máxima a la que puede caer un cuerpo en el aire), unos 200 km/h boca abajo.
+⏱️ 200 km/h son 200,000 m ÷ 3,600 s ≈ 55 m por segundo. Entonces 10,000 m ÷ 55 m/s ≈ 180 s, unos 3 minutos de caída.
+🌲 Lo que mata no es la velocidad, sino frenar de golpe. Nieve, ramas o una pendiente alargan la distancia en la que frenas, y así la fuerza sobre tu cuerpo es mucho menor.
+✈️ El 26 de enero de 1972, el vuelo 367 de JAT explotó sobre Checoslovaquia. La azafata Vesna Vulović quedó atrapada en un pedazo del fuselaje que cayó unos 10,160 m sobre una ladera nevada con árboles. Estuvo días en coma y con fracturas, pero sobrevivió y volvió a caminar.
+🏆 Guinness la reconoce como la caída más alta sobrevivida sin paracaídas (algunos periodistas han dudado de la altura, pero el récord sigue vigente).
+⚠️ Es casi imposible sobrevivir: ella tuvo muchísima suerte.
+
+¿Tú te volverías a subir a un avión después de algo así? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Aviones #Curiosidades
+```
+
+**Etiquetas** (168/500):
+```
+qué pasaría si cayeras de un avión, caer sin paracaídas, velocidad terminal, vesna vulović, récord guinness caída, sobrevivir caída avión, física, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: en 1971, Juliane Koepcke, de 17 años, cayó unos 3 km todavía amarrada a su asiento sobre la selva de Perú… y caminó 11 días hasta encontrar ayuda 🌳 ¿Tú habrías sobrevivido? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-cayeras-de-un-avion-sin-paracaidas.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
