@@ -58,7 +58,8 @@ def segments(x, thr_db=-38, min_sil=0.12):
 
 
 def sentences(text):
-    return [s for s in re.split(r'(?<=[.!?…])\s+(?=[¿¡«A-ZÁÉÍÓÚÑ])', text.strip()) if s]
+    # «…» no corta oración aunque siga «¡» o mayúscula: a veces se lee de corrido (pausa opcional, ver abajo).
+    return [s for s in re.split(r'(?<=[.!?])\s+(?=[¿¡«A-ZÁÉÍÓÚÑ])', text.strip()) if s]
 
 
 def match_sentences(scenes, groups):
