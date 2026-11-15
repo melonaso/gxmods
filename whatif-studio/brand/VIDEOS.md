@@ -1801,3 +1801,46 @@ crecimiento exponencial, gota que se duplica, acertijo matemático, duplicar cad
 - Archivo: `out/subir/1-gota-que-se-duplica-cada-minuto-cuando-llena-medio-estadio.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Crecimiento sin freno»
 - Video relacionado (debajo del Short): «¿Qué pasaría si cada paso te hiciera 1% más rápido?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 27 — `out/short27-invisible.mp4` (vertical)
+
+**Título** (33/100):
+```
+¿Y si fueras invisible? 👻 #Shorts
+```
+
+**Descripción** (757/5000):
+```
+Tu ropa te delata, la galleta se ve en tu panza, tu perro te huele… y lo peor viene al final.
+
+Lo que pasaría de verdad:
+👕 La ropa no se vuelve invisible contigo: se vería caminando sola.
+🍪 La comida tarda horas en digerirse: mientras tanto, se vería flotando dentro de ti.
+🐶 Los perros reconocen a las personas por el olor, no solo por la vista.
+🌧️ La lluvia rebotaría en tu cuerpo y dibujaría tu silueta.
+👁️ Para ver, el ojo tiene que atrapar la luz en la retina. Si la luz te atravesara sin detenerse, no se quedaría nada: estarías ciego.
+
+¿Aun así te la tomarías? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Invisible #Curiosidades
+```
+
+**Etiquetas** (131/500):
+```
+qué pasaría si fueras invisible, ser invisible, invisible, curiosidades, ciencia para niños, preguntas locas, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: por eso, una persona totalmente invisible no podría ver nada… a menos que sus ojos sí se vieran 👀 ¿Qué harías si fueras invisible un día? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-fueras-invisible.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?» (súbelo antes si aún no está publicado)

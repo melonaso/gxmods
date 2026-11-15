@@ -17,6 +17,10 @@
    "ideas": {
     "name": "Ideas de los suscriptores",
     "description": "Videos que salieron de sus comentarios. Deja tu «¿Qué pasaría si…?» en cualquier video: las mejores ideas se vuelven video, con crédito para quien la propuso."
+   },
+   "locas": {
+    "name": "¿Qué pasaría si…? Preguntas locas",
+    "description": "¿Y si fueras invisible? ¿Y si los animales hablaran? Las preguntas que se haría cualquier niño, respondidas con ciencia y mucho humor, en menos de 30 segundos."
    }
   }
  },
@@ -1520,6 +1524,43 @@
     "crecimiento"
    ],
    "next": "ep03-velocidad"
+  },
+  {
+   "episode": "short27-invisible",
+   "isShort": true,
+   "factsTitle": "Lo que pasaría de verdad:",
+   "title": "¿Y si fueras invisible? 👻 #Shorts",
+   "hook": "Tu ropa te delata, la galleta se ve en tu panza, tu perro te huele… y lo peor viene al final.",
+   "math": [
+    "👕 La ropa no se vuelve invisible contigo: se vería caminando sola.",
+    "🍪 La comida tarda horas en digerirse: mientras tanto, se vería flotando dentro de ti.",
+    "🐶 Los perros reconocen a las personas por el olor, no solo por la vista.",
+    "🌧️ La lluvia rebotaría en tu cuerpo y dibujaría tu silueta.",
+    "👁️ Para ver, el ojo tiene que atrapar la luz en la retina. Si la luz te atravesara sin detenerse, no se quedaría nada: estarías ciego."
+   ],
+   "question": "¿Aun así te la tomarías? 👇",
+   "hashtags": [
+    "#Shorts",
+    "#QuePasariaSi",
+    "#CuentasLocas",
+    "#Invisible",
+    "#Curiosidades"
+   ],
+   "tags": [
+    "qué pasaría si fueras invisible",
+    "ser invisible",
+    "invisible",
+    "curiosidades",
+    "ciencia para niños",
+    "preguntas locas",
+    "shorts",
+    "cuentas locas"
+   ],
+   "pinned": "📌 Dato: por eso, una persona totalmente invisible no podría ver nada… a menos que sus ojos sí se vieran 👀 ¿Qué harías si fueras invisible un día? 👇",
+   "themes": [
+    "locas"
+   ],
+   "next": "ep05-parpadeos"
   }
  ]
 }

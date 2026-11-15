@@ -43,6 +43,14 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
   (`"fadeOut": 0`; el último cuadro empata con el primero). El llamado a comentar va en el comentario
   fijado, no al final del video.
 - Comparar su % visto contra los Shorts con voz antes de decidir el formato.
+- Opinión del dueño sobre el Short 26: lo habría deslizado en 4 s (no se entendía qué se llenaba,
+  sin cortes de escena, demasiados números). Reglas para Shorts desde ahora:
+  - Temas **más entretenidos que informativos**: preguntas que se haría un niño de 7 años.
+  - **Nada de ecuaciones** en pantalla; frases cortas que se lean en 1–2 s; cero números si se puede.
+  - Contexto claro desde el fotograma 1 (objetos reconocibles) y **un lugar distinto en cada escena**
+    (cortes cada ~3 s); chistes visuales y una sorpresa al final.
+  - Las cuentas, si las hay, van en la descripción, no en el video.
+  - Ejemplo: Short 27 «¿Y si fueras invisible?» (sin voz, 27 s, lista «Preguntas locas»).
 
 ## Producción
 - `bash tools/build.sh <ep>`: voz (si hay `voice.mp3`) → video → música → efectos → mezcla

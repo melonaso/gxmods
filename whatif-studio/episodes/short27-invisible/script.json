@@ -1,0 +1,132 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 16,
+  "cueMin": 1.3,
+  "gap": 0.1,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.3,
+  "punch": 0.1,
+  "sfx": true,
+  "title": "¿Y si fueras invisible?",
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Y si te tomaras esto…",
+        "y te volvieras *invisible*?"
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.15,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "calle",
+      "caps": [
+        "Problema 1: *tu ropa sí se ve*."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.5,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "cocina",
+      "caps": [
+        "Agarras una galleta…",
+        "*¡y flota sola!*"
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "panza",
+      "caps": [
+        "Pero al comértela…",
+        "*¡se ve en tu panza!*"
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "perro",
+      "caps": [
+        "Tu perro *te encuentra igual*:",
+        "*te huele*."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "lluvia",
+      "caps": [
+        "Y si llueve…",
+        "*¡apareces!*"
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.1,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "ciego",
+      "caps": [
+        "Y lo peor…",
+        "*¡no podrías ver nada!*",
+        "La luz te atravesaría los ojos."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.05,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "caps": [
+        "¿Aun así *te la tomarías*?"
+      ],
+      "hold": 0.5
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI FUERAS",
+    "INVISIBLE?"
+  ],
+  "hookZoom": 0.12
+}
