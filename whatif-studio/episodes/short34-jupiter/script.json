@@ -1,0 +1,164 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "title": "¿Y si cayeras en Júpiter?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si cayeras en *Júpiter*?",
+        "¿Hasta dónde *llegarías*?"
+      ],
+      "say": [
+        "¿Qué pasaría si cayeras en Júpiter?",
+        "¿Hasta dónde llegarías?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "sinsuelo",
+      "caps": [
+        "Primero: *no podrías pararte* en ningún lado.",
+        "Júpiter *no tiene suelo*: es gas que se hace más espeso mientras bajas."
+      ],
+      "say": [
+        "Primero: no podrías pararte en ningún lado.",
+        "Júpiter no tiene suelo: es gas que se hace más espeso mientras bajas."
+      ]
+    },
+    {
+      "id": "gravedad",
+      "caps": [
+        "Su gravedad es *2.5 veces* la de la Tierra:",
+        "pesarías como si cargaras a *otra persona y media*."
+      ],
+      "say": [
+        "Su gravedad es dos veces y media la de la Tierra:",
+        "pesarías como si cargaras a otra persona y media."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "viento",
+      "caps": [
+        "Arriba hace *más de 100 grados bajo cero*…",
+        "y soplan vientos *más fuertes que cualquier huracán*."
+      ],
+      "say": [
+        "Arriba hace más de cien grados bajo cero…",
+        "y soplan vientos más fuertes que cualquier huracán."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "presion",
+      "caps": [
+        "Mientras más bajas, *más gas tienes encima*:",
+        "la presión te *aplasta* y el calor sube *como en un horno*."
+      ],
+      "say": [
+        "Mientras más bajas, más gas tienes encima:",
+        "la presión te aplasta y el calor sube como en un horno."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.5,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "galileo",
+      "caps": [
+        "¿Hasta dónde llegarías? En 1995, la NASA *dejó caer una sonda* en Júpiter.",
+        "Aguantó *casi una hora*…",
+        "y bajó unos *150 kilómetros* antes de destruirse."
+      ],
+      "say": [
+        "¿Hasta dónde llegarías? En mil novecientos noventa y cinco, la NASA dejó caer una sonda en Júpiter.",
+        "Aguantó casi una hora…",
+        "y bajó unos ciento cincuenta kilómetros antes de destruirse."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "whoosh"
+        },
+        {
+          "cue": 2,
+          "at": 1.6,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "diamantes",
+      "caps": [
+        "Y lo más loco: según algunos científicos, allá abajo…",
+        "*¡podrían llover diamantes!*"
+      ],
+      "say": [
+        "Y lo más loco: según algunos científicos, allá abajo…",
+        "¡podrían llover diamantes!"
+      ],
+      "hold": 0.5,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI CAYERAS",
+    "EN JÚPITER?"
+  ],
+  "hookZoom": 0.12
+}

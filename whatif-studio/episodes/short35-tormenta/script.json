@@ -1,0 +1,162 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "title": "¿Y si el Sol nos lanzara una tormenta gigante?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si el Sol nos lanzara una *tormenta gigante*?",
+        "¿Nos quedaríamos *sin luz*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el Sol nos lanzara una tormenta gigante?",
+        "¿Nos quedaríamos sin luz?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "viaje",
+      "caps": [
+        "El Sol a veces escupe *nubes enormes de gas eléctrico*:",
+        "en *uno o dos días* llegan a la Tierra."
+      ],
+      "say": [
+        "El Sol a veces escupe nubes enormes de gas eléctrico:",
+        "en uno o dos días llegan a la Tierra."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.4,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "auroras",
+      "caps": [
+        "La Tierra tiene un *escudo magnético* que las desvía hacia los polos…",
+        "por eso el cielo se llenaría de *auroras*."
+      ],
+      "say": [
+        "La Tierra tiene un escudo magnético que las desvía hacia los polos…",
+        "por eso el cielo se llenaría de auroras."
+      ]
+    },
+    {
+      "id": "cables",
+      "caps": [
+        "Pero la tormenta sacude ese escudo y *mete corriente en los cables*:",
+        "los transformadores *se queman* y se va la luz."
+      ],
+      "say": [
+        "Pero la tormenta sacude ese escudo y mete corriente en los cables:",
+        "los transformadores se queman y se va la luz."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.4,
+          "type": "crack"
+        },
+        {
+          "cue": 1,
+          "at": 0.5,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "internet",
+      "caps": [
+        "Sin luz y con satélites dañados, *no habría internet ni GPS*:",
+        "tu celular prendería, pero *sin señal*."
+      ],
+      "say": [
+        "Sin luz y con satélites dañados, no habría internet ni GPS:",
+        "tu celular prendería, pero sin señal."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "quebec",
+      "caps": [
+        "¿Ya pasó? *Sí*: en 1989, una tormenta solar dejó sin luz a *6 millones de personas* en Canadá…",
+        "*en solo 90 segundos*."
+      ],
+      "say": [
+        "¿Ya pasó? Sí: en mil novecientos ochenta y nueve, una tormenta solar dejó sin luz a seis millones de personas en Canadá…",
+        "en solo noventa segundos."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "carrington",
+      "caps": [
+        "Y en 1859, *las auroras brillaron tanto*…",
+        "que unos mineros se levantaron a hacer el desayuno, *creyendo que ya era de día*."
+      ],
+      "say": [
+        "Y en mil ochocientos cincuenta y nueve, las auroras brillaron tanto…",
+        "que unos mineros se levantaron a hacer el desayuno, creyendo que ya era de día."
+      ],
+      "hold": 0.5,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI EL SOL NOS LANZARA",
+    "UNA TORMENTA GIGANTE?"
+  ],
+  "hookZoom": 0.12
+}
