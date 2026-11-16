@@ -44,7 +44,14 @@ fi
 
 echo "== 2/4 Video"
 # SKIP_RENDER=1: usa out/<ep>-video.mp4 ya hecho (p. ej. con tools/render_parts.sh).
-if [[ "${SKIP_RENDER:-0}" != "1" ]]; then node tools/render.mjs --ep "$EP" --out "out/$EP-video.mp4" "${RENDER_ARGS[@]}"; fi
+if [[ "${SKIP_RENDER:-0}" != "1" ]]; then
+  if [[ " ${RENDER_ARGS[*]} " == *" engine2d "* ]]; then
+    # 2D: 4 tramos a la vez (uno por núcleo) y se unen sin recodificar. Se borran los tramos viejos.
+    rm -rf "$B/parts"; bash tools/render_parts.sh "$EP" "${PARTS:-4}" "${PARTS:-4}" "${RENDER_ARGS[@]}"
+  else
+    node tools/render.mjs --ep "$EP" --out "out/$EP-video.mp4" "${RENDER_ARGS[@]}"
+  fi
+fi
 
 echo "== 3/4 Música"
 DUR=$(python3 -c "import json;print(json.load(open('$B/starts.json'))['duration'])")

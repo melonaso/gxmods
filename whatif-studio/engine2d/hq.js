@@ -31,6 +31,31 @@ export function paperTexture(ctx, W, H, a = 0.05) {
   ctx.fillStyle = ctx.createPattern(paper, 'repeat'); ctx.fillRect(0, 0, W, H); ctx.restore();
 }
 
+const finishCache = {};
+/**
+ * Acabado final (textura de papel + viñeta) precalculado UNA vez como una sola capa transparente:
+ * cada cuadro solo la pega encima (mucho más rápido que mezclar la textura en cada cuadro).
+ */
+export function finish(ctx, W, H, { paper = 0.06, vig = 0.3 } = {}) {
+  const S = ctx.getTransform().a || 1, key = `${W}x${H}@${S}:${paper}:${vig}`;
+  let c = finishCache[key];
+  if (!c) {
+    const w = Math.round(W * S), h = Math.round(H * S);
+    c = document.createElement('canvas'); c.width = w; c.height = h;
+    const g = c.getContext('2d'), img = g.createImageData(w, h), d = img.data, R = rng(91);
+    const cx = w / 2, cy = h * 0.43, r0 = w * 0.35, r1 = h * 0.72;
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      const i = (y * w + x) * 4, dist = Math.hypot(x - cx, y - cy);
+      const v = Math.max(0, Math.min(1, (dist - r0) / (r1 - r0))) * vig;   // viñeta: oscurece la orilla
+      const n = (R() - 0.5) * 2 * paper;                                     // grano: claro u oscuro
+      if (n > 0 && v < 0.02) { d[i] = d[i + 1] = d[i + 2] = 255; d[i + 3] = Math.round(n * 255 * 0.6); }
+      else { d[i] = d[i + 1] = d[i + 2] = 0; d[i + 3] = Math.round(Math.min(1, v + Math.max(0, -n) * 0.6) * 255); }
+    }
+    g.putImageData(img, 0, 0); finishCache[key] = c;
+  }
+  ctx.drawImage(c, 0, 0, W, H);
+}
+
 export function vignette(ctx, W, H, a = 0.35) {
   const g = ctx.createRadialGradient(W / 2, H * 0.42, W * 0.35, W / 2, H * 0.45, H * 0.72);
   g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, `rgba(0,0,0,${a})`);

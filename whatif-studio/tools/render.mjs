@@ -34,7 +34,10 @@ await new Promise((r) => server.listen(0, '127.0.0.1', r));
 // --page engine2d: Shorts 2D (vertical). Por defecto, el motor 3D.
 const url = `http://127.0.0.1:${server.address().port}/${args.page || 'engine'}/index.html?ep=${ep}&w=${W}&h=${H}`;
 
-const browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+// 2D: el lienzo se dibuja directo con el procesador (unas 4 veces más rápido que emular una tarjeta de video
+// con SwiftShader). El 3D sí necesita SwiftShader para WebGL.
+const GPU_FLAGS = ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'];
+const browser = await chromium.launch({ args: args.page === 'engine2d' ? [...GPU_FLAGS, '--disable-accelerated-2d-canvas'] : GPU_FLAGS });
 const page = await browser.newPage({ viewport: { width: 800, height: 450 } });
 page.on('console', (m) => m.type() === 'error' && console.error('[navegador]', m.text()));
 page.on('pageerror', (e) => console.error('[navegador]', e.message));

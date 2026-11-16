@@ -67,7 +67,9 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
 ## Calidad 2D (16 nov 2026)
 - Prueba de calidad en el Short 37: `engine2d/hq.js` (personajes con codos, manos, caras que parpadean,
   sombreado, sombras suaves, textura de papel, viñeta, cámara lenta) + `"scale": 1.3333334` (lienzo
-  1440×2560: YouTube da mejor calidad arriba de 1080p) + `"fps": 60`. Tarda ~23 min por Short (antes ~3).
+  1440×2560: YouTube da mejor calidad arriba de 1080p) + `"fps": 60`. Con la optimización tarda ~3 min por Short:
+  el 2D dibuja con el procesador (`--disable-accelerated-2d-canvas`, no SwiftShader), papel + viñeta van precalculados
+  en una capa (`hq.finish`) y `build.sh` arma los Shorts 2D en 4 tramos a la vez (`tools/render_parts.sh`).
   Si el dueño la aprueba, usar hq.js en los Shorts nuevos.
 
 ## Producción

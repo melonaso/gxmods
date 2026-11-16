@@ -14,8 +14,7 @@ export function draw(ctx, C, { t, scene: s, local }) {
   hq.camera(ctx, 1 + 0.05 * Math.min(1, local / s.dur), 540, 760);
   SCENES[s.id](ctx, o);
   ctx.restore();
-  hq.paperTexture(ctx, C.W, C.H, 0.06);
-  hq.vignette(ctx, C.W, C.H, 0.3);
+  hq.finish(ctx, C.W, C.H, { paper: 0.06, vig: 0.3 });
   return s.chip ? { chip: s.chip } : {};
 }
 
