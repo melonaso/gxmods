@@ -1,0 +1,167 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "title": "¿Y si te cayera un meteorito?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si te cayera un *meteorito*?",
+        "¿*Sobrevivirías*?"
+      ],
+      "say": [
+        "¿Qué pasaría si te cayera un meteorito?",
+        "¿Sobrevivirías?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "jet"
+        }
+      ]
+    },
+    {
+      "id": "entra",
+      "caps": [
+        "Entraría a la atmósfera *más de 10 veces más rápido que una bala*:",
+        "el aire de enfrente se aprieta, *se calienta* y lo hace brillar."
+      ],
+      "say": [
+        "Entraría a la atmósfera más de diez veces más rápido que una bala:",
+        "el aire de enfrente se aprieta, se calienta y lo hace brillar."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "quema",
+      "caps": [
+        "Por eso *casi todo se quema* en el camino:",
+        "al suelo solo llega *un pedacito*."
+      ],
+      "say": [
+        "Por eso casi todo se quema en el camino:",
+        "al suelo solo llega un pedacito."
+      ]
+    },
+    {
+      "id": "frena",
+      "caps": [
+        "Y el aire *lo frena*:",
+        "al final cae a la velocidad de *un auto de carreras*."
+      ],
+      "say": [
+        "Y el aire lo frena:",
+        "al final cae a la velocidad de un auto de carreras."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "frio",
+      "caps": [
+        "Además *llega frío*: el calor solo dura unos segundos…",
+        "y por dentro sigue *helado del espacio*."
+      ],
+      "say": [
+        "Además llega frío: el calor solo dura unos segundos…",
+        "y por dentro sigue helado del espacio."
+      ]
+    },
+    {
+      "id": "hodges",
+      "caps": [
+        "¿Se puede sobrevivir? *Sí*: en 1954, una mujer dormía en su sillón…",
+        "una piedra del espacio atravesó el techo, rebotó en su radio…",
+        "*y solo le dejó un moretón*."
+      ],
+      "say": [
+        "¿Se puede sobrevivir? Sí: en mil novecientos cincuenta y cuatro, una mujer dormía en su sillón…",
+        "una piedra del espacio atravesó el techo, rebotó en su radio…",
+        "y solo le dejó un moretón."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.8,
+          "type": "crack"
+        },
+        {
+          "cue": 1,
+          "at": 1.9,
+          "type": "click"
+        },
+        {
+          "cue": 2,
+          "at": 0.0,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "demanda",
+      "caps": [
+        "Lo más loco: *la dueña de la casa la demandó*…",
+        "*¡para quedarse con la piedra!*"
+      ],
+      "say": [
+        "Lo más loco: la dueña de la casa la demandó…",
+        "¡para quedarse con la piedra!"
+      ],
+      "hold": 0.5,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "thud"
+        },
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI TE CAYERA",
+    "UN METEORITO?"
+  ],
+  "hookZoom": 0.12
+}

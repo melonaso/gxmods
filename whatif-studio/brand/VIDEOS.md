@@ -2025,3 +2025,92 @@ qué pasaría si cayeras de un avión, caer sin paracaídas, velocidad terminal,
 - Archivo: `out/subir/y-si-cayeras-de-un-avion-sin-paracaidas.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
 - Video relacionado (debajo del Short): «¿Qué pasaría si cada día la gravedad fuera 1% más débil?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 32 — `out/short32-ballena.mp4` (vertical)
+
+**Título** (39/100):
+```
+¿Y si te tragara una ballena? 🐋 #Shorts
+```
+
+**Descripción** (1408/5000):
+```
+Una ballena puede meterte en su boca, pero casi ninguna puede tragarte. En 2021 un buzo pasó medio minuto ahí adentro… y salió.
+
+Lo que pasa de verdad:
+🐋 La ballena jorobada come a bocados: se lanza con la boca abierta contra un banco de peces y atrapa de una vez toneladas de agua y comida. Si estás en medio, quedas adentro.
+📏 Según los biólogos que estudiaron el caso, su garganta es más o menos del tamaño de una toronja: aunque se estire, una persona no cabe por los hombros.
+💦 Como no puede tragarte y no le sirves de comida, lo normal es que suba y te escupa.
+🤿 El 11 de junio de 2021, frente a Cabo Cod (Massachusetts, EE. UU.), el buzo de langostas Michael Packard quedó dentro de la boca de una jorobada. Siguió respirando con su tanque unos 30 a 40 segundos, hasta que la ballena salió a la superficie y lo escupió. Terminó con golpes, sin huesos rotos.
+🦑 El cachalote sí tiene una garganta lo bastante ancha para tragarse a una persona: se come calamares gigantes enteros.
+😮‍💨 Dentro de su estómago no hay aire y sí jugos digestivos: nadie aguantaría. (La historia del marinero James Bartley, que supuestamente sobrevivió en 1891, se considera un mito.)
+
+¿Tú te volverías a meter al mar después de algo así? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Ballenas #Curiosidades
+```
+
+**Etiquetas** (160/500):
+```
+qué pasaría si te tragara una ballena, ballena jorobada, cachalote, michael packard, buzo tragado por ballena, ballenas, animales marinos, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: los cachalotes bajan a más de 1 km de profundidad, a oscuras, para cazar calamares gigantes, y muchos tienen cicatrices de sus ventosas 🦑 ¿Quién crees que gana esa pelea? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-te-tragara-una-ballena.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 33 — `out/short33-meteorito.mp4` (vertical)
+
+**Título** (40/100):
+```
+¿Y si te cayera un meteorito? ☄️ #Shorts
+```
+
+**Descripción** (1934/5000):
+```
+Llega frenado y frío por dentro. En 1954 uno atravesó un techo y golpeó a una mujer dormida… y después la demandaron por él.
+
+Lo que pasa de verdad:
+☄️ Las rocas del espacio entran a la atmósfera a entre 11 y 72 km por segundo; una bala de rifle va a cerca de 1 km por segundo. Por eso «más de 10 veces más rápido que una bala».
+🔥 No brillan por fricción: el aire de enfrente se aprieta tan rápido que se calienta a miles de grados (como el aire de una bomba de bicicleta que se calienta al apretarlo, pero muchísimo más).
+💨 Ese calor derrite y evapora la roca por fuera, capa por capa: casi toda se pierde en el camino y al suelo llega una fracción pequeña.
+🏎️ Cuando ya perdió su velocidad del espacio, cae como cualquier piedra: el aire la frena hasta su velocidad terminal (la máxima a la que cae algo en el aire, cuando el empuje del aire iguala su peso). Para una piedra de unos 4 kg y unos 13 cm de ancho eso da cerca de 70 m por segundo: 70 × 3,600 ÷ 1,000 ≈ 250 km/h, como un auto de carreras.
+🧊 El brillo dura solo unos segundos y el calor no alcanza a entrar: por dentro sigue a la temperatura del espacio, muy por debajo de 0 °C. A algunos meteoritos recién caídos hasta se les formó escarcha.
+🛋️ El 30 de noviembre de 1954, en Sylacauga (Alabama, EE. UU.), un meteorito de unos 4 kg atravesó el techo de la casa que rentaba Ann Hodges, rebotó en su radio y le pegó en la cadera mientras dormía en el sillón. Le dejó un moretón enorme. Es el primer caso confirmado de una persona golpeada por un meteorito.
+⚖️ La dueña de la casa, Birdie Guy, la demandó para quedarse con la piedra. Al final Hodges le pagó 500 dólares para conservarla y en 1956 la donó a un museo de Alabama, donde sigue.
+
+¿Tú te quedarías con la piedra o la venderías? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Meteorito #Espacio
+```
+
+**Etiquetas** (141/500):
+```
+qué pasaría si te cayera un meteorito, meteorito, ann hodges, meteorito sylacauga, estrella fugaz, espacio, astronomía, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: cada día caen a la Tierra decenas de toneladas de polvo y piedritas del espacio; casi todo termina en el mar o en lugares vacíos 🌊 ¿Has visto alguna vez una estrella fugaz? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-te-cayera-un-meteorito.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)

@@ -1,0 +1,152 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "title": "¿Y si te tragara una ballena?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si te tragara una *ballena*?",
+        "¿Saldrías *vivo*?"
+      ],
+      "say": [
+        "¿Qué pasaría si te tragara una ballena?",
+        "¿Saldrías vivo?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "boca",
+      "caps": [
+        "De pronto todo se pone oscuro: estás *dentro de su boca*.",
+        "Así come: abre la boca enorme y atrapa *todo lo que hay enfrente*…",
+        "*incluido tú*."
+      ],
+      "say": [
+        "De pronto todo se pone oscuro: estás dentro de su boca.",
+        "Así come: abre la boca enorme y atrapa todo lo que hay enfrente…",
+        "incluido tú."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.1,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "garganta",
+      "caps": [
+        "Pero *no puede tragarte*:",
+        "su garganta es *más angosta que tus hombros*."
+      ],
+      "say": [
+        "Pero no puede tragarte:",
+        "su garganta es más angosta que tus hombros."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.6,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "escupe",
+      "caps": [
+        "Como no le sirves de comida, sube a la *superficie*…",
+        "*y te escupe*."
+      ],
+      "say": [
+        "Como no le sirves de comida, sube a la superficie…",
+        "y te escupe."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "packard",
+      "caps": [
+        "¿Se puede sobrevivir? *Sí*: en 2021, una ballena atrapó a un buzo en Estados Unidos.",
+        "Respiró con su *tanque* medio minuto dentro de su boca…",
+        "*y salió solo con golpes*."
+      ],
+      "say": [
+        "¿Se puede sobrevivir? Sí: en dos mil veintiuno, una ballena atrapó a un buzo en Estados Unidos.",
+        "Respiró con su tanque medio minuto dentro de su boca…",
+        "y salió solo con golpes."
+      ],
+      "fx": [
+        {
+          "cue": 2,
+          "at": 0.1,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "cachalote",
+      "caps": [
+        "Pero hay una ballena que *sí podría tragarte*: el *cachalote*.",
+        "Se traga calamares gigantes *enteros*…",
+        "y adentro *no hay aire*."
+      ],
+      "say": [
+        "Pero hay una ballena que sí podría tragarte: el cachalote.",
+        "Se traga calamares gigantes enteros…",
+        "y adentro no hay aire."
+      ],
+      "hold": 0.5,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.4,
+          "type": "whoosh"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI TE TRAGARA",
+    "UNA BALLENA?"
+  ],
+  "hookZoom": 0.12
+}
