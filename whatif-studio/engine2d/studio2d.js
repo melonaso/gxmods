@@ -48,7 +48,10 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
   sfx.sort((a, b) => a.t - b.t);
 
   const out = document.getElementById('out');
-  out.width = W; out.height = H;
+  // "scale" en el guion: lienzo más grande (p. ej. 1.3333 → 1440×2560) con las mismas coordenadas lógicas
+  // (1080×1920). YouTube procesa con mejor calidad los videos subidos por encima de 1080p.
+  const S = script.scale ?? 1;
+  out.width = Math.round(W * S); out.height = Math.round(H * S);
   const ctx = out.getContext('2d');
   const C = { W, H, script, scenes, kit, ease, lerp };
   await (ep.setup?.(C));
@@ -70,6 +73,7 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
     const s = sceneAt(t);
     const local = t - s.start;
     const p = Math.min(1, Math.max(0, local / s.dur));
+    ctx.setTransform(S, 0, 0, S, 0, 0);
     ctx.save();
     // "punch": al empezar cada escena la imagen entra un poco ampliada y se asienta (corte con golpe).
     if (script.punch && s.index > 0) {

@@ -1,6 +1,6 @@
 {
   "type": "2d",
-  "fps": 30,
+  "fps": 60,
   "narration": false,
   "captions": "pop",
   "cps": 18,
@@ -137,5 +137,6 @@
     "¿Y SI PUDIERAS HACERTE",
     "COSQUILLAS A TI MISMO?"
   ],
-  "hookZoom": 0.12
+  "hookZoom": 0.12,
+  "scale": 1.3333334
 }
