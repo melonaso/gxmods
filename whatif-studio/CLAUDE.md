@@ -64,6 +64,12 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
   temas muy vistos (caer en Júpiter, tormenta solar, Tierra sin girar…). Si se puede, incluir una prueba que el
   espectador haga en el momento. Los Shorts 34 (Júpiter) y 35 (tormenta solar) quedaron en reserva, sin publicar.
 
+## Calidad 2D (16 nov 2026)
+- Prueba de calidad en el Short 37: `engine2d/hq.js` (personajes con codos, manos, caras que parpadean,
+  sombreado, sombras suaves, textura de papel, viñeta, cámara lenta) + `"scale": 1.3333334` (lienzo
+  1440×2560: YouTube da mejor calidad arriba de 1080p) + `"fps": 60`. Tarda ~23 min por Short (antes ~3).
+  Si el dueño la aprueba, usar hq.js en los Shorts nuevos.
+
 ## Producción
 - `bash tools/build.sh <ep>`: voz (si hay `voice.mp3`) → video → música → efectos → mezcla
   (−14 LUFS en Shorts, −16 en largos).
