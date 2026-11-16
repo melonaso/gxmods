@@ -256,7 +256,7 @@ const SCENES = {
   vesna(ctx, o) {
     const { W, H, kit, local, cue, t } = o;
     // 1972: el avión se rompe en el aire; un pedazo del fuselaje cae sobre una montaña nevada.
-    const k = kit.ramp(local, 0.2, cue(1) + 1.2);
+    const k = kit.ramp(local, 0.2, cue(1) + 2.8);
     kit.gradientBG(ctx, W, H, '#334155', '#94a3b8');
     snowyMountain(ctx, kit, W, H, 1030, 760, 760);
     for (const [x, h] of [[120, 170], [260, 210], [940, 150]]) kit.tree(ctx, x, 1040 + (x < 760 ? (760 - x) * -0.0 : 0), h, { pine: true, leaf: '#14532d' });
@@ -266,7 +266,7 @@ const SCENES = {
     plane(ctx, kit, 600 + local * 60, 470 - local * 20, 420, { broken: br * 2 });
     ctx.restore();
     const px = 380 + 200 * k, py = 520 + 470 * k;
-    const landed = local > cue(1) + 1.2;
+    const landed = local > cue(1) + 2.8;
     ctx.save(); ctx.translate(px, py); ctx.rotate(landed ? 0.35 : 0.4 + 0.4 * Math.sin(t * 2) * (1 - k));
     ctx.beginPath(); ctx.moveTo(-120, -50); ctx.lineTo(110, -50); ctx.lineTo(80, -10); ctx.lineTo(120, 20); ctx.lineTo(95, 50); ctx.lineTo(-120, 50); ctx.closePath(); kit.shape(ctx, '#f8fafc', 6);
     ctx.fillStyle = '#38bdf8'; for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.arc(-80 + i * 55, -5, 14, 0, TAU); ctx.fill(); }
@@ -274,11 +274,12 @@ const SCENES = {
     if (!landed) windUp(ctx, o, { n: 10, x0: px - 150, x1: px + 150, y0: py + 80, y1: py + 400, speed: 1600 });
     else {
       // Nieve que salta al chocar y un árbol doblado (lo frenó).
-      const s = kit.clamp((local - cue(1) - 1.2) / 0.6);
+      const s = kit.clamp((local - cue(1) - 2.8) / 0.6);
       ctx.fillStyle = '#ffffff'; const r = kit.rng(40);
       for (let i = 0; i < 18; i++) { const a = Math.PI + r() * Math.PI, d = 40 + s * 160 * r(); ctx.globalAlpha = 1 - s; ctx.beginPath(); ctx.arc(px + Math.cos(a) * d, py + 40 + Math.sin(a) * d * 0.6, 10, 0, TAU); ctx.fill(); }
       ctx.globalAlpha = 1;
-      label(ctx, kit, 540, 640, '¡SOBREVIVIÓ!', { size: 64, fill: '#4ade80' });
+      // El letrero sale justo cuando la voz dice «y sobrevivió» (después de la pausa del «…»).
+      if (local > cue(1) + 2.95) label(ctx, kit, 540, 640, '¡SOBREVIVIÓ!', { size: 64, fill: '#4ade80' });
     }
     label(ctx, kit, 200, 400, '1972', { size: 54, fill: '#fde047' });
     void H;
