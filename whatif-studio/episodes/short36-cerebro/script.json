@@ -1,0 +1,141 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "title": "¿Y si pudieras ver lo que tu cerebro te esconde?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si pudieras ver todo lo que *tu cerebro te esconde*?",
+        "¿Qué te está ocultando *ahora mismo*?"
+      ],
+      "say": [
+        "¿Qué pasaría si pudieras ver todo lo que tu cerebro te esconde?",
+        "¿Qué te está ocultando ahora mismo?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "nariz",
+      "caps": [
+        "*Tu nariz* siempre está frente a tus ojos…",
+        "pero tu cerebro *la borra*, porque nunca cambia.",
+        "Cierra un ojo… *y ahí está*."
+      ],
+      "say": [
+        "Tu nariz siempre está frente a tus ojos…",
+        "pero tu cerebro la borra, porque nunca cambia.",
+        "Cierra un ojo… y ahí está."
+      ],
+      "fx": [
+        {
+          "cue": 2,
+          "at": 0.8,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "punto",
+      "caps": [
+        "Cada ojo tiene *un hueco sin sensores*, justo donde sale el nervio:",
+        "tu cerebro *lo rellena* con lo que hay alrededor."
+      ],
+      "say": [
+        "Cada ojo tiene un hueco sin sensores, justo donde sale el nervio:",
+        "tu cerebro lo rellena con lo que hay alrededor."
+      ]
+    },
+    {
+      "id": "espejo",
+      "caps": [
+        "Y cada vez que mueves los ojos, *apaga la vista* para que no veas borroso:",
+        "por eso, en el espejo, *nunca ves tus ojos moverse*."
+      ],
+      "say": [
+        "Y cada vez que mueves los ojos, apaga la vista para que no veas borroso:",
+        "por eso, en el espejo, nunca ves tus ojos moverse."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.2,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "total",
+      "caps": [
+        "Sumando todo, pasas *más de media hora al día sin ver nada*…",
+        "*y ni lo notas*."
+      ],
+      "say": [
+        "Sumando todo, pasas más de media hora al día sin ver nada…",
+        "y ni lo notas."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "reloj",
+      "caps": [
+        "¿Y cómo tapa esos huecos? *Los rellena con lo que ves después*…",
+        "por eso, cuando miras un reloj, *el primer segundo parece durar más*."
+      ],
+      "say": [
+        "¿Y cómo tapa esos huecos? Los rellena con lo que ves después…",
+        "por eso, cuando miras un reloj, el primer segundo parece durar más."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 1.0,
+          "type": "click"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI VIERAS LO QUE",
+    "TU CEREBRO TE ESCONDE?"
+  ],
+  "hookZoom": 0.12
+}

@@ -2114,3 +2114,89 @@ qué pasaría si te cayera un meteorito, meteorito, ann hodges, meteorito sylaca
 - Archivo: `out/subir/y-si-te-cayera-un-meteorito.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 34 — `out/short36-cerebro.mp4` (vertical)
+
+**Título** (58/100):
+```
+¿Y si pudieras ver lo que tu cerebro te esconde? 🧠 #Shorts
+```
+
+**Descripción** (1662/5000):
+```
+Tu cerebro borra tu nariz, rellena un hueco en cada ojo y te deja a ciegas más de media hora al día… sin que lo notes.
+
+Lo que pasa de verdad (y cómo probarlo):
+👃 Tu nariz está siempre a la vista, pero el cerebro deja de prestarle atención a lo que nunca cambia (se llama adaptación). Cierra un ojo y la verás clarita.
+🕳️ Donde el nervio óptico sale del ojo no hay células que detecten luz: es el punto ciego. El cerebro lo rellena con lo que hay alrededor, y el otro ojo cubre ese hueco. Prueba: dibuja una X y, unos 8 cm a su derecha, un punto. Tapa tu ojo izquierdo, mira la X con el derecho y acércate despacio a la hoja: en cierto momento el punto desaparece.
+👀 Tus ojos dan unos 3 saltos por segundo (movimientos sacádicos). Durante cada salto el cerebro bloquea la imagen para que no veas todo barrido: por eso en el espejo nunca ves tus propios ojos moverse.
+⏱️ Cuenta: si cada salto dura unos 0.04 s y das unos 3 por segundo, pasas 3 × 0.04 = 0.12 s de cada segundo sin ver, o sea el 12 %. En 16 horas despierto (960 minutos) eso da 960 × 0.12 ≈ 115 minutos. Los cálculos cambian según la persona y lo que hagas, pero casi siempre pasan de media hora.
+🕰️ Para tapar esos huecos, el cerebro estira hacia atrás la primera imagen que ves al terminar el salto. Por eso, al mirar un reloj con segundero, el primer segundo parece durar más (se llama ilusión del reloj detenido, o cronostasis).
+
+¿Ya hiciste la prueba de la nariz o la del punto ciego? 👀 Cuéntame qué viste 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Cerebro #Curiosidades
+```
+
+**Etiquetas** (192/500):
+```
+qué pasaría si vieras lo que tu cerebro esconde, punto ciego, ilusión del reloj detenido, cronostasis, movimientos sacádicos, curiosidades del cerebro, ilusiones ópticas, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: el punto ciego de cada ojo es tan ancho que te cabrían unas 10 lunas llenas en fila… y nunca lo notas 🌕 ¿Lo encontraste con la prueba de la descripción? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-pudieras-ver-lo-que-tu-cerebro-te-esconde.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 35 — `out/short37-cosquillas.mp4` (vertical)
+
+**Título** (55/100):
+```
+¿Y si pudieras hacerte cosquillas a ti mismo? 🪶 #Shorts
+```
+
+**Descripción** (1537/5000):
+```
+Tu cerebro adivina tus propios movimientos y les baja el volumen. Pero en 1999 un robot con un pequeño retraso logró engañarlo.
+
+Lo que pasa de verdad:
+🧠 Cuando te mueves, el cerebelo (la parte de atrás del cerebro que coordina los movimientos) predice lo que vas a sentir y apaga parte de esa sensación. Así distingues lo que haces tú de lo que te pasa desde afuera.
+😐 Las cosquillas dependen de la sorpresa: si sabes exactamente dónde y cuándo te van a tocar, casi no las sientes.
+🚨 No se sabe con certeza para qué sirven. Una teoría: son un reflejo que protege zonas débiles (cuello, costillas, axilas, pies). Otra: sirven para jugar y crear lazos entre personas.
+🤖 En 1999, Sarah-Jayne Blakemore y su equipo, en el University College de Londres, pusieron a voluntarios a mover una palanca que controlaba un robot con una esponja suave sobre la palma de su mano. Con un retraso de 0.1 a 0.2 segundos, o cambiando la dirección del movimiento, las cosquillas se sentían más fuertes: el cerebro ya no podía predecirlas.
+🐀 Las ratas también tienen cosquillas: cuando se las haces, «se ríen» con chillidos de unas 50,000 vibraciones por segundo (50 kHz), demasiado agudos para nosotros (oímos hasta unas 20,000). Lo descubrió el neurocientífico Jaak Panksepp, y las ratas hasta buscan la mano que les hace cosquillas.
+
+¿Dónde tienes más cosquillas tú? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Cerebro #Curiosidades
+```
+
+**Etiquetas** (148/500):
+```
+por qué no puedes hacerte cosquillas, cosquillas, cerebro, cerebelo, ratas se ríen, robot cosquillas, curiosidades del cuerpo, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: los chimpancés y los gorilas también se ríen cuando les haces cosquillas, con un jadeo tipo «ah-ah-ah» 🦍 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-pudieras-hacerte-cosquillas-a-ti-mismo.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si crecieras 1 cm cada día y no pudieras parar?» (súbelo antes si aún no está publicado)

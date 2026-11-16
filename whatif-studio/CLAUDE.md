@@ -59,6 +59,10 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
   con la estructura nueva: pregunta abierta al inicio y respuesta casi al final, lo que pasa + por qué,
   un lugar distinto por escena, sin ecuaciones en pantalla y **sin «Deja tu ¿Y si…? abajo»** al cierre
   (termina con una sorpresa). Primeros: Shorts 29 (rayo) y 30 (sin dormir).
+- Originalidad (16 nov 2026): el dueño pide temas **que pocos canales estén haciendo** o preguntas que la gente
+  **no sabe que se hace** (ej. lo que el cerebro te esconde, por qué no puedes hacerte cosquillas). Evitar los
+  temas muy vistos (caer en Júpiter, tormenta solar, Tierra sin girar…). Si se puede, incluir una prueba que el
+  espectador haga en el momento. Los Shorts 34 (Júpiter) y 35 (tormenta solar) quedaron en reserva, sin publicar.
 
 ## Producción
 - `bash tools/build.sh <ep>`: voz (si hay `voice.mp3`) → video → música → efectos → mezcla

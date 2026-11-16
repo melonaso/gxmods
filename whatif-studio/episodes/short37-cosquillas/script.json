@@ -1,0 +1,141 @@
+{
+  "type": "2d",
+  "fps": 30,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "title": "¿Y si pudieras hacerte cosquillas a ti mismo?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si pudieras *hacerte cosquillas a ti mismo*?",
+        "¿Por qué *no puedes*?"
+      ],
+      "say": [
+        "¿Qué pasaría si pudieras hacerte cosquillas a ti mismo?",
+        "¿Por qué no puedes?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "prediccion",
+      "caps": [
+        "Cada vez que te mueves, tu cerebro *adivina lo que vas a sentir*…",
+        "*y le baja el volumen*."
+      ],
+      "say": [
+        "Cada vez que te mueves, tu cerebro adivina lo que vas a sentir…",
+        "y le baja el volumen."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "sorpresa",
+      "caps": [
+        "Y las cosquillas *necesitan sorpresa*:",
+        "si sabes dónde y cuándo te van a tocar, *no funcionan*."
+      ],
+      "say": [
+        "Y las cosquillas necesitan sorpresa:",
+        "si sabes dónde y cuándo te van a tocar, no funcionan."
+      ]
+    },
+    {
+      "id": "alarma",
+      "caps": [
+        "Una teoría: son *una alarma de tus zonas débiles*…",
+        "por eso te retuerces y *te ríes aunque no quieras*."
+      ],
+      "say": [
+        "Una teoría: son una alarma de tus zonas débiles…",
+        "por eso te retuerces y te ríes aunque no quieras."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.0,
+          "type": "alarm"
+        }
+      ]
+    },
+    {
+      "id": "robot",
+      "caps": [
+        "¿Se puede? *Sí*: en 1999, unos científicos en Londres usaron un *robot*…",
+        "que copiaba tu mano *un poquito tarde*…",
+        "*y entonces sí daba cosquillas*."
+      ],
+      "say": [
+        "¿Se puede? Sí: en mil novecientos noventa y nueve, unos científicos en Londres usaron un robot…",
+        "que copiaba tu mano un poquito tarde…",
+        "y entonces sí daba cosquillas."
+      ],
+      "fx": [
+        {
+          "cue": 2,
+          "at": 0.1,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "ratas",
+      "caps": [
+        "Y lo más loco: *las ratas también tienen cosquillas*…",
+        "y se ríen, pero *tan agudo que no lo podemos oír*."
+      ],
+      "say": [
+        "Y lo más loco: las ratas también tienen cosquillas…",
+        "y se ríen, pero tan agudo que no lo podemos oír."
+      ],
+      "hold": 0.5,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI PUDIERAS HACERTE",
+    "COSQUILLAS A TI MISMO?"
+  ],
+  "hookZoom": 0.12
+}
