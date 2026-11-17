@@ -64,6 +64,21 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
   temas muy vistos (caer en Júpiter, tormenta solar, Tierra sin girar…). Si se puede, incluir una prueba que el
   espectador haga en el momento. Los Shorts 34 (Júpiter) y 35 (tormenta solar) quedaron en reserva, sin publicar.
 
+## Método (17 nov 2026) — ver `brand/METODO.md`
+Video de referencia que mandó el dueño (monetizar con IA). Reglas que se aplican desde ahora a todos los videos:
+- **Retención antes que visitas.** Para monetizar se necesitan 4,000 horas de videos largos (las vistas de Shorts no
+  suman a esas horas). Los Shorts consiguen suscriptores y llevan al largo; las horas salen de **largos de 8–15 min**
+  con buena duración media, sobre temas ya probados.
+- **Temas con datos**: outliers, temas que se repiten en varios canales y comentarios (eso lo investiga el dueño;
+  desde aquí no se puede ver YouTube).
+- **Guion** (fórmula fija): gancho con qué verá + por qué importa + por qué quedarse; bloques gancho → desarrollo →
+  cierre; **preguntas abiertas encadenadas** (al cerrar una, abrir otra); público definido, sin tecnicismos. Antes de
+  mandarlo, **pasada de «espectador aburrido»** para cortar frases que sobran.
+- Sin saludos ni presentación al inicio; sin relleno para alargar.
+- Algo nuevo en pantalla cada pocos segundos.
+- **3 títulos y 3 miniaturas** por video para la prueba A/B; lo que promete el título se repite en los primeros segundos.
+- No borrar ni abandonar videos que empiezan planos: YouTube tarda días o semanas en probarlos.
+
 ## Calidad 2D (16 nov 2026)
 - Prueba de calidad en el Short 37: `engine2d/hq.js` (personajes con codos, manos, caras que parpadean,
   sombreado, sombras suaves, textura de papel, viñeta, cámara lenta) + `"scale": 1.3333334` (lienzo
