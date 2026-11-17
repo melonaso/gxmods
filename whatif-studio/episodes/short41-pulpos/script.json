@@ -1,0 +1,126 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si los pulpos vivieran tanto como nosotros?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *los pulpos vivieran tanto como nosotros*?",
+        "Son tan listos que *abren frascos*… ¿por qué no dominan el mundo?"
+      ],
+      "say": [
+        "¿Qué pasaría si los pulpos vivieran tanto como nosotros?",
+        "Son tan listos que abren frascos… ¿por qué no dominan el mundo?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "cuerpo",
+      "caps": [
+        "Tienen *tres corazones*, *sangre azul*…",
+        "y dos tercios de sus neuronas están en los brazos: *cada brazo casi piensa solo*."
+      ],
+      "say": [
+        "Tienen tres corazones, sangre azul…",
+        "y dos tercios de sus neuronas están en los brazos: cada brazo casi piensa solo."
+      ]
+    },
+    {
+      "id": "inky",
+      "caps": [
+        "En 2016, un pulpo llamado *Inky* se escapó de un acuario en Nueva Zelanda…",
+        "salió de su tanque, cruzó el piso y *se fue al mar por un tubo de desagüe*."
+      ],
+      "say": [
+        "En dos mil dieciséis, un pulpo llamado Inky se escapó de un acuario en Nueva Zelanda…",
+        "salió de su tanque, cruzó el piso y se fue al mar por un tubo de desagüe."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 1.6,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "vida",
+      "caps": [
+        "Pero casi todos viven *solo uno o dos años*:",
+        "la mamá deja de comer para cuidar sus huevos… *y muere cuando nacen*."
+      ],
+      "say": [
+        "Pero casi todos viven solo uno o dos años:",
+        "la mamá deja de comer para cuidar sus huevos… y muere cuando nacen."
+      ]
+    },
+    {
+      "id": "solos",
+      "caps": [
+        "Así que cada pulpito *nace solo*:",
+        "nadie le enseña nada, y *todo lo que sabían sus papás se pierde*."
+      ],
+      "say": [
+        "Así que cada pulpito nace solo:",
+        "nadie le enseña nada, y todo lo que sabían sus papás se pierde."
+      ]
+    },
+    {
+      "id": "glandula",
+      "caps": [
+        "Y lo más loco: en 1977, a unas mamás pulpo *les quitaron una glándula* cerca de los ojos…",
+        "y dejaron los huevos, *volvieron a comer y vivieron meses más*."
+      ],
+      "say": [
+        "Y lo más loco: en mil novecientos setenta y siete, a unas mamás pulpo les quitaron una glándula cerca de los ojos…",
+        "y dejaron los huevos, volvieron a comer y vivieron meses más."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI LOS PULPOS VIVIERAN",
+    "TANTO COMO NOSOTROS?"
+  ],
+  "hookZoom": 0.12
+}

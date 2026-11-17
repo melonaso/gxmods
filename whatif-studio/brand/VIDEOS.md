@@ -2288,3 +2288,91 @@ qué pasaría si se cortaran los cables submarinos, cables submarinos, cómo lle
 - Archivo: `out/subir/y-si-se-cortaran-los-cables-del-fondo-del-mar.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 38 — `out/short40-cafe.mp4` (vertical)
+
+**Título** (44/100):
+```
+¿Y si el café no te diera energía? ☕ #Shorts
+```
+
+**Descripción** (1364/5000):
+```
+El café no te da energía: tapa el cansancio. Por eso llega el bajón… y por eso las plantas lo inventaron.
+
+Lo que pasa de verdad:
+😴 Mientras estás despierto, en tu cerebro se acumula adenosina (un residuo de la energía que usan tus neuronas). Se une a unos receptores y te da sueño; al dormir, baja.
+☕ La cafeína tiene una forma muy parecida: se une a esos mismos receptores sin activarlos y los bloquea. No te da energía: impide que sientas el cansancio.
+📉 Mientras tanto, la adenosina se sigue acumulando. Cuando la cafeína se va, toda esa adenosina encuentra los receptores libres: de ahí el bajón.
+⏱️ La vida media de la cafeína es de unas 5 horas en promedio (de 2 a 10 según la persona): cada 5 horas tu cuerpo elimina la mitad. Cuenta: café a las 5 p. m. → a las 10 p. m. queda la mitad → a las 3 a. m., una cuarta parte.
+🐝 Las plantas de café y de cítricos producen cafeína: en hojas y semillas funciona como insecticida natural. En su néctar hay muy poquita, y en 2013 un estudio encontró que las abejas que la tomaban tenían 3 veces más probabilidad de recordar el olor de la flor al día siguiente (Wright y su equipo, Science).
+
+¿Sabías que el café no te daba energía? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Cafe #Curiosidades
+```
+
+**Etiquetas** (165/500):
+```
+qué pasaría si el café no te diera energía, cafeína, adenosina, por qué el café quita el sueño, bajón de cafeína, café y sueño, abejas cafeína, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: si te tomas un café a las 5 de la tarde, a las 10 de la noche todavía tienes la mitad de la cafeína… y a las 3 de la mañana, una cuarta parte 😳 ¿A qué hora te tomas el último? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-cafe-no-te-diera-energia.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada vez que parpadeas ganaras 1 peso?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 39 — `out/short41-pulpos.mp4` (vertical)
+
+**Título** (56/100):
+```
+¿Y si los pulpos vivieran tanto como nosotros? 🐙 #Shorts
+```
+
+**Descripción** (1473/5000):
+```
+Abren frascos, tienen tres corazones y uno escapó al mar por un desagüe. ¿Por qué no dominan el mundo? Por cuánto viven.
+
+Lo que pasa de verdad:
+🧠 Un pulpo tiene unos 500 millones de neuronas, y cerca de dos tercios están en sus brazos, que pueden reaccionar y moverse con bastante independencia.
+❤️ Tienen tres corazones (dos bombean sangre a las branquias y uno al resto del cuerpo) y sangre azul, por la hemocianina, una proteína con cobre.
+🫙 En acuarios y laboratorios se les ha visto abrir frascos con tapa de rosca.
+🚪 En 2016, Inky escapó del Acuario Nacional de Nueva Zelanda: se deslizó por una rendija de su tanque, cruzó el piso y bajó por un tubo de desagüe de unos 50 m hasta el mar.
+⏳ La mayoría de las especies vive 1 o 2 años. Los machos mueren poco después de aparearse; la hembra deja de comer mientras cuida sus huevos y muere cuando nacen.
+🐙 Las crías nacen solas: no hay padres que les enseñen, así que lo que aprendieron sus papás no pasa a la siguiente generación.
+🔬 En 1977, el biólogo Jerome Wodinsky les quitó a hembras de pulpo la glándula óptica (parecida a nuestra hipófisis): dejaron de cuidar los huevos, volvieron a comer y vivieron meses más. Esa glándula es la que dispara el final de su vida.
+
+¿Crees que los pulpos dominarían el mundo si vivieran más? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Pulpos #Curiosidades
+```
+
+**Etiquetas** (176/500):
+```
+qué pasaría si los pulpos vivieran más, pulpos, pulpo inteligente, inky pulpo escape, tres corazones, por qué los pulpos viven tan poco, animales marinos, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: un pulpo puede cambiar de color en menos de un segundo para camuflarse… y aun así se cree que no distingue los colores 🤯 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-los-pulpos-vivieran-tanto-como-nosotros.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)

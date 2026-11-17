@@ -1,0 +1,133 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si el café no te diera energía?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si el café *no te diera energía*… sino que *te engañara*?",
+        "¿Por qué te despierta? Y al final: *por qué las plantas lo inventaron*."
+      ],
+      "say": [
+        "¿Qué pasaría si el café no te diera energía… sino que te engañara?",
+        "¿Por qué te despierta? Y al final: por qué las plantas lo inventaron."
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "adenosina",
+      "caps": [
+        "Mientras estás despierto, tu cerebro junta una sustancia que da sueño: *la adenosina*.",
+        "Cuanta más tienes, *más cansado estás*."
+      ],
+      "say": [
+        "Mientras estás despierto, tu cerebro junta una sustancia que da sueño: la adenosina.",
+        "Cuanta más tienes, más cansado estás."
+      ]
+    },
+    {
+      "id": "bloqueo",
+      "caps": [
+        "La cafeína tiene *casi la misma forma*…",
+        "se mete en su lugar y bloquea la señal: *no te da energía, tapa el cansancio*."
+      ],
+      "say": [
+        "La cafeína tiene casi la misma forma…",
+        "se mete en su lugar y bloquea la señal: no te da energía, tapa el cansancio."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "bajon",
+      "caps": [
+        "¿Y por qué luego *te da sueño de golpe*?",
+        "La adenosina se siguió juntando… y cuando la cafeína se va, *entra toda junta*."
+      ],
+      "say": [
+        "¿Y por qué luego te da sueño de golpe?",
+        "La adenosina se siguió juntando… y cuando la cafeína se va, entra toda junta."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 2.0,
+          "type": "thud"
+        }
+      ]
+    },
+    {
+      "id": "noche",
+      "caps": [
+        "Y la del café de la tarde sigue ahí: *en unas 5 horas tu cuerpo apenas elimina la mitad*.",
+        "Por eso a las 10 de la noche *no te puedes dormir*."
+      ],
+      "say": [
+        "Y la del café de la tarde sigue ahí: en unas cinco horas tu cuerpo apenas elimina la mitad.",
+        "Por eso a las diez de la noche no te puedes dormir."
+      ]
+    },
+    {
+      "id": "plantas",
+      "caps": [
+        "Y lo más loco: las plantas inventaron la cafeína como *veneno para insectos*…",
+        "pero a las abejas les encanta: con un poquito, *recuerdan mejor la flor y regresan*."
+      ],
+      "say": [
+        "Y lo más loco: las plantas inventaron la cafeína como veneno para insectos…",
+        "pero a las abejas les encanta: con un poquito, recuerdan mejor la flor y regresan."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.4,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI EL CAFÉ NO TE",
+    "DIERA ENERGÍA?"
+  ],
+  "hookZoom": 0.12
+}
