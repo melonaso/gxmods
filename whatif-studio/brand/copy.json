@@ -1877,6 +1877,84 @@
     "locas"
    ],
    "next": "ep01-crecer"
+  },
+  {
+   "episode": "short38-bebe",
+   "isShort": true,
+   "factsTitle": "Lo que pasa de verdad:",
+   "title": "¿Y si pudieras recordar cuando eras bebé? 👶 #Shorts",
+   "hook": "No recuerdas nada antes de los 3 años, pero tu cerebro sí guardaba recuerdos… y tu primer recuerdo podría ser inventado.",
+   "math": [
+    "🧠 Se llama amnesia infantil: casi ningún adulto recuerda algo de antes de los 3 o 4 años, aunque en esos años aprendiste a caminar, a hablar y a reconocer caras.",
+    "🏗️ El hipocampo (la parte del cerebro que guarda los recuerdos nuevos) sigue madurando en los primeros años y produce muchísimas neuronas nuevas. En ratones se vio que ese crecimiento tan rápido reacomoda los circuitos y hace olvidar (Akers, Frankland y Josselyn, Science, 2014).",
+    "🍼 En 2025, un equipo de la Universidad de Yale escaneó con resonancia magnética a bebés de 4 meses a 2 años mientras veían imágenes: cuando su hipocampo se activaba más, después reconocían mejor esas imágenes, sobre todo a partir del año (Science, 2025).",
+    "🐭 En 2018, investigadores de Toronto encendieron con luz (optogenética: neuronas modificadas que se activan con luz) recuerdos que unos ratones habían formado de crías y que ya habían olvidado. Los recuerdos seguían ahí, pero no se podían alcanzar (Current Biology, 2018).",
+    "🤔 En una encuesta a más de 6,600 personas, casi 4 de cada 10 dijeron tener un recuerdo de los 2 años o antes. Los autores creen que la mayoría son inventados: armados con fotos, historias de la familia y datos sueltos (Psychological Science, 2018)."
+   ],
+   "question": "¿Cuál es tu primer recuerdo… y crees que es real? 👇",
+   "hashtags": [
+    "#Shorts",
+    "#QuePasariaSi",
+    "#CuentasLocas",
+    "#Cerebro",
+    "#Curiosidades"
+   ],
+   "tags": [
+    "qué pasaría si recordaras cuando eras bebé",
+    "amnesia infantil",
+    "primer recuerdo",
+    "por qué no recordamos cuando éramos bebés",
+    "hipocampo",
+    "recuerdos falsos",
+    "memoria",
+    "shorts",
+    "cuentas locas"
+   ],
+   "pinned": "📌 Dato: el primer recuerdo de la mayoría de la gente es de alrededor de los 3 años y medio. ¿Cuál es el tuyo y cuántos años tenías? 👇",
+   "themes": [
+    "locas"
+   ],
+   "next": "ep01-crecer"
+  },
+  {
+   "episode": "short39-cables",
+   "isShort": true,
+   "factsTitle": "Lo que pasa de verdad:",
+   "title": "¿Y si se cortaran los cables del fondo del mar? 🌊 #Shorts",
+   "hook": "Tu internet viaja por cables del grosor de una manguera en el fondo del mar. En 2022, un volcán dejó a un país entero sin conexión.",
+   "math": [
+    "🌊 Más del 95 % del tráfico de internet entre continentes viaja por cables submarinos; los satélites llevan una parte muy pequeña.",
+    "🧵 Hay más de 500 cables tendidos por el fondo de los océanos. En aguas profundas miden unos 2 cm de grosor, como una manguera; cerca de la costa llevan capas de acero y son más gruesos.",
+    "💡 Por dentro llevan fibras ópticas: hilos de vidrio del grosor de un cabello que transportan tus datos como pulsos de luz.",
+    "⚓ Cada año hay entre 150 y 200 fallas, la mayoría por anclas y redes de pesca. Las reparan barcos especiales que «pescan» el cable del fondo con un gancho y lo empalman a bordo.",
+    "🔀 Casi nunca lo notas porque hay muchos cables entre países: si uno se corta, el tráfico se va por otros.",
+    "🌋 El 15 de enero de 2022, la erupción del volcán submarino Hunga Tonga–Hunga Haʻapai cortó el único cable internacional de Tonga. El país quedó casi incomunicado, con conexiones por satélite muy limitadas, hasta que lo repararon unas 5 semanas después.",
+    "🦈 En los años 80 se registraron mordidas de tiburón en cables de fibra óptica. En 2014, Google contó que forraba sus cables del Pacífico con un material parecido al Kevlar (el de los chalecos antibalas). Hoy las mordidas son una causa rarísima."
+   ],
+   "question": "¿Sabías que tu internet viajaba por el fondo del mar? 👇",
+   "hashtags": [
+    "#Shorts",
+    "#QuePasariaSi",
+    "#CuentasLocas",
+    "#Internet",
+    "#Curiosidades"
+   ],
+   "tags": [
+    "qué pasaría si se cortaran los cables submarinos",
+    "cables submarinos",
+    "cómo llega el internet",
+    "tonga sin internet",
+    "tiburones muerden cables",
+    "fibra óptica",
+    "internet",
+    "shorts",
+    "cuentas locas"
+   ],
+   "pinned": "📌 Dato: para reparar un cable, un barco baja un gancho, «pesca» el cable del fondo y lo sube para empalmarlo a bordo 🚢 ¿Te imaginabas que internet se arreglaba así? 👇",
+   "themes": [
+    "locas"
+   ],
+   "next": "ep06-mar"
   }
  ]
 }

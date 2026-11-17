@@ -1,0 +1,158 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si se cortaran los cables del fondo del mar?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si se cortaran *los cables del fondo del mar*?",
+        "¿Te quedarías sin internet? *Ya le pasó a un país entero*."
+      ],
+      "say": [
+        "¿Qué pasaría si se cortaran los cables del fondo del mar?",
+        "¿Te quedarías sin internet? Ya le pasó a un país entero."
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.4,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "satelite",
+      "caps": [
+        "Casi todo el internet entre continentes *no viaja por satélites*…",
+        "viaja por *cables en el fondo del mar*."
+      ],
+      "say": [
+        "Casi todo el internet entre continentes no viaja por satélites…",
+        "viaja por cables en el fondo del mar."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.1,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "manguera",
+      "caps": [
+        "Y no son gruesos: allá abajo son *como una manguera*…",
+        "con *hilos de vidrio* que llevan tus datos en forma de luz."
+      ],
+      "say": [
+        "Y no son gruesos: allá abajo son como una manguera…",
+        "con hilos de vidrio que llevan tus datos en forma de luz."
+      ]
+    },
+    {
+      "id": "rotos",
+      "caps": [
+        "Se rompen *más de 100 veces al año*,",
+        "casi siempre por *anclas y redes de pesca*."
+      ],
+      "say": [
+        "Se rompen más de cien veces al año,",
+        "casi siempre por anclas y redes de pesca."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.6,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "desvio",
+      "caps": [
+        "¿Por qué no lo notas? Porque *hay cientos de cables*:",
+        "si se corta uno, *tus datos se van por otro*."
+      ],
+      "say": [
+        "¿Por qué no lo notas? Porque hay cientos de cables:",
+        "si se corta uno, tus datos se van por otro."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "tonga",
+      "caps": [
+        "Pero si tu país tiene uno solo… En 2022, un volcán *cortó el único cable de Tonga*…",
+        "y el país quedó *casi incomunicado más de un mes*."
+      ],
+      "say": [
+        "Pero si tu país tiene uno solo… En dos mil veintidós, un volcán cortó el único cable de Tonga…",
+        "y el país quedó casi incomunicado más de un mes."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 2.6,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "tiburon",
+      "caps": [
+        "Y sí: alguna vez *los tiburones los mordieron*…",
+        "por eso hay cables forrados con un material *parecido al de los chalecos antibalas*."
+      ],
+      "say": [
+        "Y sí: alguna vez los tiburones los mordieron…",
+        "por eso hay cables forrados con un material parecido al de los chalecos antibalas."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.5,
+          "type": "crack"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI SE CORTARAN LOS",
+    "CABLES DEL FONDO DEL MAR?"
+  ],
+  "hookZoom": 0.12
+}

@@ -1,0 +1,140 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si pudieras recordar cuando eras bebé?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si pudieras *recordar cuando eras bebé*?",
+        "¿Por qué no recuerdas nada… y por qué tu primer recuerdo *podría ser falso*?"
+      ],
+      "say": [
+        "¿Qué pasaría si pudieras recordar cuando eras bebé?",
+        "¿Por qué no recuerdas nada… y por qué tu primer recuerdo podría ser falso?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "olvido",
+      "caps": [
+        "Casi nadie recuerda nada *antes de los 3 años*…",
+        "y eso que aprendiste a *caminar, a hablar y a reconocer caras*."
+      ],
+      "say": [
+        "Casi nadie recuerda nada antes de los tres años…",
+        "y eso que aprendiste a caminar, a hablar y a reconocer caras."
+      ]
+    },
+    {
+      "id": "hipocampo",
+      "caps": [
+        "La parte que guarda los recuerdos, *el hipocampo*, seguía en obra:",
+        "crecía tan rápido que *revolvía todo lo que guardaba*."
+      ],
+      "say": [
+        "La parte que guarda los recuerdos, el hipocampo, seguía en obra:",
+        "crecía tan rápido que revolvía todo lo que guardaba."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "escaneo",
+      "caps": [
+        "¿Entonces *se borraron*? Tal vez no: en 2025 escanearon a bebés de 1 año…",
+        "y sus cerebros *sí estaban guardando recuerdos*."
+      ],
+      "say": [
+        "¿Entonces se borraron? Tal vez no: en dos mil veinticinco escanearon a bebés de un año…",
+        "y sus cerebros sí estaban guardando recuerdos."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "ratones",
+      "caps": [
+        "Y en ratones, unos científicos *encendieron con luz* recuerdos de cuando eran crías…",
+        "que ya habían olvidado: *seguían ahí, pero sin llave*."
+      ],
+      "say": [
+        "Y en ratones, unos científicos encendieron con luz recuerdos de cuando eran crías…",
+        "que ya habían olvidado: seguían ahí, pero sin llave."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.4,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "falso",
+      "caps": [
+        "¿Y tu primer recuerdo? *4 de cada 10 personas* dicen recordar algo de antes de los 2 años…",
+        "y lo más probable es que *sea inventado*: armado con fotos y con lo que te contaron."
+      ],
+      "say": [
+        "¿Y tu primer recuerdo? Cuatro de cada diez personas dicen recordar algo de antes de los dos años…",
+        "y lo más probable es que sea inventado: armado con fotos y con lo que te contaron."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.4,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI PUDIERAS RECORDAR",
+    "CUANDO ERAS BEBÉ?"
+  ],
+  "hookZoom": 0.12
+}

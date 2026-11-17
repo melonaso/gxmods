@@ -139,25 +139,27 @@ export function toon(ctx, x, y, h, o = {}) {
   const {
     skin = '#f1c27d', hair = '#3b2a20', hairStyle = 'short', shirt = '#3b82f6', pants = '#1e293b', shoes = '#111827',
     armL = [0.18, 0.15], armR = [0.18, 0.15], legs = 0.06, lean = 0, tilt = 0, eyes = 'open', mouth = 'smile',
-    look = [0, 0], brows = 0, blush = 0, t = 0, seed = 0, breathe = true, iris = '#6b4226', hold = null, scale = 1,
+    look = [0, 0], brows = 0, blush = 0, t = 0, seed = 0, breathe = true, iris = '#6b4226', hold = null, scale = 1, kid = false,
   } = o;
   const L = Math.max(3, h * 0.011);
   const bounce = mouth === 'laugh' ? -Math.abs(Math.sin(t * 16)) * h * 0.012 : 0;
   const br = breathe ? Math.sin(t * 2.2 + seed) * h * 0.004 : 0;
   ctx.save(); ctx.translate(x, y); ctx.scale(scale, scale); ctx.rotate(lean);
   groundShadow(ctx, 0, 0, h * 0.2, 0.3);
-  const hipY = -0.47 * h + bounce, shY = -0.78 * h + bounce + br, sw = 0.125 * h, hw = 0.09 * h;
+  // Proporciones: adulto o bebé/niño pequeño (cabeza grande, extremidades cortas).
+  const P = kid ? { r: 0.2, sh: 0.56, hip: 0.31, sw: 0.12, hw: 0.1, a1: 0.12, a2: 0.11, aw: 0.065, lw: 0.1 } : { r: 0.12, sh: 0.78, hip: 0.47, sw: 0.125, hw: 0.09, a1: 0.16, a2: 0.15, aw: 0.052, lw: 0.08 };
+  const hipY = -P.hip * h + bounce, shY = -P.sh * h + bounce + br, sw = P.sw * h, hw = P.hw * h;
   // Piernas
   for (const s of [-1, 1]) {
     const hx = s * 0.05 * h, fx = s * (0.06 + legs) * h;
-    tube(ctx, [[hx, hipY + 0.02 * h], [(hx + fx) / 2, hipY * 0.5], [fx, -0.035 * h]], 0.08 * h, pants, L);
+    tube(ctx, [[hx, hipY + 0.02 * h], [(hx + fx) / 2, hipY * 0.5], [fx, -0.035 * h]], P.lw * h, pants, L);
     ctx.save(); ctx.translate(fx + s * 0.02 * h, -0.025 * h);
     ctx.beginPath(); ctx.ellipse(0, 0, 0.055 * h, 0.03 * h, 0, 0, TAU); ctx.fillStyle = shoes; ctx.fill(); ctx.lineWidth = L; ctx.strokeStyle = INK; ctx.stroke();
     ctx.fillStyle = 'rgba(255,255,255,0.25)'; ctx.beginPath(); ctx.ellipse(-0.015 * h, -0.012 * h, 0.025 * h, 0.008 * h, 0, 0, TAU); ctx.fill();
     ctx.restore();
   }
   // Pelo largo (detrás)
-  const r = 0.12 * h, hcY = shY - 0.02 * h - r * 0.95;
+  const r = P.r * h, hcY = shY - 0.02 * h - r * 0.95;
   if (hairStyle === 'long') { roundRectPath(ctx, -r * 1.12, hcY - r * 0.4, r * 2.24, r * 2.1, r * 0.9); ctx.fillStyle = hair; ctx.fill(); ctx.lineWidth = L; ctx.strokeStyle = INK; ctx.stroke(); }
   // Cuello
   roundRectPath(ctx, -0.03 * h, shY - 0.05 * h, 0.06 * h, 0.08 * h, 0.02 * h); ctx.fillStyle = shade(skin, -0.12); ctx.fill(); ctx.lineWidth = L; ctx.strokeStyle = INK; ctx.stroke();
@@ -183,9 +185,9 @@ export function toon(ctx, x, y, h, o = {}) {
   for (const [s, [a1, a2], key] of [[-1, armL, 'L'], [1, armR, 'R']]) {
     const sx = s * (sw - 0.025 * h), sy = shY + 0.035 * h;
     const d1 = [s * Math.sin(a1), Math.cos(a1)], th2 = a1 + a2, d2 = [s * Math.sin(th2), Math.cos(th2)];
-    const ex = sx + d1[0] * 0.16 * h, ey = sy + d1[1] * 0.16 * h, hx = ex + d2[0] * 0.15 * h, hy = ey + d2[1] * 0.15 * h;
-    tube(ctx, [[sx, sy], [ex, ey], [hx, hy]], 0.052 * h, skin, L);
-    tube(ctx, [[sx, sy], [sx + d1[0] * 0.07 * h, sy + d1[1] * 0.07 * h]], 0.068 * h, shirt, L);
+    const ex = sx + d1[0] * P.a1 * h, ey = sy + d1[1] * P.a1 * h, hx = ex + d2[0] * P.a2 * h, hy = ey + d2[1] * P.a2 * h;
+    tube(ctx, [[sx, sy], [ex, ey], [hx, hy]], P.aw * h, skin, L);
+    tube(ctx, [[sx, sy], [sx + d1[0] * P.a1 * 0.45 * h, sy + d1[1] * P.a1 * 0.45 * h]], P.aw * 1.3 * h, shirt, L);
     ctx.beginPath(); ctx.arc(hx, hy, 0.036 * h, 0, TAU); ctx.fillStyle = skin; ctx.fill(); ctx.lineWidth = L; ctx.strokeStyle = INK; ctx.stroke();
     hands[key] = [hx, hy];
   }
@@ -201,7 +203,11 @@ export function toon(ctx, x, y, h, o = {}) {
   ctx.fillStyle = hair; ctx.lineWidth = L; ctx.strokeStyle = INK;
   if (hairStyle === 'curly') {
     ctx.beginPath(); for (let i = 0; i < 9; i++) { const a = Math.PI + (i / 8) * Math.PI; ctx.moveTo(Math.cos(a) * r * 0.95 + r * 0.28, Math.sin(a) * r * 0.95); ctx.arc(Math.cos(a) * r * 0.95, Math.sin(a) * r * 0.95, r * 0.28, 0, TAU); } ctx.fill(); ctx.stroke();
-  } else {
+  } else if (hairStyle === 'tuft') {
+    // Bebé: un rizo en la coronilla.
+    ctx.beginPath(); ctx.moveTo(-r * 0.12, -r * 1.0); ctx.bezierCurveTo(-r * 0.2, -r * 1.45, r * 0.4, -r * 1.45, r * 0.25, -r * 1.15); ctx.bezierCurveTo(r * 0.15, -r * 1.0, r * 0.0, -r * 1.12, r * 0.08, -r * 1.22);
+    ctx.lineWidth = L * 1.6; ctx.strokeStyle = hair; ctx.stroke(); ctx.lineWidth = L; ctx.strokeStyle = INK;
+  } else if (hairStyle !== 'none') {
     ctx.beginPath(); ctx.moveTo(-r * 1.02, r * 0.05); ctx.bezierCurveTo(-r * 1.1, -r * 1.1, r * 1.1, -r * 1.25, r * 1.03, r * 0.0);
     ctx.quadraticCurveTo(r * 0.75, -r * 0.45, r * 0.25, -r * 0.42); ctx.quadraticCurveTo(-r * 0.1, -r * 0.2, -r * 0.4, -r * 0.45); ctx.quadraticCurveTo(-r * 0.8, -r * 0.35, -r * 1.02, r * 0.05);
     ctx.closePath(); ctx.fill(); ctx.stroke();
@@ -248,4 +254,18 @@ export function toon(ctx, x, y, h, o = {}) {
   // Manos en coordenadas de pantalla (para colocar objetos).
   const c = Math.cos(lean), sn = Math.sin(lean), map = ([hx, hy]) => [x + (hx * c - hy * sn) * scale, y + (hx * sn + hy * c) * scale];
   return { L: map(hands.L), R: map(hands.R), head: map([0, hcY]) };
+}
+
+/** Cerebro con degradado, circunvoluciones y brillo. glowA 0..1 resplandor rosa alrededor. */
+export function brain(ctx, cx, cy, R, glowA = 0) {
+  if (glowA > 0) glow(ctx, cx, cy, R * 2, 'rgba(244,114,182,A)', 0.5 * glowA);
+  const outline = () => { ctx.beginPath(); ctx.moveTo(cx - R, cy + R * 0.2); ctx.bezierCurveTo(cx - R * 1.15, cy - R * 0.6, cx - R * 0.4, cy - R * 1.05, cx + R * 0.15, cy - R * 0.9); ctx.bezierCurveTo(cx + R * 0.9, cy - R * 0.85, cx + R * 1.2, cy - R * 0.2, cx + R, cy + R * 0.3); ctx.bezierCurveTo(cx + R * 0.85, cy + R * 0.75, cx + R * 0.2, cy + R * 0.7, cx - R * 0.1, cy + R * 0.62); ctx.bezierCurveTo(cx - R * 0.6, cy + R * 0.7, cx - R * 0.95, cy + R * 0.6, cx - R, cy + R * 0.2); ctx.closePath(); };
+  outline(); ctx.fillStyle = vgrad(ctx, 0, cy - R, cy + R, [[0, '#fbcfe8'], [1, '#ec4899']]); ctx.fill();
+  ctx.save(); outline(); ctx.clip();
+  ctx.strokeStyle = 'rgba(157,23,77,0.55)'; ctx.lineWidth = R * 0.045; ctx.lineCap = 'round';
+  const Rn = (k) => Math.sin(k * 12.9898) * 0.5 + 0.5;
+  for (let i = 0; i < 16; i++) { const x0 = cx - R + Rn(i) * 2 * R, y0 = cy - R + Rn(i + 7) * 1.6 * R; ctx.beginPath(); ctx.moveTo(x0, y0); for (let k = 1; k < 5; k++) ctx.quadraticCurveTo(x0 + k * R * 0.12 - R * 0.06, y0 + (k % 2 ? -1 : 1) * R * 0.14, x0 + k * R * 0.12, y0 + Math.sin(k + i) * R * 0.08); ctx.stroke(); }
+  ctx.fillStyle = 'rgba(255,255,255,0.25)'; ctx.beginPath(); ctx.ellipse(cx - R * 0.4, cy - R * 0.55, R * 0.35, R * 0.15, -0.4, 0, TAU); ctx.fill();
+  ctx.restore();
+  outline(); ctx.lineWidth = Math.max(4, R * 0.03); ctx.strokeStyle = INK; ctx.stroke();
 }
