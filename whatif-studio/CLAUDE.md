@@ -35,6 +35,12 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
   Shorts. Siguiente paso: videos largos de 6–10 min que amplíen los Shorts ganadores (ej. «el Sol
   se apaga, minuto a minuto») y enlazarlos como «video relacionado» desde esos Shorts.
 
+## Requisitos de monetización (YouTube Studio, datos al 11 nov 2026)
+- 78 / 1,000 suscriptores; **0 / 4,000 horas válidas** (365 días); **21 K / 10 M vistas de Shorts** (90 días).
+- Conclusión: la vía de Shorts (10 M en 90 días ≈ 111,000 vistas diarias) está muy lejos; la vía realista son
+  **videos largos de 8–15 min** (4,000 h ≈ 69,000 vistas a ~3.5 min de duración media). Los Shorts sirven para
+  sumar suscriptores (~3.7 por cada 1,000 vistas) y mandar gente al largo.
+
 ## Retención (14 nov 2026)
 - Problema: la gente se va a la mitad (~67 % visto). Causas probables: sin pregunta abierta, el dato
   fuerte sale pronto y el cierre «Deja tu ¿Y si…? abajo» avisa que ya terminó (deslizan).
