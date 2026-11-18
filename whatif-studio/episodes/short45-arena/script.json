@@ -1,0 +1,150 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 116,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si se acabara la arena del mundo?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si se acabara *la arena del mundo*?",
+        "¿Te *afectaría*?"
+      ],
+      "say": [
+        "¿Qué pasaría si se acabara la arena del mundo?",
+        "¿Te afectaría?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.8,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "obra",
+      "caps": [
+        "Primero, *adiós a construir*:",
+        "el concreto de casas, puentes y edificios es *casi todo arena y piedras*."
+      ],
+      "say": [
+        "Primero, adiós a construir:",
+        "el concreto de casas, puentes y edificios es casi todo arena y piedras."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 1.2,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "vidrio",
+      "caps": [
+        "Ni ventanas, ni vasos, ni pantallas:",
+        "el vidrio es *arena derretida*."
+      ],
+      "say": [
+        "Ni ventanas, ni vasos, ni pantallas:",
+        "el vidrio es arena derretida."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.35,
+          "type": "pop"
+        },
+        {
+          "cue": 0,
+          "at": 0.8,
+          "type": "pop"
+        },
+        {
+          "cue": 0,
+          "at": 1.25,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "chip",
+      "caps": [
+        "Y hasta *el cerebro de tu celular*: los chips salen de *la misma piedra que la arena*."
+      ],
+      "say": [
+        "Y hasta el cerebro de tu celular: los chips salen de la misma piedra que la arena."
+      ]
+    },
+    {
+      "id": "podio",
+      "caps": [
+        "Así que es *lo que más usa el mundo*… después del agua."
+      ],
+      "say": [
+        "Así que es lo que más usa el mundo… después del agua."
+      ]
+    },
+    {
+      "id": "desierto",
+      "caps": [
+        "¿Y los desiertos? *No sirven*:",
+        "el viento redondea sus granos *como canicas*, y así no se pegan en el concreto."
+      ],
+      "say": [
+        "¿Y los desiertos? No sirven:",
+        "el viento redondea sus granos como canicas, y así no se pegan en el concreto."
+      ]
+    },
+    {
+      "id": "dubai",
+      "caps": [
+        "Por eso *Dubái*, en pleno desierto, *le compró arena a Australia*…",
+        "para construir *el edificio más alto del mundo*."
+      ],
+      "say": [
+        "Por eso Dubái, en pleno desierto, le compró arena a Australia…",
+        "para construir el edificio más alto del mundo."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI SE ACABARA",
+    "LA ARENA DEL MUNDO?"
+  ],
+  "hookZoom": 0.12
+}

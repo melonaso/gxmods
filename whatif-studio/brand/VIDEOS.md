@@ -2464,3 +2464,138 @@ qué pasaría si se derritiera todo el hielo, deshielo, nivel del mar, antártid
 - Archivo: `out/subir/y-si-se-derritiera-todo-el-hielo-del-planeta.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 42 — `out/short44-lluvia.mp4` (vertical)
+
+**Título** (47/100):
+```
+¿Y si dejara de llover para siempre? 🌧️ #Shorts
+```
+
+**Descripción** (1613/5000):
+```
+Sin lluvia se secan los ríos, las presas y los campos. Y hay un desierto donde casi no llueve que la NASA usa para practicar Marte.
+
+Lo que pasa de verdad:
+🌧️ Casi toda el agua dulce que usamos viene, al final, de la lluvia y la nieve: llenan los ríos, los lagos, las presas y el agua que hay bajo tierra.
+🏞️ Muchos ríos dependen de la lluvia de cada temporada: sin ella, los chicos se secarían en semanas y muchos grandes en meses. Los que nacen en glaciares durarían más, mientras quede hielo.
+🚰 Las ciudades sacan el agua de presas y pozos. Las presas se vaciarían en meses o pocos años; algunos pozos profundos tienen agua de hace miles de años, pero ya no se rellenarían.
+🌽 Cerca del 80 % de los campos de cultivo del mundo solo reciben agua de la lluvia (no tienen riego), y de ellos sale cerca del 60 % de la comida (FAO).
+🌫️ La lluvia «lava» el aire: las gotas atrapan polvo, humo y contaminación y los bajan al suelo. Sin lluvia, todo eso se quedaría flotando.
+🏜️ El desierto de Atacama, en Chile, es el desierto más seco del mundo fuera de los polos: hay lugares donde casi nunca se ha registrado lluvia. La NASA ha probado ahí robots y taladros para buscar vida en Marte.
+🌸 Cuando un año llueve más de lo normal, pasa el «desierto florido»: semillas que esperaban bajo la tierra brotan y el desierto se cubre de flores moradas, amarillas y blancas (uno de los más grandes fue en 2015).
+
+¿Cuánto llueve donde vives? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (131/500):
+```
+qué pasaría si dejara de llover, sin lluvia, sequía, ríos, desierto de atacama, desierto florido, nasa marte, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: una gota de lluvia no tiene forma de lágrima: al caer se aplasta y parece un pan de hamburguesa 🍔💧 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-dejara-de-llover-para-siempre.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 43 — `out/short45-arena.mp4` (vertical)
+
+**Título** (47/100):
+```
+¿Y si se acabara la arena del mundo? 🏖️ #Shorts
+```
+
+**Descripción** (1380/5000):
+```
+La arena es lo que más usa el mundo después del agua: casas, vidrio y hasta tu celular. Y la del desierto no sirve para construir.
+
+Lo que pasa de verdad:
+🏗️ El concreto es una mezcla de cemento, agua, arena y grava; la arena y las piedras son cerca de tres cuartas partes de su volumen.
+🪟 El vidrio se hace derritiendo arena (sobre todo granos de cuarzo) a unos 1,500 °C, con otros ingredientes como carbonato de sodio y cal.
+💻 Los chips se hacen con silicio, que se saca del cuarzo muy puro: el mismo mineral que forma casi toda la arena.
+🌍 La arena y la grava son lo que más se saca de la Tierra después del agua: entre 40 y 50 mil millones de toneladas al año (ONU, 2019).
+🏜️ La arena del desierto casi no sirve para construir: el viento la pule y deja granos redondos y parejos que no se traban entre sí. La de río y de mar tiene granos con esquinas que se agarran mejor.
+🏙️ Por eso países del desierto la compran fuera: según varios reportes, Dubái trajo arena de Australia para construir el Burj Khalifa, el edificio más alto del mundo (828 m).
+🏖️ Sacar tanta arena de ríos y playas está borrando costas: hay playas que se encogen cada año.
+
+¿Sabías que tu celular estaba hecho de arena? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Arena #Curiosidades
+```
+
+**Etiquetas** (119/500):
+```
+qué pasaría si se acabara la arena, arena, concreto, vidrio, chips, silicio, dubái, burj khalifa, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: se calcula que hay más estrellas en el universo que granos de arena en todas las playas de la Tierra ✨ ¿Lo hubieras creído? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-se-acabara-la-arena-del-mundo.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día cavaras 1 metro hacia abajo?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 44 — `out/short46-sol.mp4` (vertical)
+
+**Título** (49/100):
+```
+¿Y si el Sol fuera el doble de grande? ☀️ #Shorts
+```
+
+**Descripción** (1634/5000):
+```
+Una estrella el doble de grande no brilla el doble: brilla más de 10 veces más. Y existe: es Sirio, y la puedes ver de noche.
+
+Lo que pasa de verdad:
+⭐ «El doble de grande» aquí es el doble de masa. Una estrella así brilla entre 10 y 20 veces más que el Sol: el brillo crece mucho más rápido que el peso.
+🔥 Al pesar más, aprieta más su centro y quema su combustible mucho más rápido: viviría unos mil millones de años en vez de unos diez mil millones.
+🌊 Con más de 10 veces la luz, la Tierra a su distancia de hoy se calentaría tanto que los océanos se evaporarían y quedaría un planeta seco y de roca.
+🪐 Para recibir la misma luz que hoy habría que vivir unas 3 veces más lejos. La cuenta: la luz baja con la distancia al cuadrado; a 3 veces la distancia llega 3 × 3 = 9 veces menos luz, lo que compensa casi 10 veces más brillo. Marte está a solo 1.5 veces nuestra distancia.
+🦠 La Tierra tiene unos 4,500 millones de años, y durante casi 4,000 millones solo hubo vida diminuta. Los primeros animales aparecieron hace unos 600 millones de años: con ese Sol, no habría dado tiempo.
+✨ Sirio, la estrella más brillante del cielo de noche, tiene unas 2 veces la masa del Sol y brilla unas 25 veces más. Está a 8.6 años luz.
+🔭 Para encontrarla: busca las Tres Marías (tres estrellas en fila, el cinturón de Orión) y sigue su línea: te lleva a Sirio. En noviembre sale ya tarde en la noche; de diciembre a marzo se ve desde temprano.
+
+¿Ya habías visto a Sirio? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Espacio #Sol
+```
+
+**Etiquetas** (113/500):
+```
+qué pasaría si el sol fuera más grande, sol, estrellas, sirio, tres marías, orión, espacio, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: el Sol no es amarillo: visto desde el espacio es blanco; el aire de la Tierra lo hace ver amarillento ☀️ ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-sol-fuera-el-doble-de-grande.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)

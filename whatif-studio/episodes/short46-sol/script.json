@@ -1,0 +1,119 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 100,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si el Sol fuera el doble de grande?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si el Sol fuera *el doble de grande*?",
+        "¿Seguiríamos *aquí*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el Sol fuera el doble de grande?",
+        "¿Seguiríamos aquí?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.0,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "brillo",
+      "caps": [
+        "No brillaría el doble: brillaría *más de 10 veces más*…",
+        "porque las estrellas grandes *queman su combustible mucho más rápido*."
+      ],
+      "say": [
+        "No brillaría el doble: brillaría más de diez veces más…",
+        "porque las estrellas grandes queman su combustible mucho más rápido."
+      ]
+    },
+    {
+      "id": "mares",
+      "caps": [
+        "Aquí, *los mares hervirían*…",
+        "y la Tierra quedaría como *un desierto de piedra*."
+      ],
+      "say": [
+        "Aquí, los mares hervirían…",
+        "y la Tierra quedaría como un desierto de piedra."
+      ]
+    },
+    {
+      "id": "lejos",
+      "caps": [
+        "Para estar a gusto, tendríamos que vivir *3 veces más lejos*:",
+        "*más allá de Marte*."
+      ],
+      "say": [
+        "Para estar a gusto, tendríamos que vivir tres veces más lejos:",
+        "más allá de Marte."
+      ]
+    },
+    {
+      "id": "corta",
+      "caps": [
+        "Y lo peor: viviría solo *unos mil millones de años*…",
+        "y aquí, los animales tardaron *casi 4 mil millones* en aparecer."
+      ],
+      "say": [
+        "Y lo peor: viviría solo unos mil millones de años…",
+        "y aquí, los animales tardaron casi cuatro mil millones en aparecer."
+      ]
+    },
+    {
+      "id": "sirio",
+      "caps": [
+        "Y esa estrella existe: *Sirio*, la que *más brilla de noche*…",
+        "búscala: sigue la línea de *las Tres Marías*."
+      ],
+      "say": [
+        "Y esa estrella existe: Sirio, la que más brilla de noche…",
+        "búscala: sigue la línea de las Tres Marías."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.5,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI EL SOL FUERA",
+    "EL DOBLE DE GRANDE?"
+  ],
+  "hookZoom": 0.12
+}

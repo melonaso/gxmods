@@ -1,0 +1,126 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si dejara de llover para siempre?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *dejara de llover* para siempre?",
+        "¿Qué se acaba *primero*?"
+      ],
+      "say": [
+        "¿Qué pasaría si dejara de llover para siempre?",
+        "¿Qué se acaba primero?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.9,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "rios",
+      "caps": [
+        "Primero, los ríos: no nacen solos, *los llena la lluvia*…",
+        "sin ella, muchos *se secarían en meses*."
+      ],
+      "say": [
+        "Primero, los ríos: no nacen solos, los llena la lluvia…",
+        "sin ella, muchos se secarían en meses."
+      ]
+    },
+    {
+      "id": "casa",
+      "caps": [
+        "Luego, *el agua de tu casa*: sin lluvia, las presas y los pozos *se vacían*…",
+        "y de la llave *no sale nada*."
+      ],
+      "say": [
+        "Luego, el agua de tu casa: sin lluvia, las presas y los pozos se vacían…",
+        "y de la llave no sale nada."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.6,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "comida",
+      "caps": [
+        "Después, la comida: *8 de cada 10 campos* del mundo solo reciben agua de la lluvia…",
+        "sin ella, *el maíz y el trigo se secan*."
+      ],
+      "say": [
+        "Después, la comida: ocho de cada diez campos del mundo solo reciben agua de la lluvia…",
+        "sin ella, el maíz y el trigo se secan."
+      ]
+    },
+    {
+      "id": "aire",
+      "caps": [
+        "Y el aire *se ensuciaría*:",
+        "la lluvia es la que *lava el polvo y el humo* del cielo."
+      ],
+      "say": [
+        "Y el aire se ensuciaría:",
+        "la lluvia es la que lava el polvo y el humo del cielo."
+      ]
+    },
+    {
+      "id": "atacama",
+      "caps": [
+        "Y ya hay un lugar casi sin lluvia: *el desierto de Atacama*, en Chile, tan seco que *la NASA prueba ahí sus robots para Marte*…",
+        "pero cuando por fin llueve, *se llena de flores*."
+      ],
+      "say": [
+        "Y ya hay un lugar casi sin lluvia: el desierto de Atacama, en Chile, tan seco que la NASA prueba ahí sus robots para Marte…",
+        "pero cuando por fin llueve, se llena de flores."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.9,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI DEJARA DE LLOVER",
+    "PARA SIEMPRE?"
+  ],
+  "hookZoom": 0.12
+}
