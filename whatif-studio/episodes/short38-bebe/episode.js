@@ -237,8 +237,8 @@ const SCENES = {
     if (local > cue(1) + 0.3) {
       const k = clamp((local - cue(1) - 0.3) / 0.25), sc = 1.6 - 0.6 * k;
       ctx.save(); ctx.globalAlpha = k; ctx.translate(cx, cy + 10); ctx.rotate(-0.22); ctx.scale(sc, sc);
-      ctx.lineWidth = 10; ctx.strokeStyle = '#dc2626'; hq.roundRectPath(ctx, -190, -48, 380, 96, 14); ctx.stroke();
-      ctx.font = '900 64px Inter, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#dc2626'; ctx.fillText('INVENTADO', 0, 4);
+      ctx.lineWidth = 10; ctx.strokeStyle = '#dc2626'; hq.roundRectPath(ctx, -225, -48, 450, 96, 14); ctx.stroke();
+      ctx.font = '900 60px Inter, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#dc2626'; ctx.fillText('INVENTADO', 0, 4);
       ctx.restore();
     }
     void W;
