@@ -2376,3 +2376,91 @@ qué pasaría si los pulpos vivieran más, pulpos, pulpo inteligente, inky pulpo
 - Archivo: `out/subir/y-si-los-pulpos-vivieran-tanto-como-nosotros.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 40 — `out/short42-insectos.mp4` (vertical)
+
+**Título** (50/100):
+```
+¿Y si desaparecieran todos los insectos? 🐝 #Shorts
+```
+
+**Descripción** (1318/5000):
+```
+Sin insectos se acaban casi todas las frutas, los pájaros pasan hambre y el mundo se llena de caca. ¿Sobreviviríamos?
+
+Lo que pasa de verdad:
+🍎 Los insectos (sobre todo las abejas) llevan el polen de una flor a otra; sin eso, muchas plantas no dan fruto. Según la FAO, 3 de cada 4 cultivos principales de alimentos dependen en algo de los polinizadores: manzanas, fresas, café, chocolate…
+🐦 La mayoría de los pájaros alimentan a sus crías con insectos, aunque de adultos coman semillas. Sin insectos, se quedarían sin comida para criar.
+🪲 Escarabajos, moscas y hormigas se comen la madera podrida, las hojas, los animales muertos y la caca. Sin ellos, todo eso se acumularía.
+🌾 El trigo, el arroz y el maíz los poliniza el viento, así que la humanidad no desaparecería… pero comeríamos casi solo granos.
+🐄 Caso real: en Australia, los escarabajos nativos estaban acostumbrados a la caca seca de los canguros y no a la de las vacas. Las bostas se acumulaban en los campos y criaban moscas, así que entre 1968 y los años 80 trajeron más de 40 especies de escarabajos de África y Europa para comérselas.
+
+¿Qué fruta extrañarías más? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Insectos #Curiosidades
+```
+
+**Etiquetas** (154/500):
+```
+qué pasaría si desaparecieran los insectos, insectos, abejas, polinización, escarabajo pelotero, australia caca de vaca, naturaleza, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: el chocolate depende de unas moscas diminutas que polinizan las flores del cacao; sin ellas, casi no habría chocolate 🍫 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-desaparecieran-todos-los-insectos.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día nevara 1 cm más que el anterior?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 41 — `out/short43-hielo.mp4` (vertical)
+
+**Título** (56/100):
+```
+¿Y si se derritiera todo el hielo del planeta? 🧊 #Shorts
+```
+
+**Descripción** (1299/5000):
+```
+El mar subiría unos 70 metros: más de 20 pisos. ¿Tu ciudad quedaría bajo el agua? Depende de qué tan alta esté.
+
+Lo que pasa de verdad:
+🧊 El hielo que flota (como en un vaso, o el del océano Ártico) ya ocupa el lugar del agua en la que se convierte: al derretirse, el nivel casi no cambia. El que sube el mar es el que está sobre tierra.
+🌍 Casi todo ese hielo está en la Antártida (cerca del 90 % del hielo del planeta) y en Groenlandia.
+📏 Si se derritiera todo, el mar subiría unos 70 metros. Un piso mide unos 3 metros: 70 ÷ 3 ≈ 23 pisos.
+🏙️ Desaparecerían ciudades costeras como Venecia, Ámsterdam o casi toda Florida, y la mayoría de las playas del mundo.
+🏔️ Las ciudades altas se salvan: la Ciudad de México está a unos 2,240 m sobre el mar. Buenos Aires (unos 25 m), Guayaquil (unos 4 m) o Cancún quedarían bajo el agua.
+⏳ No pasaría de un día para otro: a los ritmos actuales tardaría miles de años.
+💧 Bajo el hielo de la Antártida hay más de 400 lagos escondidos. El más grande, el lago Vostok, está bajo casi 4 km de hielo y lleva millones de años aislado de la luz y del aire.
+
+¿Tu ciudad se salvaría? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (150/500):
+```
+qué pasaría si se derritiera todo el hielo, deshielo, nivel del mar, antártida, groenlandia, ciudades bajo el agua, lago vostok, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: el hielo de la Antártida es tan pesado que hunde el suelo debajo de él cientos de metros; si se derritiera, la tierra iría subiendo poco a poco 🏔️ ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-se-derritiera-todo-el-hielo-del-planeta.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)

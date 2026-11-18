@@ -62,7 +62,7 @@ const SCENES = {
     const crack = clamp((local - 0.3) / 2.5), fall = clamp((local - 2.6) / 1.2);
     // Glaciar (bloques).
     ctx.save();
-    for (const [x, w, h, d] of [[0, 380, 520, 0], [370, 260, 470, 1], [620, 470, 540, 0]]) {
+    for (const [x, w, h, d] of [[0, 380, 430, 0], [370, 260, 390, 1], [620, 470, 450, 0]]) {
       const dy = d ? fall * 260 : 0, rot = d ? fall * 0.25 : 0;
       ctx.save(); ctx.translate(x + w / 2, 900 + dy); ctx.rotate(rot);
       ctx.beginPath(); ctx.moveTo(-w / 2, 0); ctx.lineTo(-w / 2 + 20, -h); ctx.lineTo(w / 2 - 30, -h + 40); ctx.lineTo(w / 2, 0); ctx.closePath();
@@ -71,7 +71,7 @@ const SCENES = {
       ctx.restore();
     }
     ctx.restore();
-    if (crack > 0) { ctx.strokeStyle = INK; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(500, 430); for (let k = 1; k <= 8; k++) ctx.lineTo(500 + (k % 2 ? 26 : -20), 430 + k * 58 * crack); ctx.stroke(); }
+    if (crack > 0) { ctx.strokeStyle = INK; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(500, 520); for (let k = 1; k <= 8; k++) ctx.lineTo(500 + (k % 2 ? 26 : -20), 520 + k * 47 * crack); ctx.stroke(); }
     sea(ctx, W, H, 900, t);
     if (fall > 0) for (let i = 0; i < 12; i++) { const a = -Math.PI * (i / 11), d = 60 + 160 * fall; ctx.fillStyle = `rgba(224,242,254,${1 - fall})`; ctx.beginPath(); ctx.arc(500 + Math.cos(a) * d, 900 + Math.sin(a) * d * 0.7, 14, 0, TAU); ctx.fill(); }
   },
@@ -103,7 +103,7 @@ const SCENES = {
     ctx.restore();
     hq.glow(ctx, 540, 1040, 200, 'rgba(255,255,255,A)', 0.5); hq.glow(ctx, 470, 470, 120, 'rgba(255,255,255,A)', 0.5);
     hq.tag(ctx, 470, 400, 'GROENLANDIA', { size: 34, fill: '#bae6fd' });
-    hq.tag(ctx, 540, 1080, 'ANTÁRTIDA', { size: 38, fill: '#bae6fd' });
+    hq.tag(ctx, 830, 1010, 'ANTÁRTIDA', { size: 36, fill: '#bae6fd' });
   },
 
   subida(ctx, o) {
