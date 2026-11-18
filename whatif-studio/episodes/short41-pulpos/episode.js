@@ -129,7 +129,7 @@ const SCENES = {
     // Desagüe en el piso.
     ctx.beginPath(); ctx.ellipse(880, 980, 70, 20, 0, 0, TAU); ctx.fillStyle = '#0b0f1a'; ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = '#94a3b8'; ctx.stroke();
     // Recorrido: arriba del tanque → piso → desagüe.
-    const T1 = 1.0, T2 = cue(1) + 1.6;
+    const T1 = 1.0, T2 = cue(1) + 2.0;
     let px, py, sc = 1;
     if (local < T1) { const u = local / T1; px = 250; py = 700 - 220 * u; }
     else if (local < T1 + 0.6) { const u = (local - T1) / 0.6; px = 250 + 220 * u; py = 480 + 420 * u * u; }
