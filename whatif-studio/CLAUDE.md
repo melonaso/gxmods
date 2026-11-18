@@ -35,6 +35,16 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
   Shorts. Siguiente paso: videos largos de 6–10 min que amplíen los Shorts ganadores (ej. «el Sol
   se apaga, minuto a minuto») y enlazarlos como «video relacionado» desde esos Shorts.
 
+## Estadísticas por video (YouTube Studio, 20 oct – 16 nov 2026)
+- Total: 53,929 vistas, 0:27 de duración media, **81.4 % medio visto**, 78 suscriptores.
+- **Lo que mejor funciona: temas a escala del planeta** (la Tierra, el Sol, el agua), todos con ≥ 85 % visto:
+  agua del mundo 7,460 vistas · 97.5 % · **38 suscriptores (la mitad del total)**; Tierra el doble 4,570 · 85.4 %;
+  Sol apagado 3,853 · 88.9 %; islas 3,481 · 91.5 %; nave al Sol 3,277 · 94.0 %.
+- **Lo que menos: temas personales o del cuerpo y los más largos** (63–77 % visto, 1,300–2,600 vistas): rayo 73.9 %,
+  dormir 73.9 % (los dos primeros con la estructura nueva), globos 63.4 %, contaminación (0:42) 72.4 %.
+- Regla: a más % visto, más vistas. Priorizar **«¿Y si…?» de escala mundial** con un dato vital (agua, Sol, Tierra),
+  de 30–36 s, buscando ≥ 85 % visto. Las horas de Shorts (267 h en el periodo) **no cuentan** para las 4,000 h.
+
 ## Requisitos de monetización (YouTube Studio, datos al 11 nov 2026)
 - 78 / 1,000 suscriptores; **0 / 4,000 horas válidas** (365 días); **21 K / 10 M vistas de Shorts** (90 días).
 - Conclusión: la vía de Shorts (10 M en 90 días ≈ 111,000 vistas diarias) está muy lejos; la vía realista son
