@@ -1,0 +1,133 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si se derritiera todo el hielo del planeta?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si se derritiera *todo el hielo del planeta*?",
+        "¿Tu ciudad quedaría *bajo el agua*?"
+      ],
+      "say": [
+        "¿Qué pasaría si se derritiera todo el hielo del planeta?",
+        "¿Tu ciudad quedaría bajo el agua?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "vaso",
+      "caps": [
+        "Primero, una sorpresa: el hielo que flota, como en tu vaso, *no sube el agua* al derretirse…",
+        "el que sube el mar es el que está *sobre tierra*: en la Antártida y Groenlandia."
+      ],
+      "say": [
+        "Primero, una sorpresa: el hielo que flota, como en tu vaso, no sube el agua al derretirse…",
+        "el que sube el mar es el que está sobre tierra: en la Antártida y Groenlandia."
+      ]
+    },
+    {
+      "id": "subida",
+      "caps": [
+        "Y es tanto, que el mar subiría *unos 70 metros*:",
+        "como *un edificio de más de 20 pisos*."
+      ],
+      "say": [
+        "Y es tanto, que el mar subiría unos setenta metros:",
+        "como un edificio de más de veinte pisos."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.4,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "ciudades",
+      "caps": [
+        "Desaparecerían *Venecia, Ámsterdam, Florida*…",
+        "y *casi todas las playas* del mundo."
+      ],
+      "say": [
+        "Desaparecerían Venecia, Ámsterdam, Florida…",
+        "y casi todas las playas del mundo."
+      ]
+    },
+    {
+      "id": "altas",
+      "caps": [
+        "¿Y tu ciudad? Si está alta, *te salvas*: la Ciudad de México está a más de 2 kilómetros sobre el mar…",
+        "pero *Buenos Aires, Guayaquil o Cancún* quedarían bajo el agua."
+      ],
+      "say": [
+        "¿Y tu ciudad? Si está alta, te salvas: la Ciudad de México está a más de dos kilómetros sobre el mar…",
+        "pero Buenos Aires, Guayaquil o Cancún quedarían bajo el agua."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "lagos",
+      "caps": [
+        "Y lo más loco: bajo el hielo de la Antártida hay *cientos de lagos escondidos*…",
+        "y uno lleva *millones de años sin ver la luz*."
+      ],
+      "say": [
+        "Y lo más loco: bajo el hielo de la Antártida hay cientos de lagos escondidos…",
+        "y uno lleva millones de años sin ver la luz."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI SE DERRITIERA TODO",
+    "EL HIELO DEL PLANETA?"
+  ],
+  "hookZoom": 0.12
+}

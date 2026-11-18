@@ -45,6 +45,15 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
 - Regla: a más % visto, más vistas. Priorizar **«¿Y si…?» de escala mundial** con un dato vital (agua, Sol, Tierra),
   de 30–36 s, buscando ≥ 85 % visto. Las horas de Shorts (267 h en el periodo) **no cuentan** para las 4,000 h.
 
+## Lección del Short 40 (café, 18 nov 2026)
+- El dueño lo dejó de ver en la palabra «adenosina»: el inicio decía demasiado, daba la respuesta («no te da energía,
+  te engaña»), era largo y la voz sonaba confusa. Reglas desde ahora:
+  - **Gancho = una sola pregunta corta** (≤ ~3 s) + como mucho otra pregunta de 1 s. Sin respuesta, sin anunciar el
+    final, sin listas de promesas.
+  - **Cero nombres científicos en la voz y en pantalla** (adenosina, hipocampo, glándula óptica…): decirlo con palabras
+    de todos los días («una sustancia que da sueño», «la parte del cerebro que guarda recuerdos»). Los nombres van en la
+    descripción.
+
 ## Requisitos de monetización (YouTube Studio, datos al 11 nov 2026)
 - 78 / 1,000 suscriptores; **0 / 4,000 horas válidas** (365 días); **21 K / 10 M vistas de Shorts** (90 días).
 - Conclusión: la vía de Shorts (10 M en 90 días ≈ 111,000 vistas diarias) está muy lejos; la vía realista son

@@ -1,0 +1,119 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si desaparecieran todos los insectos?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si desaparecieran *todos los insectos*?",
+        "¿Podríamos *sobrevivir*?"
+      ],
+      "say": [
+        "¿Qué pasaría si desaparecieran todos los insectos?",
+        "¿Podríamos sobrevivir?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "frutas",
+      "caps": [
+        "Primero, adiós a casi todas *las frutas*:",
+        "sin insectos que lleven el polen de flor en flor, *las flores no dan fruto*."
+      ],
+      "say": [
+        "Primero, adiós a casi todas las frutas:",
+        "sin insectos que lleven el polen de flor en flor, las flores no dan fruto."
+      ]
+    },
+    {
+      "id": "aves",
+      "caps": [
+        "Después, *los pájaros*: casi todos alimentan a sus crías con insectos…",
+        "y sin ellos, *se mueren de hambre*."
+      ],
+      "say": [
+        "Después, los pájaros: casi todos alimentan a sus crías con insectos…",
+        "y sin ellos, se mueren de hambre."
+      ]
+    },
+    {
+      "id": "basura",
+      "caps": [
+        "Y el mundo se llenaría de *hojas, animales muertos y caca*…",
+        "porque los insectos son *los que se la comen*."
+      ],
+      "say": [
+        "Y el mundo se llenaría de hojas, animales muertos y caca…",
+        "porque los insectos son los que se la comen."
+      ]
+    },
+    {
+      "id": "comida",
+      "caps": [
+        "¿Sobreviviríamos? *Sí*: el trigo, el arroz y el maíz *los poliniza el viento*…",
+        "pero comeríamos *casi solo eso*."
+      ],
+      "say": [
+        "¿Sobreviviríamos? Sí: el trigo, el arroz y el maíz los poliniza el viento…",
+        "pero comeríamos casi solo eso."
+      ]
+    },
+    {
+      "id": "australia",
+      "caps": [
+        "Y ya pasó algo parecido: en Australia, *las vacas llenaron los campos de caca*…",
+        "hasta que *trajeron escarabajos de otros países* para comérsela."
+      ],
+      "say": [
+        "Y ya pasó algo parecido: en Australia, las vacas llenaron los campos de caca…",
+        "hasta que trajeron escarabajos de otros países para comérsela."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.4,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI DESAPARECIERAN",
+    "TODOS LOS INSECTOS?"
+  ],
+  "hookZoom": 0.12
+}

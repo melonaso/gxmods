@@ -32,11 +32,11 @@
       "id": "hook",
       "caps": [
         "¿Qué pasaría si pudieras *recordar cuando eras bebé*?",
-        "¿Por qué no recuerdas nada… y por qué tu primer recuerdo *podría ser falso*?"
+        "¿Por qué *no recuerdas nada*?"
       ],
       "say": [
         "¿Qué pasaría si pudieras recordar cuando eras bebé?",
-        "¿Por qué no recuerdas nada… y por qué tu primer recuerdo podría ser falso?"
+        "¿Por qué no recuerdas nada?"
       ],
       "hold": 0.2,
       "fx": [
@@ -61,11 +61,11 @@
     {
       "id": "hipocampo",
       "caps": [
-        "La parte que guarda los recuerdos, *el hipocampo*, seguía en obra:",
+        "La parte del cerebro que *guarda los recuerdos* seguía en obra:",
         "crecía tan rápido que *revolvía todo lo que guardaba*."
       ],
       "say": [
-        "La parte que guarda los recuerdos, el hipocampo, seguía en obra:",
+        "La parte del cerebro que guarda los recuerdos seguía en obra:",
         "crecía tan rápido que revolvía todo lo que guardaba."
       ],
       "fx": [

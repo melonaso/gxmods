@@ -131,7 +131,7 @@ const SCENES = {
     ctx.lineWidth = 34; ctx.lineCap = 'round'; ctx.strokeStyle = INK; ctx.stroke(); ctx.lineWidth = 24; ctx.strokeStyle = '#fbbf24'; ctx.stroke();
     ctx.restore();
     hq.glow(ctx, 560, 790, 120, 'rgba(251,191,36,A)', 0.4 + 0.2 * Math.sin(t * 4));
-    hq.tag(ctx, 820, 950, 'HIPOCAMPO', { size: 36, fill: '#fde68a' });
+    hq.tag(ctx, 820, 950, 'GUARDA RECUERDOS', { size: 34, fill: '#fde68a' });
     const mess = clamp((local - cue(1)) / 0.5);
     if (mess > 0) {
       for (let i = 0; i < 10; i++) {
