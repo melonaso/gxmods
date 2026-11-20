@@ -1,0 +1,133 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 112,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si el aire tuviera el doble de oxígeno?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si el aire tuviera *el doble de oxígeno*?",
+        "¿Respirarías *mejor*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el aire tuviera el doble de oxígeno?",
+        "¿Respirarías mejor?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.0,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "respirar",
+      "caps": [
+        "*No*: tu sangre ya va *casi llena de oxígeno*…",
+        "lo que sí cambiaría *es el fuego*."
+      ],
+      "say": [
+        "No: tu sangre ya va casi llena de oxígeno…",
+        "lo que sí cambiaría es el fuego."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "click"
+        }
+      ]
+    },
+    {
+      "id": "fuego",
+      "caps": [
+        "El fuego vive de oxígeno: con el doble, *arde mucho más rápido*…",
+        "y hasta *una planta mojada podría prenderse*."
+      ],
+      "say": [
+        "El fuego vive de oxígeno: con el doble, arde mucho más rápido…",
+        "y hasta una planta mojada podría prenderse."
+      ]
+    },
+    {
+      "id": "bosques",
+      "caps": [
+        "Los bosques *se quemarían a cada rato*:",
+        "un solo rayo podría *prender selvas enteras*."
+      ],
+      "say": [
+        "Los bosques se quemarían a cada rato:",
+        "un solo rayo podría prender selvas enteras."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.5,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "oxido",
+      "caps": [
+        "Y el metal *se oxidaría más rápido*:",
+        "el óxido es *hierro que se junta con el oxígeno*."
+      ],
+      "say": [
+        "Y el metal se oxidaría más rápido:",
+        "el óxido es hierro que se junta con el oxígeno."
+      ]
+    },
+    {
+      "id": "libelulas",
+      "caps": [
+        "Y ya pasó: hace unos 300 millones de años el aire tenía *mucho más oxígeno*…",
+        "y volaban *libélulas tan grandes como una paloma*."
+      ],
+      "say": [
+        "Y ya pasó: hace unos trescientos millones de años el aire tenía mucho más oxígeno…",
+        "y volaban libélulas tan grandes como una paloma."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI EL AIRE TUVIERA",
+    "EL DOBLE DE OXÍGENO?"
+  ],
+  "hookZoom": 0.12
+}

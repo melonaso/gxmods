@@ -1,0 +1,133 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 110,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si el mar fuera de agua dulce?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si el mar fuera *de agua dulce*?",
+        "¿Sería *buena idea*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el mar fuera de agua dulce?",
+        "¿Sería buena idea?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.0,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "tomar",
+      "caps": [
+        "Lo bueno: *podrías tomártelo*…",
+        "y los desiertos junto al mar *se volverían huertas*."
+      ],
+      "say": [
+        "Lo bueno: podrías tomártelo…",
+        "y los desiertos junto al mar se volverían huertas."
+      ]
+    },
+    {
+      "id": "peces",
+      "caps": [
+        "Lo malo: *casi todos los peces del mar morirían*:",
+        "su cuerpo está hecho para la sal, y en agua dulce *se llenan de agua*."
+      ],
+      "say": [
+        "Lo malo: casi todos los peces del mar morirían:",
+        "su cuerpo está hecho para la sal, y en agua dulce se llenan de agua."
+      ]
+    },
+    {
+      "id": "flotar",
+      "caps": [
+        "Además, *flotarías menos*:",
+        "la sal hace el agua más pesada, y eso es lo que *te empuja hacia arriba*."
+      ],
+      "say": [
+        "Además, flotarías menos:",
+        "la sal hace el agua más pesada, y eso es lo que te empuja hacia arriba."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "hielo",
+      "caps": [
+        "Y el mar *se congelaría más fácil*:",
+        "el agua salada aguanta *hasta casi 2 grados bajo cero*."
+      ],
+      "say": [
+        "Y el mar se congelaría más fácil:",
+        "el agua salada aguanta hasta casi dos grados bajo cero."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.4,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "sal",
+      "caps": [
+        "¿Y toda esa sal? Si la sacaras y la regaras sobre los continentes…",
+        "*los taparía con más de 150 metros*: como un edificio de 40 pisos."
+      ],
+      "say": [
+        "¿Y toda esa sal? Si la sacaras y la regaras sobre los continentes…",
+        "los taparía con más de ciento cincuenta metros: como un edificio de cuarenta pisos."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.2,
+          "type": "boom"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI EL MAR FUERA",
+    "DE AGUA DULCE?"
+  ],
+  "hookZoom": 0.12
+}

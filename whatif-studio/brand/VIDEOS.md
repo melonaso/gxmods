@@ -2599,3 +2599,182 @@ qué pasaría si el sol fuera más grande, sol, estrellas, sirio, tres marías, 
 - Archivo: `out/subir/y-si-el-sol-fuera-el-doble-de-grande.mp4`
 - Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 45 — `out/short47-arboles.mp4` (vertical)
+
+**Título** (49/100):
+```
+¿Y si desaparecieran todos los árboles? 🌳 #Shorts
+```
+
+**Descripción** (1469/5000):
+```
+Sin árboles habría menos lluvia, cerros que se derrumban y ciudades más calientes. Y una isla ya lo vivió.
+
+Lo que pasa de verdad:
+🌳 Los árboles sacan agua del suelo y la sueltan por sus hojas como vapor: es como si sudaran. Un árbol grande de la selva puede soltar cientos de litros al día.
+🌧️ En el Amazonas, entre una cuarta parte y la mitad de la lluvia viene del agua que sueltan sus propios árboles; ese vapor también viaja y hace llover en otras partes de Sudamérica (los «ríos voladores»).
+⛰️ Las raíces amarran la tierra como una red. Donde se tala un cerro, las lluvias fuertes provocan más deslaves y ríos de lodo.
+🏙️ La sombra y el vapor de los árboles enfrían: una calle arbolada puede estar varios grados más fresca que una sin árboles.
+🫁 No nos quedaríamos sin aire: el oxígeno del aire es una reserva enorme que duraría miles de años aunque nadie hiciera más, y cerca de la mitad del oxígeno nuevo lo fabrican algas diminutas del mar.
+🗿 La Isla de Pascua (Rapa Nui), la de los moáis, estuvo cubierta de bosques de palmeras; para el siglo XVIII casi no quedaban árboles. Las causas se siguen estudiando: la tala y las ratas que se comían las semillas.
+🌱 Hoy la isla es casi toda pastizal, y se trabaja para volver a plantar árboles.
+
+¿Hay muchos árboles donde vives? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (139/500):
+```
+qué pasaría si desaparecieran los árboles, árboles, bosques, amazonas, deforestación, isla de pascua, moáis, oxígeno, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: hay más árboles en la Tierra que estrellas en nuestra galaxia: unos 3 billones de árboles contra 100 a 400 mil millones de estrellas 🌳✨ ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-desaparecieran-todos-los-arboles.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día nevara 1 cm más que el anterior?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 46 — `out/short48-mardulce.mp4` (vertical)
+
+**Título** (43/100):
+```
+¿Y si el mar fuera de agua dulce? 🌊 #Shorts
+```
+
+**Descripción** (1536/5000):
+```
+Podrías tomarte el mar… pero casi todos sus peces morirían. Y su sal taparía los continentes con más de 150 metros.
+
+Lo que pasa de verdad:
+🚰 Cerca del 97 % del agua de la Tierra está en el mar y es salada; si fuera dulce, habría agua para beber y regar en casi cualquier costa.
+🐟 Los peces de mar viven con sal por dentro y por fuera; en agua dulce, el agua se les mete al cuerpo y no la pueden sacar a tiempo. Solo algunos, como el salmón o ciertos tiburones, aguantan los dos tipos de agua.
+🏊 El agua de mar pesa cerca de 2.5 % más que la dulce (1,025 kg por metro cúbico contra 1,000), por eso empuja más y flotas mejor. En el Mar Muerto, casi 10 veces más salado, flotas sin esfuerzo.
+🧊 El agua dulce se congela a 0 °C; la de mar, a cerca de −1.9 °C. Con un mar dulce se formaría más hielo en las zonas frías.
+🌊 La sal también mueve las grandes corrientes del océano (el agua fría y salada pesa más y se hunde); sin sal, esas corrientes cambiarían y con ellas el clima de muchas costas.
+🧂 La sal llega al mar porque la lluvia disuelve poco a poco las rocas y los ríos la arrastran durante millones de años.
+📏 Según la agencia del océano de Estados Unidos (NOAA), si se sacara toda la sal del mar y se repartiera sobre los continentes, formaría una capa de más de 150 metros: la altura de un edificio de unos 40 pisos.
+
+¿Te tomarías un vaso de mar? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Mar #Curiosidades
+```
+
+**Etiquetas** (122/500):
+```
+qué pasaría si el mar fuera de agua dulce, mar, agua salada, agua dulce, sal del mar, peces, océano, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: un litro de agua de mar tiene unos 35 gramos de sal, como dos cucharadas soperas 🧂 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-mar-fuera-de-agua-dulce.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 47 — `out/short49-nucleo.mp4` (vertical)
+
+**Título** (51/100):
+```
+¿Y si se enfriara el centro de la Tierra? 🌍 #Shorts
+```
+
+**Descripción** (1363/5000):
+```
+El centro de la Tierra es un imán gigante que nos protege del Sol. Si se enfriara, el aire se iría escapando… como en Marte.
+
+Lo que pasa de verdad:
+🌍 El centro de la Tierra tiene una capa de hierro derretido a más de 4,000 °C que se mueve sin parar; ese movimiento crea el campo magnético: el «imán gigante» del planeta.
+🧭 Las brújulas apuntan al norte gracias a ese imán; sin él, no apuntarían a ningún lado fijo.
+🐢 Tortugas marinas, aves migratorias y salmones usan el campo magnético para orientarse en viajes de miles de kilómetros.
+☀️ El Sol lanza sin parar partículas (el viento solar). El imán de la Tierra las desvía; sin él, irían desgastando poco a poco el aire.
+⏳ El centro de la Tierra se enfría muy despacio: tardaría miles de millones de años. Y aun sin imán, perder el aire tomaría muchos millones de años.
+🔴 Marte tuvo un imán así que se apagó hace unos 4,000 millones de años; desde entonces el viento solar le quitó buena parte de su aire. Hoy su atmósfera es más de 100 veces más delgada que la nuestra (menos del 1 % de la presión).
+💧 Marte tuvo ríos y lagos; hoy su agua está congelada en los polos y bajo el suelo.
+
+¿Sabías que la Tierra era un imán gigante? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Espacio #Tierra
+```
+
+**Etiquetas** (151/500):
+```
+qué pasaría si se enfriara el núcleo de la tierra, núcleo de la tierra, campo magnético, brújula, viento solar, marte, atmósfera, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: el norte de las brújulas se mueve: en los últimos años ha avanzado entre 30 y 50 km por año, de Canadá hacia Siberia 🧭 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-se-enfriara-el-centro-de-la-tierra.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si cada día cavaras 1 metro hacia abajo?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 48 — `out/short50-oxigeno.mp4` (vertical)
+
+**Título** (52/100):
+```
+¿Y si el aire tuviera el doble de oxígeno? 🔥 #Shorts
+```
+
+**Descripción** (1306/5000):
+```
+Con el doble de oxígeno no respirarías mejor: lo que cambiaría es el fuego. Y ya pasó, con libélulas del tamaño de una paloma.
+
+Lo que pasa de verdad:
+🫁 Hoy el aire tiene cerca de 21 % de oxígeno. Con el doble (42 %) no tendrías más energía: tu sangre ya va llena a cerca del 97 a 99 %.
+🔥 El fuego necesita oxígeno: con más, arde más rápido y más caliente. Experimentos con plantas muestran que arriba de 25 a 30 % de oxígeno, hasta la vegetación húmeda puede arder.
+🌲 Por eso los incendios serían mucho más fáciles y frecuentes: un solo rayo podría prender bosques enormes.
+🔩 El óxido es hierro que se junta con oxígeno (con ayuda de la humedad); con más oxígeno, el metal se oxidaría más rápido.
+🦗 Hace unos 300 millones de años (el periodo Carbonífero) el aire llegó a tener cerca de 30 a 35 % de oxígeno. Vivían libélulas gigantes como la Meganeura, de unos 70 cm de punta a punta de las alas: como una paloma.
+🐜 Una explicación es que, con más oxígeno, los insectos podían crecer más, porque respiran por tubitos que llevan el aire directo a su cuerpo.
+
+¿Le tendrías miedo a una libélula del tamaño de una paloma? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Ciencia #Curiosidades
+```
+
+**Etiquetas** (143/500):
+```
+qué pasaría si hubiera el doble de oxígeno, oxígeno, fuego, incendios, óxido, libélulas gigantes, meganeura, carbonífero, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: hace más de 2,500 millones de años el aire casi no tenía oxígeno; lo fabricaron, poco a poco, algas y plantas 🌱 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-aire-tuviera-el-doble-de-oxigeno.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)

@@ -1,0 +1,119 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 100,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si se enfriara el centro de la Tierra?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si se enfriara *el centro de la Tierra*?",
+        "¿Lo *notarías*?"
+      ],
+      "say": [
+        "¿Qué pasaría si se enfriara el centro de la Tierra?",
+        "¿Lo notarías?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.0,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "iman",
+      "caps": [
+        "Primero, *las brújulas se volverían locas*:",
+        "el centro de la Tierra es *metal derretido que se mueve*, y funciona como *un imán gigante*."
+      ],
+      "say": [
+        "Primero, las brújulas se volverían locas:",
+        "el centro de la Tierra es metal derretido que se mueve, y funciona como un imán gigante."
+      ]
+    },
+    {
+      "id": "animales",
+      "caps": [
+        "Y muchos animales *se perderían*:",
+        "las tortugas, las aves y los salmones *usan ese imán* para orientarse."
+      ],
+      "say": [
+        "Y muchos animales se perderían:",
+        "las tortugas, las aves y los salmones usan ese imán para orientarse."
+      ]
+    },
+    {
+      "id": "escudo",
+      "caps": [
+        "Pero lo peor: ese imán es *un escudo contra el viento del Sol*…",
+        "sin él, *el aire se iría escapando* al espacio, poco a poco."
+      ],
+      "say": [
+        "Pero lo peor: ese imán es un escudo contra el viento del Sol…",
+        "sin él, el aire se iría escapando al espacio, poco a poco."
+      ]
+    },
+    {
+      "id": "tiempo",
+      "caps": [
+        "¿Lo notarías? *Tú no*:",
+        "el aire tardaría *millones de años* en irse."
+      ],
+      "say": [
+        "¿Lo notarías? Tú no:",
+        "el aire tardaría millones de años en irse."
+      ]
+    },
+    {
+      "id": "marte",
+      "caps": [
+        "Y ya pasó: *Marte* perdió su imán hace miles de millones de años…",
+        "y hoy su aire es *más de 100 veces más delgado* que el nuestro."
+      ],
+      "say": [
+        "Y ya pasó: Marte perdió su imán hace miles de millones de años…",
+        "y hoy su aire es más de cien veces más delgado que el nuestro."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI SE ENFRIARA EL",
+    "CENTRO DE LA TIERRA?"
+  ],
+  "hookZoom": 0.12
+}
