@@ -54,6 +54,19 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
     de todos los días («una sustancia que da sueño», «la parte del cerebro que guarda recuerdos»). Los nombres van en la
     descripción.
 
+## Short 46 «¿Y si el Sol fuera el doble de grande?» (datos al 22 nov 2026, 2 días)
+- 7.2 K vistas (+4.7 K sobre lo habitual del canal), 5,845 en 48 h; 77.6 % se quedó viendo (meta: > 70 %);
+  **96.8 % medio visto**, 0:30 de 0:32; 140 me gusta; +11 suscriptores; 237 vistas desde la búsqueda de YouTube.
+- Retención: empieza en ~165 % (la gente lo repite) y termina en ~70 %, bajando suave, sin caídas bruscas.
+  Actividad detallada: ~3,300 → ~2,500 personas en los primeros 3 s (los que deslizan), baja algo más rápido de 0:03 a
+  0:11 (la explicación de «quema su combustible») y casi plano de 0:13 al final (mares, distancia, vida corta, Sirio).
+  Regla: la escena 2 debe ser la consecuencia más visual; la explicación, corta y después.
+- Por qué funcionó: tema del Sol (escala planeta); gancho de una pregunta + «¿Seguiríamos aquí?»; algo que cambia en
+  el segundo 1 (el Sol crece); preguntas encadenadas (brillo → mares → distancia → vida corta); final con algo real
+  («esa estrella existe: Sirio») **y una acción para el espectador** («búscala: sigue las Tres Marías»).
+- Punto débil: 1.5 suscriptores por cada 1,000 vistas (el de agua sacó ~5). Repetir esta fórmula y probar temas
+  gemelos del ganador (p. ej. el Sol a la mitad) y un largo que lo amplíe, enlazado como video relacionado.
+
 ## Requisitos de monetización (YouTube Studio, datos al 11 nov 2026)
 - 78 / 1,000 suscriptores; **0 / 4,000 horas válidas** (365 días); **21 K / 10 M vistas de Shorts** (90 días).
 - Conclusión: la vía de Shorts (10 M en 90 días ≈ 111,000 vistas diarias) está muy lejos; la vía realista son
