@@ -1,4 +1,4 @@
-// Motor 2D para Shorts (vertical 1080×1920). Misma interfaz que el motor 3D (window.studio),
+// Motor 2D para Shorts (vertical 1080×1920) y videos largos 2D ("landscape": true → 1920×1080). Misma interfaz que el motor 3D (window.studio),
 // así sirven igual tools/render.mjs, tools/qa.mjs y tools/build.sh.
 // Cada episodio 2D exporta setup(C) y draw(ctx, C, { t, scene, local, p }) → capa de texto.
 import { drawOverlay } from '../engine/overlay.js';
@@ -62,7 +62,7 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
       const [a, b0] = s.cueTimes[i];
       const b = i === s.cues.length - 1 ? s.dur : b0;
       if (local >= a && local < b) {
-        if (script.captions === 'pop') return { text: s.cues[i], style: 'pop', age: local - a, alpha: Math.max(0, Math.min(1, (b - local) / 0.08)) };
+        if (script.captions === 'pop') return { text: s.cues[i], style: 'pop', age: local - a, alpha: Math.max(0, Math.min(1, (b - local) / 0.08)), y: script.captionY };
         return { text: s.cues[i], alpha: Math.max(0, Math.min(1, (local - a) / 0.18, (b - local) / 0.18)) };
       }
     }

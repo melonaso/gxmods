@@ -2231,7 +2231,7 @@
       "themes": [
         "espacio"
       ],
-      "next": "ep11-solapagado"
+      "next": "ep12-estrellas"
     },
     {
       "episode": "short47-arboles",
@@ -2391,6 +2391,123 @@
       "pinned": "📌 Dato: hace más de 2,500 millones de años el aire casi no tenía oxígeno; lo fabricaron, poco a poco, algas y plantas 🌱 ¿Lo sabías? 👇",
       "themes": [
         "locas"
+      ],
+      "next": "ep11-solapagado"
+    },
+    {
+      "episode": "short51-solmitad",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si el Sol fuera la mitad de grande? ☀️ #Shorts",
+      "hook": "Un Sol la mitad de grande brillaría más de 10 veces menos: la Tierra se congelaría entera. Y 3 de cada 4 estrellas son así.",
+      "math": [
+        "⭐ «La mitad de grande» aquí es la mitad de masa. Una estrella así es una enana roja: brilla entre 15 y 25 veces menos que el Sol, porque el brillo baja mucho más rápido que el peso.",
+        "🧊 Con tan poca luz, la Tierra a su distancia de hoy quedaría muy por debajo de cero: mares y continentes congelados.",
+        "🪐 Para recibir la misma luz que hoy, habría que estar unas 4 veces más cerca. La cuenta: la luz cambia con la distancia al cuadrado; 4 veces más cerca = 4 × 4 = 16 veces más luz, lo que compensa la que le falta. Mercurio está a 0.39 veces nuestra distancia; nosotros quedaríamos a unas 0.22–0.26.",
+        "🌗 Tan cerca, la gravedad de la estrella frenaría el giro de la Tierra hasta que siempre le mostrara la misma cara (como la Luna a nosotros): una mitad con día eterno y otra con noche eterna. Es lo más probable para planetas así.",
+        "⏳ Una estrella así vive decenas de miles de millones de años: más que los 13,800 millones que tiene el universo. Ninguna enana roja se ha apagado todavía.",
+        "🔴 Cerca de 3 de cada 4 estrellas de la galaxia son enanas rojas. La más cercana al Sol, Próxima Centauri (a 4.2 años luz), es una de ellas y tiene un planeta parecido a la Tierra, Próxima b, en la zona donde podría haber agua líquida."
+      ],
+      "question": "¿Vivirías en un planeta con día o noche eternos? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Espacio",
+        "#Sol"
+      ],
+      "tags": [
+        "qué pasaría si el sol fuera más pequeño",
+        "sol",
+        "enana roja",
+        "próxima centauri",
+        "próxima b",
+        "estrellas",
+        "espacio",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: ninguna enana roja del universo se ha apagado todavía: viven más de lo que el universo lleva existiendo 🔴 ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "ep12-estrellas"
+    },
+    {
+      "episode": "short52-solgigante",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si el Sol fuera mil veces más grande? ☀️ #Shorts",
+      "hook": "Un Sol mil veces más grande nos tragaría: su borde llegaría casi hasta Júpiter. Y existe: Betelgeuse, junto a las Tres Marías.",
+      "math": [
+        "📏 «Mil veces más grande» aquí es mil veces más ancho. El Sol mide 1.4 millones de km de ancho; mil veces más es 1,400 millones de km: su borde quedaría a unos 700 millones de km del centro, casi en la órbita de Júpiter (778 millones de km).",
+        "🌡️ Las estrellas gigantes rojas tienen la superficie más fría que el Sol (unos 3,500 °C contra 5,500 °C): por eso se ven rojas.",
+        "💡 Aun así, como son enormes, brillan muchísimo: Betelgeuse brilla unas 100,000 veces más que el Sol. Hasta Plutón recibiría decenas de veces más luz que la Tierra hoy.",
+        "⏳ Las estrellas tan grandes gastan su combustible muy rápido: Betelgeuse tiene unos 10 millones de años y está cerca de su final. El Sol tiene 4,600 millones de años y le quedan otros tantos.",
+        "⭐ Betelgeuse es la estrella roja del hombro de Orión, cerca de las Tres Marías. Su tamaño exacto es difícil de medir: entre 700 y 1,000 veces el ancho del Sol.",
+        "💥 Explotará como supernova en algún momento de los próximos 100,000 años; desde la Tierra se verá tan brillante como la Luna, incluso de día, durante semanas. Está tan lejos (unos 550 años luz) que no nos hará daño."
+      ],
+      "question": "¿Ya habías visto a Betelgeuse? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Espacio",
+        "#Estrellas"
+      ],
+      "tags": [
+        "qué pasaría si el sol fuera más grande",
+        "betelgeuse",
+        "gigante roja",
+        "supernova",
+        "orión",
+        "tres marías",
+        "estrellas",
+        "espacio",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: en 2019 Betelgeuse perdió de golpe casi dos tercios de su brillo y muchos pensaron que iba a explotar; era una nube de polvo que ella misma soltó 🌫️ ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "ep12-estrellas"
+    },
+    {
+      "episode": "ep12-estrellas",
+      "title": "¿Y si cambiáramos el Sol por otra estrella?",
+      "hook": "Cambiamos el Sol por 6 estrellas reales: una nos congela, otra nos traga… y una nos deja dando vueltas igual, pero a oscuras.",
+      "math": [
+        "📏 La regla del experimento: la Tierra se queda a la misma distancia (150 millones de km); solo cambia la estrella del centro.",
+        "☀️ La gemela: Alfa Centauri A tiene 1.1 veces la masa del Sol pero brilla 1.5 veces más. Con 50 % más de luz, la Tierra se calentaría hasta perder sus océanos poco a poco: basta un cambio chico para salir de la zona habitable.",
+        "⭐ Sirio A: 2 veces la masa del Sol y 25 veces su brillo. Vive unos 1,000 millones de años; el Sol, unos 10,000 millones.",
+        "🔴 Una enana roja (la mitad de masa) brilla entre 15 y 25 veces menos. Para estar a gusto habría que acercarse más que Mercurio, y ahí la Tierra quedaría con una cara siempre al día. Cerca de 3 de cada 4 estrellas son así; la más cercana es Próxima Centauri, con su planeta Próxima b.",
+        "🔴 Betelgeuse: entre 700 y 1,000 veces el ancho del Sol y unas 100,000 veces su brillo. En su lugar, su borde quedaría más allá de Marte. Si fuera una pelota de fútbol, el Sol sería un granito de arena de menos de medio milímetro.",
+        "🕳️ Un agujero negro con la masa del Sol mediría unos 6 km de ancho (su radio es de unos 3 km). La órbita de la Tierra no cambiaría, porque la gravedad a esta distancia solo depende de la masa. El Sol nunca se volverá agujero negro: haría falta una estrella de más de unas 20 veces su masa.",
+        "⚪ Una enana blanca: del tamaño de la Tierra con casi la masa del Sol. Un centímetro cúbico pesa alrededor de una tonelada, así que una cucharadita (5 cm³) pesaría varias toneladas. Ya no produce energía: solo se enfría. Así terminará el Sol, en unos 7,000 a 8,000 millones de años. Sirio tiene una a su lado: Sirio B."
+      ],
+      "question": "¿Con cuál estrella te quedarías tú? 👇",
+      "hashtags": [
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Espacio"
+      ],
+      "tags": [
+        "qué pasaría si cambiáramos el sol",
+        "otras estrellas",
+        "sirio",
+        "betelgeuse",
+        "enana roja",
+        "agujero negro",
+        "enana blanca",
+        "alfa centauri",
+        "próxima centauri",
+        "espacio",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: el Sol es más grande que el 90 % de las estrellas de la galaxia; la mayoría son enanas rojas más chicas y frías ☀️ ¿Con cuál te quedarías tú? 👇",
+      "themes": [
+        "espacio"
       ],
       "next": "ep11-solapagado"
     }

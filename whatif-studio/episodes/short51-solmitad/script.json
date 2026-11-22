@@ -1,0 +1,126 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 96,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si el Sol fuera la mitad de grande?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si el Sol fuera *la mitad de grande*?",
+        "¿Nos *congelaríamos*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el Sol fuera la mitad de grande?",
+        "¿Nos congelaríamos?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.0,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "hielo",
+      "caps": [
+        "Sí: brillaría *más de 10 veces menos*…",
+        "y la Tierra *se congelaría entera*, con todo y mares."
+      ],
+      "say": [
+        "Sí: brillaría más de diez veces menos…",
+        "y la Tierra se congelaría entera, con todo y mares."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "cerca",
+      "caps": [
+        "Para no congelarnos, tendríamos que vivir *4 veces más cerca*:",
+        "*más cerca que Mercurio*."
+      ],
+      "say": [
+        "Para no congelarnos, tendríamos que vivir cuatro veces más cerca:",
+        "más cerca que Mercurio."
+      ]
+    },
+    {
+      "id": "noche",
+      "caps": [
+        "Pero tan cerca, su fuerza *frenaría el giro de la Tierra*:",
+        "*una mitad siempre de día*, y la otra *siempre de noche*."
+      ],
+      "say": [
+        "Pero tan cerca, su fuerza frenaría el giro de la Tierra:",
+        "una mitad siempre de día, y la otra siempre de noche."
+      ]
+    },
+    {
+      "id": "vida",
+      "caps": [
+        "Lo bueno: viviría *muchísimo más*…",
+        "más de lo que lleva existiendo *todo el universo*."
+      ],
+      "say": [
+        "Lo bueno: viviría muchísimo más…",
+        "más de lo que lleva existiendo todo el universo."
+      ]
+    },
+    {
+      "id": "real",
+      "caps": [
+        "Y casi *3 de cada 4 estrellas* son así de chicas, o más: hasta la más cercana, *Próxima Centauri*…",
+        "que tiene *un planeta parecido a la Tierra*, justo donde podría haber agua."
+      ],
+      "say": [
+        "Y casi tres de cada cuatro estrellas son así de chicas, o más: hasta la más cercana, Próxima Centauri…",
+        "que tiene un planeta parecido a la Tierra, justo donde podría haber agua."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.3,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI EL SOL FUERA",
+    "LA MITAD DE GRANDE?"
+  ],
+  "hookZoom": 0.12
+}

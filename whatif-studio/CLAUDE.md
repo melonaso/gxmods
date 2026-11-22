@@ -12,6 +12,10 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
   lovevoice.ai y manda los mp3. Se guardan como `episodes/<ep>/voice.mp3` y `tools/voice.py`
   quita silencios, acelera (×1.15), sube el tono (+2 semitonos) y sincroniza.
   Si mandan varios mp3 sin decir cuál es cuál, identificarlos por número de pausas y duración.
+- **Videos largos 2D con voz** (desde el 22 nov 2026, p. ej. `ep12-estrellas`): mismo motor y estilo HQ que los
+  Shorts, pero horizontales (`"landscape": true` → 1920×1080 lógicos, lienzo 2560×1440; subtítulos abajo con
+  `"captionY": 0.86`; mezcla a −16 LUFS). Cada frase cambia de imagen (sub-escenas por frase) y cada escena lleva
+  `"chapter"` para los capítulos. Amplían los Shorts que mejor funcionaron y se enlazan desde ellos.
 - Ideas de suscriptores: dar crédito en pantalla («IDEA DE @usuario») y en la descripción.
 
 ## Publicación (ver `brand/PUBLICACION.md`)

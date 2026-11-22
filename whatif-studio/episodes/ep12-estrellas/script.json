@@ -1,0 +1,225 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 1.0,
+  "tail": 1.5,
+  "punch": 0.05,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 88,
+    "drums": false
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si cambiáramos el Sol por otra estrella?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si mañana *cambiáramos el Sol* por otra estrella?",
+        "Una nos *congelaría*, otra nos *tragaría*…",
+        "y una nos dejaría dando vueltas igual que siempre… pero *a oscuras*.",
+        "Vamos a probar *seis*, de la más parecida a la más extraña."
+      ],
+      "say": [
+        "¿Qué pasaría si mañana cambiáramos el Sol por otra estrella?",
+        "Una nos congelaría, otra nos tragaría…",
+        "y una nos dejaría dando vueltas igual que siempre… pero a oscuras.",
+        "Vamos a probar seis, de la más parecida a la más extraña."
+      ],
+      "hold": 0.3,
+      "chapter": "La pregunta",
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.0,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "regla",
+      "caps": [
+        "La regla: la Tierra se queda *en su lugar*, a la misma distancia de siempre.",
+        "Solo cambiamos *la estrella del centro*.",
+        "Para comparar: nuestro Sol es una estrella mediana… y aun así *cabrían un millón de Tierras* dentro."
+      ],
+      "say": [
+        "La regla: la Tierra se queda en su lugar, a la misma distancia de siempre.",
+        "Solo cambiamos la estrella del centro.",
+        "Para comparar: nuestro Sol es una estrella mediana… y aun así cabrían un millón de Tierras dentro."
+      ]
+    },
+    {
+      "id": "gemela",
+      "caps": [
+        "Primera: *la gemela del Sol*, una de las estrellas más cercanas, en Alfa Centauri.",
+        "Es el sistema de estrellas *más cercano*: su luz tarda *4 años* en llegar aquí.",
+        "Desde aquí se vería casi igual: amarilla y *apenas un poco más grande*.",
+        "Pero brilla *la mitad más*… y con eso la Tierra se calentaría tanto que los mares *se irían evaporando*.",
+        "O sea: hasta un cambio chiquito *nos saca de la zona perfecta*."
+      ],
+      "say": [
+        "Primera: la gemela del Sol, una de las estrellas más cercanas, en Alfa Centauri.",
+        "Es el sistema de estrellas más cercano: su luz tarda cuatro años en llegar aquí.",
+        "Desde aquí se vería casi igual: amarilla y apenas un poco más grande.",
+        "Pero brilla la mitad más… y con eso la Tierra se calentaría tanto que los mares se irían evaporando.",
+        "O sea: hasta un cambio chiquito nos saca de la zona perfecta."
+      ],
+      "chapter": "La gemela del Sol"
+    },
+    {
+      "id": "sirio",
+      "caps": [
+        "Segunda: *Sirio*, la estrella que más brilla de noche, con *el doble de masa* que el Sol.",
+        "No brillaría el doble: brillaría *25 veces más*, blanca y cegadora.",
+        "En el cielo se vería *casi el doble de ancha* que nuestro Sol.",
+        "Los mares *hervirían*, y la Tierra quedaría como *un desierto de piedra*.",
+        "Y además viviría poco: *unos mil millones de años*, contra *diez mil millones* de nuestro Sol."
+      ],
+      "say": [
+        "Segunda: Sirio, la estrella que más brilla de noche, con el doble de masa que el Sol.",
+        "No brillaría el doble: brillaría veinticinco veces más, blanca y cegadora.",
+        "En el cielo se vería casi el doble de ancha que nuestro Sol.",
+        "Los mares hervirían, y la Tierra quedaría como un desierto de piedra.",
+        "Y además viviría poco: unos mil millones de años, contra diez mil millones de nuestro Sol."
+      ],
+      "chapter": "Sirio: el doble de grande"
+    },
+    {
+      "id": "roja",
+      "caps": [
+        "Tercera: una *estrella roja*, la mitad de grande que el Sol.",
+        "Brillaría *más de 10 veces menos*, y la Tierra *se congelaría entera*.",
+        "Para estar a gusto tendríamos que vivir *más cerca que Mercurio*…",
+        "y tan cerca, *una mitad del planeta* viviría siempre de día, y la otra *siempre de noche*.",
+        "El cielo se vería *naranja*, como un atardecer que nunca se acaba.",
+        "La más cercana a nosotros, *Próxima Centauri*, es una de ellas… y tiene *un planeta parecido a la Tierra*.",
+        "Lo curioso: *casi 3 de cada 4 estrellas* de la galaxia son así… y viven más que el universo entero."
+      ],
+      "say": [
+        "Tercera: una estrella roja, la mitad de grande que el Sol.",
+        "Brillaría más de diez veces menos, y la Tierra se congelaría entera.",
+        "Para estar a gusto tendríamos que vivir más cerca que Mercurio…",
+        "y tan cerca, una mitad del planeta viviría siempre de día, y la otra siempre de noche.",
+        "El cielo se vería naranja, como un atardecer que nunca se acaba.",
+        "La más cercana a nosotros, Próxima Centauri, es una de ellas… y tiene un planeta parecido a la Tierra.",
+        "Lo curioso: casi tres de cada cuatro estrellas de la galaxia son así… y viven más que el universo entero."
+      ],
+      "chapter": "Una estrella roja y chica"
+    },
+    {
+      "id": "gigante",
+      "caps": [
+        "Cuarta: *Betelgeuse*, la estrella roja junto a las Tres Marías.",
+        "Si fuera una pelota de fútbol, *el Sol sería un granito de arena*.",
+        "En su lugar *nos tragaría*: su borde llegaría *más allá de Marte*.",
+        "Su superficie es más fría que la del Sol, pero brilla *cien mil veces más*:",
+        "hasta *Plutón* sería un horno.",
+        "Y algún día *va a explotar*: desde aquí, *se verá hasta de día*."
+      ],
+      "say": [
+        "Cuarta: Betelgeuse, la estrella roja junto a las Tres Marías.",
+        "Si fuera una pelota de fútbol, el Sol sería un granito de arena.",
+        "En su lugar nos tragaría: su borde llegaría más allá de Marte.",
+        "Su superficie es más fría que la del Sol, pero brilla cien mil veces más:",
+        "hasta Plutón sería un horno.",
+        "Y algún día va a explotar: desde aquí, se verá hasta de día."
+      ],
+      "chapter": "Betelgeuse: la gigante",
+      "fx": [
+        {
+          "cue": 5,
+          "at": 0.6,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "negro",
+      "caps": [
+        "Quinta: *un agujero negro* con la misma masa que el Sol.",
+        "Mucha gente cree que nos tragaría. *Pues no*:",
+        "la Tierra seguiría dando *la misma vuelta*, porque la fuerza que nos sostiene depende de la masa… y es la misma.",
+        "El agujero mediría *solo 6 kilómetros*, y nos quedaríamos *a oscuras y congelados*.",
+        "Ojo: el Sol nunca se volverá agujero negro, *le falta peso*; esto es solo un experimento.",
+        "De día y de noche, el cielo sería *negro y lleno de estrellas*."
+      ],
+      "say": [
+        "Quinta: un agujero negro con la misma masa que el Sol.",
+        "Mucha gente cree que nos tragaría. Pues no:",
+        "la Tierra seguiría dando la misma vuelta, porque la fuerza que nos sostiene depende de la masa… y es la misma.",
+        "El agujero mediría solo seis kilómetros, y nos quedaríamos a oscuras y congelados.",
+        "Ojo: el Sol nunca se volverá agujero negro, le falta peso; esto es solo un experimento.",
+        "De día y de noche, el cielo sería negro y lleno de estrellas."
+      ],
+      "chapter": "Un agujero negro"
+    },
+    {
+      "id": "blanca",
+      "caps": [
+        "Y la última: *una estrella muerta*, del tamaño de la Tierra pero con la masa del Sol.",
+        "Una cucharadita de ella pesaría *varias toneladas*.",
+        "Ya no produce luz nueva: solo se va *enfriando, como una brasa*.",
+        "Se vería como *un puntito* tan brillante que no podrías mirarlo… pero casi no calentaría: *nos congelaríamos*.",
+        "Y lo más loco: así va a terminar *nuestro Sol*, dentro de miles de millones de años.",
+        "Y Sirio, la segunda de la lista, tiene una así *escondida a su lado*."
+      ],
+      "say": [
+        "Y la última: una estrella muerta, del tamaño de la Tierra pero con la masa del Sol.",
+        "Una cucharadita de ella pesaría varias toneladas.",
+        "Ya no produce luz nueva: solo se va enfriando, como una brasa.",
+        "Se vería como un puntito tan brillante que no podrías mirarlo… pero casi no calentaría: nos congelaríamos.",
+        "Y lo más loco: así va a terminar nuestro Sol, dentro de miles de millones de años.",
+        "Y Sirio, la segunda de la lista, tiene una así escondida a su lado."
+      ],
+      "chapter": "Una estrella muerta",
+      "fx": [
+        {
+          "cue": 5,
+          "at": 0.4,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "cierre",
+      "caps": [
+        "Entonces, ¿cuál nos conviene? *Ninguna*.",
+        "Nuestro Sol es *justo de la medida*: ni tan grande para morir pronto, ni tan chico para congelarnos.",
+        "Lleva casi *cinco mil millones de años* dándonos luz… y le quedan otros tantos.",
+        "¿Y tú, *con cuál te quedarías*?"
+      ],
+      "say": [
+        "Entonces, ¿cuál nos conviene? Ninguna.",
+        "Nuestro Sol es justo de la medida: ni tan grande para morir pronto, ni tan chico para congelarnos.",
+        "Lleva casi cinco mil millones de años dándonos luz… y le quedan otros tantos.",
+        "¿Y tú, con cuál te quedarías?"
+      ],
+      "hold": 0.8,
+      "chapter": "¿Cuál nos conviene?"
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI CAMBIÁRAMOS EL SOL",
+    "POR OTRA ESTRELLA?"
+  ],
+  "hookZoom": 0.06,
+  "landscape": true,
+  "captionY": 0.86
+}

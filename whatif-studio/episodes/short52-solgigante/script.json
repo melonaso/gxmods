@@ -1,0 +1,126 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si el Sol fuera mil veces más grande?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si el Sol fuera *mil veces más grande*?",
+        "¿Cabría *en el cielo*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el Sol fuera mil veces más grande?",
+        "¿Cabría en el cielo?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.0,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "tragar",
+      "caps": [
+        "No: *nos tragaría*…",
+        "su borde llegaría *casi hasta Júpiter*."
+      ],
+      "say": [
+        "No: nos tragaría…",
+        "su borde llegaría casi hasta Júpiter."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.2,
+          "type": "boom"
+        }
+      ]
+    },
+    {
+      "id": "rojo",
+      "caps": [
+        "Y lo raro: sería *más frío* que nuestro Sol…",
+        "por eso se vería *rojo*, no amarillo."
+      ],
+      "say": [
+        "Y lo raro: sería más frío que nuestro Sol…",
+        "por eso se vería rojo, no amarillo."
+      ]
+    },
+    {
+      "id": "horno",
+      "caps": [
+        "Pero es tan enorme que brillaría *cien mil veces más*:",
+        "hasta *Plutón* sería un horno."
+      ],
+      "say": [
+        "Pero es tan enorme que brillaría cien mil veces más:",
+        "hasta Plutón sería un horno."
+      ]
+    },
+    {
+      "id": "corta",
+      "caps": [
+        "Y viviría poquísimo: *unos diez millones de años*…",
+        "para una estrella, eso es *un parpadeo*."
+      ],
+      "say": [
+        "Y viviría poquísimo: unos diez millones de años…",
+        "para una estrella, eso es un parpadeo."
+      ]
+    },
+    {
+      "id": "real",
+      "caps": [
+        "Y existe: *Betelgeuse*, la estrella roja junto a *las Tres Marías*, es casi así de grande…",
+        "y cuando explote, *se verá hasta de día*."
+      ],
+      "say": [
+        "Y existe: Betelgeuse, la estrella roja junto a las Tres Marías, es casi así de grande…",
+        "y cuando explote, se verá hasta de día."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.4,
+          "type": "boom"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI EL SOL FUERA",
+    "MIL VECES MÁS GRANDE?"
+  ],
+  "hookZoom": 0.12
+}

@@ -142,3 +142,49 @@ export function tower(ctx, x, base, w, floors, color, fh = 26) {
   hq.roundRectPath(ctx, x, base - h, w, h, 6); ctx.fillStyle = color; ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = INK; ctx.stroke();
   for (let f = 0; f < floors; f++) for (let c = 0; c < Math.floor(w / 30); c++) { ctx.fillStyle = (f * 7 + c * 3) % 5 ? '#fde68a' : '#334155'; ctx.fillRect(x + 10 + c * 30, base - h + 8 + f * fh, 16, 14); }
 }
+
+/** Estrella con su color según el tipo: 'sun' (amarilla), 'blue' (blanca azulada, tipo Sirio), 'red' (roja chica),
+ *  'giant' (roja enorme con manchas), 'white' (blanca diminuta y muy brillante). rays: picos alrededor. */
+const STAR_COLORS = {
+  sun: ['#fef08a', '#f59e0b', '#fbbf24', 'rgba(253,224,71,A)'],
+  blue: ['#ffffff', '#93c5fd', '#e0f2fe', 'rgba(224,242,254,A)'],
+  red: ['#fdba74', '#dc2626', '#f97316', 'rgba(248,113,113,A)'],
+  giant: ['#fb923c', '#991b1b', '#ef4444', 'rgba(239,68,68,A)'],
+  white: ['#ffffff', '#e0f2fe', '#ffffff', 'rgba(255,255,255,A)'],
+};
+export function starBall(ctx, x, y, r, t, { kind = 'sun', rays = true, glowK = 1 } = {}) {
+  const [c0, c1, cr, cg] = STAR_COLORS[kind] || STAR_COLORS.sun;
+  hq.glow(ctx, x, y, r * (kind === 'white' ? 6 : 3), cg, 0.55 * glowK);
+  if (rays && kind !== 'giant') {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(t * 0.2);
+    for (let i = 0; i < 14; i++) { ctx.rotate(TAU / 14); ctx.beginPath(); ctx.moveTo(-r * 0.12, -r * 1.14); ctx.lineTo(0, -r * 1.45); ctx.lineTo(r * 0.12, -r * 1.14); ctx.closePath(); ctx.fillStyle = cr; ctx.fill(); ctx.lineWidth = Math.min(4, r * 0.08); ctx.strokeStyle = INK; ctx.stroke(); }
+    ctx.restore();
+  }
+  ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fillStyle = hq.vgrad(ctx, 0, y - r, y + r, [[0, c0], [1, c1]]); ctx.fill();
+  if (kind === 'giant') {
+    ctx.save(); ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.clip();
+    const R = rng(13); ctx.fillStyle = 'rgba(127,29,29,0.35)';
+    for (let i = 0; i < 14; i++) { const a = R() * TAU, d = R() * r * 0.85, s = r * (0.08 + R() * 0.14); ctx.beginPath(); ctx.ellipse(x + Math.cos(a) * d + Math.sin(t * 0.5 + i) * r * 0.02, y + Math.sin(a) * d, s * 1.3, s, a, 0, TAU); ctx.fill(); }
+    ctx.restore();
+  }
+  ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.lineWidth = Math.max(3, Math.min(7, r * 0.06)); ctx.strokeStyle = INK; ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.beginPath(); ctx.ellipse(x - r * 0.35, y - r * 0.4, r * 0.28, r * 0.14, -0.6, 0, TAU); ctx.fill();
+}
+
+/** Agujero negro quieto: disco negro con un anillo de luz doblada alrededor. */
+export function blackHole(ctx, x, y, r, t) {
+  hq.glow(ctx, x, y, r * 3.2, 'rgba(251,191,36,A)', 0.25);
+  ctx.save(); ctx.lineWidth = r * 0.18; ctx.strokeStyle = 'rgba(253,230,138,0.85)'; ctx.beginPath(); ctx.ellipse(x, y, r * 1.35, r * 1.35, 0, 0, TAU); ctx.stroke();
+  ctx.lineWidth = r * 0.08; ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.beginPath(); ctx.arc(x, y, r * 1.22, t % TAU, (t % TAU) + 1.2); ctx.stroke(); ctx.restore();
+  ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fillStyle = '#000000'; ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = '#fde68a'; ctx.stroke();
+}
+
+/** Órbita punteada (arco) alrededor de (cx, cy). */
+export function orbit(ctx, cx, cy, r, a0 = 0, a1 = TAU, color = 'rgba(226,232,240,0.5)') {
+  ctx.save(); ctx.setLineDash([12, 12]); ctx.lineWidth = 3; ctx.strokeStyle = color; ctx.beginPath(); ctx.arc(cx, cy, r, a0, a1); ctx.stroke(); ctx.restore();
+}
+
+/** Planeta simple con degradado. */
+export function planet(ctx, x, y, r, c0, c1) {
+  ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fillStyle = hq.vgrad(ctx, 0, y - r, y + r, [[0, c0], [1, c1]]); ctx.fill(); ctx.lineWidth = Math.max(3, r * 0.12); ctx.strokeStyle = INK; ctx.stroke();
+}

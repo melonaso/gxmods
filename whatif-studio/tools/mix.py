@@ -15,7 +15,7 @@ b = f'episodes/{ep}/build'
 script = json.load(open(f'episodes/{ep}/script.json'))
 st = json.load(open(f'{b}/starts.json'))
 dur = st['duration']
-short = script.get('type') == '2d'
+short = script.get('type') == '2d' and not script.get('landscape')
 voice = os.path.exists(f'{b}/timing.json') and ('voice' in script or script.get('narration', True))
 target = -14 if short else -16
 

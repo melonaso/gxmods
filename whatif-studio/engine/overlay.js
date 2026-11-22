@@ -145,7 +145,7 @@ function drawPopCaption(ctx, W, H, u, sub) {
     if (lw + ww > maxW && lines[lines.length - 1].length) { lines.push([]); lw = 0; }
     lines[lines.length - 1].push({ ...w, w: ww }); lw += ww + space;
   }
-  const lh = size * 1.12, cy = H * 0.64;
+  const lh = size * 1.12, cy = H * (sub.y ?? 0.64);
   ctx.translate(W / 2, cy); ctx.scale(pop, pop);
   lines.forEach((ln, i) => {
     const total = ln.reduce((a, w) => a + w.w, 0) + space * (ln.length - 1);

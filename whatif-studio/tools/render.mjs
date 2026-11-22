@@ -45,7 +45,7 @@ await page.goto(url);
 await page.waitForFunction(() => window.studioReady === true, null, { timeout: 120000 });
 const { duration, fps } = await page.evaluate(() => ({ duration: studio.duration, fps: studio.fps }));
 // Inicio de cada escena, para colocar la narración en el lugar exacto al mezclar.
-const starts = await page.evaluate(() => studio.scenes.map((s) => ({ id: s.id, start: s.start })));
+const starts = await page.evaluate(() => studio.scenes.map((s) => ({ id: s.id, start: s.start, cues: (s.cueTimes || []).map((c) => +c[0].toFixed(3)) })));
 const sfx = await page.evaluate(() => studio.sfx || []); // efectos de sonido (solo Shorts 2D)
 fs.mkdirSync(path.join(ROOT, 'episodes', ep, 'build'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'episodes', ep, 'build', 'starts.json'), JSON.stringify({ duration, starts, sfx }, null, 1));

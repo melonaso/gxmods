@@ -15,8 +15,13 @@ done
 
 B="episodes/$EP/build"
 # Episodios 2D (Shorts verticales): "type": "2d" en script.json.
+# "landscape": true -> 2D horizontal (videos largos 1920×1080 lógicos).
 if [[ "$(python3 -c "import json;print(json.load(open('episodes/$EP/script.json')).get('type','3d'))")" == "2d" ]]; then
-  RENDER_ARGS+=(--page engine2d --w 1080 --h 1920)
+  if [[ "$(python3 -c "import json;print(json.load(open('episodes/$EP/script.json')).get('landscape', False))")" == "True" ]]; then
+    RENDER_ARGS+=(--page engine2d --w 1920 --h 1080)
+  else
+    RENDER_ARGS+=(--page engine2d --w 1080 --h 1920)
+  fi
 fi
 BPM=$(python3 -c "import json;print(json.load(open('episodes/$EP/script.json')).get('music',{}).get('bpm',96))")
 # Opciones de música del guion: "music": {"bpm": 128, "drums": true, "minor": true}
