@@ -102,7 +102,7 @@ const SCENES = {
     ctx.fillStyle = 'rgba(248,113,113,0.18)'; ctx.fillRect(cx - R, cy - R, R, R * 2);
     ctx.restore();
     ctx.beginPath(); ctx.arc(cx, cy, R, 0, TAU); ctx.lineWidth = 6; ctx.strokeStyle = INK; ctx.stroke();
-    if (local > c1) { const k = ease((local - c1) / 0.4); ctx.save(); ctx.globalAlpha = k; hq.tag(ctx, cx - 140, cy + R + 60, 'SIEMPRE DE DÍA', { size: 30, fill: '#fdba74' }); hq.tag(ctx, cx + 170, cy + R + 60, 'SIEMPRE DE NOCHE', { size: 30, fill: '#a5b4fc' }); ctx.restore(); }
+    if (local > c1) { const k = ease((local - c1) / 0.4); ctx.save(); ctx.globalAlpha = k; hq.tag(ctx, cx - 140, cy + R * 0.55, 'SIEMPRE DE DÍA', { size: 30, fill: '#fdba74' }); hq.tag(ctx, cx + 150, cy + R * 0.55, 'SIEMPRE DE NOCHE', { size: 30, fill: '#a5b4fc' }); ctx.restore(); }
     void stop;
     hq.tag(ctx, 540, 410, local < c1 ? 'FRENARÍA SU GIRO' : 'MITAD DÍA, MITAD NOCHE', { size: 44, fill: '#fde68a' });
   },
