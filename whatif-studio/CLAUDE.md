@@ -26,6 +26,10 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
 - Cada video lleva: listas temáticas (`themes`), siguiente video para pantalla final o video
   relacionado (`next`), y nombre de archivo con el título (`out/subir/`).
 - Videos largos: capítulos a mano desde los tiempos reales (`tools/chapters.py`).
+- **Ritmo de publicación (23 nov 2026):** el dueño subía 2 Shorts por día y el de los árboles se quedó en 0 vistas
+  («0 view jail») mientras el del centro de la Tierra, del mismo día, sí arrancó. Desde ahora: **1 Short por día**,
+  separados unas 24 h, a la misma hora (público mayormente de México: tarde-noche). Un Short en 0 vistas **no se borra
+  ni se vuelve a subir** (el duplicado puede contar como contenido repetido); se espera 48–72 h.
 
 ## Lo que dicen las estadísticas (primeros 3 días, al 7 nov 2026)
 - Shorts: ~1,470 vistas de promedio, ninguno bajo ~900; el mejor fue «¿Y si el Sol se apagara?»
