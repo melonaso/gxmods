@@ -1,6 +1,6 @@
 # Diseño: "Don't Blink: Survive the Snowmen"
 
-Fecha: 2026-11-23 · Estado: borrador para aprobación
+Fecha: 2026-11-23 · Estado: aprobado por el dueño (2026-11-23)
 
 ## 1. Intención y por qué
 
@@ -144,7 +144,10 @@ servidores privados, más cosméticos.
 - Modelado inicial con piezas simples (bloques/esferas) antes de mejorar el arte.
 - Textos del juego en inglés; Roblox los traduce automáticamente a otros idiomas.
 
-## 11. Preguntas pendientes del dueño
+## 11. Decisiones finales del dueño
 
-1. Cámara: ¿primera persona fija o el jugador elige?
-2. Arte (muñecos, ícono, miniatura): ¿quién lo hace y con qué?
+- **Cámara: primera persona fija** (`LockFirstPerson`). Más terror y detección fiable de hacia dónde mira cada jugador.
+- **Ícono y miniatura: los hace el dueño.**
+- **Modelos 3D (muñecos, regalos, trineo, mapa): los hace Claude** en Studio con piezas simples
+  (esferas, bloques, MeshParts básicas), sin depender de modelos gratuitos con scripts.
+- **Textos en inglés**, con traducción automática de Roblox.
