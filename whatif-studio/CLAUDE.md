@@ -75,6 +75,15 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
 - Punto débil: 1.5 suscriptores por cada 1,000 vistas (el de agua sacó ~5). Repetir esta fórmula y probar temas
   gemelos del ganador (p. ej. el Sol a la mitad) y un largo que lo amplíe, enlazado como video relacionado.
 
+## Short 48 «¿Y si el mar fuera de agua dulce?» (datos al 24 nov 2026, 2 días) — récord del canal
+- **22.6 K vistas** (+20.1 K sobre lo habitual), 19,953 en 48 h; 79.5 % se quedó viendo; 135 h vistas; 396 me gusta;
+  +33 suscriptores; 453 vistas desde la búsqueda. 98 % usuarios nuevos; México solo 16 % (llegó a todo el mundo
+  hispano). Retención: empieza en ~170 % (repeticiones) y baja suave hasta ~60 %.
+- Los 3 mejores del canal tienen la misma forma: **algo que todos conocen (el mar, el agua, el Sol) + un solo cambio
+  simple (dulce, se acaba, el doble) + cadena de consecuencias + un dato real al final**. Priorizar «gemelos» de estos.
+- Suscriptores: ~1.5 por cada 1,000 vistas (igual que el del Sol doble). Gusta mucho pero convierte poco: hace falta
+  una serie reconocible y un largo enlazado como video relacionado para que valga la pena suscribirse.
+
 ## Requisitos de monetización (YouTube Studio, datos al 11 nov 2026)
 - 78 / 1,000 suscriptores; **0 / 4,000 horas válidas** (365 días); **21 K / 10 M vistas de Shorts** (90 días).
 - Conclusión: la vía de Shorts (10 M en 90 días ≈ 111,000 vistas diarias) está muy lejos; la vía realista son
