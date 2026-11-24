@@ -2921,3 +2921,91 @@ qué pasaría si cambiáramos el sol, otras estrellas, sirio, betelgeuse, enana 
 - Archivos: `out/subir/y-si-cambiaramos-el-sol-por-otra-estrella.mp4`, `out/subir/y-si-cambiaramos-el-sol-por-otra-estrella.png`
 - Listas: «Cuentas Locas · Temporada 1» · «¿Qué pasaría si…? Espacio y planeta Tierra»
 - Pantalla final → «Video»: «¿Qué pasaría si el Sol se apagara? Minuto a minuto» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 51 — `out/short53-hielohunde.mp4` (vertical)
+
+**Título** (36/100):
+```
+¿Y si el hielo no flotara? 🧊 #Shorts
+```
+
+**Descripción** (1335/5000):
+```
+Si el hielo se hundiera, los lagos se congelarían desde el fondo y los peces no sobrevivirían el invierno. Y lo puedes probar con aceite.
+
+Lo que pasa de verdad:
+🧊 El agua es rara: al congelarse ocupa cerca de 9 % más espacio, así que el hielo pesa menos que el agua líquida del mismo tamaño y flota.
+🐟 En invierno, el hielo de arriba funciona como una tapa: aísla el agua de abajo, que se queda a unos 4 °C, y ahí sobreviven los peces.
+⬇️ Si el hielo se hundiera, cada capa nueva se iría al fondo y la de arriba seguiría enfriándose: los lagos de lugares fríos se congelarían de abajo hacia arriba, hasta quedar sólidos.
+☀️ En verano, el Sol calienta la superficie, pero el hielo del fondo queda protegido por el agua de arriba: en lagos profundos de zonas frías, no alcanzaría a derretirse.
+🌊 En los mares fríos pasaría algo parecido: el hielo de cada invierno se iría acumulando en el fondo.
+🫒 Casi todas las sustancias son más pesadas cuando están sólidas: el aceite, la cera o el metal fundido. Prueba: congela un poco de aceite (en el congelador se pone sólido) y échalo en aceite líquido: se va al fondo.
+
+¿Vas a hacer la prueba del aceite? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Ciencia #Curiosidades
+```
+
+**Etiquetas** (141/500):
+```
+qué pasaría si el hielo no flotara, hielo, por qué flota el hielo, lagos congelados, agua, experimento casero, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: el agua es más pesada a 4 °C; por eso, en un lago congelado, el fondo se queda a unos 4 °C todo el invierno 🐟 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-hielo-no-flotara.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 52 — `out/short54-lluviasalada.mp4` (vertical)
+
+**Título** (40/100):
+```
+¿Y si la lluvia fuera salada? 🌧️ #Shorts
+```
+
+**Descripción** (1334/5000):
+```
+Si la lluvia fuera salada, se secarían las plantas, los campos y los ríos. Y la lluvia de hoy era agua de mar hace unos 9 días.
+
+Lo que pasa de verdad:
+🌱 La sal «jala» el agua: con tierra salada, el agua sale de las raíces en lugar de entrar, y la planta se seca aunque esté mojada. Casi todas las plantas de cultivo aguantan muy poca sal.
+🌾 Cuando la sal se acumula en la tierra, casi nada vuelve a crecer. Ya pasó en partes de la antigua Mesopotamia, donde el riego fue salando los campos y el trigo dejó de darse.
+🐟 Los peces de agua dulce viven con más sal por dentro que el agua de afuera; en agua salada pierden el agua de su cuerpo y no lo soportan.
+🚰 Quitarle la sal al agua de mar (desalinizar) es posible, pero gasta mucha energía: hoy se hace en lugares secos como Israel o Arabia Saudita, y es mucho más caro que usar agua de lluvia.
+☀️ La lluvia es dulce porque el Sol evapora el agua del mar y la sal no se evapora: se queda en el mar. Cerca de 86 % del agua que se evapora sale de los océanos.
+⏳ El vapor dura en el aire unos 9 días en promedio antes de volver a caer como lluvia o nieve.
+
+¿Habías pensado de dónde viene la lluvia? 👇
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (131/500):
+```
+qué pasaría si la lluvia fuera salada, lluvia salada, ciclo del agua, sal, plantas, agua de mar, desalinizar, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: la lluvia sí trae un poquito de sal del mar, sobre todo cerca de la costa, pero tan poca que no la notas 🌧️ ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-la-lluvia-fuera-salada.mp4`
+- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)

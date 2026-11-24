@@ -2510,6 +2510,84 @@
         "espacio"
       ],
       "next": "ep11-solapagado"
+    },
+    {
+      "episode": "short53-hielohunde",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si el hielo no flotara? 🧊 #Shorts",
+      "hook": "Si el hielo se hundiera, los lagos se congelarían desde el fondo y los peces no sobrevivirían el invierno. Y lo puedes probar con aceite.",
+      "math": [
+        "🧊 El agua es rara: al congelarse ocupa cerca de 9 % más espacio, así que el hielo pesa menos que el agua líquida del mismo tamaño y flota.",
+        "🐟 En invierno, el hielo de arriba funciona como una tapa: aísla el agua de abajo, que se queda a unos 4 °C, y ahí sobreviven los peces.",
+        "⬇️ Si el hielo se hundiera, cada capa nueva se iría al fondo y la de arriba seguiría enfriándose: los lagos de lugares fríos se congelarían de abajo hacia arriba, hasta quedar sólidos.",
+        "☀️ En verano, el Sol calienta la superficie, pero el hielo del fondo queda protegido por el agua de arriba: en lagos profundos de zonas frías, no alcanzaría a derretirse.",
+        "🌊 En los mares fríos pasaría algo parecido: el hielo de cada invierno se iría acumulando en el fondo.",
+        "🫒 Casi todas las sustancias son más pesadas cuando están sólidas: el aceite, la cera o el metal fundido. Prueba: congela un poco de aceite (en el congelador se pone sólido) y échalo en aceite líquido: se va al fondo."
+      ],
+      "question": "¿Vas a hacer la prueba del aceite? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Ciencia",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si el hielo no flotara",
+        "hielo",
+        "por qué flota el hielo",
+        "lagos congelados",
+        "agua",
+        "experimento casero",
+        "ciencia",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: el agua es más pesada a 4 °C; por eso, en un lago congelado, el fondo se queda a unos 4 °C todo el invierno 🐟 ¿Lo sabías? 👇",
+      "themes": [
+        "locas"
+      ],
+      "next": "ep06-mar"
+    },
+    {
+      "episode": "short54-lluviasalada",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si la lluvia fuera salada? 🌧️ #Shorts",
+      "hook": "Si la lluvia fuera salada, se secarían las plantas, los campos y los ríos. Y la lluvia de hoy era agua de mar hace unos 9 días.",
+      "math": [
+        "🌱 La sal «jala» el agua: con tierra salada, el agua sale de las raíces en lugar de entrar, y la planta se seca aunque esté mojada. Casi todas las plantas de cultivo aguantan muy poca sal.",
+        "🌾 Cuando la sal se acumula en la tierra, casi nada vuelve a crecer. Ya pasó en partes de la antigua Mesopotamia, donde el riego fue salando los campos y el trigo dejó de darse.",
+        "🐟 Los peces de agua dulce viven con más sal por dentro que el agua de afuera; en agua salada pierden el agua de su cuerpo y no lo soportan.",
+        "🚰 Quitarle la sal al agua de mar (desalinizar) es posible, pero gasta mucha energía: hoy se hace en lugares secos como Israel o Arabia Saudita, y es mucho más caro que usar agua de lluvia.",
+        "☀️ La lluvia es dulce porque el Sol evapora el agua del mar y la sal no se evapora: se queda en el mar. Cerca de 86 % del agua que se evapora sale de los océanos.",
+        "⏳ El vapor dura en el aire unos 9 días en promedio antes de volver a caer como lluvia o nieve."
+      ],
+      "question": "¿Habías pensado de dónde viene la lluvia? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si la lluvia fuera salada",
+        "lluvia salada",
+        "ciclo del agua",
+        "sal",
+        "plantas",
+        "agua de mar",
+        "desalinizar",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: la lluvia sí trae un poquito de sal del mar, sobre todo cerca de la costa, pero tan poca que no la notas 🌧️ ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "ep06-mar"
     }
   ]
 }

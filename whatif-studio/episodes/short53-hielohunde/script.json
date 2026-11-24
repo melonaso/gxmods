@@ -1,0 +1,126 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 100,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "title": "¿Y si el hielo no flotara?",
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *el hielo no flotara*?",
+        "¿Solo cambiaría *tu vaso*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el hielo no flotara?",
+        "¿Solo cambiaría tu vaso?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.9,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "lago",
+      "caps": [
+        "No: los lagos *se congelarían desde el fondo*…",
+        "y en invierno quedarían *sólidos, como una piedra*."
+      ],
+      "say": [
+        "No: los lagos se congelarían desde el fondo…",
+        "y en invierno quedarían sólidos, como una piedra."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.4,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "peces",
+      "caps": [
+        "Hoy los peces pasan el invierno *bajo una tapa de hielo* que los protege del frío:",
+        "sin esa tapa, *no tendrían dónde vivir*."
+      ],
+      "say": [
+        "Hoy los peces pasan el invierno bajo una tapa de hielo que los protege del frío:",
+        "sin esa tapa, no tendrían dónde vivir."
+      ]
+    },
+    {
+      "id": "verano",
+      "caps": [
+        "Y en verano, el Sol solo derretiría *la capa de arriba*:",
+        "el hielo del fondo *se quedaría para siempre*."
+      ],
+      "say": [
+        "Y en verano, el Sol solo derretiría la capa de arriba:",
+        "el hielo del fondo se quedaría para siempre."
+      ]
+    },
+    {
+      "id": "mar",
+      "caps": [
+        "En los mares fríos pasaría lo mismo:",
+        "invierno tras invierno, *el fondo se llenaría de hielo*."
+      ],
+      "say": [
+        "En los mares fríos pasaría lo mismo:",
+        "invierno tras invierno, el fondo se llenaría de hielo."
+      ]
+    },
+    {
+      "id": "prueba",
+      "caps": [
+        "Y lo raro: el agua es *casi la única* cosa que hace esto…",
+        "haz la prueba: *congela un poco de aceite* y échalo en aceite: *se hunde*."
+      ],
+      "say": [
+        "Y lo raro: el agua es casi la única cosa que hace esto…",
+        "haz la prueba: congela un poco de aceite y échalo en aceite: se hunde."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.6,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "hookTitle": [
+    "¿Y SI EL HIELO",
+    "NO FLOTARA?"
+  ],
+  "hookZoom": 0.12
+}
