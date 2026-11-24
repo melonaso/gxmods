@@ -84,6 +84,15 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
 - Suscriptores: ~1.5 por cada 1,000 vistas (igual que el del Sol doble). Gusta mucho pero convierte poco: hace falta
   una serie reconocible y un largo enlazado como video relacionado para que valga la pena suscribirse.
 
+## Política de YouTube 2026–2027 — ver `brand/POLITICA_2026.md` (24 nov 2026)
+- Julio 2026: no monetiza el canal que tenga demasiado contenido **genérico/intercambiable**, **insatisfactorio**
+  o **falsos expertos de IA** en temas sensibles (se revisa el canal completo).
+- Desde el **1 feb 2027**, para entrar al Programa de Socios: 1,000 suscriptores + **8,000 h** de videos largos en
+  12 meses, o 20 M de vistas de Shorts en 90 días. Para cobrar por Shorts ya dentro: 10 M cada 90 días.
+- Decisión: **seguir con los «¿Y si…?» animados**, pero en **series visibles** (marca «SERIE · n/3» y lista por
+  serie), con **Shorts puente** hacia videos largos, **prioridad a los largos** de temas ganadores, un **personaje
+  fijo** en todos los videos y 1 Short por día. Nada de consejos de salud o dinero.
+
 ## Requisitos de monetización (YouTube Studio, datos al 11 nov 2026)
 - 78 / 1,000 suscriptores; **0 / 4,000 horas válidas** (365 días); **21 K / 10 M vistas de Shorts** (90 días).
 - Conclusión: la vía de Shorts (10 M en 90 días ≈ 111,000 vistas diarias) está muy lejos; la vía realista son
