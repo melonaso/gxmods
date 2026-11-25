@@ -80,7 +80,7 @@ const SCENES = {
     // El globo (con su eje) se acuesta; el muñequito de arriba termina de lado.
     const c1 = cue(1), k = ease((local - 0.35) / 1.0), tilt = lerp(-0.41, -Math.PI / 2, k), cx = 600, cy = 900, R = 300;
     space(ctx, W, H, t);
-    sunDisc(ctx, 90, 900, 70, t);
+    sunDisc(ctx, 120, 600, 66, t);
     tiltedGlobe(ctx, cx, cy, R, tilt, t, { night: 0.7, onTop: (c, r) => hq.toon(c, 0, -r + 4, 165, { ...HERO, t, seed: 1, armL: [1.3, -0.5], armR: [1.3, -0.5], eyes: 'open', mouth: k > 0.5 ? 'o' : 'smile', brows: k > 0.5 ? 1 : 0 }) });
     if (local > c1) hq.tag(ctx, 600, 1330, 'ACOSTADA: 90°', { size: 46, fill: '#fde68a' });
   },
