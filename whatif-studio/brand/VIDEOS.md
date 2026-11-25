@@ -6,6 +6,11 @@
 Canal: **Cuentas Locas** · YouTube `@CuentasLocas` · Lista: «Cuentas Locas · Temporada 1».
 Miniaturas (1280×720): `out/brand/thumb-ep0N.png` (`node brand/render-brand.mjs thumb ep0N`).
 
+## Listas de las series (créalas una vez; el orden de la lista = el orden de las partes)
+
+- **Serie: ¿Y si el agua…?** — ¿Y si el mar fuera dulce? ¿Y si el hielo se hundiera? Un solo cambio en el agua de todos los días… y todo el planeta cambia. Animaciones con datos reales.
+- **Serie: ¿Y si la Tierra…?** — ¿Y si la Tierra girara al revés? ¿Y si el día durara 12 horas? ¿Y si estuviera acostada? Un solo cambio en cómo gira nuestro planeta, con datos reales.
+
 ## Orden para subir cada video (ver `brand/PUBLICACION.md`)
 1. Sube el archivo de `out/subir/` (ya tiene el nombre del título) como **Privado**, uno o dos días antes.
 2. Pega título, descripción y etiquetas; sube la miniatura (videos largos).
@@ -2654,7 +2659,7 @@ qué pasaría si desaparecieran los árboles, árboles, bosques, amazonas, defor
 ¿Y si el mar fuera de agua dulce? 🌊 #Shorts
 ```
 
-**Descripción** (1536/5000):
+**Descripción** (1814/5000):
 ```
 Podrías tomarte el mar… pero casi todos sus peces morirían. Y su sal taparía los continentes con más de 150 metros.
 
@@ -2668,6 +2673,14 @@ Lo que pasa de verdad:
 📏 Según la agencia del océano de Estados Unidos (NOAA), si se sacara toda la sal del mar y se repartiera sobre los continentes, formaría una capa de más de 150 metros: la altura de un edificio de unos 40 pisos.
 
 ¿Te tomarías un vaso de mar? 👇
+
+📺 Serie «El agua» · parte 1:
+👉 1. ¿Y si el mar fuera de agua dulce? 🌊
+▫️ 2. ¿Y si el hielo no flotara? 🧊
+▫️ 3. ¿Y si la lluvia fuera salada? 🌧️
+▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
+▫️ 5. ¿Y si todo el mar se congelara? 🧊
+▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
 
 💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
@@ -2687,7 +2700,7 @@ qué pasaría si el mar fuera de agua dulce, mar, agua salada, agua dulce, sal d
 
 **Antes de publicar:**
 - Archivo: `out/subir/y-si-el-mar-fuera-de-agua-dulce.mp4`
-- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Listas: «Serie: ¿Y si el agua…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
 
 ---
@@ -2931,7 +2944,7 @@ qué pasaría si cambiáramos el sol, otras estrellas, sirio, betelgeuse, enana 
 ¿Y si el hielo no flotara? 🧊 #Shorts
 ```
 
-**Descripción** (1335/5000):
+**Descripción** (1613/5000):
 ```
 Si el hielo se hundiera, los lagos se congelarían desde el fondo y los peces no sobrevivirían el invierno. Y lo puedes probar con aceite.
 
@@ -2944,6 +2957,14 @@ Lo que pasa de verdad:
 🫒 Casi todas las sustancias son más pesadas cuando están sólidas: el aceite, la cera o el metal fundido. Prueba: congela un poco de aceite (en el congelador se pone sólido) y échalo en aceite líquido: se va al fondo.
 
 ¿Vas a hacer la prueba del aceite? 👇
+
+📺 Serie «El agua» · parte 2:
+▫️ 1. ¿Y si el mar fuera de agua dulce? 🌊
+👉 2. ¿Y si el hielo no flotara? 🧊
+▫️ 3. ¿Y si la lluvia fuera salada? 🌧️
+▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
+▫️ 5. ¿Y si todo el mar se congelara? 🧊
+▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
 
 💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
@@ -2963,7 +2984,7 @@ qué pasaría si el hielo no flotara, hielo, por qué flota el hielo, lagos cong
 
 **Antes de publicar:**
 - Archivo: `out/subir/y-si-el-hielo-no-flotara.mp4`
-- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
+- Listas: «Serie: ¿Y si el agua…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Preguntas locas»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
 
 ---
@@ -2975,7 +2996,7 @@ qué pasaría si el hielo no flotara, hielo, por qué flota el hielo, lagos cong
 ¿Y si la lluvia fuera salada? 🌧️ #Shorts
 ```
 
-**Descripción** (1334/5000):
+**Descripción** (1612/5000):
 ```
 Si la lluvia fuera salada, se secarían las plantas, los campos y los ríos. Y la lluvia de hoy era agua de mar hace unos 9 días.
 
@@ -2988,6 +3009,14 @@ Lo que pasa de verdad:
 ⏳ El vapor dura en el aire unos 9 días en promedio antes de volver a caer como lluvia o nieve.
 
 ¿Habías pensado de dónde viene la lluvia? 👇
+
+📺 Serie «El agua» · parte 3:
+▫️ 1. ¿Y si el mar fuera de agua dulce? 🌊
+▫️ 2. ¿Y si el hielo no flotara? 🧊
+👉 3. ¿Y si la lluvia fuera salada? 🌧️
+▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
+▫️ 5. ¿Y si todo el mar se congelara? 🧊
+▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
 
 💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
@@ -3007,5 +3036,307 @@ qué pasaría si la lluvia fuera salada, lluvia salada, ciclo del agua, sal, pla
 
 **Antes de publicar:**
 - Archivo: `out/subir/y-si-la-lluvia-fuera-salada.mp4`
-- Listas: «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Listas: «Serie: ¿Y si el agua…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
 - Video relacionado (debajo del Short): «¿Qué pasaría si el mar subiera 1 cm cada día?» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 53 — `out/short55-marsalado.mp4` (vertical)
+
+**Título** (49/100):
+```
+¿Y si el mar fuera 10 veces más salado? 🌊 #Shorts
+```
+
+**Descripción** (1584/5000):
+```
+Si el mar fuera diez veces más salado, flotarías como corcho y casi todos los peces morirían. Y existe: el mar Muerto.
+
+Lo que pasa de verdad:
+🧂 Hoy el mar tiene unos 35 gramos de sal por litro (3.5 %). Diez veces más serían unos 340 gramos por litro: casi lo que tiene el mar Muerto (34 %, unas 9.6 veces más que el océano).
+🛟 Flotas porque el agua tan salada pesa más: un litro del mar Muerto pesa unos 1.24 kg, contra 1.03 kg del mar normal. Tu cuerpo pesa menos que esa agua y se queda arriba, como un corcho; hundirte o bucear cuesta muchísimo.
+🐟 La sal «jala» el agua: en un mar tan salado, los peces y los corales perderían el agua de su cuerpo. En el mar Muerto no vive ningún pez; solo bacterias y algas diminutas que aguantan la sal.
+🏖️ Cuando el agua se evapora, la sal se queda: en la orilla del mar Muerto se forman costras y columnas de sal. Y el agua tan salada arde en los ojos y en cualquier raspón.
+🥚 Prueba: pon un huevo crudo en un vaso con agua de la llave: se hunde. Ahora disuélvele muchas cucharadas de sal (unas 6–8 en un vaso grande): el huevo sube y flota.
+
+¿Vas a hacer la prueba del huevo? 👇
+
+📺 Serie «El agua» · parte 4:
+▫️ 1. ¿Y si el mar fuera de agua dulce? 🌊
+▫️ 2. ¿Y si el hielo no flotara? 🧊
+▫️ 3. ¿Y si la lluvia fuera salada? 🌧️
+👉 4. ¿Y si el mar fuera 10 veces más salado? 🌊
+▫️ 5. ¿Y si todo el mar se congelara? 🧊
+▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (148/500):
+```
+qué pasaría si el mar fuera más salado, mar muerto, flotar en el mar muerto, sal, agua salada, experimento del huevo, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: la orilla del mar Muerto está unos 430 metros bajo el nivel del mar: es el punto más bajo de tierra firme del planeta 🌊 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-mar-fuera-10-veces-mas-salado.mp4`
+- Listas: «Serie: ¿Y si el agua…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Y si el mar fuera de agua dulce? 🌊» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 54 — `out/short56-marcongelado.mp4` (vertical)
+
+**Título** (41/100):
+```
+¿Y si todo el mar se congelara? 🧊 #Shorts
+```
+
+**Descripción** (1678/5000):
+```
+Si todo el mar se congelara, podrías cruzar a pie a otro continente… y la Tierra se enfriaría todavía más. Y ya pasó.
+
+Lo que pasa de verdad:
+🚶 De la Ciudad de México a Madrid hay unos 9,000 km. Caminando 30 km al día: 9,000 ÷ 30 = 300 días, casi 10 meses sobre el hielo.
+🪞 La nieve y el hielo rebotan mucha luz del Sol (la nieve fresca, hasta 80–90 %); el mar oscuro se queda con casi toda (rebota menos del 10 %). Con el mar blanco, la Tierra absorbe menos calor y se enfría más: más hielo → más frío → más hielo.
+🌊 El hielo flota y funciona como una tapa que aísla: abajo, el agua sigue líquida (igual que en los lagos congelados).
+🌋 En el fondo del mar hay chimeneas volcánicas que calientan el agua; ahí viven animales que no necesitan la luz del Sol. Lugares así, y zonas con hielo delgado, pudieron ser el refugio de la vida.
+❄️ Ya pasó: hace entre 720 y 635 millones de años, la Tierra se congeló casi entera por lo menos dos veces. Se le llama «Tierra bola de nieve».
+🔥 La salvaron los volcanes: siguieron echando gas (dióxido de carbono) que, con todo congelado, nada absorbía. Se juntó en el aire durante millones de años hasta calentar el planeta y derretir el hielo.
+
+¿Tú cruzarías el mar caminando? 👇
+
+📺 Serie «El agua» · parte 5:
+▫️ 1. ¿Y si el mar fuera de agua dulce? 🌊
+▫️ 2. ¿Y si el hielo no flotara? 🧊
+▫️ 3. ¿Y si la lluvia fuera salada? 🌧️
+▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
+👉 5. ¿Y si todo el mar se congelara? 🧊
+▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (132/500):
+```
+qué pasaría si el mar se congelara, tierra bola de nieve, mar congelado, hielo, glaciación, volcanes, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: la nieve fresca rebota hasta el 90 % de la luz del Sol; el mar, menos del 10 % ❄️ ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-todo-el-mar-se-congelara.mp4`
+- Listas: «Serie: ¿Y si el agua…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Y si el mar fuera 10 veces más salado? 🌊» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 55 — `out/short57-hierve50.mp4` (vertical)
+
+**Título** (46/100):
+```
+¿Y si el agua hirviera a 50 grados? ♨️ #Shorts
+```
+
+**Descripción** (1566/5000):
+```
+Si el agua hirviera a 50 °C, ningún huevo se cocería y hervirla ya no la limpiaría. Y en el Everest hierve a solo 70 °C.
+
+Lo que pasa de verdad:
+🌡️ Hervir es cuando el agua se vuelve vapor dentro de la olla. Una vez que hierve, ya no se calienta más: el calor extra se va en hacer vapor. Si hirviera a 50 °C, la olla nunca pasaría de 50.
+🥚 La clara del huevo empieza a cuajar a unos 62 °C y la yema a unos 65 °C: a 50 °C se quedarían crudas para siempre.
+🦠 Para matar a la mayoría de los microbios hace falta más calor: la leche se pasteuriza a 72 °C durante 15 segundos. A 50 °C, muchos sobrevivirían.
+🏜️ En los desiertos, el suelo al Sol pasa fácilmente de 60 °C: ahí un charco sí podría hervir.
+⛰️ El agua hierve antes donde hay menos aire encima (menos presión): a nivel del mar, a 100 °C; en la Ciudad de México (2,240 m), a unos 92 °C; en la cima del Everest (8,849 m), a unos 70 °C. Más o menos 1 °C menos por cada 300 m de altura.
+🍲 Por eso la olla exprés cocina más rápido: encierra el vapor, sube la presión y el agua hierve a unos 120 °C.
+
+¿Sabías que en la ciudad el agua no hierve a 100? 👇
+
+📺 Serie «El agua» · parte 6:
+▫️ 1. ¿Y si el mar fuera de agua dulce? 🌊
+▫️ 2. ¿Y si el hielo no flotara? 🧊
+▫️ 3. ¿Y si la lluvia fuera salada? 🌧️
+▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
+▫️ 5. ¿Y si todo el mar se congelara? 🧊
+👉 6. ¿Y si el agua hirviera a 50 grados? ♨️
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (152/500):
+```
+qué pasaría si el agua hirviera a 50 grados, punto de ebullición, agua hirviendo, everest, olla exprés, ciudad de méxico, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: más o menos cada 300 metros de altura, el agua hierve 1 °C antes ⛰️ ¿A qué altura vives tú? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-agua-hirviera-a-50-grados.mp4`
+- Listas: «Serie: ¿Y si el agua…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Y si todo el mar se congelara? 🧊» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 56 — `out/short58-alreves.mp4` (vertical)
+
+**Título** (42/100):
+```
+¿Y si la Tierra girara al revés? 🌍 #Shorts
+```
+
+**Descripción** (1416/5000):
+```
+Si la Tierra girara al revés, el Sol saldría por el oeste, el Sahara se volvería verde y Brasil, desierto. Y en Venus ya pasa.
+
+Lo que pasa de verdad:
+🌅 La Tierra gira hacia el este; por eso vemos al Sol salir por el este. Si girara al revés, saldría por el oeste.
+💨 El giro de la Tierra desvía los vientos y las corrientes del mar; girando al revés, se desviarían para el otro lado, y con ellos se moverían las lluvias.
+🖥️ En 2018, científicos del Instituto Max Planck de Meteorología (Alemania) simularon en una supercomputadora 7,000 años de una Tierra que gira al revés.
+🌳 Resultado: el Sahara y el desierto de Arabia se llenan de plantas, y aparecen desiertos nuevos en el sureste de Estados Unidos, en Brasil y en Argentina. En total, el mundo queda con menos desierto.
+🥶 Europa del oeste se vuelve mucho más fría: el viento llega del este, desde Rusia, y la corriente del Atlántico que hoy la calienta se apaga.
+🪐 Venus gira al revés que casi todos los planetas: allá el Sol sale por el oeste (aunque sus nubes no dejarían verlo).
+
+¿Qué crees que pasaría con tu país? 👇
+
+📺 Serie «La Tierra» · parte 1:
+👉 1. ¿Y si la Tierra girara al revés? 🌍
+▫️ 2. ¿Y si el día durara 12 horas? 🌍
+▫️ 3. ¿Y si la Tierra estuviera acostada? 🌍
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (141/500):
+```
+qué pasaría si la tierra girara al revés, rotación de la tierra, sol por el oeste, sahara verde, venus, clima, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: en Venus, de un amanecer al siguiente pasan unos 117 días de la Tierra 🪐 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-la-tierra-girara-al-reves.mp4`
+- Listas: «Serie: ¿Y si la Tierra…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Y si la Tierra dejara de girar de golpe? 🌍» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 57 — `out/short59-dia12h.mp4` (vertical)
+
+**Título** (39/100):
+```
+¿Y si el día durara 12 horas? 🌍 #Shorts
+```
+
+**Descripción** (1485/5000):
+```
+Si el día durara 12 horas, el mar se iría al ecuador y verías dos atardeceres cada 24 horas. Y antes la Tierra giraba más rápido.
+
+Lo que pasa de verdad:
+🌀 Al girar, la Tierra empuja el agua hacia el ecuador (por eso está un poco más ancha en medio: unos 21 km más que de polo a polo). Ese empuje crece con la velocidad al cuadrado: girando el doble de rápido, sería 2 × 2 = 4 veces más fuerte.
+🌊 El agua se acomoda mucho más rápido que la roca: el mar se amontonaría en el ecuador, inundando los países de en medio, y se retiraría cerca de los polos, dejando el fondo del mar seco.
+🌇 Un día de 12 horas = unas 6 horas de luz y 6 de noche: en 24 horas verías dos amaneceres y dos atardeceres.
+📅 La vuelta al Sol no cambia, así que el año dura lo mismo: 365 días de 24 horas = 730 días de 12 horas.
+🐚 Una almeja fósil de hace unos 70 millones de años (época de los dinosaurios) hacía un anillo en su concha cada día. Contando los anillos, el año tenía 372 días: 365 × 24 ÷ 372 ≈ 23.5 horas por día.
+🌕 La Luna frena a la Tierra con las mareas: el día se alarga cerca de 2 milésimas de segundo cada siglo.
+
+¿Qué harías con dos atardeceres al día? 👇
+
+📺 Serie «La Tierra» · parte 2:
+▫️ 1. ¿Y si la Tierra girara al revés? 🌍
+👉 2. ¿Y si el día durara 12 horas? 🌍
+▫️ 3. ¿Y si la Tierra estuviera acostada? 🌍
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (153/500):
+```
+qué pasaría si el día durara 12 horas, rotación de la tierra, tierra gira más rápido, duración del día, dinosaurios, luna, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: en la Ciudad de México giras con la Tierra a unos 1,580 km/h, aunque no lo sientas 🌍 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-dia-durara-12-horas.mp4`
+- Listas: «Serie: ¿Y si la Tierra…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Y si la Tierra girara al revés? 🌍» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 58 — `out/short60-acostada.mp4` (vertical)
+
+**Título** (45/100):
+```
+¿Y si la Tierra estuviera acostada? 🌍 #Shorts
+```
+
+**Descripción** (1537/5000):
+```
+Si la Tierra estuviera acostada, en México habría más de un mes sin Sol en invierno y más de un mes sin noche en verano.
+
+Lo que pasa de verdad:
+📐 Hoy el eje de la Tierra está inclinado unos 23.4°: por eso hay estaciones. «Acostada» sería con el eje a 90°, como un trompo de lado.
+🌑 Con el eje a 90°, en invierno el hemisferio norte quedaría de espaldas al Sol. La cuenta para la Ciudad de México (19.4° de latitud): el Sol no sale mientras esté más de 90° − 19.4° = 70.6° hacia el sur, y con el eje acostado eso pasa en 39° de los 360° de la vuelta al Sol → 39 ÷ 360 × 365 ≈ 40 días seguidos sin Sol. En Monterrey, unos 52.
+☀️ En verano, lo contrario: unos 40 días sin noche. El Sol daría vueltas en el cielo sin meterse, como hoy en el Polo Norte en junio.
+🔥 Con el Sol tanto tiempo arriba (o abajo), los veranos serían mucho más calientes y los inviernos mucho más fríos que hoy.
+🧊 Los polos tendrían el Sol casi encima, sin parar, durante meses: al hielo de los polos le costaría muchísimo durar.
+🪐 Urano tiene el eje inclinado unos 98°: está acostado. Tarda 84 años en dar la vuelta al Sol, así que cada polo pasa unos 42 años de luz y 42 de oscuridad.
+
+¿Aguantarías 40 días sin ver el Sol? 👇
+
+📺 Serie «La Tierra» · parte 3:
+▫️ 1. ¿Y si la Tierra girara al revés? 🌍
+▫️ 2. ¿Y si el día durara 12 horas? 🌍
+👉 3. ¿Y si la Tierra estuviera acostada? 🌍
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (160/500):
+```
+qué pasaría si la tierra estuviera acostada, inclinación de la tierra, estaciones del año, urano, sol de medianoche, noche polar, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: Urano gira «rodando» alrededor del Sol; lo más probable es que lo tumbara un choque gigante hace miles de millones de años 🪐 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-la-tierra-estuviera-acostada.mp4`
+- Listas: «Serie: ¿Y si la Tierra…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Y si el día durara 12 horas? 🌍» (súbelo antes si aún no está publicado)

@@ -1,0 +1,109 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *la Tierra estuviera acostada*?",
+        "¿Seguiría habiendo *noche*?"
+      ],
+      "say": [
+        "¿Qué pasaría si la Tierra estuviera acostada?",
+        "¿Seguiría habiendo noche?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.0,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "invierno",
+      "caps": [
+        "En invierno, en México *no saldría el Sol*…",
+        "¡por *más de un mes*!"
+      ],
+      "say": [
+        "En invierno, en México no saldría el Sol…",
+        "¡por más de un mes!"
+      ]
+    },
+    {
+      "id": "verano",
+      "caps": [
+        "Y en verano, *más de un mes sin noche*:",
+        "el Sol *daría vueltas en el cielo* sin meterse."
+      ],
+      "say": [
+        "Y en verano, más de un mes sin noche:",
+        "el Sol daría vueltas en el cielo sin meterse."
+      ]
+    },
+    {
+      "id": "extremos",
+      "caps": [
+        "Los veranos serían *un horno* y los inviernos, *un congelador*…",
+        "y los polos tendrían *el Sol encima*, sin parar, durante meses."
+      ],
+      "say": [
+        "Los veranos serían un horno y los inviernos, un congelador…",
+        "y los polos tendrían el Sol encima, sin parar, durante meses."
+      ]
+    },
+    {
+      "id": "final",
+      "caps": [
+        "Y existe: *Urano está acostado*.",
+        "Cada polo pasa *42 años de día*… y 42 de noche."
+      ],
+      "say": [
+        "Y existe: Urano está acostado.",
+        "Cada polo pasa cuarenta y dos años de día… y cuarenta y dos de noche."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.3,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "title": "¿Y si la Tierra estuviera acostada?",
+  "series": "SERIE LA TIERRA · 3",
+  "hookTitle": [
+    "¿Y SI LA TIERRA",
+    "ESTUVIERA ACOSTADA?"
+  ],
+  "hookZoom": 0.12
+}

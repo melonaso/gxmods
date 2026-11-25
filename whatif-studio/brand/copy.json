@@ -22,6 +22,31 @@
         "name": "¿Qué pasaría si…? Preguntas locas",
         "description": "¿Y si fueras invisible? ¿Y si los animales hablaran? Las preguntas que se haría cualquier niño, respondidas con ciencia y mucho humor, en menos de 30 segundos."
       }
+    },
+    "series": {
+      "agua": {
+        "name": "Serie: ¿Y si el agua…?",
+        "label": "El agua",
+        "description": "¿Y si el mar fuera dulce? ¿Y si el hielo se hundiera? Un solo cambio en el agua de todos los días… y todo el planeta cambia. Animaciones con datos reales.",
+        "episodes": [
+          "short48-mardulce",
+          "short53-hielohunde",
+          "short54-lluviasalada",
+          "short55-marsalado",
+          "short56-marcongelado",
+          "short57-hierve50"
+        ]
+      },
+      "tierra": {
+        "name": "Serie: ¿Y si la Tierra…?",
+        "label": "La Tierra",
+        "description": "¿Y si la Tierra girara al revés? ¿Y si el día durara 12 horas? ¿Y si estuviera acostada? Un solo cambio en cómo gira nuestro planeta, con datos reales.",
+        "episodes": [
+          "short58-alreves",
+          "short59-dia12h",
+          "short60-acostada"
+        ]
+      }
     }
   },
   "videos": [
@@ -2312,7 +2337,8 @@
       "themes": [
         "espacio"
       ],
-      "next": "ep06-mar"
+      "next": "ep06-mar",
+      "series": "agua"
     },
     {
       "episode": "short49-nucleo",
@@ -2548,7 +2574,8 @@
       "themes": [
         "locas"
       ],
-      "next": "ep06-mar"
+      "next": "ep06-mar",
+      "series": "agua"
     },
     {
       "episode": "short54-lluviasalada",
@@ -2587,7 +2614,247 @@
       "themes": [
         "espacio"
       ],
-      "next": "ep06-mar"
+      "next": "ep06-mar",
+      "series": "agua"
+    },
+    {
+      "episode": "short55-marsalado",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si el mar fuera 10 veces más salado? 🌊 #Shorts",
+      "hook": "Si el mar fuera diez veces más salado, flotarías como corcho y casi todos los peces morirían. Y existe: el mar Muerto.",
+      "math": [
+        "🧂 Hoy el mar tiene unos 35 gramos de sal por litro (3.5 %). Diez veces más serían unos 340 gramos por litro: casi lo que tiene el mar Muerto (34 %, unas 9.6 veces más que el océano).",
+        "🛟 Flotas porque el agua tan salada pesa más: un litro del mar Muerto pesa unos 1.24 kg, contra 1.03 kg del mar normal. Tu cuerpo pesa menos que esa agua y se queda arriba, como un corcho; hundirte o bucear cuesta muchísimo.",
+        "🐟 La sal «jala» el agua: en un mar tan salado, los peces y los corales perderían el agua de su cuerpo. En el mar Muerto no vive ningún pez; solo bacterias y algas diminutas que aguantan la sal.",
+        "🏖️ Cuando el agua se evapora, la sal se queda: en la orilla del mar Muerto se forman costras y columnas de sal. Y el agua tan salada arde en los ojos y en cualquier raspón.",
+        "🥚 Prueba: pon un huevo crudo en un vaso con agua de la llave: se hunde. Ahora disuélvele muchas cucharadas de sal (unas 6–8 en un vaso grande): el huevo sube y flota."
+      ],
+      "question": "¿Vas a hacer la prueba del huevo? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si el mar fuera más salado",
+        "mar muerto",
+        "flotar en el mar muerto",
+        "sal",
+        "agua salada",
+        "experimento del huevo",
+        "ciencia",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: la orilla del mar Muerto está unos 430 metros bajo el nivel del mar: es el punto más bajo de tierra firme del planeta 🌊 ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "short48-mardulce",
+      "series": "agua"
+    },
+    {
+      "episode": "short56-marcongelado",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si todo el mar se congelara? 🧊 #Shorts",
+      "hook": "Si todo el mar se congelara, podrías cruzar a pie a otro continente… y la Tierra se enfriaría todavía más. Y ya pasó.",
+      "math": [
+        "🚶 De la Ciudad de México a Madrid hay unos 9,000 km. Caminando 30 km al día: 9,000 ÷ 30 = 300 días, casi 10 meses sobre el hielo.",
+        "🪞 La nieve y el hielo rebotan mucha luz del Sol (la nieve fresca, hasta 80–90 %); el mar oscuro se queda con casi toda (rebota menos del 10 %). Con el mar blanco, la Tierra absorbe menos calor y se enfría más: más hielo → más frío → más hielo.",
+        "🌊 El hielo flota y funciona como una tapa que aísla: abajo, el agua sigue líquida (igual que en los lagos congelados).",
+        "🌋 En el fondo del mar hay chimeneas volcánicas que calientan el agua; ahí viven animales que no necesitan la luz del Sol. Lugares así, y zonas con hielo delgado, pudieron ser el refugio de la vida.",
+        "❄️ Ya pasó: hace entre 720 y 635 millones de años, la Tierra se congeló casi entera por lo menos dos veces. Se le llama «Tierra bola de nieve».",
+        "🔥 La salvaron los volcanes: siguieron echando gas (dióxido de carbono) que, con todo congelado, nada absorbía. Se juntó en el aire durante millones de años hasta calentar el planeta y derretir el hielo."
+      ],
+      "question": "¿Tú cruzarías el mar caminando? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si el mar se congelara",
+        "tierra bola de nieve",
+        "mar congelado",
+        "hielo",
+        "glaciación",
+        "volcanes",
+        "ciencia",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: la nieve fresca rebota hasta el 90 % de la luz del Sol; el mar, menos del 10 % ❄️ ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "short55-marsalado",
+      "series": "agua"
+    },
+    {
+      "episode": "short57-hierve50",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si el agua hirviera a 50 grados? ♨️ #Shorts",
+      "hook": "Si el agua hirviera a 50 °C, ningún huevo se cocería y hervirla ya no la limpiaría. Y en el Everest hierve a solo 70 °C.",
+      "math": [
+        "🌡️ Hervir es cuando el agua se vuelve vapor dentro de la olla. Una vez que hierve, ya no se calienta más: el calor extra se va en hacer vapor. Si hirviera a 50 °C, la olla nunca pasaría de 50.",
+        "🥚 La clara del huevo empieza a cuajar a unos 62 °C y la yema a unos 65 °C: a 50 °C se quedarían crudas para siempre.",
+        "🦠 Para matar a la mayoría de los microbios hace falta más calor: la leche se pasteuriza a 72 °C durante 15 segundos. A 50 °C, muchos sobrevivirían.",
+        "🏜️ En los desiertos, el suelo al Sol pasa fácilmente de 60 °C: ahí un charco sí podría hervir.",
+        "⛰️ El agua hierve antes donde hay menos aire encima (menos presión): a nivel del mar, a 100 °C; en la Ciudad de México (2,240 m), a unos 92 °C; en la cima del Everest (8,849 m), a unos 70 °C. Más o menos 1 °C menos por cada 300 m de altura.",
+        "🍲 Por eso la olla exprés cocina más rápido: encierra el vapor, sube la presión y el agua hierve a unos 120 °C."
+      ],
+      "question": "¿Sabías que en la ciudad el agua no hierve a 100? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si el agua hirviera a 50 grados",
+        "punto de ebullición",
+        "agua hirviendo",
+        "everest",
+        "olla exprés",
+        "ciudad de méxico",
+        "ciencia",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: más o menos cada 300 metros de altura, el agua hierve 1 °C antes ⛰️ ¿A qué altura vives tú? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "short56-marcongelado",
+      "series": "agua"
+    },
+    {
+      "episode": "short58-alreves",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si la Tierra girara al revés? 🌍 #Shorts",
+      "hook": "Si la Tierra girara al revés, el Sol saldría por el oeste, el Sahara se volvería verde y Brasil, desierto. Y en Venus ya pasa.",
+      "math": [
+        "🌅 La Tierra gira hacia el este; por eso vemos al Sol salir por el este. Si girara al revés, saldría por el oeste.",
+        "💨 El giro de la Tierra desvía los vientos y las corrientes del mar; girando al revés, se desviarían para el otro lado, y con ellos se moverían las lluvias.",
+        "🖥️ En 2018, científicos del Instituto Max Planck de Meteorología (Alemania) simularon en una supercomputadora 7,000 años de una Tierra que gira al revés.",
+        "🌳 Resultado: el Sahara y el desierto de Arabia se llenan de plantas, y aparecen desiertos nuevos en el sureste de Estados Unidos, en Brasil y en Argentina. En total, el mundo queda con menos desierto.",
+        "🥶 Europa del oeste se vuelve mucho más fría: el viento llega del este, desde Rusia, y la corriente del Atlántico que hoy la calienta se apaga.",
+        "🪐 Venus gira al revés que casi todos los planetas: allá el Sol sale por el oeste (aunque sus nubes no dejarían verlo)."
+      ],
+      "question": "¿Qué crees que pasaría con tu país? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si la tierra girara al revés",
+        "rotación de la tierra",
+        "sol por el oeste",
+        "sahara verde",
+        "venus",
+        "clima",
+        "ciencia",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: en Venus, de un amanecer al siguiente pasan unos 117 días de la Tierra 🪐 ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "short04-tierra",
+      "series": "tierra"
+    },
+    {
+      "episode": "short59-dia12h",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si el día durara 12 horas? 🌍 #Shorts",
+      "hook": "Si el día durara 12 horas, el mar se iría al ecuador y verías dos atardeceres cada 24 horas. Y antes la Tierra giraba más rápido.",
+      "math": [
+        "🌀 Al girar, la Tierra empuja el agua hacia el ecuador (por eso está un poco más ancha en medio: unos 21 km más que de polo a polo). Ese empuje crece con la velocidad al cuadrado: girando el doble de rápido, sería 2 × 2 = 4 veces más fuerte.",
+        "🌊 El agua se acomoda mucho más rápido que la roca: el mar se amontonaría en el ecuador, inundando los países de en medio, y se retiraría cerca de los polos, dejando el fondo del mar seco.",
+        "🌇 Un día de 12 horas = unas 6 horas de luz y 6 de noche: en 24 horas verías dos amaneceres y dos atardeceres.",
+        "📅 La vuelta al Sol no cambia, así que el año dura lo mismo: 365 días de 24 horas = 730 días de 12 horas.",
+        "🐚 Una almeja fósil de hace unos 70 millones de años (época de los dinosaurios) hacía un anillo en su concha cada día. Contando los anillos, el año tenía 372 días: 365 × 24 ÷ 372 ≈ 23.5 horas por día.",
+        "🌕 La Luna frena a la Tierra con las mareas: el día se alarga cerca de 2 milésimas de segundo cada siglo."
+      ],
+      "question": "¿Qué harías con dos atardeceres al día? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si el día durara 12 horas",
+        "rotación de la tierra",
+        "tierra gira más rápido",
+        "duración del día",
+        "dinosaurios",
+        "luna",
+        "ciencia",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: en la Ciudad de México giras con la Tierra a unos 1,580 km/h, aunque no lo sientas 🌍 ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "short58-alreves",
+      "series": "tierra"
+    },
+    {
+      "episode": "short60-acostada",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si la Tierra estuviera acostada? 🌍 #Shorts",
+      "hook": "Si la Tierra estuviera acostada, en México habría más de un mes sin Sol en invierno y más de un mes sin noche en verano.",
+      "math": [
+        "📐 Hoy el eje de la Tierra está inclinado unos 23.4°: por eso hay estaciones. «Acostada» sería con el eje a 90°, como un trompo de lado.",
+        "🌑 Con el eje a 90°, en invierno el hemisferio norte quedaría de espaldas al Sol. La cuenta para la Ciudad de México (19.4° de latitud): el Sol no sale mientras esté más de 90° − 19.4° = 70.6° hacia el sur, y con el eje acostado eso pasa en 39° de los 360° de la vuelta al Sol → 39 ÷ 360 × 365 ≈ 40 días seguidos sin Sol. En Monterrey, unos 52.",
+        "☀️ En verano, lo contrario: unos 40 días sin noche. El Sol daría vueltas en el cielo sin meterse, como hoy en el Polo Norte en junio.",
+        "🔥 Con el Sol tanto tiempo arriba (o abajo), los veranos serían mucho más calientes y los inviernos mucho más fríos que hoy.",
+        "🧊 Los polos tendrían el Sol casi encima, sin parar, durante meses: al hielo de los polos le costaría muchísimo durar.",
+        "🪐 Urano tiene el eje inclinado unos 98°: está acostado. Tarda 84 años en dar la vuelta al Sol, así que cada polo pasa unos 42 años de luz y 42 de oscuridad."
+      ],
+      "question": "¿Aguantarías 40 días sin ver el Sol? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si la tierra estuviera acostada",
+        "inclinación de la tierra",
+        "estaciones del año",
+        "urano",
+        "sol de medianoche",
+        "noche polar",
+        "ciencia",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: Urano gira «rodando» alrededor del Sol; lo más probable es que lo tumbara un choque gigante hace miles de millones de años 🪐 ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "short59-dia12h",
+      "series": "tierra"
     }
   ]
 }

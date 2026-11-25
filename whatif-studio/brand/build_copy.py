@@ -36,11 +36,23 @@ def upload_files(v):
     return links
 
 
-def description(c, v, ch):
+def series_block(c, v, byid):
+    """Lista de la serie a la que pertenece el video ("series" en copy.json), con el video actual marcado."""
+    s = c.get('series', {}).get(v.get('series'))
+    if not s: return []
+    eps = s['episodes']
+    lines = [f"📺 Serie «{s['label']}» · parte {eps.index(v['episode']) + 1}:"]
+    for i, e in enumerate(eps, 1):
+        if e in byid: lines.append(f"{'👉' if e == v['episode'] else '▫️'} {i}. {byid[e]['title'].replace(' #Shorts', '')}")
+    return lines + ['']
+
+
+def description(c, v, ch, byid=None):
     parts = [
         v['hook'], '',
         v.get('factsTitle', 'Las cuentas del video:'), *v['math'], '',
         v['question'], '',
+        *series_block(c, v, byid or {}),
         *(['⏱️ Capítulos', *ch, ''] if ch else []),
         '💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.',
         f"🔔 Suscríbete: {c['youtube']}",
@@ -63,6 +75,8 @@ def main():
         f"Canal: **{c['name']}** · YouTube `{c['youtube']}`" + (f" · TikTok/Instagram `{c['social']}`" if c.get('social') else '') + f" · Lista: «{c['playlist']}».",
         'Miniaturas (1280×720): `out/brand/thumb-ep0N.png` (`node brand/render-brand.mjs thumb ep0N`).',
         '',
+        *(['## Listas de las series (créalas una vez; el orden de la lista = el orden de las partes)', '']
+          + [f"- **{x['name']}** — {x['description']}" for x in c.get('series', {}).values()] + [''] if c.get('series') else []),
         '## Orden para subir cada video (ver `brand/PUBLICACION.md`)',
         '1. Sube el archivo de `out/subir/` (ya tiene el nombre del título) como **Privado**, uno o dos días antes.',
         '2. Pega título, descripción y etiquetas; sube la miniatura (videos largos).',
@@ -85,7 +99,8 @@ def main():
         if v.get('isShort'): ns += 1
         else: nv += 1
         ch = [] if v.get('isShort') else chapters(v['episode'])  # YouTube no muestra capítulos en Shorts
-        desc = description(c, v, ch)
+        byid = {x['episode']: x for x in data['videos']}
+        desc = description(c, v, ch, byid)
         tags = ', '.join(v['tags'])
         assert len(v['title']) <= LIMITS['title'], v['title']
         assert len(desc) <= LIMITS['description'], v['episode']
@@ -95,7 +110,7 @@ def main():
         assert '?' in v['pinned'], f"{v['episode']}: el comentario fijado debe terminar en pregunta"
         files = upload_files(v)
         byid = {x['episode']: x for x in data['videos']}
-        lists = [c['shortsPlaylist'] if v.get('isShort') else c['playlist']] + [c['themePlaylists'][k]['name'] for k in v.get('themes', [])]
+        lists = ([c['series'][v['series']]['name']] if v.get('series') else []) + [c['shortsPlaylist'] if v.get('isShort') else c['playlist']] + [c['themePlaylists'][k]['name'] for k in v.get('themes', [])]
         nxt = byid.get(v.get('next'))
         out += [
             '---', '',

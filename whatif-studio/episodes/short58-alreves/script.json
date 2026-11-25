@@ -1,0 +1,118 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *la Tierra girara al revés*?",
+        "¿Qué cambiaría *primero*?"
+      ],
+      "say": [
+        "¿Qué pasaría si la Tierra girara al revés?",
+        "¿Qué cambiaría primero?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.0,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "sol",
+      "caps": [
+        "El Sol *saldría por el oeste*…",
+        "y *se metería por el este*."
+      ],
+      "say": [
+        "El Sol saldría por el oeste…",
+        "y se metería por el este."
+      ]
+    },
+    {
+      "id": "vientos",
+      "caps": [
+        "Los vientos y las corrientes del mar *darían la vuelta*…",
+        "y *las lluvias se irían a otros lugares*."
+      ],
+      "say": [
+        "Los vientos y las corrientes del mar darían la vuelta…",
+        "y las lluvias se irían a otros lugares."
+      ]
+    },
+    {
+      "id": "sahara",
+      "caps": [
+        "El desierto del Sahara *se llenaría de plantas*…",
+        "pero el sureste de Estados Unidos, Brasil y Argentina *se volverían desiertos*."
+      ],
+      "say": [
+        "El desierto del Sahara se llenaría de plantas…",
+        "pero el sureste de Estados Unidos, Brasil y Argentina se volverían desiertos."
+      ]
+    },
+    {
+      "id": "europa",
+      "caps": [
+        "Y Europa tendría *inviernos helados*, con viento frío de Rusia."
+      ],
+      "say": [
+        "Y Europa tendría inviernos helados, con viento frío de Rusia."
+      ]
+    },
+    {
+      "id": "final",
+      "caps": [
+        "No es inventado: *lo calculó una supercomputadora*…",
+        "y en Venus ya pasa: *allá el Sol sale por el oeste*."
+      ],
+      "say": [
+        "No es inventado: lo calculó una supercomputadora…",
+        "y en Venus ya pasa: allá el Sol sale por el oeste."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.4,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "title": "¿Y si la Tierra girara al revés?",
+  "series": "SERIE LA TIERRA · 1",
+  "hookTitle": [
+    "¿Y SI LA TIERRA",
+    "GIRARA AL REVÉS?"
+  ],
+  "hookZoom": 0.12
+}

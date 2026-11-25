@@ -116,3 +116,29 @@ export function drawGlobe(ctx, cx, cy, R, opts = {}) {
   if (outline) { ctx.lineWidth = outline; ctx.strokeStyle = INK; ctx.stroke(); }
   ctx.restore();
 }
+
+/** Mancha elíptica centrada en (lon, lat) con radios en grados (rLon, rLat). Usar dentro de opts.extra (origen = centro). */
+export function geoBlob(ctx, lon, lat, rLon, rLat, lon0, lat0, R, fill, wobble = 0.15) {
+  const pts = [];
+  for (let i = 0; i <= 36; i++) { const a = (i / 36) * Math.PI * 2, k = 1 + wobble * Math.sin(a * 3 + lon); pts.push(project(lon + Math.cos(a) * rLon * k, lat + Math.sin(a) * rLat * k, lon0, lat0, R)); }
+  if (!pts.some((p) => p[2])) return;
+  ctx.beginPath();
+  pts.forEach(([x, y, v], i) => { if (!v) { const k = R / Math.max(1e-6, Math.hypot(x, y)); x *= k; y *= k; } i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); });
+  ctx.closePath(); ctx.fillStyle = fill; ctx.fill();
+}
+
+/** Flecha sobre el globo a lo largo de un paralelo (lat), de lonA a lonB; solo la parte visible. Usar dentro de opts.extra. */
+export function geoArrow(ctx, lat, lonA, lonB, lon0, lat0, R, { color = '#ffffff', lw = 12 } = {}) {
+  const n = 30, pts = [];
+  for (let i = 0; i <= n; i++) pts.push(project(lonA + ((lonB - lonA) * i) / n, lat, lon0, lat0, R));
+  const vis = pts.filter((p) => p[2]);
+  if (vis.length < 3) return;
+  ctx.save(); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  for (const [w, c] of [[lw + 8, INK], [lw, color]]) {
+    ctx.beginPath(); vis.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.lineWidth = w; ctx.strokeStyle = c; ctx.stroke();
+  }
+  const [x1, y1] = vis[vis.length - 1], [x0, y0] = vis[vis.length - 3], a = Math.atan2(y1 - y0, x1 - x0), s = lw * 2.4;
+  ctx.beginPath(); ctx.moveTo(x1 + Math.cos(a) * s, y1 + Math.sin(a) * s); ctx.lineTo(x1 + Math.cos(a + 2.4) * s, y1 + Math.sin(a + 2.4) * s); ctx.lineTo(x1 + Math.cos(a - 2.4) * s, y1 + Math.sin(a - 2.4) * s); ctx.closePath();
+  ctx.fillStyle = color; ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = INK; ctx.stroke();
+  ctx.restore();
+}

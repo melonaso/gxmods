@@ -4,6 +4,59 @@ import * as hq from './hq.js';
 import { rng } from './kit.js';
 
 export const TAU = Math.PI * 2;
+
+/** Personaje fijo del canal (el del logo): camisa verde, pantalón azul, pelo oscuro. Uso: hq.toon(ctx, x, y, h, { ...HERO, t, … }). */
+export const HERO = { shirt: '#22c55e', pants: '#1e3a8a', skin: '#e8b48a', hair: '#2b1a10', hairStyle: 'short', iris: '#4b2e1a' };
+
+/** Pez de perfil (mira a la izquierda; dir = -1 lo voltea). sick 0..1: se pone panza arriba. */
+export function fish(ctx, x, y, s, color, { sick = 0, t = 0, seed = 0, dir = 1 } = {}) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(s * dir, s); ctx.rotate(sick * Math.PI * 0.9);
+  const wag = Math.sin(t * 9 + seed) * 8 * (1 - sick);
+  ctx.beginPath(); ctx.moveTo(48, 0); ctx.lineTo(88, -26 + wag); ctx.lineTo(88, 26 + wag); ctx.closePath(); ctx.fillStyle = hq.shade(color, -0.15); ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = INK; ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(0, 0, 56, 28 * (1 - 0.3 * sick), 0, 0, TAU); ctx.fillStyle = hq.vgrad(ctx, 0, -30, 30, [[0, hq.shade(color, 0.2)], [1, hq.shade(color, -0.2)]]); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = 'rgba(15,23,42,0.35)'; for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.arc(-10 + i * 14, -6 + (i % 2) * 10, 4, 0, TAU); ctx.fill(); }
+  ctx.beginPath(); ctx.arc(-28, -6, 10, 0, TAU); ctx.fillStyle = '#ffffff'; ctx.fill(); ctx.lineWidth = 3; ctx.stroke();
+  ctx.beginPath(); ctx.arc(-30, -4, sick > 0.4 ? 3 : 5, 0, TAU); ctx.fillStyle = INK; ctx.fill();
+  ctx.restore();
+}
+
+/** Cubito de sal (o de azúcar) visto de frente. */
+export function saltCube(ctx, x, y, s, rot = 0, fill = '#ffffff') {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(rot);
+  hq.roundRectPath(ctx, -s / 2, -s / 2, s, s, s * 0.15); ctx.fillStyle = fill; ctx.fill(); ctx.lineWidth = Math.max(2, s * 0.12); ctx.strokeStyle = INK; ctx.stroke();
+  ctx.restore();
+}
+
+/** Olla con agua sobre una estufa; boil 0..1 = burbujas. */
+export function pot(ctx, x, y, w, t, { boil = 0, flame = 1, water = '#38bdf8' } = {}) {
+  ctx.save(); ctx.translate(x, y);
+  // Estufa y llama.
+  hq.roundRectPath(ctx, -w * 0.75, 0, w * 1.5, w * 0.22, 14); ctx.fillStyle = '#334155'; ctx.fill(); ctx.lineWidth = 6; ctx.strokeStyle = INK; ctx.stroke();
+  if (flame > 0) for (let i = 0; i < 7; i++) { const fx = -w * 0.42 + i * w * 0.14, fh = w * (0.1 + 0.04 * Math.sin(t * 14 + i * 2)) * flame; ctx.beginPath(); ctx.moveTo(fx - 12, -2); ctx.quadraticCurveTo(fx, -fh * 1.6, fx + 12, -2); ctx.closePath(); ctx.fillStyle = '#3b82f6'; ctx.fill(); ctx.beginPath(); ctx.moveTo(fx - 6, -2); ctx.quadraticCurveTo(fx, -fh, fx + 6, -2); ctx.closePath(); ctx.fillStyle = '#bae6fd'; ctx.fill(); }
+  // Olla.
+  const top = -w * 0.78, bot = -w * 0.12;
+  ctx.beginPath(); ctx.moveTo(-w / 2, top); ctx.lineTo(-w / 2 + 10, bot); ctx.quadraticCurveTo(-w / 2 + 14, bot + 14, -w / 2 + 30, bot + 14); ctx.lineTo(w / 2 - 30, bot + 14); ctx.quadraticCurveTo(w / 2 - 14, bot + 14, w / 2 - 10, bot); ctx.lineTo(w / 2, top); ctx.closePath();
+  ctx.fillStyle = hq.vgrad(ctx, 0, top, bot, [[0, '#cbd5e1'], [1, '#64748b']]); ctx.fill(); ctx.lineWidth = 7; ctx.strokeStyle = INK; ctx.stroke();
+  for (const s of [-1, 1]) { hq.roundRectPath(ctx, s > 0 ? w / 2 - 6 : -w / 2 - w * 0.16 + 6, top + w * 0.1, w * 0.16, w * 0.07, 10); ctx.fillStyle = '#1f2937'; ctx.fill(); ctx.stroke(); }
+  // Agua y burbujas.
+  ctx.beginPath(); ctx.ellipse(0, top + 4, w / 2 - 4, w * 0.07, 0, 0, TAU); ctx.fillStyle = water; ctx.fill(); ctx.lineWidth = 5; ctx.stroke();
+  if (boil > 0) {
+    ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.strokeStyle = INK; ctx.lineWidth = 3;
+    for (let i = 0; i < 9; i++) { const u = (t * 2.2 + i * 0.37) % 1, bx = -w * 0.38 + ((i * 0.618) % 1) * w * 0.76, r = (6 + (i % 3) * 4) * boil * Math.sin(u * Math.PI); if (r > 1) { ctx.beginPath(); ctx.arc(bx, top + 4 - r * 0.3, r, 0, TAU); ctx.fill(); ctx.stroke(); } }
+    ctx.save(); ctx.globalAlpha = 0.55 * boil; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 10; ctx.lineCap = 'round';
+    for (let i = 0; i < 3; i++) { const sx = -w * 0.25 + i * w * 0.25; ctx.beginPath(); for (let k = 0; k <= 8; k++) { const u = k / 8; ctx.lineTo(sx + 16 * Math.sin(u * 6 + t * 3 + i), top - 20 - u * w * 0.5); } ctx.stroke(); }
+    ctx.restore();
+  }
+  ctx.restore();
+}
+
+/** Huevo entero con cáscara (s = alto aproximado). */
+export function egg(ctx, x, y, s, rot = 0) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(rot);
+  ctx.beginPath(); ctx.ellipse(0, 0, s * 0.42, s * 0.55, 0, 0, TAU); ctx.fillStyle = hq.vgrad(ctx, 0, -s * 0.55, s * 0.55, [[0, '#fff7ed'], [1, '#fed7aa']]); ctx.fill(); ctx.lineWidth = Math.max(3, s * 0.06); ctx.strokeStyle = INK; ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.8)'; ctx.beginPath(); ctx.ellipse(-s * 0.14, -s * 0.22, s * 0.08, s * 0.14, -0.4, 0, TAU); ctx.fill();
+  ctx.restore();
+}
 export const INK = '#0b0f1a';
 export const clamp = (x) => Math.max(0, Math.min(1, x));
 export const ease = (x) => { x = clamp(x); return x * x * (3 - 2 * x); };

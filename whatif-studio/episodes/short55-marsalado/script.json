@@ -1,0 +1,123 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *el mar fuera diez veces más salado*?",
+        "¿Podrías *hundirte*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el mar fuera diez veces más salado?",
+        "¿Podrías hundirte?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.9,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "flotar",
+      "caps": [
+        "No: *flotarías como un corcho*, aunque no supieras nadar…",
+        "pero *bucear* sería casi imposible."
+      ],
+      "say": [
+        "No: flotarías como un corcho, aunque no supieras nadar…",
+        "pero bucear sería casi imposible."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.5,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "peces",
+      "caps": [
+        "Casi todos *los peces y los corales morirían*:",
+        "la sal *les sacaría el agua* del cuerpo."
+      ],
+      "say": [
+        "Casi todos los peces y los corales morirían:",
+        "la sal les sacaría el agua del cuerpo."
+      ]
+    },
+    {
+      "id": "playas",
+      "caps": [
+        "Las playas *se cubrirían de costras de sal*…",
+        "y el agua *te ardería* en los ojos y en cualquier raspón."
+      ],
+      "say": [
+        "Las playas se cubrirían de costras de sal…",
+        "y el agua te ardería en los ojos y en cualquier raspón."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.6,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "final",
+      "caps": [
+        "Y existe: *el mar Muerto*. Ahí *no vive ningún pez*.",
+        "Pruébalo: un huevo se hunde en agua… *pero con mucha sal, flota*."
+      ],
+      "say": [
+        "Y existe: el mar Muerto. Ahí no vive ningún pez.",
+        "Pruébalo: un huevo se hunde en agua… pero con mucha sal, flota."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 1.6,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "title": "¿Y si el mar fuera diez veces más salado?",
+  "series": "SERIE EL AGUA · 4",
+  "hookTitle": [
+    "¿Y SI EL MAR FUERA",
+    "10 VECES MÁS SALADO?"
+  ],
+  "hookZoom": 0.12
+}

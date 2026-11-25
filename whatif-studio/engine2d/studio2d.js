@@ -96,6 +96,18 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
       lines.forEach((ln, i) => kit.text(ctx, ln, 0, (i - (lines.length - 1) / 2) * 112, { size: 100, fill: i === lines.length - 1 ? kit.YELLOW : '#ffffff', maxW: W * 0.86 }));
       ctx.restore();
     }
+    // "series": marca de serie bajo la pregunta del gancho (p. ej. "SERIE EL AGUA · 4"), para que se reconozca la serie
+    // desde el primer segundo. Deja libre la franja y ≈ 375–445 en la escena del gancho.
+    if (script.series && s.index === 0) {
+      const fs = 38, k = 1 + 0.07 * Math.pow(Math.max(0, 1 - local / 0.18), 2);
+      ctx.save(); ctx.translate(W / 2, 410); ctx.scale(k, k);
+      ctx.font = `900 ${fs}px ${kit.FONT}`;
+      const w = ctx.measureText(script.series).width + fs * 1.3, h = fs * 1.6;
+      kit.roundRect(ctx, -w / 2, -h / 2, w, h, h / 2); ctx.fillStyle = 'rgba(15,23,42,0.92)'; ctx.fill();
+      ctx.lineWidth = 5; ctx.strokeStyle = kit.YELLOW; ctx.stroke();
+      ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(script.series, 0, fs * 0.05);
+      ctx.restore();
+    }
     drawOverlay(ctx, W, H, {
       subtitle: subtitleAt(s, local),
       // "fadeOut": 0 deja el final sin fundido a negro (para Shorts en bucle: el último cuadro empata con el primero).

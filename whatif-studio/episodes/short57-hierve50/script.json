@@ -1,0 +1,102 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *el agua hirviera a 50 grados*?",
+        "¿Podrías *cocinar*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el agua hirviera a cincuenta grados?",
+        "¿Podrías cocinar?"
+      ],
+      "hold": 0.2
+    },
+    {
+      "id": "huevo",
+      "caps": [
+        "El agua herviría rápido… pero *nunca pasaría de 50 grados*:",
+        "y un huevo *jamás se cocería*."
+      ],
+      "say": [
+        "El agua herviría rápido… pero nunca pasaría de cincuenta grados:",
+        "y un huevo jamás se cocería."
+      ],
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.5,
+          "type": "crack"
+        }
+      ]
+    },
+    {
+      "id": "microbios",
+      "caps": [
+        "Y hervir el agua *ya no mataría a muchos microbios*:",
+        "tomarla sería *un riesgo*."
+      ],
+      "say": [
+        "Y hervir el agua ya no mataría a muchos microbios:",
+        "tomarla sería un riesgo."
+      ]
+    },
+    {
+      "id": "desierto",
+      "caps": [
+        "En los desiertos, *los charcos hervirían solos* bajo el Sol."
+      ],
+      "say": [
+        "En los desiertos, los charcos hervirían solos bajo el Sol."
+      ]
+    },
+    {
+      "id": "final",
+      "caps": [
+        "Lo curioso: el agua *no siempre hierve a cien*.",
+        "En la Ciudad de México hierve a unos 92 grados…",
+        "y en la cima del Everest, *a 70*: ahí un huevo *tarda muchísimo* en cocerse."
+      ],
+      "say": [
+        "Lo curioso: el agua no siempre hierve a cien.",
+        "En la Ciudad de México hierve a unos noventa y dos grados…",
+        "y en la cima del Everest, a setenta: ahí un huevo tarda muchísimo en cocerse."
+      ],
+      "hold": 0.6
+    }
+  ],
+  "title": "¿Y si el agua hirviera a 50 grados?",
+  "series": "SERIE EL AGUA · 6",
+  "hookTitle": [
+    "¿Y SI EL AGUA",
+    "HIRVIERA A 50 °C?"
+  ],
+  "hookZoom": 0.12
+}

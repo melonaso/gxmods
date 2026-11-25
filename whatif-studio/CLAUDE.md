@@ -93,6 +93,19 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
   serie), con **Shorts puente** hacia videos largos, **prioridad a los largos** de temas ganadores, un **personaje
   fijo** en todos los videos y 1 Short por día. Nada de consejos de salud o dinero.
 
+## Estado al 25 nov 2026 y series (Shorts 55–60)
+- Vistas (lista de Studio): mar dulce 24,578 (sigue sumando) · oxígeno doble 3,065 · Sol mil veces 2,276 · hielo 1,632 ·
+  centro de la Tierra 1,551 · Sol a la mitad 1,489 · lluvia salada 1,329 · árboles 2 (atorado). El dueño volvió a subir
+  2 por día (hielo y lluvia salada el mismo día) y esta vez los dos arrancaron. Lo normal del canal: ~1.3–2.3 K por Short.
+- **Series visibles** (decisión de la política 2026): `"series": "SERIE EL AGUA · 4"` en `script.json` dibuja la marca
+  bajo la pregunta del gancho (deja libre y ≈ 375–445 en la escena del gancho). En `copy.json`, `channel.series` define
+  cada serie (nombre de la lista, orden de las partes) y `"series"` en cada video agrega a la descripción la lista de
+  partes (con 👉 en la actual) y la lista de reproducción de la serie.
+  - «El agua»: mar dulce (1), hielo (2), lluvia salada (3), mar 10× salado (4), mar congelado (5), hierve a 50 °C (6).
+  - «La Tierra»: gira al revés (1), día de 12 h (2), acostada (3).
+- **Personaje fijo**: `HERO` en `engine2d/props.js` (colores del logo: camisa verde, pantalón azul, pelo oscuro). Desde
+  el Short 55, cualquier persona protagonista se dibuja con `hq.toon(ctx, x, y, h, { ...HERO, … })`.
+
 ## Requisitos de monetización (YouTube Studio, datos al 11 nov 2026)
 - 78 / 1,000 suscriptores; **0 / 4,000 horas válidas** (365 días); **21 K / 10 M vistas de Shorts** (90 días).
 - Conclusión: la vía de Shorts (10 M en 90 días ≈ 111,000 vistas diarias) está muy lejos; la vía realista son

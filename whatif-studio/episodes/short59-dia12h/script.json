@@ -1,0 +1,111 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *el día durara solo 12 horas*?",
+        "¿Lo *notarías*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el día durara solo doce horas?",
+        "¿Lo notarías?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 1.0,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "mar",
+      "caps": [
+        "El mar *se iría hacia el ecuador*: los países de en medio *quedarían bajo el agua*…",
+        "y cerca de los polos *aparecería tierra seca*."
+      ],
+      "say": [
+        "El mar se iría hacia el ecuador: los países de en medio quedarían bajo el agua…",
+        "y cerca de los polos aparecería tierra seca."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.8,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "dia",
+      "caps": [
+        "Habría seis horas de sol y seis de noche:",
+        "verías *dos atardeceres* cada 24 horas."
+      ],
+      "say": [
+        "Habría seis horas de sol y seis de noche:",
+        "verías dos atardeceres cada veinticuatro horas."
+      ]
+    },
+    {
+      "id": "anio",
+      "caps": [
+        "Y el año tendría *730 días*…",
+        "pero tu cumpleaños *llegaría igual de lento*."
+      ],
+      "say": [
+        "Y el año tendría setecientos treinta días…",
+        "pero tu cumpleaños llegaría igual de lento."
+      ]
+    },
+    {
+      "id": "final",
+      "caps": [
+        "Lo curioso: antes *la Tierra giraba más rápido*.",
+        "Con los dinosaurios, el día duraba *media hora menos*: lo dice una almeja fósil.",
+        "La Luna *nos va frenando*, poquito a poco."
+      ],
+      "say": [
+        "Lo curioso: antes la Tierra giraba más rápido.",
+        "Con los dinosaurios, el día duraba media hora menos: lo dice una almeja fósil.",
+        "La Luna nos va frenando, poquito a poco."
+      ],
+      "hold": 0.6
+    }
+  ],
+  "title": "¿Y si el día durara 12 horas?",
+  "series": "SERIE LA TIERRA · 2",
+  "hookTitle": [
+    "¿Y SI EL DÍA",
+    "DURARA 12 HORAS?"
+  ],
+  "hookZoom": 0.12
+}
