@@ -1,0 +1,64 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 16,
+  "cueMin": 1.6,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0.8,
+  "tail": 1.2,
+  "punch": 0.04,
+  "sfx": false,
+  "scale": 1.3333334,
+  "landscape": true,
+  "captionY": 0.86,
+  "title": "De Rotterdam al uptempo (muestra)",
+  "scenes": [
+    {
+      "id": "intro",
+      "min": 6.0,
+      "caps": [
+        "Esta es la historia del *sonido más rápido* de la música electrónica."
+      ]
+    },
+    {
+      "id": "tr909",
+      "min": 8.0,
+      "caps": [
+        "Empezó con una caja de ritmos de 1983…",
+        "y un truco: subirle tanto el volumen que *el sonido se rompe*."
+      ]
+    },
+    {
+      "id": "gabber",
+      "min": 6.5,
+      "caps": [
+        "Rotterdam, principios de los 90: nace el *gabber*."
+      ]
+    },
+    {
+      "id": "hardstyle",
+      "min": 8.0,
+      "caps": [
+        "Hacia el año 2000 llega el *hardstyle*: más lento…",
+        "con un bajo que *suena al revés*."
+      ]
+    },
+    {
+      "id": "uptempo",
+      "min": 6.0,
+      "caps": [
+        "Y hoy el *uptempo* pasa de los 200 golpes por minuto."
+      ]
+    },
+    {
+      "id": "cierre",
+      "min": 5.5,
+      "caps": [
+        "Todos los sonidos de este video están *hechos desde cero*."
+      ]
+    }
+  ]
+}
