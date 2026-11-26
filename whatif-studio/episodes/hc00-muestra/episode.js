@@ -10,10 +10,16 @@ import { TAU, INK, clamp, ease, lerp, mixc } from '../../engine2d/props.js';
 const FILES = { rotterdam: 'rotterdam.jpg', tr909: 'tr909.jpg', crowd: 'crowd.jpg', stage: 'stage.jpg', decks: 'decks.jpg', red: 'red.jpg', crowd2: 'crowd2.jpg' };
 const IMG = {};
 let GRAIN = null;
+// Clips de video real (Wikimedia Commons), ya pasados a cuadros JPG por prep_media.py en build/clips/<nombre>/.
+let CLIPINFO = {};
+const CACHE = new Map(), CUR = {};
+// Créditos en pantalla (clips y canciones), ver assets/CREDITOS.md. Se llenan en prep_media.py → build/clips/index.json.
+let CREDITS = { clips: {}, songs: {} };
 
 export async function setup() {
   const load = (k, f) => new Promise((res) => { const im = new Image(); im.onload = () => { IMG[k] = im; res(); }; im.onerror = () => res(); im.src = `../episodes/hc00-muestra/assets/${f}`; });
   await Promise.all(Object.entries(FILES).map(([k, f]) => load(k, f)));
+  try { const r = await fetch('../episodes/hc00-muestra/build/clips/index.json'); if (r.ok) { const j = await r.json(); CLIPINFO = j.clips || {}; CREDITS = j.credits || CREDITS; } } catch (e) { /* sin clips: se usan las fotos */ }
   // Grano de película (fijo; se mueve de lugar en cada cuadro).
   GRAIN = document.createElement('canvas'); GRAIN.width = GRAIN.height = 512;
   const g = GRAIN.getContext('2d'), d = g.createImageData(512, 512), R = kit.rng(11);
@@ -22,6 +28,35 @@ export async function setup() {
 }
 
 const BPM = { tr909: 140, gabber: 180, hardstyle: 150, uptempo: 210 };
+
+/** Qué clip se ve en este momento de la escena (y en qué segundo del clip). */
+function clipAt(s, local) {
+  const voiceEnd = s.audio ?? s.dur;
+  if (s.id === 'gabber') return { name: 'gabber', lt: local };
+  if (s.id === 'hardstyle') return local < voiceEnd ? { name: 'te2007', lt: local } : { name: 'jump', lt: local - voiceEnd };
+  if (s.id === 'uptempo') { const k = UPKEYS[Math.floor((local * BPM.uptempo) / 60 / 2) % UPKEYS.length]; return k.startsWith('v:') ? { name: k.slice(2), lt: local } : null; }
+  return null;
+}
+const UPKEYS = ['v:rave', 'red', 'v:jump', 'decks', 'crowd2'];
+
+export async function prepare(t, { scene: s, local }) {
+  const c = clipAt(s, local); if (!c) return;
+  const info = CLIPINFO[c.name]; if (!info) return;
+  const i = Math.floor(c.lt * info.fps) % info.n, key = `${c.name}/${i}`;
+  if (!CACHE.has(key)) {
+    const im = new Image();
+    await new Promise((r) => { im.onload = r; im.onerror = r; im.src = `../episodes/hc00-muestra/build/clips/${c.name}/f_${String(i + 1).padStart(4, '0')}.jpg`; });
+    CACHE.set(key, im); if (CACHE.size > 240) CACHE.delete(CACHE.keys().next().value);
+  }
+  IMG['v:' + c.name] = CACHE.get(key);
+}
+
+/** Crédito pequeño arriba a la derecha (clips) y nombre de la canción abajo a la izquierda. */
+function clipCredit(ctx, W, name) { const c = CREDITS.clips[name]; if (c) kit.text(ctx, c, W - 40, 50, { size: 22, fill: '#cbd5e1', align: 'right', stroke: '#020617', lw: 4 }); }
+function songTag(ctx, scene, k) {
+  const c = CREDITS.songs[scene]; if (!c || k <= 0) return;
+  ctx.save(); ctx.globalAlpha = clamp(k * 2); label(ctx, 60, 120, '♪ SUENA: ' + c, { size: 30, accent: '#facc15' }); ctx.restore();
+}
 
 export function draw(ctx, C, { t, scene: s, local }) {
   const cue = (i) => s.cueTimes[Math.min(i, s.cueTimes.length - 1)][0];
@@ -42,6 +77,12 @@ function grain(ctx, W, H, t, a) {
   const f = Math.floor(t * 24), ox = (f * 137) % 512, oy = (f * 251) % 512;
   ctx.save(); ctx.globalAlpha = a; ctx.globalCompositeOperation = 'overlay';
   for (let x = -ox; x < W; x += 512) for (let y = -oy; y < H; y += 512) ctx.drawImage(GRAIN, x, y);
+  ctx.restore();
+}
+
+function scanlines(ctx, W, H, a) {
+  ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = '#000000';
+  for (let y = 0; y < H; y += 4) ctx.fillRect(0, y, W, 2);
   ctx.restore();
 }
 
@@ -182,13 +223,17 @@ const SCENES = {
     const { W, H, local, hit } = o;
     // Multitud con color rojo; destellos en cada golpe (180 por minuto).
     ctx.save(); const z = 1 + 0.02 * hit; ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.translate(-W / 2, -H / 2);
-    photo(ctx, 'crowd', 0, 0, W, H, { zoom: 1.08 + 0.01 * local, px: 0.2, gray: 1, bright: 0.62, contrast: 1.6, tint: '#be123c', tintA: 0.75, blend: 'color' });
+    if (IMG['v:gabber']) photo(ctx, 'v:gabber', 0, 0, W, H, { zoom: 1.05, gray: 0.5, bright: 0.9, contrast: 1.3, tint: '#be123c', tintA: 0.45, blend: 'color' });
+    else photo(ctx, 'crowd', 0, 0, W, H, { zoom: 1.08 + 0.01 * local, px: 0.2, gray: 1, bright: 0.62, contrast: 1.6, tint: '#be123c', tintA: 0.75, blend: 'color' });
     ctx.restore();
+    scanlines(ctx, W, H, 0.12);
+    if (IMG['v:gabber']) clipCredit(ctx, W, 'gabber');
     kit.flash(ctx, W, H, 0.22 * hit);
     ctx.fillStyle = 'rgba(2,6,23,0.35)'; ctx.fillRect(0, 0, W, H);
     bigTitle(ctx, 960, 380, 'GABBER', 260, clamp(local / 0.35), { fill: '#ffffff', stroke: '#9f1239' });
     if (local > 0.6) { ctx.save(); ctx.globalAlpha = clamp((local - 0.6) / 0.4); pin(ctx, 150, 640, 0.8); label(ctx, 190, 610, 'ROTTERDAM · 1991–1992', { size: 32 }); label(ctx, 190, 700, 'ENTRE 160 Y 200 BPM', { size: 32, accent: '#facc15' }); ctx.restore(); }
     bpmBox(ctx, 1630, 680, lerp(140, 180, ease(local / 1.2)), hit, '#f43f5e');
+    songTag(ctx, 'gabber', (local - (o.s.audio ?? 99)) / 0.4);
   },
 
   hardstyle(ctx, o) {
@@ -196,8 +241,11 @@ const SCENES = {
     // Escenario con láseres (azul/morado) y la onda corriendo: kick + bajo que crece al revés.
     const c1 = cue(1);
     ctx.save(); const z = 1 + 0.015 * hit; ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.translate(-W / 2, -H / 2);
-    photo(ctx, 'stage', 0, 0, W, H, { zoom: 1.12 - 0.01 * local, py: -0.2, gray: 0.5, bright: 0.8, contrast: 1.2, tint: '#7c3aed', tintA: 0.4, blend: 'color' });
+    const hv = local < (o.s.audio ?? 99) ? 'te2007' : 'jump';
+    if (IMG['v:' + hv]) photo(ctx, 'v:' + hv, 0, 0, W, H, { zoom: 1.04, gray: 0.35, bright: 0.95, contrast: 1.2, tint: '#7c3aed', tintA: 0.3, blend: 'color' });
+    else photo(ctx, 'stage', 0, 0, W, H, { zoom: 1.12 - 0.01 * local, py: -0.2, gray: 0.5, bright: 0.8, contrast: 1.2, tint: '#7c3aed', tintA: 0.4, blend: 'color' });
     ctx.restore();
+    if (IMG['v:' + hv]) clipCredit(ctx, W, hv);
     ctx.fillStyle = hq.vgrad(ctx, 0, 0, H, [[0, 'rgba(2,6,23,0.15)'], [1, 'rgba(2,6,23,0.75)']]); ctx.fillRect(0, 0, W, H);
     bigTitle(ctx, 960, 200, 'HARDSTYLE', 170, clamp(local / 0.35), { fill: '#a5f3fc', stroke: '#1e1b4b' });
     label(ctx, 960, 330, 'PAÍSES BAJOS · HACIA EL AÑO 2000 · ~150 BPM', { size: 30, align: 'center', accent: '#22d3ee' });
@@ -207,15 +255,16 @@ const SCENES = {
       if (b < 0.5) { const tt = b * 0.4; return Math.tanh(Math.sin(2 * Math.PI * (55 * tt + 8 * (1 - Math.exp(-tt / 0.012)))) * 3) * Math.exp(-tt / 0.3) * (b < 0.45 ? 1 : (0.5 - b) * 20); }
       const r = (b - 0.5) / 0.5; return Math.tanh(Math.sin(2 * Math.PI * 22 * r) * 3) * r ** 2.2 * (r < 0.97 ? 1 : 0);
     };
-    scope(ctx, 260, 430, 1400, 300, show, 1, '#22d3ee', 5);
+    if (local < (o.s.audio ?? 99) + 0.3) scope(ctx, 260, 430, 1400, 300, show, 1, '#22d3ee', 5);
     if (local > c1 - 0.2) { ctx.save(); ctx.globalAlpha = clamp((local - c1 + 0.2) / 0.4); label(ctx, 300, 790, 'KICK', { size: 30, accent: '#22d3ee' }); label(ctx, 1200, 790, 'BAJO AL REVÉS', { size: 30, accent: '#e879f9' }); ctx.restore(); }
     bpmBox(ctx, 1700, 200, 150, hit, '#22d3ee');
+    songTag(ctx, 'hardstyle', (local - (o.s.audio ?? 99)) / 0.4);
   },
 
   uptempo(ctx, o) {
     const { W, H, local, beat, hit, t } = o;
     // Cortes rápidos entre fotos, cada 2 golpes; rebanadas «glitch» en el golpe; medidor en rojo.
-    const keys = ['red', 'decks', 'crowd2', 'stage'], k = keys[Math.floor(beat / 2) % keys.length];
+    let k = UPKEYS[Math.floor(beat / 2) % UPKEYS.length]; if (k.startsWith('v:') && !IMG[k]) k = 'stage';
     photo(ctx, k, 0, 0, W, H, { zoom: 1.15 + 0.05 * hit, gray: 1, bright: 0.8, contrast: 1.4, tint: '#dc2626', tintA: 0.6, blend: 'color' });
     if (hit > 0.5) {
       const R = kit.rng(Math.floor(beat) + 3);
@@ -227,6 +276,8 @@ const SCENES = {
     label(ctx, 360, 480, 'MÁS DE 200 BPM', { size: 40, accent: '#ef4444' });
     gauge(ctx, 1500, 560, 260, lerp(150, 210, ease(local / 1.5)), hit);
     kit.text(ctx, String(Math.round(lerp(150, 210, ease(local / 1.5)))), 1500, 690, { size: 80, fill: '#ffffff' });
+    if (k.startsWith('v:')) clipCredit(ctx, W, k.slice(2));
+    songTag(ctx, 'uptempo', (local - (o.s.audio ?? 99)) / 0.4);
   },
 
   cierre(ctx, o) {
@@ -247,6 +298,6 @@ const SCENES = {
       ctx.restore();
     });
     if (local > 1.6) { ctx.save(); ctx.globalAlpha = clamp((local - 1.6) / 0.5); label(ctx, 960, 720, 'PRÓXIMAMENTE: EL DOCUMENTAL COMPLETO', { size: 40, align: 'center', accent: '#facc15' }); ctx.restore(); }
-    kit.text(ctx, 'Fotos: Wikimedia Commons (licencias libres) · Sonidos hechos desde cero', 960, 1040, { size: 22, fill: '#94a3b8', stroke: null });
+    kit.text(ctx, 'Fotos, videos y música: Wikimedia Commons (licencias libres) · Créditos completos en la descripción', 960, 1040, { size: 22, fill: '#94a3b8', stroke: null });
   },
 };

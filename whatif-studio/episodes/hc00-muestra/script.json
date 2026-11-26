@@ -24,7 +24,7 @@
       "say": [
         "Esta es la historia del sonido más rápido de la música electrónica."
       ],
-      "min": 6.0
+      "min": 4.6
     },
     {
       "id": "tr909",
@@ -36,7 +36,7 @@
         "Empezó con una caja de ritmos de mil novecientos ochenta y tres…",
         "y un truco: subirle tanto el volumen que el sonido se rompe."
       ],
-      "min": 8.0
+      "min": 6.5
     },
     {
       "id": "gabber",
@@ -48,8 +48,8 @@
         "Rotterdam, principios de los noventa: nace el gabber.",
         "Entre ciento sesenta y doscientos golpes por minuto."
       ],
-      "min": 6.5,
-      "hold": 4.0
+      "min": 5.0,
+      "hold": 3.5
     },
     {
       "id": "hardstyle",
@@ -61,8 +61,8 @@
         "Hacia el año dos mil llega el hardstyle: más lento…",
         "y con un bajo que suena al revés."
       ],
-      "min": 8.0,
-      "hold": 4.0
+      "min": 6.0,
+      "hold": 3.5
     },
     {
       "id": "uptempo",
@@ -72,8 +72,8 @@
       "say": [
         "Y hoy, el uptempo pasa de los doscientos golpes por minuto."
       ],
-      "min": 6.0,
-      "hold": 4.0
+      "min": 4.5,
+      "hold": 3.5
     },
     {
       "id": "cierre",
@@ -85,17 +85,17 @@
         "Esta es apenas una probada.",
         "Próximamente, el documental completo."
       ],
-      "min": 5.5
+      "min": 4.2
     }
   ],
   "voice": {
     "file": "voice.mp3",
-    "tempo": 1.1,
+    "tempo": 1.25,
     "semitones": 1,
-    "pause": 0.14,
-    "comma": 0.06,
-    "gap": 0.3,
-    "lead": 0.1,
+    "pause": 0.1,
+    "comma": 0.05,
+    "gap": 0.2,
+    "lead": 0.08,
     "min": 2.0
   }
 }

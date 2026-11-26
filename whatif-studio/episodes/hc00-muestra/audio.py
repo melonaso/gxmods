@@ -1,5 +1,6 @@
-"""Audio de la muestra del documental (hardcore / hardstyle / uptempo): todos los sonidos se generan aquí, desde cero
-(sin samples ni música con derechos). Lee build/starts.json para empatar cada escena y deja build/audio.wav.
+"""Audio de la muestra del documental (hardcore / hardstyle / uptempo). Los kicks de la caja de ritmos se generan aquí,
+desde cero; en gabber, hardstyle y uptempo suena un extracto de una canción real con licencia libre (assets/music/*.ogg,
+créditos en assets/CREDITOS.md) y, si falta, los kicks generados. Lee build/starts.json para empatar cada escena y deja build/audio.wav.
 
 Kicks (el golpe grave del bombo):
 - «909»: como el de una caja de ritmos de los 80: un tono que baja rápido de agudo a grave y se apaga.
@@ -99,6 +100,21 @@ def riser(dur):
     return onepole_lp(noise(n, 5), 1200) * (t ** 2) * 0.35 + np.sin(2 * np.pi * 41 * np.arange(n) / SR) * 0.18 * np.minimum(1, t * 3)
 
 
+def load_audio(path):
+    """Decodifica un audio a mono 48 kHz (numpy float32) con ffmpeg."""
+    import subprocess
+    raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', str(path), '-ac', '1', '-ar', str(SR), '-f', 'f32le', '-'], check=True, capture_output=True).stdout
+    return np.frombuffer(raw, dtype=np.float32).copy()
+
+
+def song(buf, path, t0, t1, gain=0.8, fade=0.35):
+    """Pone un extracto de canción real de t0 a t1 (con entrada y salida suaves)."""
+    if not Path(path).exists(): return False
+    x = load_audio(path); n = min(len(x), int((t1 - t0) * SR)); x = x[:n] / max(1e-6, float(np.max(np.abs(x[:n]))))
+    f = int(fade * SR); x[:f] *= np.linspace(0, 1, f); x[-f:] *= np.linspace(1, 0, f)
+    place(buf, x, t0, gain); return True
+
+
 def place(buf, x, at, gain=1.0):
     i = int(at * SR)
     if i >= len(buf): return
@@ -129,16 +145,20 @@ def main(ep_dir: Path):
     pattern(buf, S['tr909'], mid, 140, kick909(), hats=False)
     pattern(buf, mid, ends['tr909'], 140, kick_gabber(), hats=False)
     # 3) Gabber en Rotterdam: 180 por minuto, con platillos.
-    pattern(buf, S['gabber'], ends['gabber'], 180, kick_gabber())
+    M = ep_dir / 'assets' / 'music'
+    if not song(buf, M / 'gabber.ogg', S['gabber'], ends['gabber']):
+        pattern(buf, S['gabber'], ends['gabber'], 180, kick_gabber())
     # 4) Hardstyle: 150 por minuto con bajo invertido entre kicks.
     step = 60 / 150
-    pattern(buf, S['hardstyle'], ends['hardstyle'], 150, kick_hardstyle(), offbeat=reverse_bass(step * 0.5 - 0.005), hats=False)
+    if not song(buf, M / 'hardstyle.ogg', S['hardstyle'], ends['hardstyle']):
+        pattern(buf, S['hardstyle'], ends['hardstyle'], 150, kick_hardstyle(), offbeat=reverse_bass(step * 0.5 - 0.005), hats=False)
     # 5) Uptempo: 210 por minuto.
-    pattern(buf, S['uptempo'], ends['uptempo'] - 0.3, 210, kick_uptempo(), gain=0.95)
+    if not song(buf, M / 'uptempo.ogg', S['uptempo'], ends['uptempo']):
+        pattern(buf, S['uptempo'], ends['uptempo'] - 0.3, 210, kick_uptempo(), gain=0.95)
     # 6) Cierre: un último golpe y silencio.
     place(buf, impact(3.0), S['cierre'] + 0.05, 0.9)
     buf = np.tanh(buf * 0.9)
-    out = ep_dir / 'build' / 'audio.wav'
+    out = ep_dir / 'build' / ('music.wav' if (ep_dir / 'build' / 'timing.json').exists() else 'audio.wav')
     with wave.open(str(out), 'wb') as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
         w.writeframes((np.clip(buf, -1, 1) * 32000).astype(np.int16).tobytes())
