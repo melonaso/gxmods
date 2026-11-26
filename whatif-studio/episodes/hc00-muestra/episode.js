@@ -27,7 +27,7 @@ export async function setup() {
   g.putImageData(d, 0, 0);
 }
 
-const BPM = { tr909: 140, gabber: 180, hardstyle: 150, uptempo: 210 };
+const BPM = { tr909: 140, gabber: 185, hardstyle: 150, uptempo: 210 };   // gabber: la canción real (KASCHADE) va a ~185
 
 /** Qué clip se ve en este momento de la escena (y en qué segundo del clip). */
 function clipAt(s, local) {
@@ -223,7 +223,7 @@ const SCENES = {
     const { W, H, local, hit } = o;
     // Multitud con color rojo; destellos en cada golpe (180 por minuto).
     ctx.save(); const z = 1 + 0.02 * hit; ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.translate(-W / 2, -H / 2);
-    if (IMG['v:gabber']) photo(ctx, 'v:gabber', 0, 0, W, H, { zoom: 1.05, gray: 0.5, bright: 0.9, contrast: 1.3, tint: '#be123c', tintA: 0.45, blend: 'color' });
+    if (IMG['v:gabber']) photo(ctx, 'v:gabber', 0, 0, W, H, { zoom: 1.05, gray: 0.5, bright: 1.7, contrast: 1.15, tint: '#be123c', tintA: 0.5, blend: 'color' });
     else photo(ctx, 'crowd', 0, 0, W, H, { zoom: 1.08 + 0.01 * local, px: 0.2, gray: 1, bright: 0.62, contrast: 1.6, tint: '#be123c', tintA: 0.75, blend: 'color' });
     ctx.restore();
     scanlines(ctx, W, H, 0.12);
@@ -232,7 +232,7 @@ const SCENES = {
     ctx.fillStyle = 'rgba(2,6,23,0.35)'; ctx.fillRect(0, 0, W, H);
     bigTitle(ctx, 960, 380, 'GABBER', 260, clamp(local / 0.35), { fill: '#ffffff', stroke: '#9f1239' });
     if (local > 0.6) { ctx.save(); ctx.globalAlpha = clamp((local - 0.6) / 0.4); pin(ctx, 150, 640, 0.8); label(ctx, 190, 610, 'ROTTERDAM · 1991–1992', { size: 32 }); label(ctx, 190, 700, 'ENTRE 160 Y 200 BPM', { size: 32, accent: '#facc15' }); ctx.restore(); }
-    bpmBox(ctx, 1630, 680, lerp(140, 180, ease(local / 1.2)), hit, '#f43f5e');
+    bpmBox(ctx, 1630, 680, lerp(140, 185, ease(local / 1.2)), hit, '#f43f5e');
     songTag(ctx, 'gabber', (local - (o.s.audio ?? 99)) / 0.4);
   },
 

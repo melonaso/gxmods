@@ -11,3 +11,12 @@ Todas con licencia libre; al publicar, copiar estos créditos en la descripción
 | stage.jpg | [Qlimax 2023 - Enter the Void.jpg](https://commons.wikimedia.org/wiki/File:Qlimax_2023_-_Enter_the_Void.jpg) | KaiKnight2 | CC BY-SA 4.0 |
 | red.jpg | [RED DEFQON1 2025.jpg](https://commons.wikimedia.org/wiki/File:RED_DEFQON1_2025.jpg) | DELTAFXUniverse | CC BY-SA 4.0 |
 | crowd2.jpg | [Defqon.1 2014 Red stage with audience daytime.jpg](https://commons.wikimedia.org/wiki/File:Defqon.1_2014_Red_stage_with_audience_daytime.jpg) | Caesar | CC BY-SA 3.0 |
+
+## Videos y música reales (Wikimedia Commons)
+
+Los clips van **sin su audio original** (la música de fondo de esas grabaciones tiene dueño).
+
+| Archivo | Original | Autor | Licencia |
+|---|---|---|---|
+| clips/gabber.mp4 | [Hardcore And Gabber Holland For Life.webm](https://commons.wikimedia.org/wiki/File:Hardcore_And_Gabber_Holland_For_Life.webm) | Christian Glaab | CC BY 3.0 |
+| music/gabber.ogg | [KASCHADE - 05 - Hardcore Mops.ogg](https://commons.wikimedia.org/wiki/File:KASCHADE_-_05_-_Hardcore_Mops.ogg) | KASCHADE | CC BY 4.0 |
