@@ -18,47 +18,84 @@
   "scenes": [
     {
       "id": "intro",
-      "min": 6.0,
       "caps": [
         "Esta es la historia del *sonido más rápido* de la música electrónica."
-      ]
+      ],
+      "say": [
+        "Esta es la historia del sonido más rápido de la música electrónica."
+      ],
+      "min": 6.0
     },
     {
       "id": "tr909",
-      "min": 8.0,
       "caps": [
         "Empezó con una caja de ritmos de 1983…",
         "y un truco: subirle tanto el volumen que *el sonido se rompe*."
-      ]
+      ],
+      "say": [
+        "Empezó con una caja de ritmos de mil novecientos ochenta y tres…",
+        "y un truco: subirle tanto el volumen que el sonido se rompe."
+      ],
+      "min": 8.0
     },
     {
       "id": "gabber",
-      "min": 6.5,
       "caps": [
-        "Rotterdam, principios de los 90: nace el *gabber*."
-      ]
+        "Rotterdam, principios de los 90: nace el *gabber*.",
+        "Entre *160 y 200* golpes por minuto."
+      ],
+      "say": [
+        "Rotterdam, principios de los noventa: nace el gabber.",
+        "Entre ciento sesenta y doscientos golpes por minuto."
+      ],
+      "min": 6.5,
+      "hold": 4.0
     },
     {
       "id": "hardstyle",
-      "min": 8.0,
       "caps": [
         "Hacia el año 2000 llega el *hardstyle*: más lento…",
-        "con un bajo que *suena al revés*."
-      ]
+        "y con un bajo que *suena al revés*."
+      ],
+      "say": [
+        "Hacia el año dos mil llega el hardstyle: más lento…",
+        "y con un bajo que suena al revés."
+      ],
+      "min": 8.0,
+      "hold": 4.0
     },
     {
       "id": "uptempo",
-      "min": 6.0,
       "caps": [
-        "Y hoy el *uptempo* pasa de los 200 golpes por minuto."
-      ]
+        "Y hoy, el *uptempo* pasa de los 200 golpes por minuto."
+      ],
+      "say": [
+        "Y hoy, el uptempo pasa de los doscientos golpes por minuto."
+      ],
+      "min": 6.0,
+      "hold": 4.0
     },
     {
       "id": "cierre",
-      "min": 5.5,
       "caps": [
-        "Todos los sonidos de este video están *hechos desde cero*."
-      ]
+        "Esta es apenas una probada.",
+        "Próximamente, *el documental completo*."
+      ],
+      "say": [
+        "Esta es apenas una probada.",
+        "Próximamente, el documental completo."
+      ],
+      "min": 5.5
     }
-  ]
+  ],
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.1,
+    "semitones": 1,
+    "pause": 0.14,
+    "comma": 0.06,
+    "gap": 0.3,
+    "lead": 0.1,
+    "min": 2.0
+  }
 }

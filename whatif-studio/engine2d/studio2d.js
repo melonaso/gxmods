@@ -118,6 +118,11 @@ export async function createStudio2D({ episode, W = 1080, H = 1920 }) {
 
   return {
     renderFrame, duration, scenes, sfx, fps: script.fps ?? 30, overlaps: () => [],
-    frame: (t, q = 0.92) => { renderFrame(t); return out.toDataURL('image/jpeg', q); },
+    // "prepare(t, escena)" opcional en el episodio: carga lo que necesita ese cuadro antes de dibujarlo (p. ej. el
+    // fotograma de un clip de video real, ya extraído a imágenes con ffmpeg).
+    frame: async (t, q = 0.92) => {
+      if (ep.prepare) { const s = sceneAt(t); await ep.prepare(t, { scene: s, local: t - s.start }); }
+      renderFrame(t); return out.toDataURL('image/jpeg', q);
+    },
   };
 }
