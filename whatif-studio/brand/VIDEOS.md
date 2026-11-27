@@ -2659,7 +2659,7 @@ qué pasaría si desaparecieran los árboles, árboles, bosques, amazonas, defor
 ¿Y si el mar fuera de agua dulce? 🌊 #Shorts
 ```
 
-**Descripción** (1814/5000):
+**Descripción** (2087/5000):
 ```
 Podrías tomarte el mar… pero casi todos sus peces morirían. Y su sal taparía los continentes con más de 150 metros.
 
@@ -2681,6 +2681,12 @@ Lo que pasa de verdad:
 ▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
 ▫️ 5. ¿Y si todo el mar se congelara? 🧊
 ▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+▫️ 7. ¿Y si el mar tuviera el doble de agua? 🌊
+▫️ 8. ¿Y si el mar estuviera caliente como una tina? 🌡️
+▫️ 9. ¿Y si se secara el mar Mediterráneo? 🏜️
+▫️ 10. ¿Y si el agua no se evaporara? 💧
+▫️ 11. ¿Y si desaparecieran las nubes? ☁️
+▫️ 12. ¿Y si el mar fuera transparente? 🌊
 
 💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
@@ -2944,7 +2950,7 @@ qué pasaría si cambiáramos el sol, otras estrellas, sirio, betelgeuse, enana 
 ¿Y si el hielo no flotara? 🧊 #Shorts
 ```
 
-**Descripción** (1613/5000):
+**Descripción** (1886/5000):
 ```
 Si el hielo se hundiera, los lagos se congelarían desde el fondo y los peces no sobrevivirían el invierno. Y lo puedes probar con aceite.
 
@@ -2965,6 +2971,12 @@ Lo que pasa de verdad:
 ▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
 ▫️ 5. ¿Y si todo el mar se congelara? 🧊
 ▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+▫️ 7. ¿Y si el mar tuviera el doble de agua? 🌊
+▫️ 8. ¿Y si el mar estuviera caliente como una tina? 🌡️
+▫️ 9. ¿Y si se secara el mar Mediterráneo? 🏜️
+▫️ 10. ¿Y si el agua no se evaporara? 💧
+▫️ 11. ¿Y si desaparecieran las nubes? ☁️
+▫️ 12. ¿Y si el mar fuera transparente? 🌊
 
 💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
@@ -2996,7 +3008,7 @@ qué pasaría si el hielo no flotara, hielo, por qué flota el hielo, lagos cong
 ¿Y si la lluvia fuera salada? 🌧️ #Shorts
 ```
 
-**Descripción** (1612/5000):
+**Descripción** (1885/5000):
 ```
 Si la lluvia fuera salada, se secarían las plantas, los campos y los ríos. Y la lluvia de hoy era agua de mar hace unos 9 días.
 
@@ -3017,6 +3029,12 @@ Lo que pasa de verdad:
 ▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
 ▫️ 5. ¿Y si todo el mar se congelara? 🧊
 ▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+▫️ 7. ¿Y si el mar tuviera el doble de agua? 🌊
+▫️ 8. ¿Y si el mar estuviera caliente como una tina? 🌡️
+▫️ 9. ¿Y si se secara el mar Mediterráneo? 🏜️
+▫️ 10. ¿Y si el agua no se evaporara? 💧
+▫️ 11. ¿Y si desaparecieran las nubes? ☁️
+▫️ 12. ¿Y si el mar fuera transparente? 🌊
 
 💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
@@ -3048,7 +3066,7 @@ qué pasaría si la lluvia fuera salada, lluvia salada, ciclo del agua, sal, pla
 ¿Y si el mar fuera 10 veces más salado? 🌊 #Shorts
 ```
 
-**Descripción** (1584/5000):
+**Descripción** (1857/5000):
 ```
 Si el mar fuera diez veces más salado, flotarías como corcho y casi todos los peces morirían. Y existe: el mar Muerto.
 
@@ -3068,6 +3086,12 @@ Lo que pasa de verdad:
 👉 4. ¿Y si el mar fuera 10 veces más salado? 🌊
 ▫️ 5. ¿Y si todo el mar se congelara? 🧊
 ▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+▫️ 7. ¿Y si el mar tuviera el doble de agua? 🌊
+▫️ 8. ¿Y si el mar estuviera caliente como una tina? 🌡️
+▫️ 9. ¿Y si se secara el mar Mediterráneo? 🏜️
+▫️ 10. ¿Y si el agua no se evaporara? 💧
+▫️ 11. ¿Y si desaparecieran las nubes? ☁️
+▫️ 12. ¿Y si el mar fuera transparente? 🌊
 
 💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
@@ -3099,7 +3123,7 @@ qué pasaría si el mar fuera más salado, mar muerto, flotar en el mar muerto, 
 ¿Y si todo el mar se congelara? 🧊 #Shorts
 ```
 
-**Descripción** (1678/5000):
+**Descripción** (1951/5000):
 ```
 Si todo el mar se congelara, podrías cruzar a pie a otro continente… y la Tierra se enfriaría todavía más. Y ya pasó.
 
@@ -3120,6 +3144,12 @@ Lo que pasa de verdad:
 ▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
 👉 5. ¿Y si todo el mar se congelara? 🧊
 ▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+▫️ 7. ¿Y si el mar tuviera el doble de agua? 🌊
+▫️ 8. ¿Y si el mar estuviera caliente como una tina? 🌡️
+▫️ 9. ¿Y si se secara el mar Mediterráneo? 🏜️
+▫️ 10. ¿Y si el agua no se evaporara? 💧
+▫️ 11. ¿Y si desaparecieran las nubes? ☁️
+▫️ 12. ¿Y si el mar fuera transparente? 🌊
 
 💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
@@ -3151,7 +3181,7 @@ qué pasaría si el mar se congelara, tierra bola de nieve, mar congelado, hielo
 ¿Y si el agua hirviera a 50 grados? ♨️ #Shorts
 ```
 
-**Descripción** (1566/5000):
+**Descripción** (1839/5000):
 ```
 Si el agua hirviera a 50 °C, ningún huevo se cocería y hervirla ya no la limpiaría. Y en el Everest hierve a solo 70 °C.
 
@@ -3172,6 +3202,12 @@ Lo que pasa de verdad:
 ▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
 ▫️ 5. ¿Y si todo el mar se congelara? 🧊
 👉 6. ¿Y si el agua hirviera a 50 grados? ♨️
+▫️ 7. ¿Y si el mar tuviera el doble de agua? 🌊
+▫️ 8. ¿Y si el mar estuviera caliente como una tina? 🌡️
+▫️ 9. ¿Y si se secara el mar Mediterráneo? 🏜️
+▫️ 10. ¿Y si el agua no se evaporara? 💧
+▫️ 11. ¿Y si desaparecieran las nubes? ☁️
+▫️ 12. ¿Y si el mar fuera transparente? 🌊
 
 💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
 🔔 Suscríbete: @CuentasLocas
@@ -3340,3 +3376,345 @@ qué pasaría si la tierra estuviera acostada, inclinación de la tierra, estaci
 - Archivo: `out/subir/y-si-la-tierra-estuviera-acostada.mp4`
 - Listas: «Serie: ¿Y si la Tierra…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
 - Video relacionado (debajo del Short): «¿Y si el día durara 12 horas? 🌍» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 59 — `out/short61-dobleagua.mp4` (vertical)
+
+**Título** (48/100):
+```
+¿Y si el mar tuviera el doble de agua? 🌊 #Shorts
+```
+
+**Descripción** (1619/5000):
+```
+Si el mar tuviera el doble de agua, subiría unos 2.5 km y en México solo asomarían los volcanes. Y el agua de hoy ya cubriría una Tierra lisa.
+
+Lo que pasa de verdad:
+🌊 El mar tiene unos 1,335 millones de km³ de agua. El doble agrega otro tanto, y repartido sobre toda la superficie de la Tierra (unos 510 millones de km²) da: 1,335 ÷ 510 ≈ 2.6 km de agua extra.
+🏙️ Casi toda la tierra firme está por debajo de esa altura: la Ciudad de México está a 2,240 m, así que quedaría bajo el agua.
+🌋 En México solo asomarían las montañas más altas, como el Pico de Orizaba (5,636 m) y el Popocatépetl (5,393 m): serían islas.
+🏔️ En el mundo, la tierra firme sería lo más alto: el Himalaya, el Tíbet (a unos 4,500 m) y los Andes.
+🔵 Lo curioso: si la Tierra fuera lisa como una pelota, el agua que ya tiene la cubriría entera a unos 2.7 km de profundidad.
+
+¿Tu ciudad quedaría bajo el agua? 👇
+
+📺 Serie «El agua» · parte 7:
+▫️ 1. ¿Y si el mar fuera de agua dulce? 🌊
+▫️ 2. ¿Y si el hielo no flotara? 🧊
+▫️ 3. ¿Y si la lluvia fuera salada? 🌧️
+▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
+▫️ 5. ¿Y si todo el mar se congelara? 🧊
+▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+👉 7. ¿Y si el mar tuviera el doble de agua? 🌊
+▫️ 8. ¿Y si el mar estuviera caliente como una tina? 🌡️
+▫️ 9. ¿Y si se secara el mar Mediterráneo? 🏜️
+▫️ 10. ¿Y si el agua no se evaporara? 💧
+▫️ 11. ¿Y si desaparecieran las nubes? ☁️
+▫️ 12. ¿Y si el mar fuera transparente? 🌊
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (144/500):
+```
+qué pasaría si el mar tuviera el doble de agua, nivel del mar, inundación, océano, pico de orizaba, popocatépetl, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: el punto más alto de México, el Pico de Orizaba, mide 5,636 m; con el doble de agua seguiría asomando unos 3 km 🌋 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-mar-tuviera-el-doble-de-agua.mp4`
+- Listas: «Serie: ¿Y si el agua…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Y si el mar fuera 10 veces más salado? 🌊» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 60 — `out/short62-marcaliente.mp4` (vertical)
+
+**Título** (57/100):
+```
+¿Y si el mar estuviera caliente como una tina? 🌡️ #Shorts
+```
+
+**Descripción** (1724/5000):
+```
+Si el mar estuviera caliente como una tina, habría huracanes monstruo y los peces se ahogarían. Y el golfo Pérsico ya pasa de 35 °C.
+
+Lo que pasa de verdad:
+🌀 Los huracanes sacan su energía del agua caliente del mar: se forman sobre agua de unos 26 °C o más. Con el mar a 40 °C tendrían muchísima más «gasolina».
+🐟 El agua caliente guarda menos oxígeno disuelto que la fría: los peces tendrían menos aire para respirar.
+🪸 Los corales se «blanquean» cuando el agua se calienta demasiado: expulsan las algas que les dan color y alimento, y si dura mucho, mueren.
+🌫️ Un mar caliente evapora más agua: el aire de la costa sería muy húmedo y pesado, como un baño de vapor.
+🔥 El golfo Pérsico tiene el agua de mar más caliente del planeta en verano: pasa de 35 °C.
+🥤 Prueba: deja un refresco al sol y otro en el refrigerador. Al abrirlos, el caliente se queda sin gas más rápido: el agua caliente guarda menos gas, igual que el mar guarda menos oxígeno.
+
+¿Vas a hacer la prueba del refresco? 👇
+
+📺 Serie «El agua» · parte 8:
+▫️ 1. ¿Y si el mar fuera de agua dulce? 🌊
+▫️ 2. ¿Y si el hielo no flotara? 🧊
+▫️ 3. ¿Y si la lluvia fuera salada? 🌧️
+▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
+▫️ 5. ¿Y si todo el mar se congelara? 🧊
+▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+▫️ 7. ¿Y si el mar tuviera el doble de agua? 🌊
+👉 8. ¿Y si el mar estuviera caliente como una tina? 🌡️
+▫️ 9. ¿Y si se secara el mar Mediterráneo? 🏜️
+▫️ 10. ¿Y si el agua no se evaporara? 💧
+▫️ 11. ¿Y si desaparecieran las nubes? ☁️
+▫️ 12. ¿Y si el mar fuera transparente? 🌊
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (141/500):
+```
+qué pasaría si el mar estuviera caliente, mar caliente, huracanes, corales, golfo pérsico, oxígeno en el agua, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: un huracán necesita agua de mar de unos 26 °C o más para formarse 🌀 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-mar-estuviera-caliente-como-una-tina.mp4`
+- Listas: «Serie: ¿Y si el agua…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Y si el mar tuviera el doble de agua? 🌊» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 61 — `out/short63-mediterraneo.mp4` (vertical)
+
+**Título** (47/100):
+```
+¿Y si se secara el mar Mediterráneo? 🏜️ #Shorts
+```
+
+**Descripción** (1582/5000):
+```
+Si se secara el Mediterráneo, quedaría un hoyo de casi 3 km lleno de sal. Y ya pasó: hace casi 6 millones de años.
+
+Lo que pasa de verdad:
+🕳️ El Mediterráneo casi no recibe agua de ríos comparado con lo que se evapora: se mantiene lleno porque entra agua del Atlántico por el estrecho de Gibraltar.
+⏳ Hace unos 5.96 millones de años, el paso por Gibraltar se cerró y el mar se fue evaporando: su nivel llegó a bajar hasta unos 2.5 km.
+🧂 Al evaporarse, la sal se quedó: en lo más profundo hay capas de sal de hasta 1 a 3 km de grueso.
+🚶 Con el estrecho cerrado y el mar seco, se podía pasar por tierra de Europa a África.
+🌊 Hace 5.33 millones de años, el Atlántico volvió a entrar por Gibraltar y lo llenó en lo que se conoce como la «inundación zancliense», rapidísima para la escala de la geología.
+
+¿Te imaginas caminar por el fondo del mar? 👇
+
+📺 Serie «El agua» · parte 9:
+▫️ 1. ¿Y si el mar fuera de agua dulce? 🌊
+▫️ 2. ¿Y si el hielo no flotara? 🧊
+▫️ 3. ¿Y si la lluvia fuera salada? 🌧️
+▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
+▫️ 5. ¿Y si todo el mar se congelara? 🧊
+▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+▫️ 7. ¿Y si el mar tuviera el doble de agua? 🌊
+▫️ 8. ¿Y si el mar estuviera caliente como una tina? 🌡️
+👉 9. ¿Y si se secara el mar Mediterráneo? 🏜️
+▫️ 10. ¿Y si el agua no se evaporara? 💧
+▫️ 11. ¿Y si desaparecieran las nubes? ☁️
+▫️ 12. ¿Y si el mar fuera transparente? 🌊
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (149/500):
+```
+qué pasaría si se secara el mar mediterráneo, mediterráneo seco, crisis salina, inundación zancliense, gibraltar, sal, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: bajo el fondo del Mediterráneo hay capas de sal de hasta kilómetros de grueso, restos de cuando se secó 🧂 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-se-secara-el-mar-mediterraneo.mp4`
+- Listas: «Serie: ¿Y si el agua…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Y si el mar estuviera caliente como una tina? 🌡️» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 62 — `out/short64-sinevaporar.mp4` (vertical)
+
+**Título** (40/100):
+```
+¿Y si el agua no se evaporara? 💧 #Shorts
+```
+
+**Descripción** (1662/5000):
+```
+Si el agua no se evaporara, la ropa nunca se secaría y dejaría de llover. Y cada segundo se evaporan más de 5,000 albercas del mar.
+
+Lo que pasa de verdad:
+👕 La ropa se seca porque el agua pasa a vapor y se va al aire. Sin evaporación, se quedaría mojada para siempre, igual que los charcos.
+🌧️ La lluvia empieza con la evaporación: cerca del 86 % del agua que se evapora en el mundo sale del mar. Sin ella, no habría nubes ni lluvia.
+😓 El sudor te enfría porque al evaporarse se lleva calor de tu piel. Sin evaporación, en un día caluroso no podrías bajar tu temperatura.
+🏊 Del mar se evaporan unos 413,000 km³ de agua al año. Por segundo: 413,000 km³ ÷ 31.5 millones de segundos ≈ 13 millones de m³. Una alberca olímpica tiene unos 2,500 m³, así que son más de 5,000 albercas cada segundo.
+🖐️ Prueba: moja tu mano y sóplale. El frío que sientes es el agua evaporándose y llevándose calor.
+
+¿Hiciste la prueba de la mano? 👇
+
+📺 Serie «El agua» · parte 10:
+▫️ 1. ¿Y si el mar fuera de agua dulce? 🌊
+▫️ 2. ¿Y si el hielo no flotara? 🧊
+▫️ 3. ¿Y si la lluvia fuera salada? 🌧️
+▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
+▫️ 5. ¿Y si todo el mar se congelara? 🧊
+▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+▫️ 7. ¿Y si el mar tuviera el doble de agua? 🌊
+▫️ 8. ¿Y si el mar estuviera caliente como una tina? 🌡️
+▫️ 9. ¿Y si se secara el mar Mediterráneo? 🏜️
+👉 10. ¿Y si el agua no se evaporara? 💧
+▫️ 11. ¿Y si desaparecieran las nubes? ☁️
+▫️ 12. ¿Y si el mar fuera transparente? 🌊
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (134/500):
+```
+qué pasaría si el agua no se evaporara, evaporación, ciclo del agua, lluvia, sudor, experimento casero, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: los perros casi no sudan; jadean para que el agua de su lengua se evapore y los enfríe 🐶 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-agua-no-se-evaporara.mp4`
+- Listas: «Serie: ¿Y si el agua…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Y si la lluvia fuera salada? 🌧️» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 63 — `out/short65-sinnubes.mp4` (vertical)
+
+**Título** (42/100):
+```
+¿Y si desaparecieran las nubes? ☁️ #Shorts
+```
+
+**Descripción** (1649/5000):
+```
+Sin nubes, los días serían mucho más calientes, las noches mucho más frías y no llovería. Y una nube pesa como 100 elefantes.
+
+Lo que pasa de verdad:
+☀️ Las nubes reflejan parte de la luz del Sol hacia el espacio: sin ellas, más luz llegaría al suelo y los días serían más calientes.
+🌙 De noche, las nubes funcionan como una cobija: detienen parte del calor que el suelo suelta hacia el espacio. Por eso las noches despejadas son más frías.
+🌧️ Toda la lluvia y la nieve caen de las nubes: sin ellas, no habría precipitación.
+🐘 Una nube de algodón (cúmulo) de 1 km de ancho, largo y alto tiene unos 0.5 gramos de agua por m³: 0.5 g × 1,000 millones de m³ ≈ 500 toneladas, más o menos lo que pesan 100 elefantes.
+💧 Flota porque sus gotitas son diminutas (miles de veces más chicas que una gota de lluvia): caen tan despacio que las corrientes de aire las mantienen arriba.
+
+¿Habías pensado cuánto pesa una nube? 👇
+
+📺 Serie «El agua» · parte 11:
+▫️ 1. ¿Y si el mar fuera de agua dulce? 🌊
+▫️ 2. ¿Y si el hielo no flotara? 🧊
+▫️ 3. ¿Y si la lluvia fuera salada? 🌧️
+▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
+▫️ 5. ¿Y si todo el mar se congelara? 🧊
+▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+▫️ 7. ¿Y si el mar tuviera el doble de agua? 🌊
+▫️ 8. ¿Y si el mar estuviera caliente como una tina? 🌡️
+▫️ 9. ¿Y si se secara el mar Mediterráneo? 🏜️
+▫️ 10. ¿Y si el agua no se evaporara? 💧
+👉 11. ¿Y si desaparecieran las nubes? ☁️
+▫️ 12. ¿Y si el mar fuera transparente? 🌊
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (129/500):
+```
+qué pasaría si desaparecieran las nubes, nubes, cuánto pesa una nube, clima, lluvia, ciencia, curiosidades, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: las nubes cubren en cualquier momento cerca de dos tercios del planeta ☁️ ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-desaparecieran-las-nubes.mp4`
+- Listas: «Serie: ¿Y si el agua…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Y si el agua no se evaporara? 💧» (súbelo antes si aún no está publicado)
+
+---
+
+## Short 64 — `out/short66-martransparente.mp4` (vertical)
+
+**Título** (42/100):
+```
+¿Y si el mar fuera transparente? 🌊 #Shorts
+```
+
+**Descripción** (1539/5000):
+```
+Si el mar fuera transparente, verías un fondo de 11 km, volcanes más altos que el Everest y el Titanic. Y la cordillera más larga está bajo el agua.
+
+Lo que pasa de verdad:
+🕳️ El punto más profundo del mar, en la fosa de las Marianas, está a casi 11 km: si pusieras ahí el Everest (8.8 km), su cima quedaría a más de 2 km bajo el agua.
+🌋 Un volcán de Hawái (Mauna Kea) mide unos 10,200 m desde su base en el fondo del mar: más que el Everest, aunque solo unos 4,200 m quedan fuera del agua.
+🚢 El Titanic descansa a unos 3,800 m de profundidad en el Atlántico Norte.
+⛰️ La cordillera más larga del mundo es la dorsal oceánica, casi toda bajo el agua: mide unos 65,000 km. La vuelta a la Tierra son unos 40,000 km, así que 65,000 ÷ 40,000 ≈ 1.6 vueltas.
+
+¿Te atreverías a nadar en un mar transparente? 👇
+
+📺 Serie «El agua» · parte 12:
+▫️ 1. ¿Y si el mar fuera de agua dulce? 🌊
+▫️ 2. ¿Y si el hielo no flotara? 🧊
+▫️ 3. ¿Y si la lluvia fuera salada? 🌧️
+▫️ 4. ¿Y si el mar fuera 10 veces más salado? 🌊
+▫️ 5. ¿Y si todo el mar se congelara? 🧊
+▫️ 6. ¿Y si el agua hirviera a 50 grados? ♨️
+▫️ 7. ¿Y si el mar tuviera el doble de agua? 🌊
+▫️ 8. ¿Y si el mar estuviera caliente como una tina? 🌡️
+▫️ 9. ¿Y si se secara el mar Mediterráneo? 🏜️
+▫️ 10. ¿Y si el agua no se evaporara? 💧
+▫️ 11. ¿Y si desaparecieran las nubes? ☁️
+👉 12. ¿Y si el mar fuera transparente? 🌊
+
+💡 ¿Tienes un «¿Qué pasaría si…?»? Déjalo en los comentarios: las mejores ideas se vuelven video.
+🔔 Suscríbete: @CuentasLocas
+
+#Shorts #QuePasariaSi #CuentasLocas #Planeta #Curiosidades
+```
+
+**Etiquetas** (146/500):
+```
+qué pasaría si el mar fuera transparente, fosa de las marianas, mauna kea, titanic, dorsal oceánica, fondo del mar, ciencia, shorts, cuentas locas
+```
+
+**Comentario fijado:**
+```
+📌 Dato: la luz del Sol casi no llega más abajo de unos 200 m; casi todo el mar está en completa oscuridad 🌑 ¿Lo sabías? 👇
+```
+
+**Antes de publicar:**
+- Archivo: `out/subir/y-si-el-mar-fuera-transparente.mp4`
+- Listas: «Serie: ¿Y si el agua…?» · «Cuentas Locas · Shorts» · «¿Qué pasaría si…? Espacio y planeta Tierra»
+- Video relacionado (debajo del Short): «¿Y si el mar fuera 10 veces más salado? 🌊» (súbelo antes si aún no está publicado)

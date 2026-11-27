@@ -34,7 +34,13 @@
           "short54-lluviasalada",
           "short55-marsalado",
           "short56-marcongelado",
-          "short57-hierve50"
+          "short57-hierve50",
+          "short61-dobleagua",
+          "short62-marcaliente",
+          "short63-mediterraneo",
+          "short64-sinevaporar",
+          "short65-sinnubes",
+          "short66-martransparente"
         ]
       },
       "tierra": {
@@ -2855,6 +2861,240 @@
       ],
       "next": "short59-dia12h",
       "series": "tierra"
+    },
+    {
+      "episode": "short61-dobleagua",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si el mar tuviera el doble de agua? 🌊 #Shorts",
+      "hook": "Si el mar tuviera el doble de agua, subiría unos 2.5 km y en México solo asomarían los volcanes. Y el agua de hoy ya cubriría una Tierra lisa.",
+      "math": [
+        "🌊 El mar tiene unos 1,335 millones de km³ de agua. El doble agrega otro tanto, y repartido sobre toda la superficie de la Tierra (unos 510 millones de km²) da: 1,335 ÷ 510 ≈ 2.6 km de agua extra.",
+        "🏙️ Casi toda la tierra firme está por debajo de esa altura: la Ciudad de México está a 2,240 m, así que quedaría bajo el agua.",
+        "🌋 En México solo asomarían las montañas más altas, como el Pico de Orizaba (5,636 m) y el Popocatépetl (5,393 m): serían islas.",
+        "🏔️ En el mundo, la tierra firme sería lo más alto: el Himalaya, el Tíbet (a unos 4,500 m) y los Andes.",
+        "🔵 Lo curioso: si la Tierra fuera lisa como una pelota, el agua que ya tiene la cubriría entera a unos 2.7 km de profundidad."
+      ],
+      "question": "¿Tu ciudad quedaría bajo el agua? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si el mar tuviera el doble de agua",
+        "nivel del mar",
+        "inundación",
+        "océano",
+        "pico de orizaba",
+        "popocatépetl",
+        "ciencia",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: el punto más alto de México, el Pico de Orizaba, mide 5,636 m; con el doble de agua seguiría asomando unos 3 km 🌋 ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "short55-marsalado",
+      "series": "agua"
+    },
+    {
+      "episode": "short62-marcaliente",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si el mar estuviera caliente como una tina? 🌡️ #Shorts",
+      "hook": "Si el mar estuviera caliente como una tina, habría huracanes monstruo y los peces se ahogarían. Y el golfo Pérsico ya pasa de 35 °C.",
+      "math": [
+        "🌀 Los huracanes sacan su energía del agua caliente del mar: se forman sobre agua de unos 26 °C o más. Con el mar a 40 °C tendrían muchísima más «gasolina».",
+        "🐟 El agua caliente guarda menos oxígeno disuelto que la fría: los peces tendrían menos aire para respirar.",
+        "🪸 Los corales se «blanquean» cuando el agua se calienta demasiado: expulsan las algas que les dan color y alimento, y si dura mucho, mueren.",
+        "🌫️ Un mar caliente evapora más agua: el aire de la costa sería muy húmedo y pesado, como un baño de vapor.",
+        "🔥 El golfo Pérsico tiene el agua de mar más caliente del planeta en verano: pasa de 35 °C.",
+        "🥤 Prueba: deja un refresco al sol y otro en el refrigerador. Al abrirlos, el caliente se queda sin gas más rápido: el agua caliente guarda menos gas, igual que el mar guarda menos oxígeno."
+      ],
+      "question": "¿Vas a hacer la prueba del refresco? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si el mar estuviera caliente",
+        "mar caliente",
+        "huracanes",
+        "corales",
+        "golfo pérsico",
+        "oxígeno en el agua",
+        "ciencia",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: un huracán necesita agua de mar de unos 26 °C o más para formarse 🌀 ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "short61-dobleagua",
+      "series": "agua"
+    },
+    {
+      "episode": "short63-mediterraneo",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si se secara el mar Mediterráneo? 🏜️ #Shorts",
+      "hook": "Si se secara el Mediterráneo, quedaría un hoyo de casi 3 km lleno de sal. Y ya pasó: hace casi 6 millones de años.",
+      "math": [
+        "🕳️ El Mediterráneo casi no recibe agua de ríos comparado con lo que se evapora: se mantiene lleno porque entra agua del Atlántico por el estrecho de Gibraltar.",
+        "⏳ Hace unos 5.96 millones de años, el paso por Gibraltar se cerró y el mar se fue evaporando: su nivel llegó a bajar hasta unos 2.5 km.",
+        "🧂 Al evaporarse, la sal se quedó: en lo más profundo hay capas de sal de hasta 1 a 3 km de grueso.",
+        "🚶 Con el estrecho cerrado y el mar seco, se podía pasar por tierra de Europa a África.",
+        "🌊 Hace 5.33 millones de años, el Atlántico volvió a entrar por Gibraltar y lo llenó en lo que se conoce como la «inundación zancliense», rapidísima para la escala de la geología."
+      ],
+      "question": "¿Te imaginas caminar por el fondo del mar? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si se secara el mar mediterráneo",
+        "mediterráneo seco",
+        "crisis salina",
+        "inundación zancliense",
+        "gibraltar",
+        "sal",
+        "ciencia",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: bajo el fondo del Mediterráneo hay capas de sal de hasta kilómetros de grueso, restos de cuando se secó 🧂 ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "short62-marcaliente",
+      "series": "agua"
+    },
+    {
+      "episode": "short64-sinevaporar",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si el agua no se evaporara? 💧 #Shorts",
+      "hook": "Si el agua no se evaporara, la ropa nunca se secaría y dejaría de llover. Y cada segundo se evaporan más de 5,000 albercas del mar.",
+      "math": [
+        "👕 La ropa se seca porque el agua pasa a vapor y se va al aire. Sin evaporación, se quedaría mojada para siempre, igual que los charcos.",
+        "🌧️ La lluvia empieza con la evaporación: cerca del 86 % del agua que se evapora en el mundo sale del mar. Sin ella, no habría nubes ni lluvia.",
+        "😓 El sudor te enfría porque al evaporarse se lleva calor de tu piel. Sin evaporación, en un día caluroso no podrías bajar tu temperatura.",
+        "🏊 Del mar se evaporan unos 413,000 km³ de agua al año. Por segundo: 413,000 km³ ÷ 31.5 millones de segundos ≈ 13 millones de m³. Una alberca olímpica tiene unos 2,500 m³, así que son más de 5,000 albercas cada segundo.",
+        "🖐️ Prueba: moja tu mano y sóplale. El frío que sientes es el agua evaporándose y llevándose calor."
+      ],
+      "question": "¿Hiciste la prueba de la mano? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si el agua no se evaporara",
+        "evaporación",
+        "ciclo del agua",
+        "lluvia",
+        "sudor",
+        "experimento casero",
+        "ciencia",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: los perros casi no sudan; jadean para que el agua de su lengua se evapore y los enfríe 🐶 ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "short54-lluviasalada",
+      "series": "agua"
+    },
+    {
+      "episode": "short65-sinnubes",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si desaparecieran las nubes? ☁️ #Shorts",
+      "hook": "Sin nubes, los días serían mucho más calientes, las noches mucho más frías y no llovería. Y una nube pesa como 100 elefantes.",
+      "math": [
+        "☀️ Las nubes reflejan parte de la luz del Sol hacia el espacio: sin ellas, más luz llegaría al suelo y los días serían más calientes.",
+        "🌙 De noche, las nubes funcionan como una cobija: detienen parte del calor que el suelo suelta hacia el espacio. Por eso las noches despejadas son más frías.",
+        "🌧️ Toda la lluvia y la nieve caen de las nubes: sin ellas, no habría precipitación.",
+        "🐘 Una nube de algodón (cúmulo) de 1 km de ancho, largo y alto tiene unos 0.5 gramos de agua por m³: 0.5 g × 1,000 millones de m³ ≈ 500 toneladas, más o menos lo que pesan 100 elefantes.",
+        "💧 Flota porque sus gotitas son diminutas (miles de veces más chicas que una gota de lluvia): caen tan despacio que las corrientes de aire las mantienen arriba."
+      ],
+      "question": "¿Habías pensado cuánto pesa una nube? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si desaparecieran las nubes",
+        "nubes",
+        "cuánto pesa una nube",
+        "clima",
+        "lluvia",
+        "ciencia",
+        "curiosidades",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: las nubes cubren en cualquier momento cerca de dos tercios del planeta ☁️ ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "short64-sinevaporar",
+      "series": "agua"
+    },
+    {
+      "episode": "short66-martransparente",
+      "isShort": true,
+      "factsTitle": "Lo que pasa de verdad:",
+      "title": "¿Y si el mar fuera transparente? 🌊 #Shorts",
+      "hook": "Si el mar fuera transparente, verías un fondo de 11 km, volcanes más altos que el Everest y el Titanic. Y la cordillera más larga está bajo el agua.",
+      "math": [
+        "🕳️ El punto más profundo del mar, en la fosa de las Marianas, está a casi 11 km: si pusieras ahí el Everest (8.8 km), su cima quedaría a más de 2 km bajo el agua.",
+        "🌋 Un volcán de Hawái (Mauna Kea) mide unos 10,200 m desde su base en el fondo del mar: más que el Everest, aunque solo unos 4,200 m quedan fuera del agua.",
+        "🚢 El Titanic descansa a unos 3,800 m de profundidad en el Atlántico Norte.",
+        "⛰️ La cordillera más larga del mundo es la dorsal oceánica, casi toda bajo el agua: mide unos 65,000 km. La vuelta a la Tierra son unos 40,000 km, así que 65,000 ÷ 40,000 ≈ 1.6 vueltas."
+      ],
+      "question": "¿Te atreverías a nadar en un mar transparente? 👇",
+      "hashtags": [
+        "#Shorts",
+        "#QuePasariaSi",
+        "#CuentasLocas",
+        "#Planeta",
+        "#Curiosidades"
+      ],
+      "tags": [
+        "qué pasaría si el mar fuera transparente",
+        "fosa de las marianas",
+        "mauna kea",
+        "titanic",
+        "dorsal oceánica",
+        "fondo del mar",
+        "ciencia",
+        "shorts",
+        "cuentas locas"
+      ],
+      "pinned": "📌 Dato: la luz del Sol casi no llega más abajo de unos 200 m; casi todo el mar está en completa oscuridad 🌑 ¿Lo sabías? 👇",
+      "themes": [
+        "espacio"
+      ],
+      "next": "short55-marsalado",
+      "series": "agua"
     }
   ]
 }
