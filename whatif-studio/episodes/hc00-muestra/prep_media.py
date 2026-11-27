@@ -17,15 +17,14 @@ FPS = 30
 # nombre: (archivo descargado, inicio s, duración s, crédito en pantalla)
 CLIPS = {
     'gabber': ('clip_gabber.webm', 2.0, 12.0, 'VIDEO: CHRISTIAN GLAAB · CC BY 3.0'),
-    'te2007': ('clip_te2007_talla.ogv', 2.0, 9.0, 'VIDEO: GZEN92 · CC BY-SA 4.0'),
-    'jump': ('clip_jumpstyle.webm', 10.0, 8.0, 'VIDEO: ZELIO007 · CC BY-SA 4.0'),
-    'rave': ('clip_ravetheplanet.webm', 1.0, 8.0, 'VIDEO: ROY ZUO · CC BY-SA 4.0'),
+    'te2007': ('clip_te2007_talla.ogv', 2.0, 12.0, 'VIDEO: GZEN92 · CC BY-SA 4.0'),
+    'rave': ('clip_ravetheplanet.webm', 0.5, 12.0, 'VIDEO: ROY ZUO · CC BY-SA 4.0'),
 }
 # escena: (archivo descargado, inicio s, duración s, crédito en pantalla)
 SONGS = {
     'gabber': ('song_kaschade.ogg', 56.0, 12.0, 'KASCHADE — HARDCORE MOPS (CC BY 4.0)'),
     'hardstyle': ('song_hardstyle_id.wav', 0.0, 7.7, 'MICHELUX78 — HARDSTYLE ID (CC BY-SA 4.0)'),
-    'uptempo': ('song_loiscook.ogg', 60.0, 10.0, 'LOIS COOK — WHEN LIFE GIVES YOU… (CC BY-SA 3.0)'),
+    'uptempo': ('song_loiscook.ogg', 80.0, 10.0, 'LOIS COOK — WHEN LIFE GIVES YOU… (CC BY-SA 3.0)'),
 }
 
 

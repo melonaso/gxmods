@@ -20,3 +20,7 @@ Los clips van **sin su audio original** (la música de fondo de esas grabaciones
 |---|---|---|---|
 | clips/gabber.mp4 | [Hardcore And Gabber Holland For Life.webm](https://commons.wikimedia.org/wiki/File:Hardcore_And_Gabber_Holland_For_Life.webm) | Christian Glaab | CC BY 3.0 |
 | music/gabber.ogg | [KASCHADE - 05 - Hardcore Mops.ogg](https://commons.wikimedia.org/wiki/File:KASCHADE_-_05_-_Hardcore_Mops.ogg) | KASCHADE | CC BY 4.0 |
+| clips/te2007.mp4 | [Trance Energy 2007 - Hardstyle - Talla 2XLC.ogv](https://commons.wikimedia.org/wiki/File:Trance_Energy_2007_-_Hardstyle_-_Talla_2XLC.ogv) | Gzen92 | CC BY-SA 4.0 |
+| clips/rave.mp4 | [(20240817) Rave The Planet Parade 2024 01.webm](https://commons.wikimedia.org/wiki/File:(20240817)_Rave_The_Planet_Parade_2024_01.webm) | Roy Zuo | CC BY-SA 4.0 |
+| music/hardstyle.ogg | [Hardstyle ID.wav](https://commons.wikimedia.org/wiki/File:Hardstyle_ID.wav) | Michelux78 | CC BY-SA 4.0 |
+| music/uptempo.ogg | [Lois Cook - When Life Gives You Shit Make Shitcore.ogg](https://commons.wikimedia.org/wiki/File:Lois_Cook_-_When_Life_Gives_You_Shit_Make_Shitcore.ogg) | Lois Cook | CC BY-SA 3.0 |

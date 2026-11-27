@@ -33,11 +33,11 @@ const BPM = { tr909: 140, gabber: 185, hardstyle: 150, uptempo: 210 };   // gabb
 function clipAt(s, local) {
   const voiceEnd = s.audio ?? s.dur;
   if (s.id === 'gabber') return { name: 'gabber', lt: local };
-  if (s.id === 'hardstyle') return local < voiceEnd ? { name: 'te2007', lt: local } : { name: 'jump', lt: local - voiceEnd };
+  if (s.id === 'hardstyle') return { name: 'te2007', lt: local };
   if (s.id === 'uptempo') { const k = UPKEYS[Math.floor((local * BPM.uptempo) / 60 / 2) % UPKEYS.length]; return k.startsWith('v:') ? { name: k.slice(2), lt: local } : null; }
   return null;
 }
-const UPKEYS = ['v:rave', 'red', 'v:jump', 'decks', 'crowd2'];
+const UPKEYS = ['v:rave', 'red', 'decks', 'crowd2'];
 
 export async function prepare(t, { scene: s, local }) {
   const c = clipAt(s, local); if (!c) return;
@@ -241,7 +241,7 @@ const SCENES = {
     // Escenario con láseres (azul/morado) y la onda corriendo: kick + bajo que crece al revés.
     const c1 = cue(1);
     ctx.save(); const z = 1 + 0.015 * hit; ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.translate(-W / 2, -H / 2);
-    const hv = local < (o.s.audio ?? 99) ? 'te2007' : 'jump';
+    const hv = 'te2007';
     if (IMG['v:' + hv]) photo(ctx, 'v:' + hv, 0, 0, W, H, { zoom: 1.04, gray: 0.35, bright: 0.95, contrast: 1.2, tint: '#7c3aed', tintA: 0.3, blend: 'color' });
     else photo(ctx, 'stage', 0, 0, W, H, { zoom: 1.12 - 0.01 * local, py: -0.2, gray: 0.5, bright: 0.8, contrast: 1.2, tint: '#7c3aed', tintA: 0.4, blend: 'color' });
     ctx.restore();
@@ -256,7 +256,7 @@ const SCENES = {
       const r = (b - 0.5) / 0.5; return Math.tanh(Math.sin(2 * Math.PI * 22 * r) * 3) * r ** 2.2 * (r < 0.97 ? 1 : 0);
     };
     if (local < (o.s.audio ?? 99) + 0.3) scope(ctx, 260, 430, 1400, 300, show, 1, '#22d3ee', 5);
-    if (local > c1 - 0.2) { ctx.save(); ctx.globalAlpha = clamp((local - c1 + 0.2) / 0.4); label(ctx, 300, 790, 'KICK', { size: 30, accent: '#22d3ee' }); label(ctx, 1200, 790, 'BAJO AL REVÉS', { size: 30, accent: '#e879f9' }); ctx.restore(); }
+    if (local > c1 - 0.2 && local < (o.s.audio ?? 99) + 0.3) { ctx.save(); ctx.globalAlpha = clamp((local - c1 + 0.2) / 0.4); label(ctx, 300, 790, 'KICK', { size: 30, accent: '#22d3ee' }); label(ctx, 1200, 790, 'BAJO AL REVÉS', { size: 30, accent: '#e879f9' }); ctx.restore(); }
     bpmBox(ctx, 1700, 200, 150, hit, '#22d3ee');
     songTag(ctx, 'hardstyle', (local - (o.s.audio ?? 99)) / 0.4);
   },
