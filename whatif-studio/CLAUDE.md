@@ -103,6 +103,10 @@ las cuentas, y entre paréntesis, de forma breve, cualquier concepto técnico qu
   partes (con 👉 en la actual) y la lista de reproducción de la serie.
   - «El agua»: mar dulce (1), hielo (2), lluvia salada (3), mar 10× salado (4), mar congelado (5), hierve a 50 °C (6).
   - «La Tierra»: gira al revés (1), día de 12 h (2), acostada (3).
+- **27 nov 2026: «¿Y si el mar fuera 10 veces más salado?» (Serie El agua · 4) llevó 17 K vistas y 325 me gusta en
+  9 h**, mejor arranque del canal (el de mar dulce, el récord, tenía ~20 K a las 48 h). Confirma la fórmula: el mar +
+  un cambio simple + final real (el mar Muerto) + prueba en casa (el huevo). En la ficha de YouTube sale la etiqueta
+  «Creado con IA» (contenido alterado o sintético).
 - **Personaje fijo**: `HERO` en `engine2d/props.js` (colores del logo: camisa verde, pantalón azul, pelo oscuro). Desde
   el Short 55, cualquier persona protagonista se dibuja con `hq.toon(ctx, x, y, h, { ...HERO, … })`.
 
