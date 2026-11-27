@@ -1,0 +1,100 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *desaparecieran las nubes*?",
+        "¿Más días *de sol*?"
+      ],
+      "say": [
+        "¿Qué pasaría si desaparecieran las nubes?",
+        "¿Más días de sol?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.9,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "id": "dia",
+      "caps": [
+        "Sí, y *mucho más calientes*:",
+        "las nubes *rebotan parte de la luz* del Sol."
+      ],
+      "say": [
+        "Sí, y mucho más calientes:",
+        "las nubes rebotan parte de la luz del Sol."
+      ]
+    },
+    {
+      "id": "noche",
+      "caps": [
+        "Y las noches, *mucho más frías*:",
+        "las nubes son *una cobija* que guarda el calor."
+      ],
+      "say": [
+        "Y las noches, mucho más frías:",
+        "las nubes son una cobija que guarda el calor."
+      ]
+    },
+    {
+      "id": "lluvia",
+      "caps": [
+        "Y sin nubes, *no habría lluvia ni nieve* en ningún lado."
+      ],
+      "say": [
+        "Y sin nubes, no habría lluvia ni nieve en ningún lado."
+      ]
+    },
+    {
+      "id": "final",
+      "caps": [
+        "Lo curioso: una nube normal *pesa como cien elefantes*…",
+        "y flota porque sus gotitas son *tan diminutas* que el aire las sostiene."
+      ],
+      "say": [
+        "Lo curioso: una nube normal pesa como cien elefantes…",
+        "y flota porque sus gotitas son tan diminutas que el aire las sostiene."
+      ],
+      "hold": 0.6
+    }
+  ],
+  "title": "¿Y si desaparecieran las nubes?",
+  "series": "SERIE EL AGUA · 11",
+  "hookTitle": [
+    "¿Y SI DESAPARECIERAN",
+    "LAS NUBES?"
+  ],
+  "hookZoom": 0.12
+}

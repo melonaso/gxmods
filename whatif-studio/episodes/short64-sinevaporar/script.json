@@ -1,0 +1,100 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *el agua no se evaporara*?",
+        "¿Se secaría *tu ropa*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el agua no se evaporara?",
+        "¿Se secaría tu ropa?"
+      ],
+      "hold": 0.2
+    },
+    {
+      "id": "ropa",
+      "caps": [
+        "No: la ropa mojada *nunca se secaría*…",
+        "y los charcos *se quedarían para siempre*."
+      ],
+      "say": [
+        "No: la ropa mojada nunca se secaría…",
+        "y los charcos se quedarían para siempre."
+      ]
+    },
+    {
+      "id": "lluvia",
+      "caps": [
+        "Pero lo peor: *dejaría de llover*.",
+        "Casi toda la lluvia es agua que *el Sol evaporó del mar*."
+      ],
+      "say": [
+        "Pero lo peor: dejaría de llover.",
+        "Casi toda la lluvia es agua que el Sol evaporó del mar."
+      ]
+    },
+    {
+      "id": "sudor",
+      "caps": [
+        "Y en un día de calor *no podrías enfriarte*: el sudor te refresca porque se evapora."
+      ],
+      "say": [
+        "Y en un día de calor no podrías enfriarte: el sudor te refresca porque se evapora."
+      ]
+    },
+    {
+      "id": "final",
+      "caps": [
+        "Cada segundo, el Sol evapora del mar *más de 5,000 albercas olímpicas*.",
+        "Pruébalo: moja tu mano y sóplale: *ese frío es el agua evaporándose*."
+      ],
+      "say": [
+        "Cada segundo, el Sol evapora del mar más de cinco mil albercas olímpicas.",
+        "Pruébalo: moja tu mano y sóplale: ese frío es el agua evaporándose."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.6,
+          "type": "whoosh"
+        }
+      ]
+    }
+  ],
+  "title": "¿Y si el agua no se evaporara?",
+  "series": "SERIE EL AGUA · 10",
+  "hookTitle": [
+    "¿Y SI EL AGUA",
+    "NO SE EVAPORARA?"
+  ],
+  "hookZoom": 0.12
+}

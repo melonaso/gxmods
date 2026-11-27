@@ -1,0 +1,107 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *el mar estuviera caliente* como una tina?",
+        "¿Te *meterías*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el mar estuviera caliente como una tina?",
+        "¿Te meterías?"
+      ],
+      "hold": 0.2
+    },
+    {
+      "id": "huracanes",
+      "caps": [
+        "Los huracanes *se volverían monstruos*:",
+        "el agua caliente *es su gasolina*."
+      ],
+      "say": [
+        "Los huracanes se volverían monstruos:",
+        "el agua caliente es su gasolina."
+      ],
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.6,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "oxigeno",
+      "caps": [
+        "Los peces se ahogarían: *el agua caliente guarda menos oxígeno*…",
+        "y los corales *se pondrían blancos* y morirían."
+      ],
+      "say": [
+        "Los peces se ahogarían: el agua caliente guarda menos oxígeno…",
+        "y los corales se pondrían blancos y morirían."
+      ]
+    },
+    {
+      "id": "playa",
+      "caps": [
+        "Y en la playa, el aire se sentiría *como un baño de vapor*."
+      ],
+      "say": [
+        "Y en la playa, el aire se sentiría como un baño de vapor."
+      ]
+    },
+    {
+      "id": "final",
+      "caps": [
+        "Y casi pasa: en el golfo Pérsico, *el mar pasa de 35 grados* en verano.",
+        "Pruébalo: un refresco caliente *pierde las burbujas* más rápido que uno frío."
+      ],
+      "say": [
+        "Y casi pasa: en el golfo Pérsico, el mar pasa de treinta y cinco grados en verano.",
+        "Pruébalo: un refresco caliente pierde las burbujas más rápido que uno frío."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.8,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "title": "¿Y si el mar estuviera caliente como una tina?",
+  "series": "SERIE EL AGUA · 8",
+  "hookTitle": [
+    "¿Y SI EL MAR ESTUVIERA",
+    "CALIENTE COMO TINA?"
+  ],
+  "hookZoom": 0.12
+}

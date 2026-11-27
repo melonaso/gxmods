@@ -1,0 +1,109 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *el mar tuviera el doble de agua*?",
+        "¿Dónde quedaría *tu casa*?"
+      ],
+      "say": [
+        "¿Qué pasaría si el mar tuviera el doble de agua?",
+        "¿Dónde quedaría tu casa?"
+      ],
+      "hold": 0.2,
+      "fx": [
+        {
+          "cue": 0,
+          "at": 0.8,
+          "type": "splash"
+        }
+      ]
+    },
+    {
+      "id": "globo",
+      "caps": [
+        "El mar subiría *unos dos kilómetros y medio*…",
+        "y casi todos los continentes *quedarían bajo el agua*."
+      ],
+      "say": [
+        "El mar subiría unos dos kilómetros y medio…",
+        "y casi todos los continentes quedarían bajo el agua."
+      ]
+    },
+    {
+      "id": "mexico",
+      "caps": [
+        "En México solo asomarían *los volcanes*:",
+        "el Pico de Orizaba y el Popocatépetl *serían islas*."
+      ],
+      "say": [
+        "En México solo asomarían los volcanes:",
+        "el Pico de Orizaba y el Popocatépetl serían islas."
+      ]
+    },
+    {
+      "id": "ballenas",
+      "caps": [
+        "Las ballenas *nadarían sobre las ciudades*…",
+        "y la tierra firme sería el Himalaya, *los Andes y el Tíbet*."
+      ],
+      "say": [
+        "Las ballenas nadarían sobre las ciudades…",
+        "y la tierra firme sería el Himalaya, los Andes y el Tíbet."
+      ]
+    },
+    {
+      "id": "final",
+      "caps": [
+        "Lo curioso: si la Tierra fuera *lisa como una pelota*…",
+        "el agua que ya tiene *la cubriría entera*, a casi tres kilómetros de profundidad."
+      ],
+      "say": [
+        "Lo curioso: si la Tierra fuera lisa como una pelota…",
+        "el agua que ya tiene la cubriría entera, a casi tres kilómetros de profundidad."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.4,
+          "type": "splash"
+        }
+      ]
+    }
+  ],
+  "title": "¿Y si el mar tuviera el doble de agua?",
+  "series": "SERIE EL AGUA · 7",
+  "hookTitle": [
+    "¿Y SI EL MAR TUVIERA",
+    "EL DOBLE DE AGUA?"
+  ],
+  "hookZoom": 0.12
+}

@@ -1,0 +1,100 @@
+{
+  "type": "2d",
+  "fps": 60,
+  "narration": false,
+  "captions": "pop",
+  "cps": 18,
+  "cueMin": 1.4,
+  "gap": 0.15,
+  "fadeIn": 0,
+  "fadeOut": 0,
+  "tail": 0.4,
+  "punch": 0.08,
+  "sfx": true,
+  "voice": {
+    "file": "voice.mp3",
+    "tempo": 1.15,
+    "semitones": 2,
+    "pause": 0.12,
+    "comma": 0.05,
+    "gap": 0.22,
+    "lead": 0.06,
+    "min": 2.0
+  },
+  "music": {
+    "bpm": 104,
+    "drums": true
+  },
+  "scale": 1.3333334,
+  "scenes": [
+    {
+      "id": "hook",
+      "caps": [
+        "¿Qué pasaría si *se secara el mar Mediterráneo*?",
+        "¿Qué quedaría *en el fondo*?"
+      ],
+      "say": [
+        "¿Qué pasaría si se secara el mar Mediterráneo?",
+        "¿Qué quedaría en el fondo?"
+      ],
+      "hold": 0.2
+    },
+    {
+      "id": "fondo",
+      "caps": [
+        "Un hoyo de *casi tres kilómetros* de profundidad…",
+        "cubierto de sal, *como un desierto blanco*."
+      ],
+      "say": [
+        "Un hoyo de casi tres kilómetros de profundidad…",
+        "cubierto de sal, como un desierto blanco."
+      ]
+    },
+    {
+      "id": "charcos",
+      "caps": [
+        "Los peces y los delfines *quedarían atrapados* en charcos cada vez más salados."
+      ],
+      "say": [
+        "Los peces y los delfines quedarían atrapados en charcos cada vez más salados."
+      ]
+    },
+    {
+      "id": "caminar",
+      "caps": [
+        "Podrías ir *caminando de España a África*…",
+        "y allá abajo haría *un calor de horno*."
+      ],
+      "say": [
+        "Podrías ir caminando de España a África…",
+        "y allá abajo haría un calor de horno."
+      ]
+    },
+    {
+      "id": "final",
+      "caps": [
+        "Y ya pasó: hace casi seis millones de años, *el Mediterráneo se secó*…",
+        "y se volvió a llenar con *una inundación gigante* que entró por Gibraltar."
+      ],
+      "say": [
+        "Y ya pasó: hace casi seis millones de años, el Mediterráneo se secó…",
+        "y se volvió a llenar con una inundación gigante que entró por Gibraltar."
+      ],
+      "hold": 0.6,
+      "fx": [
+        {
+          "cue": 1,
+          "at": 0.5,
+          "type": "splash"
+        }
+      ]
+    }
+  ],
+  "title": "¿Y si se secara el mar Mediterráneo?",
+  "series": "SERIE EL AGUA · 9",
+  "hookTitle": [
+    "¿Y SI SE SECARA",
+    "EL MEDITERRÁNEO?"
+  ],
+  "hookZoom": 0.12
+}
