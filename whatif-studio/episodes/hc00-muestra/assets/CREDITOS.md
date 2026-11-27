@@ -23,4 +23,9 @@ Los clips van **sin su audio original** (la música de fondo de esas grabaciones
 | clips/te2007.mp4 | [Trance Energy 2007 - Hardstyle - Talla 2XLC.ogv](https://commons.wikimedia.org/wiki/File:Trance_Energy_2007_-_Hardstyle_-_Talla_2XLC.ogv) | Gzen92 | CC BY-SA 4.0 |
 | clips/rave.mp4 | [(20240817) Rave The Planet Parade 2024 01.webm](https://commons.wikimedia.org/wiki/File:(20240817)_Rave_The_Planet_Parade_2024_01.webm) | Roy Zuo | CC BY-SA 4.0 |
 | music/hardstyle.ogg | [Hardstyle ID.wav](https://commons.wikimedia.org/wiki/File:Hardstyle_ID.wav) | Michelux78 | CC BY-SA 4.0 |
-| music/uptempo.ogg | [Lois Cook - When Life Gives You Shit Make Shitcore.ogg](https://commons.wikimedia.org/wiki/File:Lois_Cook_-_When_Life_Gives_You_Shit_Make_Shitcore.ogg) | Lois Cook | CC BY-SA 3.0 |
+
+## Canciones elegidas por el dueño (comerciales, no van en el repositorio)
+
+Gabber: Rodox Trading — Nobody Died (drop en 1:34) · Hardstyle: Noisecontrollers — Attack Again (1:53) ·
+Uptempo: Trespassed — No Joke (2:15). Son canciones con derechos: si el video se publica, Content ID puede reclamarlas
+(el dinero se va al dueño de la canción) salvo que haya permiso por escrito del artista o del sello.

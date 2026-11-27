@@ -20,12 +20,14 @@ CLIPS = {
     'te2007': ('clip_te2007_talla.ogv', 2.0, 12.0, 'VIDEO: GZEN92 · CC BY-SA 4.0'),
     'rave': ('clip_ravetheplanet.webm', 0.5, 12.0, 'VIDEO: ROY ZUO · CC BY-SA 4.0'),
 }
-# escena: (archivo descargado, inicio s, duración s, crédito en pantalla)
+# escena: (archivo que manda el dueño, segundo del drop en la canción, crédito en pantalla). Canciones comerciales:
+# se usan solo extractos cortos; antes de publicar, ver brand/ o CREDITOS.md (Content ID puede reclamarlas).
 SONGS = {
-    'gabber': ('song_kaschade.ogg', 56.0, 12.0, 'KASCHADE — HARDCORE MOPS (CC BY 4.0)'),
-    'hardstyle': ('song_hardstyle_id.wav', 0.0, 7.7, 'MICHELUX78 — HARDSTYLE ID (CC BY-SA 4.0)'),
-    'uptempo': ('song_loiscook.ogg', 80.0, 10.0, 'LOIS COOK — WHEN LIFE GIVES YOU… (CC BY-SA 3.0)'),
+    'gabber': ('gabber.mp3', 94.0, 'RODOX TRADING — NOBODY DIED'),
+    'hardstyle': ('hardstyle.mp3', 113.0, 'NOISECONTROLLERS — ATTACK AGAIN'),
+    'uptempo': ('uptempo.mp3', 135.0, 'TRESPASSED — NO JOKE'),
 }
+PRE, POST = 8.0, 10.0   # segundos antes y después del drop que se guardan
 
 
 def run(*a):
@@ -49,12 +51,14 @@ def main(src):
         n = len(list(d.glob('f_*.jpg')))
         index['clips'][name] = {'fps': FPS, 'n': n}; index['credits']['clips'][name] = credit
         print(f'clip {name}: {n} cuadros')
-    for scene, (f, t0, dur, credit) in SONGS.items():
-        ogg = EP / 'assets' / 'music' / f'{scene}.ogg'
+    index['drops'] = {}
+    for scene, (f, drop, credit) in SONGS.items():
+        # Canciones comerciales: el extracto se queda en build/ (no se sube al repositorio).
+        ogg = EP / 'build' / 'music' / f'{scene}.ogg'; ogg.parent.mkdir(parents=True, exist_ok=True)
         if src and (src / f).exists():
-            run('-ss', str(t0), '-t', str(dur), '-i', str(src / f), '-ac', '2', '-ar', '48000', '-c:a', 'libvorbis', '-q:a', '6', str(ogg))
+            run('-ss', str(max(0.0, drop - PRE)), '-t', str(PRE + POST), '-i', str(src / f), '-ac', '2', '-ar', '48000', '-c:a', 'libvorbis', '-q:a', '6', str(ogg))
         if ogg.exists():
-            index['credits']['songs'][scene] = credit; print('canción', scene, 'lista')
+            index['credits']['songs'][scene] = credit; index['drops'][scene] = min(PRE, drop); print('canción', scene, 'lista')
         else:
             print('falta la canción', scene)
     (out / 'index.json').write_text(json.dumps(index, ensure_ascii=False, indent=1))

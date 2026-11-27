@@ -107,10 +107,10 @@ def load_audio(path):
     return np.frombuffer(raw, dtype=np.float32).copy()
 
 
-def song(buf, path, t0, t1, gain=0.8, fade=0.35):
-    """Pone un extracto de canción real de t0 a t1 (con entrada y salida suaves)."""
+def song(buf, path, t0, t1, gain=0.8, fade=0.35, skip=0.0):
+    """Pone un extracto de canción real de t0 a t1 (con entrada y salida suaves), saltando `skip` s del extracto."""
     if not Path(path).exists(): return False
-    x = load_audio(path); n = min(len(x), int((t1 - t0) * SR)); x = x[:n] / max(1e-6, float(np.max(np.abs(x[:n]))))
+    x = load_audio(path)[int(max(0.0, skip) * SR):]; n = min(len(x), int((t1 - t0) * SR)); x = x[:n] / max(1e-6, float(np.max(np.abs(x[:n]))))
     f = int(fade * SR); x[:f] *= np.linspace(0, 1, f); x[-f:] *= np.linspace(1, 0, f)
     place(buf, x, t0, gain); return True
 
@@ -146,14 +146,23 @@ def main(ep_dir: Path):
     pattern(buf, mid, ends['tr909'], 140, kick_gabber(), hats=False)
     # 3) Gabber en Rotterdam: 180 por minuto, con platillos.
     M = ep_dir / 'assets' / 'music'
-    if not song(buf, M / 'gabber.ogg', S['gabber'], ends['gabber']):
+    # Dónde cae el drop en cada extracto (prep_media.py) y cuánto dura la voz de cada escena (voice.py):
+    # el extracto se adelanta para que el drop suene justo cuando se calla la voz.
+    try: drops = json.load(open(ep_dir / 'build' / 'clips' / 'index.json')).get('drops', {})
+    except Exception: drops = {}
+    try: vdur = {x['id']: t['dur'] for x, t in zip(st['starts'], json.load(open(ep_dir / 'build' / 'timing.json')))}
+    except Exception: vdur = {}
+    # Primero las canciones que eligió el dueño (build/music, no van al repositorio); si no están, las de licencia libre.
+    pick = lambda sc: (ep_dir / 'build' / 'music' / f'{sc}.ogg') if (ep_dir / 'build' / 'music' / f'{sc}.ogg').exists() else (M / f'{sc}.ogg')
+    skip = lambda sc: drops.get(sc, 0.0) - vdur.get(sc, 0.0) - 0.1 if sc in drops else 0.0
+    if not song(buf, pick('gabber'), S['gabber'], ends['gabber'], skip=skip('gabber')):
         pattern(buf, S['gabber'], ends['gabber'], 180, kick_gabber())
     # 4) Hardstyle: 150 por minuto con bajo invertido entre kicks.
     step = 60 / 150
-    if not song(buf, M / 'hardstyle.ogg', S['hardstyle'], ends['hardstyle']):
+    if not song(buf, pick('hardstyle'), S['hardstyle'], ends['hardstyle'], skip=skip('hardstyle')):
         pattern(buf, S['hardstyle'], ends['hardstyle'], 150, kick_hardstyle(), offbeat=reverse_bass(step * 0.5 - 0.005), hats=False)
     # 5) Uptempo: 210 por minuto.
-    if not song(buf, M / 'uptempo.ogg', S['uptempo'], ends['uptempo']):
+    if not song(buf, pick('uptempo'), S['uptempo'], ends['uptempo'], skip=skip('uptempo')):
         pattern(buf, S['uptempo'], ends['uptempo'] - 0.3, 210, kick_uptempo(), gain=0.95)
     # 6) Cierre: un último golpe y silencio.
     place(buf, impact(3.0), S['cierre'] + 0.05, 0.9)
