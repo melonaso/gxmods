@@ -87,7 +87,7 @@ const SCENES = {
     // Regla del nivel del mar.
     const x = 960, y0 = 1180, hh = 600;
     hq.roundRectPath(ctx, x - 30, y0 - hh, 60, hh, 18); ctx.fillStyle = 'rgba(15,23,42,0.85)'; ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = '#ffffff'; ctx.stroke();
-    const top = y0 - hh * up; hq.roundRectPath(ctx, x - 20, top, 40, y0 - top - 8, 12); ctx.fillStyle = '#38bdf8'; ctx.fill();
+    const top = y0 - hh * up; if (y0 - top - 8 > 24) { hq.roundRectPath(ctx, x - 20, top, 40, y0 - top - 8, 12); ctx.fillStyle = '#38bdf8'; ctx.fill(); }
     kit.text(ctx, `+${(2.5 * up).toFixed(1)} KM`, x - 10, y0 - hh - 50, { size: 46, fill: '#bae6fd', align: 'right' });
     hq.tag(ctx, 540, 410, local < c1 ? 'EL MAR SUBE' : 'CASI TODO, BAJO EL AGUA', { size: 46, fill: '#bae6fd' });
   },
